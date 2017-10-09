@@ -1,0 +1,2 @@
+﻿Cách đặt tên file:
+[MaNhom][RV_FRA_CL][Tên các sơ đồ lớp]
