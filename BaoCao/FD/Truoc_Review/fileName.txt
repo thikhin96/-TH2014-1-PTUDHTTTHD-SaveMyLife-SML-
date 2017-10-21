@@ -1,0 +1,2 @@
+﻿Thư mục chứa tài liệu FD trước khi review.
+Cách đặt tên file: [MSSV hoặc Mã nhóm][FD][Nội dung thực hiện]
