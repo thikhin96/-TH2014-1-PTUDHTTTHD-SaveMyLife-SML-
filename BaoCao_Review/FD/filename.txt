@@ -1,0 +1,2 @@
+﻿Thư mục chứa báo cáo review tài liệu FD.
+Cách đặt tên: [mã nhóm được review][RV_FD][Tên các sơ đồ lớp]
