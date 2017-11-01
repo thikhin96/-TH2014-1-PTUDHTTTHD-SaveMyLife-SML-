@@ -1,0 +1,4 @@
+﻿Thư mục chứa các báo cáo sau khi đã chỉnh sửa lỗi được review.
+Cách đặt tên: [maNhom][RV_FD][Nội dung]
+ Chú ý: Phần [Nội dung] những class có liên quan đến nhau thì gộp chung lại.
+ Ví dụ: DonYCDoiTra, CT_DonYCDoiTra, DonDoiTra, CT_DonDoiTra thì gộp chung là DoiTraSP
