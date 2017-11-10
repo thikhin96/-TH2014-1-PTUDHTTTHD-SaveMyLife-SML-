@@ -1,0 +1,2 @@
+﻿Làm lại tài liệu DD phần thiết kế chi tiết.
+Cách đặt tên file: [MaNhom][RW_DD][Nội dung]
