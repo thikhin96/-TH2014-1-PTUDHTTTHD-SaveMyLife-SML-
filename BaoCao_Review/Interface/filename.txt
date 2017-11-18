@@ -1,0 +1,2 @@
+﻿Báo cáo review giao diện màn hình
+Cách đặt tên: [Mã nhóm được review][RV_GUI][Nội dung review]
