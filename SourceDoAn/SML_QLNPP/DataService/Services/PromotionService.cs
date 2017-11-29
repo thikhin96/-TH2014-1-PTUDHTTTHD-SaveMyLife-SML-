@@ -1,4 +1,5 @@
 ﻿using DataModel.Interfaces;
+using DataService.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,17 +11,18 @@ namespace DataService
     class PromotionService : IPromotionService
     {
         //private readonly IRepository<Promotion> _promotionRepository;
-        //private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
-        //public Promotion(IRepository<Promotion> promotionRepository, IUnitOfWork unitOfWork)
-        //{
-        //    _promotionRepository = promotionRepository;
-        //    _unitOfWork = unitOfWork;
-        //}
-
-        int IPromotionService.DeletePromotion(int id)
+        public PromotionService(IUnitOfWork unitOfWork)
         {
-            throw new NotImplementedException();
+            //_promotionRepository = unitOfWork.Repository<Promotion>();
+            _unitOfWork = unitOfWork;
+        }
+
+        public int DeletePromotion(int id)
+        {
+            //bla bla bla
+            return 0;
         }
     }
 }
