@@ -1,8 +1,8 @@
-using System;
+﻿using System;
 
 using Unity;
 
-namespace DataService
+namespace $rootnamespace$
 {
     /// <summary>
     /// Specifies the Unity configuration for the main container.
