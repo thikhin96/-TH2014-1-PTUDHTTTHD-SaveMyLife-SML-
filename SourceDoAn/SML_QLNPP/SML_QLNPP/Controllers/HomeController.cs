@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataService.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,17 @@ namespace SML_QLNPP.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IPromotionService _promotionService;
+
+        public HomeController(IPromotionService promotionService)
+        {
+            _promotionService = promotionService;
+        }
+
         public ActionResult Index()
         {
+            
+            ViewBag.Message = _promotionService.InjectAlert();
             return View();
         }
 

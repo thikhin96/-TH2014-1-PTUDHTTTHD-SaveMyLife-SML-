@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataService
 {
-    class PromotionService : IPromotionService
+    public class PromotionService : IPromotionService
     {
         //private readonly IRepository<Promotion> _promotionRepository;
         private readonly IUnitOfWork _unitOfWork;
@@ -17,6 +17,11 @@ namespace DataService
         {
             //_promotionRepository = unitOfWork.Repository<Promotion>();
             _unitOfWork = unitOfWork;
+        }
+
+        public string InjectAlert()
+        {
+            return "Hey you have successfully injected dependencies";
         }
 
         public int DeletePromotion(int id)

@@ -8,6 +8,7 @@ namespace DataService.Interfaces
 {
     public interface IPromotionService
     {
+        string InjectAlert();
         //int AddPromotion(Promotion p);
         int DeletePromotion(int id);
         //int UpdatePromotion(Promotion p);
