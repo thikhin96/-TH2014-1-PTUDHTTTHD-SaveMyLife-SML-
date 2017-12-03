@@ -1,117 +1,117 @@
-create table SanPham
+create table Product
 (
-	ID_SanPham int identity (1,1) primary key,
-	TenSP nvarchar(50),
-	DonGia money,
-	TinhTrang bit,
-	LoaiSP int,
-	DonViTinh int
+	IdProduct int identity (1,1) primary key,
+	ProductName nvarchar(50),
+	Price money,
+	IsDisabled bit,
+	ProductType int,
+	Unit int
 )
 go
 
-create table DotHang
+create table Batch
 (
-	ID_DotHang int identity (1,1) primary key,
-	NgaySX datetime
+	IdBatch int identity (1,1) primary key,
+	ManufacturedDate datetime
 )
 
-create table ChiTietDotHang
+create table BatchDetail
 (
-	ID_DotHang int,
-	ID_SanPham int,
-	SoLuong int check(SoLuong > 0),
-	HSD datetime,
-	primary key (ID_DotHang, ID_SanPham)
-)
-go
-
-create table Kho
-(
-	ID_Kho int identity (1,1) primary key,
-	SoNha_Duong nvarchar(50),
-	PhuongXa nvarchar(50),
-	QuanHuyen nvarchar(50),
-	ThanhPho nvarchar(50),
-	MoTa nvarchar(100),
-	NPP int
+	IdBatch int,
+	IdProduct int,
+	Quantity int check(Quantity > 0),
+	ExipreDate datetime,
+	primary key (IdBatch, IdProduct)
 )
 go
 
-create table DonYCDoiTra
+create table Storage
 (
-	ID_DonYCDT int identity (1,1) primary key,
-	NgayLapDon datetime,
-	TinhTrang int check(TinhTrang in (0,1,2)),
-	GhiChu nvarchar(max),
-	HinhThuc bit,
-	NPP int,
-	Kho int,
-	NhanVien int
+	IdStorage int identity (1,1) primary key,
+	HouseNumber_Street nvarchar(50),
+	Ward_Commune nvarchar(50),
+	District nvarchar(50),
+	City nvarchar(50),
+	"Description" nvarchar(100),
+	Distributor int
 )
 go
 
-create table CTDonYCDoiTra
+create table ReturnRequest
 (
-	ID_DonYCDT int,
-	ID_SanPham int,
-	SoLuong int check(SoLuong > 0),
-	LyDoDoiTra nvarchar(max),
-	primary key (ID_DonYCDT, ID_SanPham)
+	IdReturnRequest int identity (1,1) primary key,
+	DateCreate datetime,
+	"Status" int check("Status" in (0,1,2)),
+	Note nvarchar(max),
+	ModeOfReturn bit,
+	Distributor int,
+	Storage int,
+	Staff int
 )
 go
 
---SanPham
-ALTER TABLE SanPham 
-ADD CONSTRAINT FK_SanPham_LoaiSanPham 
-FOREIGN KEY (LoaiSP) 
-REFERENCES LoaiSanPham(ID_LoaiSP)
+create table ReturnRequestDetail
+(
+	IdReturnRequest int,
+	IdProduct int,
+	Quantity int check(Quantity > 0),
+	Reason nvarchar(max),
+	primary key (IdReturnRequest, IdProduct)
+)
+go
 
-ALTER TABLE SanPham
-ADD CONSTRAINT FK_SanPham_DonViTinh 
-FOREIGN KEY (DonViTinh) 
-REFERENCES DonViTinh(ID_DVT)
+--Product
+ALTER TABLE Product 
+ADD CONSTRAINT FK_Product_ProductType 
+FOREIGN KEY (ProductType) 
+REFERENCES ProductType(IdProductType)
 
---ChiTietDotHang
-ALTER TABLE ChiTietDotHang 
-ADD CONSTRAINT FK_ChiTietDotHang_DotHang 
-FOREIGN KEY (ID_DotHang) 
-REFERENCES DotHang(ID_DotHang)
+ALTER TABLE Product
+ADD CONSTRAINT FK_Product_Unit 
+FOREIGN KEY (Unit) 
+REFERENCES Unit(IdUnit)
 
-ALTER TABLE ChiTietDotHang 
-ADD	CONSTRAINT FK_ChiTietDotHang_SanPham 
-FOREIGN KEY (ID_SanPham) 
-REFERENCES SanPham(ID_SanPham)
+--BatchDetail
+ALTER TABLE BatchDetail 
+ADD CONSTRAINT FK_BatchDetail_Batch 
+FOREIGN KEY (IdBatch) 
+REFERENCES Batch(IdBatch)
 
---Kho
-ALTER TABLE Kho 
-ADD CONSTRAINT FK_Kho_NhaPhanPhoi 
-FOREIGN KEY (NPP) 
-REFERENCES NhaPhanPhoi(ID_NPP)
+ALTER TABLE BatchDetail 
+ADD	CONSTRAINT FK_BatchDetail_Product 
+FOREIGN KEY (IdProduct) 
+REFERENCES Product(IdProduct)
 
---DonYCDoiTra
-ALTER TABLE DonYCDoiTra 
-ADD CONSTRAINT FK_DonYCDoiTra_NhaPhanPhoi 
-FOREIGN KEY (NPP) 
-REFERENCES NhaPhanPhoi(ID_NPP)
+--Storage
+ALTER TABLE Storage 
+ADD CONSTRAINT FK_Storage_Distributor
+FOREIGN KEY (Distributor) 
+REFERENCES Distributor(IdDistributor)
 
-ALTER TABLE DonYCDoiTra 
-ADD CONSTRAINT FK_DonYCDoiTra_Kho 
-FOREIGN KEY (Kho) 
-REFERENCES Kho(ID_Kho)
+--ReturnRequest
+ALTER TABLE ReturnRequest 
+ADD CONSTRAINT FK_ReturnRequest_Distributor
+FOREIGN KEY (Distributor) 
+REFERENCES Distributor(IdDistributor)
 
-ALTER TABLE DonYCDoiTra 
-ADD CONSTRAINT FK_DonYCDoiTra_NhanVien 
-FOREIGN KEY (NhanVien) 
-REFERENCES NhanVien(ID_NV)
+ALTER TABLE ReturnRequest 
+ADD CONSTRAINT FK_ReturnRequest_Storage 
+FOREIGN KEY (Storage) 
+REFERENCES Storage(IdStorage)
 
---CTDonYCDoiTra
-ALTER TABLE CTDonYCDoiTra 
-ADD CONSTRAINT FK_CTDonYCDoiTra_DonYCDoiTra 
-FOREIGN KEY (ID_DonYCDT) 
-REFERENCES DonYCDoiTra(ID_DonYCDT)
+ALTER TABLE ReturnRequest 
+ADD CONSTRAINT FK_ReturnRequest_Staff
+FOREIGN KEY (Staff) 
+REFERENCES Staff(IdStaff)
 
-ALTER TABLE CTDonYCDoiTra 
-ADD CONSTRAINT FK_CTDonYCDoiTra_SanPham 
-FOREIGN KEY (ID_SanPham) 
-REFERENCES SanPham(ID_SanPham)
+--ReturnRequestDetail
+ALTER TABLE ReturnRequestDetail 
+ADD CONSTRAINT FK_ReturnRequestDetail_ReturnRequest 
+FOREIGN KEY (IdReturnRequest) 
+REFERENCES ReturnRequest(IdReturnRequest)
+
+ALTER TABLE ReturnRequestDetail 
+ADD CONSTRAINT FK_ReturnRequestDetail_Product 
+FOREIGN KEY (IdProduct) 
+REFERENCES Product(IdProduct)
 
