@@ -9,13 +9,13 @@ namespace DataModel.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly DistributionManagementEntities _context;
+        private readonly QL_NPPEntities _context;
         private Dictionary<Type, object> repositories = new Dictionary<Type, object>();
         private bool disposed = false;
 
         public UnitOfWork()
         {
-            _context = new DistributionManagementEntities();
+            _context = new QL_NPPEntities();
         }
 
 

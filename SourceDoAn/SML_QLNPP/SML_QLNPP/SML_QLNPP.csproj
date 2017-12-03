@@ -17,7 +17,7 @@
     <AssemblyName>SML_QLNPP</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -81,6 +81,22 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.3.0\lib\net45\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common.WebHost, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.WebHost.3.3.0\lib\net45\Ninject.Web.Common.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.3.0\lib\net45\Ninject.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -234,9 +250,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -248,12 +264,43 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Account\account.css" />
+    <Content Include="Content\Home\bootstrap.css" />
+    <Content Include="Content\Home\flexslider.css" />
+    <Content Include="Content\Home\font-awesome.css" />
+    <Content Include="Content\Home\images\1.png" />
+    <Content Include="Content\Home\images\2.png" />
+    <Content Include="Content\Home\images\3.png" />
+    <Content Include="Content\Home\images\ab.jpg" />
+    <Content Include="Content\Home\images\ab2.jpg" />
+    <Content Include="Content\Home\images\back.png" />
+    <Content Include="Content\Home\images\banner.jpg" />
+    <Content Include="Content\Home\images\close.png" />
+    <Content Include="Content\Home\images\g1.jpg" />
+    <Content Include="Content\Home\images\g2.jpg" />
+    <Content Include="Content\Home\images\g3.jpg" />
+    <Content Include="Content\Home\images\g4.jpg" />
+    <Content Include="Content\Home\images\g5.jpg" />
+    <Content Include="Content\Home\images\g6.jpg" />
+    <Content Include="Content\Home\images\g7.jpg" />
+    <Content Include="Content\Home\images\g8.jpg" />
+    <Content Include="Content\Home\images\g9.jpg" />
+    <Content Include="Content\Home\images\left.png" />
+    <Content Include="Content\Home\images\next.png" />
+    <Content Include="Content\Home\images\right.png" />
+    <Content Include="Content\Home\images\s1.jpg" />
+    <Content Include="Content\Home\images\search.png" />
+    <Content Include="Content\Home\images\services.jpg" />
+    <Content Include="Content\Home\images\t1.jpg" />
+    <Content Include="Content\Home\images\t2.jpg" />
+    <Content Include="Content\Home\images\t3.jpg" />
+    <Content Include="Content\Home\images\t4.jpg" />
+    <Content Include="Content\Home\images\tick.png" />
+    <Content Include="Content\Home\images\top-up.png" />
+    <Content Include="Content\Home\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -261,7 +308,23 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\Home\bootstrap.js" />
+    <Content Include="Scripts\Home\easing.js" />
+    <Content Include="Scripts\Home\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\Home\jquery.flexslider.js" />
+    <Content Include="Scripts\Home\move-top.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -273,6 +336,8 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -284,11 +349,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -302,6 +366,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataModel\DataModel.csproj">
+      <Project>{4ef07e17-68e3-4da8-88da-67fdeab9123d}</Project>
+      <Name>DataModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataService\DataService.csproj">
       <Project>{5ef3945a-8458-40af-a5fd-48fe8955e047}</Project>
       <Name>DataService</Name>
@@ -325,7 +393,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>65422</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:52093/</IISUrl>
+          <IISUrl>http://tl.com</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

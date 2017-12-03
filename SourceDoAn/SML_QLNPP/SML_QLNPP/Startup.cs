@@ -8,7 +8,6 @@ namespace SML_QLNPP
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
         }
     }
 }

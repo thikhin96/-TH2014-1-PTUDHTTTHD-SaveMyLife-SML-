@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DataModel;
+using DataService.Interfaces;
+namespace DataService.Services
+{
+    public class AccountService : IAccountService
+    {
+        public bool CreateAccount(Account acc)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IncurredAccount(string username, byte typeOfUser)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool LockAccount(int idAccount, string reason)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Login(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Logout()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Account> SearchAccount(int idAccount)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void writeLogUser(int idUser, bool status)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
