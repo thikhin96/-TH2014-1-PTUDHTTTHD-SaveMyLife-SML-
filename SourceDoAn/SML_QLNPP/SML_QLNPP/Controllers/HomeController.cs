@@ -18,7 +18,6 @@ namespace SML_QLNPP.Controllers
 
         public ActionResult Index()
         {
-            
             ViewBag.Message = _promotionService.InjectAlert();
             return View();
         }
