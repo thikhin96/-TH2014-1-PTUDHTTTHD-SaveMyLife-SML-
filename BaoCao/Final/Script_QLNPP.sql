@@ -3,73 +3,72 @@ USE QL_NPP
 
 CREATE TABLE Account
 (
-	ID_Account int identity (1,1) primary key,
+	idUser int identity (1,1) primary key,
 	UserName varchar(30) unique,
 	Password varchar(30) check (len(Password) between 8 and 30),
-	DaKichHoat bit,
-	PhanQuyen tinyint check (PhanQuyen in (1,2,3)),
-	DaKhoa bit,
-	NgayTao datetime,
-	NgayCapNhat datetime,
-	GhiChu nvarchar(Max)
+	activated bit,
+	decentralization tinyint check (PhanQuyen in (1,2,3)),
+	locked bit,
+	dateCreate datetime,
+	dateUpdate datetime,
+	note nvarchar(Max)
 )
 go
 
-CREATE TABLE LogDangNhap
+CREATE TABLE Log_Login
 (
 	ID_Log bigint identity primary key,
 	ID_Account int,
-	ThoiGian datetime,
-	TinhTrang bit
+	at_time datetime,
+	status bit
 )
 go
 
-CREATE TABLE DoiTac
+CREATE TABLE PotentialDistributor
 (
-	ID_DoiTac int primary key identity(1,1),
-	TenCT nvarchar(50) unique,
-	DiaChi nvarchar(100),
-	SoDT varchar(11) unique,
+	idDistributor int primary key identity(1,1),
+	name nvarchar(50) unique,
+	address nvarchar(100),
+	phone varchar(11) unique,
 	Email varchar(100) unique,
-	NgayTao datetime,
-	NgayCapNhat datetime,
-	GhiChu nvarchar(max),
-	TinhTrang tinyint check(TinhTrang in (0,1,2,3,4)),
-	NguoiDaiDien int 
+	createdDate datetime,
+	updatedDate datetime,
+	note nvarchar(max),
+	status tinyint check(TinhTrang in (0,1,2,3,4)),
+	idRep int 
 )
 go
 
-CREATE TABLE NhaPhanPhoi
+CREATE TABLE Distributor
 (
-	ID_NPP int identity (1,1) primary key,
-	TenNPP nvarchar(50) unique,
-	DiaChi nvarchar(100),
-	SoDT varchar(11) unique,
+	idDistributor int primary key identity(1,1),
+	name nvarchar(50) unique,
+	address nvarchar(100),
+	phone varchar(11) unique,
 	Email varchar(100) unique,
-	NgayTao datetime,
-	NgayCapNhat datetime,
-	GhiChu nvarchar(max),
-	TrangThai bit,
-	CongNo money,
+	createdDate datetime,
+	updatedDate datetime,
+	note nvarchar(max),
+	status bool,
 	UserName varchar(30)
 )
 go
 
-CREATE TABLE HopDong
+CREATE TABLE Contract
 (
-	ID_HopDong int identity (1,1) primary key,
-	TGBatDau datetime,
-	TGKetThuc datetime,
-	GTDonHangNhoNhat money,
-	CongNoToiDa money,
-	TienHoaHong tinyint check( TienHoaHong between 0 and 100),
-	LoaiPhanPhoi bit,
-	KhuVuc nvarchar(30),
-	TinhTrang bit,
-	GhiChu nvarchar(max),
-	NhaPhanPhoi int,
-	NguoiDaiDien int,
-	NhanVien int
+	idContract int identity (1,1) primary key,
+	beginDate datetime,
+	expiredDate datetime,
+	minOrderTotalValue money,
+	maxDebt money,
+	commission tinyint check( TienHoaHong between 0 and 100),
+	disType bit,
+	area nvarchar(30),
+	status bit,
+	note nvarchar(max),
+	distributor int,
+	representative int,
+	staff int
 )
 go
 
@@ -380,18 +379,18 @@ go
 
 --------------------
 
-ALTER TABLE DoiTac ADD 
-	CONSTRAINT FK_DoiTac_NDD FOREIGN KEY (NguoiDaiDien) REFERENCES NguoiDaiDien(ID_NDD)
+ALTER TABLE PotentialDistributor ADD 
+	CONSTRAINT FK_DoiTac_NDD FOREIGN KEY (idRep) REFERENCES Representative(idRepresentative)
 go
 
-ALTER TABLE NhaPhanPhoi ADD 
+ALTER TABLE Distributor ADD 
 	CONSTRAINT FK_NPP_Account FOREIGN KEY (UserName) REFERENCES Account(UserName)
 go
 
-ALTER TABLE HopDong ADD 
-	CONSTRAINT FK_HopDong_NDD FOREIGN KEY (NguoiDaiDien) REFERENCES NguoiDaiDien(ID_NDD), 
-	CONSTRAINT FK_HopDong_NhaPhanPhoi FOREIGN KEY (NhaPhanPhoi) REFERENCES NhaPhanPhoi(ID_NPP),
-	CONSTRAINT FK_HopDong_NhanVien FOREIGN KEY (NhanVien) REFERENCES NhanVien(ID_NV)
+ALTER TABLE Contract ADD 
+	CONSTRAINT FK_HopDong_NDD FOREIGN KEY (representative) REFERENCES Representative(idRepresentative), 
+	CONSTRAINT FK_HopDong_NhaPhanPhoi FOREIGN KEY (Distributor) REFERENCES Distributor(idDistributor),
+	CONSTRAINT FK_HopDong_NhanVien FOREIGN KEY (staff) REFERENCES Staff(idStaff)
 go
 
 ALTER TABLE NguoiDaiDien ADD
