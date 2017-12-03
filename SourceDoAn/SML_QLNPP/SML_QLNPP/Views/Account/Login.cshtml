@@ -1,0 +1,43 @@
+﻿@model DataModel.Account
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+    <link href="~/Content/Account/account.css" rel="stylesheet" type="text/css" media="all" />
+}
+
+@section scripts{
+
+
+}
+
+<div class="container mgb">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <h2>Đăng nhập vào hệ thống</h2>
+            <div class="account-wall">
+                <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+                     alt="">
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-signin" }))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+                    @Html.AntiForgeryToken()
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập email", @required = "required", @type = "text" } })
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập mật khẩu", @required = "required", @type = "password"} })
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                        Sign in
+                    </button>
+                    <label class="checkbox pull-left">
+                        <input type="checkbox" value="remember-me">
+                        Remember me
+                    </label>
+                    <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+                }
+                    
+                    
+            </div>
+            @*<a href="#" class="text-center new-account">Create an account </a>*@
+        </div>
+    </div>
+</div>

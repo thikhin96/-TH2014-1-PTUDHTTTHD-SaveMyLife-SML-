@@ -13,10 +13,10 @@ namespace DataModel
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DistributionManagementEntities : DbContext
+    public partial class QL_NPPEntities : DbContext
     {
-        public DistributionManagementEntities()
-            : base("name=DistributionManagementEntities")
+        public QL_NPPEntities()
+            : base("name=QL_NPPEntities")
         {
         }
     
@@ -25,5 +25,37 @@ namespace DataModel
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Account> Accounts { get; set; }
+        public virtual DbSet<BaoCaoDoanhThu> BaoCaoDoanhThus { get; set; }
+        public virtual DbSet<ChiTietDotHang> ChiTietDotHangs { get; set; }
+        public virtual DbSet<CT_DoanhThu> CT_DoanhThu { get; set; }
+        public virtual DbSet<CT_GiaoHang> CT_GiaoHang { get; set; }
+        public virtual DbSet<CT_KhuyenMaiMua> CT_KhuyenMaiMua { get; set; }
+        public virtual DbSet<CTDonYCDoiTra> CTDonYCDoiTras { get; set; }
+        public virtual DbSet<CTPhieuDoiTra> CTPhieuDoiTras { get; set; }
+        public virtual DbSet<DoiTac> DoiTacs { get; set; }
+        public virtual DbSet<DonDatHang> DonDatHangs { get; set; }
+        public virtual DbSet<DonGiaoHang> DonGiaoHangs { get; set; }
+        public virtual DbSet<DonViTinh> DonViTinhs { get; set; }
+        public virtual DbSet<DonYCDoiTra> DonYCDoiTras { get; set; }
+        public virtual DbSet<DotHang> DotHangs { get; set; }
+        public virtual DbSet<HoaDon> HoaDons { get; set; }
+        public virtual DbSet<HopDong> HopDongs { get; set; }
+        public virtual DbSet<Kho> Khoes { get; set; }
+        public virtual DbSet<KhuyenMai> KhuyenMais { get; set; }
+        public virtual DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
+        public virtual DbSet<Log_ChiTietDDH> Log_ChiTietDDH { get; set; }
+        public virtual DbSet<Log_DonDatHang> Log_DonDatHang { get; set; }
+        public virtual DbSet<Log_SanPham> Log_SanPham { get; set; }
+        public virtual DbSet<LogDangNhap> LogDangNhaps { get; set; }
+        public virtual DbSet<NguoiDaiDien> NguoiDaiDiens { get; set; }
+        public virtual DbSet<NguoiLienHeGiaoHang> NguoiLienHeGiaoHangs { get; set; }
+        public virtual DbSet<NhanVien> NhanViens { get; set; }
+        public virtual DbSet<NhaPhanPhoi> NhaPhanPhois { get; set; }
+        public virtual DbSet<PhanCongTraoDoi> PhanCongTraoDois { get; set; }
+        public virtual DbSet<PhieuChi> PhieuChis { get; set; }
+        public virtual DbSet<PhieuCongNo> PhieuCongNoes { get; set; }
+        public virtual DbSet<PhieuDoiTra> PhieuDoiTras { get; set; }
+        public virtual DbSet<SanPham> SanPhams { get; set; }
     }
 }

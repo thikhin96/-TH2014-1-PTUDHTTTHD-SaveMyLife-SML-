@@ -1,5 +1,6 @@
 using DataService;
 using DataService.Interfaces;
+using DataService.Services;
 using System;
 
 using Unity;
@@ -45,6 +46,7 @@ namespace SML_QLNPP
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IPromotionService, PromotionService>();
+            container.RegisterType<IAccountService, AccountService>();
             ServiceModule.UnityRegister(container);
         }
     }
