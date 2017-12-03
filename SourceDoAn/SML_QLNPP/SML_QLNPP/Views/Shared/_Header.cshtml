@@ -37,6 +37,10 @@
                         </ul>
                     </li>
                     <li><a href="contact.html">Contact</a></li>
+                    @if (Session["username"] != null)
+                    {
+                        <li><a href="contact.html">Đã đăng nhập</a></li>
+                    }
                 </ul>
             </div>
         </div>
