@@ -30,7 +30,7 @@ namespace DataModel.Repositories
 
         public TEntity Get(Func<TEntity, bool> predicate)
         {
-            return _context.Set<TEntity>().First(predicate);
+            return _context.Set<TEntity>().FirstOrDefault(predicate);
         }
 
         public IEnumerable<TEntity> GetAll(Func<TEntity, bool> predicate = null)

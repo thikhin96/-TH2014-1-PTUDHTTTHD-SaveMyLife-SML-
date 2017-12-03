@@ -23,8 +23,29 @@ namespace SML_QLNPP.Controllers
         [HttpPost]
         public ActionResult Login(Account Login)
         {
-
-            return null;
+            var ret = _accountService.Login(Login.UserName, Login.Password);
+            if (ret)
+            {
+                Session["user_id"] = Login.UserName;
+                return Redirect("/");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Tài khoản hoặc mật khẩu chưa chính xác");
+                return View();
+            }
+        }
+        public ActionResult Logout()
+        {
+            if (Session["username"] != null)
+            {
+                Session.Remove("username");
+                return Redirect("/");
+            }
+            else
+            {
+                return Redirect("/");
+            }
         }
     }
 }

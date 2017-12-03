@@ -12,6 +12,10 @@
 {
     font-weight: normal;
 }
+.mgb{
+    margin-bottom: 2%;
+}
+
 .form-signin .form-control
 {
     position: relative;

@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataModel;
+using DataModel.Interfaces;
 using DataService.Interfaces;
+using DataModel;
+using NLog;
 namespace DataService.Services
 {
     public class AccountService : IAccountService
     {
+        private readonly IUnitOfWork _unitOfWork;
+        ILogger logger = LogManager.GetCurrentClassLogger();
+        public AccountService(IUnitOfWork unitOfWork)
+        {
+            //_promotionRepository = unitOfWork.Repository<Promotion>();
+            _unitOfWork = unitOfWork;
+        }
         public bool CreateAccount(Account acc)
         {
             throw new NotImplementedException();
@@ -26,7 +35,8 @@ namespace DataService.Services
 
         public bool Login(string username, string password)
         {
-            throw new NotImplementedException();
+            IRepository<Account> repository = _unitOfWork.Repository<Account>();
+            return repository.Get(a => a.UserName == username && a.Password == password) != null;
         }
 
         public void Logout()
