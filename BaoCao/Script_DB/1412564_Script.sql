@@ -1,103 +1,103 @@
-﻿CREATE TABLE PhieuDoiTra
+﻿CREATE TABLE ReturnBase
 (
-	ID_PhieuDoiTra int identity(1,1) primary key,
-	TongTienDoiTra money,
-	NgayLapPhieu datetime,
-	HinhThuc bit,				-- 0: đổi, 1: trả
-	NPP int,
-	Kho int,
-	NhanVien int
+	ID_Return int identity(1,1) primary key,
+	Total money,
+	CreatedDate datetime,
+	ModeOfReturn bit,				-- 0: đổi, 1: trả
+	ID_Distributor int,
+	ID_Storage int,
+	ID_Staff int
 )
 go
 
-CREATE TABLE CTPhieuDoiTra
+CREATE TABLE ReturnDetail
 (
-	ID_PhieuDoiTra int,
-	ID_SanPham int,
-	SoLuong int check (SoLuong > 0),
-	TienSPDoiTra money,
-	primary key (ID_PhieuDoiTra, ID_SanPham)
+	ID_Return int,
+	ID_Product int,
+	Quantity int check (Quantity > 0),
+	ProductMoneyRefunding money,
+	primary key (ID_Return, ID_Product)
 )
 go
 
-CREATE TABLE PhieuCongNo
+CREATE TABLE DebtPayment
 (
-	ID_PCN int identity(1,1) primary key,
-	TienTraCN money,
-	NgayLapPhieu datetime,
-	NPP int,
-	NhanVien int
+	ID_DebtPayment int identity(1,1) primary key,
+	AmountOfDebtPayment money,
+	CreatedDate datetime,
+	ID_Distributor int,
+	ID_Staff int
 )
 go
 
-CREATE TABLE PhieuChi
+CREATE TABLE PaySlip
 (
-	ID_PhieuChi int identity(1,1) primary key,
-	TienChiTra money,
-	LyDoChi nvarchar(200),
-	NgayLapPhieu datetime,
-	NPP int,
-	NhanVien int
+	ID_PaySlip int identity(1,1) primary key,
+	AmountSpent money,
+	SpendingReasons nvarchar(200),
+	CreatedDate datetime,
+	ID_Distributor int,
+	ID_Staff int
 )
 go
 
-CREATE TABLE DonDatHang
+CREATE TABLE OrderBase
 (
-	ID_DonHang int identity(1,1) primary key,
-	TongTien money,
-	HinhThucGiaoHang bit,			-- 0: tự túc, 1: vitamilk giao
-	HinhThucThanhToan bit,			-- 0: tiền mặt, 1: thẻ
-	NgayGiaoDuKien datetime,
-	TinhTrang tinyint check (TinhTrang in (0,1,2,3)),	-- 0: chưa duyệt, 1: đã duyệt, 2: không duyệt, 3: đã giao
-	NgayLap datetime,
-	NgayCapNhat datetime,
-	ID_NPP int,
-	ID_NguoiLienHe int,
-	ID_NhanVien int,
-	MoTa nvarchar(100)
+	ID_Order int identity(1,1) primary key,
+	Total money,
+	DeliveryType bit,			-- 0: tự túc, 1: vitamilk giao
+	PaymentType bit,			-- 0: tiền mặt, 1: thẻ
+	EstimateDateOfDelivery datetime,
+	Statuses tinyint check (Statuses in (0,1,2,3)),	-- 0: chưa duyệt, 1: đã duyệt, 2: không duyệt, 3: đã giao
+	CreatedDate datetime,
+	UpdatedDate datetime,
+	ID_Distributor int,
+	ID_Consignee int,
+	ID_Staff int,
+	Descriptions nvarchar(100)
 )
 go
 
-CREATE TABLE NguoiLienHeGiaoHang
+CREATE TABLE Consignee
 (
-	ID_NguoiLienHe int identity(1,1) primary key,
-	HoTen nvarchar(100),
-	SDT varchar(20),
-	ID_NPP int,
-	ID_DonHang int
+	ID_Consignee int identity(1,1) primary key,
+	Name nvarchar(100),
+	PhoneNumber varchar(20),
+	ID_Distributor int,
+	ID_Order int
 )
 go
 
-ALTER TABLE PhieuDoiTra ADD
-	CONSTRAINT FK_PhieuDoiTra_NhaPhanPhoi FOREIGN KEY (NPP) REFERENCES NhaPhanPhoi (Id_NPP),
-	CONSTRAINT FK_PhieuDoiTra_Kho FOREIGN KEY (Kho) REFERENCES Kho (ID_Kho),
-	CONSTRAINT FK_PhieuDoiTra_NhanVien FOREIGN KEY (NhanVien) REFERENCES NhanVien (Id_NV)
+ALTER TABLE ReturnBase ADD
+	CONSTRAINT FK_ReturnBase_Distributor FOREIGN KEY (ID_Distributor) REFERENCES Distributor (ID_Distributor),
+	CONSTRAINT FK_ReturnBase_Storage FOREIGN KEY (ID_Storage) REFERENCES Storage (ID_Storage),
+	CONSTRAINT FK_ReturnBase_Staff FOREIGN KEY (ID_Staff) REFERENCES Staff (ID_Staff)
 go
 
-ALTER TABLE CTPhieuDoiTra ADD
-	CONSTRAINT FK_CTPhieuDoiTra_PhieuDoiTra FOREIGN KEY (ID_PhieuDoiTra) REFERENCES PhieuDoiTra (ID_PhieuDoiTra),
-	CONSTRAINT FK_CTPhieuDoiTra_SanPham FOREIGN KEY (ID_SanPham) REFERENCES SanPham (ID_SanPham)
+ALTER TABLE ReturnDetail ADD
+	CONSTRAINT FK_ReturnDetail_ReturnBase FOREIGN KEY (ID_Return) REFERENCES ReturnBase (ID_Return),
+	CONSTRAINT FK_ReturnDetail_Product FOREIGN KEY (ID_Product) REFERENCES Product (ID_Product)
 go
 
-ALTER TABLE PhieuCongNo ADD
-	CONSTRAINT FK_PhieuCongNo_NhaPhanPhoi FOREIGN KEY (NPP) REFERENCES NhaPhanPhoi (Id_NPP),
-	CONSTRAINT FK_PhieuCongNo_NhanVien FOREIGN KEY (NhanVien) REFERENCES NhanVien (Id_NV)
+ALTER TABLE DebtPayment ADD
+	CONSTRAINT FK_DebtPayment_Distributor FOREIGN KEY (ID_Distributor) REFERENCES Distributor (ID_Distributor),
+	CONSTRAINT FK_DebtPayment_Staff FOREIGN KEY (ID_Staff) REFERENCES Staff (ID_Staff)
 go
 
-ALTER TABLE PhieuChi ADD
-	CONSTRAINT FK_PhieuChi_NhaPhanPhoi FOREIGN KEY (NPP) REFERENCES NhaPhanPhoi (Id_NPP),
-	CONSTRAINT FK_PhieuChi_NhanVien FOREIGN KEY (NhanVien) REFERENCES NhanVien (Id_NV)
+ALTER TABLE PaySlip ADD
+	CONSTRAINT FK_PaySlip_Distributor FOREIGN KEY (ID_Distributor) REFERENCES Distributor (ID_Distributor),
+	CONSTRAINT FK_PaySlip_Staff FOREIGN KEY (ID_Staff) REFERENCES Staff (ID_Staff)
 go
 
-ALTER TABLE DonDatHang ADD
-	CONSTRAINT FK_DonDatHang_NhaPhanPhoi FOREIGN KEY (ID_NPP) REFERENCES NhaPhanPhoi (Id_NPP),
-	CONSTRAINT FK_DonDatHang_NguoiLienHeGiaoHang FOREIGN KEY (ID_NguoiLienHe) REFERENCES NguoiLienHeGiaoHang (ID_NguoiLienHe),
-	CONSTRAINT FK_DonDatHang_NhanVien FOREIGN KEY (ID_NhanVien) REFERENCES NhanVien (Id_NV)
+ALTER TABLE OrderBase ADD
+	CONSTRAINT FK_OrderBase_Distributor FOREIGN KEY (ID_Distributor) REFERENCES Distributor (ID_Distributor),
+	CONSTRAINT FK_OrderBase_Consignee FOREIGN KEY (ID_Consignee) REFERENCES Consignee (ID_Consignee),
+	CONSTRAINT FK_OrderBase_Staff FOREIGN KEY (ID_Staff) REFERENCES Staff (ID_Staff)
 go
 
-ALTER TABLE NguoiLienHeGiaoHang ADD
-	CONSTRAINT FK_NguoiLienHeGiaoHang_NhaPhanPhoi FOREIGN KEY (ID_NPP) REFERENCES NhaPhanPhoi (Id_NPP),
-	CONSTRAINT FK_NguoiLienHeGiaoHang_DonDatHang FOREIGN KEY (ID_DonHang) REFERENCES DonDatHang (ID_DonHang)
+ALTER TABLE Consignee ADD
+	CONSTRAINT FK_Consignee_Distributor FOREIGN KEY (ID_Distributor) REFERENCES Distributor (ID_Distributor),
+	CONSTRAINT FK_Consignee_OrderBase FOREIGN KEY (ID_Order) REFERENCES OrderBase (ID_Order)
 
 
 

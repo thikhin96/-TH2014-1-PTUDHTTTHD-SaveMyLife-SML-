@@ -1,63 +1,63 @@
-CREATE TABLE NguoiDaiDien
+CREATE TABLE Representative
 (
-	ID_NDD int identity(1,1) primary key,
-	TenNDD nvarchar(30),
-	SoDT varchar(11),
-	Email varchar(100),
-	ChucVu nvarchar(50),
-	DoiTac int,
-	NhaPhanPhoi int,
+	idRepresentative int identity(1,1) primary key,
+	name nvarchar(30),
+	phone varchar(11),
+	email varchar(100),
+	title nvarchar(50),
+	PDistributor int,
+	Distributor int,
 )
 go
 
-CREATE TABLE NhanVien
+CREATE TABLE Staff
 (
-	ID_NV int identity(1,1) primary key,
-	TenNV nvarchar(30),
-	UserName varchar(30),
-	CMND varchar(12) unique,
-	SDT varchar(11) unique,
-	DiaChi nvarchar(100)
+	idStaff int identity(1,1) primary key,
+	staffName nvarchar(30),
+	account varchar(30),
+	idCard varchar(12) unique,
+	phone varchar(11) unique,
+	adress nvarchar(100)
 )
 go
 
-CREATE TABLE PhanCongTraoDoi
+CREATE TABLE Assignment
 (
-	ID_NV int,
-	ID_DoiTac int,
-	ThoiGian datetime,
-	DiaDiem nvarchar(100),
-	HoanThanh bit,
-	KetQua nvarchar(max),
-	primary key (ID_NV, ID_DoiTac)
+	staff int,
+	PDistributor int,
+	date datetime,
+	place nvarchar(100),
+	isComplete bit,
+	result nvarchar(max),
+	primary key (staff, PDistributor)
 )
 go
 
-CREATE TABLE LoaiSanPham
+CREATE TABLE ProductType
 (
-	ID_LoaiSP int identity(1,1) primary key,
-	TenLoaiSP nvarchar(50)
+	idProductType int identity(1,1) primary key,
+	productTypeName nvarchar(50)
 )
 go
 
-CREATE TABLE DonViTinh
+CREATE TABLE Unit
 (
-	ID_DVT int identity(1,1) primary key,
-	TenDVT nvarchar(30) unique,
-	SoLuong int check (SoLuong > 0)
+	idUnit int identity(1,1) primary key,
+	unitName nvarchar(30) unique,
+	quantity int check (quantity > 0)
 )
 go
 
-ALTER TABLE NguoiDaiDien ADD
-	CONSTRAINTS FK_NguoiDaiDien_DoiTac FOREIGN KEY (DoiTac) REFERENCES DoiTac(ID_DoiTac),
-	CONSTRAINTS FK_NguoiDaiDien_NhaPhanPhoi FOREIGN KEY (NhaPhanPhoi) REFERENCES DoiTac(ID_NPP)
+ALTER TABLE Representative ADD
+	CONSTRAINTS FK_Representative_PDistributor FOREIGN KEY (PDistributor) REFERENCES PDistributor(idPDistributor),
+	CONSTRAINTS FK_Representative_Distributor FOREIGN KEY (Distributor) REFERENCES Distributor(idDistributor)
 go
 
-ALTER TABLE NhanVien ADD 
-	CONSTRAINTS FK_NhanVien_Account FOREIGN KEY (UserName) REFERENCES Account(ID_Account)
+ALTER TABLE Staff ADD 
+	CONSTRAINTS FK_Staff_Account FOREIGN KEY (account) REFERENCES Account(idUser)
 go
 
-ALTER TABLE PhanCongTraoDoi ADD 
-	CONSTRAINTS FK_PhanCongTraoDoi_NhanVien FOREIGN KEY (ID_NV) REFERENCES NhanVien(ID_NV),
-	CONSTRAINTS FK_PhanCongTraoDoi_DoiTac FOREIGN KEY (ID_DoiTac) REFERENCES DoiTac(ID_DoiTac)
+ALTER TABLE Assignment ADD 
+	CONSTRAINTS FK_Assignment_Staff FOREIGN KEY (staff) REFERENCES Staff(idStaff),
+	CONSTRAINTS FK_Assignment_PDistributor FOREIGN KEY (PDistributor) REFERENCES PDistributor(idPDistributor)
 go
