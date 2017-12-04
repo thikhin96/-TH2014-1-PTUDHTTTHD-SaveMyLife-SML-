@@ -41,7 +41,7 @@ CREATE TABLE PaySlip
 )
 go
 
-CREATE TABLE 'Order'
+CREATE TABLE [Order]
 (
 	ID_Order int identity(1,1) primary key,
 	Total money,
@@ -89,7 +89,7 @@ ALTER TABLE PaySlip ADD
 	CONSTRAINT FK_PaySlip_Staff FOREIGN KEY (ID_Staff) REFERENCES Staff (ID_Staff)
 go
 
-ALTER TABLE 'Order' ADD
+ALTER TABLE [Order] ADD
 	CONSTRAINT FK_Order_Distributor FOREIGN KEY (ID_Distributor) REFERENCES Distributor (ID_Distributor),
 	CONSTRAINT FK_Order_Consignee FOREIGN KEY (ID_Consignee) REFERENCES Consignee (ID_Consignee),
 	CONSTRAINT FK_Order_Staff FOREIGN KEY (ID_Staff) REFERENCES Staff (ID_Staff)
@@ -97,7 +97,4 @@ go
 
 ALTER TABLE Consignee ADD
 	CONSTRAINT FK_Consignee_Distributor FOREIGN KEY (ID_Distributor) REFERENCES Distributor (ID_Distributor),
-	CONSTRAINT FK_Consignee_Order FOREIGN KEY (ID_Order) REFERENCES 'Order' (ID_Order)
-
-
-
+	CONSTRAINT FK_Consignee_Order FOREIGN KEY (ID_Order) REFERENCES [Order] (ID_Order)
