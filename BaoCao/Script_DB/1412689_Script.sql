@@ -1,73 +1,73 @@
 CREATE TABLE Log_Order
 (
-	ID_Log int identity primary key,
-	CreatedDate Datetime,
-	OldPrice int,
-	NewPrice int,
+	idLog int identity primary key,
+	createdDate Datetime,
+	oldPrice int,
+	newPrice int,
 )
 go
 
 CREATE TABLE OrderDetail
 (
-	ID_Order int,
-	ID_Product int,
-	Quantity int check (Quantity > 0)
+	idOrder int,
+	idProduct int,
+	quantity int check (quantity > 0)
 )
 go
 
 CREATE TABLE Log_OrderDetail
 (
-	ID_Log int identity primary key,
-	CreatedDate datetime,
-	OldQuantity int,
-	NewQuantity int,
-	Statu nvarchar(100),
-	ID_Order int,
-	ID_Product int,
-	ID_Staff int,
+	idLog int identity primary key,
+	createdDate datetime,
+	oldQuantity int,
+	newQuantity int,
+	'description' nvarchar(100),
+	idOrder int,
+	idProduct int,
+	idStaff int,
 )
 go
 
 CREATE TABLE Log_Product
 (
-	ID_Log_Product int identity primary key,
-	CreatedDate Datetime,
-	ID_Staff int,
-	OldPrice int,
-	NewPrice int,
-	Statu nvarchar(max),
+	idLog_Product int identity primary key,
+	createdDate Datetime,
+	idStaff int,
+	oldPrice int,
+	newPrice int,
+	'description' nvarchar(max),
 )
 go
 
 CREATE TABLE Promotion
 (
-	ID_Promotion int identity primary key,
-	StartDate Datetime,
-	EndDate Datetime,
+	idPromotion int identity primary key,
+	startDate Datetime,
+	endDate Datetime,
 )
 go
 
 CREATE TABLE PromotionGifts
 (
-	ID_Promotion int,
-	ID_Product int,
-	Quantity int check (Quantity > 0),
+	idPromotion int,
+	idProduct int,
+	quantity int check (quantity > 0),
 )
 go
 
 
 ALTER TABLE OrderDetail ADD 
-	CONSTRAINT FK_OrderDetail_Order FOREIGN KEY (ID_Order) REFERENCES Order (ID_Order),
-	CONSTRAINT FK_OrderDetail_Product FOREIGN KEY (ID_Product) REFERENCES Product (ID_Product)
+	CONSTRAINT FK_OrderDetail_Order FOREIGN KEY (idOrder) REFERENCES 'Order' (idOrder),
+	CONSTRAINT FK_OrderDetail_Product FOREIGN KEY (idProduct) REFERENCES Product (idProduct)
 go
 ALTER TABLE Log_OrderDetail ADD 
-	CONSTRAINT FK_Log_OrderDetail_Order FOREIGN KEY (ID_Order) REFERENCES Order(ID_Order),
-	CONSTRAINT FK_Log_OrderDetail_Product FOREIGN KEY (ID_Product) REFERENCES Product(ID_Product)
-	CONSTRAINT FK_Log_OrderDetail_Staff FOREIGN KEY (ID_Staff) REFERENCES Staff(ID_Staff)
+	CONSTRAINT FK_Log_OrderDetail_Order FOREIGN KEY (idOrder) REFERENCES 'Order'(idOrder),
+	CONSTRAINT FK_Log_OrderDetail_Product FOREIGN KEY (idProduct) REFERENCES Product(idProduct)
+	CONSTRAINT FK_Log_OrderDetail_Staff FOREIGN KEY (idStaff) REFERENCES Staff(idStaff)
 go
 
 
 ALTER TABLE PromotionGifts ADD 
-	CONSTRAINT FK_PromotionGifts_Promotion FOREIGN KEY (ID_Promotion) REFERENCES Promotion(ID_Promotion),
-	CONSTRAINT FK_PromotionGifts_Product FOREIGN KEY (ID_Product) REFERENCES Product(ID_Product)
+	CONSTRAINT FK_PromotionGifts_Promotion FOREIGN KEY (idPromotion) REFERENCES Promotion(idPromotion),
+	CONSTRAINT FK_PromotionGifts_Product FOREIGN KEY (idProduct) REFERENCES Product(idProduct)
 go
