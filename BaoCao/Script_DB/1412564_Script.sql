@@ -2,7 +2,7 @@
 (
 	ID_Return int identity(1,1) primary key,
 	Total money,
-	CreatedDate datetime,
+	DateCreate datetime,
 	ModeOfReturn bit,				-- 0: đổi, 1: trả
 	ID_Distributor int,
 	ID_Storage int,
@@ -20,10 +20,10 @@ CREATE TABLE ReturnDetail
 )
 go
 
-CREATE TABLE DebtPayment
+CREATE TABLE Debt
 (
-	ID_DebtPayment int identity(1,1) primary key,
-	AmountOfDebtPayment money,
+	ID_Debt int identity(1,1) primary key,
+	Purchase money,
 	CreatedDate datetime,
 	ID_Distributor int,
 	ID_Staff int
@@ -41,7 +41,7 @@ CREATE TABLE PaySlip
 )
 go
 
-CREATE TABLE OrderBase
+CREATE TABLE 'Order'
 (
 	ID_Order int identity(1,1) primary key,
 	Total money,
@@ -79,9 +79,9 @@ ALTER TABLE ReturnDetail ADD
 	CONSTRAINT FK_ReturnDetail_Product FOREIGN KEY (ID_Product) REFERENCES Product (ID_Product)
 go
 
-ALTER TABLE DebtPayment ADD
-	CONSTRAINT FK_DebtPayment_Distributor FOREIGN KEY (ID_Distributor) REFERENCES Distributor (ID_Distributor),
-	CONSTRAINT FK_DebtPayment_Staff FOREIGN KEY (ID_Staff) REFERENCES Staff (ID_Staff)
+ALTER TABLE Debt ADD
+	CONSTRAINT FK_Debt_Distributor FOREIGN KEY (ID_Distributor) REFERENCES Distributor (ID_Distributor),
+	CONSTRAINT FK_Debt_Staff FOREIGN KEY (ID_Staff) REFERENCES Staff (ID_Staff)
 go
 
 ALTER TABLE PaySlip ADD
@@ -89,21 +89,15 @@ ALTER TABLE PaySlip ADD
 	CONSTRAINT FK_PaySlip_Staff FOREIGN KEY (ID_Staff) REFERENCES Staff (ID_Staff)
 go
 
-ALTER TABLE OrderBase ADD
-	CONSTRAINT FK_OrderBase_Distributor FOREIGN KEY (ID_Distributor) REFERENCES Distributor (ID_Distributor),
-	CONSTRAINT FK_OrderBase_Consignee FOREIGN KEY (ID_Consignee) REFERENCES Consignee (ID_Consignee),
-	CONSTRAINT FK_OrderBase_Staff FOREIGN KEY (ID_Staff) REFERENCES Staff (ID_Staff)
+ALTER TABLE 'Order' ADD
+	CONSTRAINT FK_Order_Distributor FOREIGN KEY (ID_Distributor) REFERENCES Distributor (ID_Distributor),
+	CONSTRAINT FK_Order_Consignee FOREIGN KEY (ID_Consignee) REFERENCES Consignee (ID_Consignee),
+	CONSTRAINT FK_Order_Staff FOREIGN KEY (ID_Staff) REFERENCES Staff (ID_Staff)
 go
 
 ALTER TABLE Consignee ADD
 	CONSTRAINT FK_Consignee_Distributor FOREIGN KEY (ID_Distributor) REFERENCES Distributor (ID_Distributor),
-	CONSTRAINT FK_Consignee_OrderBase FOREIGN KEY (ID_Order) REFERENCES OrderBase (ID_Order)
-
-
-
-
-
-
+	CONSTRAINT FK_Consignee_Order FOREIGN KEY (ID_Order) REFERENCES 'Order' (ID_Order)
 
 
 
