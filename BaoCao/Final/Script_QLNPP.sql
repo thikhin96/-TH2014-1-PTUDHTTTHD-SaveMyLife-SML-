@@ -314,6 +314,7 @@ CREATE TABLE CT_KhuyenMaiTang
 	ID_KhuyenMai int,
 	ID_SanPham int,
 	SoLuong int check (Soluong > 0),
+
 )
 go
 -------------------------------
