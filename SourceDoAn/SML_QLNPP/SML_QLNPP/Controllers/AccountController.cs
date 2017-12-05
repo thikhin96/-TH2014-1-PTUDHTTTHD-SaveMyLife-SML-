@@ -7,7 +7,7 @@ using DataService.Interfaces;
 using DataModel;
 namespace SML_QLNPP.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly IAccountService _accountService;
 
@@ -18,15 +18,17 @@ namespace SML_QLNPP.Controllers
         // GET: Account
         public ActionResult Login()
         {
+            isLogin();
             return View();
         }
         [HttpPost]
         public ActionResult Login(Account Login)
         {
+            isLogin();
             var ret = _accountService.Login(Login.UserName, Login.Password);
             if (ret)
             {
-                Session["user_id"] = Login.UserName;
+                Session["username"] = Login.UserName;
                 return Redirect("/");
             }
             else

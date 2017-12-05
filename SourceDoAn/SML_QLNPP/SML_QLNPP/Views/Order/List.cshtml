@@ -1,0 +1,80 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+    <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/datatables.min.css" rel="stylesheet" type="text/css" media="all" />
+}
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/order.js"></script>
+}
+
+<div class="container-fluid">
+    <div class="row">
+        @Html.Partial("~/Views/Shared/_SidebarAdmin.cshtml")
+        <div class="col-sm-10 col-md-10">
+            <div class="well">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Nhập từ khoá</label>
+                        <input type="text" class="form-control" placeholder="Nhập từ khoá" id="keyword">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Ngày tạo (năm/tháng/ngày)</label>
+                        <input type="text" class="form-control" id="created_date">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Trạng thái</label>
+                        <select class="form-control" id="status">
+                            <option value="0">Chưa duyệt</option>
+                            <option value="1">Đã duyệt</option>
+                            <option value="2">Không duyệt</option>
+                            <option value="3">Đã giao</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <br />
+                        <button class="btn btn-default" id="search">Tìm kiếm kết quả</button>
+                    </div>
+                </div>
+                <div class="row mgt">
+                    <div class="col-md-12">
+                        <h2>Danh sách đơn đặt hàng</h2> 
+                        <table id="order-list" class="cell-border" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Tên NPP</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Ngày lập</th>
+                                    <th>Nhân viên</th>
+                                    <th>Tình trạng</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Tên NPP</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Ngày lập</th>
+                                    <th>Nhân viên</th>
+                                    <th>Tình trạng</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </tfoot>
+                            <tbody id="result">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
