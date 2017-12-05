@@ -23,11 +23,11 @@ namespace SML_QLNPP.Controllers
         }
         public ContentResult Search(string keyword, string created_date,int status)
         {
-            IList<DonDatHang> rs = new List<DonDatHang>();
+            IList<Order> rs = new List<Order>();
             if (Request.IsAjaxRequest())
             {
                 rs = _orderService.SearchOrder(keyword, created_date, status);
-                var list = JsonConvert.SerializeObject(rs.Select(x => new {x.ID_DonHang, x.NhaPhanPhoi.TenNPP, x.TongTien, x.NgayLap, x.NhanVien.TenNV,x.TinhTrang }));
+                var list = JsonConvert.SerializeObject(rs.Select(x => new {x.idOrder, x.Distributor.name, x.Total, x.CreatedDate, x.Staff.staffName,x.Statuses }));
                 return Content(list, "application/json");
             }
 

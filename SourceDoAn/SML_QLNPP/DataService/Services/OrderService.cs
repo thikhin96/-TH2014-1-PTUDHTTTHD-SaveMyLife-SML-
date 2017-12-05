@@ -20,7 +20,7 @@ namespace DataService.Services
             //_promotionRepository = unitOfWork.Repository<Promotion>();
             _unitOfWork = unitOfWork;
         }
-        public int AddOrder(DonDatHang order)
+        public int AddOrder(Order order)
         {
             throw new NotImplementedException();
         }
@@ -30,20 +30,20 @@ namespace DataService.Services
             throw new NotImplementedException();
         }
 
-        public IList<DonDatHang> SearchOrder(string keyword, string createDate, int status)
+        public IList<Order> SearchOrder(string keyword, string createDate, int status)
         {
             try
             {
-                IRepository<DonDatHang> repository = _unitOfWork.Repository<DonDatHang>();
+                IRepository<Order> repository = _unitOfWork.Repository<Order>();
                 if(createDate=="" || createDate == null)
                 {
                     if (keyword != null && keyword != "")
                     {
-                        return repository.GetAll(a => (a.NhanVien.TenNV.Contains(keyword) || a.NhaPhanPhoi.TenNPP.Contains(keyword) || a.NguoiLienHeGiaoHang.HoTen.Contains(keyword)) && a.TinhTrang == status).ToList();
+                        return repository.GetAll(a => (a.Staff.staffName.Contains(keyword) || a.Distributor.name.Contains(keyword) || a.Consignee.Name.Contains(keyword)) && a.Statuses == status).ToList();
                     }
                     else
                     {
-                        return repository.GetAll(a => a.TinhTrang == status).ToList();
+                        return repository.GetAll(a => a.Statuses == status).ToList();
                     }
                 }
                 else
@@ -51,15 +51,15 @@ namespace DataService.Services
                     var date = Convert.ToDateTime(createDate);
                     if (keyword != null && keyword != "")
                     {
-                        return repository.GetAll(a => (a.NhanVien.TenNV.Contains(keyword) || a.NhaPhanPhoi.TenNPP.Contains(keyword) || a.NguoiLienHeGiaoHang.HoTen.Contains(keyword)) && (a.NgayLap.Value.Year == date.Year
-                                            && a.NgayLap.Value.Month == date.Month
-                                            && a.NgayLap.Value.Day == date.Day) && a.TinhTrang == status).ToList();
+                        return repository.GetAll(a => (a.Staff.staffName.Contains(keyword) || a.Distributor.name.Contains(keyword) || a.Consignee.Name.Contains(keyword)) && (a.CreatedDate.Value.Year == date.Year
+                                            && a.CreatedDate.Value.Month == date.Month
+                                            && a.CreatedDate.Value.Day == date.Day) && a.Statuses == status).ToList();
                     }
                     else
                     {
-                        return repository.GetAll(a => (a.NgayLap.Value.Year == date.Year
-                                            && a.NgayLap.Value.Month == date.Month
-                                            && a.NgayLap.Value.Day == date.Day) && a.TinhTrang == status).ToList();
+                        return repository.GetAll(a => (a.CreatedDate.Value.Year == date.Year
+                                            && a.CreatedDate.Value.Month == date.Month
+                                            && a.CreatedDate.Value.Day == date.Day) && a.Statuses == status).ToList();
                     }
                 }
                 
@@ -70,23 +70,16 @@ namespace DataService.Services
             }
         }
 
-        public int UpdateOrder(DonDatHang order)
+        public int UpdateOrder(Order order)
         {
             throw new NotImplementedException();
         }
 
-        public DonDatHang GetOrder(int id)
+        public Order GetOrder(int id)
         {
-            IRepository<DonDatHang> repository = _unitOfWork.Repository<DonDatHang>();
-            var result = repository.Get(a => a.ID_DonHang == id);
-            if (result != null)
-            {
-                return result;
-            }
-            else
-            {
-                return null;
-            }
+            IRepository<Order> repository = _unitOfWork.Repository<Order>();
+            var result = repository.Get(a => a.idOrder == id);
+            return result != null ? result : null;
         }
     }
 }

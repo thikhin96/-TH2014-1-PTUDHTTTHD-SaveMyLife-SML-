@@ -12,16 +12,13 @@ namespace DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Account
+    public partial class OrderDetail
     {
-        public int idUser { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public Nullable<bool> activated { get; set; }
-        public Nullable<byte> decentralization { get; set; }
-        public Nullable<bool> locked { get; set; }
-        public Nullable<System.DateTime> dateCreate { get; set; }
-        public Nullable<System.DateTime> dateUpdate { get; set; }
-        public string note { get; set; }
+        public int idOrder { get; set; }
+        public int idProduct { get; set; }
+        public Nullable<int> quantity { get; set; }
+    
+        public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

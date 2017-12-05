@@ -12,16 +12,11 @@ namespace DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Account
+    public partial class Log_Login
     {
-        public int idUser { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public Nullable<bool> activated { get; set; }
-        public Nullable<byte> decentralization { get; set; }
-        public Nullable<bool> locked { get; set; }
-        public Nullable<System.DateTime> dateCreate { get; set; }
-        public Nullable<System.DateTime> dateUpdate { get; set; }
-        public string note { get; set; }
+        public long idLog { get; set; }
+        public Nullable<int> idAccount { get; set; }
+        public Nullable<System.DateTime> at_time { get; set; }
+        public Nullable<bool> status { get; set; }
     }
 }

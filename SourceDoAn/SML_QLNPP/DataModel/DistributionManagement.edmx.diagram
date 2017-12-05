@@ -5,85 +5,91 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="fb3647b5e6124f919244aa284b9ac162" Name="Diagram1">
-        <EntityTypeShape EntityType="QL_NPPModel.Account" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.BaoCaoDoanhThu" Width="1.5" PointX="5.75" PointY="32.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.ChiTietDotHang" Width="1.5" PointX="10.25" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.CT_DoanhThu" Width="1.5" PointX="8" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.CT_GiaoHang" Width="1.5" PointX="13.5" PointY="21.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.CT_KhuyenMaiMua" Width="1.5" PointX="10.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.CTDonYCDoiTra" Width="1.5" PointX="10.5" PointY="28.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.CTPhieuDoiTra" Width="1.5" PointX="10.5" PointY="25.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.DoiTac" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.DonDatHang" Width="1.5" PointX="3" PointY="20.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.DonGiaoHang" Width="1.5" PointX="8.25" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.DonViTinh" Width="1.5" PointX="5.75" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.DonYCDoiTra" Width="1.5" PointX="5.25" PointY="27.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.DotHang" Width="1.5" PointX="8" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.HoaDon" Width="1.5" PointX="12.5" PointY="17.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.HopDong" Width="1.5" PointX="6" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.Kho" Width="1.5" PointX="3" PointY="35.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.KhuyenMai" Width="1.5" PointX="8" PointY="32.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.LoaiSanPham" Width="1.5" PointX="5.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.Log_ChiTietDDH" Width="1.5" PointX="10.25" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.Log_DonDatHang" Width="1.5" PointX="2.75" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.Log_SanPham" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.LogDangNhap" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.NguoiDaiDien" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.NguoiLienHeGiaoHang" Width="1.5" PointX="11.25" PointY="21.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.NhanVien" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.NhaPhanPhoi" Width="1.5" PointX="0.75" PointY="20.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.PhanCongTraoDoi" Width="1.5" PointX="7.5" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.PhieuChi" Width="1.5" PointX="3" PointY="26.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.PhieuCongNo" Width="1.5" PointX="6" PointY="17.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.PhieuDoiTra" Width="1.5" PointX="8.25" PointY="27.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_NPPModel.SanPham" Width="1.5" PointX="8" PointY="2.875" IsExpanded="true" />
-        <AssociationConnector Association="QL_NPPModel.FK_CT_DoanhThu_BaoCaoDoanhThu" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_ChiTietDotHang_DotHang" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_ChiTietDotHang_SanPham" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_CT_DoanhThu_LoaiSP" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_CT_GiaoHang_DonGiaoHang" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_CT_GiaoHang_SanPham" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_CT_KhuyenMaiMua_KhuyenMai" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_CT_KhuyenMaiMua_SanPham" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_CTDonYCDoiTra_DonYCDoiTra" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_CTDonYCDoiTra_SanPham" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_CTPhieuDoiTra_PhieuDoiTra" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_CTPhieuDoiTra_SanPham" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_DoiTac_NDD" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_NguoiDaiDien_DoiTac" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_PhanCongTraoDoi_DoiTac" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_DonDatHang_NguoiLienHeGiaoHang" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_DonDatHang_NhanVien" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_DonDatHang_NhaPhanPhoi" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_DonGiaoHang_DonDatHang" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_LogChiTietDDH_DonDatHang" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_NguoiLienHeGiaoHang_DonDatHang" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_DonGiaoHang_NhanVien" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_DonGiaoHang_NhaPhanPhoi" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_HoaDon_DonGiaoHang" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_SanPham_DonViTinh" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_DonYCDoiTra_Kho" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_DonYCDoiTra_NhanVien" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_DonYCDoiTra_NhaPhanPhoi" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_HoaDon_NhanVien" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_HoaDon_NhaPhanPhoi" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_HopDong_NDD" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_HopDong_NhanVien" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_HopDong_NhaPhanPhoi" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_Kho_NhaPhanPhoi" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_PhieuDoiTra_Kho" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_SanPham_LoaiSanPham" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_LogChiTietDDH_NhanVien" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_LogChiTietDDH_SanPham" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_NguoiDaiDien_NhaPhanPhoi" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_NguoiLienHeGiaoHang_NhaPhanPhoi" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_PhanCongTraoDoi_NhanVien" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_PhieuChi_NhanVien" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_PhieuCongNo_NhanVien" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_PhieuDoiTra_NhanVien" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_PhieuChi_NhaPhanPhoi" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_PhieuCongNo_NhaPhanPhoi" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_NPPModel.FK_PhieuDoiTra_NhaPhanPhoi" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QL_NPPModel.Account" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QL_NPPModel.Assignment" Width="1.5" PointX="10.5" PointY="27.5" />
+        <EntityTypeShape EntityType="QL_NPPModel.Batch" Width="1.5" PointX="8.25" PointY="2.625" />
+        <EntityTypeShape EntityType="QL_NPPModel.BatchDetail" Width="1.5" PointX="10.5" PointY="6.375" />
+        <EntityTypeShape EntityType="QL_NPPModel.Bill" Width="1.5" PointX="3" PointY="22.25" />
+        <EntityTypeShape EntityType="QL_NPPModel.Consignee" Width="1.5" PointX="3" PointY="18.5" />
+        <EntityTypeShape EntityType="QL_NPPModel.Contract" Width="1.5" PointX="8.25" PointY="21.75" />
+        <EntityTypeShape EntityType="QL_NPPModel.Debt" Width="1.5" PointX="3" PointY="26.625" />
+        <EntityTypeShape EntityType="QL_NPPModel.DeliveryOrder" Width="1.5" PointX="10.5" PointY="19.125" />
+        <EntityTypeShape EntityType="QL_NPPModel.DetailedDeliveryOrder" Width="1.5" PointX="12.75" PointY="21.125" />
+        <EntityTypeShape EntityType="QL_NPPModel.Distributor" Width="1.5" PointX="0.75" PointY="21.25" />
+        <EntityTypeShape EntityType="QL_NPPModel.Log_Login" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QL_NPPModel.Log_Order" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="QL_NPPModel.Log_OrderDetail" Width="1.5" PointX="10.5" PointY="14.875" />
+        <EntityTypeShape EntityType="QL_NPPModel.Log_Product" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QL_NPPModel.Order" Width="1.5" PointX="8.25" PointY="16.125" />
+        <EntityTypeShape EntityType="QL_NPPModel.OrderDetail" Width="1.5" PointX="13.5" PointY="17.5" />
+        <EntityTypeShape EntityType="QL_NPPModel.PaySlip" Width="1.5" PointX="6" PointY="18.5" />
+        <EntityTypeShape EntityType="QL_NPPModel.PotentialDistributor" Width="1.5" PointX="8.25" PointY="27" />
+        <EntityTypeShape EntityType="QL_NPPModel.Product" Width="1.5" PointX="8.25" PointY="8.375" />
+        <EntityTypeShape EntityType="QL_NPPModel.ProductType" Width="1.5" PointX="6" PointY="8.25" />
+        <EntityTypeShape EntityType="QL_NPPModel.Promotion" Width="1.5" PointX="11.25" PointY="3.5" />
+        <EntityTypeShape EntityType="QL_NPPModel.PromotionGift" Width="1.5" PointX="13.5" PointY="9.5" />
+        <EntityTypeShape EntityType="QL_NPPModel.PromotionProduct" Width="1.5" PointX="10.5" PointY="9.5" />
+        <EntityTypeShape EntityType="QL_NPPModel.Representative" Width="1.5" PointX="6" PointY="22.25" />
+        <EntityTypeShape EntityType="QL_NPPModel.ReturnBase" Width="1.5" PointX="5.25" PointY="37" />
+        <EntityTypeShape EntityType="QL_NPPModel.ReturnDetail" Width="1.5" PointX="10.5" PointY="37.5" />
+        <EntityTypeShape EntityType="QL_NPPModel.ReturnRequest" Width="1.5" PointX="8.25" PointY="37" />
+        <EntityTypeShape EntityType="QL_NPPModel.ReturnRequestDetail" Width="1.5" PointX="10.5" PointY="34.5" />
+        <EntityTypeShape EntityType="QL_NPPModel.SalesReport" Width="1.5" PointX="6" PointY="5.25" />
+        <EntityTypeShape EntityType="QL_NPPModel.SalesReportDetail" Width="1.5" PointX="8.25" PointY="5.125" />
+        <EntityTypeShape EntityType="QL_NPPModel.Staff" Width="1.5" PointX="6" PointY="13.375" />
+        <EntityTypeShape EntityType="QL_NPPModel.Storage" Width="1.5" PointX="3" PointY="53" />
+        <EntityTypeShape EntityType="QL_NPPModel.Unit" Width="1.5" PointX="6" PointY="10.75" />
+        <AssociationConnector Association="QL_NPPModel.FK_Assignment_PDistributor" />
+        <AssociationConnector Association="QL_NPPModel.FK_Assignment_Staff" />
+        <AssociationConnector Association="QL_NPPModel.FK_BatchDetail_Batch" />
+        <AssociationConnector Association="QL_NPPModel.FK_BatchDetail_Product" />
+        <AssociationConnector Association="QL_NPPModel.FK_Bill_DeliveryOrder" />
+        <AssociationConnector Association="QL_NPPModel.FK_Bill_Distributor" />
+        <AssociationConnector Association="QL_NPPModel.FK_Bill_Staff" />
+        <AssociationConnector Association="QL_NPPModel.FK_Consignee_Distributor" />
+        <AssociationConnector Association="QL_NPPModel.FK_Consignee_Order" />
+        <AssociationConnector Association="QL_NPPModel.FK_Order_Consignee" />
+        <AssociationConnector Association="QL_NPPModel.FK_HopDong_NDD" />
+        <AssociationConnector Association="QL_NPPModel.FK_HopDong_Staff" />
+        <AssociationConnector Association="QL_NPPModel.FK_HopDong_Distributor" />
+        <AssociationConnector Association="QL_NPPModel.FK_Debt_Distributor" />
+        <AssociationConnector Association="QL_NPPModel.FK_Debt_Staff" />
+        <AssociationConnector Association="QL_NPPModel.FK_DeliveryOrder_Distributor" />
+        <AssociationConnector Association="QL_NPPModel.FK_DeliveryOrder_Oder" />
+        <AssociationConnector Association="QL_NPPModel.FK_DeliveryOrder_Staff" />
+        <AssociationConnector Association="QL_NPPModel.FK_DetailedDeliveryOrder_DeliveryOrder" />
+        <AssociationConnector Association="QL_NPPModel.FK_DetailedDeliveryOrder_Product" />
+        <AssociationConnector Association="QL_NPPModel.FK_Order_Distributor" />
+        <AssociationConnector Association="QL_NPPModel.FK_PaySlip_Distributor" />
+        <AssociationConnector Association="QL_NPPModel.FK_Representative_Distributor" />
+        <AssociationConnector Association="QL_NPPModel.FK_ReturnBase_Distributor" />
+        <AssociationConnector Association="QL_NPPModel.FK_ReturnRequest_Distributor" />
+        <AssociationConnector Association="QL_NPPModel.FK_Storage_Distributor" />
+        <AssociationConnector Association="QL_NPPModel.FK_Log_OrderDetail_Order" />
+        <AssociationConnector Association="QL_NPPModel.FK_Log_OrderDetail_Product" />
+        <AssociationConnector Association="QL_NPPModel.FK_Log_OrderDetail_Staff" />
+        <AssociationConnector Association="QL_NPPModel.FK_Order_Staff" />
+        <AssociationConnector Association="QL_NPPModel.FK_OrderDetail_Order" />
+        <AssociationConnector Association="QL_NPPModel.FK_OrderDetail_Product" />
+        <AssociationConnector Association="QL_NPPModel.FK_PaySlip_Staff" />
+        <AssociationConnector Association="QL_NPPModel.FK_DoiTac_NDD" />
+        <AssociationConnector Association="QL_NPPModel.FK_Representative_PDistributor" />
+        <AssociationConnector Association="QL_NPPModel.FK_Product_ProductType" />
+        <AssociationConnector Association="QL_NPPModel.FK_Product_Unit" />
+        <AssociationConnector Association="QL_NPPModel.FK_PromotionGifts_Product" />
+        <AssociationConnector Association="QL_NPPModel.FK_PromotionProduct_Product" />
+        <AssociationConnector Association="QL_NPPModel.FK_ReturnDetail_Product" />
+        <AssociationConnector Association="QL_NPPModel.FK_ReturnRequestDetail_Product" />
+        <AssociationConnector Association="QL_NPPModel.FK_SalesReportDetail_ProductType" />
+        <AssociationConnector Association="QL_NPPModel.FK_PromotionGifts_Promotion" />
+        <AssociationConnector Association="QL_NPPModel.FK_PromotionProduct_Promotion" />
+        <AssociationConnector Association="QL_NPPModel.FK_ReturnBase_Staff" />
+        <AssociationConnector Association="QL_NPPModel.FK_ReturnBase_Storage" />
+        <AssociationConnector Association="QL_NPPModel.FK_ReturnDetail_ReturnBase" />
+        <AssociationConnector Association="QL_NPPModel.FK_ReturnRequest_Staff" />
+        <AssociationConnector Association="QL_NPPModel.FK_ReturnRequest_Storage" />
+        <AssociationConnector Association="QL_NPPModel.FK_ReturnRequestDetail_ReturnRequest" />
+        <AssociationConnector Association="QL_NPPModel.FK_SalesReportDetail_SalesReport" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

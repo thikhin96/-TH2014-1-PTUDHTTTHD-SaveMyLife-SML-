@@ -9,9 +9,9 @@ namespace DataService.Interfaces
     public interface IOrderService
     {
         bool CheckDept(int idDistributor);
-        IList<DonDatHang> SearchOrder(string keyword, string createDate, int status);
-        int AddOrder(DonDatHang order);
-        int UpdateOrder(DonDatHang order);
-        DonDatHang GetOrder(int id);
+        IList<Order> SearchOrder(string keyword, string createDate, int status);
+        int AddOrder(Order order);
+        int UpdateOrder(Order order);
+        Order GetOrder(int id);
     }
 }

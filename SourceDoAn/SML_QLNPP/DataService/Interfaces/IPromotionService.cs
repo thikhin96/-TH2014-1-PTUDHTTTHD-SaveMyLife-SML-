@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using DataModel;
 namespace DataService.Interfaces
 {
     public interface IPromotionService
     {
-        string InjectAlert();
-        //int AddPromotion(Promotion p);
-        int DeletePromotion(int id);
-        //int UpdatePromotion(Promotion p);
-        //IList<Promotion> SearchPromotion();
+        IList<Promotion> Search(int idpro, string createDate,string endDate);
+        Promotion GetPromotion(int id);
     }
 }

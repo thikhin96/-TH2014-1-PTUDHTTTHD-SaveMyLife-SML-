@@ -29,28 +29,28 @@
                     table.clear();
                     var result = data.map(function (item) {
                         var rs = [];
-                        var date = new Date(item.NgayLap);
+                        var date = new Date(item.CreatedDate);
 
-                        rs.push(item.ID_DonHang);
-                        rs.push(item.TenNPP);
-                        rs.push(item.TongTien);
+                        rs.push(item.idOrder);
+                        rs.push(item.name);
+                        rs.push(item.Total);
                         rs.push(date.getHours() + ':' + date.getMinutes() + ' ' + +(date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear());
-                        rs.push(item.TenNV);
+                        rs.push(item.staffName);
 
-                        if (item.TinhTrang == 0) {
+                        if (item.Statuses == 0) {
                             rs.push('Chưa duyệt');
                         }
-                        else if (item.TinhTrang == 1) {
+                        else if (item.Statuses == 1) {
                             rs.push('Đã duyệt');
 
                         }
-                        else if (item.TinhTrang == 2) {
+                        else if (item.Statuses == 2) {
                             rs.push('Không duyệt');
                         }
                         else {
                             rs.push('Đã giao');
                         }
-                        rs.push('<a href="/Order/Detail/' + item.ID_DonHang + '">Xem</a>')
+                        rs.push('<a href="/Order/Detail/' + item.idOrder + '">Xem</a>')
                         return rs;
                     });
 
