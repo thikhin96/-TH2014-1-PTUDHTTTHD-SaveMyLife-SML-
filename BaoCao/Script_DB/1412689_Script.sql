@@ -1,73 +1,73 @@
-CREATE TABLE Log_DonDatHang
+CREATE TABLE Log_Order
 (
-	ID_Log int identity primary key,
-	ThoiGian Datetime,
-	GiaCu int,
-	GiaMoi int,
+	idLog int identity primary key,
+	createdDate Datetime,
+	oldPrice int,
+	newPrice int,
 )
 go
 
-CREATE TABLE ChiTiet_DDH
+CREATE TABLE OrderDetail
 (
-	ID_DonHang int,
-	ID_SanPham int,
-	SoLuong int check (SoLuong > 0)
+	idOrder int,
+	idProduct int,
+	quantity int check (quantity > 0)
 )
 go
 
-CREATE TABLE Log_ChiTietDDH
+CREATE TABLE Log_OrderDetail
 (
-	ID_Log int identity primary key,
-	ThoiGian datetime,
-	SoLuongCu int,
-	SoLuongMoi int,
-	LyDo nvarchar(100),
-	ID_DonHang int,
-	ID_SanPham int,
-	ID_NhanVien int,
+	idLog int identity primary key,
+	createdDate datetime,
+	oldQuantity int,
+	newQuantity int,
+	'description' nvarchar(100),
+	idOrder int,
+	idProduct int,
+	idStaff int,
 )
 go
 
-CREATE TABLE Log_SanPham
+CREATE TABLE Log_Product
 (
-	ID_Log_SanPham int identity primary key,
-	ThoiGian Datetime,
-	ID_NhanVien int,
-	DonGiaCu int,
-	DonGiaMoi int,
-	LyDo nvarchar(max),
+	idLog_Product int identity primary key,
+	createdDate Datetime,
+	idStaff int,
+	oldPrice int,
+	newPrice int,
+	'description' nvarchar(max),
 )
 go
 
-CREATE TABLE KhuyenMai
+CREATE TABLE Promotion
 (
-	ID_KhuyenMai int identity primary key,
-	NgayBatDau Datetime,
-	NgayKetThuc Datetime,
+	idPromotion int identity primary key,
+	startDate Datetime,
+	endDate Datetime,
 )
 go
 
-CREATE TABLE CT_KhuyenMaiTang
+CREATE TABLE PromotionGifts
 (
-	ID_KhuyenMai int,
-	ID_SanPham int,
-	SoLuong int check (Soluong > 0),
+	idPromotion int,
+	idProduct int,
+	quantity int check (quantity > 0),
 )
 go
 
 
-ALTER TABLE ChiTiet_DDH ADD 
-	CONSTRAINT FK_ChiTietDDH_DonDatHang FOREIGN KEY (ID_DonHang) REFERENCES DonDatHang (ID_DonHang),
-	CONSTRAINT FK_ChiTietDDH_SanPham FOREIGN KEY (ID_SanPham) REFERENCES SanPham (ID_SanPham)
+ALTER TABLE OrderDetail ADD 
+	CONSTRAINT FK_OrderDetail_Order FOREIGN KEY (idOrder) REFERENCES 'Order' (idOrder),
+	CONSTRAINT FK_OrderDetail_Product FOREIGN KEY (idProduct) REFERENCES Product (idProduct)
 go
-ALTER TABLE Log_ChiTietDDH ADD 
-	CONSTRAINT FK_LogChiTietDDH_DonDatHang FOREIGN KEY (ID_DonHang) REFERENCES DonDatHang(ID_DonHang),
-	CONSTRAINT FK_LogChiTietDDH_SanPham FOREIGN KEY (ID_SanPham) REFERENCES SanPham(ID_SanPham)
-	CONSTRAINT FK_LogChiTietDDH_NhanVien FOREIGN KEY (ID_NhanVien) REFERENCES NhanVien(ID_NhanVien)
+ALTER TABLE Log_OrderDetail ADD 
+	CONSTRAINT FK_Log_OrderDetail_Order FOREIGN KEY (idOrder) REFERENCES 'Order'(idOrder),
+	CONSTRAINT FK_Log_OrderDetail_Product FOREIGN KEY (idProduct) REFERENCES Product(idProduct)
+	CONSTRAINT FK_Log_OrderDetail_Staff FOREIGN KEY (idStaff) REFERENCES Staff(idStaff)
 go
 
 
-ALTER TABLE CT_KhuyenMaiTang ADD 
-	CONSTRAINT FK_CT_KhuyenMaiTang_KhuyenMai FOREIGN KEY (ID_KhuyenMai) REFERENCES KhuyenMai(ID_KhuyenMai),
-	CONSTRAINT FK_CT_KhuyenMaiTang_SanPham FOREIGN KEY (ID_SanPham) REFERENCES SanPham(ID_SanPham)
+ALTER TABLE PromotionGifts ADD 
+	CONSTRAINT FK_PromotionGifts_Promotion FOREIGN KEY (idPromotion) REFERENCES Promotion(idPromotion),
+	CONSTRAINT FK_PromotionGifts_Product FOREIGN KEY (idProduct) REFERENCES Product(idProduct)
 go
