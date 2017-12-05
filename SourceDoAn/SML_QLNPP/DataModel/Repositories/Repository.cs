@@ -37,7 +37,7 @@ namespace DataModel.Repositories
         {
             if (predicate != null)
             {
-                _context.Set<TEntity>().Where(predicate);
+                return _context.Set<TEntity>().Where(predicate);
             }
             return _context.Set<TEntity>().AsEnumerable<TEntity>();
         }

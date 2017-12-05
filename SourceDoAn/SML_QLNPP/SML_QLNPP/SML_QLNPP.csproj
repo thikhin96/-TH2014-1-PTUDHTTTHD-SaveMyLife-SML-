@@ -261,6 +261,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\PromotionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -272,6 +274,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Account\account.css" />
+    <Content Include="Content\admin.css" />
     <Content Include="Content\Home\bootstrap.css" />
     <Content Include="Content\Home\flexslider.css" />
     <Content Include="Content\Home\font-awesome.css" />
@@ -305,6 +308,10 @@
     <Content Include="Content\Home\images\tick.png" />
     <Content Include="Content\Home\images\top-up.png" />
     <Content Include="Content\Home\style.css" />
+    <Content Include="Content\Order\datatables.min.css" />
+    <Content Include="Content\Order\detail.css" />
+    <Content Include="Content\Order\jquery-ui.min.css" />
+    <Content Include="Scripts\Order\order.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -346,6 +353,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Order\datatables.min.js" />
+    <Content Include="Scripts\Order\jquery-ui.min.js" />
+    <Content Include="Scripts\Promotion\promotion.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -366,9 +376,15 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_SidebarAdmin.cshtml" />
+    <Content Include="Views\Order\List.cshtml" />
+    <Content Include="Views\Order\Detail.cshtml" />
+    <Content Include="Views\Promotion\Detail.cshtml" />
+    <Content Include="Views\Promotion\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Promotion\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

@@ -311,6 +311,7 @@ CREATE TABLE PromotionGifts
 	idProduct int,
 	quantity int check (quantity > 0),
 	primary key (idPromotion, idProduct)
+
 )
 go
 

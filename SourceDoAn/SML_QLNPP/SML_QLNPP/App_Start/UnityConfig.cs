@@ -47,6 +47,8 @@ namespace SML_QLNPP
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IPromotionService, PromotionService>();
             container.RegisterType<IAccountService, AccountService>();
+            container.RegisterType<IOrderService, OrderService>();
+
             ServiceModule.UnityRegister(container);
         }
     }

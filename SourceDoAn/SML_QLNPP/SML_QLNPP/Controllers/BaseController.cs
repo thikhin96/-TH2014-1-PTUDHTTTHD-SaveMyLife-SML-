@@ -9,9 +9,12 @@ namespace SML_QLNPP.Controllers
     public class BaseController : Controller
     {
         // GET: Base
-        public ActionResult Index()
+        protected void isLogin()
         {
-            return View();
+            if (Session["username"] != null)
+            {
+                Response.Redirect("/");
+            }
         }
     }
 }

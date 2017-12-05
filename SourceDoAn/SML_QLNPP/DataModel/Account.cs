@@ -14,14 +14,14 @@ namespace DataModel
     
     public partial class Account
     {
-        public int ID_Account { get; set; }
+        public int idUser { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public Nullable<bool> DaKichHoat { get; set; }
-        public Nullable<byte> PhanQuyen { get; set; }
-        public Nullable<bool> DaKhoa { get; set; }
-        public Nullable<System.DateTime> NgayTao { get; set; }
-        public Nullable<System.DateTime> NgayCapNhat { get; set; }
-        public string GhiChu { get; set; }
+        public Nullable<bool> activated { get; set; }
+        public Nullable<byte> decentralization { get; set; }
+        public Nullable<bool> locked { get; set; }
+        public Nullable<System.DateTime> dateCreate { get; set; }
+        public Nullable<System.DateTime> dateUpdate { get; set; }
+        public string note { get; set; }
     }
 }
