@@ -1,5 +1,5 @@
-﻿CREATE DATABASE QL_NPP
-USE QL_NPP
+﻿create database QL_NPP
+use QL_NPP
 
 CREATE TABLE Account
 (
@@ -7,7 +7,11 @@ CREATE TABLE Account
 	UserName varchar(30) unique,
 	Password varchar(30) check (len(Password) between 8 and 30),
 	activated bit,
+<<<<<<< HEAD
 	decentralization tinyint check (PhanQuyen in (1,2,3)),
+=======
+	decentralization tinyint check (decentralization in (1,2,3)),
+>>>>>>> remotes/origin/dev
 	locked bit,
 	dateCreate datetime,
 	dateUpdate datetime,
@@ -17,10 +21,17 @@ go
 
 CREATE TABLE Log_Login
 (
+<<<<<<< HEAD
 	ID_Log bigint identity primary key,
 	ID_Account int,
 	at_time datetime,
 	status bit
+=======
+	idLog bigint identity primary key,
+	idAccount int,
+	at_time datetime,
+	[status] bit
+>>>>>>> remotes/origin/dev
 )
 go
 
@@ -34,7 +45,11 @@ CREATE TABLE PotentialDistributor
 	createdDate datetime,
 	updatedDate datetime,
 	note nvarchar(max),
+<<<<<<< HEAD
 	status tinyint check(TinhTrang in (0,1,2,3,4)),
+=======
+	[status] tinyint check(status in (0,1,2,3,4)),
+>>>>>>> remotes/origin/dev
 	idRep int 
 )
 go
@@ -49,19 +64,31 @@ CREATE TABLE Distributor
 	createdDate datetime,
 	updatedDate datetime,
 	note nvarchar(max),
+<<<<<<< HEAD
 	status bool,
+=======
+	[status] bit,
+>>>>>>> remotes/origin/dev
 	UserName varchar(30)
 )
 go
 
+<<<<<<< HEAD
 CREATE TABLE Contract
+=======
+CREATE TABLE [Contract]
+>>>>>>> remotes/origin/dev
 (
 	idContract int identity (1,1) primary key,
 	beginDate datetime,
 	expiredDate datetime,
 	minOrderTotalValue money,
 	maxDebt money,
+<<<<<<< HEAD
 	commission tinyint check( TienHoaHong between 0 and 100),
+=======
+	commission tinyint check( commission between 0 and 100),
+>>>>>>> remotes/origin/dev
 	disType bit,
 	area nvarchar(30),
 	status bit,
@@ -72,313 +99,316 @@ CREATE TABLE Contract
 )
 go
 
-----------------------------------------
-
-CREATE TABLE NguoiDaiDien
+------------
+CREATE TABLE Representative
 (
-	ID_NDD int identity(1,1) primary key,
-	TenNDD nvarchar(30),
-	SoDT varchar(11),
-	Email varchar(100),
-	ChucVu nvarchar(50),
-	DoiTac int,
-	NhaPhanPhoi int,
+	idRepresentative int identity(1,1) primary key,
+	name nvarchar(30),
+	phone varchar(11),
+	email varchar(100),
+	title nvarchar(50),
+	PDistributor int,
+	Distributor int,
 )
 go
 
-CREATE TABLE NhanVien
+CREATE TABLE Staff
 (
-	ID_NV int identity(1,1) primary key,
-	TenNV nvarchar(30),
-	UserName varchar(30),
-	CMND varchar(12) unique,
-	SDT varchar(11) unique,
-	DiaChi nvarchar(100)
+	idStaff int identity(1,1) primary key,
+	staffName nvarchar(30),
+	account varchar(30),
+	idCard varchar(12) unique,
+	phone varchar(11) unique,
+	adress nvarchar(100)
 )
 go
 
-CREATE TABLE PhanCongTraoDoi
+CREATE TABLE Assignment
 (
-	ID_NV int,
-	ID_DoiTac int,
-	ThoiGian datetime,
-	DiaDiem nvarchar(100),
-	HoanThanh bit,
-	KetQua nvarchar(max),
-	primary key (ID_NV, ID_DoiTac)
+	staff int,
+	PDistributor int,
+	date datetime,
+	place nvarchar(100),
+	isComplete bit,
+	result nvarchar(max),
+	primary key (staff, PDistributor)
 )
 go
 
-CREATE TABLE LoaiSanPham
+CREATE TABLE ProductType
 (
-	ID_LoaiSP int identity(1,1) primary key,
-	TenLoaiSP nvarchar(50)
+	idProductType int identity(1,1) primary key,
+	productTypeName nvarchar(50)
 )
 go
 
-CREATE TABLE DonViTinh
+CREATE TABLE Unit
 (
-	ID_DVT int identity(1,1) primary key,
-	TenDVT nvarchar(30) unique,
-	SoLuong int check (SoLuong > 0)
-)
-go
-----------------------------
-
-create table SanPham
-(
-	ID_SanPham int identity (1,1) primary key,
-	TenSP nvarchar(50),
-	DonGia money,
-	TinhTrang bit,
-	LoaiSP int,
-	DonViTinh int
+	idUnit int identity(1,1) primary key,
+	unitName nvarchar(30) unique,
+	quantity int check (quantity > 0)
 )
 go
 
-create table DotHang
+create table Product
 (
-	ID_DotHang int identity (1,1) primary key,
-	NgaySX datetime
-)
-
-create table ChiTietDotHang
-(
-	ID_DotHang int,
-	ID_SanPham int,
-	SoLuong int check(SoLuong > 0),
-	HSD datetime,
-	primary key (ID_DotHang, ID_SanPham)
+	IdProduct int identity (1,1) primary key,
+	ProductName nvarchar(50),
+	Price money,
+	IsDisabled bit,
+	ProductType int,
+	Unit int
 )
 go
 
-create table Kho
+create table Batch
 (
-	ID_Kho int identity (1,1) primary key,
-	SoNha_Duong nvarchar(50),
-	PhuongXa nvarchar(50),
-	QuanHuyen nvarchar(50),
-	ThanhPho nvarchar(50),
-	MoTa nvarchar(100),
-	NPP int
+	IdBatch int identity (1,1) primary key,
+	ManufacturedDate datetime
+)
+
+create table BatchDetail
+(
+	IdBatch int,
+	IdProduct int,
+	Quantity int check(Quantity > 0),
+	ExipreDate datetime,
+	primary key (IdBatch, IdProduct)
 )
 go
 
-create table DonYCDoiTra
+create table Storage
 (
-	ID_DonYCDT int identity (1,1) primary key,
-	NgayLapDon datetime,
-	TinhTrang int check(TinhTrang in (0,1,2)),
-	GhiChu nvarchar(max),
-	HinhThuc bit,
-	NPP int,
-	Kho int,
-	NhanVien int
+	IdStorage int identity (1,1) primary key,
+	HouseNumber_Street nvarchar(50),
+	Ward_Commune nvarchar(50),
+	District nvarchar(50),
+	City nvarchar(50),
+	[Description] nvarchar(100),
+	Distributor int
 )
 go
 
-create table CTDonYCDoiTra
+create table ReturnRequest
 (
-	ID_DonYCDT int,
-	ID_SanPham int,
-	SoLuong int check(SoLuong > 0),
-	LyDoDoiTra nvarchar(max),
-	primary key (ID_DonYCDT, ID_SanPham)
-)
-go
-------------------------------------------
-
-CREATE TABLE PhieuDoiTra
-(
-	ID_PhieuDoiTra int identity(1,1) primary key,
-	TongTienDoiTra money,
-	NgayLapPhieu datetime,
-	HinhThuc bit,				-- 0: đổi, 1: trả
-	NPP int,
-	Kho int,
-	NhanVien int
+	IdReturnRequest int identity (1,1) primary key,
+	DateCreate datetime,
+	[Status] int check([Status] in (0,1,2)),
+	Note nvarchar(max),
+	ModeOfReturn bit,
+	Distributor int,
+	Storage int,
+	Staff int
 )
 go
 
-CREATE TABLE CTPhieuDoiTra
+create table ReturnRequestDetail
 (
-	ID_PhieuDoiTra int,
-	ID_SanPham int,
-	SoLuong int check (SoLuong > 0),
-	TienSPDoiTra money,
-	primary key (ID_PhieuDoiTra, ID_SanPham)
+	IdReturnRequest int,
+	IdProduct int,
+	Quantity int check(Quantity > 0),
+	Reason nvarchar(max),
+	primary key (IdReturnRequest, IdProduct)
 )
 go
 
-CREATE TABLE PhieuCongNo
+CREATE TABLE ReturnBase
 (
-	ID_PCN int identity(1,1) primary key,
-	TienTraCN money,
-	NgayLapPhieu datetime,
-	NPP int,
-	NhanVien int
+	idReturn int identity(1,1) primary key,
+	Total money,
+	DateCreate datetime,
+	ModeOfReturn bit,				-- 0: đổi, 1: trả
+	idDistributor int,
+	idStorage int,
+	idStaff int
 )
 go
 
-CREATE TABLE PhieuChi
+CREATE TABLE ReturnDetail
 (
-	ID_PhieuChi int identity(1,1) primary key,
-	TienChiTra money,
-	LyDoChi nvarchar(200),
-	NgayLapPhieu datetime,
-	NPP int,
-	NhanVien int
+	idReturn int,
+	idProduct int,
+	Quantity int check (Quantity > 0),
+	ProductMoneyRefunding money,
+	primary key (idReturn, idProduct)
 )
 go
 
-CREATE TABLE DonDatHang
+CREATE TABLE Debt
 (
-	ID_DonHang int identity(1,1) primary key,
-	TongTien money,
-	HinhThucGiaoHang bit,			-- 0: tự túc, 1: vitamilk giao
-	HinhThucThanhToan bit,			-- 0: tiền mặt, 1: thẻ
-	NgayGiaoDuKien datetime,
-	TinhTrang tinyint check (TinhTrang in (0,1,2,3)),	-- 0: chưa duyệt, 1: đã duyệt, 2: không duyệt, 3: đã giao
-	NgayLap datetime,
-	NgayCapNhat datetime,
-	ID_NPP int,
-	ID_NguoiLienHe int,
-	ID_NhanVien int,
-	MoTa nvarchar(100)
+	idDebt int identity(1,1) primary key,
+	Purchase money,
+	CreatedDate datetime,
+	idDistributor int,
+	idStaff int
 )
 go
 
-CREATE TABLE NguoiLienHeGiaoHang
+CREATE TABLE PaySlip
 (
-	ID_NguoiLienHe int identity(1,1) primary key,
-	HoTen nvarchar(100),
-	SDT varchar(20),
-	ID_NPP int,
-	ID_DonHang int
-)
-go
--------------------------------------------
-
-CREATE TABLE Log_DonDatHang
-(
-	ID_Log int identity primary key,
-	ThoiGian Datetime,
-	GiaCu int,
-	GiaMoi int,
+	idPaySlip int identity(1,1) primary key,
+	AmountSpent money,
+	SpendingReasons nvarchar(200),
+	CreatedDate datetime,
+	idDistributor int,
+	idStaff int
 )
 go
 
-CREATE TABLE ChiTiet_DDH
+CREATE TABLE [Order]
 (
-	ID_DonHang int,
-	ID_SanPham int,
-	SoLuong int check (SoLuong > 0)
+	idOrder int identity(1,1) primary key,
+	Total money,
+	DeliveryType bit,			-- 0: tự túc, 1: vitamilk giao
+	PaymentType bit,			-- 0: tiền mặt, 1: thẻ
+	EstimateDateOfDelivery datetime,
+	Statuses tinyint check (Statuses in (0,1,2,3)),	-- 0: chưa duyệt, 1: đã duyệt, 2: không duyệt, 3: đã giao
+	CreatedDate datetime,
+	UpdatedDate datetime,
+	idDistributor int,
+	idConsignee int,
+	idStaff int,
+	Descriptions nvarchar(100)
 )
 go
 
-CREATE TABLE Log_ChiTietDDH
+CREATE TABLE Consignee
 (
-	ID_Log int identity primary key,
-	ThoiGian datetime,
-	SoLuongCu int,
-	SoLuongMoi int,
-	LyDo nvarchar(100),
-	ID_DonHang int,
-	ID_SanPham int,
-	ID_NhanVien int,
+	idConsignee int identity(1,1) primary key,
+	Name nvarchar(100),
+	PhoneNumber varchar(20),
+	idDistributor int,
+	idOrder int
 )
 go
 
-CREATE TABLE Log_SanPham
+CREATE TABLE Log_Order
 (
-	ID_Log_SanPham int identity primary key,
-	ThoiGian Datetime,
-	ID_NhanVien int,
-	DonGiaCu int,
-	DonGiaMoi int,
-	LyDo nvarchar(max),
+	idLog int identity(1,1) primary key,
+	createdDate Datetime,
+	oldPrice int,
+	newPrice int
 )
 go
 
-CREATE TABLE KhuyenMai
+CREATE TABLE OrderDetail
 (
-	ID_KhuyenMai int identity primary key,
-	NgayBatDau Datetime,
-	NgayKetThuc Datetime,
+	idOrder int,
+	idProduct int,
+	quantity int check (quantity > 0),
+	primary key (idOrder, idProduct)
 )
 go
 
-CREATE TABLE CT_KhuyenMaiTang
+CREATE TABLE Log_OrderDetail
 (
-	ID_KhuyenMai int,
-	ID_SanPham int,
-	SoLuong int check (Soluong > 0),
+	idLog int identity(1,1) primary key,
+	createdDate datetime,
+	oldQuantity int,
+	newQuantity int,
+	[description] nvarchar(100),
+	idOrder int,
+	idProduct int,
+	idStaff int
 )
 go
--------------------------------
 
-create table CT_KhuyenMaiMua (
-	ID_KhuyenMai int,
-	ID_SanPham int,
-	SoLuong int,
-	PRIMARY KEY (ID_KhuyenMai, ID_SanPham)
+CREATE TABLE Log_Product
+(
+	idLog_Product int identity(1,1) primary key,
+	createdDate Datetime,
+	idStaff int,
+	oldPrice int,
+	newPrice int,
+	[description] nvarchar(max)
+)
+go
+
+CREATE TABLE Promotion
+(
+	idPromotion int identity(1,1) primary key,
+	startDate Datetime,
+	endDate Datetime
+)
+go
+
+CREATE TABLE PromotionGifts
+(
+	idPromotion int,
+	idProduct int,
+	quantity int check (quantity > 0),
+	primary key (idPromotion, idProduct)
+
+)
+go
+
+create table PromotionProduct (
+	idPromotion int,
+	idProduct int,
+	Quantity int,
+	primary key ( idPromotion, idProduct)
 );
 go
 
-create table BaoCaoDoanhThu (
-	ID_BaoCaoDoanhThu int identity(1,1) primary key,
-	NgayBatDau datetime,
-	NgayKetThuc datetime
+create table SalesReport (
+	idSalesReport int identity(1,1) primary key,
+	beginDate datetime,
+	endDate datetime
 );
 go
 
-create table CT_DoanhThu (
-	ID_BaoCaoDoanhThu int,
-	ID_LoaiSP int,
-	DonGiaBan int,
-	SoLuong int,
-	PRIMARY KEY (ID_BaoCaoDoanhThu, ID_LoaiSP)
+create table SalesReportDetail (
+	idSalesReport int,
+	idProductType int,
+	price int,
+	quantity int,
+	primary key (idSalesReport, idProductType)
 );
 go
 
-create table DonGiaoHang(
-	ID_GiaoHang int identity(1,1) primary key,
-	NguoiNhan nvarchar(50),
-	DiaChiGiao nvarchar(100),
-	TongTien money,
-	NgayGiao datetime,
-	TinhTrang tinyint check(TinhTrang in (1,2,3,4,5)),
-	NgayCapNhat datetime,
-	GhiChu nvarchar(200),
-	ID_DonDatHang int,
-	ID_NhanVien int,
-	ID_NPP int
+create table DeliveryOrder(
+	idDeliveryOrder int identity(1,1) primary key,
+	recipient nvarchar(50),
+	deliveryAdd nvarchar(100),
+	totalPurchase money,
+	deliveryDate datetime,
+	[status] tinyint check(status in (1,2,3,4,5)),
+	updateDate datetime,
+	[description] nvarchar(200),
+	idOrder int,
+	idStaff int,
+	idDistributor int
 );
 go
 
-create table CT_GiaoHang(
-	ID_GiaoHang int,
-	ID_SanPham int,
-	SoLuong int,
-	GhiChu nvarchar(200),
-	PRIMARY KEY (ID_GiaoHang, ID_SanPham)
+create table DetailedDeliveryOrder(
+	idDeliveryOrder int,
+	idProduct int,
+	quantity int,
+	note nvarchar(200),
+	PRIMARY KEY (idDeliveryOrder, idProduct)
 );
 go
 
-create table HoaDon(
-	ID_HoaDon int identity(1,1) primary key,
-	TongTien money,
-	NgayLap datetime,
-	LoaiHoaDon tinyint check(LoaiHoaDon in (1,2)),
-	NoiDung nvarchar(200),
-	ID_GiaoHang int,
-	ID_NhanVien int,
-	ID_NPP int
+/* cần bổ sung thêm idDistributor*/
+create table Bill(
+	idBill int identity(1,1) primary key,
+	purchase money,
+	createdDate datetime,
+	[types] tinyint check([types] in (1,2)),
+	description nvarchar(200),
+	idDeliveryOrder int,
+	idStaff int,
+	idDistributor int
 );
 go
 
+<<<<<<< HEAD
 --------------------
 
+=======
+-------------------------------
+>>>>>>> remotes/origin/dev
 ALTER TABLE PotentialDistributor ADD 
 	CONSTRAINT FK_DoiTac_NDD FOREIGN KEY (idRep) REFERENCES Representative(idRepresentative)
 go
@@ -393,151 +423,156 @@ ALTER TABLE Contract ADD
 	CONSTRAINT FK_HopDong_NhanVien FOREIGN KEY (staff) REFERENCES Staff(idStaff)
 go
 
-ALTER TABLE NguoiDaiDien ADD
-	CONSTRAINT FK_NguoiDaiDien_DoiTac FOREIGN KEY (DoiTac) REFERENCES DoiTac(ID_DoiTac),
-	CONSTRAINT FK_NguoiDaiDien_NhaPhanPhoi FOREIGN KEY (NhaPhanPhoi) REFERENCES NhaPhanPhoi(ID_NPP)
+ALTER TABLE Representative ADD
+	CONSTRAINT FK_Representative_PDistributor FOREIGN KEY (PDistributor) REFERENCES PotentialDistributor(idDistributor),
+	CONSTRAINT FK_Representative_Distributor FOREIGN KEY (Distributor) REFERENCES Distributor(idDistributor)
 go
 
-ALTER TABLE NhanVien ADD 
-	CONSTRAINT FK_NhanVien_Account FOREIGN KEY (UserName) REFERENCES Account(UserName)
+ALTER TABLE Staff ADD 
+	CONSTRAINT FK_Staff_Account FOREIGN KEY (account) REFERENCES Account(UserName)
 go
 
-ALTER TABLE PhanCongTraoDoi ADD 
-	CONSTRAINT FK_PhanCongTraoDoi_NhanVien FOREIGN KEY (ID_NV) REFERENCES NhanVien(ID_NV),
-	CONSTRAINT FK_PhanCongTraoDoi_DoiTac FOREIGN KEY (ID_DoiTac) REFERENCES DoiTac(ID_DoiTac)
+ALTER TABLE Assignment ADD 
+	CONSTRAINT FK_Assignment_Staff FOREIGN KEY (staff) REFERENCES Staff(idStaff),
+	CONSTRAINT FK_Assignment_PDistributor FOREIGN KEY (PDistributor) REFERENCES PotentialDistributor(idDistributor)
 go
 
-ALTER TABLE PhieuDoiTra ADD
-	CONSTRAINT FK_PhieuDoiTra_NhaPhanPhoi FOREIGN KEY (NPP) REFERENCES NhaPhanPhoi (ID_NPP),
-	CONSTRAINT FK_PhieuDoiTra_Kho FOREIGN KEY (Kho) REFERENCES Kho (ID_Kho),
-	CONSTRAINT FK_PhieuDoiTra_NhanVien FOREIGN KEY (NhanVien) REFERENCES NhanVien (ID_NV)
+--Product
+ALTER TABLE Product 
+ADD CONSTRAINT FK_Product_ProductType 
+FOREIGN KEY (ProductType) 
+REFERENCES ProductType(IdProductType)
 go
 
-ALTER TABLE CTPhieuDoiTra ADD
-	CONSTRAINT FK_CTPhieuDoiTra_PhieuDoiTra FOREIGN KEY (ID_PhieuDoiTra) REFERENCES PhieuDoiTra (ID_PhieuDoiTra),
-	CONSTRAINT FK_CTPhieuDoiTra_SanPham FOREIGN KEY (ID_SanPham) REFERENCES SanPham (ID_SanPham)
+ALTER TABLE Product
+ADD CONSTRAINT FK_Product_Unit 
+FOREIGN KEY (Unit) 
+REFERENCES Unit(IdUnit)
 go
 
-ALTER TABLE PhieuCongNo ADD
-	CONSTRAINT FK_PhieuCongNo_NhaPhanPhoi FOREIGN KEY (NPP) REFERENCES NhaPhanPhoi (ID_NPP),
-	CONSTRAINT FK_PhieuCongNo_NhanVien FOREIGN KEY (NhanVien) REFERENCES NhanVien (ID_NV)
+--BatchDetail
+ALTER TABLE BatchDetail 
+ADD CONSTRAINT FK_BatchDetail_Batch 
+FOREIGN KEY (IdBatch) 
+REFERENCES Batch(IdBatch)
 go
 
-ALTER TABLE PhieuChi ADD
-	CONSTRAINT FK_PhieuChi_NhaPhanPhoi FOREIGN KEY (NPP) REFERENCES NhaPhanPhoi (ID_NPP),
-	CONSTRAINT FK_PhieuChi_NhanVien FOREIGN KEY (NhanVien) REFERENCES NhanVien (ID_NV)
+ALTER TABLE BatchDetail 
+ADD	CONSTRAINT FK_BatchDetail_Product 
+FOREIGN KEY (IdProduct) 
+REFERENCES Product(IdProduct)
 go
 
-ALTER TABLE DonDatHang ADD
-	CONSTRAINT FK_DonDatHang_NhaPhanPhoi FOREIGN KEY (ID_NPP) REFERENCES NhaPhanPhoi (ID_NPP),
-	CONSTRAINT FK_DonDatHang_NguoiLienHeGiaoHang FOREIGN KEY (ID_NguoiLienHe) REFERENCES NguoiLienHeGiaoHang (ID_NguoiLienHe),
-	CONSTRAINT FK_DonDatHang_NhanVien FOREIGN KEY (ID_NhanVien) REFERENCES NhanVien (ID_NV)
+--Storage
+ALTER TABLE Storage 
+ADD CONSTRAINT FK_Storage_Distributor
+FOREIGN KEY (Distributor) 
+REFERENCES Distributor(IdDistributor)
 go
 
---SanPham
-ALTER TABLE SanPham 
-ADD CONSTRAINT FK_SanPham_LoaiSanPham 
-FOREIGN KEY (LoaiSP) 
-REFERENCES LoaiSanPham(ID_LoaiSP)
-
-ALTER TABLE SanPham
-ADD CONSTRAINT FK_SanPham_DonViTinh 
-FOREIGN KEY (DonViTinh) 
-REFERENCES DonViTinh(ID_DVT)
+--ReturnRequest
+ALTER TABLE ReturnRequest 
+ADD CONSTRAINT FK_ReturnRequest_Distributor
+FOREIGN KEY (Distributor) 
+REFERENCES Distributor(IdDistributor)
 go
 
---ChiTietDotHang
-ALTER TABLE ChiTietDotHang 
-ADD CONSTRAINT FK_ChiTietDotHang_DotHang 
-FOREIGN KEY (ID_DotHang) 
-REFERENCES DotHang(ID_DotHang)
+ALTER TABLE ReturnRequest 
+ADD CONSTRAINT FK_ReturnRequest_Storage 
+FOREIGN KEY (Storage) 
+REFERENCES Storage(IdStorage)
 go
 
-ALTER TABLE ChiTietDotHang 
-ADD	CONSTRAINT FK_ChiTietDotHang_SanPham 
-FOREIGN KEY (ID_SanPham) 
-REFERENCES SanPham(ID_SanPham)
+ALTER TABLE ReturnRequest 
+ADD CONSTRAINT FK_ReturnRequest_Staff
+FOREIGN KEY (Staff) 
+REFERENCES Staff(IdStaff)
 go
 
---Kho
-ALTER TABLE Kho 
-ADD CONSTRAINT FK_Kho_NhaPhanPhoi 
-FOREIGN KEY (NPP) 
-REFERENCES NhaPhanPhoi(ID_NPP)
+--ReturnRequestDetail
+ALTER TABLE ReturnRequestDetail 
+ADD CONSTRAINT FK_ReturnRequestDetail_ReturnRequest 
+FOREIGN KEY (IdReturnRequest) 
+REFERENCES ReturnRequest(IdReturnRequest)
 go
 
---DonYCDoiTra
-ALTER TABLE DonYCDoiTra 
-ADD CONSTRAINT FK_DonYCDoiTra_NhaPhanPhoi 
-FOREIGN KEY (NPP) 
-REFERENCES NhaPhanPhoi(ID_NPP)
-
-ALTER TABLE DonYCDoiTra 
-ADD CONSTRAINT FK_DonYCDoiTra_Kho 
-FOREIGN KEY (Kho) 
-REFERENCES Kho(ID_Kho)
-
-ALTER TABLE DonYCDoiTra 
-ADD CONSTRAINT FK_DonYCDoiTra_NhanVien 
-FOREIGN KEY (NhanVien) 
-REFERENCES NhanVien(ID_NV)
-
---CTDonYCDoiTra
-ALTER TABLE CTDonYCDoiTra 
-ADD CONSTRAINT FK_CTDonYCDoiTra_DonYCDoiTra 
-FOREIGN KEY (ID_DonYCDT) 
-REFERENCES DonYCDoiTra(ID_DonYCDT)
-
-ALTER TABLE CTDonYCDoiTra 
-ADD CONSTRAINT FK_CTDonYCDoiTra_SanPham 
-FOREIGN KEY (ID_SanPham) 
-REFERENCES SanPham(ID_SanPham)
-
-
-ALTER TABLE NguoiLienHeGiaoHang ADD
-	CONSTRAINT FK_NguoiLienHeGiaoHang_NhaPhanPhoi FOREIGN KEY (ID_NPP) REFERENCES NhaPhanPhoi (ID_NPP),
-	CONSTRAINT FK_NguoiLienHeGiaoHang_DonDatHang FOREIGN KEY (ID_DonHang) REFERENCES DonDatHang (ID_DonHang)
+ALTER TABLE ReturnRequestDetail 
+ADD CONSTRAINT FK_ReturnRequestDetail_Product 
+FOREIGN KEY (IdProduct) 
+REFERENCES Product(IdProduct)
 go
 
-ALTER TABLE ChiTiet_DDH ADD 
-	CONSTRAINT FK_ChiTietDDH_DonDatHang FOREIGN KEY (ID_DonHang) REFERENCES DonDatHang (ID_DonHang),
-	CONSTRAINT FK_ChiTietDDH_SanPham FOREIGN KEY (ID_SanPham) REFERENCES SanPham (ID_SanPham)
+ALTER TABLE ReturnBase ADD
+	CONSTRAINT FK_ReturnBase_Distributor FOREIGN KEY (idDistributor) REFERENCES Distributor (idDistributor),
+	CONSTRAINT FK_ReturnBase_Storage FOREIGN KEY (idStorage) REFERENCES Storage (idStorage),
+	CONSTRAINT FK_ReturnBase_Staff FOREIGN KEY (idStaff) REFERENCES Staff (idStaff)
 go
 
-ALTER TABLE Log_ChiTietDDH ADD 
-	CONSTRAINT FK_LogChiTietDDH_DonDatHang FOREIGN KEY (ID_DonHang) REFERENCES DonDatHang(ID_DonHang),
-	CONSTRAINT FK_LogChiTietDDH_SanPham FOREIGN KEY (ID_SanPham) REFERENCES SanPham(ID_SanPham),
-	CONSTRAINT FK_LogChiTietDDH_NhanVien FOREIGN KEY (ID_NhanVien) REFERENCES NhanVien(ID_NV)
+ALTER TABLE ReturnDetail ADD
+	CONSTRAINT FK_ReturnDetail_ReturnBase FOREIGN KEY (idReturn) REFERENCES ReturnBase (idReturn),
+	CONSTRAINT FK_ReturnDetail_Product FOREIGN KEY (idProduct) REFERENCES Product (idProduct)
 go
 
-ALTER TABLE CT_KhuyenMaiTang ADD 
-	CONSTRAINT FK_CT_KhuyenMaiTang_KhuyenMai FOREIGN KEY (ID_KhuyenMai) REFERENCES KhuyenMai(ID_KhuyenMai),
-	CONSTRAINT FK_CT_KhuyenMaiTang_SanPham FOREIGN KEY (ID_SanPham) REFERENCES SanPham(ID_SanPham)
+ALTER TABLE Debt ADD
+	CONSTRAINT FK_Debt_Distributor FOREIGN KEY (idDistributor) REFERENCES Distributor (idDistributor),
+	CONSTRAINT FK_Debt_Staff FOREIGN KEY (idStaff) REFERENCES Staff (idStaff)
 go
 
-ALTER TABLE CT_KhuyenMaiMua ADD 
-	CONSTRAINT FK_CT_KhuyenMaiMua_KhuyenMai FOREIGN KEY (ID_KhuyenMai) REFERENCES KhuyenMai(ID_KhuyenMai),
-	CONSTRAINT FK_CT_KhuyenMaiMua_SanPham FOREIGN KEY (ID_SanPham) REFERENCES SanPham(ID_SanPham)
+ALTER TABLE PaySlip ADD
+	CONSTRAINT FK_PaySlip_Distributor FOREIGN KEY (idDistributor) REFERENCES Distributor (idDistributor),
+	CONSTRAINT FK_PaySlip_Staff FOREIGN KEY (idStaff) REFERENCES Staff (idStaff)
 go
 
-ALTER TABLE CT_DoanhThu ADD 
-	CONSTRAINT FK_CT_DoanhThu_BaoCaoDoanhThu FOREIGN KEY (ID_BaoCaoDoanhThu) REFERENCES BaoCaoDoanhThu(ID_BaoCaoDoanhThu),
-	CONSTRAINT FK_CT_DoanhThu_LoaiSP FOREIGN KEY (ID_LoaiSP) REFERENCES LoaiSanPham(ID_LoaiSP)
+ALTER TABLE [Order] ADD
+	CONSTRAINT FK_Order_Distributor FOREIGN KEY (idDistributor) REFERENCES Distributor (idDistributor),
+	CONSTRAINT FK_Order_Consignee FOREIGN KEY (idConsignee) REFERENCES Consignee (idConsignee),
+	CONSTRAINT FK_Order_Staff FOREIGN KEY (idStaff) REFERENCES Staff (idStaff)
 go
 
-ALTER TABLE DonGiaoHang ADD 
-	CONSTRAINT FK_DonGiaoHang_DonDatHang FOREIGN KEY (ID_DonDatHang) REFERENCES DonDatHang(ID_DonHang),
-	CONSTRAINT FK_DonGiaoHang_NhanVien FOREIGN KEY (ID_NhanVien) REFERENCES NhanVien(ID_NV),
-	CONSTRAINT FK_DonGiaoHang_NhaPhanPhoi FOREIGN KEY (ID_NPP) REFERENCES NhaPhanPhoi(ID_NPP)
+ALTER TABLE Consignee ADD
+	CONSTRAINT FK_Consignee_Distributor FOREIGN KEY (idDistributor) REFERENCES Distributor (idDistributor),
+	CONSTRAINT FK_Consignee_Order FOREIGN KEY (idOrder) REFERENCES [Order](idOrder)
 go
 
-ALTER TABLE CT_GiaoHang ADD 
-	CONSTRAINT FK_CT_GiaoHang_DonGiaoHang FOREIGN KEY (ID_GiaoHang) REFERENCES DonGiaoHang(ID_GiaoHang),
-	CONSTRAINT FK_CT_GiaoHang_SanPham FOREIGN KEY (ID_SanPham) REFERENCES SanPham(ID_SanPham)
+ALTER TABLE OrderDetail ADD 
+	CONSTRAINT FK_OrderDetail_Order FOREIGN KEY (idOrder) REFERENCES [Order] (idOrder),
+	CONSTRAINT FK_OrderDetail_Product FOREIGN KEY (idProduct) REFERENCES Product (idProduct)
 go
 
-ALTER TABLE HoaDon ADD 
-	CONSTRAINT FK_HoaDon_DonGiaoHang FOREIGN KEY (ID_GiaoHang) REFERENCES DonGiaoHang(ID_GiaoHang),
-	CONSTRAINT FK_HoaDon_NhanVien FOREIGN KEY (ID_NhanVien) REFERENCES NhanVien(ID_NV),
-	CONSTRAINT FK_HoaDon_NhaPhanPhoi FOREIGN KEY (ID_NPP) REFERENCES NhaPhanPhoi(ID_NPP)
+ALTER TABLE Log_OrderDetail ADD 
+	CONSTRAINT FK_Log_OrderDetail_Order FOREIGN KEY (idOrder) REFERENCES [Order](idOrder),
+	CONSTRAINT FK_Log_OrderDetail_Product FOREIGN KEY (idProduct) REFERENCES Product(idProduct),
+	CONSTRAINT FK_Log_OrderDetail_Staff FOREIGN KEY (idStaff) REFERENCES Staff(idStaff)
+go
+
+ALTER TABLE PromotionGifts ADD 
+	CONSTRAINT FK_PromotionGifts_Promotion FOREIGN KEY (idPromotion) REFERENCES Promotion(idPromotion),
+	CONSTRAINT FK_PromotionGifts_Product FOREIGN KEY (idProduct) REFERENCES Product(idProduct)
+go
+
+ALTER TABLE PromotionProduct ADD 
+	CONSTRAINT FK_PromotionProduct_Promotion FOREIGN KEY (idPromotion) REFERENCES Promotion(idPromotion),
+	CONSTRAINT FK_PromotionProduct_Product FOREIGN KEY (idProduct) REFERENCES Product(IdProduct)
+go
+
+ALTER TABLE SalesReportDetail ADD 
+	CONSTRAINT FK_SalesReportDetail_SalesReport FOREIGN KEY (idSalesReport) REFERENCES SalesReport(idSalesReport),
+	CONSTRAINT FK_SalesReportDetail_ProductType FOREIGN KEY (idProductType) REFERENCES ProductType(idProductType)
+go
+
+ALTER TABLE DeliveryOrder ADD 
+	CONSTRAINT FK_DeliveryOrder_Oder FOREIGN KEY (idDeliveryOrder) REFERENCES [Order](idOrder),
+	CONSTRAINT FK_DeliveryOrder_Staff FOREIGN KEY (idStaff) REFERENCES Staff(idStaff),
+	CONSTRAINT FK_DeliveryOrder_Distributor FOREIGN KEY (idDistributor) REFERENCES Distributor(idDistributor)
+go
+
+ALTER TABLE DetailedDeliveryOrder ADD 
+	CONSTRAINT FK_DetailedDeliveryOrder_DeliveryOrder FOREIGN KEY (idDeliveryOrder) REFERENCES DeliveryOrder(idDeliveryOrder),
+	CONSTRAINT FK_DetailedDeliveryOrder_Product FOREIGN KEY (idProduct) REFERENCES Product(idProduct)
+go
+
+ALTER TABLE Bill ADD 
+	CONSTRAINT FK_Bill_DeliveryOrder FOREIGN KEY (idDeliveryOrder) REFERENCES DeliveryOrder(idDeliveryOrder),
+	CONSTRAINT FK_Bill_Staff FOREIGN KEY (idStaff) REFERENCES Staff(idStaff),
+	CONSTRAINT FK_Bill_Distributor FOREIGN KEY (idDistributor) REFERENCES Distributor(idDistributor)
 go
