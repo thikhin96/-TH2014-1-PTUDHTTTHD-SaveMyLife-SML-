@@ -18,14 +18,16 @@ namespace DataService.Services
         private readonly IRepository<Distributor> _distributorRepository;
         private readonly IRepository<Consignee> _consigneeRepository;
         private readonly IRepository<OrderDetail> _orderDetailRepository;
+        private readonly IDistributorService _distributorService;
         ILogger logger = LogManager.GetCurrentClassLogger();
-        public OrderService(IUnitOfWork unitOfWork)
+        public OrderService(IUnitOfWork unitOfWork, IDistributorService distributorService)
         {
             _orderRepository = unitOfWork.Repository<Order>();
             _distributorRepository = unitOfWork.Repository<Distributor>();
             _consigneeRepository = unitOfWork.Repository<Consignee>();
             _orderDetailRepository = unitOfWork.Repository<OrderDetail>();
             _unitOfWork = unitOfWork;
+            _distributorService = distributorService;
         }
         public int AddOrder(Order order)
         {
@@ -104,14 +106,21 @@ namespace DataService.Services
             {
                 if (_distributorRepository.Get(x => x.idDistributor == order.idDistributor) != null)
                 {
-                    _orderRepository.Add(order);
-                    _unitOfWork.SaveChange();
-                    var consignee = order.Consignee;
-                    consignee.idOrder = order.idOrder;
-                    _consigneeRepository.Update(consignee);
-                    if (orderDetails.Count != 0 || orderDetails != null)
-                        orderDetails.ForEach(x => _orderDetailRepository.Add(x));
-                    _unitOfWork.SaveChange();
+                    if (_distributorService.hasContract(order.idDistributor ?? 0))
+                    {
+                            _orderRepository.Add(order);
+                            _unitOfWork.SaveChange();
+                            var consignee = order.Consignee;
+                            consignee.idOrder = order.idOrder;
+                            _consigneeRepository.Update(consignee);
+                            if (orderDetails.Count != 0 || orderDetails != null)
+                                orderDetails.ForEach(x => _orderDetailRepository.Add(x));
+                            _unitOfWork.SaveChange();
+                    }
+                    else
+                    {
+                        return "Nhà phân phối hiện không có bất cứ hợp đồng nào";
+                    }
                 }
                 else
                 {

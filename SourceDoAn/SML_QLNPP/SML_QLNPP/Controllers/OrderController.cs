@@ -71,7 +71,6 @@ namespace SML_QLNPP.Controllers
         [HttpPost]
         public ActionResult Create(CreateOrderViewModel model, [Bind(Prefix="OrderDetails")]List<OrderDetail> OrderDetails)
         {
-            var mod = model;
             model.Products = _productService.GetAllProducts();
             var order = new Order
             {
@@ -96,7 +95,8 @@ namespace SML_QLNPP.Controllers
                 ViewBag.success = "thanh cong";
             else
                 ViewBag.fail = result;
-            
+
+            model.idOrder = _orderService.GenerateOrderId();
             return View(model);
         }
     }
