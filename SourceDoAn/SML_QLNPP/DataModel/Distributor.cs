@@ -12,7 +12,7 @@ namespace DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Distributor
+    public partial class Distributor: DistributorBase
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Distributor()
@@ -30,14 +30,6 @@ namespace DataModel
             this.Storages = new HashSet<Storage>();
         }
     
-        public int idDistributor { get; set; }
-        public string name { get; set; }
-        public string address { get; set; }
-        public string phone { get; set; }
-        public string Email { get; set; }
-        public Nullable<System.DateTime> createdDate { get; set; }
-        public Nullable<System.DateTime> updatedDate { get; set; }
-        public string note { get; set; }
         public Nullable<bool> status { get; set; }
         public string UserName { get; set; }
     
