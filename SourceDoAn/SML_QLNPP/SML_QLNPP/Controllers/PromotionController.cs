@@ -42,7 +42,6 @@ namespace SML_QLNPP.Controllers
                 var list = JsonConvert.SerializeObject(rs.Select(x => new { x.idPromotion, x.startDate, x.endDate }));
                 return Content(list, "application/json");
             }
-
             return null;
         }
     }
