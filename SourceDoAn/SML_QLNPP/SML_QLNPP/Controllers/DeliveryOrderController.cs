@@ -16,7 +16,7 @@ namespace SML_QLNPP.Controllers
         {
             this._deliveryOrderService = deliveryOrderService;
         }
-        // GET: Order
+        // GET: DeliveryOrder
         public ActionResult List()
         {
             return View();

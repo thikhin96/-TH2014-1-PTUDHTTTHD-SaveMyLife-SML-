@@ -4,16 +4,15 @@
 
 @section css{
     <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="~/Content/Order/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="~/Content/Order/datatables.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/DeliveryOrder/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/DeliveryOrder/datatables.min.css" rel="stylesheet" type="text/css" media="all" />
 }
 
 @section scripts{
-    <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/Order/order.js"></script>
+    <script type="text/javascript" src="~/Scripts/DeliveryOrder/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/DeliveryOrder/datatables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/DeliveryOrder/deliveryorder.js"></script>
 }
-
 <div class="container-fluid">
     <div class="row">
         @Html.Partial("~/Views/Shared/_SidebarAdmin.cshtml")
@@ -21,50 +20,52 @@
             <div class="well">
                 <div class="row">
                     <div class="col-md-4">
-                        <label>Nhập từ khoá</label>
-                        <input type="text" class="form-control" placeholder="Nhập từ khoá" id="keyword">
-                    </div>
-                    <div class="col-md-2">
-                        <label>Ngày tạo (năm/tháng/ngày)</label>
-                        <input type="text" class="form-control" id="created_date">
+                        <label>Tìm theo mã giao hàng</label>
+                        <input type="text" class="form-control" placeholder="Nhập mã đơn giao hàng" id="dorder">
                     </div>
                     <div class="col-md-2">
                         <label>Trạng thái</label>
                         <select class="form-control" id="status">
-                            <option value="0">Chưa duyệt</option>
-                            <option value="1">Đã duyệt</option>
-                            <option value="2">Không duyệt</option>
-                            <option value="3">Đã giao</option>
+							<option value="0">Tất cả</option>
+                            <option value="1">Đang giao</option>
+                            <option value="2">Đã giao</option>
+                            <option value="3">Kiểm kê thiếu</option>
+                            <option value="4">Bị từ chối giao</option>
+							<option value="5">Chưa kiểm kê</option>
                         </select>
+                    </div>
+					    <div class="col-md-2">
+                        <label>Ngày giao (năm/tháng/ngày)</label>
+                        <input type="text" class="form-control" id="delivery_date">
                     </div>
                     <div class="col-md-2">
                         <br />
-                        <button class="btn btn-default" id="search">Tìm kiếm kết quả</button>
+                        <button class="btn btn-default" id="search"><span class="glyphicon glyphicon-search"></span>Tìm kiếm kết quả</button>
                     </div>
                 </div>
                 <div class="row mgt">
                     <div class="col-md-12">
-                        <h2>Danh sách đơn đặt hàng</h2> 
-                        <table id="order-list" class="cell-border" cellspacing="0" width="100%">
+                        <h2>Danh sách đơn giao hàng</h2> 
+                        <table id="dorder-list" class="cell-border" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Tên NPP</th>
+                                    <th>Mã giao hàng</th>
+                                    <th>Mã đặt hàng</th>
+                                    <th>Mã NPP</th>
                                     <th>Tổng tiền</th>
-                                    <th>Ngày lập</th>
-                                    <th>Nhân viên</th>
                                     <th>Tình trạng</th>
+                                    <th>Ngày giao</th>
                                     <th>Thao tác</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Tên NPP</th>
+                                    <th>Mã giao hàng</th>
+                                    <th>Mã đặt hàng</th>
+                                    <th>Mã NPP</th>
                                     <th>Tổng tiền</th>
-                                    <th>Ngày lập</th>
-                                    <th>Nhân viên</th>
                                     <th>Tình trạng</th>
+                                    <th>Ngày giao</th>
                                     <th>Thao tác</th>
                                 </tr>
                             </tfoot>
