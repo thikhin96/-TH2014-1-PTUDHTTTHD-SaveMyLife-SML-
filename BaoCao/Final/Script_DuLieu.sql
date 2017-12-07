@@ -142,10 +142,33 @@ insert into OrderDetail values(7,6,10);
 --Log_Product
 
 --Promotion
+insert into Promotion values(GETDATE(),dateadd(dd,30,getdate()));
+insert into Promotion values(GETDATE(),dateadd(dd,40,getdate()));
+insert into Promotion values(GETDATE(),dateadd(dd,7,getdate()));
+
 
 --PromotionGifts
+insert into PromotionGifts values(1,1,30);
+insert into PromotionGifts values(1,4,50);
+insert into PromotionGifts values(1,5,10);
+
+insert into PromotionGifts values(2,5,10);
+insert into PromotionGifts values(2,6,5);
+
+insert into PromotionGifts values(3,4,50);
+insert into PromotionGifts values(3,5,10);
+
 
 --PromotionProduct
+
+insert into PromotionProduct values(1,1,10);
+insert into PromotionProduct values(1,4,10);
+
+insert into PromotionProduct values(2,6,10);
+insert into PromotionProduct values(2,4,20);
+
+insert into PromotionProduct values(3,1,10);
+insert into PromotionProduct values(3,6,10);
 
 --SalesReport
 

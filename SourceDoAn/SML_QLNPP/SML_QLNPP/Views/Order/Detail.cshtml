@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="col-md-2 form-group">
                                     <label>Mô tả đơn hàng: </label>
-                                    <textarea disable cols="100" rows="1">@Model.Descriptions</textarea>
+                                    <textarea disabled cols="100" rows="1">@Model.Descriptions</textarea>
                                 </div>
                             </div>
                         </div>
@@ -138,8 +138,8 @@
                                    <tr>
                                        <td>@item.idProduct</td>
                                        <td>@item.Product.ProductName</td>
-                                       <td>@item.Product.Price</td>
                                        <td>@item.quantity</td>
+                                       <td>@item.Product.Price</td>
                                    </tr>
                                }
                             </tbody>
