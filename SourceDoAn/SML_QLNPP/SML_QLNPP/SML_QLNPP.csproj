@@ -261,6 +261,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\DeliveryOrderController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\PromotionController.cs" />
     <Compile Include="Global.asax.cs">
@@ -308,6 +309,9 @@
     <Content Include="Content\Home\images\tick.png" />
     <Content Include="Content\Home\images\top-up.png" />
     <Content Include="Content\Home\style.css" />
+    <Content Include="Content\DeliveryOrder\datatables.min.css" />
+    <Content Include="Content\DeliveryOrder\detail.css" />
+    <Content Include="Content\DeliveryOrder\jquery-ui.min.css" />
     <Content Include="Content\Order\datatables.min.css" />
     <Content Include="Content\Order\detail.css" />
     <Content Include="Content\Order\jquery-ui.min.css" />
@@ -381,6 +385,8 @@
     <Content Include="Views\Order\Detail.cshtml" />
     <Content Include="Views\Promotion\Detail.cshtml" />
     <Content Include="Views\Promotion\List.cshtml" />
+    <Content Include="Views\DeliveryOrder\Detail.cshtml" />
+    <Content Include="Views\DeliveryOrder\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -423,7 +429,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>65422</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:65422/</IISUrl>
+          <IISUrl>http://localhost/SML_QLNPP</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
