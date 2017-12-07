@@ -1,0 +1,3016 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QL_NPPModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="30" />
+          <Property Name="Password" Type="varchar" MaxLength="30" />
+          <Property Name="activated" Type="bit" />
+          <Property Name="decentralization" Type="tinyint" />
+          <Property Name="locked" Type="bit" />
+          <Property Name="dateCreate" Type="datetime" />
+          <Property Name="dateUpdate" Type="datetime" />
+          <Property Name="note" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Assignment">
+          <Key>
+            <PropertyRef Name="staff" />
+            <PropertyRef Name="PDistributor" />
+          </Key>
+          <Property Name="staff" Type="int" Nullable="false" />
+          <Property Name="PDistributor" Type="int" Nullable="false" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="place" Type="nvarchar" MaxLength="100" />
+          <Property Name="isComplete" Type="bit" />
+          <Property Name="result" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Batch">
+          <Key>
+            <PropertyRef Name="IdBatch" />
+          </Key>
+          <Property Name="IdBatch" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ManufacturedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BatchDetail">
+          <Key>
+            <PropertyRef Name="IdBatch" />
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdBatch" Type="int" Nullable="false" />
+          <Property Name="IdProduct" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="ExipreDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="idBill" />
+          </Key>
+          <Property Name="idBill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="purchase" Type="money" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="types" Type="tinyint" />
+          <Property Name="description" Type="nvarchar" MaxLength="200" />
+          <Property Name="idDeliveryOrder" Type="int" />
+          <Property Name="idStaff" Type="int" />
+          <Property Name="idDistributor" Type="int" />
+        </EntityType>
+        <EntityType Name="Consignee">
+          <Key>
+            <PropertyRef Name="idConsignee" />
+          </Key>
+          <Property Name="idConsignee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+          <Property Name="idDistributor" Type="int" />
+          <Property Name="idOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="Contract">
+          <Key>
+            <PropertyRef Name="idContract" />
+          </Key>
+          <Property Name="idContract" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="beginDate" Type="datetime" />
+          <Property Name="expiredDate" Type="datetime" />
+          <Property Name="minOrderTotalValue" Type="money" />
+          <Property Name="maxDebt" Type="money" />
+          <Property Name="commission" Type="tinyint" />
+          <Property Name="disType" Type="bit" />
+          <Property Name="area" Type="nvarchar" MaxLength="30" />
+          <Property Name="status" Type="bit" />
+          <Property Name="note" Type="nvarchar(max)" />
+          <Property Name="distributor" Type="int" />
+          <Property Name="representative" Type="int" />
+          <Property Name="staff" Type="int" />
+        </EntityType>
+        <EntityType Name="Debt">
+          <Key>
+            <PropertyRef Name="idDebt" />
+          </Key>
+          <Property Name="idDebt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Purchase" Type="money" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="idDistributor" Type="int" />
+          <Property Name="idStaff" Type="int" />
+        </EntityType>
+        <EntityType Name="DeliveryOrder">
+          <Key>
+            <PropertyRef Name="idDeliveryOrder" />
+          </Key>
+          <Property Name="idDeliveryOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="recipient" Type="nvarchar" MaxLength="50" />
+          <Property Name="deliveryAdd" Type="nvarchar" MaxLength="100" />
+          <Property Name="totalPurchase" Type="money" />
+          <Property Name="deliveryDate" Type="datetime" />
+          <Property Name="status" Type="tinyint" />
+          <Property Name="updateDate" Type="datetime" />
+          <Property Name="description" Type="nvarchar" MaxLength="200" />
+          <Property Name="idOrder" Type="int" />
+          <Property Name="idStaff" Type="int" />
+          <Property Name="idDistributor" Type="int" />
+        </EntityType>
+        <EntityType Name="DetailedDeliveryOrder">
+          <Key>
+            <PropertyRef Name="idDeliveryOrder" />
+            <PropertyRef Name="idProduct" />
+          </Key>
+          <Property Name="idDeliveryOrder" Type="int" Nullable="false" />
+          <Property Name="idProduct" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="note" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Distributor">
+          <Key>
+            <PropertyRef Name="idDistributor" />
+          </Key>
+          <Property Name="idDistributor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="address" Type="nvarchar" MaxLength="100" />
+          <Property Name="phone" Type="varchar" MaxLength="11" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedDate" Type="datetime" />
+          <Property Name="note" Type="nvarchar(max)" />
+          <Property Name="status" Type="bit" />
+          <Property Name="UserName" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Log_Login">
+          <Key>
+            <PropertyRef Name="idLog" />
+          </Key>
+          <Property Name="idLog" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idAccount" Type="int" />
+          <Property Name="at_time" Type="datetime" />
+          <Property Name="status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Log_Order">
+          <Key>
+            <PropertyRef Name="idLog" />
+          </Key>
+          <Property Name="idLog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="oldPrice" Type="int" />
+          <Property Name="newPrice" Type="int" />
+        </EntityType>
+        <EntityType Name="Log_OrderDetail">
+          <Key>
+            <PropertyRef Name="idLog" />
+          </Key>
+          <Property Name="idLog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="oldQuantity" Type="int" />
+          <Property Name="newQuantity" Type="int" />
+          <Property Name="description" Type="nvarchar" MaxLength="100" />
+          <Property Name="idOrder" Type="int" />
+          <Property Name="idProduct" Type="int" />
+          <Property Name="idStaff" Type="int" />
+        </EntityType>
+        <EntityType Name="Log_Product">
+          <Key>
+            <PropertyRef Name="idLog_Product" />
+          </Key>
+          <Property Name="idLog_Product" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="idStaff" Type="int" />
+          <Property Name="oldPrice" Type="int" />
+          <Property Name="newPrice" Type="int" />
+          <Property Name="description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="idOrder" />
+          </Key>
+          <Property Name="idOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Total" Type="money" />
+          <Property Name="DeliveryType" Type="bit" />
+          <Property Name="PaymentType" Type="bit" />
+          <Property Name="EstimateDateOfDelivery" Type="datetime" />
+          <Property Name="Statuses" Type="tinyint" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="idDistributor" Type="int" />
+          <Property Name="idConsignee" Type="int" />
+          <Property Name="idStaff" Type="int" />
+          <Property Name="Descriptions" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="idOrder" />
+            <PropertyRef Name="idProduct" />
+          </Key>
+          <Property Name="idOrder" Type="int" Nullable="false" />
+          <Property Name="idProduct" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="PaySlip">
+          <Key>
+            <PropertyRef Name="idPaySlip" />
+          </Key>
+          <Property Name="idPaySlip" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AmountSpent" Type="money" />
+          <Property Name="SpendingReasons" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="idDistributor" Type="int" />
+          <Property Name="idStaff" Type="int" />
+        </EntityType>
+        <EntityType Name="PotentialDistributor">
+          <Key>
+            <PropertyRef Name="idDistributor" />
+          </Key>
+          <Property Name="idDistributor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="address" Type="nvarchar" MaxLength="100" />
+          <Property Name="phone" Type="varchar" MaxLength="11" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedDate" Type="datetime" />
+          <Property Name="note" Type="nvarchar(max)" />
+          <Property Name="status" Type="tinyint" />
+          <Property Name="idRep" Type="int" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="money" />
+          <Property Name="IsDisabled" Type="bit" />
+          <Property Name="ProductType" Type="int" />
+          <Property Name="Unit" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductType">
+          <Key>
+            <PropertyRef Name="idProductType" />
+          </Key>
+          <Property Name="idProductType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productTypeName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Promotion">
+          <Key>
+            <PropertyRef Name="idPromotion" />
+          </Key>
+          <Property Name="idPromotion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="startDate" Type="datetime" />
+          <Property Name="endDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PromotionGifts">
+          <Key>
+            <PropertyRef Name="idPromotion" />
+            <PropertyRef Name="idProduct" />
+          </Key>
+          <Property Name="idPromotion" Type="int" Nullable="false" />
+          <Property Name="idProduct" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="PromotionProduct">
+          <Key>
+            <PropertyRef Name="idPromotion" />
+            <PropertyRef Name="idProduct" />
+          </Key>
+          <Property Name="idPromotion" Type="int" Nullable="false" />
+          <Property Name="idProduct" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="Representative">
+          <Key>
+            <PropertyRef Name="idRepresentative" />
+          </Key>
+          <Property Name="idRepresentative" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="30" />
+          <Property Name="phone" Type="varchar" MaxLength="11" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+          <Property Name="PDistributor" Type="int" />
+          <Property Name="Distributor" Type="int" />
+        </EntityType>
+        <EntityType Name="ReturnBase">
+          <Key>
+            <PropertyRef Name="idReturn" />
+          </Key>
+          <Property Name="idReturn" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Total" Type="money" />
+          <Property Name="DateCreate" Type="datetime" />
+          <Property Name="ModeOfReturn" Type="bit" />
+          <Property Name="idDistributor" Type="int" />
+          <Property Name="idStorage" Type="int" />
+          <Property Name="idStaff" Type="int" />
+        </EntityType>
+        <EntityType Name="ReturnDetail">
+          <Key>
+            <PropertyRef Name="idReturn" />
+            <PropertyRef Name="idProduct" />
+          </Key>
+          <Property Name="idReturn" Type="int" Nullable="false" />
+          <Property Name="idProduct" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="ProductMoneyRefunding" Type="money" />
+        </EntityType>
+        <EntityType Name="ReturnRequest">
+          <Key>
+            <PropertyRef Name="IdReturnRequest" />
+          </Key>
+          <Property Name="IdReturnRequest" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateCreate" Type="datetime" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="ModeOfReturn" Type="bit" />
+          <Property Name="Distributor" Type="int" />
+          <Property Name="Storage" Type="int" />
+          <Property Name="Staff" Type="int" />
+        </EntityType>
+        <EntityType Name="ReturnRequestDetail">
+          <Key>
+            <PropertyRef Name="IdReturnRequest" />
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdReturnRequest" Type="int" Nullable="false" />
+          <Property Name="IdProduct" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Reason" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SalesReport">
+          <Key>
+            <PropertyRef Name="idSalesReport" />
+          </Key>
+          <Property Name="idSalesReport" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="beginDate" Type="datetime" />
+          <Property Name="endDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SalesReportDetail">
+          <Key>
+            <PropertyRef Name="idSalesReport" />
+            <PropertyRef Name="idProductType" />
+          </Key>
+          <Property Name="idSalesReport" Type="int" Nullable="false" />
+          <Property Name="idProductType" Type="int" Nullable="false" />
+          <Property Name="price" Type="int" />
+          <Property Name="quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="idStaff" />
+          </Key>
+          <Property Name="idStaff" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="staffName" Type="nvarchar" MaxLength="30" />
+          <Property Name="account" Type="varchar" MaxLength="30" />
+          <Property Name="idCard" Type="varchar" MaxLength="12" />
+          <Property Name="phone" Type="varchar" MaxLength="11" />
+          <Property Name="adress" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Storage">
+          <Key>
+            <PropertyRef Name="IdStorage" />
+          </Key>
+          <Property Name="IdStorage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HouseNumber_Street" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ward_Commune" Type="nvarchar" MaxLength="50" />
+          <Property Name="District" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Distributor" Type="int" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="idUnit" />
+          </Key>
+          <Property Name="idUnit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="unitName" Type="nvarchar" MaxLength="30" />
+          <Property Name="quantity" Type="int" />
+        </EntityType>
+        <Association Name="FK_Assignment_PDistributor">
+          <End Role="PotentialDistributor" Type="Self.PotentialDistributor" Multiplicity="1" />
+          <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PotentialDistributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="PDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Assignment_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BatchDetail_Batch">
+          <End Role="Batch" Type="Self.Batch" Multiplicity="1" />
+          <End Role="BatchDetail" Type="Self.BatchDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="IdBatch" />
+            </Principal>
+            <Dependent Role="BatchDetail">
+              <PropertyRef Name="IdBatch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BatchDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="BatchDetail" Type="Self.BatchDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="BatchDetail">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bill_DeliveryOrder">
+          <End Role="DeliveryOrder" Type="Self.DeliveryOrder" Multiplicity="0..1" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryOrder">
+              <PropertyRef Name="idDeliveryOrder" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="idDeliveryOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bill_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="idDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bill_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consignee_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="Consignee" Type="Self.Consignee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="Consignee">
+              <PropertyRef Name="idDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consignee_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Consignee" Type="Self.Consignee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="idOrder" />
+            </Principal>
+            <Dependent Role="Consignee">
+              <PropertyRef Name="idOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Debt_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="Debt" Type="Self.Debt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="Debt">
+              <PropertyRef Name="idDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Debt_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Debt" Type="Self.Debt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Debt">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryOrder_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="DeliveryOrder" Type="Self.DeliveryOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="DeliveryOrder">
+              <PropertyRef Name="idDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryOrder_Oder">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="DeliveryOrder" Type="Self.DeliveryOrder" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="idOrder" />
+            </Principal>
+            <Dependent Role="DeliveryOrder">
+              <PropertyRef Name="idDeliveryOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryOrder_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="DeliveryOrder" Type="Self.DeliveryOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="DeliveryOrder">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailedDeliveryOrder_DeliveryOrder">
+          <End Role="DeliveryOrder" Type="Self.DeliveryOrder" Multiplicity="1" />
+          <End Role="DetailedDeliveryOrder" Type="Self.DetailedDeliveryOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryOrder">
+              <PropertyRef Name="idDeliveryOrder" />
+            </Principal>
+            <Dependent Role="DetailedDeliveryOrder">
+              <PropertyRef Name="idDeliveryOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailedDeliveryOrder_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="DetailedDeliveryOrder" Type="Self.DetailedDeliveryOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="DetailedDeliveryOrder">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DoiTac_NDD">
+          <End Role="Representative" Type="Self.Representative" Multiplicity="0..1" />
+          <End Role="PotentialDistributor" Type="Self.PotentialDistributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Representative">
+              <PropertyRef Name="idRepresentative" />
+            </Principal>
+            <Dependent Role="PotentialDistributor">
+              <PropertyRef Name="idRep" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HopDong_NDD">
+          <End Role="Representative" Type="Self.Representative" Multiplicity="0..1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Representative">
+              <PropertyRef Name="idRepresentative" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="representative" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HopDong_NhanVien">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HopDong_NhaPhanPhoi">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="distributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_OrderDetail_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Log_OrderDetail" Type="Self.Log_OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="idOrder" />
+            </Principal>
+            <Dependent Role="Log_OrderDetail">
+              <PropertyRef Name="idOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_OrderDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Log_OrderDetail" Type="Self.Log_OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="Log_OrderDetail">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_OrderDetail_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Log_OrderDetail" Type="Self.Log_OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Log_OrderDetail">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_NPP_Account' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_NPP_Account" />-->
+        <Association Name="FK_Order_Consignee">
+          <End Role="Consignee" Type="Self.Consignee" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consignee">
+              <PropertyRef Name="idConsignee" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="idConsignee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="idDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="idOrder" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="idOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaySlip_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="PaySlip" Type="Self.PaySlip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="PaySlip">
+              <PropertyRef Name="idDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaySlip_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="PaySlip" Type="Self.PaySlip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="PaySlip">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_ProductType">
+          <End Role="ProductType" Type="Self.ProductType" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductType">
+              <PropertyRef Name="idProductType" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="idUnit" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Unit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PromotionGifts_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="PromotionGifts" Type="Self.PromotionGifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="PromotionGifts">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PromotionGifts_Promotion">
+          <End Role="Promotion" Type="Self.Promotion" Multiplicity="1" />
+          <End Role="PromotionGifts" Type="Self.PromotionGifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promotion">
+              <PropertyRef Name="idPromotion" />
+            </Principal>
+            <Dependent Role="PromotionGifts">
+              <PropertyRef Name="idPromotion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PromotionProduct_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="PromotionProduct" Type="Self.PromotionProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="PromotionProduct">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PromotionProduct_Promotion">
+          <End Role="Promotion" Type="Self.Promotion" Multiplicity="1" />
+          <End Role="PromotionProduct" Type="Self.PromotionProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promotion">
+              <PropertyRef Name="idPromotion" />
+            </Principal>
+            <Dependent Role="PromotionProduct">
+              <PropertyRef Name="idPromotion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Representative_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="Representative" Type="Self.Representative" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="Representative">
+              <PropertyRef Name="Distributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Representative_PDistributor">
+          <End Role="PotentialDistributor" Type="Self.PotentialDistributor" Multiplicity="0..1" />
+          <End Role="Representative" Type="Self.Representative" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PotentialDistributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="Representative">
+              <PropertyRef Name="PDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnBase_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="ReturnBase" Type="Self.ReturnBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="ReturnBase">
+              <PropertyRef Name="idDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnBase_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="ReturnBase" Type="Self.ReturnBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="ReturnBase">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnBase_Storage">
+          <End Role="Storage" Type="Self.Storage" Multiplicity="0..1" />
+          <End Role="ReturnBase" Type="Self.ReturnBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="IdStorage" />
+            </Principal>
+            <Dependent Role="ReturnBase">
+              <PropertyRef Name="idStorage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ReturnDetail" Type="Self.ReturnDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="ReturnDetail">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnDetail_ReturnBase">
+          <End Role="ReturnBase" Type="Self.ReturnBase" Multiplicity="1" />
+          <End Role="ReturnDetail" Type="Self.ReturnDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReturnBase">
+              <PropertyRef Name="idReturn" />
+            </Principal>
+            <Dependent Role="ReturnDetail">
+              <PropertyRef Name="idReturn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnRequest_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="ReturnRequest" Type="Self.ReturnRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="ReturnRequest">
+              <PropertyRef Name="Distributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnRequest_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="ReturnRequest" Type="Self.ReturnRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="ReturnRequest">
+              <PropertyRef Name="Staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnRequest_Storage">
+          <End Role="Storage" Type="Self.Storage" Multiplicity="0..1" />
+          <End Role="ReturnRequest" Type="Self.ReturnRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="IdStorage" />
+            </Principal>
+            <Dependent Role="ReturnRequest">
+              <PropertyRef Name="Storage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnRequestDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ReturnRequestDetail" Type="Self.ReturnRequestDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="ReturnRequestDetail">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnRequestDetail_ReturnRequest">
+          <End Role="ReturnRequest" Type="Self.ReturnRequest" Multiplicity="1" />
+          <End Role="ReturnRequestDetail" Type="Self.ReturnRequestDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReturnRequest">
+              <PropertyRef Name="IdReturnRequest" />
+            </Principal>
+            <Dependent Role="ReturnRequestDetail">
+              <PropertyRef Name="IdReturnRequest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesReportDetail_ProductType">
+          <End Role="ProductType" Type="Self.ProductType" Multiplicity="1" />
+          <End Role="SalesReportDetail" Type="Self.SalesReportDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductType">
+              <PropertyRef Name="idProductType" />
+            </Principal>
+            <Dependent Role="SalesReportDetail">
+              <PropertyRef Name="idProductType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesReportDetail_SalesReport">
+          <End Role="SalesReport" Type="Self.SalesReport" Multiplicity="1" />
+          <End Role="SalesReportDetail" Type="Self.SalesReportDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesReport">
+              <PropertyRef Name="idSalesReport" />
+            </Principal>
+            <Dependent Role="SalesReportDetail">
+              <PropertyRef Name="idSalesReport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_Staff_Account' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_Staff_Account" />-->
+        <Association Name="FK_Storage_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="Storage" Type="Self.Storage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="Storage">
+              <PropertyRef Name="Distributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QL_NPPModel1StoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Assignment" EntityType="Self.Assignment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Batch" EntityType="Self.Batch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BatchDetail" EntityType="Self.BatchDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Consignee" EntityType="Self.Consignee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contract" EntityType="Self.Contract" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Debt" EntityType="Self.Debt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeliveryOrder" EntityType="Self.DeliveryOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailedDeliveryOrder" EntityType="Self.DetailedDeliveryOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Distributor" EntityType="Self.Distributor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log_Login" EntityType="Self.Log_Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log_Order" EntityType="Self.Log_Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log_OrderDetail" EntityType="Self.Log_OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log_Product" EntityType="Self.Log_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaySlip" EntityType="Self.PaySlip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PotentialDistributor" EntityType="Self.PotentialDistributor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promotion" EntityType="Self.Promotion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PromotionGifts" EntityType="Self.PromotionGifts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PromotionProduct" EntityType="Self.PromotionProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Representative" EntityType="Self.Representative" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReturnBase" EntityType="Self.ReturnBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReturnDetail" EntityType="Self.ReturnDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReturnRequest" EntityType="Self.ReturnRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReturnRequestDetail" EntityType="Self.ReturnRequestDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesReport" EntityType="Self.SalesReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesReportDetail" EntityType="Self.SalesReportDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Storage" EntityType="Self.Storage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Assignment_PDistributor" Association="Self.FK_Assignment_PDistributor">
+            <End Role="PotentialDistributor" EntitySet="PotentialDistributor" />
+            <End Role="Assignment" EntitySet="Assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Assignment_Staff" Association="Self.FK_Assignment_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Assignment" EntitySet="Assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BatchDetail_Batch" Association="Self.FK_BatchDetail_Batch">
+            <End Role="Batch" EntitySet="Batch" />
+            <End Role="BatchDetail" EntitySet="BatchDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BatchDetail_Product" Association="Self.FK_BatchDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="BatchDetail" EntitySet="BatchDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bill_DeliveryOrder" Association="Self.FK_Bill_DeliveryOrder">
+            <End Role="DeliveryOrder" EntitySet="DeliveryOrder" />
+            <End Role="Bill" EntitySet="Bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bill_Distributor" Association="Self.FK_Bill_Distributor">
+            <End Role="Distributor" EntitySet="Distributor" />
+            <End Role="Bill" EntitySet="Bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bill_Staff" Association="Self.FK_Bill_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Bill" EntitySet="Bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consignee_Distributor" Association="Self.FK_Consignee_Distributor">
+            <End Role="Distributor" EntitySet="Distributor" />
+            <End Role="Consignee" EntitySet="Consignee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consignee_Order" Association="Self.FK_Consignee_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Consignee" EntitySet="Consignee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Debt_Distributor" Association="Self.FK_Debt_Distributor">
+            <End Role="Distributor" EntitySet="Distributor" />
+            <End Role="Debt" EntitySet="Debt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Debt_Staff" Association="Self.FK_Debt_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Debt" EntitySet="Debt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryOrder_Distributor" Association="Self.FK_DeliveryOrder_Distributor">
+            <End Role="Distributor" EntitySet="Distributor" />
+            <End Role="DeliveryOrder" EntitySet="DeliveryOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryOrder_Oder" Association="Self.FK_DeliveryOrder_Oder">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="DeliveryOrder" EntitySet="DeliveryOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryOrder_Staff" Association="Self.FK_DeliveryOrder_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="DeliveryOrder" EntitySet="DeliveryOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailedDeliveryOrder_DeliveryOrder" Association="Self.FK_DetailedDeliveryOrder_DeliveryOrder">
+            <End Role="DeliveryOrder" EntitySet="DeliveryOrder" />
+            <End Role="DetailedDeliveryOrder" EntitySet="DetailedDeliveryOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailedDeliveryOrder_Product" Association="Self.FK_DetailedDeliveryOrder_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="DetailedDeliveryOrder" EntitySet="DetailedDeliveryOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DoiTac_NDD" Association="Self.FK_DoiTac_NDD">
+            <End Role="Representative" EntitySet="Representative" />
+            <End Role="PotentialDistributor" EntitySet="PotentialDistributor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HopDong_NDD" Association="Self.FK_HopDong_NDD">
+            <End Role="Representative" EntitySet="Representative" />
+            <End Role="Contract" EntitySet="Contract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HopDong_NhanVien" Association="Self.FK_HopDong_NhanVien">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Contract" EntitySet="Contract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HopDong_NhaPhanPhoi" Association="Self.FK_HopDong_NhaPhanPhoi">
+            <End Role="Distributor" EntitySet="Distributor" />
+            <End Role="Contract" EntitySet="Contract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_OrderDetail_Order" Association="Self.FK_Log_OrderDetail_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Log_OrderDetail" EntitySet="Log_OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_OrderDetail_Product" Association="Self.FK_Log_OrderDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Log_OrderDetail" EntitySet="Log_OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_OrderDetail_Staff" Association="Self.FK_Log_OrderDetail_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Log_OrderDetail" EntitySet="Log_OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Consignee" Association="Self.FK_Order_Consignee">
+            <End Role="Consignee" EntitySet="Consignee" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Distributor" Association="Self.FK_Order_Distributor">
+            <End Role="Distributor" EntitySet="Distributor" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Staff" Association="Self.FK_Order_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Product" Association="Self.FK_OrderDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaySlip_Distributor" Association="Self.FK_PaySlip_Distributor">
+            <End Role="Distributor" EntitySet="Distributor" />
+            <End Role="PaySlip" EntitySet="PaySlip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaySlip_Staff" Association="Self.FK_PaySlip_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="PaySlip" EntitySet="PaySlip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ProductType" Association="Self.FK_Product_ProductType">
+            <End Role="ProductType" EntitySet="ProductType" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Unit" Association="Self.FK_Product_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PromotionGifts_Product" Association="Self.FK_PromotionGifts_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="PromotionGifts" EntitySet="PromotionGifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PromotionGifts_Promotion" Association="Self.FK_PromotionGifts_Promotion">
+            <End Role="Promotion" EntitySet="Promotion" />
+            <End Role="PromotionGifts" EntitySet="PromotionGifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PromotionProduct_Product" Association="Self.FK_PromotionProduct_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="PromotionProduct" EntitySet="PromotionProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PromotionProduct_Promotion" Association="Self.FK_PromotionProduct_Promotion">
+            <End Role="Promotion" EntitySet="Promotion" />
+            <End Role="PromotionProduct" EntitySet="PromotionProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Representative_Distributor" Association="Self.FK_Representative_Distributor">
+            <End Role="Distributor" EntitySet="Distributor" />
+            <End Role="Representative" EntitySet="Representative" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Representative_PDistributor" Association="Self.FK_Representative_PDistributor">
+            <End Role="PotentialDistributor" EntitySet="PotentialDistributor" />
+            <End Role="Representative" EntitySet="Representative" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnBase_Distributor" Association="Self.FK_ReturnBase_Distributor">
+            <End Role="Distributor" EntitySet="Distributor" />
+            <End Role="ReturnBase" EntitySet="ReturnBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnBase_Staff" Association="Self.FK_ReturnBase_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="ReturnBase" EntitySet="ReturnBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnBase_Storage" Association="Self.FK_ReturnBase_Storage">
+            <End Role="Storage" EntitySet="Storage" />
+            <End Role="ReturnBase" EntitySet="ReturnBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnDetail_Product" Association="Self.FK_ReturnDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ReturnDetail" EntitySet="ReturnDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnDetail_ReturnBase" Association="Self.FK_ReturnDetail_ReturnBase">
+            <End Role="ReturnBase" EntitySet="ReturnBase" />
+            <End Role="ReturnDetail" EntitySet="ReturnDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnRequest_Distributor" Association="Self.FK_ReturnRequest_Distributor">
+            <End Role="Distributor" EntitySet="Distributor" />
+            <End Role="ReturnRequest" EntitySet="ReturnRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnRequest_Staff" Association="Self.FK_ReturnRequest_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="ReturnRequest" EntitySet="ReturnRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnRequest_Storage" Association="Self.FK_ReturnRequest_Storage">
+            <End Role="Storage" EntitySet="Storage" />
+            <End Role="ReturnRequest" EntitySet="ReturnRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnRequestDetail_Product" Association="Self.FK_ReturnRequestDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ReturnRequestDetail" EntitySet="ReturnRequestDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnRequestDetail_ReturnRequest" Association="Self.FK_ReturnRequestDetail_ReturnRequest">
+            <End Role="ReturnRequest" EntitySet="ReturnRequest" />
+            <End Role="ReturnRequestDetail" EntitySet="ReturnRequestDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesReportDetail_ProductType" Association="Self.FK_SalesReportDetail_ProductType">
+            <End Role="ProductType" EntitySet="ProductType" />
+            <End Role="SalesReportDetail" EntitySet="SalesReportDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesReportDetail_SalesReport" Association="Self.FK_SalesReportDetail_SalesReport">
+            <End Role="SalesReport" EntitySet="SalesReport" />
+            <End Role="SalesReportDetail" EntitySet="SalesReportDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Storage_Distributor" Association="Self.FK_Storage_Distributor">
+            <End Role="Distributor" EntitySet="Distributor" />
+            <End Role="Storage" EntitySet="Storage" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QL_NPPModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="activated" Type="Boolean" />
+          <Property Name="decentralization" Type="Byte" />
+          <Property Name="locked" Type="Boolean" />
+          <Property Name="dateCreate" Type="DateTime" Precision="3" />
+          <Property Name="dateUpdate" Type="DateTime" Precision="3" />
+          <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Assignment">
+          <Key>
+            <PropertyRef Name="staff" />
+            <PropertyRef Name="PDistributor" />
+          </Key>
+          <Property Name="staff" Type="Int32" Nullable="false" />
+          <Property Name="PDistributor" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="place" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="isComplete" Type="Boolean" />
+          <Property Name="result" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PotentialDistributor" Relationship="Self.FK_Assignment_PDistributor" FromRole="Assignment" ToRole="PotentialDistributor" />
+          <NavigationProperty Name="Staff1" Relationship="Self.FK_Assignment_Staff" FromRole="Assignment" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Batch">
+          <Key>
+            <PropertyRef Name="IdBatch" />
+          </Key>
+          <Property Name="IdBatch" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ManufacturedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BatchDetails" Relationship="Self.FK_BatchDetail_Batch" FromRole="Batch" ToRole="BatchDetail" />
+        </EntityType>
+        <EntityType Name="BatchDetail">
+          <Key>
+            <PropertyRef Name="IdBatch" />
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdBatch" Type="Int32" Nullable="false" />
+          <Property Name="IdProduct" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="ExipreDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Batch" Relationship="Self.FK_BatchDetail_Batch" FromRole="BatchDetail" ToRole="Batch" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_BatchDetail_Product" FromRole="BatchDetail" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="idBill" />
+          </Key>
+          <Property Name="idBill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="purchase" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="types" Type="Byte" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="idDeliveryOrder" Type="Int32" />
+          <Property Name="idStaff" Type="Int32" />
+          <Property Name="idDistributor" Type="Int32" />
+          <NavigationProperty Name="DeliveryOrder" Relationship="Self.FK_Bill_DeliveryOrder" FromRole="Bill" ToRole="DeliveryOrder" />
+          <NavigationProperty Name="Distributor" Relationship="Self.FK_Bill_Distributor" FromRole="Bill" ToRole="Distributor" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Bill_Staff" FromRole="Bill" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Consignee">
+          <Key>
+            <PropertyRef Name="idConsignee" />
+          </Key>
+          <Property Name="idConsignee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="idDistributor" Type="Int32" />
+          <Property Name="idOrder" Type="Int32" />
+          <NavigationProperty Name="Distributor" Relationship="Self.FK_Consignee_Distributor" FromRole="Consignee" ToRole="Distributor" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Consignee_Order" FromRole="Consignee" ToRole="Order" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Consignee" FromRole="Consignee" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Contract">
+          <Key>
+            <PropertyRef Name="idContract" />
+          </Key>
+          <Property Name="idContract" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="beginDate" Type="DateTime" Precision="3" />
+          <Property Name="expiredDate" Type="DateTime" Precision="3" />
+          <Property Name="minOrderTotalValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="maxDebt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="commission" Type="Byte" />
+          <Property Name="disType" Type="Boolean" />
+          <Property Name="area" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Boolean" />
+          <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="distributor" Type="Int32" />
+          <Property Name="representative" Type="Int32" />
+          <Property Name="staff" Type="Int32" />
+          <NavigationProperty Name="Representative1" Relationship="Self.FK_HopDong_NDD" FromRole="Contract" ToRole="Representative" />
+          <NavigationProperty Name="Staff1" Relationship="Self.FK_HopDong_NhanVien" FromRole="Contract" ToRole="Staff" />
+          <NavigationProperty Name="Distributor1" Relationship="Self.FK_HopDong_NhaPhanPhoi" FromRole="Contract" ToRole="Distributor" />
+        </EntityType>
+        <EntityType Name="Debt">
+          <Key>
+            <PropertyRef Name="idDebt" />
+          </Key>
+          <Property Name="idDebt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Purchase" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="idDistributor" Type="Int32" />
+          <Property Name="idStaff" Type="Int32" />
+          <NavigationProperty Name="Distributor" Relationship="Self.FK_Debt_Distributor" FromRole="Debt" ToRole="Distributor" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Debt_Staff" FromRole="Debt" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="DeliveryOrder">
+          <Key>
+            <PropertyRef Name="idDeliveryOrder" />
+          </Key>
+          <Property Name="idDeliveryOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="recipient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="deliveryAdd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="totalPurchase" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="deliveryDate" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Byte" />
+          <Property Name="updateDate" Type="DateTime" Precision="3" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="idOrder" Type="Int32" />
+          <Property Name="idStaff" Type="Int32" />
+          <Property Name="idDistributor" Type="Int32" />
+          <NavigationProperty Name="Bills" Relationship="Self.FK_Bill_DeliveryOrder" FromRole="DeliveryOrder" ToRole="Bill" />
+          <NavigationProperty Name="Distributor" Relationship="Self.FK_DeliveryOrder_Distributor" FromRole="DeliveryOrder" ToRole="Distributor" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_DeliveryOrder_Oder" FromRole="DeliveryOrder" ToRole="Order" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_DeliveryOrder_Staff" FromRole="DeliveryOrder" ToRole="Staff" />
+          <NavigationProperty Name="DetailedDeliveryOrders" Relationship="Self.FK_DetailedDeliveryOrder_DeliveryOrder" FromRole="DeliveryOrder" ToRole="DetailedDeliveryOrder" />
+        </EntityType>
+        <EntityType Name="DetailedDeliveryOrder">
+          <Key>
+            <PropertyRef Name="idDeliveryOrder" />
+            <PropertyRef Name="idProduct" />
+          </Key>
+          <Property Name="idDeliveryOrder" Type="Int32" Nullable="false" />
+          <Property Name="idProduct" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DeliveryOrder" Relationship="Self.FK_DetailedDeliveryOrder_DeliveryOrder" FromRole="DetailedDeliveryOrder" ToRole="DeliveryOrder" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_DetailedDeliveryOrder_Product" FromRole="DetailedDeliveryOrder" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Distributor">
+          <Key>
+            <PropertyRef Name="idDistributor" />
+          </Key>
+          <Property Name="idDistributor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="updatedDate" Type="DateTime" Precision="3" />
+          <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Boolean" />
+          <Property Name="UserName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Bills" Relationship="Self.FK_Bill_Distributor" FromRole="Distributor" ToRole="Bill" />
+          <NavigationProperty Name="Consignees" Relationship="Self.FK_Consignee_Distributor" FromRole="Distributor" ToRole="Consignee" />
+          <NavigationProperty Name="Contracts" Relationship="Self.FK_HopDong_NhaPhanPhoi" FromRole="Distributor" ToRole="Contract" />
+          <NavigationProperty Name="Debts" Relationship="Self.FK_Debt_Distributor" FromRole="Distributor" ToRole="Debt" />
+          <NavigationProperty Name="DeliveryOrders" Relationship="Self.FK_DeliveryOrder_Distributor" FromRole="Distributor" ToRole="DeliveryOrder" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Distributor" FromRole="Distributor" ToRole="Order" />
+          <NavigationProperty Name="PaySlips" Relationship="Self.FK_PaySlip_Distributor" FromRole="Distributor" ToRole="PaySlip" />
+          <NavigationProperty Name="Representatives" Relationship="Self.FK_Representative_Distributor" FromRole="Distributor" ToRole="Representative" />
+          <NavigationProperty Name="ReturnBases" Relationship="Self.FK_ReturnBase_Distributor" FromRole="Distributor" ToRole="ReturnBase" />
+          <NavigationProperty Name="ReturnRequests" Relationship="Self.FK_ReturnRequest_Distributor" FromRole="Distributor" ToRole="ReturnRequest" />
+          <NavigationProperty Name="Storages" Relationship="Self.FK_Storage_Distributor" FromRole="Distributor" ToRole="Storage" />
+        </EntityType>
+        <EntityType Name="Log_Login">
+          <Key>
+            <PropertyRef Name="idLog" />
+          </Key>
+          <Property Name="idLog" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idAccount" Type="Int32" />
+          <Property Name="at_time" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Log_Order">
+          <Key>
+            <PropertyRef Name="idLog" />
+          </Key>
+          <Property Name="idLog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="oldPrice" Type="Int32" />
+          <Property Name="newPrice" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Log_OrderDetail">
+          <Key>
+            <PropertyRef Name="idLog" />
+          </Key>
+          <Property Name="idLog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="oldQuantity" Type="Int32" />
+          <Property Name="newQuantity" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="idOrder" Type="Int32" />
+          <Property Name="idProduct" Type="Int32" />
+          <Property Name="idStaff" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Log_OrderDetail_Order" FromRole="Log_OrderDetail" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Log_OrderDetail_Product" FromRole="Log_OrderDetail" ToRole="Product" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Log_OrderDetail_Staff" FromRole="Log_OrderDetail" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Log_Product">
+          <Key>
+            <PropertyRef Name="idLog_Product" />
+          </Key>
+          <Property Name="idLog_Product" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="idStaff" Type="Int32" />
+          <Property Name="oldPrice" Type="Int32" />
+          <Property Name="newPrice" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="idOrder" />
+          </Key>
+          <Property Name="idOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DeliveryType" Type="Boolean" />
+          <Property Name="PaymentType" Type="Boolean" />
+          <Property Name="EstimateDateOfDelivery" Type="DateTime" Precision="3" />
+          <Property Name="Statuses" Type="Byte" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="idDistributor" Type="Int32" />
+          <Property Name="idConsignee" Type="Int32" />
+          <Property Name="idStaff" Type="Int32" />
+          <Property Name="Descriptions" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Consignees" Relationship="Self.FK_Consignee_Order" FromRole="Order" ToRole="Consignee" />
+          <NavigationProperty Name="Consignee" Relationship="Self.FK_Order_Consignee" FromRole="Order" ToRole="Consignee" />
+          <NavigationProperty Name="DeliveryOrder" Relationship="Self.FK_DeliveryOrder_Oder" FromRole="Order" ToRole="DeliveryOrder" />
+          <NavigationProperty Name="Distributor" Relationship="Self.FK_Order_Distributor" FromRole="Order" ToRole="Distributor" />
+          <NavigationProperty Name="Log_OrderDetail" Relationship="Self.FK_Log_OrderDetail_Order" FromRole="Order" ToRole="Log_OrderDetail" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Order_Staff" FromRole="Order" ToRole="Staff" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="idOrder" />
+            <PropertyRef Name="idProduct" />
+          </Key>
+          <Property Name="idOrder" Type="Int32" Nullable="false" />
+          <Property Name="idProduct" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetail_Order" FromRole="OrderDetail" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_OrderDetail_Product" FromRole="OrderDetail" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="PaySlip">
+          <Key>
+            <PropertyRef Name="idPaySlip" />
+          </Key>
+          <Property Name="idPaySlip" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AmountSpent" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SpendingReasons" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="idDistributor" Type="Int32" />
+          <Property Name="idStaff" Type="Int32" />
+          <NavigationProperty Name="Distributor" Relationship="Self.FK_PaySlip_Distributor" FromRole="PaySlip" ToRole="Distributor" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_PaySlip_Staff" FromRole="PaySlip" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="PotentialDistributor">
+          <Key>
+            <PropertyRef Name="idDistributor" />
+          </Key>
+          <Property Name="idDistributor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="updatedDate" Type="DateTime" Precision="3" />
+          <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Byte" />
+          <Property Name="idRep" Type="Int32" />
+          <NavigationProperty Name="Assignments" Relationship="Self.FK_Assignment_PDistributor" FromRole="PotentialDistributor" ToRole="Assignment" />
+          <NavigationProperty Name="Representative" Relationship="Self.FK_DoiTac_NDD" FromRole="PotentialDistributor" ToRole="Representative" />
+          <NavigationProperty Name="Representatives" Relationship="Self.FK_Representative_PDistributor" FromRole="PotentialDistributor" ToRole="Representative" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdProduct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IsDisabled" Type="Boolean" />
+          <Property Name="ProductType" Type="Int32" />
+          <Property Name="Unit" Type="Int32" />
+          <NavigationProperty Name="BatchDetails" Relationship="Self.FK_BatchDetail_Product" FromRole="Product" ToRole="BatchDetail" />
+          <NavigationProperty Name="DetailedDeliveryOrders" Relationship="Self.FK_DetailedDeliveryOrder_Product" FromRole="Product" ToRole="DetailedDeliveryOrder" />
+          <NavigationProperty Name="Log_OrderDetail" Relationship="Self.FK_Log_OrderDetail_Product" FromRole="Product" ToRole="Log_OrderDetail" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetail_Product" FromRole="Product" ToRole="OrderDetail" />
+          <NavigationProperty Name="ProductType1" Relationship="Self.FK_Product_ProductType" FromRole="Product" ToRole="ProductType" />
+          <NavigationProperty Name="Unit1" Relationship="Self.FK_Product_Unit" FromRole="Product" ToRole="Unit" />
+          <NavigationProperty Name="PromotionGifts" Relationship="Self.FK_PromotionGifts_Product" FromRole="Product" ToRole="PromotionGifts" />
+          <NavigationProperty Name="PromotionProducts" Relationship="Self.FK_PromotionProduct_Product" FromRole="Product" ToRole="PromotionProduct" />
+          <NavigationProperty Name="ReturnDetails" Relationship="Self.FK_ReturnDetail_Product" FromRole="Product" ToRole="ReturnDetail" />
+          <NavigationProperty Name="ReturnRequestDetails" Relationship="Self.FK_ReturnRequestDetail_Product" FromRole="Product" ToRole="ReturnRequestDetail" />
+        </EntityType>
+        <EntityType Name="ProductType">
+          <Key>
+            <PropertyRef Name="idProductType" />
+          </Key>
+          <Property Name="idProductType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_ProductType" FromRole="ProductType" ToRole="Product" />
+          <NavigationProperty Name="SalesReportDetails" Relationship="Self.FK_SalesReportDetail_ProductType" FromRole="ProductType" ToRole="SalesReportDetail" />
+        </EntityType>
+        <EntityType Name="Promotion">
+          <Key>
+            <PropertyRef Name="idPromotion" />
+          </Key>
+          <Property Name="idPromotion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="startDate" Type="DateTime" Precision="3" />
+          <Property Name="endDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PromotionGifts" Relationship="Self.FK_PromotionGifts_Promotion" FromRole="Promotion" ToRole="PromotionGifts" />
+          <NavigationProperty Name="PromotionProducts" Relationship="Self.FK_PromotionProduct_Promotion" FromRole="Promotion" ToRole="PromotionProduct" />
+        </EntityType>
+        <EntityType Name="PromotionGift">
+          <Key>
+            <PropertyRef Name="idPromotion" />
+            <PropertyRef Name="idProduct" />
+          </Key>
+          <Property Name="idPromotion" Type="Int32" Nullable="false" />
+          <Property Name="idProduct" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_PromotionGifts_Product" FromRole="PromotionGifts" ToRole="Product" />
+          <NavigationProperty Name="Promotion" Relationship="Self.FK_PromotionGifts_Promotion" FromRole="PromotionGifts" ToRole="Promotion" />
+        </EntityType>
+        <EntityType Name="PromotionProduct">
+          <Key>
+            <PropertyRef Name="idPromotion" />
+            <PropertyRef Name="idProduct" />
+          </Key>
+          <Property Name="idPromotion" Type="Int32" Nullable="false" />
+          <Property Name="idProduct" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_PromotionProduct_Product" FromRole="PromotionProduct" ToRole="Product" />
+          <NavigationProperty Name="Promotion" Relationship="Self.FK_PromotionProduct_Promotion" FromRole="PromotionProduct" ToRole="Promotion" />
+        </EntityType>
+        <EntityType Name="Representative">
+          <Key>
+            <PropertyRef Name="idRepresentative" />
+          </Key>
+          <Property Name="idRepresentative" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PDistributor" Type="Int32" />
+          <Property Name="Distributor" Type="Int32" />
+          <NavigationProperty Name="Contracts" Relationship="Self.FK_HopDong_NDD" FromRole="Representative" ToRole="Contract" />
+          <NavigationProperty Name="Distributor1" Relationship="Self.FK_Representative_Distributor" FromRole="Representative" ToRole="Distributor" />
+          <NavigationProperty Name="PotentialDistributors" Relationship="Self.FK_DoiTac_NDD" FromRole="Representative" ToRole="PotentialDistributor" />
+          <NavigationProperty Name="PotentialDistributor" Relationship="Self.FK_Representative_PDistributor" FromRole="Representative" ToRole="PotentialDistributor" />
+        </EntityType>
+        <EntityType Name="ReturnBase">
+          <Key>
+            <PropertyRef Name="idReturn" />
+          </Key>
+          <Property Name="idReturn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DateCreate" Type="DateTime" Precision="3" />
+          <Property Name="ModeOfReturn" Type="Boolean" />
+          <Property Name="idDistributor" Type="Int32" />
+          <Property Name="idStorage" Type="Int32" />
+          <Property Name="idStaff" Type="Int32" />
+          <NavigationProperty Name="Distributor" Relationship="Self.FK_ReturnBase_Distributor" FromRole="ReturnBase" ToRole="Distributor" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_ReturnBase_Staff" FromRole="ReturnBase" ToRole="Staff" />
+          <NavigationProperty Name="Storage" Relationship="Self.FK_ReturnBase_Storage" FromRole="ReturnBase" ToRole="Storage" />
+          <NavigationProperty Name="ReturnDetails" Relationship="Self.FK_ReturnDetail_ReturnBase" FromRole="ReturnBase" ToRole="ReturnDetail" />
+        </EntityType>
+        <EntityType Name="ReturnDetail">
+          <Key>
+            <PropertyRef Name="idReturn" />
+            <PropertyRef Name="idProduct" />
+          </Key>
+          <Property Name="idReturn" Type="Int32" Nullable="false" />
+          <Property Name="idProduct" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="ProductMoneyRefunding" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_ReturnDetail_Product" FromRole="ReturnDetail" ToRole="Product" />
+          <NavigationProperty Name="ReturnBase" Relationship="Self.FK_ReturnDetail_ReturnBase" FromRole="ReturnDetail" ToRole="ReturnBase" />
+        </EntityType>
+        <EntityType Name="ReturnRequest">
+          <Key>
+            <PropertyRef Name="IdReturnRequest" />
+          </Key>
+          <Property Name="IdReturnRequest" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateCreate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ModeOfReturn" Type="Boolean" />
+          <Property Name="Distributor" Type="Int32" />
+          <Property Name="Storage" Type="Int32" />
+          <Property Name="Staff" Type="Int32" />
+          <NavigationProperty Name="Distributor1" Relationship="Self.FK_ReturnRequest_Distributor" FromRole="ReturnRequest" ToRole="Distributor" />
+          <NavigationProperty Name="Staff1" Relationship="Self.FK_ReturnRequest_Staff" FromRole="ReturnRequest" ToRole="Staff" />
+          <NavigationProperty Name="Storage1" Relationship="Self.FK_ReturnRequest_Storage" FromRole="ReturnRequest" ToRole="Storage" />
+          <NavigationProperty Name="ReturnRequestDetails" Relationship="Self.FK_ReturnRequestDetail_ReturnRequest" FromRole="ReturnRequest" ToRole="ReturnRequestDetail" />
+        </EntityType>
+        <EntityType Name="ReturnRequestDetail">
+          <Key>
+            <PropertyRef Name="IdReturnRequest" />
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdReturnRequest" Type="Int32" Nullable="false" />
+          <Property Name="IdProduct" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_ReturnRequestDetail_Product" FromRole="ReturnRequestDetail" ToRole="Product" />
+          <NavigationProperty Name="ReturnRequest" Relationship="Self.FK_ReturnRequestDetail_ReturnRequest" FromRole="ReturnRequestDetail" ToRole="ReturnRequest" />
+        </EntityType>
+        <EntityType Name="SalesReport">
+          <Key>
+            <PropertyRef Name="idSalesReport" />
+          </Key>
+          <Property Name="idSalesReport" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="beginDate" Type="DateTime" Precision="3" />
+          <Property Name="endDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SalesReportDetails" Relationship="Self.FK_SalesReportDetail_SalesReport" FromRole="SalesReport" ToRole="SalesReportDetail" />
+        </EntityType>
+        <EntityType Name="SalesReportDetail">
+          <Key>
+            <PropertyRef Name="idSalesReport" />
+            <PropertyRef Name="idProductType" />
+          </Key>
+          <Property Name="idSalesReport" Type="Int32" Nullable="false" />
+          <Property Name="idProductType" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="quantity" Type="Int32" />
+          <NavigationProperty Name="ProductType" Relationship="Self.FK_SalesReportDetail_ProductType" FromRole="SalesReportDetail" ToRole="ProductType" />
+          <NavigationProperty Name="SalesReport" Relationship="Self.FK_SalesReportDetail_SalesReport" FromRole="SalesReportDetail" ToRole="SalesReport" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="idStaff" />
+          </Key>
+          <Property Name="idStaff" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="staffName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="account" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="idCard" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="adress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Assignments" Relationship="Self.FK_Assignment_Staff" FromRole="Staff" ToRole="Assignment" />
+          <NavigationProperty Name="Bills" Relationship="Self.FK_Bill_Staff" FromRole="Staff" ToRole="Bill" />
+          <NavigationProperty Name="Contracts" Relationship="Self.FK_HopDong_NhanVien" FromRole="Staff" ToRole="Contract" />
+          <NavigationProperty Name="Debts" Relationship="Self.FK_Debt_Staff" FromRole="Staff" ToRole="Debt" />
+          <NavigationProperty Name="DeliveryOrders" Relationship="Self.FK_DeliveryOrder_Staff" FromRole="Staff" ToRole="DeliveryOrder" />
+          <NavigationProperty Name="Log_OrderDetail" Relationship="Self.FK_Log_OrderDetail_Staff" FromRole="Staff" ToRole="Log_OrderDetail" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Staff" FromRole="Staff" ToRole="Order" />
+          <NavigationProperty Name="PaySlips" Relationship="Self.FK_PaySlip_Staff" FromRole="Staff" ToRole="PaySlip" />
+          <NavigationProperty Name="ReturnBases" Relationship="Self.FK_ReturnBase_Staff" FromRole="Staff" ToRole="ReturnBase" />
+          <NavigationProperty Name="ReturnRequests" Relationship="Self.FK_ReturnRequest_Staff" FromRole="Staff" ToRole="ReturnRequest" />
+        </EntityType>
+        <EntityType Name="Storage">
+          <Key>
+            <PropertyRef Name="IdStorage" />
+          </Key>
+          <Property Name="IdStorage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HouseNumber_Street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ward_Commune" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Distributor" Type="Int32" />
+          <NavigationProperty Name="Distributor1" Relationship="Self.FK_Storage_Distributor" FromRole="Storage" ToRole="Distributor" />
+          <NavigationProperty Name="ReturnBases" Relationship="Self.FK_ReturnBase_Storage" FromRole="Storage" ToRole="ReturnBase" />
+          <NavigationProperty Name="ReturnRequests" Relationship="Self.FK_ReturnRequest_Storage" FromRole="Storage" ToRole="ReturnRequest" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="idUnit" />
+          </Key>
+          <Property Name="idUnit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="unitName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="quantity" Type="Int32" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_Unit" FromRole="Unit" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Assignment_PDistributor">
+          <End Role="PotentialDistributor" Type="Self.PotentialDistributor" Multiplicity="1" />
+          <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PotentialDistributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="PDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Assignment_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BatchDetail_Batch">
+          <End Role="Batch" Type="Self.Batch" Multiplicity="1" />
+          <End Role="BatchDetail" Type="Self.BatchDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="IdBatch" />
+            </Principal>
+            <Dependent Role="BatchDetail">
+              <PropertyRef Name="IdBatch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BatchDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="BatchDetail" Type="Self.BatchDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="BatchDetail">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bill_DeliveryOrder">
+          <End Role="DeliveryOrder" Type="Self.DeliveryOrder" Multiplicity="0..1" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryOrder">
+              <PropertyRef Name="idDeliveryOrder" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="idDeliveryOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bill_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="idDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bill_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consignee_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="Consignee" Type="Self.Consignee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="Consignee">
+              <PropertyRef Name="idDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consignee_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Consignee" Type="Self.Consignee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="idOrder" />
+            </Principal>
+            <Dependent Role="Consignee">
+              <PropertyRef Name="idOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Consignee">
+          <End Role="Consignee" Type="Self.Consignee" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consignee">
+              <PropertyRef Name="idConsignee" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="idConsignee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HopDong_NDD">
+          <End Role="Representative" Type="Self.Representative" Multiplicity="0..1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Representative">
+              <PropertyRef Name="idRepresentative" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="representative" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HopDong_NhanVien">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HopDong_NhaPhanPhoi">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="distributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Debt_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="Debt" Type="Self.Debt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="Debt">
+              <PropertyRef Name="idDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Debt_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Debt" Type="Self.Debt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Debt">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryOrder_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="DeliveryOrder" Type="Self.DeliveryOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="DeliveryOrder">
+              <PropertyRef Name="idDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryOrder_Oder">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="DeliveryOrder" Type="Self.DeliveryOrder" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="idOrder" />
+            </Principal>
+            <Dependent Role="DeliveryOrder">
+              <PropertyRef Name="idDeliveryOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryOrder_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="DeliveryOrder" Type="Self.DeliveryOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="DeliveryOrder">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailedDeliveryOrder_DeliveryOrder">
+          <End Role="DeliveryOrder" Type="Self.DeliveryOrder" Multiplicity="1" />
+          <End Role="DetailedDeliveryOrder" Type="Self.DetailedDeliveryOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryOrder">
+              <PropertyRef Name="idDeliveryOrder" />
+            </Principal>
+            <Dependent Role="DetailedDeliveryOrder">
+              <PropertyRef Name="idDeliveryOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailedDeliveryOrder_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="DetailedDeliveryOrder" Type="Self.DetailedDeliveryOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="DetailedDeliveryOrder">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="idDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaySlip_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="PaySlip" Type="Self.PaySlip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="PaySlip">
+              <PropertyRef Name="idDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Representative_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="Representative" Type="Self.Representative" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="Representative">
+              <PropertyRef Name="Distributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnBase_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="ReturnBase" Type="Self.ReturnBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="ReturnBase">
+              <PropertyRef Name="idDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnRequest_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="ReturnRequest" Type="Self.ReturnRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="ReturnRequest">
+              <PropertyRef Name="Distributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Storage_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="Storage" Type="Self.Storage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="Storage">
+              <PropertyRef Name="Distributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_OrderDetail_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Log_OrderDetail" Type="Self.Log_OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="idOrder" />
+            </Principal>
+            <Dependent Role="Log_OrderDetail">
+              <PropertyRef Name="idOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_OrderDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Log_OrderDetail" Type="Self.Log_OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="Log_OrderDetail">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_OrderDetail_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Log_OrderDetail" Type="Self.Log_OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Log_OrderDetail">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="idOrder" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="idOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaySlip_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="PaySlip" Type="Self.PaySlip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="PaySlip">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DoiTac_NDD">
+          <End Role="Representative" Type="Self.Representative" Multiplicity="0..1" />
+          <End Role="PotentialDistributor" Type="Self.PotentialDistributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Representative">
+              <PropertyRef Name="idRepresentative" />
+            </Principal>
+            <Dependent Role="PotentialDistributor">
+              <PropertyRef Name="idRep" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Representative_PDistributor">
+          <End Role="PotentialDistributor" Type="Self.PotentialDistributor" Multiplicity="0..1" />
+          <End Role="Representative" Type="Self.Representative" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PotentialDistributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="Representative">
+              <PropertyRef Name="PDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_ProductType">
+          <End Role="ProductType" Type="Self.ProductType" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductType">
+              <PropertyRef Name="idProductType" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="idUnit" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Unit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PromotionGifts_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="PromotionGifts" Type="Self.PromotionGift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="PromotionGifts">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PromotionProduct_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="PromotionProduct" Type="Self.PromotionProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="PromotionProduct">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ReturnDetail" Type="Self.ReturnDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="ReturnDetail">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnRequestDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ReturnRequestDetail" Type="Self.ReturnRequestDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="ReturnRequestDetail">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesReportDetail_ProductType">
+          <End Role="ProductType" Type="Self.ProductType" Multiplicity="1" />
+          <End Role="SalesReportDetail" Type="Self.SalesReportDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductType">
+              <PropertyRef Name="idProductType" />
+            </Principal>
+            <Dependent Role="SalesReportDetail">
+              <PropertyRef Name="idProductType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PromotionGifts_Promotion">
+          <End Role="Promotion" Type="Self.Promotion" Multiplicity="1" />
+          <End Role="PromotionGifts" Type="Self.PromotionGift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promotion">
+              <PropertyRef Name="idPromotion" />
+            </Principal>
+            <Dependent Role="PromotionGifts">
+              <PropertyRef Name="idPromotion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PromotionProduct_Promotion">
+          <End Role="Promotion" Type="Self.Promotion" Multiplicity="1" />
+          <End Role="PromotionProduct" Type="Self.PromotionProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promotion">
+              <PropertyRef Name="idPromotion" />
+            </Principal>
+            <Dependent Role="PromotionProduct">
+              <PropertyRef Name="idPromotion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnBase_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="ReturnBase" Type="Self.ReturnBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="ReturnBase">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnBase_Storage">
+          <End Role="Storage" Type="Self.Storage" Multiplicity="0..1" />
+          <End Role="ReturnBase" Type="Self.ReturnBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="IdStorage" />
+            </Principal>
+            <Dependent Role="ReturnBase">
+              <PropertyRef Name="idStorage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnDetail_ReturnBase">
+          <End Role="ReturnBase" Type="Self.ReturnBase" Multiplicity="1" />
+          <End Role="ReturnDetail" Type="Self.ReturnDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReturnBase">
+              <PropertyRef Name="idReturn" />
+            </Principal>
+            <Dependent Role="ReturnDetail">
+              <PropertyRef Name="idReturn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnRequest_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="ReturnRequest" Type="Self.ReturnRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="ReturnRequest">
+              <PropertyRef Name="Staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnRequest_Storage">
+          <End Role="Storage" Type="Self.Storage" Multiplicity="0..1" />
+          <End Role="ReturnRequest" Type="Self.ReturnRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="IdStorage" />
+            </Principal>
+            <Dependent Role="ReturnRequest">
+              <PropertyRef Name="Storage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnRequestDetail_ReturnRequest">
+          <End Role="ReturnRequest" Type="Self.ReturnRequest" Multiplicity="1" />
+          <End Role="ReturnRequestDetail" Type="Self.ReturnRequestDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReturnRequest">
+              <PropertyRef Name="IdReturnRequest" />
+            </Principal>
+            <Dependent Role="ReturnRequestDetail">
+              <PropertyRef Name="IdReturnRequest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesReportDetail_SalesReport">
+          <End Role="SalesReport" Type="Self.SalesReport" Multiplicity="1" />
+          <End Role="SalesReportDetail" Type="Self.SalesReportDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesReport">
+              <PropertyRef Name="idSalesReport" />
+            </Principal>
+            <Dependent Role="SalesReportDetail">
+              <PropertyRef Name="idSalesReport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QL_NPPEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Assignments" EntityType="Self.Assignment" />
+          <EntitySet Name="Batches" EntityType="Self.Batch" />
+          <EntitySet Name="BatchDetails" EntityType="Self.BatchDetail" />
+          <EntitySet Name="Bills" EntityType="Self.Bill" />
+          <EntitySet Name="Consignees" EntityType="Self.Consignee" />
+          <EntitySet Name="Contracts" EntityType="Self.Contract" />
+          <EntitySet Name="Debts" EntityType="Self.Debt" />
+          <EntitySet Name="DeliveryOrders" EntityType="Self.DeliveryOrder" />
+          <EntitySet Name="DetailedDeliveryOrders" EntityType="Self.DetailedDeliveryOrder" />
+          <EntitySet Name="Distributors" EntityType="Self.Distributor" />
+          <EntitySet Name="Log_Login" EntityType="Self.Log_Login" />
+          <EntitySet Name="Log_Order" EntityType="Self.Log_Order" />
+          <EntitySet Name="Log_OrderDetail" EntityType="Self.Log_OrderDetail" />
+          <EntitySet Name="Log_Product" EntityType="Self.Log_Product" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="PaySlips" EntityType="Self.PaySlip" />
+          <EntitySet Name="PotentialDistributors" EntityType="Self.PotentialDistributor" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductTypes" EntityType="Self.ProductType" />
+          <EntitySet Name="Promotions" EntityType="Self.Promotion" />
+          <EntitySet Name="PromotionGifts" EntityType="Self.PromotionGift" />
+          <EntitySet Name="PromotionProducts" EntityType="Self.PromotionProduct" />
+          <EntitySet Name="Representatives" EntityType="Self.Representative" />
+          <EntitySet Name="ReturnBases" EntityType="Self.ReturnBase" />
+          <EntitySet Name="ReturnDetails" EntityType="Self.ReturnDetail" />
+          <EntitySet Name="ReturnRequests" EntityType="Self.ReturnRequest" />
+          <EntitySet Name="ReturnRequestDetails" EntityType="Self.ReturnRequestDetail" />
+          <EntitySet Name="SalesReports" EntityType="Self.SalesReport" />
+          <EntitySet Name="SalesReportDetails" EntityType="Self.SalesReportDetail" />
+          <EntitySet Name="Staffs" EntityType="Self.Staff" />
+          <EntitySet Name="Storages" EntityType="Self.Storage" />
+          <EntitySet Name="Units" EntityType="Self.Unit" />
+          <AssociationSet Name="FK_Assignment_PDistributor" Association="Self.FK_Assignment_PDistributor">
+            <End Role="PotentialDistributor" EntitySet="PotentialDistributors" />
+            <End Role="Assignment" EntitySet="Assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Assignment_Staff" Association="Self.FK_Assignment_Staff">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="Assignment" EntitySet="Assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BatchDetail_Batch" Association="Self.FK_BatchDetail_Batch">
+            <End Role="Batch" EntitySet="Batches" />
+            <End Role="BatchDetail" EntitySet="BatchDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BatchDetail_Product" Association="Self.FK_BatchDetail_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="BatchDetail" EntitySet="BatchDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bill_DeliveryOrder" Association="Self.FK_Bill_DeliveryOrder">
+            <End Role="DeliveryOrder" EntitySet="DeliveryOrders" />
+            <End Role="Bill" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bill_Distributor" Association="Self.FK_Bill_Distributor">
+            <End Role="Distributor" EntitySet="Distributors" />
+            <End Role="Bill" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bill_Staff" Association="Self.FK_Bill_Staff">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="Bill" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consignee_Distributor" Association="Self.FK_Consignee_Distributor">
+            <End Role="Distributor" EntitySet="Distributors" />
+            <End Role="Consignee" EntitySet="Consignees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consignee_Order" Association="Self.FK_Consignee_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Consignee" EntitySet="Consignees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Consignee" Association="Self.FK_Order_Consignee">
+            <End Role="Consignee" EntitySet="Consignees" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HopDong_NDD" Association="Self.FK_HopDong_NDD">
+            <End Role="Representative" EntitySet="Representatives" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HopDong_NhanVien" Association="Self.FK_HopDong_NhanVien">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HopDong_NhaPhanPhoi" Association="Self.FK_HopDong_NhaPhanPhoi">
+            <End Role="Distributor" EntitySet="Distributors" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Debt_Distributor" Association="Self.FK_Debt_Distributor">
+            <End Role="Distributor" EntitySet="Distributors" />
+            <End Role="Debt" EntitySet="Debts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Debt_Staff" Association="Self.FK_Debt_Staff">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="Debt" EntitySet="Debts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryOrder_Distributor" Association="Self.FK_DeliveryOrder_Distributor">
+            <End Role="Distributor" EntitySet="Distributors" />
+            <End Role="DeliveryOrder" EntitySet="DeliveryOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryOrder_Oder" Association="Self.FK_DeliveryOrder_Oder">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="DeliveryOrder" EntitySet="DeliveryOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryOrder_Staff" Association="Self.FK_DeliveryOrder_Staff">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="DeliveryOrder" EntitySet="DeliveryOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailedDeliveryOrder_DeliveryOrder" Association="Self.FK_DetailedDeliveryOrder_DeliveryOrder">
+            <End Role="DeliveryOrder" EntitySet="DeliveryOrders" />
+            <End Role="DetailedDeliveryOrder" EntitySet="DetailedDeliveryOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailedDeliveryOrder_Product" Association="Self.FK_DetailedDeliveryOrder_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="DetailedDeliveryOrder" EntitySet="DetailedDeliveryOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Distributor" Association="Self.FK_Order_Distributor">
+            <End Role="Distributor" EntitySet="Distributors" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaySlip_Distributor" Association="Self.FK_PaySlip_Distributor">
+            <End Role="Distributor" EntitySet="Distributors" />
+            <End Role="PaySlip" EntitySet="PaySlips" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Representative_Distributor" Association="Self.FK_Representative_Distributor">
+            <End Role="Distributor" EntitySet="Distributors" />
+            <End Role="Representative" EntitySet="Representatives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnBase_Distributor" Association="Self.FK_ReturnBase_Distributor">
+            <End Role="Distributor" EntitySet="Distributors" />
+            <End Role="ReturnBase" EntitySet="ReturnBases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnRequest_Distributor" Association="Self.FK_ReturnRequest_Distributor">
+            <End Role="Distributor" EntitySet="Distributors" />
+            <End Role="ReturnRequest" EntitySet="ReturnRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Storage_Distributor" Association="Self.FK_Storage_Distributor">
+            <End Role="Distributor" EntitySet="Distributors" />
+            <End Role="Storage" EntitySet="Storages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_OrderDetail_Order" Association="Self.FK_Log_OrderDetail_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Log_OrderDetail" EntitySet="Log_OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_OrderDetail_Product" Association="Self.FK_Log_OrderDetail_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Log_OrderDetail" EntitySet="Log_OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_OrderDetail_Staff" Association="Self.FK_Log_OrderDetail_Staff">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="Log_OrderDetail" EntitySet="Log_OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Staff" Association="Self.FK_Order_Staff">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Product" Association="Self.FK_OrderDetail_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaySlip_Staff" Association="Self.FK_PaySlip_Staff">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="PaySlip" EntitySet="PaySlips" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DoiTac_NDD" Association="Self.FK_DoiTac_NDD">
+            <End Role="Representative" EntitySet="Representatives" />
+            <End Role="PotentialDistributor" EntitySet="PotentialDistributors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Representative_PDistributor" Association="Self.FK_Representative_PDistributor">
+            <End Role="PotentialDistributor" EntitySet="PotentialDistributors" />
+            <End Role="Representative" EntitySet="Representatives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ProductType" Association="Self.FK_Product_ProductType">
+            <End Role="ProductType" EntitySet="ProductTypes" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Unit" Association="Self.FK_Product_Unit">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PromotionGifts_Product" Association="Self.FK_PromotionGifts_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="PromotionGifts" EntitySet="PromotionGifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PromotionProduct_Product" Association="Self.FK_PromotionProduct_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="PromotionProduct" EntitySet="PromotionProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnDetail_Product" Association="Self.FK_ReturnDetail_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ReturnDetail" EntitySet="ReturnDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnRequestDetail_Product" Association="Self.FK_ReturnRequestDetail_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ReturnRequestDetail" EntitySet="ReturnRequestDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesReportDetail_ProductType" Association="Self.FK_SalesReportDetail_ProductType">
+            <End Role="ProductType" EntitySet="ProductTypes" />
+            <End Role="SalesReportDetail" EntitySet="SalesReportDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PromotionGifts_Promotion" Association="Self.FK_PromotionGifts_Promotion">
+            <End Role="Promotion" EntitySet="Promotions" />
+            <End Role="PromotionGifts" EntitySet="PromotionGifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PromotionProduct_Promotion" Association="Self.FK_PromotionProduct_Promotion">
+            <End Role="Promotion" EntitySet="Promotions" />
+            <End Role="PromotionProduct" EntitySet="PromotionProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnBase_Staff" Association="Self.FK_ReturnBase_Staff">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="ReturnBase" EntitySet="ReturnBases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnBase_Storage" Association="Self.FK_ReturnBase_Storage">
+            <End Role="Storage" EntitySet="Storages" />
+            <End Role="ReturnBase" EntitySet="ReturnBases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnDetail_ReturnBase" Association="Self.FK_ReturnDetail_ReturnBase">
+            <End Role="ReturnBase" EntitySet="ReturnBases" />
+            <End Role="ReturnDetail" EntitySet="ReturnDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnRequest_Staff" Association="Self.FK_ReturnRequest_Staff">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="ReturnRequest" EntitySet="ReturnRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnRequest_Storage" Association="Self.FK_ReturnRequest_Storage">
+            <End Role="Storage" EntitySet="Storages" />
+            <End Role="ReturnRequest" EntitySet="ReturnRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnRequestDetail_ReturnRequest" Association="Self.FK_ReturnRequestDetail_ReturnRequest">
+            <End Role="ReturnRequest" EntitySet="ReturnRequests" />
+            <End Role="ReturnRequestDetail" EntitySet="ReturnRequestDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesReportDetail_SalesReport" Association="Self.FK_SalesReportDetail_SalesReport">
+            <End Role="SalesReport" EntitySet="SalesReports" />
+            <End Role="SalesReportDetail" EntitySet="SalesReportDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QL_NPPModel1StoreContainer" CdmEntityContainer="QL_NPPEntities1">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="activated" ColumnName="activated" />
+                <ScalarProperty Name="decentralization" ColumnName="decentralization" />
+                <ScalarProperty Name="locked" ColumnName="locked" />
+                <ScalarProperty Name="dateCreate" ColumnName="dateCreate" />
+                <ScalarProperty Name="dateUpdate" ColumnName="dateUpdate" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Assignments">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Assignment">
+              <MappingFragment StoreEntitySet="Assignment">
+                <ScalarProperty Name="staff" ColumnName="staff" />
+                <ScalarProperty Name="PDistributor" ColumnName="PDistributor" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="place" ColumnName="place" />
+                <ScalarProperty Name="isComplete" ColumnName="isComplete" />
+                <ScalarProperty Name="result" ColumnName="result" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Batches">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Batch">
+              <MappingFragment StoreEntitySet="Batch">
+                <ScalarProperty Name="IdBatch" ColumnName="IdBatch" />
+                <ScalarProperty Name="ManufacturedDate" ColumnName="ManufacturedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BatchDetails">
+            <EntityTypeMapping TypeName="QL_NPPModel1.BatchDetail">
+              <MappingFragment StoreEntitySet="BatchDetail">
+                <ScalarProperty Name="IdBatch" ColumnName="IdBatch" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ExipreDate" ColumnName="ExipreDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bills">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Bill">
+              <MappingFragment StoreEntitySet="Bill">
+                <ScalarProperty Name="idBill" ColumnName="idBill" />
+                <ScalarProperty Name="purchase" ColumnName="purchase" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="types" ColumnName="types" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="idDeliveryOrder" ColumnName="idDeliveryOrder" />
+                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
+                <ScalarProperty Name="idDistributor" ColumnName="idDistributor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Consignees">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Consignee">
+              <MappingFragment StoreEntitySet="Consignee">
+                <ScalarProperty Name="idConsignee" ColumnName="idConsignee" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="idDistributor" ColumnName="idDistributor" />
+                <ScalarProperty Name="idOrder" ColumnName="idOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contracts">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Contract">
+              <MappingFragment StoreEntitySet="Contract">
+                <ScalarProperty Name="idContract" ColumnName="idContract" />
+                <ScalarProperty Name="beginDate" ColumnName="beginDate" />
+                <ScalarProperty Name="expiredDate" ColumnName="expiredDate" />
+                <ScalarProperty Name="minOrderTotalValue" ColumnName="minOrderTotalValue" />
+                <ScalarProperty Name="maxDebt" ColumnName="maxDebt" />
+                <ScalarProperty Name="commission" ColumnName="commission" />
+                <ScalarProperty Name="disType" ColumnName="disType" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="distributor" ColumnName="distributor" />
+                <ScalarProperty Name="representative" ColumnName="representative" />
+                <ScalarProperty Name="staff" ColumnName="staff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Debts">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Debt">
+              <MappingFragment StoreEntitySet="Debt">
+                <ScalarProperty Name="idDebt" ColumnName="idDebt" />
+                <ScalarProperty Name="Purchase" ColumnName="Purchase" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="idDistributor" ColumnName="idDistributor" />
+                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliveryOrders">
+            <EntityTypeMapping TypeName="QL_NPPModel1.DeliveryOrder">
+              <MappingFragment StoreEntitySet="DeliveryOrder">
+                <ScalarProperty Name="idDeliveryOrder" ColumnName="idDeliveryOrder" />
+                <ScalarProperty Name="recipient" ColumnName="recipient" />
+                <ScalarProperty Name="deliveryAdd" ColumnName="deliveryAdd" />
+                <ScalarProperty Name="totalPurchase" ColumnName="totalPurchase" />
+                <ScalarProperty Name="deliveryDate" ColumnName="deliveryDate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="idOrder" ColumnName="idOrder" />
+                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
+                <ScalarProperty Name="idDistributor" ColumnName="idDistributor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailedDeliveryOrders">
+            <EntityTypeMapping TypeName="QL_NPPModel1.DetailedDeliveryOrder">
+              <MappingFragment StoreEntitySet="DetailedDeliveryOrder">
+                <ScalarProperty Name="idDeliveryOrder" ColumnName="idDeliveryOrder" />
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Distributors">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Distributor">
+              <MappingFragment StoreEntitySet="Distributor">
+                <ScalarProperty Name="idDistributor" ColumnName="idDistributor" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log_Login">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Log_Login">
+              <MappingFragment StoreEntitySet="Log_Login">
+                <ScalarProperty Name="idLog" ColumnName="idLog" />
+                <ScalarProperty Name="idAccount" ColumnName="idAccount" />
+                <ScalarProperty Name="at_time" ColumnName="at_time" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log_Order">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Log_Order">
+              <MappingFragment StoreEntitySet="Log_Order">
+                <ScalarProperty Name="idLog" ColumnName="idLog" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="oldPrice" ColumnName="oldPrice" />
+                <ScalarProperty Name="newPrice" ColumnName="newPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log_OrderDetail">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Log_OrderDetail">
+              <MappingFragment StoreEntitySet="Log_OrderDetail">
+                <ScalarProperty Name="idLog" ColumnName="idLog" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="oldQuantity" ColumnName="oldQuantity" />
+                <ScalarProperty Name="newQuantity" ColumnName="newQuantity" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="idOrder" ColumnName="idOrder" />
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log_Product">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Log_Product">
+              <MappingFragment StoreEntitySet="Log_Product">
+                <ScalarProperty Name="idLog_Product" ColumnName="idLog_Product" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
+                <ScalarProperty Name="oldPrice" ColumnName="oldPrice" />
+                <ScalarProperty Name="newPrice" ColumnName="newPrice" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="idOrder" ColumnName="idOrder" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="DeliveryType" ColumnName="DeliveryType" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="EstimateDateOfDelivery" ColumnName="EstimateDateOfDelivery" />
+                <ScalarProperty Name="Statuses" ColumnName="Statuses" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="idDistributor" ColumnName="idDistributor" />
+                <ScalarProperty Name="idConsignee" ColumnName="idConsignee" />
+                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
+                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="QL_NPPModel1.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="idOrder" ColumnName="idOrder" />
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaySlips">
+            <EntityTypeMapping TypeName="QL_NPPModel1.PaySlip">
+              <MappingFragment StoreEntitySet="PaySlip">
+                <ScalarProperty Name="idPaySlip" ColumnName="idPaySlip" />
+                <ScalarProperty Name="AmountSpent" ColumnName="AmountSpent" />
+                <ScalarProperty Name="SpendingReasons" ColumnName="SpendingReasons" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="idDistributor" ColumnName="idDistributor" />
+                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PotentialDistributors">
+            <EntityTypeMapping TypeName="QL_NPPModel1.PotentialDistributor">
+              <MappingFragment StoreEntitySet="PotentialDistributor">
+                <ScalarProperty Name="idDistributor" ColumnName="idDistributor" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="idRep" ColumnName="idRep" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductTypes">
+            <EntityTypeMapping TypeName="QL_NPPModel1.ProductType">
+              <MappingFragment StoreEntitySet="ProductType">
+                <ScalarProperty Name="idProductType" ColumnName="idProductType" />
+                <ScalarProperty Name="productTypeName" ColumnName="productTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promotions">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Promotion">
+              <MappingFragment StoreEntitySet="Promotion">
+                <ScalarProperty Name="idPromotion" ColumnName="idPromotion" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PromotionGifts">
+            <EntityTypeMapping TypeName="QL_NPPModel1.PromotionGift">
+              <MappingFragment StoreEntitySet="PromotionGifts">
+                <ScalarProperty Name="idPromotion" ColumnName="idPromotion" />
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PromotionProducts">
+            <EntityTypeMapping TypeName="QL_NPPModel1.PromotionProduct">
+              <MappingFragment StoreEntitySet="PromotionProduct">
+                <ScalarProperty Name="idPromotion" ColumnName="idPromotion" />
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Representatives">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Representative">
+              <MappingFragment StoreEntitySet="Representative">
+                <ScalarProperty Name="idRepresentative" ColumnName="idRepresentative" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="PDistributor" ColumnName="PDistributor" />
+                <ScalarProperty Name="Distributor" ColumnName="Distributor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReturnBases">
+            <EntityTypeMapping TypeName="QL_NPPModel1.ReturnBase">
+              <MappingFragment StoreEntitySet="ReturnBase">
+                <ScalarProperty Name="idReturn" ColumnName="idReturn" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="ModeOfReturn" ColumnName="ModeOfReturn" />
+                <ScalarProperty Name="idDistributor" ColumnName="idDistributor" />
+                <ScalarProperty Name="idStorage" ColumnName="idStorage" />
+                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReturnDetails">
+            <EntityTypeMapping TypeName="QL_NPPModel1.ReturnDetail">
+              <MappingFragment StoreEntitySet="ReturnDetail">
+                <ScalarProperty Name="idReturn" ColumnName="idReturn" />
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductMoneyRefunding" ColumnName="ProductMoneyRefunding" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReturnRequests">
+            <EntityTypeMapping TypeName="QL_NPPModel1.ReturnRequest">
+              <MappingFragment StoreEntitySet="ReturnRequest">
+                <ScalarProperty Name="IdReturnRequest" ColumnName="IdReturnRequest" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ModeOfReturn" ColumnName="ModeOfReturn" />
+                <ScalarProperty Name="Distributor" ColumnName="Distributor" />
+                <ScalarProperty Name="Storage" ColumnName="Storage" />
+                <ScalarProperty Name="Staff" ColumnName="Staff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReturnRequestDetails">
+            <EntityTypeMapping TypeName="QL_NPPModel1.ReturnRequestDetail">
+              <MappingFragment StoreEntitySet="ReturnRequestDetail">
+                <ScalarProperty Name="IdReturnRequest" ColumnName="IdReturnRequest" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesReports">
+            <EntityTypeMapping TypeName="QL_NPPModel1.SalesReport">
+              <MappingFragment StoreEntitySet="SalesReport">
+                <ScalarProperty Name="idSalesReport" ColumnName="idSalesReport" />
+                <ScalarProperty Name="beginDate" ColumnName="beginDate" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesReportDetails">
+            <EntityTypeMapping TypeName="QL_NPPModel1.SalesReportDetail">
+              <MappingFragment StoreEntitySet="SalesReportDetail">
+                <ScalarProperty Name="idSalesReport" ColumnName="idSalesReport" />
+                <ScalarProperty Name="idProductType" ColumnName="idProductType" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
+                <ScalarProperty Name="staffName" ColumnName="staffName" />
+                <ScalarProperty Name="account" ColumnName="account" />
+                <ScalarProperty Name="idCard" ColumnName="idCard" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="adress" ColumnName="adress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Storages">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Storage">
+              <MappingFragment StoreEntitySet="Storage">
+                <ScalarProperty Name="IdStorage" ColumnName="IdStorage" />
+                <ScalarProperty Name="HouseNumber_Street" ColumnName="HouseNumber_Street" />
+                <ScalarProperty Name="Ward_Commune" ColumnName="Ward_Commune" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Distributor" ColumnName="Distributor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Units">
+            <EntityTypeMapping TypeName="QL_NPPModel1.Unit">
+              <MappingFragment StoreEntitySet="Unit">
+                <ScalarProperty Name="idUnit" ColumnName="idUnit" />
+                <ScalarProperty Name="unitName" ColumnName="unitName" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

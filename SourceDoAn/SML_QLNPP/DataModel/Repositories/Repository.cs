@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 namespace DataModel.Repositories
@@ -16,6 +17,11 @@ namespace DataModel.Repositories
         public void Add(TEntity entity)
         {
             _context.Set<TEntity>().Add(entity);
+        }
+
+        public void Update(TEntity entity)
+        {
+            _context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
         }
 
         public void Attach(TEntity entity)
@@ -33,13 +39,13 @@ namespace DataModel.Repositories
             return _context.Set<TEntity>().FirstOrDefault(predicate);
         }
 
-        public IEnumerable<TEntity> GetAll(Func<TEntity, bool> predicate = null)
+        public IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> predicate = null)
         {
             if (predicate != null)
             {
-                return _context.Set<TEntity>().Where(predicate);
+                return _context.Set<TEntity>().Where<TEntity>(predicate);
             }
-            return _context.Set<TEntity>().AsEnumerable<TEntity>();
+            return _context.Set<TEntity>().AsQueryable();
         }
     }
 }
