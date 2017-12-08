@@ -22,9 +22,10 @@ namespace SML_QLNPP.Controllers
         }
 
         // GET: Distributor
-        public ActionResult Distributor(DistributorViewModel model)
+        public ActionResult Distributor()
         {
             logger.Info("Start controller....");
+            DistributorViewModel model = new DistributorViewModel();
             model.listDis = service.GetAll();
             //if (model.listDis == null )
             return View(model);

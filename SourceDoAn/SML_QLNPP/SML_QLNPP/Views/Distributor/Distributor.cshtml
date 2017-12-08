@@ -1,47 +1,70 @@
-﻿@model IEnumerable<DataService.Dtos.DistributorList>
-
+﻿@model SML_QLNPP.Models.DistributorViewModel
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+@section css{
+    <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/datatables.min.css" rel="stylesheet" type="text/css" media="all" />
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Distributor</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Dis_Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Area)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dis_Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Area)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-    }
-    
-    </table>
-</body>
-</html>
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
+}
+
+<div class="container-fluid">
+    <div class="row">
+        @Html.Partial("~/Views/Shared/_SidebarAdmin.cshtml")
+        <div class="col-sm-10 col-md-10">
+            <div class="well">
+                <div class="row">
+                    @using (Html.BeginForm())
+                    {
+                        <label>Tìm kiếm</label>
+                        @Html.EditorFor(model => model.id);
+                        <div class="col-md-2">
+                            <br />
+                            <button class="btn btn-default" id="search">Tìm kiếm kết quả</button>
+                        </div>
+                    }
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" placeholder="Nhập từ khoá" id="keyword">
+                    </div>
+                    
+                </div>
+                <div class="row mgt">
+                    <div class="col-md-12">
+                        <h2>Danh sách nhà phân phối</h2>
+                        <table id="order-list" class="cell-border" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Mã nhà phân phối</th>
+                                    <th>Tên công ty</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Khu vực</th>
+                                    <th>Độc quyền</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Mã nhà phân phối</th>
+                                    <th>Tên công ty</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Khu vực</th>
+                                    <th>Độc quyền</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </tfoot>
+                            <tbody id="result"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
