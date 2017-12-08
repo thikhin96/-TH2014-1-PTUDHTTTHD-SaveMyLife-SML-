@@ -1,7 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 @section css{
     <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/DeliveryOrder/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
@@ -13,6 +12,9 @@
     <script type="text/javascript" src="~/Scripts/DeliveryOrder/datatables.min.js"></script>
     <script type="text/javascript" src="~/Scripts/DeliveryOrder/deliveryorder.js"></script>
 }
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <div class="container-fluid">
     <div class="row">
         @Html.Partial("~/Views/Shared/_SidebarAdmin.cshtml")
@@ -26,17 +28,17 @@
                     <div class="col-md-2">
                         <label>Trạng thái</label>
                         <select class="form-control" id="status">
-							<option value="0">Tất cả</option>
+                            <option value="0">Tất cả</option>
                             <option value="1">Đang giao</option>
                             <option value="2">Đã giao</option>
-                            <option value="3">Kiểm kê thiếu</option>
+                            <option value="3">Kiểm kê thiếu hàng</option>
                             <option value="4">Bị từ chối giao</option>
-							<option value="5">Chưa kiểm kê</option>
+                            <option value="5">Chưa kiểm kê</option>
                         </select>
                     </div>
-					    <div class="col-md-2">
-                        <label>Ngày giao (năm/tháng/ngày)</label>
-                        <input type="text" class="form-control" id="delivery_date">
+                    <div class="col-md-2">
+                        <label>Ngày giao (ngày/tháng/năm)</label>
+                        <input type="date" class="form-control" id="delivery_date" value="">
                     </div>
                     <div class="col-md-2">
                         <br />
@@ -45,7 +47,7 @@
                 </div>
                 <div class="row mgt">
                     <div class="col-md-12">
-                        <h2>Danh sách đơn giao hàng</h2> 
+                        <h2>Danh sách đơn giao hàng</h2>
                         <table id="dorder-list" class="cell-border" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
@@ -70,7 +72,33 @@
                                 </tr>
                             </tfoot>
                             <tbody id="result">
-                                
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.idDeliveryOrder
+                                        <td>
+                                            @item.idOrder
+                                        </td>
+                                        <td>
+                                            @item.Order.idDistributor
+                                        </td>
+                                        <td>
+                                            @string.Format("{0:0,0}", @item.totalPurchase)
+                                        </td>
+                                        <td>
+                                            @(item.status == 1 ? "Đang giao" : item.status == 2 ? "Đã giao" : item.status == 3 ? "Kiểm kê thiếu hàng" : item.status == 4 ? "Bị từ chối giao" : item.status == 5 ? "Chưa kiểm kê" :"")
+
+                                        </td>
+                                        <td>
+                                            @Convert.ToDateTime(@item.deliveryDate).ToString("dd/MM/yyyy")
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Chi Tiết", "Details", new { id = item.idDeliveryOrder }) |
+                                            @Html.ActionLink("Sữa", "Edit", new { id = item.idDeliveryOrder })  
+                                        </td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>

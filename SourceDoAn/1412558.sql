@@ -14,34 +14,6 @@ insert into Account values('taikhoan3','123456789',1,1,0,GetDate(),getdate(),nul
 insert into Account values('taikhoan4','123456789',1,0,0,GetDate(),getdate(),null);
 insert into Account values('taikhoan5','123456789',0,1,0,GetDate(),getdate(),null);
 
-insert into BaoCaoDoanhThu(NgayBatDau, NgayKetThuc) values('2010/01/01', '2010/01/31');
-insert into BaoCaoDoanhThu(NgayBatDau, NgayKetThuc) values('2010/02/01', '2010/02/28');
-insert into BaoCaoDoanhThu(NgayBatDau, NgayKetThuc) values('2010/03/01', '2010/03/31');
-insert into BaoCaoDoanhThu(NgayBatDau, NgayKetThuc) values('2010/04/01', '2010/04/30');
-insert into BaoCaoDoanhThu(NgayBatDau, NgayKetThuc) values('2010/05/01', '2010/05/31');
-insert into BaoCaoDoanhThu(NgayBatDau, NgayKetThuc) values('2010/06/01', '2010/06/30');
-insert into BaoCaoDoanhThu(NgayBatDau, NgayKetThuc) values('2010/07/01', '2010/07/31');
-insert into BaoCaoDoanhThu(NgayBatDau, NgayKetThuc) values('2010/08/01', '2010/08/31');
-insert into BaoCaoDoanhThu(NgayBatDau, NgayKetThuc) values('2010/09/01', '2010/09/30');
-insert into BaoCaoDoanhThu(NgayBatDau, NgayKetThuc) values('2010/10/01', '2010/09/31');
-
-insert into CT_DoanhThu(ID_BaoCaoDoanhThu, ID_LoaiSP, DonGiaBan, SoLuong) values (1,1,100000,10);
-insert into CT_DoanhThu(ID_BaoCaoDoanhThu, ID_LoaiSP, DonGiaBan, SoLuong) values (1,2,110000,10);
-insert into CT_DoanhThu(ID_BaoCaoDoanhThu, ID_LoaiSP, DonGiaBan, SoLuong) values (1,3,120000,10);
-insert into CT_DoanhThu(ID_BaoCaoDoanhThu, ID_LoaiSP, DonGiaBan, SoLuong) values (1,4,121000,12);
-insert into CT_DoanhThu(ID_BaoCaoDoanhThu, ID_LoaiSP, DonGiaBan, SoLuong) values (1,5,242000,11);
-insert into CT_DoanhThu(ID_BaoCaoDoanhThu, ID_LoaiSP, DonGiaBan, SoLuong) values (2,1,212000,10);
-insert into CT_DoanhThu(ID_BaoCaoDoanhThu, ID_LoaiSP, DonGiaBan, SoLuong) values (2,2,162000,10);
-insert into CT_DoanhThu(ID_BaoCaoDoanhThu, ID_LoaiSP, DonGiaBan, SoLuong) values (3,3,312000,21);
-insert into CT_DoanhThu(ID_BaoCaoDoanhThu, ID_LoaiSP, DonGiaBan, SoLuong) values (3,4,212000,20);
-insert into CT_DoanhThu(ID_BaoCaoDoanhThu, ID_LoaiSP, DonGiaBan, SoLuong) values (4,5,162000,11);
-insert into CT_DoanhThu(ID_BaoCaoDoanhThu, ID_LoaiSP, DonGiaBan, SoLuong) values (5,1,312000,10);
-insert into CT_DoanhThu(ID_BaoCaoDoanhThu, ID_LoaiSP, DonGiaBan, SoLuong) values (6,2,162000,11);
-insert into CT_DoanhThu(ID_BaoCaoDoanhThu, ID_LoaiSP, DonGiaBan, SoLuong) values (6,3,312000,10);
-insert into CT_DoanhThu(ID_BaoCaoDoanhThu, ID_LoaiSP, DonGiaBan, SoLuong) values (7,4,162000,11);
-insert into CT_DoanhThu(ID_BaoCaoDoanhThu, ID_LoaiSP, DonGiaBan, SoLuong) values (8,5,312000,10);
-insert into CT_DoanhThu(ID_BaoCaoDoanhThu, ID_LoaiSP, DonGiaBan, SoLuong) values (9,1,162000,11);
-insert into CT_DoanhThu(ID_BaoCaoDoanhThu, ID_LoaiSP, DonGiaBan, SoLuong) values (9,2,312000,10);
 
 
 insert into DonGiaoHang(NguoiNhan, DiaChiGiao, TongTien, NgayGiao, TinhTrang, NgayCapNhat, GhiChu, ID_DonDatHang, ID_NhanVien, ID_NPP)
