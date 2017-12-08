@@ -9,6 +9,7 @@ namespace DataService.Interfaces
 {
     public interface IProductService
     {
+        List<Product> GetAllProducts();
         Product GetProduct(int idp);
         List<Product> Search(string keyWord);
     }

@@ -14,11 +14,20 @@ namespace DataService.Services
     public class OrderService : IOrderService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IRepository<Order> _orderRepository;
+        private readonly IRepository<Distributor> _distributorRepository;
+        private readonly IRepository<Consignee> _consigneeRepository;
+        private readonly IRepository<OrderDetail> _orderDetailRepository;
+        private readonly IDistributorService _distributorService;
         ILogger logger = LogManager.GetCurrentClassLogger();
-        public OrderService(IUnitOfWork unitOfWork)
+        public OrderService(IUnitOfWork unitOfWork, IDistributorService distributorService)
         {
-            //_promotionRepository = unitOfWork.Repository<Promotion>();
+            _orderRepository = unitOfWork.Repository<Order>();
+            _distributorRepository = unitOfWork.Repository<Distributor>();
+            _consigneeRepository = unitOfWork.Repository<Consignee>();
+            _orderDetailRepository = unitOfWork.Repository<OrderDetail>();
             _unitOfWork = unitOfWork;
+            _distributorService = distributorService;
         }
         public int AddOrder(Order order)
         {
@@ -80,6 +89,52 @@ namespace DataService.Services
             IRepository<Order> repository = _unitOfWork.Repository<Order>();
             var result = repository.Get(a => a.idOrder == id);
             return result != null ? result : null;
+        }
+
+        public int GenerateOrderId()
+        {
+            var latestOrder = _orderRepository.GetAll().OrderByDescending(x => x.idOrder).FirstOrDefault();
+            if (latestOrder != null)
+                return latestOrder.idOrder + 1;
+            else
+                return 0;
+        }
+
+        public string CreateOrder(Order order, List<OrderDetail> orderDetails)
+        {
+            try
+            {
+                if (_distributorRepository.Get(x => x.idDistributor == order.idDistributor) != null)
+                {
+                    if (_distributorService.hasContract(order.idDistributor ?? 0))
+                    {
+                            _orderRepository.Add(order);
+                            _unitOfWork.SaveChange();
+                            var consignee = order.Consignee;
+                            consignee.idOrder = order.idOrder;
+                            _consigneeRepository.Update(consignee);
+                            if (orderDetails.Count != 0 || orderDetails != null)
+                                orderDetails.ForEach(x => _orderDetailRepository.Add(x));
+                            _unitOfWork.SaveChange();
+                    }
+                    else
+                    {
+                        return "Nhà phân phối hiện không có bất cứ hợp đồng nào";
+                    }
+                }
+                else
+                {
+                    return "Nhà phân phối không tồn tại";
+                }
+                return "thanh cong";
+            }
+            catch
+            {
+                return "Không thể tạo đơn đặt hàng";
+                throw;
+            }
+
+
         }
     }
 }
