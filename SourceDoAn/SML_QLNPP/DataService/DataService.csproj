@@ -69,6 +69,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -140,14 +141,24 @@
   <ItemGroup>
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Dtos\DistributorList.cs" />
     <Compile Include="Dtos\ProductWithQuantity.cs" />
     <Compile Include="Interfaces\IAccountService.cs" />
+
+    <Compile Include="Interfaces\IBillService.cs" />
+    <Compile Include="Interfaces\IDeliveryOrderService.cs" />
+    <Compile Include="Interfaces\IDetailedDeliveryOrderService.cs" />
+    <Compile Include="Interfaces\IDistributorBaseService.cs" />
     <Compile Include="Interfaces\IDistributorService.cs" />
     <Compile Include="Interfaces\IOrderService.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
     <Compile Include="Interfaces\IPromotionService.cs" />
     <Compile Include="ServiceModule.cs" />
     <Compile Include="Services\AccountService.cs" />
+
+    <Compile Include="Services\DeliveryOrderService.cs" />
+    <Compile Include="Services\DetailedDeliveryOrderService.cs" />
+    <Compile Include="Services\BillService.cs" />
     <Compile Include="Services\DistributorService.cs" />
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\ProductService.cs" />
