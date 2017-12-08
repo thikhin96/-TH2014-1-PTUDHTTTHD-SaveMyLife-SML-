@@ -7,7 +7,11 @@ CREATE TABLE Account
 	UserName varchar(30) unique,
 	Password varchar(30) check (len(Password) between 8 and 30),
 	activated bit,
+<<<<<<< HEAD
+	decentralization tinyint check (PhanQuyen in (1,2,3)),
+=======
 	decentralization tinyint check (decentralization in (1,2,3)),
+>>>>>>> remotes/origin/dev
 	locked bit,
 	dateCreate datetime,
 	dateUpdate datetime,
@@ -17,10 +21,17 @@ go
 
 CREATE TABLE Log_Login
 (
+<<<<<<< HEAD
+	ID_Log bigint identity primary key,
+	ID_Account int,
+	at_time datetime,
+	status bit
+=======
 	idLog bigint identity primary key,
 	idAccount int,
 	at_time datetime,
 	[status] bit
+>>>>>>> remotes/origin/dev
 )
 go
 
@@ -34,7 +45,11 @@ CREATE TABLE PotentialDistributor
 	createdDate datetime,
 	updatedDate datetime,
 	note nvarchar(max),
+<<<<<<< HEAD
+	status tinyint check(TinhTrang in (0,1,2,3,4)),
+=======
 	[status] tinyint check(status in (0,1,2,3,4)),
+>>>>>>> remotes/origin/dev
 	idRep int 
 )
 go
@@ -49,19 +64,31 @@ CREATE TABLE Distributor
 	createdDate datetime,
 	updatedDate datetime,
 	note nvarchar(max),
+<<<<<<< HEAD
+	status bool,
+=======
 	[status] bit,
+>>>>>>> remotes/origin/dev
 	UserName varchar(30)
 )
 go
 
+<<<<<<< HEAD
+CREATE TABLE Contract
+=======
 CREATE TABLE [Contract]
+>>>>>>> remotes/origin/dev
 (
 	idContract int identity (1,1) primary key,
 	beginDate datetime,
 	expiredDate datetime,
 	minOrderTotalValue money,
 	maxDebt money,
+<<<<<<< HEAD
+	commission tinyint check( TienHoaHong between 0 and 100),
+=======
 	commission tinyint check( commission between 0 and 100),
+>>>>>>> remotes/origin/dev
 	disType bit,
 	area nvarchar(30),
 	status bit,
@@ -376,7 +403,12 @@ create table Bill(
 );
 go
 
+<<<<<<< HEAD
+--------------------
+
+=======
 -------------------------------
+>>>>>>> remotes/origin/dev
 ALTER TABLE PotentialDistributor ADD 
 	CONSTRAINT FK_DoiTac_NDD FOREIGN KEY (idRep) REFERENCES Representative(idRepresentative)
 go
