@@ -17,7 +17,7 @@
     <AssemblyName>SML_QLNPP</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -260,6 +260,7 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DeliveryOrderController.cs" />
     <Compile Include="Controllers\DistributorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -310,9 +311,15 @@
     <Content Include="Content\Home\images\tick.png" />
     <Content Include="Content\Home\images\top-up.png" />
     <Content Include="Content\Home\style.css" />
+    <Content Include="Content\DeliveryOrder\datatables.min.css" />
+    <Content Include="Content\DeliveryOrder\detail.css" />
+    <Content Include="Content\DeliveryOrder\jquery-ui.min.css" />
     <Content Include="Content\Order\datatables.min.css" />
     <Content Include="Content\Order\detail.css" />
     <Content Include="Content\Order\jquery-ui.min.css" />
+    <Content Include="Scripts\DeliveryOrder\datatables.min.js" />
+    <Content Include="Scripts\DeliveryOrder\jquery-ui.min.js" />
+    <Content Include="Scripts\DeliveryOrder\deliveryorder.js" />
     <Content Include="Scripts\Order\order.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -362,6 +369,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\DeliveryOrder\List.cshtml" />
     <Content Include="Views\Distributor\Distributor.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config" />
@@ -384,9 +392,11 @@
     <Content Include="Views\Order\Detail.cshtml" />
     <Content Include="Views\Promotion\Detail.cshtml" />
     <Content Include="Views\Promotion\List.cshtml" />
+    <Content Include="Views\DeliveryOrder\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\DeliveryOrder\images\" />
     <Folder Include="Content\Promotion\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
@@ -426,7 +436,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>65422</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:65422/</IISUrl>
+          <IISUrl>http://localhost/SML_QLNPP</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

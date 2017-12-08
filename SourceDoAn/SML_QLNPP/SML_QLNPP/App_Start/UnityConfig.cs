@@ -50,6 +50,10 @@ namespace SML_QLNPP
             container.RegisterType<IOrderService, OrderService>();
             container.RegisterType<IDistributorService, DistributorService>();
 
+            container.RegisterType<IDeliveryOrderService, DeliveryOrderService>();
+            container.RegisterType<IDetailedDeliveryOrderService, DetailedDeliveryOrderService>();
+            container.RegisterType<IBillService, BillService>();
+
             ServiceModule.UnityRegister(container);
         }
     }
