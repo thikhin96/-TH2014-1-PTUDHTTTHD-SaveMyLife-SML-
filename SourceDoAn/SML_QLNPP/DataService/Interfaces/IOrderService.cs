@@ -13,5 +13,7 @@ namespace DataService.Interfaces
         int AddOrder(Order order);
         int UpdateOrder(Order order);
         Order GetOrder(int id);
+        int GenerateOrderId();
+        string CreateOrder(Order order, List<OrderDetail> orderDetails);
     }
 }
