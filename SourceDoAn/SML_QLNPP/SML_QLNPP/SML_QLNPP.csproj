@@ -287,6 +287,7 @@
     <Content Include="Content\Home\images\ab2.jpg" />
     <Content Include="Content\Home\images\back.png" />
     <Content Include="Content\Home\images\banner.jpg" />
+    <Content Include="Content\Home\images\btn_search.png" />
     <Content Include="Content\Home\images\close.png" />
     <Content Include="Content\Home\images\g1.jpg" />
     <Content Include="Content\Home\images\g2.jpg" />

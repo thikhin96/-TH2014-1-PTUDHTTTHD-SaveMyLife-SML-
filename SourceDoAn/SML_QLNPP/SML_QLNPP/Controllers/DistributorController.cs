@@ -27,7 +27,6 @@ namespace SML_QLNPP.Controllers
             logger.Info("Start controller....");
             DistributorViewModel model = new DistributorViewModel();
             model.listDis = service.GetAll();
-            //if (model.listDis == null )
             return View(model);
         }
     }
