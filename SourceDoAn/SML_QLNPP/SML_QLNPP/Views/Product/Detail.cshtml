@@ -1,0 +1,221 @@
+﻿@model SML_QLNPP.Models.ProductDetailViewModel
+@using Newtonsoft.Json;
+@{
+    //var success = ViewBag.success as string;
+    var successCreate = TempData["msg"] as string;
+    var fail = ViewBag.fail as string;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    List<SelectListItem> listTypes = new List<SelectListItem>();
+    //listTypes.Add(new SelectListItem { Text = "", Value = "", Selected = true });
+
+    List<SelectListItem> listUnits = new List<SelectListItem>();
+    //listUnits.Add(new SelectListItem { Text = "", Value = "", Selected = true });
+
+    List<SelectListItem> listStatus = new List<SelectListItem>();
+    if (Model.IsDisabled)
+    {
+        listStatus.Add(new SelectListItem { Text = "Còn bán", Value = "False" });
+        listStatus.Add(new SelectListItem { Text = "Ngừng", Value = "True", Selected = true});
+    }
+    else
+    {
+        listStatus.Add(new SelectListItem { Text = "Còn bán", Value = "False", Selected = true });
+        listStatus.Add(new SelectListItem { Text = "Ngừng", Value = "True"});
+    }
+
+}
+
+@foreach (var type in Model.ProductTypes)
+{
+    if (Model.ProductType == @type.idProductType){
+        listTypes.Add(new SelectListItem { Text = @type.productTypeName, Value = @type.idProductType.ToString(), Selected = true });
+    }
+    else{
+        listTypes.Add(new SelectListItem { Text = @type.productTypeName, Value = @type.idProductType.ToString() });
+    }
+
+}
+
+@foreach (var unit in Model.Units)
+{
+    if (Model.Unit == @unit.idUnit){
+        listUnits.Add(new SelectListItem { Text = @unit.unitName, Value = @unit.idUnit.ToString(), Selected = true });
+    }
+    else{
+        listUnits.Add(new SelectListItem { Text = @unit.unitName, Value = @unit.idUnit.ToString() });
+    }
+
+}
+
+@section css{
+    <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/detail.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/datatables.min.css" rel="stylesheet" type="text/css" media="all" />
+}
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+
+}
+
+<div class="container-fluid">
+    <div class="row">
+        @Html.Partial("~/Views/Shared/_SidebarAdmin.cshtml")
+        <div class="col-sm-10 col-md-10">
+            @if (fail != null)
+            {
+                <div class="alert alert-danger alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Thất bại!</strong> @fail
+                </div>
+            }
+            @if (successCreate != null)
+            {
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Thành công!</strong> @successCreate
+                </div>
+            }
+            <div class="well">
+                @using (Html.BeginForm("Detail", "Product", FormMethod.Post ))
+                {
+                    <div class="panel-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading"><b>Thông tin sản phẩm</b></div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-2 form-group">
+                                        <label>Mã sản phẩm </label>
+                                    </div>
+                                    <div class="col-md-8 form-group">
+                                        <label>@Model.IdProduct</label>
+                                        @Html.HiddenFor(m => m.IdProduct)
+                                    </div>
+                                    <div class="col-md-2 form-group">
+                                        <label>Tên sản phẩm </label>
+                                    </div>
+                                    <div class="col-md-8 form-group">
+                                        @Html.TextBoxFor(p => p.ProductName, new { @class = "form-control", @required = "required" })
+                                    </div>
+                                    <div class="col-md-2 form-group">
+                                        <label>Đơn giá (VNĐ)</label>
+                                    </div>
+                                    <div class="col-md-8 form-group">
+                                        @Html.TextBoxFor(pr => pr.Price, new { @class = "form-control", @type = "number", @min = "1", @required = "required" })
+                                    </div>
+                                    <div class="col-md-2 form-group">
+                                        <label>Loại sản phẩm </label>
+                                    </div>
+                                    <div class="col-md-8 form-group">
+                                        @Html.DropDownListFor(model => model.ProductType, listTypes, new { @class = "form-control", @required = "required" })
+                                    </div>
+                                    <div class="col-md-2 form-group">
+                                        <label>Đơn vị tính </label>
+                                    </div>
+                                    <div class="col-md-8 form-group">
+                                        @Html.DropDownListFor(model => model.Unit, listUnits, new { @class = "form-control", @required = "required" })
+                                    </div>
+                                    <div class="col-md-2 form-group">
+                                        <label>Tình trạng </label>
+                                    </div>
+                                    <div class="col-md-8 form-group">
+                                        @Html.DropDownListFor(model => model.IsDisabled, listStatus, new { @class = "form-control", @required = "required" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <input type="submit" style ="font-weight: bold; display: block; margin: 0 auto;" class="btn btn-info" value="Lưu thay đổi" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*@model DataModel.Product
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+    <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
+}
+@{ 
+    var success = TempData["msg"] as string;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        @Html.Partial("~/Views/Shared/_SidebarAdmin.cshtml")
+        @if (success != null)
+            {
+            <div class="alert alert-success alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Thành công!</strong> Tạo sản phẩm thành công!
+            </div>
+        }
+        <div class="col-sm-10 col-md-10">
+            <div class="well">
+                <div class="panel-group">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Thông tin sản phẩm</div></div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <br>
+                                <div class="col-md-2 form-group">
+                                    <label>Mã sản phẩm </label>
+                                </div>
+                                <div class="col-md-10 form-group">
+                                    <input type="text" style="width: 60%" value="@Model.IdProduct" readonly />
+                                </div>
+
+                                <div class="col-md-2 form-group">
+                                    <label>Tên sản phẩm </label>
+                                </div>
+                                <div class="col-md-10 form-group">
+                                    <input type="text" style="width: 60%" value="@Model.ProductName" readonly />
+                                </div>
+
+                                <div class="col-md-2 form-group">
+                                    <label>Loại sản phẩm </label>
+                                </div>
+                                <div class="col-md-10 form-group">
+                                    <input type="text" style="width: 60%" value="@Model.ProductType1.productTypeName" readonly />
+                                </div>
+                              
+                                <div class="col-md-2 form-group">
+                                    <label>Đơn giá (VNĐ)</label>
+                                </div>
+                                <div class="col-md-10 form-group">
+                                    <input type="text" style="width: 60%" value="@Math.Round(Convert.ToDecimal(@Model.Price.ToString()), 0)" readonly />
+                                </div>
+
+                                <div class="col-md-2 form-group">
+                                    <label>Đơn vị tính </label>
+                                </div>
+                                <div class="col-md-10 form-group">
+                                    <input type="text" style="width: 60%" value="@Model.Unit1.unitName" readonly />
+                                </div>
+
+                                <div class="col-md-2 form-group">
+                                    <label>Trạng thái </label>
+                                </div>
+                                <div class="col-md-10 form-group">
+                                    <input type="text" style="width: 60%" value="@(Model.IsDisabled == false ? "Còn bán" : "Ngừng")" readonly />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+

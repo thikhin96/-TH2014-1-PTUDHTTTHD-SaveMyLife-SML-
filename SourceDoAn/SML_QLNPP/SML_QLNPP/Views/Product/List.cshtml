@@ -2,3 +2,59 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section css{
+    <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/datatables.min.css" rel="stylesheet" type="text/css" media="all" />
+}
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Product/product.js"></script>
+}
+
+<div class="container-fluid">
+    <div class="row">
+        @Html.Partial("~/Views/Shared/_SidebarAdmin.cshtml")
+        <div class="col-sm-10 col-md-10">
+            <div class="well">
+                <div class="row">
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" placeholder="Nhập mã, tên sản phẩm" id="keyword">
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-default" id="search">Tìm kiếm kết quả</button>
+                    </div>
+                </div>
+                <div class="row mgt">
+                    <div class="col-md-12">
+                        <div><a href="/Product/Create">Thêm sản phẩm</a></div>
+                        <h2>Danh sách sản phẩm</h2>
+                        <table id="product-list" class="cell-border" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Đơn giá</th>
+                                    <th>Tình trạng</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Đơn giá</th>
+                                    <th>Tình trạng</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </tfoot>
+                            <tbody id="result"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
