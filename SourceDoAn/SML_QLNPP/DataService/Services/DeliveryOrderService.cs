@@ -30,9 +30,16 @@ namespace DataService.Services
 
         public DeliveryOrder SearchById(int id)
         {
-            IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
-            var result = repository.Get(a => a.idDeliveryOrder == id);
-            return result != null ? result : null;
+            try
+            {
+                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
+                var result = repository.Get(a => a.idDeliveryOrder == id);
+                return result != null ? result : null;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
 

@@ -272,6 +272,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateOrderViewModel.cs" />
+
     <Compile Include="Models\DistributorViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -323,7 +324,7 @@
     <Content Include="Content\Home\images\top-up.png" />
     <Content Include="Content\Home\style.css" />
     <Content Include="Content\DeliveryOrder\datatables.min.css" />
-    <Content Include="Content\DeliveryOrder\detail.css" />
+    <Content Include="Content\DeliveryOrder\details.css" />
     <Content Include="Content\DeliveryOrder\jquery-ui.min.css" />
     <Content Include="Content\Order\datatables.min.css" />
     <Content Include="Content\Order\detail.css" />
@@ -459,6 +460,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\DeliveryOrder\List.cshtml" />
     <Content Include="Views\Distributor\Distributor.cshtml" />
+    <Content Include="Views\DeliveryOrder\Details.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -488,7 +490,6 @@
     <Content Include="Views\Order\_ConsigneeForm.cshtml" />
     <Content Include="Views\Order\_AddProduct.cshtml" />
     <Content Include="Views\Product\List.cshtml" />
-    <Content Include="Views\DeliveryOrder\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
