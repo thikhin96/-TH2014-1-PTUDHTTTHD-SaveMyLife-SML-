@@ -13,6 +13,7 @@ namespace DataService.Interfaces
         bool Create(PotentialDistributor pDis);
         bool UpdateDebt(int id, long money);
         bool UpdateStatus(int id, bool status);
-        IList<DistributorList> GetAll();
+        Distributor SearchByID(int id);
+        IList<DistributorList> GetList(Nullable<int> id);
     }
 }
