@@ -23,6 +23,8 @@ namespace SML_QLNPP.Controllers
         // GET: Order
         public ActionResult List()
         {
+            ViewBag.Parent = "Quản lý đặt hàng";
+            ViewBag.Child = "Tìm kiếm đơn hàng";
             return View();
         }
         public ContentResult Search(string keyword, string created_date,int status)
@@ -39,6 +41,8 @@ namespace SML_QLNPP.Controllers
         }
         public ActionResult Detail(int id)
         {
+            ViewBag.Parent = "Quản lý đặt hàng";
+            ViewBag.Child = "Chi tiết đơn đặt hàng";
             var model = _orderService.GetOrder(id);
             if(model == null)
             {

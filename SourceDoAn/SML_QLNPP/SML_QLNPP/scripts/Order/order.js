@@ -50,7 +50,7 @@
                         else {
                             rs.push('Đã giao');
                         }
-                        rs.push('<a href="/Order/Detail/' + item.idOrder + '">Xem</a>')
+                        rs.push('<a class="btn btn-info btn-xs" href="/Order/Detail/' + item.idOrder + '">Xem</a> | <a class="btn btn-danger btn-xs" href="/Order/Delete/' + item.idOrder + '">Xoá</a>')
                         return rs;
                     });
 

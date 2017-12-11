@@ -1,6 +1,6 @@
 ﻿@model DataModel.Order
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_ALayout.cshtml";
 }
 
 @section css{
@@ -10,6 +10,7 @@
 }
 
 @section scripts{
+    <script type="text/javascript" src="~/Scripts/Order/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
     <script>
         var table = $('#order-list').DataTable();
@@ -17,106 +18,106 @@
 
 }
 
-<div class="container-fluid">
-    <div class="row">
-        @Html.Partial("~/Views/Shared/_SidebarAdmin.cshtml")
-        <div class="col-sm-10 col-md-10">
-            <div class="well">
-                <h3>Thông tin đơn hàng số: @Model.idOrder</h3>
 
-                <div class="panel-group">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">Thông tin nhà phân phối</div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-2 form-group">
-                                    <label>Mã nhà phân phối: </label>
-                                    <input type="text" value="@Model.idDistributor" disabled/>
-                                </div>
-                                <div class="col-md-2 form-group">
-                                    <label>Tên nhà phân phối: </label>
-                                    <input type="text" value="@Model.Distributor.name" disabled />
-                                </div>
-                                <div class="col-md-2 form-group">
-                                    <label>Số điện thoại: </label>
-                                    <input type="text" value="@Model.Distributor.phone" disabled />
-                                </div>
-                                <div class="col-md-2 form-group">
-                                    <label>Địa chỉ: </label>
-                                    <input type="text" value="@Model.Distributor.address" disabled />
-                                </div>
-                                <div class="col-md-2 form-group">
-                                    <label>Trạng thái: </label>
-                                    <input type="text" value="@(Model.Distributor.status==false? "Chưa kích hoạt":"Kích hoạt")" disabled />
-                                </div>
-                                <div class="col-md-2 form-group">
-                                    <label>Công nợ: </label>
-                                    <input type="text" value="@Model.Distributor.phone" disabled />
-                                </div>
-                                <div class="col-md-2 form-group">
-                                    <label>Username: </label>
-                                    <input type="text" value="@Model.Distributor.UserName" disabled />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-info">
-                        <div class="panel-heading">Thông tin đơn hàng</div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-2 form-group">
-                                    <label>Mã đơn đặt hàng: </label>
-                                    <input type="text" value="@Model.idOrder" disabled />
-                                </div>
-                                <div class="col-md-2 form-group">
-                                    <label>Tổng tiền: </label>
-                                    <input type="text" value="@Model.Total" disabled />
-                                </div>
-                                <div class="col-md-2 form-group">
-                                    <label>Hình thức giao hàng: </label>
-                                    <input type="text" value="@(Model.DeliveryType == false ? "Tự túc" : "Vitamil giao hàng")" disabled />
-                                </div>
-                                <div class="col-md-2 form-group">
-                                    <label>Hình thức thanh toán: </label>
-                                    <input type="text" value="@(Model.PaymentType == false ? "Tiền mặt" : "Qua thẻ")" disabled />
-                                </div>
-                                <div class="col-md-2 form-group">
-                                    <label>Ngày giao dự kiến: </label>
-                                    <input type="text" value="@Model.EstimateDateOfDelivery" disabled />
-                                </div>
-                                <div class="col-md-2 form-group">
-                                    <label>Tình trạng: </label>
-                                    <input type="text" value="@(Model.Statuses == 0 ? "Chưa duyệt" : Model.Statuses == 1 ? "Đã duyệt" : Model.Statuses == 2 ? "Không duyệt" : "Đã giao")" disabled />
-                                </div>
-                                <div class="col-md-2 form-group">
-                                    <label>Ngày lập: </label>
-                                    <input type="text" value="@Model.CreatedDate" disabled />
-                                </div>
-                                <div class="col-md-2 form-group">
-                                    <label>Mô tả đơn hàng: </label>
-                                    <textarea disabled cols="100" rows="1">@Model.Descriptions</textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-info">
-                        <div class="panel-heading">Thông tin người liên hệ</div>
-                        <div class="panel-body">
-                            <div class="col-md-2 form-group">
-                                <label>Tên người liên hệ: </label>
-                                <input type="text" value="@Model.Consignee.Name" disabled />
-                            </div>
-                            <div class="col-md-2 form-group">
-                                <label>Số điện thoại: </label>
-                                <input type="text" value="@Model.Consignee.PhoneNumber" disabled />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mgt">
-                    <div class="col-md-12">
-                        <h2>Danh sách sản phẩm đặt hàng</h2>
-                        <table id="order-list" class="cell-border" cellspacing="0" width="100%">
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">Thông tin nhà phân phối</h3>
+    </div>
+    <div class="box-body">
+        <div class="col-md-2">
+            <label>Mã nhà phân phối: </label>
+            <input class="form-control" type="text" value="@Model.idDistributor" disabled />
+        </div>
+        <div class="col-md-2">
+            <label>Tên nhà phân phối: </label>
+            <input class="form-control" type="text" value="@Model.Distributor.name" disabled />
+        </div>
+        <div class="col-md-2">
+            <label>Số điện thoại: </label>
+            <input class="form-control" type="text" value="@Model.Distributor.phone" disabled />
+        </div>
+        <div class="col-md-2">
+            <label>Địa chỉ nhà phân phối: </label>
+            <input class="form-control" type="text" value="@Model.Distributor.address" disabled />
+        </div>
+        <div class="col-md-2">
+            <label>Trạng thái nhà phân phối: </label>
+            <input class="form-control" type="text" value="@(Model.Distributor.status==false? "Chưa kích hoạt":"Kích hoạt")" disabled />
+        </div>
+        <div class="col-md-2">
+            <label>Tên tài khoản: </label>
+            <input class="form-control" type="text" value="@Model.Distributor.UserName" disabled />
+        </div>
+    </div>
+</div>
+
+<div class="box box-success">
+    <div class="box-header with-border">
+        <h3 class="box-title">Thông tin đơn hàng</h3>
+    </div>
+    <div class="box-body">
+        <div class="col-md-2 ">
+            <label>Mã đơn đặt hàng: </label>
+            <input class="form-control" type="text" value="@Model.idOrder" disabled />
+        </div>
+        <div class="col-md-2 ">
+            <label>Tổng tiền đơn hàng: </label>
+            <input class="form-control" type="text" value="@Model.Total" disabled />
+        </div>
+        <div class="col-md-2 ">
+            <label>Hình thức giao hàng: </label>
+            <input class="form-control" type="text" value="@(Model.DeliveryType == false ? "Tự túc" : "Vitamil giao hàng")" disabled />
+        </div>
+        <div class="col-md-2 ">
+            <label>Hình thức thanh toán: </label>
+            <input class="form-control" type="text" value="@(Model.PaymentType == false ? "Tiền mặt" : "Qua thẻ")" disabled />
+        </div>
+        <div class="col-md-2 ">
+            <label>Ngày giao dự kiến: </label>
+            <input class="form-control" type="text" value="@Model.EstimateDateOfDelivery" disabled />
+        </div>
+        <div class="col-md-2 ">
+            <label>Tình trạng đơn hàng: </label>
+            <input class="form-control" type="text" value="@(Model.Statuses == 0 ? "Chưa duyệt" : Model.Statuses == 1 ? "Đã duyệt" : Model.Statuses == 2 ? "Không duyệt" : "Đã giao")" disabled />
+        </div>
+        <div class="col-md-2 ">
+            <label>Ngày lập đơn hàng: </label>
+            <input class="form-control" type="text" value="@Model.CreatedDate" disabled />
+        </div>
+        <div class="col-md-2 ">
+            <label>Mô tả đơn hàng: </label>
+            <textarea class="form-control" disabled cols="100" rows="1">@Model.Descriptions</textarea>
+        </div>
+    </div>
+</div>
+
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">Thông tin người liên hệ</h3>
+    </div>
+    <div class="box-body">
+        <div class="col-md-2 ">
+            <label>Tên người liên hệ: </label>
+            <input class="form-control" type="text" value="@Model.Consignee.Name" disabled />
+        </div>
+        <div class="col-md-2 ">
+            <label>Số điện thoại: </label>
+            <input class="form-control" type="text" value="@Model.Consignee.PhoneNumber" disabled />
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-success">
+            <div class="box-header">
+                <h3 class="box-title">Danh sách sản phẩm đặt</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <div class="col-sm-12">
+                        <table id="order-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                             <thead>
                                 <tr>
                                     <th>ID SP</th>
@@ -125,31 +126,24 @@
                                     <th>Đơn giá</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>ID SP</th>
-                                    <th>Tên SP</th>
-                                    <th>Số lượng</th>
-                                    <th>Đơn giá</th>
-                                </tr>
-                            </tfoot>
                             <tbody>
-                               @foreach(var item in Model.OrderDetails)
-                               {
-                                   <tr>
-                                       <td>@item.idProduct</td>
-                                       <td>@item.Product.ProductName</td>
-                                       <td>@item.quantity</td>
-                                       <td>@item.Product.Price</td>
-                                   </tr>
-                               }
+                                @foreach (var item in Model.OrderDetails)
+                                {
+                                    <tr>
+                                        <td>@item.idProduct</td>
+                                        <td>@item.Product.ProductName</td>
+                                        <td>@item.quantity</td>
+                                        <td>@item.Product.Price</td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
                 </div>
-
             </div>
+            <!-- /.box-body -->
         </div>
+        <!-- /.box -->
+
     </div>
 </div>
-
