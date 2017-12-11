@@ -25,14 +25,31 @@ namespace DataService.Services
         }
         public bool UpdateDeliveryOrder(DeliveryOrder dOrder)
         {
-            throw new NotImplementedException();
+            try
+            {
+                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
+                repository.Update(dOrder);
+                _unitOfWork.SaveChange();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public DeliveryOrder SearchById(int id)
         {
-            IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
-            var result = repository.Get(a => a.idDeliveryOrder == id);
-            return result != null ? result : null;
+            try
+            {
+                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
+                var result = repository.Get(a => a.idDeliveryOrder == id);
+                return result != null ? result : null;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
 
@@ -54,7 +71,7 @@ namespace DataService.Services
             IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
             var dtime = Convert.ToDateTime(datetime);
             var result = repository.GetAll(a => (a.deliveryDate.Value.Year == dtime.Year
-                && a.deliveryDate.Value.Month == dtime.Month 
+                && a.deliveryDate.Value.Month == dtime.Month
                 && a.deliveryDate.Value.Day == dtime.Day));
             if (result != null)
             {

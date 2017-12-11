@@ -48,7 +48,31 @@ namespace SML_QLNPP.Controllers
                 return View(model);
             }
         }
-        /*
+
+        [HttpPost]
+     //   [AllowAnonymous]
+        public JsonResult UpdateStatus(int idDeliveryOrder, int status, string description)
+        {
+            bool result = true;
+            var rs = "";
+            var delivery = _deliveryOrderService.SearchById(idDeliveryOrder);
+            delivery.status = Convert.ToByte(status);
+            delivery.description = description;
+            delivery.updateDate = DateTime.Now;
+            result = _deliveryOrderService.UpdateDeliveryOrder(delivery);
+            if (result)
+            {
+                rs = "true";
+            }
+            else
+            {
+                rs = "false";
+            }
+
+            return Json(new {
+                success = rs
+        });
+        }
         // GET: DeliveryOrder/Create
         public ActionResult Create()
         {
@@ -92,28 +116,28 @@ namespace SML_QLNPP.Controllers
                 return View();
             }
         }
+        /*
+// GET: DeliveryOrder/Delete/5
+public ActionResult Delete(int id)
+{
+    return View();
+}
 
-        // GET: DeliveryOrder/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+// POST: DeliveryOrder/Delete/5
+[HttpPost]
+public ActionResult Delete(int id, FormCollection collection)
+{
+    try
+    {
+        // TODO: Add delete logic here
 
-        // POST: DeliveryOrder/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        */
+        return RedirectToAction("Index");
+    }
+    catch
+    {
+        return View();
+    }
+}
+*/
     }
 }
