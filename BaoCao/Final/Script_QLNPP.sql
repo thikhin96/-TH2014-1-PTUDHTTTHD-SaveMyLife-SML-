@@ -133,6 +133,7 @@ create table Product
 	ProductName nvarchar(50),
 	Price money,
 	IsDisabled bit,
+	Quantity int check(Quantity > 0),
 	ProductType int,
 	Unit int
 )
