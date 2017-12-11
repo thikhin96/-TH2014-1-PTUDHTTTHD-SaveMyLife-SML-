@@ -18,7 +18,6 @@ namespace DataModel
         public Representative()
         {
             this.Contracts = new HashSet<Contract>();
-            this.PotentialDistributors = new HashSet<PotentialDistributor>();
         }
     
         public int idRepresentative { get; set; }
@@ -32,8 +31,6 @@ namespace DataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract> Contracts { get; set; }
         public virtual Distributor Distributor1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PotentialDistributor> PotentialDistributors { get; set; }
         public virtual PotentialDistributor PotentialDistributor { get; set; }
     }
 }
