@@ -111,7 +111,6 @@ namespace DataService.Services
                             _orderRepository.Add(order);
                             _unitOfWork.SaveChange();
                             var consignee = order.Consignee;
-                            consignee.idOrder = order.idOrder;
                             _consigneeRepository.Update(consignee);
                             if (orderDetails.Count != 0 || orderDetails != null)
                                 orderDetails.ForEach(x => _orderDetailRepository.Add(x));

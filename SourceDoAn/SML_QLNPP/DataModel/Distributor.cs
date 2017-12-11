@@ -12,12 +12,13 @@ namespace DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Distributor
+    public partial class Distributor : DistributorBase
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Distributor()
         {
             this.Bills = new HashSet<Bill>();
+            this.Consignees = new HashSet<Consignee>();
             this.Contracts = new HashSet<Contract>();
             this.Debts = new HashSet<Debt>();
             this.DeliveryOrders = new HashSet<DeliveryOrder>();
@@ -27,7 +28,6 @@ namespace DataModel
             this.ReturnBases = new HashSet<ReturnBase>();
             this.ReturnRequests = new HashSet<ReturnRequest>();
             this.Storages = new HashSet<Storage>();
-            this.Consignees = new HashSet<Consignee>();
         }
     
         public int idDistributor { get; set; }
@@ -44,6 +44,8 @@ namespace DataModel
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bills { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Consignee> Consignees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract> Contracts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -62,7 +64,5 @@ namespace DataModel
         public virtual ICollection<ReturnRequest> ReturnRequests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Storage> Storages { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Consignee> Consignees { get; set; }
     }
 }

@@ -74,7 +74,7 @@ namespace DataService.Services
             foreach (Distributor dis in ds_Dis)
             {
                 lDis = new DistributorList();
-                lDis.Dis = (DistributorBase)dis;
+                lDis.Dis = dis;
                 foreach (Contract con in dis.Contracts)
                     if (con.status == true)
                     {

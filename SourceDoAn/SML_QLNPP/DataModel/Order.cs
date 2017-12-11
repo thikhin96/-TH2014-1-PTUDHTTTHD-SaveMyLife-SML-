@@ -34,6 +34,7 @@ namespace DataModel
         public Nullable<int> idStaff { get; set; }
         public string Descriptions { get; set; }
     
+        public virtual Consignee Consignee { get; set; }
         public virtual DeliveryOrder DeliveryOrder { get; set; }
         public virtual Distributor Distributor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -41,6 +42,5 @@ namespace DataModel
         public virtual Staff Staff { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        public virtual Consignee Consignee { get; set; }
     }
 }
