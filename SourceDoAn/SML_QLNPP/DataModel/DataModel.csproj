@@ -99,6 +99,7 @@
     <Compile Include="Distributor.cs">
       <DependentUpon>DistributionManagement.tt</DependentUpon>
     </Compile>
+    <Compile Include="DistributorBase.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Log_Login.cs">

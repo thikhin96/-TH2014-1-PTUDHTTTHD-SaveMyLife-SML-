@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
-    $("#created_date").datepicker({
+    $(".date").datepicker({
         dateFormat: 'yy/mm/dd'
-    }).datepicker("setDate", new Date());;
+    });
     var table = $('#order-list').DataTable();
     $("#search").on('click', function () {
         var idpro = $("#idpro").val();
@@ -11,7 +11,7 @@
 
         var startDate = $("#startDate").val();
         var endDate = $("#endDate").val();
-        var url = '/aj/Order/Search'
+        var url = '/aj/Promotion/Search'
         console.log(status);
         $.ajax({
             url: url,
@@ -36,9 +36,9 @@
                         var sdate = new Date(item.startDate);
                         var edate = new Date(item.endDate);
                         rs.push(item.idPromotion);
-                        rs.push(sdate.getHours() + ':' + sdate.getMinutes() + ' ' + +(sdate.getMonth() + 1) + '/' + sdate.getDate() + '/' + sdate.getFullYear());
-                        rs.push(edate.getHours() + ':' + edate.getMinutes() + ' ' + +(edate.getMonth() + 1) + '/' + edate.getDate() + '/' + edate.getFullYear());
-                        rs.push('<a href="/Promotion/Detail/' + item.idOrder + '">Xem</a>')
+                        rs.push(sdate.getHours() + ':' + sdate.getMinutes() + ' ' + +(sdate.getDate()) + '/' + (sdate.getMonth() + 1) + '/' + sdate.getFullYear());
+                        rs.push(edate.getHours() + ':' + edate.getMinutes() + ' ' + +(edate.getDate()) + '/' + (edate.getMonth() +1) + '/' + edate.getFullYear());
+                        rs.push('<a href="/Promotion/Detail/' + item.idPromotion + '">Xem</a>')
                         return rs;
                     });
 
