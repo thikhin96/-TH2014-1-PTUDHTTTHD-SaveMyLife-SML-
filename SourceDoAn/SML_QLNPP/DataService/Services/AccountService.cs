@@ -33,10 +33,10 @@ namespace DataService.Services
             throw new NotImplementedException();
         }
 
-        public bool Login(string username, string password)
+        public Account Login(string username, string password)
         {
             IRepository<Account> repository = _unitOfWork.Repository<Account>();
-            return repository.Get(a => a.UserName == username && a.Password == password) != null;
+            return repository.Get(a => a.UserName == username && a.Password == password);
         }
 
         public void Logout()
@@ -52,6 +52,12 @@ namespace DataService.Services
         public void writeLogUser(int idUser, bool status)
         {
             throw new NotImplementedException();
+        }
+
+        public Account Get(string username)
+        {
+            IRepository<Account> repository = _unitOfWork.Repository<Account>();
+            return repository.Get(a => a.UserName == username);
         }
     }
 }
