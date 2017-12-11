@@ -8,7 +8,8 @@ namespace DataService.Interfaces
 {
     public interface IAccountService
     {
-        bool Login(string username,string password);
+        Account Login(string username,string password);
+        Account Get(string username);
         void Logout();
         IList<Account> SearchAccount(int idAccount);
         bool LockAccount(int idAccount,string reason);
