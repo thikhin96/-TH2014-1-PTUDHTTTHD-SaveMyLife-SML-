@@ -380,15 +380,7 @@ create table Bill(
 );
 go
 
-<<<<<<< HEAD
---------------------
-
-=======
 -------------------------------
->>>>>>> remotes/origin/dev
-ALTER TABLE PotentialDistributor ADD 
-	CONSTRAINT FK_DoiTac_NDD FOREIGN KEY (idRep) REFERENCES Representative(idRepresentative)
-go
 
 ALTER TABLE Distributor ADD 
 	CONSTRAINT FK_NPP_Account FOREIGN KEY (UserName) REFERENCES Account(UserName)
