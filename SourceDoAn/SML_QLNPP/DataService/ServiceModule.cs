@@ -1,5 +1,7 @@
 ﻿using DataModel.Interfaces;
 using DataModel.Repositories;
+using DataService.Services;
+using DataService.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,7 @@ namespace DataService
         public static void UnityRegister(IUnityContainer container)
         {
             container.RegisterType<IUnitOfWork, UnitOfWork>();
+            container.RegisterType<IDistributorService, DistributorService>();
         }
     }
 }

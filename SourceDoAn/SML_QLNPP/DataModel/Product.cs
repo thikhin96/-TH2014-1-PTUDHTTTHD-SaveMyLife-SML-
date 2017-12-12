@@ -33,6 +33,7 @@ namespace DataModel
         public Nullable<bool> IsDisabled { get; set; }
         public Nullable<int> ProductType { get; set; }
         public Nullable<int> Unit { get; set; }
+        public Nullable<int> Quantity { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BatchDetail> BatchDetails { get; set; }

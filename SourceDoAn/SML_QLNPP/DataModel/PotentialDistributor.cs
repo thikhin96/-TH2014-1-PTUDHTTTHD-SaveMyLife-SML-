@@ -12,7 +12,7 @@ namespace DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class PotentialDistributor: DistributorBase
+    public partial class PotentialDistributor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PotentialDistributor()
@@ -21,12 +21,18 @@ namespace DataModel
             this.Representatives = new HashSet<Representative>();
         }
     
+        public int idDistributor { get; set; }
+        public string name { get; set; }
+        public string address { get; set; }
+        public string phone { get; set; }
+        public string Email { get; set; }
+        public Nullable<System.DateTime> createdDate { get; set; }
+        public Nullable<System.DateTime> updatedDate { get; set; }
+        public string note { get; set; }
         public Nullable<byte> status { get; set; }
-        public Nullable<int> idRep { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Assignment> Assignments { get; set; }
-        public virtual Representative Representative { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Representative> Representatives { get; set; }
     }

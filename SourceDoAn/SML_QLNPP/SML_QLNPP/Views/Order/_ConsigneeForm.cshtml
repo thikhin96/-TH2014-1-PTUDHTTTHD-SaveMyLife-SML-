@@ -1,0 +1,15 @@
+﻿@model DataModel.Consignee
+<div class="panel panel-info">
+    <div class="panel-heading">Thông tin người liên hệ</div>
+    <div class="panel-body">
+        <div class="col-md-2 form-group">
+            <label>Tên người liên hệ: </label>
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        </div>
+        <div class="col-md-2 form-group">
+            <label>Số điện thoại: </label>
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+        </div>
+    </div>
+</div>
+

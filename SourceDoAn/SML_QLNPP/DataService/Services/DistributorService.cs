@@ -1,8 +1,13 @@
-﻿using System;
+﻿using DataModel;
+using DataModel.Interfaces;
+using DataService.Interfaces;
+using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using DataModel;
 using DataService.Interfaces;
 using DataModel.Interfaces;
@@ -16,6 +21,31 @@ namespace DataService.Services
     {
         ILogger logger = LogManager.GetCurrentClassLogger();
 
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IRepository<Distributor> _distributorRepository;
+        private readonly IRepository<Contract> _contractRepository;
+
+        public DistributorService(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+            _distributorRepository = unitOfWork.Repository<Distributor>();
+            _contractRepository = unitOfWork.Repository<Contract>();
+        }
+
+        public bool hasContract(int distributorId)
+        {
+            var allContracts = _contractRepository.GetAll(x => x.distributor == distributorId);
+            if (allContracts.Count() == 0 || allContracts.All(c => c.expiredDate < DateTime.Now))
+                return false;
+            return true;
+        }
+
+        public bool priceOverDebt(int distributorId, decimal price)
+        {
+            if (_contractRepository.Get(x => x.distributor == distributorId && x.beginDate <= DateTime.Now && x.expiredDate > DateTime.Now).maxDebt < price)
+                return true;
+            return false;
+        }
         public bool CheckEmail(string email)
         {
             throw new NotImplementedException();
@@ -51,7 +81,7 @@ namespace DataService.Services
             foreach (Distributor dis in ds_Dis)
             {
                 lDis = new DistributorList();
-                lDis.Dis = (DistributorBase)dis;
+                lDis.Dis = dis;
                 foreach (Contract con in dis.Contracts)
                     if (con.status == true)
                     {

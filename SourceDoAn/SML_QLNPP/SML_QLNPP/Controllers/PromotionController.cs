@@ -19,10 +19,14 @@ namespace SML_QLNPP.Controllers
         // GET: Promotion
         public ActionResult List()
         {
+            ViewBag.Parent = "Quản lý khuyến mãi";
+            ViewBag.Child = "Tìm kiếm khuyến mãi";
             return View();
         }
         public ActionResult Detail(int id)
         {
+            ViewBag.Parent = "Quản lý khuyến mãi";
+            ViewBag.Child = "Chi tiết khuyến mãi";
             var model = _orderService.GetPromotion(id);
             if (model == null)
             {
@@ -42,7 +46,6 @@ namespace SML_QLNPP.Controllers
                 var list = JsonConvert.SerializeObject(rs.Select(x => new { x.idPromotion, x.startDate, x.endDate }));
                 return Content(list, "application/json");
             }
-
             return null;
         }
     }

@@ -1,0 +1,43 @@
+﻿@model List<DataModel.OrderDetail>
+<div class="row mgt">
+    <div class="col-md-12">
+        <h2>Danh sách sản phẩm đặt hàng</h2>
+        <table id="order-detail" class="cell-border custom-table" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>ID SP</th>
+                    <th>Tên SP</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i<Model.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            <input name="OrderDetails[@i].idProduct" value="@Model[i].idProduct">
+                        </td>
+                        <td>
+                            
+                        </td>
+                        <td>
+
+                            <input name="OrderDetails[@i].quantity" value="@Model[i].quantity">
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

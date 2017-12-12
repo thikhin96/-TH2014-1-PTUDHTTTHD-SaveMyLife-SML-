@@ -42,10 +42,11 @@ namespace DataService
                 }
                 else
                 {
-                    var sdate = Convert.ToDateTime(createDate);
-                    var edate = Convert.ToDateTime(endDate);
+                    
                     if (createDate != "" && endDate != "")
                     {
+                        var sdate = Convert.ToDateTime(createDate);
+                        var edate = Convert.ToDateTime(endDate);
                         return repository.GetAll(a => (a.startDate.Value.Year == sdate.Year
                                             && a.startDate.Value.Month == sdate.Month
                                             && a.startDate.Value.Day == sdate.Day) 
@@ -56,12 +57,14 @@ namespace DataService
                     }
                     else if(createDate != "")
                     {
+                        var sdate = Convert.ToDateTime(createDate);
                         return repository.GetAll(a => (a.startDate.Value.Year == sdate.Year
                                             && a.startDate.Value.Month == sdate.Month
                                             && a.startDate.Value.Day == sdate.Day)).ToList();
                     }
                     else
                     {
+                        var edate = Convert.ToDateTime(endDate);
                         return repository.GetAll(a => (a.endDate.Value.Year == edate.Year
                                             && a.endDate.Value.Month == edate.Month
                                             && a.endDate.Value.Day == edate.Day)).ToList();
