@@ -3,6 +3,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{
+    var check = ViewBag.checkID;
+    var isNull = ViewBag.ID_IsNull;
+}
+
 @section css{
     <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/Order/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
@@ -12,6 +17,22 @@
 @section scripts{
     <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
+    <script>
+        $('#dis-list').DataTable({
+            "oLanguage": {
+                "oPaginate": {
+                    "sNext": "Tiếp",
+                    "sPrevious": "Trước"
+                },
+                "sInfo": "Hiển thị _START_ đến _END_ trên _TOTAL_ nhà phân phối",
+                "sZeroRecords": "Không tìm thấy nhà phân phối",
+                "sInfoEmpty": ""
+            },
+            "searching": false,
+            "bLengthChange": false,
+            //"bInfo": false
+        });
+    </script>
 }
 
 <div class="container-fluid">
@@ -19,50 +40,68 @@
         @Html.Partial("~/Views/Shared/_SidebarAdmin.cshtml")
         <div class="col-sm-10 col-md-10">
             <div class="well">
-                <div class="row">
-                    @using (Html.BeginForm())
+                <div class="text-right">
+                    @using (Html.BeginForm("DistributorSeacrh", "Distributor", FormMethod.Post))
                     {
-                        <label>Tìm kiếm</label>
-                        @Html.EditorFor(model => model.id);
-                        <div class="col-md-2">
-                            <br />
-                            <button class="btn btn-default" id="search">Tìm kiếm kết quả</button>
-                        </div>
+                        <label > Tìm kiếm </label >
+                        @Html.TextBoxFor(model => model.id)
+                        <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
                     }
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Nhập từ khoá" id="keyword">
-                    </div>
-                    
                 </div>
                 <div class="row mgt">
                     <div class="col-md-12">
                         <h2>Danh sách nhà phân phối</h2>
-                        <table id="order-list" class="cell-border" cellspacing="0" width="100%">
-                            <thead>
-                                <tr>
-                                    <th>Mã nhà phân phối</th>
-                                    <th>Tên công ty</th>
-                                    <th>Địa chỉ</th>
-                                    <th>Khu vực</th>
-                                    <th>Độc quyền</th>
-                                    <th>Số điện thoại</th>
-                                    <th>Thao tác</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Mã nhà phân phối</th>
-                                    <th>Tên công ty</th>
-                                    <th>Địa chỉ</th>
-                                    <th>Khu vực</th>
-                                    <th>Độc quyền</th>
-                                    <th>Số điện thoại</th>
-                                    <th>Thao tác</th>
-                                </tr>
-                            </tfoot>
-                            <tbody id="result"></tbody>
-                        </table>
-                    </div>
+                        <br />
+                        @if (check == false)
+                        {
+                            <strong style="color:red"> Mã nhà phân phối không hợp lệ </strong>
+                        }
+                        else if (isNull == true)
+                        {
+                            <strong style="color:blue"> Nhập mã nhà phân phối </strong>
+                        }
+                        else
+                        {
+                            <table id="dis-list" class="cell-border" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Mã nhà phân phối</th>
+                                        <th>Tên công ty</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Khu vực</th>
+                                        <th>Độc quyền</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="result">
+                                    @foreach (var item in Model.listDis)
+                                    {
+                                        <tr class="dis">
+                                            <td>@item.Dis.idDistributor</td>
+                                            <td>@item.Dis.name</td>
+                                            <td>@item.Dis.address</td>
+                                            <td>@item.Area</td>
+                                            @if (item.Dis_Type == true)
+                                            {
+                                                <td> <input type="checkbox" name="dis_Type" value=1 checked disabled></td>
+                                            }
+                                            else
+                                            {
+                                                <td></td>
+                                            }
+                                            <td>@item.Dis.phone</td>
+                                            <td>
+                                                <a href="../Distributor/DetailedDistributor/@item.Dis.idDistributor">
+                                                    <input type="button" value="Chi tiết" />
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                </div>
                 </div>
             </div>
         </div>

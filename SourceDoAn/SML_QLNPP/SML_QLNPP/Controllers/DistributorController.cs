@@ -14,21 +14,62 @@ namespace SML_QLNPP.Controllers
     public class DistributorController : Controller
     {
         ILogger logger = LogManager.GetCurrentClassLogger();
-        IDistributorService service;
+        IDistributorService dis_Service;
+        IContractService con_Service;
 
-        public DistributorController(IDistributorService service)
+        public DistributorController(IDistributorService sv_Dis, IContractService sv_Con)
         {
-            this.service = service;
+            this.dis_Service = sv_Dis;
+            this.con_Service = sv_Con;
         }
 
         // GET: Distributor
+        
         public ActionResult Distributor()
         {
-            logger.Info("Start controller....");
+            logger.Info("Start controller to load list of distributors....");
             DistributorViewModel model = new DistributorViewModel();
-            model.listDis = service.GetAll();
-            //if (model.listDis == null )
+            model.listDis = dis_Service.GetList(null).ToList();
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult DistributorSeacrh(DistributorViewModel model)
+        {
+            logger.Info("Start controller to filter....");
+            int id;
+            if (model.id == null)
+            {
+                return Redirect("Distributor");
+            }
+            bool check_id = int.TryParse(model.id, out id);
+            if  (!check_id)
+            {
+                ViewBag.CheckID = false;
+            }
+            else
+            {
+                model.listDis = dis_Service.GetList(id).ToList();
+                model.id = null;
+            }
+            return View("Distributor",model);
+        }
+
+        public ActionResult DetailedDistributor(int id)
+        {
+            logger.Info("Start controller to display info of distributor....");
+            Distributor dis = new Distributor();
+            Contract con = new Contract();
+            dis = dis_Service.SearchByID(id);
+            foreach(Contract _con in dis.Contracts)
+            {
+                if (_con.status == true)
+                {
+                    con = _con;
+                    break;
+                }
+            }
+            return View(con);
         }
     }
 }

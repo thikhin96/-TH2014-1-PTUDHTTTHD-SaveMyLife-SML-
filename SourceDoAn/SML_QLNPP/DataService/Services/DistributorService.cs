@@ -13,11 +13,14 @@ using DataService.Interfaces;
 using DataModel.Interfaces;
 using DataModel.Repositories;
 using DataService.Dtos;
+using NLog;
 
 namespace DataService.Services
 {
     public class DistributorService : IDistributorService
     {
+        ILogger logger = LogManager.GetCurrentClassLogger();
+
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<Distributor> _distributorRepository;
         private readonly IRepository<Contract> _contractRepository;
@@ -63,12 +66,16 @@ namespace DataService.Services
             throw new NotImplementedException();
         }
 
-        public IList<DistributorList> GetAll()
+        public IList<DistributorList> GetList(Nullable<int> id = null)
         {
+            logger.Info("Start service....");
             IList<Distributor> ds_Dis = new List<Distributor>();
             IUnitOfWork uow = new UnitOfWork();
             IRepository<Distributor> repo = uow.Repository<Distributor>();
-            ds_Dis = repo.GetAll().ToList();
+            if (id == null)
+                ds_Dis = repo.GetAll().ToList();
+            else
+                ds_Dis = repo.GetAll(x => x.idDistributor == id).ToList();
             IList<DistributorList> listDis = new List<DistributorList>();
             DistributorList lDis;
             foreach (Distributor dis in ds_Dis)
@@ -84,12 +91,18 @@ namespace DataService.Services
                     }
                 listDis.Add(lDis);
             }
+            logger.Info("End service...");
             return listDis;
         }
 
-        public DistributorBase SearchByID(int id)
+        public Distributor SearchByID(int id )
         {
-            throw new NotImplementedException();
+            logger.Info("Start service....");
+            IUnitOfWork uow = new UnitOfWork();
+            IRepository<Distributor> repo = uow.Repository<Distributor>();
+            Distributor dis = repo.Get(x => x.idDistributor == id);
+            logger.Info("End service...");
+            return dis;
         }
 
         public bool UpdateDebt(int id, long money)

@@ -50,6 +50,7 @@ namespace SML_QLNPP
             container.RegisterType<IOrderService, OrderService>();
             container.RegisterType<IProductService, ProductService>();
             container.RegisterType<IDistributorService, DistributorService>();
+            container.RegisterType<IContractService, ContractService>();
             container.RegisterType<IDeliveryOrderService, DeliveryOrderService>();
             container.RegisterType<IDetailedDeliveryOrderService, DetailedDeliveryOrderService>();
             container.RegisterType<IBillService, BillService>();
