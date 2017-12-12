@@ -499,8 +499,7 @@ ALTER TABLE [Order] ADD
 go
 
 ALTER TABLE Consignee ADD
-	CONSTRAINT FK_Consignee_Distributor FOREIGN KEY (idDistributor) REFERENCES Distributor (idDistributor),
-	CONSTRAINT FK_Consignee_Order FOREIGN KEY (idOrder) REFERENCES [Order](idOrder)
+	CONSTRAINT FK_Consignee_Distributor FOREIGN KEY (idDistributor) REFERENCES Distributor (idDistributor)
 go
 
 ALTER TABLE OrderDetail ADD 
