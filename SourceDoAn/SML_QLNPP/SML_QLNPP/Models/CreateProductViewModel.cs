@@ -16,6 +16,7 @@ namespace SML_QLNPP.Models
         public List<ProductType> ProductTypes { get; set; }
         public List<Unit> Units { get; set; }
         public bool IsDisabled { get; set; }
-        
+        public int Quantity { get; set; }
+
     }
 }

@@ -7,11 +7,7 @@ CREATE TABLE Account
 	UserName varchar(30) unique,
 	Password varchar(30) check (len(Password) between 8 and 30),
 	activated bit,
-<<<<<<< HEAD
-	decentralization tinyint check (PhanQuyen in (1,2,3)),
-=======
 	decentralization tinyint check (decentralization in (1,2,3)),
->>>>>>> remotes/origin/dev
 	locked bit,
 	dateCreate datetime,
 	dateUpdate datetime,
@@ -21,17 +17,14 @@ go
 
 CREATE TABLE Log_Login
 (
-<<<<<<< HEAD
 	ID_Log bigint identity primary key,
 	ID_Account int,
 	at_time datetime,
-	status bit
-=======
+	status bit,
 	idLog bigint identity primary key,
 	idAccount int,
 	at_time datetime,
 	[status] bit
->>>>>>> remotes/origin/dev
 )
 go
 
@@ -45,12 +38,7 @@ CREATE TABLE PotentialDistributor
 	createdDate datetime,
 	updatedDate datetime,
 	note nvarchar(max),
-<<<<<<< HEAD
-	status tinyint check(TinhTrang in (0,1,2,3,4)),
-=======
-	[status] tinyint check(status in (0,1,2,3,4)),
->>>>>>> remotes/origin/dev
-	idRep int 
+	[status] tinyint check(status in (0,1,2,3,4))
 )
 go
 
@@ -61,34 +49,23 @@ CREATE TABLE Distributor
 	address nvarchar(100),
 	phone varchar(11) unique,
 	Email varchar(100) unique,
+	debt money,
 	createdDate datetime,
 	updatedDate datetime,
 	note nvarchar(max),
-<<<<<<< HEAD
-	status bool,
-=======
 	[status] bit,
->>>>>>> remotes/origin/dev
 	UserName varchar(30)
 )
 go
 
-<<<<<<< HEAD
-CREATE TABLE Contract
-=======
 CREATE TABLE [Contract]
->>>>>>> remotes/origin/dev
 (
 	idContract int identity (1,1) primary key,
 	beginDate datetime,
 	expiredDate datetime,
 	minOrderTotalValue money,
 	maxDebt money,
-<<<<<<< HEAD
-	commission tinyint check( TienHoaHong between 0 and 100),
-=======
 	commission tinyint check( commission between 0 and 100),
->>>>>>> remotes/origin/dev
 	disType bit,
 	area nvarchar(30),
 	status bit,
@@ -156,6 +133,7 @@ create table Product
 	ProductName nvarchar(50),
 	Price money,
 	IsDisabled bit,
+	Quantity int check(Quantity > 0),
 	ProductType int,
 	Unit int
 )
@@ -277,8 +255,7 @@ CREATE TABLE Consignee
 	idConsignee int identity(1,1) primary key,
 	Name nvarchar(100),
 	PhoneNumber varchar(20),
-	idDistributor int,
-	idOrder int
+	idDistributor int
 )
 go
 
@@ -403,15 +380,7 @@ create table Bill(
 );
 go
 
-<<<<<<< HEAD
---------------------
-
-=======
 -------------------------------
->>>>>>> remotes/origin/dev
-ALTER TABLE PotentialDistributor ADD 
-	CONSTRAINT FK_DoiTac_NDD FOREIGN KEY (idRep) REFERENCES Representative(idRepresentative)
-go
 
 ALTER TABLE Distributor ADD 
 	CONSTRAINT FK_NPP_Account FOREIGN KEY (UserName) REFERENCES Account(UserName)
@@ -530,8 +499,7 @@ ALTER TABLE [Order] ADD
 go
 
 ALTER TABLE Consignee ADD
-	CONSTRAINT FK_Consignee_Distributor FOREIGN KEY (idDistributor) REFERENCES Distributor (idDistributor),
-	CONSTRAINT FK_Consignee_Order FOREIGN KEY (idOrder) REFERENCES [Order](idOrder)
+	CONSTRAINT FK_Consignee_Distributor FOREIGN KEY (idDistributor) REFERENCES Distributor (idDistributor)
 go
 
 ALTER TABLE OrderDetail ADD 

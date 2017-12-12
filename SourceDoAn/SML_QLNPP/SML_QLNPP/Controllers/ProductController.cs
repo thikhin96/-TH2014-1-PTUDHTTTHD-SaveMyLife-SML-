@@ -26,6 +26,8 @@ namespace SML_QLNPP.Controllers
         // GET: Product
         public ActionResult List()
         {
+            ViewBag.Parent = "Quản lý sản phẩm";
+            ViewBag.Child = "Tìm kiếm sản phẩm";
             return View();
         }
 
@@ -65,10 +67,13 @@ namespace SML_QLNPP.Controllers
                     ProductName = pro.ProductName,
                     Price = pro.Price,
                     ProductType = pro.ProductType.GetValueOrDefault(),
-                    Unit = pro.Unit.GetValueOrDefault()
+                    Unit = pro.Unit.GetValueOrDefault(),
+                    Quantity = pro.Quantity.GetValueOrDefault()
                 };
                 model.ProductTypes = _productTypeService.GetAllProductType();
                 model.Units = _unitService.GetAllUnit();
+                ViewBag.Parent = "Quản lý sản phẩm  >  Tìm kiếm sản phẩm";
+                ViewBag.Child = "Chi tiết sản phẩm";
                 return View(model);
             }
             else
@@ -86,6 +91,8 @@ namespace SML_QLNPP.Controllers
             };
             model.ProductTypes = _productTypeService.GetAllProductType();
             model.Units = _unitService.GetAllUnit();
+            ViewBag.Parent = "Quản lý sản phẩm";
+            ViewBag.Child = "Tạo sản phẩm mới";
             return View(model);
         }
 
@@ -101,7 +108,8 @@ namespace SML_QLNPP.Controllers
                 Price = model.Price,
                 IsDisabled = false,
                 ProductType = model.ProductType,
-                Unit = model.Unit
+                Unit = model.Unit,
+                Quantity = model.Quantity
             };
             var result = _productService.CreateProduct(product);
             if (result == "ok")
@@ -129,6 +137,7 @@ namespace SML_QLNPP.Controllers
             product.IsDisabled = model.IsDisabled;
             product.ProductType = model.ProductType;
             product.Unit = model.Unit;
+            product.Quantity = model.Quantity;
 
             var result = _productService.UpdateProduct(product);
 
