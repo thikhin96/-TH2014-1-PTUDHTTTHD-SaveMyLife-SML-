@@ -50,8 +50,8 @@ namespace SML_QLNPP.Controllers
             else
             {
                 model.listDis = dis_Service.GetList(id).ToList();
-                model.id = null;
             }
+            model.id = null;
             return View("Distributor",model);
         }
 

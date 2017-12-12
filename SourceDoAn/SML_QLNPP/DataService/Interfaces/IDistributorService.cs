@@ -15,7 +15,6 @@ namespace DataService.Interfaces
         bool UpdateStatus(int id, bool status);
         Distributor SearchByID(int id);
         IList<DistributorList> GetList(Nullable<int> id);
-        IList<DistributorList> GetAll();
         bool hasContract(int distributorId);
         bool priceOverDebt(int distributorId, decimal price);
     }
