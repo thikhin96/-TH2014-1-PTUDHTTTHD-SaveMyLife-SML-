@@ -69,7 +69,6 @@
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
           <Property Name="idDistributor" Type="int" />
-          <Property Name="idOrder" Type="int" />
         </EntityType>
         <EntityType Name="Contract">
           <Key>
@@ -139,6 +138,7 @@
           <Property Name="note" Type="nvarchar(max)" />
           <Property Name="status" Type="bit" />
           <Property Name="UserName" Type="varchar" MaxLength="30" />
+          <Property Name="debt" Type="money" />
         </EntityType>
         <EntityType Name="Log_Login">
           <Key>
@@ -232,7 +232,6 @@
           <Property Name="updatedDate" Type="datetime" />
           <Property Name="note" Type="nvarchar(max)" />
           <Property Name="status" Type="tinyint" />
-          <Property Name="idRep" Type="int" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -244,6 +243,7 @@
           <Property Name="IsDisabled" Type="bit" />
           <Property Name="ProductType" Type="int" />
           <Property Name="Unit" Type="int" />
+          <Property Name="Quantity" Type="int" />
         </EntityType>
         <EntityType Name="ProductType">
           <Key>
@@ -480,18 +480,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Consignee_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
-          <End Role="Consignee" Type="Self.Consignee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="idOrder" />
-            </Principal>
-            <Dependent Role="Consignee">
-              <PropertyRef Name="idOrder" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Debt_Distributor">
           <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
           <End Role="Debt" Type="Self.Debt" Multiplicity="*" />
@@ -576,18 +564,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DoiTac_NDD">
-          <End Role="Representative" Type="Self.Representative" Multiplicity="0..1" />
-          <End Role="PotentialDistributor" Type="Self.PotentialDistributor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Representative">
-              <PropertyRef Name="idRepresentative" />
-            </Principal>
-            <Dependent Role="PotentialDistributor">
-              <PropertyRef Name="idRep" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_HopDong_NDD">
           <End Role="Representative" Type="Self.Representative" Multiplicity="0..1" />
           <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
@@ -600,7 +576,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HopDong_Staff">
+        <Association Name="FK_HopDong_NhanVien">
           <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
           <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
           <ReferentialConstraint>
@@ -612,7 +588,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HopDong_Distributor">
+        <Association Name="FK_HopDong_NhaPhanPhoi">
           <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
           <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1069,10 +1045,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             <End Role="Distributor" EntitySet="Distributor" />
             <End Role="Consignee" EntitySet="Consignee" />
           </AssociationSet>
-          <AssociationSet Name="FK_Consignee_Order" Association="Self.FK_Consignee_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="Consignee" EntitySet="Consignee" />
-          </AssociationSet>
           <AssociationSet Name="FK_Debt_Distributor" Association="Self.FK_Debt_Distributor">
             <End Role="Distributor" EntitySet="Distributor" />
             <End Role="Debt" EntitySet="Debt" />
@@ -1101,19 +1073,15 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             <End Role="Product" EntitySet="Product" />
             <End Role="DetailedDeliveryOrder" EntitySet="DetailedDeliveryOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK_DoiTac_NDD" Association="Self.FK_DoiTac_NDD">
-            <End Role="Representative" EntitySet="Representative" />
-            <End Role="PotentialDistributor" EntitySet="PotentialDistributor" />
-          </AssociationSet>
           <AssociationSet Name="FK_HopDong_NDD" Association="Self.FK_HopDong_NDD">
             <End Role="Representative" EntitySet="Representative" />
             <End Role="Contract" EntitySet="Contract" />
           </AssociationSet>
-          <AssociationSet Name="FK_HopDong_Staff" Association="Self.FK_HopDong_Staff">
+          <AssociationSet Name="FK_HopDong_NhanVien" Association="Self.FK_HopDong_NhanVien">
             <End Role="Staff" EntitySet="Staff" />
             <End Role="Contract" EntitySet="Contract" />
           </AssociationSet>
-          <AssociationSet Name="FK_HopDong_Distributor" Association="Self.FK_HopDong_Distributor">
+          <AssociationSet Name="FK_HopDong_NhaPhanPhoi" Association="Self.FK_HopDong_NhaPhanPhoi">
             <End Role="Distributor" EntitySet="Distributor" />
             <End Role="Contract" EntitySet="Contract" />
           </AssociationSet>
@@ -1313,10 +1281,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             <End Role="Distributor" EntitySet="Distributors" />
             <End Role="Consignee" EntitySet="Consignees" />
           </AssociationSet>
-          <AssociationSet Name="FK_Consignee_Order" Association="QL_NPPModel.FK_Consignee_Order">
-            <End Role="Order" EntitySet="Orders" />
-            <End Role="Consignee" EntitySet="Consignees" />
-          </AssociationSet>
           <AssociationSet Name="FK_Order_Consignee" Association="QL_NPPModel.FK_Order_Consignee">
             <End Role="Consignee" EntitySet="Consignees" />
             <End Role="Order" EntitySet="Orders" />
@@ -1325,11 +1289,11 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             <End Role="Representative" EntitySet="Representatives" />
             <End Role="Contract" EntitySet="Contracts" />
           </AssociationSet>
-          <AssociationSet Name="FK_HopDong_Staff" Association="QL_NPPModel.FK_HopDong_Staff">
+          <AssociationSet Name="FK_HopDong_NhanVien" Association="QL_NPPModel.FK_HopDong_NhanVien">
             <End Role="Staff" EntitySet="Staffs" />
             <End Role="Contract" EntitySet="Contracts" />
           </AssociationSet>
-          <AssociationSet Name="FK_HopDong_Distributor" Association="QL_NPPModel.FK_HopDong_Distributor">
+          <AssociationSet Name="FK_HopDong_NhaPhanPhoi" Association="QL_NPPModel.FK_HopDong_NhaPhanPhoi">
             <End Role="Distributor" EntitySet="Distributors" />
             <End Role="Contract" EntitySet="Contracts" />
           </AssociationSet>
@@ -1412,10 +1376,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <AssociationSet Name="FK_PaySlip_Staff" Association="QL_NPPModel.FK_PaySlip_Staff">
             <End Role="Staff" EntitySet="Staffs" />
             <End Role="PaySlip" EntitySet="PaySlips" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DoiTac_NDD" Association="QL_NPPModel.FK_DoiTac_NDD">
-            <End Role="Representative" EntitySet="Representatives" />
-            <End Role="PotentialDistributor" EntitySet="PotentialDistributors" />
           </AssociationSet>
           <AssociationSet Name="FK_Representative_PDistributor" Association="QL_NPPModel.FK_Representative_PDistributor">
             <End Role="PotentialDistributor" EntitySet="PotentialDistributors" />
@@ -1558,9 +1518,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="idDistributor" Type="Int32" />
-          <Property Name="idOrder" Type="Int32" />
           <NavigationProperty Name="Distributor" Relationship="QL_NPPModel.FK_Consignee_Distributor" FromRole="Consignee" ToRole="Distributor" />
-          <NavigationProperty Name="Order" Relationship="QL_NPPModel.FK_Consignee_Order" FromRole="Consignee" ToRole="Order" />
           <NavigationProperty Name="Orders" Relationship="QL_NPPModel.FK_Order_Consignee" FromRole="Consignee" ToRole="Order" />
         </EntityType>
         <EntityType Name="Contract">
@@ -1581,8 +1539,8 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <Property Name="representative" Type="Int32" />
           <Property Name="staff" Type="Int32" />
           <NavigationProperty Name="Representative1" Relationship="QL_NPPModel.FK_HopDong_NDD" FromRole="Contract" ToRole="Representative" />
-          <NavigationProperty Name="Staff1" Relationship="QL_NPPModel.FK_HopDong_Staff" FromRole="Contract" ToRole="Staff" />
-          <NavigationProperty Name="Distributor1" Relationship="QL_NPPModel.FK_HopDong_Distributor" FromRole="Contract" ToRole="Distributor" />
+          <NavigationProperty Name="Staff1" Relationship="QL_NPPModel.FK_HopDong_NhanVien" FromRole="Contract" ToRole="Staff" />
+          <NavigationProperty Name="Distributor1" Relationship="QL_NPPModel.FK_HopDong_NhaPhanPhoi" FromRole="Contract" ToRole="Distributor" />
         </EntityType>
         <EntityType Name="Debt">
           <Key>
@@ -1643,9 +1601,10 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="status" Type="Boolean" />
           <Property Name="UserName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="debt" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="Bills" Relationship="QL_NPPModel.FK_Bill_Distributor" FromRole="Distributor" ToRole="Bill" />
           <NavigationProperty Name="Consignees" Relationship="QL_NPPModel.FK_Consignee_Distributor" FromRole="Distributor" ToRole="Consignee" />
-          <NavigationProperty Name="Contracts" Relationship="QL_NPPModel.FK_HopDong_Distributor" FromRole="Distributor" ToRole="Contract" />
+          <NavigationProperty Name="Contracts" Relationship="QL_NPPModel.FK_HopDong_NhaPhanPhoi" FromRole="Distributor" ToRole="Contract" />
           <NavigationProperty Name="Debts" Relationship="QL_NPPModel.FK_Debt_Distributor" FromRole="Distributor" ToRole="Debt" />
           <NavigationProperty Name="DeliveryOrders" Relationship="QL_NPPModel.FK_DeliveryOrder_Distributor" FromRole="Distributor" ToRole="DeliveryOrder" />
           <NavigationProperty Name="Orders" Relationship="QL_NPPModel.FK_Order_Distributor" FromRole="Distributor" ToRole="Order" />
@@ -1716,7 +1675,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <Property Name="idConsignee" Type="Int32" />
           <Property Name="idStaff" Type="Int32" />
           <Property Name="Descriptions" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Consignees" Relationship="QL_NPPModel.FK_Consignee_Order" FromRole="Order" ToRole="Consignee" />
           <NavigationProperty Name="Consignee" Relationship="QL_NPPModel.FK_Order_Consignee" FromRole="Order" ToRole="Consignee" />
           <NavigationProperty Name="DeliveryOrder" Relationship="QL_NPPModel.FK_DeliveryOrder_Oder" FromRole="Order" ToRole="DeliveryOrder" />
           <NavigationProperty Name="Distributor" Relationship="QL_NPPModel.FK_Order_Distributor" FromRole="Order" ToRole="Distributor" />
@@ -1761,9 +1719,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <Property Name="updatedDate" Type="DateTime" Precision="3" />
           <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="status" Type="Byte" />
-          <Property Name="idRep" Type="Int32" />
           <NavigationProperty Name="Assignments" Relationship="QL_NPPModel.FK_Assignment_PDistributor" FromRole="PotentialDistributor" ToRole="Assignment" />
-          <NavigationProperty Name="Representative" Relationship="QL_NPPModel.FK_DoiTac_NDD" FromRole="PotentialDistributor" ToRole="Representative" />
           <NavigationProperty Name="Representatives" Relationship="QL_NPPModel.FK_Representative_PDistributor" FromRole="PotentialDistributor" ToRole="Representative" />
         </EntityType>
         <EntityType Name="Product">
@@ -1776,6 +1732,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <Property Name="IsDisabled" Type="Boolean" />
           <Property Name="ProductType" Type="Int32" />
           <Property Name="Unit" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
           <NavigationProperty Name="BatchDetails" Relationship="QL_NPPModel.FK_BatchDetail_Product" FromRole="Product" ToRole="BatchDetail" />
           <NavigationProperty Name="DetailedDeliveryOrders" Relationship="QL_NPPModel.FK_DetailedDeliveryOrder_Product" FromRole="Product" ToRole="DetailedDeliveryOrder" />
           <NavigationProperty Name="Log_OrderDetail" Relationship="QL_NPPModel.FK_Log_OrderDetail_Product" FromRole="Product" ToRole="Log_OrderDetail" />
@@ -1841,7 +1798,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <Property Name="Distributor" Type="Int32" />
           <NavigationProperty Name="Contracts" Relationship="QL_NPPModel.FK_HopDong_NDD" FromRole="Representative" ToRole="Contract" />
           <NavigationProperty Name="Distributor1" Relationship="QL_NPPModel.FK_Representative_Distributor" FromRole="Representative" ToRole="Distributor" />
-          <NavigationProperty Name="PotentialDistributors" Relationship="QL_NPPModel.FK_DoiTac_NDD" FromRole="Representative" ToRole="PotentialDistributor" />
           <NavigationProperty Name="PotentialDistributor" Relationship="QL_NPPModel.FK_Representative_PDistributor" FromRole="Representative" ToRole="PotentialDistributor" />
         </EntityType>
         <EntityType Name="ReturnBase">
@@ -1934,7 +1890,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <Property Name="adress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Assignments" Relationship="QL_NPPModel.FK_Assignment_Staff" FromRole="Staff" ToRole="Assignment" />
           <NavigationProperty Name="Bills" Relationship="QL_NPPModel.FK_Bill_Staff" FromRole="Staff" ToRole="Bill" />
-          <NavigationProperty Name="Contracts" Relationship="QL_NPPModel.FK_HopDong_Staff" FromRole="Staff" ToRole="Contract" />
+          <NavigationProperty Name="Contracts" Relationship="QL_NPPModel.FK_HopDong_NhanVien" FromRole="Staff" ToRole="Contract" />
           <NavigationProperty Name="Debts" Relationship="QL_NPPModel.FK_Debt_Staff" FromRole="Staff" ToRole="Debt" />
           <NavigationProperty Name="DeliveryOrders" Relationship="QL_NPPModel.FK_DeliveryOrder_Staff" FromRole="Staff" ToRole="DeliveryOrder" />
           <NavigationProperty Name="Log_OrderDetail" Relationship="QL_NPPModel.FK_Log_OrderDetail_Staff" FromRole="Staff" ToRole="Log_OrderDetail" />
@@ -2063,18 +2019,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Consignee_Order">
-          <End Type="QL_NPPModel.Order" Role="Order" Multiplicity="0..1" />
-          <End Type="QL_NPPModel.Consignee" Role="Consignee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="idOrder" />
-            </Principal>
-            <Dependent Role="Consignee">
-              <PropertyRef Name="idOrder" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Order_Consignee">
           <End Type="QL_NPPModel.Consignee" Role="Consignee" Multiplicity="0..1" />
           <End Type="QL_NPPModel.Order" Role="Order" Multiplicity="*" />
@@ -2099,7 +2043,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HopDong_Staff">
+        <Association Name="FK_HopDong_NhanVien">
           <End Type="QL_NPPModel.Staff" Role="Staff" Multiplicity="0..1" />
           <End Type="QL_NPPModel.Contract" Role="Contract" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2111,7 +2055,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HopDong_Distributor">
+        <Association Name="FK_HopDong_NhaPhanPhoi">
           <End Type="QL_NPPModel.Distributor" Role="Distributor" Multiplicity="0..1" />
           <End Type="QL_NPPModel.Contract" Role="Contract" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2363,18 +2307,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DoiTac_NDD">
-          <End Type="QL_NPPModel.Representative" Role="Representative" Multiplicity="0..1" />
-          <End Type="QL_NPPModel.PotentialDistributor" Role="PotentialDistributor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Representative">
-              <PropertyRef Name="idRepresentative" />
-            </Principal>
-            <Dependent Role="PotentialDistributor">
-              <PropertyRef Name="idRep" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Representative_PDistributor">
           <End Type="QL_NPPModel.PotentialDistributor" Role="PotentialDistributor" Multiplicity="0..1" />
           <End Type="QL_NPPModel.Representative" Role="Representative" Multiplicity="*" />
@@ -2579,7 +2511,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -2647,7 +2579,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <EntitySetMapping Name="Consignees">
             <EntityTypeMapping TypeName="QL_NPPModel.Consignee">
               <MappingFragment StoreEntitySet="Consignee">
-                <ScalarProperty Name="idOrder" ColumnName="idOrder" />
                 <ScalarProperty Name="idDistributor" ColumnName="idDistributor" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -2715,6 +2646,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <EntitySetMapping Name="Distributors">
             <EntityTypeMapping TypeName="QL_NPPModel.Distributor">
               <MappingFragment StoreEntitySet="Distributor">
+                <ScalarProperty Name="debt" ColumnName="debt" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="note" ColumnName="note" />
@@ -2816,7 +2748,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <EntitySetMapping Name="PotentialDistributors">
             <EntityTypeMapping TypeName="QL_NPPModel.PotentialDistributor">
               <MappingFragment StoreEntitySet="PotentialDistributor">
-                <ScalarProperty Name="idRep" ColumnName="idRep" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="note" ColumnName="note" />
                 <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
@@ -2832,6 +2763,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="QL_NPPModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
                 <ScalarProperty Name="ProductType" ColumnName="ProductType" />
                 <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />

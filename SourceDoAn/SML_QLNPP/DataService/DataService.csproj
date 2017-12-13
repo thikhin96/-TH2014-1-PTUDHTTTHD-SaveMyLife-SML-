@@ -144,6 +144,7 @@
     <Compile Include="Dtos\DistributorList.cs" />
     <Compile Include="Dtos\ProductWithQuantity.cs" />
     <Compile Include="Interfaces\IAccountService.cs" />
+    <Compile Include="Interfaces\IContractService.cs" />
     <Compile Include="Interfaces\IBillService.cs" />
     <Compile Include="Interfaces\IDeliveryOrderService.cs" />
     <Compile Include="Interfaces\IDetailedDeliveryOrderService.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="Interfaces\IPromotionService.cs" />
     <Compile Include="ServiceModule.cs" />
     <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\ContractService.cs" />
     <Compile Include="Services\DeliveryOrderService.cs" />
     <Compile Include="Services\DetailedDeliveryOrderService.cs" />
     <Compile Include="Services\BillService.cs" />

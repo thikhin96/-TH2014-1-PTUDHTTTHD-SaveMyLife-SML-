@@ -11,7 +11,6 @@ namespace DataService.Interfaces
     {
         bool CheckPhone(string phone);
         bool CheckEmail(string email);
-        DistributorBase SearchByID(int id);
         bool Create(DistributorBase dis, Representative rep);
     }
 }

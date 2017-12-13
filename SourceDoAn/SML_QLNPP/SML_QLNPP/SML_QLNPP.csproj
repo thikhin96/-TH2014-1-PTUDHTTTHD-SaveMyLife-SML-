@@ -17,7 +17,7 @@
     <AssemblyName>SML_QLNPP</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
@@ -305,6 +305,7 @@
     <Content Include="Content\Home\images\ab2.jpg" />
     <Content Include="Content\Home\images\back.png" />
     <Content Include="Content\Home\images\banner.jpg" />
+    <Content Include="Content\Home\images\btn_search.png" />
     <Content Include="Content\Home\images\close.png" />
     <Content Include="Content\Home\images\g1.jpg" />
     <Content Include="Content\Home\images\g2.jpg" />
@@ -471,6 +472,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\DeliveryOrder\List.cshtml" />
     <Content Include="Views\Distributor\Distributor.cshtml" />
+    <Content Include="Views\Distributor\DetailedDistributor.cshtml" />
     <Content Include="Views\Account\ALogin.cshtml" />
     <Content Include="Views\DeliveryOrder\Details.cshtml" />
     <Content Include="Views\DeliveryOrder\Edit.cshtml" />
