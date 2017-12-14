@@ -81,7 +81,7 @@
                             rs.push('Còn bán');
                         }
                         
-                        rs.push('<a href="/Order/Detail/' + item.IdProduct + '">Xem</a>')
+                        rs.push('<a href="/Product/Detail/' + item.IdProduct + '">Xem</a>')
                         return rs;
                     });
 

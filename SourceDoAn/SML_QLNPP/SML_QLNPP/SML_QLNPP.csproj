@@ -468,6 +468,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Order\jquery-ui.min.js" />
+    <Content Include="Scripts\Product\detail.js" />
     <Content Include="Scripts\Product\product.js" />
     <Content Include="Scripts\Promotion\promotion.js" />
     <Content Include="Scripts\respond.js" />
