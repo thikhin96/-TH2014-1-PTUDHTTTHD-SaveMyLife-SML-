@@ -19,30 +19,45 @@
     <div class="box-header with-border">
         <h3 class="box-title">Thông tin tìm kiếm</h3>
     </div>
+@using (Html.BeginForm("List", "DeliveryOrder", FormMethod.Post))
+{
     <div class="box-body">
         <div class="col-md-8">
-            <label>Tìm theo mã giao hàng</label>
-            <input type="text" class="form-control" placeholder="Nhập mã đơn giao hàng" id="dorder">
+            @Html.Label("Tìm theo mã giao hàng")
+            @Html.TextBox("idDelivery","", new {@type="number", @min = "1", @class = "form-control" , @placeholder = "Nhập mã giao hàng" })
+            @*<input type="text" class="form-control" placeholder="Nhập mã đơn giao hàng" id="dorder">*@
         </div>
         <div class="col-md-2">
-            <label>Trạng thái</label>
-            <select class="form-control" id="status">
+            @Html.Label("Trạng thái")
+            @Html.DropDownList("status", new List<SelectListItem> {
+           new SelectListItem { Text = "Tất cả", Value = "0", Selected = true },
+           new SelectListItem { Text = "Đang giao", Value = "1"},
+       new SelectListItem { Text = "Đã giao", Value = "2"},
+       new SelectListItem { Text = "Kiểm kê thiếu hàng", Value = "3"},
+       new SelectListItem { Text = "Bị từ chối giao", Value = "4"},
+       new SelectListItem { Text = "Chưa kiểm kê", Value = "5"}
+       }, new { @class = "form-control" })
+            
+            @*<select class="form-control" id="status">
                 <option value="0">Tất cả</option>
                 <option value="1">Đang giao</option>
                 <option value="2">Đã giao</option>
                 <option value="3">Kiểm kê thiếu hàng</option>
                 <option value="4">Bị từ chối giao</option>
                 <option value="5">Chưa kiểm kê</option>
-            </select>
+            </select>*@
         </div>
         <div class="col-md-2">
-            <label>Ngày giao (ngày/tháng/năm))</label>
-            <input type="date" class="form-control" id="delivery_date" value="">
+            @Html.Label("Ngày giao (ngày/tháng/năm)")
+            @Html.TextBox("delivery_date","", new { @type = "date", @class = "form-control"})
+            @*<input type="date" class="form-control" id="delivery_date" value="">*@
         </div>
     </div>
     <div class="box-footer">
-        <button type="submit" class="btn btn-primary" id="search">Tìm kiếm kết quả</button>
+        <input type="submit" class="btn btn-primary" id="search" name ="search" value="Tìm kiếm"/>
+        @*<span class="has-error">@ViewBag.er_search</span>*@
     </div>
+}
 </div>
 
 <div class="row">
@@ -68,33 +83,38 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr>
-                                        <td>
-                                            @item.idDeliveryOrder
-                                        <td>
-                                            @item.idOrder
-                                        </td>
-                                        <td>
-                                            @item.Order.idDistributor
-                                        </td>
-                                        <td>
-                                            @string.Format("{0:0,0}", @item.totalPurchase)
-                                        </td>
-                                        <td>
-                                            @(item.status == 1 ? "Đang giao" : item.status == 2 ? "Đã giao" : item.status == 3 ? "Kiểm kê thiếu hàng" : item.status == 4 ? "Bị từ chối giao" : item.status == 5 ? "Chưa kiểm kê" : "")
+                                @{ if (Model != null)
+                                    {
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @item.idDeliveryOrder
+                                                <td>
+                                                    @item.idOrder
+                                                </td>
+                                                <td>
+                                                    @item.Order.idDistributor
+                                                </td>
+                                                <td>
+                                                    @string.Format("{0:0,0}", @item.totalPurchase)
+                                                </td>
+                                                <td>
+                                                    @(item.status == 1 ? "Đang giao" : item.status == 2 ? "Đã giao" : item.status == 3 ? "Kiểm kê thiếu hàng" : item.status == 4 ? "Bị từ chối giao" : item.status == 5 ? "Chưa kiểm kê" : "")
 
-                                        </td>
-                                        <td>
-                                            @Convert.ToDateTime(@item.deliveryDate).ToString("dd/MM/yyyy")
-                                        </td>
-                                        <td>
-                                            @Html.ActionLink("Chi Tiết", "Details", new { id = item.idDeliveryOrder }) |
-                                            @Html.ActionLink("Sữa", "Edit", new { id = item.idDeliveryOrder })
-                                        </td>
-                                    </tr>
+                                                </td>
+                                                <td>
+                                                    @Convert.ToDateTime(@item.deliveryDate).ToString("dd/MM/yyyy")
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Chi Tiết", "Details", new { id = item.idDeliveryOrder }) |
+                                                    @Html.ActionLink("Sữa", "Edit", new { id = item.idDeliveryOrder })
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
                                 }
+                                
                             </tbody>
                         </table>
                     </div>

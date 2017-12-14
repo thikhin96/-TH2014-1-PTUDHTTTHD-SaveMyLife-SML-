@@ -38,8 +38,10 @@
                 $('#btnControll').append('<input type="button" value="Cập nhật" class="btn" style= "margin-right: 5px" id="btnUpdate"/>');
                 $('#btnControll').append('<input type="button" value="Lập hóa đơn" class="btn" style= "margin-left: 5px" id="btnCreateBill"/>');
                 $('#status').empty();
+                $('#status').append('<option value="1">Đang giao</option>');
                 $('#status').append('<option value="2">Đã giao</option>');
-                $('#status').append('<option value="3">Từ chối giao</option>');
+                $('#status').append('<option value="3">Kiểm kê thiếu</option>');
+                $('#status').append('<option value="4">Bị Từ chối giao</option>');
             }
             else {
                 alert("Cập nhật thất bại");
@@ -64,20 +66,7 @@ $('#btnUpdate').click(function (e) {
         description: $('#description').val()
     };
 
-    //alert("mã giao hàng: " + data['idDeliveryOrder']);
-    //alert("tinhd trạng hiện tại :" + data['status']);
-    //alert("Mô tả :" + data['description']);
 
-    //alert("data: " + data);
-    //alert(JSON.stringify(data));
-    if (data.status == 1) {
-        alert("Chưa cập nhật tình trạng");
-        //$('#status').focus(function () {
-        //   $(this).append("span").attr("Chưa cập nhật trạng thai");
-        //   $(this).fadeIn(100000);
-        //});
-        return;
-    }
     var url = '/SML_QLNPP/aj/DeliveryOrder/UpdateStatus';
     $.ajax({
         type: "POST",
@@ -92,9 +81,8 @@ $('#btnUpdate').click(function (e) {
                 $('#btnControll').empty();
                 $('#btnControll').append('<input type="button" value="Cập nhật" class="btn" style= "margin-right: 5px" id="btnUpdate"/>');
                 $('#btnControll').append('<input type="button" value="Lập hóa đơn" class="btn" style= "margin-left: 5px" id="btnCreateBill"/>');
-                $('#status').empty();
-                $('#status').append('<option value="2">Đã giao</option>');
-                $('#status').append('<option value="3">Từ chối giao</option>');
+                // thay đổi selected của select
+                $('#status').val(data.status);
             }
             else {
                 alert("Cập nhật thất bại");

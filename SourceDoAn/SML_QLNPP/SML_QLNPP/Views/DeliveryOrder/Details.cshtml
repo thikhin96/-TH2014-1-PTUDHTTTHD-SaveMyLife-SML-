@@ -76,11 +76,11 @@
             <label>Ngày giao: </label>
             <input type="text" value="@Convert.ToDateTime(@Model.deliveryDate).ToString("dd/MM/yyyy")" readonly />
         </div>
-        <div class="col-lg-4 col-md-6 form-group">
+        <div class="col-md-6 form-group">
             <label>Cập nhật gần đây: </label>
             <input type="text" value="@Convert.ToDateTime(@Model.updateDate).ToString("dd/MM/yyyy")" readonly />
         </div>
-        <div class="col-md-6 form-group">
+        <div class="col-md-6">
             <label>Tình trạng: </label>
             <select class="" id="status">
                 @{
@@ -93,9 +93,10 @@
                     }
                     else
                     {
-                        <option value="1" selected="@(Model.status == 1 ? "selected" : "")">Đang giao</option>
-                        <option value="2" selected="@(Model.status == 2 ? "selected" : "")">Đã giao</option>             
-                        <option value="2" selected="@(Model.status == 4 ? "selected" : "")">Bị từ chối giao</option>
+                        <option value="1" @(Model.status == 1 ? "selected='selected'" : "")>Đang giao</option>
+                        <option value="2" @(Model.status == 2 ? "selected='selected'" : "")>Đã giao</option>
+                        <option value="3" @(Model.status == 3 ? "selected='selected'" : "")>Kiểm kê thiếu</option>
+                        <option value="4" @(Model.status == 4 ? "selected='selected'" : "")>Bị từ chối giao</option>
                     }
                 }
 

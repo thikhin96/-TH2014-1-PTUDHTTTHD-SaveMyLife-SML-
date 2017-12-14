@@ -53,7 +53,7 @@ namespace DataService.Services
         }
 
 
-        public IList<DeliveryOrder> SearchByStatus(int status)
+        public IList<DeliveryOrder> SearchByStatus(byte status)
         {
             IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
             var result = repository.GetAll(a => a.status == status);
