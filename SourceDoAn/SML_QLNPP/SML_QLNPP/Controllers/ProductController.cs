@@ -66,6 +66,7 @@ namespace SML_QLNPP.Controllers
                     IdProduct = id,
                     ProductName = pro.ProductName,
                     Price = pro.Price,
+                    IsDisabled = pro.IsDisabled.GetValueOrDefault(),
                     ProductType = pro.ProductType.GetValueOrDefault(),
                     Unit = pro.Unit.GetValueOrDefault(),
                     Quantity = pro.Quantity.GetValueOrDefault()

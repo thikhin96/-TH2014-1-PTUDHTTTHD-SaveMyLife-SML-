@@ -15,13 +15,13 @@
     List<SelectListItem> listStatus = new List<SelectListItem>();
     if (Model.IsDisabled)
     {
-        listStatus.Add(new SelectListItem { Text = "Còn bán", Value = "False" });
-        listStatus.Add(new SelectListItem { Text = "Ngừng", Value = "True", Selected = true });
+        listStatus.Add(new SelectListItem { Text = "Còn bán", Value = "false" });
+        listStatus.Add(new SelectListItem { Text = "Ngừng", Value = "true", Selected = true });
     }
     else
     {
-        listStatus.Add(new SelectListItem { Text = "Còn bán", Value = "False", Selected = true });
-        listStatus.Add(new SelectListItem { Text = "Ngừng", Value = "True" });
+        listStatus.Add(new SelectListItem { Text = "Còn bán", Value = "false", Selected = true });
+        listStatus.Add(new SelectListItem { Text = "Ngừng", Value = "true" });
     }
 
 }

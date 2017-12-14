@@ -25,7 +25,7 @@
                     rs.push(item.ProductName);
                     rs.push(item.Price);
 
-                    if (item.Statuses) {
+                    if (item.IsDisabled) {
                         rs.push('Ngừng');
                     }
                     else {
@@ -73,8 +73,7 @@
                         rs.push(item.IdProduct);
                         rs.push(item.ProductName);
                         rs.push(item.Price);
-
-                        if (item.Statuses) {
+                        if (item.IsDisabled) {
                             rs.push('Ngừng');
                         }
                         else {
