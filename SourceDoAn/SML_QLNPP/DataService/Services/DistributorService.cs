@@ -114,5 +114,10 @@ namespace DataService.Services
         {
             throw new NotImplementedException();
         }
+
+        public IList<DistributorList> GetAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
