@@ -4,7 +4,7 @@
     // $('#status :selected').text() lấy giá trị text của opption
     // $('#status :selected').val() lất giá tị value cỉa opption
     var data = {
-        idDeliveryOrder: parseInt($('#idDelivery').attr('value')),
+        idDeliveryOrder: parseInt($('#idDelivery').val()),
         status: parseInt($('#status :selected').val()),
         description: $('#description').val()
     };

@@ -31,6 +31,8 @@ namespace SML_QLNPP.Controllers
         // GET: DeliveryOrder
         public ActionResult List()
         {
+            ViewBag.Parent = "Quản lý giao hàng";
+            ViewBag.Child =  "Tìm kiếm";
             var model = _deliveryOrderService.GetAll();
             return View(model);
         }
@@ -38,6 +40,9 @@ namespace SML_QLNPP.Controllers
         // GET: DeliveryOrder/Details/5
         public ActionResult Details(int id)
         {
+            ViewBag.Parent ="Quản lý giao hàng";
+            ViewBag.Child = "Chi tiết";
+
             var model = _deliveryOrderService.SearchById(id);
             if (model == null)
             {
@@ -50,7 +55,7 @@ namespace SML_QLNPP.Controllers
         }
 
         [HttpPost]
-     //   [AllowAnonymous]
+        //   [AllowAnonymous]
         public JsonResult UpdateStatus(int idDeliveryOrder, int status, string description)
         {
             bool result = true;
@@ -69,9 +74,10 @@ namespace SML_QLNPP.Controllers
                 rs = "false";
             }
 
-            return Json(new {
+            return Json(new
+            {
                 success = rs
-        });
+            });
         }
         // GET: DeliveryOrder/Create
         public ActionResult Create()
