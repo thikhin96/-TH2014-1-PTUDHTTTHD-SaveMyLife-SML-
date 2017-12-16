@@ -11,7 +11,7 @@
 
         var startDate = $("#startDate").val();
         var endDate = $("#endDate").val();
-        var url = '/aj/Promotion/Search'
+        var url = '/Promotion/Search'
         console.log(status);
         $.ajax({
             url: url,
