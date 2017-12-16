@@ -41,29 +41,35 @@ namespace SML_QLNPP.Controllers
         //    return View(bill);
         //}
 
+        //POST: Bill/Create
+        [HttpPost]
+        public ActionResult Create(Bill bill)
+        {
+            ViewBag.Parent = "Quản lý giao hàng";
+            ViewBag.Child = "Lập hóa đơn";
+            return View();
+        }
         // GET: Bill/Create
-        //public ActionResult Create()
-        //{
-        //    ViewBag.idDeliveryOrder = new SelectList(_billService.ge, "idDeliveryOrder", "recipient");
-        //    ViewBag.idDistributor = new SelectList(db.Distributors, "idDistributor", "name");
-        //    ViewBag.idStaff = new SelectList(db.Staffs, "idStaff", "staffName");
-        //    return View();
-        //}
-
+        public ActionResult Create()
+        {
+            ViewBag.Parent = "Quản lý giao hàng";
+            ViewBag.Child = "Lập hóa đơn";
+            return View();
+        }
         //// POST: Bill/Create
         //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idBill,purchase,createdDate,types,description,idDeliveryOrder,idStaff,idDistributor")] Bill bill)
-        {
-            
-             _billService.AddBill(bill);
-            //ViewBag.idDeliveryOrder = new SelectList(db.DeliveryOrders, "idDeliveryOrder", "recipient", bill.idDeliveryOrder);
-            //ViewBag.idDistributor = new SelectList(db.Distributors, "idDistributor", "name", bill.idDistributor);
-            //ViewBag.idStaff = new SelectList(db.Staffs, "idStaff", "staffName", bill.idStaff);
-            return View(bill);
-        }
+
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "idBill,purchase,createdDate,types,description,idDeliveryOrder,idStaff,idDistributor")] Bill bill)
+        //{
+
+        //     _billService.AddBill(bill);
+        //    //ViewBag.idDeliveryOrder = new SelectList(db.DeliveryOrders, "idDeliveryOrder", "recipient", bill.idDeliveryOrder);
+        //    //ViewBag.idDistributor = new SelectList(db.Distributors, "idDistributor", "name", bill.idDistributor);
+        //    //ViewBag.idStaff = new SelectList(db.Staffs, "idStaff", "staffName", bill.idStaff);
+        //    return View(bill);
+        //}
 
         //// GET: Bill/Edit/5
         //public ActionResult Edit(int? id)

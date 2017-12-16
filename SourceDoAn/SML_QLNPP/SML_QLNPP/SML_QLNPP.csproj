@@ -340,6 +340,8 @@
     <Content Include="Scripts\AdminLTE\bootstrap.min.js" />
     <Content Include="Scripts\AdminLTE\fastclick.js" />
     <Content Include="Scripts\AdminLTE\jquery.min.js" />
+    <Content Include="Scripts\Bill\bill.js" />
+    <Content Include="Scripts\Bill\jquery-ui.min.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\DeliveryOrder\details.js" />

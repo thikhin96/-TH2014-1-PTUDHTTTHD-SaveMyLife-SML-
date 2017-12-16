@@ -2,87 +2,72 @@
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+}
+@section css{
+    <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/DeliveryOrder/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
 }
 
-<h2>Create</h2>
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/Bill/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Bill/bill.js"></script>
+}
+<h2>Hóa Đơn</h2>
 
-
-@using (Html.BeginForm()) 
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">Thông tin hóa đơn</h3>
+    </div>
+@using (Html.BeginForm("Create", "Bill", FormMethod.Post))
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Bill</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.purchase, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.purchase, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.purchase, "", new { @class = "text-danger" })
-            </div>
+    <div class="box-body">
+        <div class="col-md-6 form-group">
+            @Html.Label("Mã nhân viên:")
+            @Html.TextBox("idStaff", "", new { @class = "form-control" })
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.createdDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.createdDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.createdDate, "", new { @class = "text-danger" })
-            </div>
+        @*<div class="col-md-6 form-group">
+            @Html.Label("Tên nhân viên:")
+            @Html.TextBox("nameStaff", "", new { @class = "form-control" })
+        </div>*@
+        <div class="col-md-6 form-group">
+            @Html.Label("Mã giao hàng số:")
+            @Html.TextBox("idDelivery", "", new { @class = "form-control" })
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.types, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.types, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.types, "", new { @class = "text-danger" })
-            </div>
+        <div class="col-md-6 form-group">
+            @Html.Label("Mã nhà phân phối:")
+            @Html.TextBox("idDistributor", "", new { @class = "form-control" })
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
-            </div>
+        @*<div class="col-md-6 form-group">
+            @Html.Label("Tên nhà phân phối:")
+            @Html.TextBox("nameDistributor", "", new { @class = "form-control" })
+        </div>*@
+        <div class="col-md-6 form-group">
+            @Html.Label("Ngày lập:")
+            @Html.TextBox("createdDate", "", new { @type = "date", @class = "form-control" , @readonly = "readonly"})
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.idDeliveryOrder, "idDeliveryOrder", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("idDeliveryOrder", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.idDeliveryOrder, "", new { @class = "text-danger" })
-            </div>
+        <div class="col-md-6 form-group">
+            @Html.Label("Loại hóa đơn:")
+            @Html.DropDownList("types", new List<SelectListItem> {
+           new SelectListItem { Text = "Thanh toán giao hàng", Value = "1", Selected = true },
+       new SelectListItem { Text = "Thanh toán công nợ", Value = "2"}
+       }, new { @class = "form-control" })
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.idStaff, "idStaff", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("idStaff", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.idStaff, "", new { @class = "text-danger" })
-            </div>
+        <div class="col-md-6 form-group">
+            @Html.Label("Tiền thu:")
+            @Html.TextBox("purchase", "", new { @type = "number", @class = "form-control", @min = 0 })
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.idDistributor, "idDistributor", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("idDistributor", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.idDistributor, "", new { @class = "text-danger" })
-            </div>
+        <div class="col-md-6 form-group">
+            @Html.Label("Mô tả:")
+            @Html.TextBox("description", "", new { @class = "form-control" })
         </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+        <div class="col-md-12 form-group">
+            <input type="button" value="Lập hóa đơn" class="btn" style="margin-right: 5px;" id="btnCreate" />
         </div>
     </div>
 }
+</div>
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
