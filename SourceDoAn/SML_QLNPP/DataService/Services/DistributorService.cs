@@ -25,6 +25,11 @@ namespace DataService.Services
         private readonly IRepository<Distributor> _distributorRepository;
         private readonly IRepository<Contract> _contractRepository;
 
+        /// <summary>
+        /// Hàm khởi tạo
+        /// </summary>
+        /// <param name="unitOfWork"></param>
+        /// <returns></returns>
         public DistributorService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -111,6 +116,11 @@ namespace DataService.Services
         }
 
         public bool UpdateStatus(int id, bool status)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<DistributorList> GetAll()
         {
             throw new NotImplementedException();
         }

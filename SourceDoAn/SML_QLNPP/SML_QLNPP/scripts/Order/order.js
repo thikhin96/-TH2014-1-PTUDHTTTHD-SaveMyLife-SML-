@@ -7,7 +7,7 @@
         var keyword = $("#keyword").val();
         var created_date = $("#created_date").val();
         var status = $('#status').find(":selected").val();
-        var url = '/aj/Order/Search'
+        var url = '/Order/Search'
         console.log(status);
         $.ajax({
             url: url,
