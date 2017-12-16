@@ -87,7 +87,7 @@ namespace SML_QLNPP.Controllers
         /// <returns></returns>
         public ActionResult ALogin()
         {
-            isLogin();
+            isAdminLogin();
             return View();
         }
         /// <summary>
@@ -98,7 +98,7 @@ namespace SML_QLNPP.Controllers
         [HttpPost]
         public ActionResult ALogin(Account Login)
         {
-            isLogin();
+            isAdminLogin();
             var ret = _accountService.Login(Login.UserName, Login.Password);
             if (ret != null)
             {

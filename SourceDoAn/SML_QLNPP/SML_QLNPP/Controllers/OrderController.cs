@@ -10,7 +10,7 @@ using SML_QLNPP.Models;
 
 namespace SML_QLNPP.Controllers
 {
-    public class OrderController : Controller
+    public class OrderController : BaseController
     {
         private readonly IOrderService _orderService;
         private readonly IProductService _productService;
@@ -23,12 +23,14 @@ namespace SML_QLNPP.Controllers
         // GET: Order
         public ActionResult List()
         {
+            isAdminLogged();
             ViewBag.Parent = "Quản lý đặt hàng";
             ViewBag.Child = "Tìm kiếm đơn hàng";
             return View();
         }
         public ContentResult Search(string keyword, string created_date,int status)
         {
+            isAdminLogged();
             IList<Order> rs = new List<Order>();
             if (Request.IsAjaxRequest())
             {
@@ -41,6 +43,7 @@ namespace SML_QLNPP.Controllers
         }
         public ActionResult Detail(int id)
         {
+            isAdminLogged();
             ViewBag.Parent = "Quản lý đặt hàng";
             ViewBag.Child = "Chi tiết đơn đặt hàng";
             var model = _orderService.GetOrder(id);
