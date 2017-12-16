@@ -25,6 +25,11 @@ namespace DataService.Services
         private readonly IRepository<Distributor> _distributorRepository;
         private readonly IRepository<Contract> _contractRepository;
 
+        /// <summary>
+        /// Hàm khởi tạo
+        /// </summary>
+        /// <param name="unitOfWork"></param>
+        /// <returns></returns>
         public DistributorService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;

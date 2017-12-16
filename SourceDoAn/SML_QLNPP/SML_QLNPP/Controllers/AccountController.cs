@@ -11,18 +11,32 @@ namespace SML_QLNPP.Controllers
     {
         private readonly IAccountService _accountService;
         private readonly ILogLoginService _LogLoginService;
-
+        /// <summary>
+        /// Hàm khởi tạo
+        /// </summary>
+        /// <param name="accountService"></param>
+        /// <param name="LogLoginService"></param>
+        /// <returns></returns>
         public AccountController(IAccountService accountService, ILogLoginService LogLoginService)
         {
             this._accountService = accountService;
             this._LogLoginService = LogLoginService;
         }
-        // GET: Account
+        /// <summary>
+        /// GET - ActionResult render ra giao diện đăng nhập cho user
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Login()
         {
             isLogin();
             return View();
         }
+
+        /// <summary>
+        /// POST - Hàm gửi dữ liệu từ form login lên serve
+        /// </summary>
+        /// <param name="Login"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Login(Account Login)
         {
@@ -67,11 +81,20 @@ namespace SML_QLNPP.Controllers
                 return View();
             }
         }
+        /// <summary>
+        /// GET - ActionResult render ra giao diện đăng nhập cho admin
+        /// </summary>
+        /// <returns></returns>
         public ActionResult ALogin()
         {
             isLogin();
             return View();
         }
+        /// <summary>
+        /// POST - Hàm gửi dữ liệu từ form login lên server, check login admin
+        /// </summary>
+        /// <param name="Login"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult ALogin(Account Login)
         {
@@ -125,6 +148,10 @@ namespace SML_QLNPP.Controllers
             }
             
         }
+        /// <summary>
+        /// GET logout
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Logout()
         {
             if (Session["username"] != null)

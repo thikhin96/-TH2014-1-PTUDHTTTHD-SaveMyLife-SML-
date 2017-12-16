@@ -13,6 +13,11 @@ namespace DataService.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         ILogger logger = LogManager.GetCurrentClassLogger();
+        /// <summary>
+        /// Hàm khởi tạo
+        /// </summary>
+        /// <param name="unitOfWork"></param>
+        /// <returns></returns>
         public AccountService(IUnitOfWork unitOfWork)
         {
             //_promotionRepository = unitOfWork.Repository<Promotion>();
@@ -32,11 +37,29 @@ namespace DataService.Services
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// Hàm kiểm tra đăng nhập theo username và password
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public Account Login(string username, string password)
         {
             IRepository<Account> repository = _unitOfWork.Repository<Account>();
-            return repository.Get(a => a.UserName == username && a.Password == password);
+            logger.Info("Start get login");
+            Account result;
+            try
+            {
+                result = repository.Get(a => a.UserName == username && a.Password == password);
+                logger.Info("Completed get login");
+
+            }
+            catch (Exception ex)
+            {
+                logger.Info("Error get login: " + ex.Message);
+                result = null;
+            }
+            return result;
         }
 
         public void Logout()
@@ -54,10 +77,28 @@ namespace DataService.Services
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Lấy thông tin user theo tên người dùng để ghi log
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public Account Get(string username)
         {
             IRepository<Account> repository = _unitOfWork.Repository<Account>();
-            return repository.Get(a => a.UserName == username);
+            Account result;
+            logger.Info("Start get account to write log");
+            try
+            {
+                result = repository.Get(a => a.UserName == username);
+                logger.Info("Completed get account to write log");
+
+            }
+            catch (Exception ex)
+            {
+                logger.Info("Error get account to write log: " + ex.Message);
+                result = null;
+            }
+            return result;
         }
     }
 }
