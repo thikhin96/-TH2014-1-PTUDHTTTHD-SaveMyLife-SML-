@@ -33,14 +33,14 @@ namespace SML_QLNPP.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public ActionResult DistributorSeacrh(DistributorViewModel model)
+        [HttpGet]
+        public ActionResult DistributorSearch(DistributorViewModel model)
         {
             logger.Info("Start controller to filter....");
             int id;
             if (model.id == null)
             {
-                return Redirect("Distributor");
+                return RedirectToRoute("Default", new { controller = "Distributor", action = "Distributor", id = model.id });
             }
             bool check_id = int.TryParse(model.id, out id);
             if  (!check_id)

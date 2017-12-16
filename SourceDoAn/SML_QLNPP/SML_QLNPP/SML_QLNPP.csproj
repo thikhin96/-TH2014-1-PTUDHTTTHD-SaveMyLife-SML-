@@ -478,6 +478,7 @@
     <Content Include="Views\Account\ALogin.cshtml" />
     <Content Include="Views\DeliveryOrder\Details.cshtml" />
     <Content Include="Views\DeliveryOrder\Edit.cshtml" />
+    <Content Include="Views\Contract\Contract.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_AHeader.cshtml" />
     <Content Include="Views\Shared\_ANav.cshtml" />
@@ -516,7 +517,6 @@
     <Folder Include="Content\DeliveryOrder\images\" />
     <Folder Include="Content\Promotion\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Contract\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

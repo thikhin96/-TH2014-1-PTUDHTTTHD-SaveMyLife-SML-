@@ -1,11 +1,7 @@
-﻿@model SML_QLNPP.Models.DistributorViewModel
+﻿@model SML_QLNPP.Models.ContractViewModel
 @{
-    Layout = "~/Views/Shared/_ALayout.cshtml";
-}
-
-@{
-    var check = ViewBag.checkID;
-    var isNull = ViewBag.ID_IsNull;
+    ViewBag.Title = "Contract";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @section css{
@@ -16,8 +12,7 @@
 
 @section scripts{
     <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/Order/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>    
+    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
     <script>
         $('#dis-list').DataTable({
             "oLanguage": {
@@ -36,38 +31,29 @@
     </script>
 }
 
-<div class="box box-info">
-    <div class="box-header with-border">
-        <h3 class="box-title">Thông tin tìm kiếm</h3>
-    </div>
-    @using (Html.BeginForm("DistributorSearch", "Distributor", FormMethod.Get))
-    {
-        <div class="box-body">
-
-            <div class="col-md-4">
-
-                <label> Tìm kiếm </label>
-                @Html.TextBoxFor(model => model.id, new { @class = "form-control" })
-            </div>
-
-            <div class="col-md-4">
-                <button type="submit" class="btn btn-default" id="search" style="margin-top: 25px;margin-left: -29px;"><i class="fa fa-search"></i></button>
-            </div>
-        </div>
-    }
-
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <div class="box box-info">
-            <div class="box-header">
-                <h3 class="box-title">Danh sách nhà phân phối</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                    <div class="col-sm-12">
+<div class="container-fluid">
+    <div class="row">
+        @Html.Partial("~/Views/Shared/_SidebarAdmin.cshtml")
+        <div class="col-sm-10 col-md-10">
+            <div class="well">
+                <div class="text-right">
+                    @using (Html.BeginForm("ContractSeacrh", "Contract", FormMethod.Get))
+                    {
+                        <label> Tìm kiếm </label>
+                        @Html.TextBoxFor(model => model.criterion)
+                        <select class="form-control" id="status">
+                            <option value="0">Chưa duyệt</option>
+                            <option value="1">Đã duyệt</option>
+                            <option value="2">Không duyệt</option>
+                            <option value="3">Đã giao</option>
+                        </select>
+                        <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                    }
+                </div>
+                <div class="row mgt">
+                    <div class="col-md-12">
+                        <h2>Danh sách nhà phân phối</h2>
+                        <br />
                         @if (check == false)
                         {
                             <strong style="color:red"> Mã nhà phân phối không hợp lệ </strong>
@@ -78,7 +64,7 @@
                         }
                         else
                         {
-                            <table id="dis-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                            <table id="dis-list" class="cell-border" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
                                         <th>Mã nhà phân phối</th>
@@ -90,10 +76,10 @@
                                         <th>Thao tác</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="result">
                                     @foreach (var item in Model.listDis)
                                     {
-                                        <tr>
+                                        <tr class="dis">
                                             <td>@item.Dis.idDistributor</td>
                                             <td>@item.Dis.name</td>
                                             <td>@item.Dis.address</td>
@@ -108,21 +94,19 @@
                                             }
                                             <td>@item.Dis.phone</td>
                                             <td>
-                                                @Html.ActionLink("Chi tiết", "DetailedDistributor", new { id = @item.Dis.idDistributor })
+                                                <a href="../Distributor/DetailedDistributor/@item.Dis.idDistributor">
+                                                    <input type="button" value="Chi tiết" />
+                                                </a>
                                             </td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
                         }
-
                     </div>
                 </div>
             </div>
-            <!-- /.box-body -->
         </div>
-        <!-- /.box -->
-
     </div>
 </div>
 

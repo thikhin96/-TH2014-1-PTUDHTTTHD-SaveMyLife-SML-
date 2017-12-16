@@ -5,6 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script>
+        $(function () {
+            $('.datepicker').datepicker();
+        })
+    </script>
+}
+
 <center><h1 style="color:blue"><b>THÔNG TIN CHI TIẾT NHÀ PHÂN PHỐI</b></h1></center>
 
 <div class="container-fluid">
@@ -93,13 +102,13 @@
                         <div class="col-md-6">
                             <dl class="dl-horizontal">
                                 <dt> @Html.Label("Thời gian bắt đầu: ") </dt>
-                                <dd>@Html.TextBoxFor(model => model.beginDate, new { @readonly = "readonly" })</dd>
+                                <dd>@Html.TextBoxFor(model => model.beginDate, "{0:dd/MM/yyyy}", new { @readonly = "readonly"})</dd>
                             </dl>
                         </div>
                         <div class="col-md-6">
                             <dl class="dl-horizontal">
                                 <dt> @Html.Label("Thời gian kết thúc: ") </dt>
-                                <dd>@Html.TextBoxFor(model => model.expiredDate, new { @readonly = "readonly" })</dd>
+                                <dd>@Html.TextBoxFor(model => model.expiredDate, "{0:dd/MM/yyyy}", new { @readonly = "readonly" })</dd>
                             </dl>
                         </div>
                         <div class="col-md-12">
