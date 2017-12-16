@@ -144,11 +144,13 @@
     <Compile Include="Interfaces\IAccountService.cs" />
     <Compile Include="Interfaces\IOrderService.cs" />
     <Compile Include="Interfaces\IPromotionService.cs" />
+    <Compile Include="Interfaces\ISalesReportService.cs" />
     <Compile Include="ServiceModule.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\PromotionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\SalesReportService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataModel\DataModel.csproj">
