@@ -16,28 +16,30 @@
 }
 
 @section scripts{
+
     <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
     <script>
-        $('#dis-list').DataTable({
+        $('#con-list').DataTable({
             "oLanguage": {
                 "oPaginate": {
                     "sNext": "Tiếp",
                     "sPrevious": "Trước"
                 },
-                "sInfo": "Hiển thị _START_ đến _END_ trên _TOTAL_ nhà phân phối",
-                "sZeroRecords": "Không tìm thấy nhà phân phối",
+                "sInfo": "Hiển thị _START_ đến _END_ trên _TOTAL_ hợp đồng",
+                "sZeroRecords": "Không tìm thấy hợp đồng",
                 "sInfoEmpty": ""
             },
             "searching": false,
-            "bLengthChange": false,
-            //"bInfo": false
+            "bLengthChange": false
+            //"bInfo": true
         });
     </script>
 }
 
 <div class="box box-info">
-    @using (Html.BeginForm("ContractSearch", "Contract", FormMethod.Get))
+    @using (Html.BeginForm("ContractSeacrh", "Contract", FormMethod.Get))
     {
         <div class="box-body" style="text-align: right">
             <span>
@@ -79,13 +81,13 @@
                                         <th>Thao tác</th>
                                     </tr>
                                 </thead>
-                                @if (Model != null)
+                                @if (Model.criterion != 0)
                                 {
                                     @RenderPage("Contract_List.cshtml")
                                 }
                                 else
                                 {
-
+                                    isNull = true;
                                 }
                             </table>
                         }

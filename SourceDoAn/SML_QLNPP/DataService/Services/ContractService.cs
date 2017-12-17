@@ -57,15 +57,15 @@ namespace DataService.Services
             IUnitOfWork uow = new UnitOfWork();
             IRepository<Contract> repo = uow.Repository<Contract>();
             IList<Contract> con = new List<Contract>();
-            if (criterion == 0)       // search by id of distributor
+            if (criterion == 1)       // search by id of distributor
             {
                 con = repo.GetAll(x => x.distributor == keyword).OrderByDescending(x => x.beginDate).ToList();
             }
-            else if (criterion == 1)  // search by id of contract
+            else if (criterion == 2)  // search by id of contract
             {
                 con = repo.GetAll(x => x.idContract == keyword).ToList();
             }
-            else if (criterion == 2)  // Search contract that close expired date
+            else if (criterion == 3)  // Search contract that close expired date
             {
                 DateTime date = DateTime.Now.AddDays((double)keyword);
                 con = repo.GetAll(x => x.expiredDate <= date).OrderByDescending(x => x.expiredDate).ToList();
@@ -75,7 +75,7 @@ namespace DataService.Services
                 con = repo.GetAll().ToList();
             }
 
-            if (con.Count() == 0) return null;
+            //if (con.Count() == 0) return null;
 
             IList<ContractList> listCon = new List<ContractList>();
             ContractList lCon;

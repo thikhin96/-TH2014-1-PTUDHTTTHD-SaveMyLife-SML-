@@ -44,7 +44,7 @@ namespace SML_QLNPP.Controllers
             }
             else
             {
-                model.listCon = this.con_Service.Search(kw, model.criterion).ToList();
+                model.listCon = con_Service.Search(kw, model.criterion).ToList();
             }
             model.keyword = null;
             return View("Contract", model);
