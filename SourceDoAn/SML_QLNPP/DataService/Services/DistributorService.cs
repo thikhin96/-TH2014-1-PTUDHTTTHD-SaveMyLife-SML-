@@ -114,5 +114,16 @@ namespace DataService.Services
         {
             throw new NotImplementedException();
         }
+
+        public IList<DistributorList> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Distributor> SearchByName(string searchTerm)
+        {
+            var distributors = _distributorRepository.GetAll(x => x.name.Contains(searchTerm) && x.status == true).ToList();
+            return distributors;
+        }
     }
 }

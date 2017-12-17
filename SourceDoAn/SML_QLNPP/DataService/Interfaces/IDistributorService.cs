@@ -18,5 +18,6 @@ namespace DataService.Interfaces
         IList<DistributorList> GetAll();
         bool hasContract(int distributorId);
         bool priceOverDebt(int distributorId, decimal price);
+        List<Distributor> SearchByName(string searchTerm);
     }
 }

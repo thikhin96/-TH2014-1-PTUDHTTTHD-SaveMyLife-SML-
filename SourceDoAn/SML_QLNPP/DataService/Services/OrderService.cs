@@ -79,10 +79,6 @@ namespace DataService.Services
             }
         }
 
-        public int UpdateOrder(Order order)
-        {
-            throw new NotImplementedException();
-        }
 
         public Order GetOrder(int id)
         {
@@ -100,7 +96,7 @@ namespace DataService.Services
                 return 0;
         }
 
-        public string CreateOrder(Order order, List<OrderDetail> orderDetails)
+        public string CreateOrder(Order order)
         {
             try
             {
@@ -109,11 +105,6 @@ namespace DataService.Services
                     if (_distributorService.hasContract(order.idDistributor ?? 0))
                     {
                             _orderRepository.Add(order);
-                            _unitOfWork.SaveChange();
-                            var consignee = order.Consignee;
-                            _consigneeRepository.Update(consignee);
-                            if (orderDetails.Count != 0 || orderDetails != null)
-                                orderDetails.ForEach(x => _orderDetailRepository.Add(x));
                             _unitOfWork.SaveChange();
                     }
                     else
@@ -127,13 +118,37 @@ namespace DataService.Services
                 }
                 return "thanh cong";
             }
-            catch
+            catch (Exception ex)
             {
                 return "Không thể tạo đơn đặt hàng";
                 throw;
             }
 
 
+        }
+
+        public string UpdateOrder(Order order)
+        {
+            try
+            {
+                _orderRepository.Update(order);
+                var consignee = order.Consignee;
+                _consigneeRepository.Update(consignee);
+                var orderDetails = order.OrderDetails?.ToList();
+                var thisOrderDetails = _orderDetailRepository.GetAll(x => x.idOrder == order.idOrder).ToList();
+                thisOrderDetails.ForEach(x => _orderDetailRepository.Delete(x));
+                _unitOfWork.SaveChange();
+                if (orderDetails != null)
+                {
+                    orderDetails.ForEach(x => _orderDetailRepository.Add(x));
+                    _unitOfWork.SaveChange();
+                }
+                return "thanh cong";
+            }
+            catch (Exception ex)
+            {
+                return "Không thể cập nhật đơn đặt hàng";
+            }
         }
     }
 }
