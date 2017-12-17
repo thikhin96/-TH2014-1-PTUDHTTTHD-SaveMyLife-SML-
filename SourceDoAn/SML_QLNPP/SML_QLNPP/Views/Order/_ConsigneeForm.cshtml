@@ -3,6 +3,7 @@
     <div class="panel-heading">Thông tin người liên hệ</div>
     <div class="panel-body">
         <div class="col-md-2 form-group">
+            @Html.HiddenFor(m => m.idConsignee)
             <label>Tên người liên hệ: </label>
             @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
         </div>

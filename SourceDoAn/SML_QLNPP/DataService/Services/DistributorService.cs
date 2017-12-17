@@ -25,6 +25,11 @@ namespace DataService.Services
         private readonly IRepository<Distributor> _distributorRepository;
         private readonly IRepository<Contract> _contractRepository;
 
+        /// <summary>
+        /// Hàm khởi tạo
+        /// </summary>
+        /// <param name="unitOfWork"></param>
+        /// <returns></returns>
         public DistributorService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -114,5 +119,18 @@ namespace DataService.Services
         {
             throw new NotImplementedException();
         }
+
+        public IList<DistributorList> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public List<Distributor> SearchByName(string searchTerm)
+        {
+            var distributors = _distributorRepository.GetAll(x => x.name.Contains(searchTerm) && x.status == true).ToList();
+            return distributors;
+        }
+
     }
 }
