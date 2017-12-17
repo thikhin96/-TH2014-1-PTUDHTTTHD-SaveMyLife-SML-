@@ -17,7 +17,7 @@
     <AssemblyName>SML_QLNPP</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication>
     </IISExpressAnonymousAuthentication>
@@ -263,6 +263,7 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ContractController.cs" />
     <Compile Include="Controllers\DataSourceController.cs" />
     <Compile Include="Controllers\DeliveryOrderController.cs" />
     <Compile Include="Controllers\DistributorController.cs" />
@@ -274,6 +275,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ContractViewModel.cs" />
     <Compile Include="Models\CreateOrderViewModel.cs" />
     <Compile Include="Models\CreateProductViewModel.cs" />
     <Compile Include="Models\DistributorViewModel.cs" />
@@ -545,6 +547,8 @@
     <Content Include="Views\Account\ALogin.cshtml" />
     <Content Include="Views\DeliveryOrder\Details.cshtml" />
     <Content Include="Views\DeliveryOrder\Edit.cshtml" />
+    <Content Include="Views\Contract\Contract.cshtml" />
+    <Content Include="Views\Contract\Contract_List.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_AHeader.cshtml" />
     <Content Include="Views\Shared\_ANav.cshtml" />
@@ -624,7 +628,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>65422</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/SML_QLNPP</IISUrl>
+          <IISUrl>http://localhost:65422/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
