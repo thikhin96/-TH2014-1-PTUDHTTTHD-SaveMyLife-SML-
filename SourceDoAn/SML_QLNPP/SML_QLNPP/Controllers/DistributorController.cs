@@ -40,7 +40,7 @@ namespace SML_QLNPP.Controllers
             int id;
             if (model.id == null)
             {
-                return RedirectToRoute("Default", new { controller = "Distributor", action = "Distributor", id = model.id });
+                return Redirect("Distributor");
             }
             bool check_id = int.TryParse(model.id, out id);
             if  (!check_id)

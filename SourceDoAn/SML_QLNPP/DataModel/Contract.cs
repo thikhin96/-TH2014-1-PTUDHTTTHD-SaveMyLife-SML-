@@ -16,9 +16,7 @@ namespace DataModel
     public partial class Contract
     {
         public int idContract { get; set; }
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public Nullable<System.DateTime> beginDate { get; set; }
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public Nullable<System.DateTime> expiredDate { get; set; }
         public Nullable<decimal> minOrderTotalValue { get; set; }
         public Nullable<decimal> maxDebt { get; set; }

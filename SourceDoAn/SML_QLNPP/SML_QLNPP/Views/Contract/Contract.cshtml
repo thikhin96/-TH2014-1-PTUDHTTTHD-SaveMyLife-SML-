@@ -1,7 +1,12 @@
 ﻿@model SML_QLNPP.Models.ContractViewModel
 @{
     ViewBag.Title = "Contract";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+}
+
+@{
+    var check = ViewBag.checkID;
+    var isNull = ViewBag.ID_IsNull;
 }
 
 @section css{
@@ -31,83 +36,64 @@
     </script>
 }
 
-<div class="container-fluid">
-    <div class="row">
-        @Html.Partial("~/Views/Shared/_SidebarAdmin.cshtml")
-        <div class="col-sm-10 col-md-10">
-            <div class="well">
-                <div class="text-right">
-                    @using (Html.BeginForm("ContractSeacrh", "Contract", FormMethod.Get))
-                    {
-                        <label> Tìm kiếm </label>
-                        @Html.TextBoxFor(model => model.criterion)
-                        <select class="form-control" id="status">
-                            <option value="0">Chưa duyệt</option>
-                            <option value="1">Đã duyệt</option>
-                            <option value="2">Không duyệt</option>
-                            <option value="3">Đã giao</option>
-                        </select>
-                        <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
-                    }
-                </div>
-                <div class="row mgt">
-                    <div class="col-md-12">
-                        <h2>Danh sách nhà phân phối</h2>
-                        <br />
+<div class="box box-info">
+    @using (Html.BeginForm("ContractSearch", "Contract", FormMethod.Get))
+    {
+        <div class="box-body" style="text-align: right">
+            <span>
+                <label> Tìm kiếm </label>
+                @Html.TextBoxFor(model => model.keyword)
+                <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                @Html.DropDownListFor(model => model.criterion, new SelectListItem[]{
+                    new SelectListItem() {Text = "Mã nhà phân phối", Value="1"},
+                    new SelectListItem() {Text = "Mã hợp đồng", Value="2"},
+                    new SelectListItem() {Text = "Hợp đồng gần hết hạn", Value="3"}})
+            </span>
+        </div>
+    }
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header">
+                <h2 class="box-title">Danh sách hợp đồng</h2>
+            </div>
+            <div class="box-body">
+                <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <div class="col-sm-12">
                         @if (check == false)
                         {
-                            <strong style="color:red"> Mã nhà phân phối không hợp lệ </strong>
-                        }
-                        else if (isNull == true)
-                        {
-                            <strong style="color:blue"> Nhập mã nhà phân phối </strong>
+                            <strong style="color:red"> Mã hợp đồng không hợp lệ </strong>
                         }
                         else
                         {
-                            <table id="dis-list" class="cell-border" cellspacing="0" width="100%">
+                            <table id="con-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                 <thead>
                                     <tr>
-                                        <th>Mã nhà phân phối</th>
-                                        <th>Tên công ty</th>
-                                        <th>Địa chỉ</th>
-                                        <th>Khu vực</th>
-                                        <th>Độc quyền</th>
-                                        <th>Số điện thoại</th>
+                                        <th>Mã hợp đồng</th>
+                                        <th>Nhà phân phối</th>
+                                        <th>Thời gian bắt đầu</th>
+                                        <th>Thời gian kết thúc</th>
+                                        <th>Tình trạng</th>
                                         <th>Thao tác</th>
                                     </tr>
                                 </thead>
-                                <tbody id="result">
-                                    @foreach (var item in Model.listDis)
-                                    {
-                                        <tr class="dis">
-                                            <td>@item.Dis.idDistributor</td>
-                                            <td>@item.Dis.name</td>
-                                            <td>@item.Dis.address</td>
-                                            <td>@item.Area</td>
-                                            @if (item.Dis_Type == true)
-                                            {
-                                                <td> <input type="checkbox" name="dis_Type" value=1 checked disabled></td>
-                                            }
-                                            else
-                                            {
-                                                <td></td>
-                                            }
-                                            <td>@item.Dis.phone</td>
-                                            <td>
-                                                <a href="../Distributor/DetailedDistributor/@item.Dis.idDistributor">
-                                                    <input type="button" value="Chi tiết" />
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    }
-                                </tbody>
+                                @if (Model != null)
+                                {
+                                    @RenderPage("Contract_List.cshtml")
+                                }
+                                else
+                                {
+
+                                }
                             </table>
                         }
+
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
-
-

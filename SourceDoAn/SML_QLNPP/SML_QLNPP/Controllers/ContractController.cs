@@ -14,7 +14,7 @@ namespace SML_QLNPP.Controllers
         ILogger logger = LogManager.GetCurrentClassLogger();
         IContractService con_Service;
 
-        ContractController (IContractService sv_Contract)
+        public ContractController(IContractService sv_Contract)
         {
             this.con_Service = sv_Contract;
         }
@@ -23,31 +23,31 @@ namespace SML_QLNPP.Controllers
         public ActionResult Contract()
         {
             logger.Info("Start controller to load list of contract....");
-            //ContractViewModel model = new ContractViewModel();
+            ContractViewModel model = new ContractViewModel();
             //model.listCon = con_Service.Search().ToList();
-            return View();
+            return View(model);
         }
-/*
+
         [HttpGet]
         public ActionResult ContractSeacrh(ContractViewModel model)
         {
             logger.Info("Start controller to filter....");
-            if (model.keywork == null)
+            if (model.keyword == null)
             {
                 return Redirect("Contract");
             }
-            int keywork;
-            bool check_keywork = int.TryParse(model.keywork, out keywork);
+            int kw;
+            bool check_keywork = int.TryParse(model.keyword, out kw);
             if (!check_keywork)
             {
                 ViewBag.CheckKW = false;
             }
             else
             {
-                model.listCon = this.con_Service.Search(keywork, model.criterion).ToList();
+                model.listCon = this.con_Service.Search(kw, model.criterion).ToList();
             }
-            model.keywork = null;
+            model.keyword = null;
             return View("Contract", model);
-        }*/
+        }
     }
 }
