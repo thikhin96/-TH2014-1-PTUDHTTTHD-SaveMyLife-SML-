@@ -7,6 +7,7 @@ using DataModel;
 using DataService.Interfaces;
 using Newtonsoft.Json;
 using System.Collections;
+using SML_QLNPP.Models;
 
 namespace SML_QLNPP.Controllers
 {
@@ -17,26 +18,57 @@ namespace SML_QLNPP.Controllers
         {
             this._deliveryOrderService = deliveryOrderService;
         }
-        // GET: DeliveryOrder
-        //public ActionResult Search([Bind(Include = "idBill,purchase,createdDate,types,description,idDeliveryOrder,idStaff,idDistributor")] Bill bill)
-        //{
-        //    IList<DeliveryOrder> rs = new List<DeliveryOrder>();
-        //    if (Request.IsAjaxRequest())
-        //    {
-        //        rs = _deliveryOrderService.GetAll();
-        //        var list = JsonConvert.SerializeObject(rs.Select(x => new { x.idDeliveryOrder, x.Distributor.name, x.totalPurchase, x.deliveryDate, x.Staff.staffName, x.status }));
-        //        return Content(list, "application/json");
-        //    }
-        //    return null;
-        //}
+        //GET: DeliveryOrder
+        public ActionResult List(DeliveryOrderViewModel model)
+        {
+            ViewBag.Parent = "Quản lý giao hàng";
+            ViewBag.Child = "Tìm kiếm";
+            return View(model);
+        }
 
         // GET: DeliveryOrder
-        public ActionResult List()
+        [HttpGet]
+        public ActionResult Search(DeliveryOrderViewModel model)
         {
             ViewBag.Parent = "Quản lý giao hàng";
             ViewBag.Child =  "Tìm kiếm";
-            //var model = _deliveryOrderService.GetAll();
-            return View();
+            
+            try
+            {
+                if (model.idDeliveryOrder > 0)
+                {
+                    var t = _deliveryOrderService.SearchById(model.idDeliveryOrder);
+                    if (t != null)
+                    {
+                        IList<DeliveryOrder> temp = new List<DeliveryOrder>();
+                        temp.Add(t);
+                        model.listDeliveryOrder = temp.ToList();
+                    }
+                    return View("List", model);
+                }
+                else if (model.deliveryDate != null)
+                {
+                    DateTime delivery_date = Convert.ToDateTime(model.deliveryDate);
+                    model.listDeliveryOrder = _deliveryOrderService.SearchByDeliveryDate(delivery_date);
+                    return View("List", model);
+                }
+                else if (model.status != 0)
+                {
+                    //byte status = Convert.ToByte(dOrder.status);
+                    model.listDeliveryOrder = _deliveryOrderService.SearchByStatus(model.status);
+                    View("List", model);
+                }
+                else
+                {
+                    model.listDeliveryOrder = _deliveryOrderService.GetAll();
+                    return View("List", model);
+                }
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return View("List");
         }
         [HttpPost]
         public ActionResult List(FormCollection form)

@@ -276,6 +276,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateOrderViewModel.cs" />
     <Compile Include="Models\CreateProductViewModel.cs" />
+    <Compile Include="Models\DeliveryOrderViewModel.cs" />
     <Compile Include="Models\DistributorViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

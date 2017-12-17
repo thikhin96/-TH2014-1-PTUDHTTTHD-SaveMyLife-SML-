@@ -23,7 +23,7 @@
         //});
         return;
     }
-    var url = '/SML_QLNPP/aj/DeliveryOrder/UpdateStatus';
+    var url = '/DeliveryOrder/UpdateStatus';
     $.ajax({
         type: "POST",
         url: url,
@@ -67,7 +67,7 @@ $('#btnUpdate').click(function (e) {
     };
 
 
-    var url = '/SML_QLNPP/aj/DeliveryOrder/UpdateStatus';
+    var url = '/DeliveryOrder/UpdateStatus';
     $.ajax({
         type: "POST",
         url: url,

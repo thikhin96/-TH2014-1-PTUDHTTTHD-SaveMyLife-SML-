@@ -26,22 +26,14 @@
             @Html.Label("Mã nhân viên:")
             @Html.TextBox("idStaff", "", new { @class = "form-control" })
         </div>
-        @*<div class="col-md-6 form-group">
-            @Html.Label("Tên nhân viên:")
-            @Html.TextBox("nameStaff", "", new { @class = "form-control" })
-        </div>*@
         <div class="col-md-6 form-group">
             @Html.Label("Mã giao hàng số:")
-            @Html.TextBox("idDelivery", "", new { @class = "form-control" })
+            @Html.TextBox("idDeliveryOrder", "", new { @class = "form-control" })
         </div>
         <div class="col-md-6 form-group">
             @Html.Label("Mã nhà phân phối:")
             @Html.TextBox("idDistributor", "", new { @class = "form-control" })
         </div>
-        @*<div class="col-md-6 form-group">
-            @Html.Label("Tên nhà phân phối:")
-            @Html.TextBox("nameDistributor", "", new { @class = "form-control" })
-        </div>*@
         <div class="col-md-6 form-group">
             @Html.Label("Ngày lập:")
             @Html.TextBox("createdDate", "", new { @type = "date", @class = "form-control" , @readonly = "readonly"})
@@ -62,7 +54,7 @@
             @Html.TextBox("description", "", new { @class = "form-control" })
         </div>
         <div class="col-md-12 form-group">
-            <input type="button" value="Lập hóa đơn" class="btn" style="margin-right: 5px;" id="btnCreate" />
+            <input type="submit" value="Lập hóa đơn" class="btn" style="margin-right: 5px;" id="btnCreate" />
         </div>
     </div>
 }
