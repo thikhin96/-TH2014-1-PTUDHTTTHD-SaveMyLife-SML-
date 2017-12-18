@@ -15,10 +15,12 @@ namespace SML_QLNPP.Models
         public Nullable<DateTime> EstimateDateOfDelivery { get; set; }
         public Nullable<byte> Statuses { get; set; }
         public Nullable<int> idDistributor { get; set; }
+        public string distributorName { get; set; }
         public Nullable<int> idConsignee { get; set; }
         public Nullable<int> idStaff { get; set; }
         public Consignee Consignee { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
         public List<Product> Products { get; set; }
+        public string Action { get; set; }
     }
 }

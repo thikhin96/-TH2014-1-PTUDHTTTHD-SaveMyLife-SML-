@@ -11,9 +11,9 @@ namespace DataService.Interfaces
         bool CheckDept(int idDistributor);
         IList<Order> SearchOrder(string keyword, string createDate, int status);
         int AddOrder(Order order);
-        int UpdateOrder(Order order);
+        string UpdateOrder(Order order);
         Order GetOrder(int id);
         int GenerateOrderId();
-        string CreateOrder(Order order, List<OrderDetail> orderDetails);
+        string CreateOrder(Order order);
     }
 }

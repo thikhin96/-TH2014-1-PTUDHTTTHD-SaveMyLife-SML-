@@ -8,13 +8,13 @@ namespace DataModel
 {
     public class DistributorBase
     {
-        public int idDistributor { get; set; }
-        public string name { get; set; }
-        public string address { get; set; }
-        public string phone { get; set; }
-        public string Email { get; set; }
-        public Nullable<System.DateTime> createdDate { get; set; }
-        public Nullable<System.DateTime> updatedDate { get; set; }
-        public string note { get; set; }
+        public virtual int idDistributor { get; set; }
+        public virtual string name { get; set; }
+        public virtual string address { get; set; }
+        public virtual string phone { get; set; }
+        public virtual string Email { get; set; }
+        public virtual Nullable<System.DateTime> createdDate { get; set; }
+        public virtual Nullable<System.DateTime> updatedDate { get; set; }
+        public virtual string note { get; set; }
     }
 }

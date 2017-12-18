@@ -16,5 +16,19 @@ namespace SML_QLNPP.Controllers
                 Response.Redirect("/");
             }
         }
+        protected void isAdminLogin()
+        {
+            if (Session["a_username"] != null)
+            {
+                Response.Redirect("/Order/List");
+            }
+        }
+        protected void isAdminLogged()
+        {
+            if (Session["a_username"] == null)
+            {
+                Response.Redirect("/Account/ALogin");
+            }
+        }
     }
 }

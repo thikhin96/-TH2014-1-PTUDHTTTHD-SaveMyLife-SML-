@@ -33,8 +33,8 @@ namespace SML_QLNPP.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public ActionResult DistributorSeacrh(DistributorViewModel model)
+        [HttpGet]
+        public ActionResult DistributorSearch(DistributorViewModel model)
         {
             logger.Info("Start controller to filter....");
             int id;
@@ -50,8 +50,8 @@ namespace SML_QLNPP.Controllers
             else
             {
                 model.listDis = dis_Service.GetList(id).ToList();
-                model.id = null;
             }
+            model.id = null;
             return View("Distributor",model);
         }
 
