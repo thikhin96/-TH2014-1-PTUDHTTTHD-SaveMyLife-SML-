@@ -27,13 +27,17 @@ namespace DataService.Services
         {
             try
             {
+                logger.Info("Start Update DeliveryOrder....");
                 IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
                 repository.Update(dOrder);
                 _unitOfWork.SaveChange();
+                logger.Info("End Update DeliveryOrder....");
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                logger.Info(ex.Message);
+                logger.Info("End Update DeliveryOrder....");
                 return false;
             }
         }
@@ -42,57 +46,106 @@ namespace DataService.Services
         {
             try
             {
+                logger.Info("Start Search DeliveryOrder by id DeliveryOrder....");
                 IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
                 var result = repository.Get(a => a.idDeliveryOrder == id);
-                return result != null ? result : null;
+                if (result!= null)
+                {
+                    logger.Info("End Search DeliveryOrder by id DeliveryOrder....");
+                    return result;
+
+                }
+                else
+                {
+                    logger.Info("End Search DeliveryOrder by id DeliveryOrder....");
+                    return null;
+                }
             }
-            catch
+            catch(Exception ex)
             {
+                logger.Info(ex.Message);
+                logger.Info("End Search DeliveryOrder by id DeliveryOrder....");
                 return null;
             }
         }
 
 
-        public IList<DeliveryOrder> SearchByStatus(int status)
+        public IList<DeliveryOrder> SearchByStatus(byte status)
         {
-            IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
-            var result = repository.GetAll(a => a.status == status);
-            if (result != null)
+            try
             {
-                return result.ToList();
+                logger.Info("Start Search DeliveryOrder by Status....");
+                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
+                var result = repository.GetAll(a => a.status == status);
+                if (result != null)
+                {
+                    logger.Info("End Search DeliveryOrder by Status....");
+                    return result.ToList();
+                }
+                else
+                {
+                    logger.Info("End Search DeliveryOrder by Status....");
+                    return null;
+                }
             }
-            else
+            catch (Exception ex)
             {
+                logger.Info(ex.Message);
+                logger.Info("End Search DeliveryOrder by Status....");
                 return null;
             }
         }
         public IList<DeliveryOrder> SearchByDeliveryDate(DateTime datetime)
         {
-            IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
-            var dtime = Convert.ToDateTime(datetime);
-            var result = repository.GetAll(a => (a.deliveryDate.Value.Year == dtime.Year
-                && a.deliveryDate.Value.Month == dtime.Month
-                && a.deliveryDate.Value.Day == dtime.Day));
-            if (result != null)
+            try
             {
-                return result.ToList();
+                logger.Info("Start Search DeliveryOrder by DeliveryDate....");
+                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
+                var dtime = Convert.ToDateTime(datetime);
+                var result = repository.GetAll(a => (a.deliveryDate.Value.Year == dtime.Year
+                    && a.deliveryDate.Value.Month == dtime.Month
+                    && a.deliveryDate.Value.Day == dtime.Day));
+                if (result != null)
+                {
+                    logger.Info("End Search DeliveryOrder by DeliveryDate....");
+                    return result.ToList();
+                }
+                else
+                {
+                    logger.Info("End Search DeliveryOrder by DeliveryDate....");
+                    return null;
+                }
             }
-            else
+            catch(Exception ex)
             {
+                logger.Info(ex.Message);
+                logger.Info("End Search DeliveryOrder by DeliveryDate....");
                 return null;
             }
         }
         // can them vao
         public IList<DeliveryOrder> GetAll()
         {
-            IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
-            var result = repository.GetAll();
-            if (result != null)
+            try
             {
-                return result.ToList();
+                logger.Info("Start GetAll DeliveryOrder....");
+                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
+                var result = repository.GetAll();
+                if (result != null)
+                {
+                    logger.Info("Start GetAll DeliveryOrder....");
+                    return result.ToList();
+                }
+                else
+                {
+                    logger.Info("Start GetAll DeliveryOrder....");
+                    return null;
+                }
             }
-            else
+            catch(Exception ex)
             {
+                logger.Info(ex.Message);
+                logger.Info("End GetAll DeliveryOrder....");
                 return null;
             }
         }
