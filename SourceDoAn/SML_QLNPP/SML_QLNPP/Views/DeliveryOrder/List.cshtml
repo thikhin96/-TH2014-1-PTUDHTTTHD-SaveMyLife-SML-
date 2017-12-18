@@ -31,7 +31,7 @@
         <div class="box-body">
             <div class="col-md-3">
                 @Html.Label("Tìm theo mã giao hàng")
-                @Html.TextBoxFor(model => model.idDeliveryOrder, "", new { @type = "number", @min = "1", @class = "form-control", @placeholder = "Nhập mã giao hàng" })
+                @Html.TextBoxFor(model => model.idDeliveryOrder, "", new { @type = "number", @min = "0", @class = "form-control", @placeholder = "Nhập mã giao hàng" })
             </div>
             <div class="col-md-3">
                 @Html.Label("Trạng thái")

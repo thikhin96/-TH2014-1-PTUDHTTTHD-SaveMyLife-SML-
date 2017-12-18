@@ -6,7 +6,7 @@
 }
 @section css{
     <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="~/Content/DeliveryOrder/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Bill/create.css" rel="stylesheet" type="text/css" media="all" />
 }
 
 @section scripts{
@@ -17,49 +17,61 @@
 
 <div class="box box-info">
     <div class="box-header with-border">
+        @{
+            if (ViewBag.msg != null)
+            {
+                if (ViewBag.types == 1)
+                {
+                    <div class="alert alter-warning"><strong>@ViewBag.msg</strong></div>
+                }
+                else if (ViewBag.types == 2)
+                {
+                    <div class="alert alter-success"><strong>@ViewBag.msg</strong></div>
+                }
+            }
+        }
         <h3 class="box-title">Thông tin hóa đơn</h3>
     </div>
 @using (Html.BeginForm("Create", "Bill", FormMethod.Post))
 {
     <div class="box-body">
-        <div class="col-md-6 form-group">
+        <div class="col-md-3 form-group">
             @Html.Label("Mã nhân viên:")
-            @Html.TextBox("idStaff", "", new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.idStaff, "", new { @class = "form-control" , required = "required" })
+            @Html.ValidationMessageFor(model => model.idStaff, "", new { @class = "text-danger" })
         </div>
-        <div class="col-md-6 form-group">
+        <div class="col-md-3 form-group">
             @Html.Label("Mã giao hàng số:")
-            @Html.TextBox("idDeliveryOrder", "", new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.idDeliveryOrder, "", new { @class = "form-control", required = "required" })
+            @Html.ValidationMessageFor(model => model.idDeliveryOrder, "", new { @class = "text-danger" })
         </div>
-        <div class="col-md-6 form-group">
+        <div class="col-md-3 form-group">
             @Html.Label("Mã nhà phân phối:")
-            @Html.TextBox("idDistributor", "", new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.idDistributor, "", new { @class = "form-control", required = "required" })
         </div>
-        <div class="col-md-6 form-group">
+        <div class="col-md-3 form-group">
             @Html.Label("Ngày lập:")
             @Html.TextBox("createdDate", "", new { @type = "date", @class = "form-control" , @readonly = "readonly"})
         </div>
-        <div class="col-md-6 form-group">
+        <div class="col-md-3 form-group">
             @Html.Label("Loại hóa đơn:")
-            @Html.DropDownList("types", new List<SelectListItem> {
+            @Html.DropDownListFor(model => model.types, new List<SelectListItem> {
            new SelectListItem { Text = "Thanh toán giao hàng", Value = "1", Selected = true },
        new SelectListItem { Text = "Thanh toán công nợ", Value = "2"}
        }, new { @class = "form-control" })
         </div>
-        <div class="col-md-6 form-group">
+        <div class="col-md-3 form-group">
             @Html.Label("Tiền thu:")
-            @Html.TextBox("purchase", "", new { @type = "number", @class = "form-control", @min = 0 })
+            @Html.TextBoxFor(model => model.purchase, "", new { @type = "number", @class = "form-control", @min = 0, required = "required" })
+            @Html.ValidationMessageFor(model => model.purchase, "", new { @class = "text-danger" })
         </div>
-        <div class="col-md-6 form-group">
+        <div class="col-md-3 form-group">
             @Html.Label("Mô tả:")
-            @Html.TextBox("description", "", new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.description, "", new { @class = "form-control", required = "required" })
         </div>
-        <div class="col-md-12 form-group">
-            <input type="submit" value="Lập hóa đơn" class="btn" style="margin-right: 5px;" id="btnCreate" />
+        <div class="col-md-12 form-group" style="text-align: center;">
+            <input type="submit" value="Lập hóa đơn" class="btn btn-primary" style="margin-right: 5px;" id="btnCreate" />
         </div>
     </div>
 }
-</div>
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>

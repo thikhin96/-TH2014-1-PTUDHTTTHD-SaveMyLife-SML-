@@ -3,6 +3,8 @@ using System.Linq;
 using DataModel;
 using NLog;
 using DataModel.Interfaces;
+using System;
+
 namespace DataService.Interfaces
 {
     public class BillService : IBillService
@@ -15,28 +17,44 @@ namespace DataService.Interfaces
         }
         public bool AddBill(Bill bill)
         {
-            IRepository<Bill> repository = _unitOfWork.Repository<Bill>();
             try {
+                logger.Info("Start Add Bill....");
+                IRepository<Bill> repository = _unitOfWork.Repository<Bill>();
                 repository.Add(bill);
                 _unitOfWork.SaveChange();
+                logger.Info("End Add Bill....");
                 return true;
-            } catch
+            } catch(Exception ex)
             {
+                logger.Info(ex.Message);
+                logger.Info("End Add Bill....");
                 return false;
-            }
-            
+            } 
         }
         public IList<Bill> SearchById(int id)
-        {
-            IRepository<Bill> repository = _unitOfWork.Repository<Bill>();
-            var result = repository.GetAll(a => a.idBill == id);
-            if (result != null){
-                return result.ToList();
-            }
-            else
+        { 
+            try
             {
-                return null;
+                logger.Info("Start Search Bill by idBill....");
+                IRepository<Bill> repository = _unitOfWork.Repository<Bill>();
+                var result = repository.GetAll(a => a.idBill == id);
+                if (result != null)
+                {
+                    logger.Info("End Search Bill by idBill....");
+                    return result.ToList();
+                }
+                else
+                {
+                    logger.Info("End Search Bill by idBill....");
+                    return null;
+                }
             }
+            catch(Exception ex)
+            {
+                logger.Info(ex.Message);
+                logger.Info("End Search Bill by idBill....");
+                return null;
+            }  
         }
     }
 }

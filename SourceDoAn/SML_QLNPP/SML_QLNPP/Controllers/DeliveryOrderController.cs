@@ -70,59 +70,12 @@ namespace SML_QLNPP.Controllers
             }
             return View("List");
         }
-        [HttpPost]
-        public ActionResult List(FormCollection form)
-        {
-            ViewBag.Parent = "Quản lý giao hàng";
-            ViewBag.Child = "Tìm kiếm";
-            
-            string str_idDelivery = Request.Form["idDelivery"];
-            string str_status = Request.Form["status"];
-            string str_delivery_date = Request.Form["delivery_date"];
 
-            //int idDelivery = Convert.ToInt32();
-            //byte status = Convert.ToByte();
-            //DateTime delivery_date = Convert.ToDateTime();
-
-            try
-            {
-                if (str_idDelivery != "")
-                {
-                    int idDelivery = Convert.ToInt32(str_idDelivery);
-                    var model = _deliveryOrderService.SearchById(idDelivery);
-                    IList<DeliveryOrder> list = new List<DeliveryOrder>();
-                    list.Add(model);
-                    return View("List", list);
-                }
-                else if (str_delivery_date != "")
-                {
-                    DateTime delivery_date= Convert.ToDateTime(str_delivery_date);
-                    var model = _deliveryOrderService.SearchByDeliveryDate(delivery_date);
-                    return View("List", model);
-                }
-                else if (str_status !="0")
-                {
-                    byte status = Convert.ToByte(str_status);
-                    var model = _deliveryOrderService.SearchByStatus(status);
-                    return View("List", model);
-                }else
-                {
-                    var model = _deliveryOrderService.GetAll();
-                    return View("List", model);
-                }
-            }
-            catch (FormatException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            return View();
-        }
-        // GET: DeliveryOrder/Details/5
+        // GET: DeliveryOrder/Details/5. xem thông tin chi tiết của một đơn giao hàng
         public ActionResult Details(int id)
         {
             ViewBag.Parent ="Quản lý giao hàng";
             ViewBag.Child = "Chi tiết";
-
             var model = _deliveryOrderService.SearchById(id);
             if (model == null)
             {
@@ -134,46 +87,41 @@ namespace SML_QLNPP.Controllers
             }
         }
 
+        // POST: xác nhận, ghi nhận trạng trạng thái đơn giao hàng trên view details
         [HttpPost]
-        //   [AllowAnonymous]
-        public JsonResult UpdateStatus(int idDeliveryOrder, int status, string description)
-        {
-            bool result = true;
-            var rs = "";
-            var delivery = _deliveryOrderService.SearchById(idDeliveryOrder);
-            delivery.status = Convert.ToByte(status);
-            delivery.description = description;
-            delivery.updateDate = DateTime.Now;
-            result = _deliveryOrderService.UpdateDeliveryOrder(delivery);
-            if (result)
-            {
-                rs = "true";
-            }
-            else
-            {
-                rs = "false";
-            }
-
-            return Json(new
-            {
-                success = rs
-            });
-        }
-        // GET: DeliveryOrder/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: DeliveryOrder/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Details(DeliveryOrder model)
         {
             try
             {
-                // TODO: Add insert logic here
+                ViewBag.Parent = "Quản lý giao hàng";
+                ViewBag.Child = "Chi tiết";
+                // lấy Delivery từ db dựa vào model.idDelivery
+                var delivery = _deliveryOrderService.SearchById(model.idDeliveryOrder);
 
-                return RedirectToAction("Index");
+                if (model.status == delivery.status)
+                {
+                    ViewBag.Status = "Chưa thay đổi tình trạng!";
+                    ViewBag.types = 1;
+                    return View("Details", delivery);
+                }
+
+                // cập nhật satus, description, updateDate
+                delivery.status = model.status;
+                delivery.description = model.description;
+                delivery.updateDate = DateTime.Now;
+                // lưu cập nhật xuốn db
+                bool result = _deliveryOrderService.UpdateDeliveryOrder(delivery);
+                // kiểm tra kq cập nhật và trả về view
+                if (result)
+                {
+                    ViewBag.Status = "Cập nhật thành công";
+                    ViewBag.types = 2;
+                    return View("Details", delivery);
+                }
+                else
+                {
+                    return View("List");
+                }  
             }
             catch
             {
@@ -181,49 +129,30 @@ namespace SML_QLNPP.Controllers
             }
         }
 
-        // GET: DeliveryOrder/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+        //[HttpPost]
+        ////   [AllowAnonymous]
+        //public JsonResult UpdateStatus(int idDeliveryOrder, int status, string description)
+        //{
+        //    bool result = true;
+        //    var rs = "";
+        //    var delivery = _deliveryOrderService.SearchById(idDeliveryOrder);
+        //    delivery.status = Convert.ToByte(status);
+        //    delivery.description = description;
+        //    delivery.updateDate = DateTime.Now;
+        //    result = _deliveryOrderService.UpdateDeliveryOrder(delivery);
+        //    if (result)
+        //    {
+        //        rs = "true";
+        //    }
+        //    else
+        //    {
+        //        rs = "false";
+        //    }
 
-        // POST: DeliveryOrder/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        /*
-// GET: DeliveryOrder/Delete/5
-public ActionResult Delete(int id)
-{
-    return View();
-}
-
-// POST: DeliveryOrder/Delete/5
-[HttpPost]
-public ActionResult Delete(int id, FormCollection collection)
-{
-    try
-    {
-        // TODO: Add delete logic here
-
-        return RedirectToAction("Index");
-    }
-    catch
-    {
-        return View();
-    }
-}
-*/
+        //    return Json(new
+        //    {
+        //        success = rs
+        //    });
+        //}
     }
 }
