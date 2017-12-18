@@ -528,12 +528,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Order\jquery-ui.min.js" />
-
     <Content Include="Scripts\Order\update-order.js" />
-
     <Content Include="Scripts\Product\detail.js" />
     <Content Include="Scripts\Product\product.js" />
-
     <Content Include="Scripts\Promotion\promotion.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -548,7 +545,7 @@
     <Content Include="Views\DeliveryOrder\Details.cshtml" />
     <Content Include="Views\DeliveryOrder\Edit.cshtml" />
     <Content Include="Views\Contract\Contract.cshtml" />
-    <Content Include="Views\Contract\Contract_List.cshtml" />
+    <Content Include="Views\Contract\DetailedContract.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_AHeader.cshtml" />
     <Content Include="Views\Shared\_ANav.cshtml" />

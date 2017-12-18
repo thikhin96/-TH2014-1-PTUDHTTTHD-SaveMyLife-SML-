@@ -83,7 +83,28 @@
                                 </thead>
                                 @if (Model.criterion != 0)
                                 {
-                                    @RenderPage("Contract_List.cshtml")
+                                    <tbody>
+                                        @foreach (var item in Model.listCon)
+                                        {
+                                            <tr>
+                                                <td>@item.IdCon</td>
+                                                <td>@item.Dis_Name</td>
+                                                <td>@item.BeginDate.Value.ToString("dd/MM/yyyy")</td>
+                                                <td>@item.ExpriedDate.Value.ToString("dd/MM/yyyy")</td>
+                                                @if (item.Status == true)
+                                                {
+                                                    <td> <input type="checkbox" name="status" value=1 checked disabled></td>
+                                                }
+                                                else
+                                                {
+                                                    <td></td>
+                                                }
+                                                <td>
+                                                    @Html.ActionLink("Chi tiết", "DetailedContract", new { id = @item.IdCon }, new { @class = "btn btn-primary" })
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
                                 }
                                 else
                                 {

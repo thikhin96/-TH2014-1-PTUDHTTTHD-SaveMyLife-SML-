@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using DataService.Interfaces;
 using NLog;
 using SML_QLNPP.Models;
+using DataModel;
 
 namespace SML_QLNPP.Controllers
 {
@@ -48,6 +49,13 @@ namespace SML_QLNPP.Controllers
             }
             model.keyword = null;
             return View("Contract", model);
+        }
+
+        public ActionResult DetailedContract(int id)
+        {
+            logger.Info("Start controller to display info of contract....");
+            Contract con = con_Service.Get(id);
+            return View(con);
         }
     }
 }
