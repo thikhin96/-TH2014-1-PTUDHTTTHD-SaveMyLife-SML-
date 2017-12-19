@@ -1,6 +1,7 @@
 ﻿using DataModel;
 using DataModel.Interfaces;
 using DataService.Interfaces;
+using DataService.Services;
 using Newtonsoft.Json;
 using SML_QLNPP.Models;
 using System;
@@ -11,7 +12,7 @@ using System.Web.Mvc;
 
 namespace SML_QLNPP.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         private readonly IProductService _productService;
         private readonly IProductTypeService _productTypeService;
@@ -26,6 +27,7 @@ namespace SML_QLNPP.Controllers
         // GET: Product
         public ActionResult List()
         {
+            isAdminLogged();
             ViewBag.Parent = "Quản lý sản phẩm";
             ViewBag.Child = "Tìm kiếm sản phẩm";
             return View();
@@ -58,6 +60,7 @@ namespace SML_QLNPP.Controllers
 
         public ActionResult Detail(int id)
         {
+            isAdminLogged();
             var pro = _productService.GetProduct(id);
             if (pro != null)
             {
@@ -86,6 +89,7 @@ namespace SML_QLNPP.Controllers
 
         public ActionResult Create()
         {
+            isAdminLogged();
             var model = new CreateProductViewModel()
             {
                 IdProduct = _productService.GenerateProductId()
@@ -130,7 +134,10 @@ namespace SML_QLNPP.Controllers
         [HttpPost]
         public ActionResult Detail(ProductDetailViewModel model)
         {
-            
+            //Ghi log ca
+            //var logUser = AccountService.Get(Login.UserName);
+
+
             var product = _productService.GetProduct(model.IdProduct);
             
             product.ProductName = model.ProductName;
