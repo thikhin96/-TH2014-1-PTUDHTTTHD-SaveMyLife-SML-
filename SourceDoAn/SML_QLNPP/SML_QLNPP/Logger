@@ -210,3 +210,77 @@
 2017-12-19 01:52:30.5304|INFO|DataService.Services.AccountService|Completed get login
 2017-12-19 01:52:30.5454|INFO|DataService.LogLoginService|Start audit login
 2017-12-19 01:52:30.5684|INFO|DataService.LogLoginService|End audit login
+2017-12-22 23:56:18.2986|INFO|DataService.Services.AccountService|Start get login
+2017-12-22 23:56:31.1614|INFO|DataService.Services.AccountService|Completed get login
+2017-12-22 23:56:31.1818|INFO|DataService.LogLoginService|Start audit login
+2017-12-22 23:56:32.4355|INFO|DataService.LogLoginService|End audit login
+2017-12-23 11:28:21.6913|INFO|DataService.Services.AccountService|Start get login
+2017-12-23 11:28:22.3682|INFO|DataService.Services.AccountService|Completed get login
+2017-12-23 11:28:22.3872|INFO|DataService.LogLoginService|Start audit login
+2017-12-23 11:28:23.9899|INFO|DataService.LogLoginService|End audit login
+2017-12-23 11:36:43.1610|INFO|DataService.Services.AccountService|Start get login
+2017-12-23 11:36:45.0591|INFO|DataService.Services.AccountService|Completed get login
+2017-12-23 11:36:45.1464|INFO|DataService.LogLoginService|Start audit login
+2017-12-23 11:36:47.9166|INFO|DataService.LogLoginService|End audit login
+2017-12-23 12:12:57.4088|INFO|DataService.Services.AccountService|Start get login
+2017-12-23 12:12:57.6869|INFO|DataService.Services.AccountService|Completed get login
+2017-12-23 12:12:57.7289|INFO|DataService.LogLoginService|Start audit login
+2017-12-23 12:12:58.3327|INFO|DataService.LogLoginService|End audit login
+2017-12-23 13:40:44.9605|INFO|DataService.Services.AccountService|Start get login
+2017-12-23 13:40:51.0176|INFO|DataService.Services.AccountService|Completed get login
+2017-12-23 13:40:51.0396|INFO|DataService.LogLoginService|Start audit login
+2017-12-23 13:40:51.9812|INFO|DataService.LogLoginService|End audit login
+2017-12-23 15:42:03.0584|INFO|DataService.Services.AccountService|Start get login
+2017-12-23 15:42:09.9936|INFO|DataService.Services.AccountService|Completed get login
+2017-12-23 15:42:10.0721|INFO|DataService.LogLoginService|Start audit login
+2017-12-23 15:42:12.1364|INFO|DataService.LogLoginService|End audit login
+2017-12-23 15:46:29.1310|INFO|DataService.Services.AccountService|Start get login
+2017-12-23 15:46:35.0671|INFO|DataService.Services.AccountService|Completed get login
+2017-12-23 15:46:35.0971|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-23 15:46:35.1521|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-23 15:46:35.1521|INFO|DataService.LogLoginService|Start audit login
+2017-12-23 15:46:36.0294|INFO|DataService.LogLoginService|End audit login
+2017-12-23 15:46:40.9853|INFO|DataService.Services.AccountService|Start get login
+2017-12-23 15:46:41.3514|INFO|DataService.Services.AccountService|Completed get login
+2017-12-23 15:46:41.4224|INFO|DataService.LogLoginService|Start audit login
+2017-12-23 15:46:41.5689|INFO|DataService.LogLoginService|End audit login
+2017-12-23 15:50:11.0588|INFO|DataService.Services.AccountService|Start get login
+2017-12-23 15:50:15.3772|INFO|DataService.Services.AccountService|Completed get login
+2017-12-23 15:50:15.3952|INFO|DataService.LogLoginService|Start audit login
+2017-12-23 15:50:16.2113|INFO|DataService.LogLoginService|End audit login
+2017-12-23 15:51:38.5050|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-23 15:51:38.7560|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-23 16:30:09.4668|INFO|DataService.Services.AccountService|Start get login
+2017-12-23 16:30:09.8431|INFO|DataService.Services.AccountService|Completed get login
+2017-12-23 16:30:09.8701|INFO|DataService.LogLoginService|Start audit login
+2017-12-23 16:30:11.0531|INFO|DataService.LogLoginService|End audit login
+2017-12-23 16:30:46.5506|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-23 16:30:46.5676|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-23 16:30:46.9116|INFO|DataService.Services.LogProductService|Start audit update product's price
+2017-12-23 16:30:47.1251|INFO|DataService.Services.LogProductService|End audit update product's price
+2017-12-23 16:37:39.3773|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-23 16:37:39.3883|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-23 16:37:39.4103|INFO|DataService.Services.LogProductService|Start audit update product's price
+2017-12-23 16:37:39.4608|INFO|DataService.Services.LogProductService|End audit update product's price
+2017-12-23 16:38:50.5349|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-23 16:38:50.5459|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-23 16:38:50.5669|INFO|DataService.Services.LogProductService|Start audit update product's price
+2017-12-23 16:38:50.5969|INFO|DataService.Services.LogProductService|End audit update product's price
+2017-12-23 16:57:45.1491|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-23 16:57:45.2717|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-23 16:57:45.3251|INFO|DataService.Services.LogProductService|Start audit update product's price
+2017-12-23 16:57:45.3251|INFO|DataService.Services.LogProductService|End audit update product's price
+2017-12-23 16:57:58.6960|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-23 16:57:58.6960|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-23 16:57:58.7899|INFO|DataService.Services.LogProductService|Start audit update product's price
+2017-12-23 16:57:58.8185|INFO|DataService.Services.LogProductService|End audit update product's price
+2017-12-23 17:10:37.6516|INFO|DataService.Services.AccountService|Start get login
+2017-12-23 17:10:37.9296|INFO|DataService.Services.AccountService|Completed get login
+2017-12-23 17:10:37.9296|INFO|DataService.LogLoginService|Start audit login
+2017-12-23 17:10:39.4231|INFO|DataService.LogLoginService|End audit login
+2017-12-23 17:11:05.0068|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-23 17:11:05.0188|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-23 17:11:23.0922|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-23 17:11:23.1012|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-23 17:11:23.1292|INFO|DataService.Services.LogProductService|Start audit update product's price
+2017-12-23 17:11:23.1722|INFO|DataService.Services.LogProductService|End audit update product's price
