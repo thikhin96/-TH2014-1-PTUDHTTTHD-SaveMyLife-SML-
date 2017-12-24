@@ -1,0 +1,138 @@
+﻿@model SML_QLNPP.Models.ProductDetailViewModel
+@using Newtonsoft.Json;
+@{
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+}
+@{
+//var success = ViewBag.success as string;
+    var successCreate = TempData["msg"] as string;
+    var fail = ViewBag.fail as string;
+
+    List<SelectListItem> listTypes = new List<SelectListItem>();
+
+    List<SelectListItem> listUnits = new List<SelectListItem>();
+
+    List<SelectListItem> listStatus = new List<SelectListItem>();
+    if (Model.IsDisabled)
+    {
+        listStatus.Add(new SelectListItem { Text = "Còn bán", Value = "false" });
+        listStatus.Add(new SelectListItem { Text = "Ngừng", Value = "true", Selected = true });
+    }
+    else
+    {
+        listStatus.Add(new SelectListItem { Text = "Còn bán", Value = "false", Selected = true });
+        listStatus.Add(new SelectListItem { Text = "Ngừng", Value = "true" });
+    }
+
+}
+
+@foreach (var type in Model.ProductTypes)
+{
+    if (Model.ProductType == @type.idProductType)
+    {
+        listTypes.Add(new SelectListItem { Text = @type.productTypeName, Value = @type.idProductType.ToString(), Selected = true });
+    }
+    else
+    {
+        listTypes.Add(new SelectListItem { Text = @type.productTypeName, Value = @type.idProductType.ToString() });
+    }
+
+}
+
+@foreach (var unit in Model.Units)
+{
+    if (Model.Unit == @unit.idUnit)
+    {
+        listUnits.Add(new SelectListItem { Text = @unit.unitName, Value = @unit.idUnit.ToString(), Selected = true });
+    }
+    else
+    {
+        listUnits.Add(new SelectListItem { Text = @unit.unitName, Value = @unit.idUnit.ToString() });
+    }
+
+}
+
+@section css{
+    <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/detail.css" rel="stylesheet" type="text/css" media="all" />
+}
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/Product/detail.js"></script>
+}
+
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Thông tin sản phẩm</h3>
+            </div>
+            @if (fail != null)
+            {
+                <div class="alert alert-danger alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Thất bại!</strong> @fail
+                </div>
+            }
+            @if (successCreate != null)
+            {
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Thành công!</strong> @successCreate
+                </div>
+            }
+            @using (Html.BeginForm("Detail", "Product", FormMethod.Post))
+            {
+                <div class="panel-group">
+                    <div class="panel panel-info">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-2 form-group">
+                                    <label>Mã sản phẩm </label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    <label>@Model.IdProduct</label>
+                                    @Html.HiddenFor(m => m.IdProduct)
+                                </div>
+                                <div class="col-md-2 form-group">
+                                    <label>Tên sản phẩm </label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    @Html.TextBoxFor(p => p.ProductName, new { @class = "form-control", @required = "required" })
+                                </div>
+                                <div class="col-md-2 form-group">
+                                    <label>Đơn giá (VNĐ)</label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    @Html.TextBoxFor(pr => pr.Price, new { @class = "form-control", @type = "number", @min = "1", @required = "required" })
+                                </div>
+                                <div class="col-md-2 form-group">
+                                    <label>Loại sản phẩm </label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    @Html.DropDownListFor(model => model.ProductType, listTypes, new { @class = "form-control", @required = "required" })
+                                </div>
+                                <div class="col-md-2 form-group">
+                                    <label>Đơn vị tính </label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    @Html.DropDownListFor(model => model.Unit, listUnits, new { @class = "form-control", @required = "required" })
+                                </div>
+                                <div class="col-md-2 form-group">
+                                    <label>Số lượng tồn </label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    @Html.TextBoxFor(model => model.Quantity, new { @class = "form-control", @required = "required" })
+                                </div>
+                                <div class="col-md-2 form-group">
+                                    <label>Tình trạng </label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    @Html.DropDownListFor(model => model.IsDisabled, listStatus, new { @class = "form-control", @required = "required" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <input id="btn_submit" type="submit" style="font-weight: bold; display: block; margin: 0 auto;" class="btn btn-info" value="Lưu thay đổi" disabled/>
+                </div>
+            }
+        </div>

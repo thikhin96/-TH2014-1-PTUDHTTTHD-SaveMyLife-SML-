@@ -112,7 +112,21 @@ namespace DataService.Services
 
         public bool UpdateDebt(int id, long money)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            logger.Info("Start service....");
+            try {
+                var distributor = this.SearchByID(id);
+                distributor.debt = distributor.debt + money;
+                _unitOfWork.SaveChange();
+                logger.Info("End service...");
+                return true;
+            }
+            catch (Exception e)
+            {
+                logger.Info(e.Message);
+                logger.Info("End service...");
+                return false;
+            }
         }
 
         public bool UpdateStatus(int id, bool status)
@@ -124,5 +138,13 @@ namespace DataService.Services
         {
             throw new NotImplementedException();
         }
+
+
+        public List<Distributor> SearchByName(string searchTerm)
+        {
+            var distributors = _distributorRepository.GetAll(x => x.name.Contains(searchTerm) && x.status == true).ToList();
+            return distributors;
+        }
+
     }
 }
