@@ -506,3 +506,148 @@
 2017-12-17 20:53:57.1144|INFO|SML_QLNPP.Controllers.DistributorController|Start controller to filter....
 2017-12-17 20:53:57.1294|INFO|DataService.Services.DistributorService|Start service....
 2017-12-17 20:53:58.0994|INFO|DataService.Services.DistributorService|End service...
+2017-12-24 10:01:30.3844|INFO|DataService.Services.AccountService|Start get login
+2017-12-24 10:01:30.9799|INFO|DataService.Services.AccountService|Completed get login
+2017-12-24 10:01:30.9879|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-24 10:01:30.9879|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-24 10:01:33.6638|INFO|DataService.Services.AccountService|Start get login
+2017-12-24 10:01:33.6638|INFO|DataService.Services.AccountService|Completed get login
+2017-12-24 10:01:33.6808|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-24 10:01:33.6883|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-24 10:01:39.2196|INFO|DataService.Services.AccountService|Start get login
+2017-12-24 10:01:39.2196|INFO|DataService.Services.AccountService|Completed get login
+2017-12-24 10:01:39.2196|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-24 10:01:39.2446|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-24 10:01:44.7707|INFO|DataService.Services.AccountService|Start get login
+2017-12-24 10:01:44.7817|INFO|DataService.Services.AccountService|Completed get login
+2017-12-24 10:01:44.7817|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-24 10:01:44.7972|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-24 10:01:44.7972|INFO|DataService.LogLoginService|Start audit login
+2017-12-24 10:01:44.8559|INFO|DataService.LogLoginService|End audit login
+2017-12-24 10:01:48.6651|INFO|DataService.Services.AccountService|Start get login
+2017-12-24 10:01:48.6766|INFO|DataService.Services.AccountService|Completed get login
+2017-12-24 10:01:48.6766|INFO|DataService.LogLoginService|Start audit login
+2017-12-24 10:01:48.6976|INFO|DataService.LogLoginService|End audit login
+2017-12-24 10:04:11.1511|INFO|DataService.Services.OrderService|Start search order
+2017-12-24 10:04:11.1631|INFO|DataService.Services.OrderService|Completed search order
+2017-12-24 10:04:16.8084|INFO|DataService.Services.OrderService|Start search order
+2017-12-24 10:04:16.8164|INFO|DataService.Services.OrderService|Completed search order
+2017-12-24 10:04:53.4169|INFO|DataService.Services.OrderService|Start search order
+2017-12-24 10:04:53.4274|INFO|DataService.Services.OrderService|Completed search order
+2017-12-24 10:05:02.3750|INFO|DataService.Services.OrderService|Start search order
+2017-12-24 10:05:02.3750|INFO|DataService.Services.OrderService|Completed search order
+2017-12-24 10:05:08.2684|INFO|DataService.Services.OrderService|Start search order
+2017-12-24 10:05:08.2684|INFO|DataService.Services.OrderService|Completed search order
+2017-12-24 10:11:41.0031|INFO|DataService.Services.OrderService|Start search order
+2017-12-24 10:11:41.0031|INFO|DataService.Services.OrderService|Completed search order
+2017-12-24 10:11:47.5615|INFO|DataService.Services.OrderService|Start search order
+2017-12-24 10:11:47.5715|INFO|DataService.Services.OrderService|Completed search order
+2017-12-24 10:12:13.4873|INFO|DataService.Services.OrderService|Start search order
+2017-12-24 10:12:13.4873|INFO|DataService.Services.OrderService|Completed search order
+2017-12-24 10:13:28.8920|INFO|DataService.Services.OrderService|Start search order
+2017-12-24 10:13:28.8920|INFO|DataService.Services.OrderService|Completed search order
+2017-12-24 10:13:30.2195|INFO|DataService.Services.OrderService|Start get order
+2017-12-24 10:13:30.2195|INFO|DataService.Services.OrderService|Completed get order
+2017-12-24 10:15:12.3236|INFO|DataService.PromotionService|Start search promotion
+2017-12-24 10:15:12.3306|INFO|DataService.PromotionService|Start search ALL promotion
+2017-12-24 10:15:12.3927|INFO|DataService.PromotionService|Start search ENDDATE promotion
+2017-12-24 10:15:12.3927|INFO|DataService.PromotionService|Error search promotion: String was not recognized as a valid DateTime.
+2017-12-24 10:15:26.8762|INFO|DataService.PromotionService|Start search promotion
+2017-12-24 10:15:26.8762|INFO|DataService.PromotionService|Start search ALL promotion
+2017-12-24 10:15:26.8973|INFO|DataService.PromotionService|Start search ENDDATE promotion
+2017-12-24 10:15:26.9063|INFO|DataService.PromotionService|Error search promotion: String was not recognized as a valid DateTime.
+2017-12-24 10:18:28.3239|INFO|DataService.PromotionService|Start search promotion
+2017-12-24 10:18:28.3880|INFO|DataService.PromotionService|Start search ALL promotion
+2017-12-24 10:18:31.9599|INFO|DataService.PromotionService|Start search ENDDATE promotion
+2017-12-24 10:18:31.9599|INFO|DataService.PromotionService|Error search promotion: String was not recognized as a valid DateTime.
+2017-12-24 10:18:34.8729|INFO|DataService.PromotionService|Start search promotion
+2017-12-24 10:18:34.8834|INFO|DataService.PromotionService|Start search ALL promotion
+2017-12-24 10:18:34.9045|INFO|DataService.PromotionService|Start search ENDDATE promotion
+2017-12-24 10:18:34.9135|INFO|DataService.PromotionService|Error search promotion: String was not recognized as a valid DateTime.
+2017-12-24 10:18:50.5948|INFO|DataService.PromotionService|Start search promotion
+2017-12-24 10:18:50.5948|INFO|DataService.PromotionService|Start search ALL promotion
+2017-12-24 10:18:50.6278|INFO|DataService.PromotionService|Start search ENDDATE promotion
+2017-12-24 10:18:50.6278|INFO|DataService.PromotionService|Error search promotion: String was not recognized as a valid DateTime.
+2017-12-24 10:20:14.9658|INFO|DataService.PromotionService|Start search promotion
+2017-12-24 10:20:18.6983|INFO|DataService.PromotionService|Start search ALL promotion
+2017-12-24 10:20:37.5565|INFO|DataService.PromotionService|Start search ENDDATE promotion
+2017-12-24 10:20:37.5650|INFO|DataService.PromotionService|Error search promotion: String was not recognized as a valid DateTime.
+2017-12-24 10:21:42.1946|INFO|DataService.PromotionService|Start search promotion
+2017-12-24 10:21:45.2905|INFO|DataService.PromotionService|Start search ALL promotion
+2017-12-24 10:21:50.1255|INFO|DataService.PromotionService|Completed search promotion
+2017-12-24 10:22:04.1447|INFO|DataService.PromotionService|Start search promotion
+2017-12-24 10:22:04.1447|INFO|DataService.PromotionService|Start search BY ID promotion
+2017-12-24 10:22:04.6207|INFO|DataService.PromotionService|Completed search promotion
+2017-12-24 10:22:14.2694|INFO|DataService.PromotionService|Start search promotion
+2017-12-24 10:22:14.2694|INFO|DataService.PromotionService|Start search START DATE promotion
+2017-12-24 10:22:14.4081|INFO|DataService.PromotionService|Completed search promotion
+2017-12-24 10:22:20.8863|INFO|DataService.PromotionService|Start search promotion
+2017-12-24 10:22:20.8923|INFO|DataService.PromotionService|Start search START DATE & ENDDATE promotion
+2017-12-24 10:22:20.9128|INFO|DataService.PromotionService|Completed search promotion
+2017-12-24 10:22:24.1485|INFO|DataService.PromotionService|Start search promotion
+2017-12-24 10:22:24.1585|INFO|DataService.PromotionService|Start search BY ID promotion
+2017-12-24 10:22:24.1810|INFO|DataService.PromotionService|Completed search promotion
+2017-12-24 10:22:27.4677|INFO|DataService.PromotionService|Start search promotion
+2017-12-24 10:22:27.4772|INFO|DataService.PromotionService|Start search START DATE & ENDDATE promotion
+2017-12-24 10:22:27.4992|INFO|DataService.PromotionService|Completed search promotion
+2017-12-24 10:22:29.4132|INFO|DataService.PromotionService|Start search promotion
+2017-12-24 10:22:29.4132|INFO|DataService.PromotionService|Start search BY ID promotion
+2017-12-24 10:22:29.4368|INFO|DataService.PromotionService|Completed search promotion
+2017-12-24 10:22:31.1329|INFO|DataService.PromotionService|Start search promotion
+2017-12-24 10:22:31.1424|INFO|DataService.PromotionService|Start search BY ID promotion
+2017-12-24 10:22:31.1639|INFO|DataService.PromotionService|Completed search promotion
+2017-12-24 10:22:34.9291|INFO|DataService.PromotionService|Start search promotion
+2017-12-24 10:22:34.9291|INFO|DataService.PromotionService|Start search BY ID promotion
+2017-12-24 10:22:34.9456|INFO|DataService.PromotionService|Completed search promotion
+2017-12-24 10:22:35.5877|INFO|DataService.PromotionService|Start get promotion
+2017-12-24 10:22:35.5942|INFO|DataService.PromotionService|Completed get promotion
+2017-12-24 10:23:26.7670|INFO|DataService.Services.AccountService|Start get login
+2017-12-24 10:23:26.8061|INFO|DataService.Services.AccountService|Completed get login
+2017-12-24 10:23:26.8131|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-24 10:23:26.8131|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-24 10:23:26.8131|INFO|DataService.LogLoginService|Start audit login
+2017-12-24 10:23:27.1542|INFO|DataService.LogLoginService|End audit login
+2017-12-24 10:23:31.3140|INFO|DataService.Services.AccountService|Start get login
+2017-12-24 10:23:31.3140|INFO|DataService.Services.AccountService|Completed get login
+2017-12-24 10:23:31.3340|INFO|DataService.LogLoginService|Start audit login
+2017-12-24 10:23:31.3480|INFO|DataService.LogLoginService|End audit login
+2017-12-24 10:31:04.0790|INFO|DataService.Services.AccountService|Start get login
+2017-12-24 10:31:07.1679|INFO|DataService.Services.AccountService|Completed get login
+2017-12-24 10:31:07.1764|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-24 10:31:07.1895|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-24 10:31:07.1895|INFO|DataService.LogLoginService|Start audit login
+2017-12-24 10:31:07.6974|INFO|DataService.LogLoginService|End audit login
+2017-12-24 10:31:14.8494|INFO|DataService.Services.AccountService|Start get login
+2017-12-24 10:31:14.8604|INFO|DataService.Services.AccountService|Completed get login
+2017-12-24 10:31:14.8604|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-24 10:31:14.8754|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-24 10:31:14.8754|INFO|DataService.LogLoginService|Start audit login
+2017-12-24 10:31:14.8929|INFO|DataService.LogLoginService|End audit login
+2017-12-24 10:31:17.8681|INFO|DataService.Services.AccountService|Start get login
+2017-12-24 10:31:17.8751|INFO|DataService.Services.AccountService|Completed get login
+2017-12-24 10:31:17.8751|INFO|DataService.LogLoginService|Start audit login
+2017-12-24 10:31:17.8926|INFO|DataService.LogLoginService|End audit login
+2017-12-24 10:32:10.5772|INFO|DataService.Services.AccountService|Start get login
+2017-12-24 10:32:14.0996|INFO|DataService.Services.AccountService|Completed get login
+2017-12-24 10:32:14.0996|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-24 10:32:14.1171|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-24 10:32:14.1256|INFO|DataService.LogLoginService|Start audit login
+2017-12-24 10:32:14.6056|INFO|DataService.LogLoginService|End audit login
+2017-12-24 10:32:42.2591|INFO|DataService.Services.AccountService|Start get login
+2017-12-24 10:32:42.2756|INFO|DataService.Services.AccountService|Completed get login
+2017-12-24 10:32:42.2816|INFO|DataService.LogLoginService|Start audit login
+2017-12-24 10:32:42.3031|INFO|DataService.LogLoginService|End audit login
+2017-12-24 10:32:56.2786|INFO|DataService.Services.OrderService|Start search order
+2017-12-24 10:32:56.2867|INFO|DataService.Services.OrderService|Completed search order
+2017-12-24 10:32:59.0200|INFO|DataService.Services.OrderService|Start get order
+2017-12-24 10:32:59.0200|INFO|DataService.Services.OrderService|Completed get order
+2017-12-24 10:38:46.2090|INFO|DataService.Services.OrderService|Start get order
+2017-12-24 10:38:46.2210|INFO|DataService.Services.OrderService|Completed get order
+2017-12-24 10:39:13.7293|INFO|DataService.Services.OrderService|Start get order
+2017-12-24 10:39:13.7293|INFO|DataService.Services.OrderService|Completed get order
+2017-12-24 10:39:39.2160|INFO|DataService.Services.OrderService|Start get order
+2017-12-24 10:39:39.2285|INFO|DataService.Services.OrderService|Completed get order
+2017-12-24 13:59:06.6623|INFO|DataService.Services.OrderService|Start get order
+2017-12-24 13:59:06.7094|INFO|DataService.Services.OrderService|Completed get order
+2017-12-24 13:59:14.3549|INFO|DataService.Services.OrderService|Start get order
+2017-12-24 13:59:14.3619|INFO|DataService.Services.OrderService|Completed get order

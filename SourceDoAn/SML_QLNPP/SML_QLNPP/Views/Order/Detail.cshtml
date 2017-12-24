@@ -1,6 +1,8 @@
-﻿@model DataModel.Order
+﻿@using DataModel;
+@model DataModel.Order
 @{
     Layout = "~/Views/Shared/_ALayout.cshtml";
+    var staff = Session["admin"] as Account;
 }
 
 @section css{
@@ -47,6 +49,10 @@
         <div class="col-md-2">
             <label>Tên tài khoản: </label>
             <input class="form-control" type="text" value="@Model.Distributor.UserName" disabled />
+        </div>
+        <div class="col-md-2">
+            <label>Công nợ: </label>
+            <input class="form-control" type="text" value="@Model.Distributor.debt" disabled />
         </div>
     </div>
 </div>
@@ -145,5 +151,12 @@
         </div>
         <!-- /.box -->
 
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <a href="/Order/Update/@Model.idOrder" class="btn btn-block btn-info">Sửa đơn đặt hàng</a>
     </div>
 </div>
