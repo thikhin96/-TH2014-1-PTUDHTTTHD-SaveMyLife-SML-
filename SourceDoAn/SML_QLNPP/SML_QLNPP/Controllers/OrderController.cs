@@ -59,6 +59,7 @@ namespace SML_QLNPP.Controllers
 
         public ActionResult Update(int id)
         {
+            ViewBag.Title = "Chỉnh sửa đơn đặt hàng | Nhà phân phối sữa Vitamilk | Nhà phân phối sữa hàng đầu Việt Nam";
             var order = _orderService.GetOrder(id);
             var model = new CreateOrderViewModel
             {
@@ -105,6 +106,7 @@ namespace SML_QLNPP.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.Title = "Thêm đơn đặt hàng | Nhà phân phối sữa Vitamilk | Nhà phân phối sữa hàng đầu Việt Nam";
             var model = new CreateOrderViewModel()
             {
                 idOrder = _orderService.GenerateOrderId(),
