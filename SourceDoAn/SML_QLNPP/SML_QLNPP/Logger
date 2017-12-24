@@ -160,3 +160,23 @@
 2017-12-11 01:32:16.7831|INFO|SML_QLNPP.Controllers.DistributorController|Start controller to display info of distributor....
 2017-12-11 01:32:16.8201|INFO|DataService.Services.DistributorService|Start service....
 2017-12-11 01:32:18.0905|INFO|DataService.Services.DistributorService|End service...
+2017-12-22 23:58:03.4852|INFO|DataService.Services.AccountService|Start get login
+2017-12-22 23:58:04.1069|INFO|DataService.Services.AccountService|Completed get login
+2017-12-22 23:58:04.1069|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-22 23:58:04.1216|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-22 23:58:19.7971|INFO|DataService.Services.AccountService|Start get login
+2017-12-22 23:58:19.7971|INFO|DataService.Services.AccountService|Completed get login
+2017-12-22 23:58:19.8106|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-22 23:58:19.8106|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-22 23:58:43.2648|INFO|DataService.Services.AccountService|Start get login
+2017-12-22 23:58:43.2648|INFO|DataService.Services.AccountService|Completed get login
+2017-12-22 23:58:43.2793|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-22 23:58:43.2793|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-22 23:59:39.9922|INFO|DataService.Services.AccountService|Start get login
+2017-12-22 23:59:40.0027|INFO|DataService.Services.AccountService|Completed get login
+2017-12-22 23:59:40.0027|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-22 23:59:40.0152|INFO|DataService.Services.AccountService|Completed get account to write log
+2017-12-22 23:59:42.1043|INFO|DataService.Services.AccountService|Start get login
+2017-12-22 23:59:42.4491|INFO|DataService.Services.AccountService|Completed get login
+2017-12-22 23:59:42.4491|INFO|DataService.Services.AccountService|Start get account to write log
+2017-12-22 23:59:42.4491|INFO|DataService.Services.AccountService|Completed get account to write log
