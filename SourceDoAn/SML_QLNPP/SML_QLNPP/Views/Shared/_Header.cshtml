@@ -1,4 +1,10 @@
-﻿    <!-- banner -->
+﻿@using DataModel;
+    <!-- banner -->
+@{ 
+    var user = Session["user"] as Account;
+    var admin = Session["admin"] as Account;
+}
+
 <div class="header-w3layoutstop">
     <div class="container">
         <div class="hdr-w3left navbar-left">
@@ -26,20 +32,32 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav link-effect">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span data-hover="Short Codes">Short Codes</span> <b class="caret"></b></a>
-                        <ul class="dropdown-menu agile_short_dropdown">
-                            <li><a href="icons.html">Web Icons</a></li>
-                            <li><a href="typography.html">Typography</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact.html">Contact</a></li>
-                    @if (Session["username"] != null)
+                    <li class="active"><a href="/">Trang chủ</a></li>
+                    <li><a href="javascript:">Về chúng tôi</a></li>
+                    <li><a href="javascript:">Sản phẩm</a></li>
+                    @if (user == null && admin == null)
                     {
-                        <li><a href="contact.html">Đã đăng nhập</a></li>
+                        <li><a href="/Account/Login">Đăng nhập</a></li>
+                    }
+                    @if (user != null)
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span data-hover="Short Codes">Chức năng</span> <b class="caret"></b></a>
+                            <ul class="dropdown-menu agile_short_dropdown">
+                                <li><a href="/Order/Create">Tạo đơn hàng mới</a></li>
+                                <li><a href="/Account/Logout">Đăng xuất</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @if (admin != null)
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span data-hover="Short Codes">Chức năng</span> <b class="caret"></b></a>
+                            <ul class="dropdown-menu agile_short_dropdown">
+                                <li><a href="/Order/List">Danh sách đơn hàng</a></li>
+                                <li><a href="/Account/Logout">Đăng xuất</a></li>
+                            </ul>
+                        </li>
                     }
                 </ul>
             </div>
