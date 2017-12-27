@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataModel;
-using DataModel.Interfaces;
 using NLog;
+using DataModel.Interfaces;
+using System;
+
 namespace DataService.Interfaces
 {
     public class BillService : IBillService
@@ -14,24 +13,48 @@ namespace DataService.Interfaces
         ILogger logger = LogManager.GetCurrentClassLogger();
         public BillService(IUnitOfWork unitOfWork)
         {
-            //_promotionRepository = unitOfWork.Repository<Promotion>();
             _unitOfWork = unitOfWork;
         }
-        public bool AddBill(Bill Bill)
+        public bool AddBill(Bill bill)
         {
-            throw new NotImplementedException();
+            try {
+                logger.Info("Start Add Bill....");
+                IRepository<Bill> repository = _unitOfWork.Repository<Bill>();
+                repository.Add(bill);
+                _unitOfWork.SaveChange();
+                logger.Info("End Add Bill....");
+                return true;
+            } catch(Exception ex)
+            {
+                logger.Info(ex.Message);
+                logger.Info("End Add Bill....");
+                return false;
+            } 
         }
         public IList<Bill> SearchById(int id)
-        {
-            IRepository<Bill> repository = _unitOfWork.Repository<Bill>();
-            var result = repository.GetAll(a => a.idBill == id);
-            if (result != null){
-                return result.ToList();
-            }
-            else
+        { 
+            try
             {
-                return null;
+                logger.Info("Start Search Bill by idBill....");
+                IRepository<Bill> repository = _unitOfWork.Repository<Bill>();
+                var result = repository.GetAll(a => a.idBill == id);
+                if (result != null)
+                {
+                    logger.Info("End Search Bill by idBill....");
+                    return result.ToList();
+                }
+                else
+                {
+                    logger.Info("End Search Bill by idBill....");
+                    return null;
+                }
             }
+            catch(Exception ex)
+            {
+                logger.Info(ex.Message);
+                logger.Info("End Search Bill by idBill....");
+                return null;
+            }  
         }
     }
 }

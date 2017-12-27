@@ -214,12 +214,14 @@ div#myNavbar {
 	-ms-background-size:cover;
 	min-height:300px;
 	text-align: center;
+    background-size: 100%;
 }
 .w3ls_banner_section h3{
        color: #fff;
     text-transform: uppercase;
       font-size: 2.4em;
     letter-spacing: 3px;
+    font-weight: 600;
 }
 .w3ls_banner_section h3 span{
 	color:#f6da08;
@@ -227,12 +229,11 @@ div#myNavbar {
 .w3ls_banner_section p {
     color: #fff;
     line-height: 1.5em;
-    text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 0.9em;
+    font-size: 2em;
     margin-top: 15px;
     margin: 2% auto;
-    width: 46%;
+    width: 70%;
 }
 .wthree_banner_grids{
 	padding:4em 0;
@@ -2358,3 +2359,7 @@ div#myNavbar {
 /*-- //Responsive--*/
 
 
+.w3ls_banner_section .container{
+    background-color: rgba(0, 0, 0, 0.4);
+        padding: 20px 0;
+}

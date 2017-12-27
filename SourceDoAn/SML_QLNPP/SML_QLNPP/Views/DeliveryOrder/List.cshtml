@@ -1,6 +1,16 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@model SML_QLNPP.Models.DeliveryOrderViewModel
+@{
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+    List<SelectListItem> listStatus = new List<SelectListItem> {
+           new SelectListItem { Text = "Tất cả", Value = "0", Selected = true },
+           new SelectListItem { Text = "Đang giao", Value = "1"},
+       new SelectListItem { Text = "Đã giao", Value = "2"},
+       new SelectListItem { Text = "Kiểm kê thiếu hàng", Value = "3"},
+       new SelectListItem { Text = "Bị từ chối giao", Value = "4"},
+       new SelectListItem { Text = "Chưa kiểm kê", Value = "5"}
+       };
 }
+
 @section css{
     <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/DeliveryOrder/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
@@ -12,43 +22,43 @@
     <script type="text/javascript" src="~/Scripts/DeliveryOrder/datatables.min.js"></script>
     <script type="text/javascript" src="~/Scripts/DeliveryOrder/deliveryorder.js"></script>
 }
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<div class="container-fluid">
-    <div class="row">
-        @Html.Partial("~/Views/Shared/_SidebarAdmin.cshtml")
-        <div class="col-sm-10 col-md-10">
-            <div class="well">
-                <div class="row">
-                    <div class="col-md-4">
-                        <label>Tìm theo mã giao hàng</label>
-                        <input type="text" class="form-control" placeholder="Nhập mã đơn giao hàng" id="dorder">
-                    </div>
-                    <div class="col-md-2">
-                        <label>Trạng thái</label>
-                        <select class="form-control" id="status">
-                            <option value="0">Tất cả</option>
-                            <option value="1">Đang giao</option>
-                            <option value="2">Đã giao</option>
-                            <option value="3">Kiểm kê thiếu hàng</option>
-                            <option value="4">Bị từ chối giao</option>
-                            <option value="5">Chưa kiểm kê</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label>Ngày giao (ngày/tháng/năm)</label>
-                        <input type="date" class="form-control" id="delivery_date" value="">
-                    </div>
-                    <div class="col-md-2">
-                        <br />
-                        <button class="btn btn-default" id="search"><span class="glyphicon glyphicon-search"></span>Tìm kiếm kết quả</button>
-                    </div>
-                </div>
-                <div class="row mgt">
-                    <div class="col-md-12">
-                        <h2>Danh sách đơn giao hàng</h2>
-                        <table id="dorder-list" class="cell-border" cellspacing="0" width="100%">
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">Thông tin tìm kiếm</h3>
+    </div>
+    @using (Html.BeginForm("Search", "DeliveryOrder", FormMethod.Get))
+    {
+        <div class="box-body">
+            <div class="col-md-3">
+                @Html.Label("Tìm theo mã giao hàng")
+                @Html.TextBoxFor(model => model.idDeliveryOrder, "", new { @type = "number", @min = "0", @class = "form-control", @placeholder = "Nhập mã giao hàng" })
+            </div>
+            <div class="col-md-3">
+                @Html.Label("Trạng thái")
+                @Html.DropDownListFor(model => model.status, listStatus, new { @class = "form-control" })
+            </div>
+            <div class="col-md-3">
+                @Html.Label("Ngày giao")
+                @Html.TextBoxFor(model => model.deliveryDate, "{0:dd/MM/yyyy}", new { @type = "date", @class = "form-control" })
+            </div>
+            <div class="col-md-3">
+                <button type="submit" id="search" name="search" class="btn btn-primary" style="margin-top: 25px"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header">
+                <h3 class="box-title">Danh sách đơn giao hàng</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <div class="col-sm-12">
+                        <table id="dorder-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                             <thead>
                                 <tr>
                                     <th>Mã giao hàng</th>
@@ -60,50 +70,46 @@
                                     <th>Thao tác</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Mã giao hàng</th>
-                                    <th>Mã đặt hàng</th>
-                                    <th>Mã NPP</th>
-                                    <th>Tổng tiền</th>
-                                    <th>Tình trạng</th>
-                                    <th>Ngày giao</th>
-                                    <th>Thao tác</th>
-                                </tr>
-                            </tfoot>
-                            <tbody id="result">
-                                @foreach (var item in Model)
-                                {
-                                    <tr>
-                                        <td>
-                                            @item.idDeliveryOrder
-                                        <td>
-                                            @item.idOrder
-                                        </td>
-                                        <td>
-                                            @item.Order.idDistributor
-                                        </td>
-                                        <td>
-                                            @string.Format("{0:0,0}", @item.totalPurchase)
-                                        </td>
-                                        <td>
-                                            @(item.status == 1 ? "Đang giao" : item.status == 2 ? "Đã giao" : item.status == 3 ? "Kiểm kê thiếu hàng" : item.status == 4 ? "Bị từ chối giao" : item.status == 5 ? "Chưa kiểm kê" :"")
+                            <tbody>
+                                @{
+                                    if (Model.listDeliveryOrder != null && Model != null)
+                                    {
+                                        foreach (var item in Model.listDeliveryOrder)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @item.idDeliveryOrder
+                                                <td>
+                                                    @item.idOrder
+                                                </td>
+                                                <td>
+                                                    @item.Order.idDistributor
+                                                </td>
+                                                <td>
+                                                    @string.Format("{0:0,0}", @item.totalPurchase)
+                                                </td>
+                                                <td>
+                                                    @(item.status == 1 ? "Đang giao" : item.status == 2 ? "Đã giao" : item.status == 3 ? "Kiểm kê thiếu hàng" : item.status == 4 ? "Bị từ chối giao" : item.status == 5 ? "Chưa kiểm kê" : "")
 
-                                        </td>
-                                        <td>
-                                            @Convert.ToDateTime(@item.deliveryDate).ToString("dd/MM/yyyy")
-                                        </td>
-                                        <td>
-                                            @Html.ActionLink("Chi Tiết", "Details", new { id = item.idDeliveryOrder }) |
-                                            @Html.ActionLink("Sữa", "Edit", new { id = item.idDeliveryOrder })  
-                                        </td>
-                                    </tr>
+                                                </td>
+                                                <td>
+                                                    @Convert.ToDateTime(@item.deliveryDate).ToString("dd/MM/yyyy")
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Chi Tiết", "Details", new { id = item.idDeliveryOrder },new { @class = "btn btn-info"})
+                                                    @* |@Html.ActionLink("Lập hóa đơn", "Create", "Bill", new { @area = ""},new { @class = "btn btn-primary"})*@
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
                                 }
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
+            <!-- /.box-body -->
         </div>
+        <!-- /.box -->
     </div>
 </div>

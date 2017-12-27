@@ -44,7 +44,7 @@ namespace SML_QLNPP.Controllers
             var ret = _accountService.Login(Login.UserName, Login.Password);
             if (ret!=null)
             {
-                Session["username"] = Login.UserName;
+                Session["user"] = ret as Account;
                 Log_Login log = new Log_Login();
                 log.idAccount = ret.idUser;
                 log.status = true;
@@ -121,8 +121,8 @@ namespace SML_QLNPP.Controllers
                     {
 
                     }
-                    Session["a_username"] = Login.UserName;
-                    return Redirect("/");
+                    Session["admin"] = ret as Account;
+                    return Redirect("/Order/List");
                 }
             }
             else
@@ -154,9 +154,14 @@ namespace SML_QLNPP.Controllers
         /// <returns></returns>
         public ActionResult Logout()
         {
-            if (Session["username"] != null)
+            if (Session["user"] != null)
             {
-                Session.Remove("username");
+                Session.Remove("user");
+                return Redirect("/");
+            }
+            else if (Session["admin"] != null)
+            {
+                Session.Remove("admin");
                 return Redirect("/");
             }
             else
