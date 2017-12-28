@@ -15,10 +15,43 @@ namespace DataService.Services
     public class ContractService : IContractService
     {
         ILogger logger = LogManager.GetCurrentClassLogger();
+        IUnitOfWork uow; 
+        IRepository<Contract> repo_con;
+        IRepository<Distributor> repo_dis;
+
+        public ContractService(IUnitOfWork _unitOfWork)
+        {
+            uow = _unitOfWork;
+            repo_con = uow.Repository<Contract>();
+            repo_dis = uow.Repository<Distributor>();
+        }
 
         public bool CancelContract(int id, string reason)
         {
-            throw new NotImplementedException();
+            logger.Info("Start Service to cancel a contract...");
+            
+            Contract con = new Contract();
+            //Distributor dis = new Distributor();
+
+            con = Get(id);
+            con.status = false;
+            con.note = reason;
+            Distributor dis = con.Distributor1;
+            dis.status = false;
+            
+            bool result = true;
+            try
+            {
+                repo_con.Update(con);
+                repo_dis.Update(dis);
+                uow.SaveChange();
+            }
+            catch(Exception ex)
+            {
+                logger.Info(ex.Message);
+                result = false;
+            }
+            return result;
         }
 
         public bool CheckDebtExcess(long money)
@@ -57,25 +90,26 @@ namespace DataService.Services
             IUnitOfWork uow = new UnitOfWork();
             IRepository<Contract> repo = uow.Repository<Contract>();
             IList<Contract> con = new List<Contract>();
-            if (criterion == 0)       // search by id of distributor
+            if (keyword == null)
+            {
+                con = repo.GetAll().ToList();
+            }
+            else 
+            if (criterion == 1)       // search by id of distributor
             {
                 con = repo.GetAll(x => x.distributor == keyword).OrderByDescending(x => x.beginDate).ToList();
             }
-            else if (criterion == 1)  // search by id of contract
+            else if (criterion == 2)  // search by id of contract
             {
                 con = repo.GetAll(x => x.idContract == keyword).ToList();
             }
-            else if (criterion == 2)  // Search contract that close expired date
+            else if (criterion == 3)  // Search contract that close expired date
             {
                 DateTime date = DateTime.Now.AddDays((double)keyword);
                 con = repo.GetAll(x => x.expiredDate <= date).OrderByDescending(x => x.expiredDate).ToList();
             }
-            else
-            {
-                con = repo.GetAll().ToList();
-            }
 
-            if (con.Count() == 0) return null;
+            //if (con.Count() == 0) return null;
 
             IList<ContractList> listCon = new List<ContractList>();
             ContractList lCon;
@@ -95,11 +129,9 @@ namespace DataService.Services
 
         public Contract Get(int id)
         {
-            logger.Info("Start Service to get detailed info of the distributor...");
-            IUnitOfWork uow = new UnitOfWork();
-            IRepository<Contract> repo = uow.Repository<Contract>();
+            logger.Info("Start Service to get detailed info of the contract...");
             Contract con = new Contract();
-            con = repo.Get(x => x.idContract == id);
+            con = repo_con.Get(x => x.idContract == id);
             return con;
         }
     }
