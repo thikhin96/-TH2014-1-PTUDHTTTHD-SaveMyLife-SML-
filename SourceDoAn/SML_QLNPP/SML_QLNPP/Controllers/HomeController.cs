@@ -18,6 +18,7 @@ namespace SML_QLNPP.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Title = "Nhà phân phối sữa Vitamilk | Nhà phân phối sữa hàng đầu Việt Nam";
             return View();
         }
 

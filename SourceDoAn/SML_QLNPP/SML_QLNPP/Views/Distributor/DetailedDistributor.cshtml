@@ -2,58 +2,56 @@
 
 @{
     ViewBag.Title = "DetailedDistributor";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_ALayout.cshtml";
 }
 
 <center><h1 style="color:blue"><b>THÔNG TIN CHI TIẾT NHÀ PHÂN PHỐI</b></h1></center>
 
-<div class="container-fluid">
-    <div class="row">
-        @Html.Partial("~/Views/Shared/_SidebarAdmin.cshtml")
-        <div class="col-sm-10 col-md-10">
-            <div class="well">
-                <div  id="npp">
-                    <h4 style="color:mediumslateblue"><b>Nhà phân phối</b></h4>
-                    <br />
-                    <div class="col-md-12">
-                        <dl class="dl-horizontal">
-                            <dt> @Html.Label("Mã nhà phân phối: ") </dt>
-                            <dd>@Html.TextBoxFor(model => model.distributor, new { @readonly = "readonly" })</dd>
-                        </dl>
-                    </div>
-                    <div class="col-md-12">
-                        <dl class="dl-horizontal">
-                            <dt> @Html.Label("Tên công ty: ") </dt>
-                            <dd>@Html.TextBoxFor(model => model.Distributor1.name, new { @readonly = "readonly" })</dd>
-                        </dl>
-                    </div>
-                    <div class="col-md-12">
-                        <dl class="dl-horizontal">
-                            <dt> @Html.Label("Địa chỉ công ty: ") </dt>
-                            <dd>@Html.TextBoxFor(model => model.Distributor1.address, new { @readonly = "readonly" })</dd>
-                        </dl>
-                    </div>
-                    <div class="col-md-6">
-                        <dl class="dl-horizontal">
-                            <dt> @Html.Label("Số điện thoại: ") </dt>
-                            <dd>@Html.TextBoxFor(model => model.Distributor1.phone, new { @readonly = "readonly" })</dd>
-                        </dl>
-                    </div>
-                    <div class="col-md-6">
-                        <dl class="dl-horizontal">
-                            <dt> @Html.Label("Email: ") </dt>
-                            <dd>@Html.TextBoxFor(model => model.Distributor1.Email, new { @readonly = "readonly" })</dd>
-                        </dl>
-                    </div>
-                    <div class="col-md-12">
-                        <dl class="dl-horizontal">
-                            <dt> @Html.Label("Công nợ hiện tại: ") </dt>
-                            <dd>@Html.TextBoxFor(model => model.Distributor1.Debts, new { @readonly = "readonly" })</dd>
-                        </dl>
-                    </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div id="npp">
+                <h4 style="color:mediumslateblue; margin-left: 2%"><b>Nhà phân phối</b></h4>
+                <br />
+                <div class="col-md-12">
+                    <dl class="dl-horizontal">
+                        <dt> @Html.Label("Mã nhà phân phối: ") </dt>
+                        <dd>@Html.TextBoxFor(model => model.distributor, new { @readonly = "readonly" })</dd>
+                    </dl>
+                </div>
+                <div class="col-md-12">
+                    <dl class="dl-horizontal">
+                        <dt> @Html.Label("Tên công ty: ") </dt>
+                        <dd>@Html.TextBoxFor(model => model.Distributor1.name, new { @readonly = "readonly" })</dd>
+                    </dl>
+                </div>
+                <div class="col-md-12">
+                    <dl class="dl-horizontal">
+                        <dt> @Html.Label("Địa chỉ công ty: ") </dt>
+                        <dd>@Html.TextBoxFor(model => model.Distributor1.address, new { @readonly = "readonly" })</dd>
+                    </dl>
+                </div>
+                <div class="col-md-6">
+                    <dl class="dl-horizontal">
+                        <dt> @Html.Label("Số điện thoại: ") </dt>
+                        <dd>@Html.TextBoxFor(model => model.Distributor1.phone, new { @readonly = "readonly" })</dd>
+                    </dl>
+                </div>
+                <div class="col-md-6">
+                    <dl class="dl-horizontal">
+                        <dt> @Html.Label("Email: ") </dt>
+                        <dd>@Html.TextBoxFor(model => model.Distributor1.Email, new { @readonly = "readonly" })</dd>
+                    </dl>
+                </div>
+                <div class="col-md-12">
+                    <dl class="dl-horizontal">
+                        <dt> @Html.Label("Công nợ hiện tại: ") </dt>
+                        <dd>@Html.TextBoxFor(model => model.Distributor1.debt, new { @readonly = "readonly" })</dd>
+                    </dl>
+                </div>
                 <br />
                 <div id="ndd">
-                    <h4 style="color:mediumslateblue"><b>Người đại diện</b></h4>
+                    <h4 style="color:mediumslateblue; margin-left: 2%"><b>Người đại diện</b></h4>
                     <br />
                     <div class="col-md-6">
                         <dl class="dl-horizontal">
@@ -81,70 +79,70 @@
                     </div>
                 </div>
                 <br />
-                    <div id="hd">
-                        <h4 style="color:mediumslateblue"><b>Hợp đồng hiện tại</b></h4>
-                        <br />
-                        <div class="col-md-12">
-                            <dl class="dl-horizontal">
-                                <dt> @Html.Label("Mã hợp đồng: ") </dt>
-                                <dd>@Html.TextBoxFor(model => model.idContract, new { @readonly = "readonly" })</dd>
-                            </dl>
-                        </div>
-                        <div class="col-md-6">
-                            <dl class="dl-horizontal">
-                                <dt> @Html.Label("Thời gian bắt đầu: ") </dt>
-                                <dd>@Html.TextBoxFor(model => model.beginDate, new { @readonly = "readonly" })</dd>
-                            </dl>
-                        </div>
-                        <div class="col-md-6">
-                            <dl class="dl-horizontal">
-                                <dt> @Html.Label("Thời gian kết thúc: ") </dt>
-                                <dd>@Html.TextBoxFor(model => model.expiredDate, new { @readonly = "readonly" })</dd>
-                            </dl>
-                        </div>
-                        <div class="col-md-12">
-                            <dl class="dl-horizontal">
-                                <dt> @Html.Label("Giá trị đơn hàng nhỏ nhất: ") </dt>
-                                <dd>@Html.TextBoxFor(model => model.minOrderTotalValue, new { @readonly = "readonly" })</dd>
-                            </dl>
-                        </div>
-                        <div class="col-md-6">
-                            <dl class="dl-horizontal">
-                                <dt> @Html.Label("Công nợ tối đa: ") </dt>
-                                <dd>@Html.TextBoxFor(model => model.maxDebt, new { @readonly = "readonly" })</dd>
-                            </dl>
-                        </div>
-                        <div class="col-md-6">
-                            <dl class="dl-horizontal">
-                                <dt> @Html.Label("Hoa hồng: ") </dt>
-                                <dd>@Html.TextBoxFor(model => model.commission, new { @readonly = "readonly" })</dd>
-                            </dl>
-                        </div>
-                        <div class="col-md-6">
-                            <dl class="dl-horizontal">
-                                <dt> @Html.Label("Khu vực: ") </dt>
-                                <dd>@Html.TextBoxFor(model => model.area, new { @readonly = "readonly" })</dd>
-                            </dl>
-                        </div>
-                        <div class="col-md-6">
-                            <dl class="dl-horizontal">
-                                <dt> @Html.Label("Loại phân phối: ") </dt>
-                                @if (Model.disType == true)
-                                {
-                                    <dd><input type="text" readonly ="readonly" value="Độc quyền"/></dd>
-                                }
-                                else
-                                {
-                                    <dd><input type="text" readonly="readonly" value="Không độc quyền" /></dd>
-                                }
-                            </dl>
-                        </div>
+                <div id="hd">
+                    <h4 style="color:mediumslateblue; margin-left: 2%"><b>Hợp đồng hiện tại</b></h4>
+                    <br />
+                    <div class="col-md-12">
+                        <dl class="dl-horizontal">
+                            <dt> @Html.Label("Mã hợp đồng: ") </dt>
+                            <dd>@Html.TextBoxFor(model => model.idContract, new { @readonly = "readonly" })</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt> @Html.Label("Thời gian bắt đầu: ") </dt>
+                            <dd>@Html.TextBoxFor(model => model.beginDate, "{0:dd/MM/yyyy}", new { @readonly = "readonly" })</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt> @Html.Label("Thời gian kết thúc: ") </dt>
+                            <dd>@Html.TextBoxFor(model => model.expiredDate, "{0:dd/MM/yyyy}", new { @readonly = "readonly" })</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-12">
+                        <dl class="dl-horizontal">
+                            <dt> @Html.Label("Giá trị ĐH nhỏ nhất: ") </dt>
+                            <dd>@Html.TextBoxFor(model => model.minOrderTotalValue, new { @readonly = "readonly" })</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt> @Html.Label("Công nợ tối đa: ") </dt>
+                            <dd>@Html.TextBoxFor(model => model.maxDebt, new { @readonly = "readonly" })</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt> @Html.Label("Hoa hồng: ") </dt>
+                            <dd>@Html.TextBoxFor(model => model.commission, new { @readonly = "readonly" })</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt> @Html.Label("Khu vực: ") </dt>
+                            <dd>@Html.TextBoxFor(model => model.area, new { @readonly = "readonly" })</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt> @Html.Label("Loại phân phối: ") </dt>
+                            @if (Model.disType == true)
+                            {
+                                <dd><input type="text" readonly="readonly" value="Độc quyền" /></dd>
+                            }
+                            else
+                            {
+                                <dd><input type="text" readonly="readonly" value="Không độc quyền" /></dd>
+                            }
+                        </dl>
                     </div>
                 </div>
-                <p style="text-align:right" >
-                    @Html.ActionLink("Thoát", "Distributor", "Distributor", new { @class = "btn btn-primary" })
-                </p>
             </div>
+            <p style ="margin-left: 70%">
+                @Html.ActionLink("Thoát", "Distributor", "Distributor", new { @class = "btn btn-primary" })
+            </p>
         </div>
     </div>
- </div>           
+
+</div>

@@ -20,6 +20,14 @@ namespace SML_QLNPP.Controllers
         private readonly IAccountService _accountService;
         private readonly ILogProductService _logProductService;
 
+        /// <summary>
+        /// Hàm khởi tạo
+        /// </summary>
+        /// <param name="productService"></param>
+        /// <param name="productTypeService"></param>
+        /// <param name="unitService"></param>
+        /// <param name="accountService"></param>
+        /// <param name="logProductService"></param>
         public ProductController(IProductService productService, IProductTypeService productTypeService, IUnitService unitService, IAccountService accountService,ILogProductService logProductService)
         {
             _productService = productService;
@@ -28,7 +36,11 @@ namespace SML_QLNPP.Controllers
             _accountService = accountService;
             _logProductService = logProductService;
         }
-        // GET: Product
+
+        /// <summary>
+        /// Xem danh sách sản phẩm
+        /// </summary>
+        /// <returns></returns>
         public ActionResult List()
         {
             isAdminLogged();
@@ -37,6 +49,11 @@ namespace SML_QLNPP.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Tìm kiếm sản phẩm
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
         public ContentResult Search(string keyword)
         {
             IList<Product> rs = new List<Product>();
@@ -49,19 +66,11 @@ namespace SML_QLNPP.Controllers
             return null;
         }
 
-        //public ActionResult Detail(int id)
-        //{
-        //    var model = _productService.GetProduct(id);
-        //    if (model == null)
-        //    {
-        //        return Redirect("List");
-        //    }
-        //    else
-        //    {
-        //        return View(model);
-        //    }
-        //}
-
+        /// <summary>
+        /// Xem chi tiết sản phẩm
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult Detail(int id)
         {
             isAdminLogged();
@@ -92,6 +101,10 @@ namespace SML_QLNPP.Controllers
            
         }
 
+        /// <summary>
+        /// GET: Tạo sản phẩm mới
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Create()
         {
             isAdminLogged();
@@ -106,6 +119,11 @@ namespace SML_QLNPP.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// POST: Tạo sản phẩm mới
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Create(CreateProductViewModel model)
         {
@@ -136,11 +154,15 @@ namespace SML_QLNPP.Controllers
                
         }
 
+        /// <summary>
+        /// Chỉnh sửa sản phẩm
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Detail(ProductDetailViewModel model)
         {
-            var username = Session["a_username"].ToString();
-            var user_id = _accountService.Get(username).idUser;
+            var user = Session["admin"] as Account;
 
             var product = _productService.GetProduct(model.IdProduct);
 
@@ -163,7 +185,7 @@ namespace SML_QLNPP.Controllers
                 {
                     Log_Product logP = new Log_Product();
                     logP.createdDate = DateTime.Now;
-                    logP.idStaff = user_id;
+                    logP.idStaff = user.idUser;
                     logP.oldPrice = Decimal.ToInt32(old_price.GetValueOrDefault());
                     logP.newPrice = Decimal.ToInt32(product.Price.GetValueOrDefault());
                     logP.description = model.description_log;

@@ -1,0 +1,23 @@
+﻿<tbody>
+    @foreach (var item in Model.listCon)
+    {
+        <tr>
+            <td>@item.IdCon</td>
+            <td>@item.Dis_Name</td>
+            <td>@item.BeginDate</td>
+            <td>@item.ExpriedDate</td>
+            @if (item.Status == true)
+            {
+                <td> <input type="checkbox" name="status" value=1 checked disabled></td>
+            }
+            else
+            {
+                <td></td>
+            }
+            <td>
+                @Html.ActionLink("Chi tiết", "DetailedContract", new { id = @item.IdCon }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
+    }
+</tbody>
+

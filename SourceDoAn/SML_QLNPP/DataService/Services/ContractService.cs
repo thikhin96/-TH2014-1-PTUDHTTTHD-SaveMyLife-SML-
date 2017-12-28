@@ -8,6 +8,7 @@ using DataModel.Repositories;
 using DataModel.Interfaces;
 using DataService.Interfaces;
 using NLog;
+using DataService.Dtos;
 
 namespace DataService.Services
 {
@@ -50,25 +51,56 @@ namespace DataService.Services
             throw new NotImplementedException();
         }
 
-        public IList<Contract> SearchByDistributor(int id)
+        public IList<ContractList> Search(int? keyword = null, int? criterion = null)
         {
-            logger.Info("Start Service to get info of the distributor...");
+            logger.Info("Start Service to search info of the distributor...");
             IUnitOfWork uow = new UnitOfWork();
             IRepository<Contract> repo = uow.Repository<Contract>();
-            IList<Contract> lCon = new List<Contract>();
-            lCon = repo.GetAll(x => x.distributor == id).ToList();
+            IList<Contract> con = new List<Contract>();
+            if (criterion == 0)       // search by id of distributor
+            {
+                con = repo.GetAll(x => x.distributor == keyword).OrderByDescending(x => x.beginDate).ToList();
+            }
+            else if (criterion == 1)  // search by id of contract
+            {
+                con = repo.GetAll(x => x.idContract == keyword).ToList();
+            }
+            else if (criterion == 2)  // Search contract that close expired date
+            {
+                DateTime date = DateTime.Now.AddDays((double)keyword);
+                con = repo.GetAll(x => x.expiredDate <= date).OrderByDescending(x => x.expiredDate).ToList();
+            }
+            else
+            {
+                con = repo.GetAll().ToList();
+            }
+
+            if (con.Count() == 0) return null;
+
+            IList<ContractList> listCon = new List<ContractList>();
+            ContractList lCon;
+            foreach (var item in con)
+            {
+                lCon = new ContractList();
+                lCon.BeginDate = item.beginDate;
+                lCon.Dis_Name = item.Distributor1.name;
+                lCon.ExpriedDate = item.expiredDate;
+                lCon.IdCon = item.idContract;
+                lCon.Status = item.status;
+                listCon.Add(lCon);
+            }
             logger.Info("End service...");
-            return lCon;
+            return listCon;
         }
 
-        public Contract SearchByID(int id)
+        public Contract Get(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public IList<Contract> SearchContractCloseToExpiry(short period)
-        {
-            throw new NotImplementedException();
+            logger.Info("Start Service to get detailed info of the distributor...");
+            IUnitOfWork uow = new UnitOfWork();
+            IRepository<Contract> repo = uow.Repository<Contract>();
+            Contract con = new Contract();
+            con = repo.Get(x => x.idContract == id);
+            return con;
         }
     }
 }
