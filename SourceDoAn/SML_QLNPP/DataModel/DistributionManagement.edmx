@@ -181,6 +181,7 @@
           <Property Name="oldPrice" Type="int" />
           <Property Name="newPrice" Type="int" />
           <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="idProduct" Type="int" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -1658,6 +1659,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <Property Name="oldPrice" Type="Int32" />
           <Property Name="newPrice" Type="Int32" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idProduct" Type="Int32" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -2697,6 +2699,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <EntitySetMapping Name="Log_Product">
             <EntityTypeMapping TypeName="QL_NPPModel.Log_Product">
               <MappingFragment StoreEntitySet="Log_Product">
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="newPrice" ColumnName="newPrice" />
                 <ScalarProperty Name="oldPrice" ColumnName="oldPrice" />
