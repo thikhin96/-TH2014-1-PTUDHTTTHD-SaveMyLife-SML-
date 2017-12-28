@@ -20,5 +20,6 @@ namespace DataModel
         public Nullable<int> oldPrice { get; set; }
         public Nullable<int> newPrice { get; set; }
         public string description { get; set; }
+        public Nullable<int> idProduct { get; set; }
     }
 }
