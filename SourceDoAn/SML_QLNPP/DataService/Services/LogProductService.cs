@@ -16,11 +16,20 @@ namespace DataService.Services
         private readonly IRepository<Log_Product> _logProductRepository;
         ILogger logger = LogManager.GetCurrentClassLogger();
 
+        /// <summary>
+        /// Hàm khởi tạo
+        /// </summary>
+        /// <param name="unitOfWork"></param>
         public LogProductService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _logProductRepository = _unitOfWork.Repository<Log_Product>();
         }
+        /// <summary>
+        /// Hàm ghi log sửa đơn giá sản phẩm
+        /// </summary>
+        /// <param name="log_p"></param>
+        /// <returns></returns>
         public bool Add(Log_Product log_p)
         {
             try

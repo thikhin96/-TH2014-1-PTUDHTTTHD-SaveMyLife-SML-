@@ -38,7 +38,7 @@ namespace SML_QLNPP.Controllers
         }
 
         /// <summary>
-        /// Xem danh sách sản phẩm
+        /// Render giao diện xem danh sách sản phẩm
         /// </summary>
         /// <returns></returns>
         public ActionResult List()
@@ -67,7 +67,7 @@ namespace SML_QLNPP.Controllers
         }
 
         /// <summary>
-        /// Xem chi tiết sản phẩm
+        /// Render giao diện xem chi tiết sản phẩm
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -102,7 +102,7 @@ namespace SML_QLNPP.Controllers
         }
 
         /// <summary>
-        /// GET: Tạo sản phẩm mới
+        /// Render giao diện tạo sản phẩm mới
         /// </summary>
         /// <returns></returns>
         public ActionResult Create()
@@ -156,6 +156,7 @@ namespace SML_QLNPP.Controllers
 
         /// <summary>
         /// Chỉnh sửa sản phẩm
+        /// Ghi log sản phẩm nếu sửa đơn giá
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -189,6 +190,7 @@ namespace SML_QLNPP.Controllers
                     logP.oldPrice = Decimal.ToInt32(old_price.GetValueOrDefault());
                     logP.newPrice = Decimal.ToInt32(product.Price.GetValueOrDefault());
                     logP.description = model.description_log;
+                    logP.idProduct = product.IdProduct;
                     _logProductService.Add(logP);
                 }
                 TempData["msg"] = "Cập nhật sản phẩm thành công";
