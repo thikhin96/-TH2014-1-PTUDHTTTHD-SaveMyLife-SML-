@@ -12,5 +12,8 @@ namespace DataService.Interfaces
         List<Product> GetAllProducts();
         Product GetProduct(int idp);
         List<Product> Search(string keyWord);
+        int GenerateProductId();
+        string CreateProduct(Product product);
+        string UpdateProduct(Product product);
     }
 }

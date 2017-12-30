@@ -20,6 +20,12 @@ namespace DataService.Services
         private readonly IRepository<OrderDetail> _orderDetailRepository;
         private readonly IDistributorService _distributorService;
         ILogger logger = LogManager.GetCurrentClassLogger();
+
+        /// <summary>
+        /// Hàm khởi tạo
+        /// </summary>
+        /// <param name="unitOfWork"></param>
+        /// <returns></returns>
         public OrderService(IUnitOfWork unitOfWork, IDistributorService distributorService)
         {
             _orderRepository = unitOfWork.Repository<Order>();
@@ -39,10 +45,18 @@ namespace DataService.Services
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Tìm kiếm đơn đặt hàng theo từ khoá, ngày tạo hoặc trạng thái
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <param name="createDate"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
         public IList<Order> SearchOrder(string keyword, string createDate, int status)
         {
             try
             {
+                logger.Info("Start search order");
                 IRepository<Order> repository = _unitOfWork.Repository<Order>();
                 if(createDate=="" || createDate == null)
                 {
@@ -52,6 +66,7 @@ namespace DataService.Services
                     }
                     else
                     {
+                        logger.Info("Completed search order");
                         return repository.GetAll(a => a.Statuses == status).ToList();
                     }
                 }
@@ -60,12 +75,14 @@ namespace DataService.Services
                     var date = Convert.ToDateTime(createDate);
                     if (keyword != null && keyword != "")
                     {
+                        logger.Info("Completed search order");
                         return repository.GetAll(a => (a.Staff.staffName.Contains(keyword) || a.Distributor.name.Contains(keyword) || a.Consignee.Name.Contains(keyword)) && (a.CreatedDate.Value.Year == date.Year
                                             && a.CreatedDate.Value.Month == date.Month
                                             && a.CreatedDate.Value.Day == date.Day) && a.Statuses == status).ToList();
                     }
                     else
                     {
+                        logger.Info("Completed search order");
                         return repository.GetAll(a => (a.CreatedDate.Value.Year == date.Year
                                             && a.CreatedDate.Value.Month == date.Month
                                             && a.CreatedDate.Value.Day == date.Day) && a.Statuses == status).ToList();
@@ -73,18 +90,38 @@ namespace DataService.Services
                 }
                 
             }
-            catch
+            catch(Exception ex)
             {
+
+                logger.Info("Error Search Order: " + ex.Message);
                 return null;
             }
         }
 
 
+        /// <summary>
+        /// Lấy thông tin đơn đặt hàng từ 
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <param name="createDate"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
         public Order GetOrder(int id)
         {
+            logger.Info("Start get order");
             IRepository<Order> repository = _unitOfWork.Repository<Order>();
-            var result = repository.Get(a => a.idOrder == id);
-            return result != null ? result : null;
+            Order result;
+            try
+            {
+                logger.Info("Completed get order");
+                result = repository.Get(a => a.idOrder == id);
+            }
+            catch(Exception ex)
+            {
+                logger.Info("Error get order: " + ex.Message);
+                result = null;
+            }
+            return result;
         }
 
         public int GenerateOrderId()

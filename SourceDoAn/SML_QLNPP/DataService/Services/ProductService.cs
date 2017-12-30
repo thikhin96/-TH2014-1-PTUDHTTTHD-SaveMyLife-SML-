@@ -62,5 +62,44 @@ namespace DataService.Services
             }
         }
 
+        public int GenerateProductId()
+        {
+            var latestProduct = _productRepository.GetAll().OrderByDescending(x => x.IdProduct).FirstOrDefault();
+            if (latestProduct != null)
+                return latestProduct.IdProduct + 1;
+            else
+                return 0;
+        }
+
+        public string CreateProduct(Product product)
+        {
+            try
+            {
+                _productRepository.Add(product);
+                _unitOfWork.SaveChange();
+                return "ok";
+            }
+             catch
+            {
+                return "Tạo sản phẩm thất bại";
+                throw;
+            }
+        }
+
+        public string UpdateProduct(Product product)
+        {
+            try
+            {
+                _productRepository.Update(product);
+                _unitOfWork.SaveChange();
+                return "ok";
+            }
+            catch
+            {
+                return "Cập nhật sản phẩm thất bại";
+                throw;
+            }
+        }
+
     }
 }
