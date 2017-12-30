@@ -28,14 +28,14 @@ namespace SML_QLNPP.Controllers
             ViewBag.Child = "Tìm kiếm đơn hàng";
             return View();
         }
-        public ContentResult Search(string keyword, string created_date,int status)
+        public ContentResult Search(string keyword, string created_date, int status)
         {
             isAdminLogged();
             IList<Order> rs = new List<Order>();
             if (Request.IsAjaxRequest())
             {
                 rs = _orderService.SearchOrder(keyword, created_date, status);
-                var list = JsonConvert.SerializeObject(rs.Select(x => new {x.idOrder, x.Distributor.name, x.Total, x.CreatedDate, x.Staff.staffName,x.Statuses }));
+                var list = JsonConvert.SerializeObject(rs.Select(x => new { x.idOrder, x.Distributor.name, x.Total, x.CreatedDate, x.Staff.staffName, x.Statuses }));
                 return Content(list, "application/json");
             }
 
@@ -47,7 +47,7 @@ namespace SML_QLNPP.Controllers
             ViewBag.Parent = "Quản lý đặt hàng";
             ViewBag.Child = "Chi tiết đơn đặt hàng";
             var model = _orderService.GetOrder(id);
-            if(model == null)
+            if (model == null)
             {
                 return Redirect("List");
             }
@@ -59,6 +59,7 @@ namespace SML_QLNPP.Controllers
 
         public ActionResult Update(int id)
         {
+            CheckForAuthorization();
             ViewBag.Title = "Chỉnh sửa đơn đặt hàng | Nhà phân phối sữa Vitamilk | Nhà phân phối sữa hàng đầu Việt Nam";
             var order = _orderService.GetOrder(id);
             var model = new CreateOrderViewModel
@@ -76,36 +77,43 @@ namespace SML_QLNPP.Controllers
                 Products = _productService.GetAllProducts()
             };
             return View("Create", model);
+
         }
 
         [HttpPost]
         public ActionResult Update(CreateOrderViewModel model, [Bind(Prefix = "OrderDetails")]List<OrderDetail> OrderDetails)
-        { 
-            var order = new Order
+        {
+            if (GetCurrentUser() != null)
             {
-                idOrder = model.idOrder,
-                idDistributor = model.idDistributor,
-                Total = model.Total,
-                DeliveryType = Convert.ToBoolean(model.DeliveryType),
-                PaymentType = Convert.ToBoolean(model.PaymentType),
-                EstimateDateOfDelivery = model.EstimateDateOfDelivery,
-                Statuses = 0,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                Consignee = model.Consignee,
-                idConsignee = model.Consignee.idConsignee,
-                OrderDetails = model.OrderDetails
-            };
-            var result = _orderService.UpdateOrder(order);
-            if (result == "thanh cong")
-                TempData["success"] = "thanh cong";
-            else
-                TempData["fail"] = result;
-            return RedirectToAction("Update", new { id = model.idOrder } );
+                var order = new Order
+                {
+                    idOrder = model.idOrder,
+                    idDistributor = model.idDistributor,
+                    Total = model.Total,
+                    DeliveryType = Convert.ToBoolean(model.DeliveryType),
+                    PaymentType = Convert.ToBoolean(model.PaymentType),
+                    EstimateDateOfDelivery = model.EstimateDateOfDelivery,
+                    Statuses = 0,
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now,
+                    Consignee = model.Consignee,
+                    idConsignee = model.Consignee.idConsignee,
+                    OrderDetails = model.OrderDetails,
+                    idStaff = model.idStaff
+                };
+                var result = _orderService.UpdateOrder(order);
+                if (result == "thanh cong")
+                    TempData["success"] = "thanh cong";
+                else
+                    TempData["fail"] = result;
+                return RedirectToAction("Update", new { id = model.idOrder });
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Create()
         {
+            CheckForAuthorization();
             ViewBag.Title = "Thêm đơn đặt hàng | Nhà phân phối sữa Vitamilk | Nhà phân phối sữa hàng đầu Việt Nam";
             var model = new CreateOrderViewModel()
             {
@@ -118,39 +126,42 @@ namespace SML_QLNPP.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(CreateOrderViewModel model, [Bind(Prefix="OrderDetails")]List<OrderDetail> OrderDetails)
+        public ActionResult Create(CreateOrderViewModel model, [Bind(Prefix = "OrderDetails")]List<OrderDetail> OrderDetails)
         {
-            model.Products = _productService.GetAllProducts();
-            var order = new Order
+            var loggedUser = GetCurrentUser() as Account;
+            if (loggedUser != null)
             {
-                idDistributor = model.idDistributor,
-                Total = model.Total,
-                DeliveryType = Convert.ToBoolean(model.DeliveryType),
-                PaymentType = Convert.ToBoolean(model.PaymentType),
-                EstimateDateOfDelivery = model.EstimateDateOfDelivery,
-                Statuses = 0,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
-                Consignee = new Consignee
+                model.Products = _productService.GetAllProducts();
+                var order = new Order
                 {
-                    Name = model.Consignee.Name,
-                    PhoneNumber = model.Consignee.PhoneNumber,
-                    idDistributor = model.idDistributor
-                },
-                OrderDetails = OrderDetails
-            };
-            var result = _orderService.CreateOrder(order);
-            if (result == "thanh cong")
-            {
-                TempData["success"] = "thanh cong";
-                model = new CreateOrderViewModel();
+                    idDistributor = model.idDistributor,
+                    Total = model.Total,
+                    DeliveryType = Convert.ToBoolean(model.DeliveryType),
+                    PaymentType = Convert.ToBoolean(model.PaymentType),
+                    EstimateDateOfDelivery = model.EstimateDateOfDelivery,
+                    Statuses = 0,
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now,
+                    Consignee = new Consignee
+                    {
+                        Name = model.Consignee.Name,
+                        PhoneNumber = model.Consignee.PhoneNumber,
+                        idDistributor = model.idDistributor
+                    },
+                    OrderDetails = OrderDetails,
+                    idStaff = loggedUser.idUser
+                };
+                var result = _orderService.CreateOrder(order);
+                if (result == "thanh cong")
+                {
+                    TempData["success"] = "thanh cong";
+                    model = new CreateOrderViewModel();
+                }
+                else
+                    TempData["fail"] = result;
+                return RedirectToAction("Create");
             }
-            else
-                TempData["fail"] = result;
-            //model.Action = "Create";
-            //model.Products = _productService.GetAllProducts();
-            //model.idOrder = _orderService.GenerateOrderId();
-            return RedirectToAction("Create");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

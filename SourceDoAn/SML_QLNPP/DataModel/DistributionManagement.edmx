@@ -664,18 +664,6 @@ warning 6035: The relationship 'FK_NPP_Account' has columns that are not part of
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Staff">
-          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Staff">
-              <PropertyRef Name="idStaff" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="idStaff" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_OrderDetail_Order">
           <End Role="Order" Type="Self.Order" Multiplicity="1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
@@ -1106,10 +1094,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             <End Role="Distributor" EntitySet="Distributor" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Staff" Association="Self.FK_Order_Staff">
-            <End Role="Staff" EntitySet="Staff" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
           <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
             <End Role="Order" EntitySet="Order" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
@@ -1230,7 +1214,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <EntitySet Name="Log_Login" EntityType="QL_NPPModel.Log_Login" />
           <EntitySet Name="Log_Order" EntityType="QL_NPPModel.Log_Order" />
           <EntitySet Name="Log_OrderDetail" EntityType="QL_NPPModel.Log_OrderDetail" />
-          <EntitySet Name="Log_Product" EntityType="QL_NPPModel.Log_Product" />
           <EntitySet Name="Orders" EntityType="QL_NPPModel.Order" />
           <EntitySet Name="OrderDetails" EntityType="QL_NPPModel.OrderDetail" />
           <EntitySet Name="PaySlips" EntityType="QL_NPPModel.PaySlip" />
@@ -1446,6 +1429,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             <End Role="SalesReport" EntitySet="SalesReports" />
             <End Role="SalesReportDetail" EntitySet="SalesReportDetails" />
           </AssociationSet>
+          <EntitySet Name="Log_Product" EntityType="QL_NPPModel.Log_Product" />
         </EntityContainer>
         <EntityType Name="Account">
           <Key>
@@ -1648,18 +1632,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <NavigationProperty Name="Order" Relationship="QL_NPPModel.FK_Log_OrderDetail_Order" FromRole="Log_OrderDetail" ToRole="Order" />
           <NavigationProperty Name="Product" Relationship="QL_NPPModel.FK_Log_OrderDetail_Product" FromRole="Log_OrderDetail" ToRole="Product" />
           <NavigationProperty Name="Staff" Relationship="QL_NPPModel.FK_Log_OrderDetail_Staff" FromRole="Log_OrderDetail" ToRole="Staff" />
-        </EntityType>
-        <EntityType Name="Log_Product">
-          <Key>
-            <PropertyRef Name="idLog_Product" />
-          </Key>
-          <Property Name="idLog_Product" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="createdDate" Type="DateTime" Precision="3" />
-          <Property Name="idStaff" Type="Int32" />
-          <Property Name="oldPrice" Type="Int32" />
-          <Property Name="newPrice" Type="Int32" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="idProduct" Type="Int32" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -2513,6 +2485,18 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Log_Product">
+          <Key>
+            <PropertyRef Name="idLog_Product" />
+          </Key>
+          <Property Name="idLog_Product" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="idStaff" Type="Int32" />
+          <Property Name="oldPrice" Type="Int32" />
+          <Property Name="newPrice" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idProduct" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2693,19 +2677,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
                 <ScalarProperty Name="oldQuantity" ColumnName="oldQuantity" />
                 <ScalarProperty Name="createdDate" ColumnName="createdDate" />
                 <ScalarProperty Name="idLog" ColumnName="idLog" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Log_Product">
-            <EntityTypeMapping TypeName="QL_NPPModel.Log_Product">
-              <MappingFragment StoreEntitySet="Log_Product">
-                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="newPrice" ColumnName="newPrice" />
-                <ScalarProperty Name="oldPrice" ColumnName="oldPrice" />
-                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
-                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-                <ScalarProperty Name="idLog_Product" ColumnName="idLog_Product" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2921,6 +2892,19 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
                 <ScalarProperty Name="quantity" ColumnName="quantity" />
                 <ScalarProperty Name="unitName" ColumnName="unitName" />
                 <ScalarProperty Name="idUnit" ColumnName="idUnit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log_Product">
+            <EntityTypeMapping TypeName="QL_NPPModel.Log_Product">
+              <MappingFragment StoreEntitySet="Log_Product">
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="newPrice" ColumnName="newPrice" />
+                <ScalarProperty Name="oldPrice" ColumnName="oldPrice" />
+                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="idLog_Product" ColumnName="idLog_Product" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

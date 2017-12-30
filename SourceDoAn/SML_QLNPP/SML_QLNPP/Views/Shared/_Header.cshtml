@@ -37,15 +37,15 @@
                     <li><a href="javascript:">Sản phẩm</a></li>
                     @if (user == null && admin == null)
                     {
-                        <li><a href="/Account/Login">Đăng nhập</a></li>
+                        <li><a href="@Url.Action("Login", "Account")">Đăng nhập</a></li>
                     }
                     @if (user != null)
                     {
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span data-hover="Short Codes">Chức năng</span> <b class="caret"></b></a>
                             <ul class="dropdown-menu agile_short_dropdown">
-                                <li><a href="/Order/Create">Tạo đơn hàng mới</a></li>
-                                <li><a href="/Account/Logout">Đăng xuất</a></li>
+                                <li><a href="@Url.Action("Create", "Order")">Tạo đơn hàng mới</a></li>
+                                <li><a href="@Url.Action("Logout", "Account")">Đăng xuất</a></li>
                             </ul>
                         </li>
                     }

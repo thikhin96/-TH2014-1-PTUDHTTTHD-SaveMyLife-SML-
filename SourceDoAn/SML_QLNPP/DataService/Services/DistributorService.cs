@@ -24,6 +24,7 @@ namespace DataService.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<Distributor> _distributorRepository;
         private readonly IRepository<Contract> _contractRepository;
+        private readonly IRepository<Debt> _debtRepository;
 
         /// <summary>
         /// Hàm khởi tạo
@@ -35,6 +36,7 @@ namespace DataService.Services
             _unitOfWork = unitOfWork;
             _distributorRepository = unitOfWork.Repository<Distributor>();
             _contractRepository = unitOfWork.Repository<Contract>();
+            _debtRepository = unitOfWork.Repository<Debt>();
         }
 
         public bool hasContract(int distributorId)
@@ -45,11 +47,16 @@ namespace DataService.Services
             return true;
         }
 
-        public bool priceOverDebt(int distributorId, decimal price)
+        public Contract GetCurrentContract(int distributorId)
         {
-            if (_contractRepository.Get(x => x.distributor == distributorId && x.beginDate <= DateTime.Now && x.expiredDate > DateTime.Now).maxDebt < price)
-                return true;
-            return false;
+            var currentDate = DateTime.Now;
+            var contract = _contractRepository.Get(x => x.distributor == distributorId && x.beginDate <= currentDate && currentDate <= x.expiredDate);
+            return contract;
+        }
+
+        public bool exceedingDebt(int distributorId)
+        {
+            return true;
         }
         public bool CheckEmail(string email)
         {

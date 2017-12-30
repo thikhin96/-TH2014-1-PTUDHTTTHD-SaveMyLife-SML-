@@ -137,23 +137,32 @@ namespace DataService.Services
         {
             try
             {
-                if (_distributorRepository.Get(x => x.idDistributor == order.idDistributor) != null)
+                var announcement = "thanh cong";
+                var distributor = _distributorRepository.Get(x => x.idDistributor == order.idDistributor);
+                if (distributor != null)
                 {
-                    if (_distributorService.hasContract(order.idDistributor ?? 0))
+                    var contract = _distributorService.GetCurrentContract(order.idDistributor ?? 0);
+                    if (contract != null)
                     {
-                            _orderRepository.Add(order);
-                            _unitOfWork.SaveChange();
+                        if (contract.maxDebt > distributor.debt.GetValueOrDefault())
+                        {
+                            if (contract.minOrderTotalValue.GetValueOrDefault() <= order.Total)
+                            {
+                                _orderRepository.Add(order);
+                                _unitOfWork.SaveChange();
+                            }
+                            else
+                                announcement = "Tổng tiền của đơn đặt hàng thấp hơn mức quy định";
+                        }
+                        else
+                            announcement = "Nhà phân phối đã nợ quá số tiền cho phép";
                     }
                     else
-                    {
-                        return "Nhà phân phối hiện không có bất cứ hợp đồng nào";
-                    }
+                        announcement = "Nhà phân phối hiện không có bất cứ hợp đồng nào";
                 }
                 else
-                {
-                    return "Nhà phân phối không tồn tại";
-                }
-                return "thanh cong";
+                   announcement = "Nhà phân phối không tồn tại";
+                return announcement;
             }
             catch (Exception ex)
             {

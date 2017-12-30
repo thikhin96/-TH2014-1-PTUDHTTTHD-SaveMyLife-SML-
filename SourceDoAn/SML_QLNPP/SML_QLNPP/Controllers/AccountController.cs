@@ -57,7 +57,8 @@ namespace SML_QLNPP.Controllers
                 {
 
                 }
-                return Redirect("/");
+                //Response.Redirect("cpanel.aspx", false); 
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -122,7 +123,7 @@ namespace SML_QLNPP.Controllers
 
                     }
                     Session["admin"] = ret as Account;
-                    return Redirect("/Order/List");
+                    return RedirectToAction("List", "Order");
                 }
             }
             else
@@ -157,16 +158,16 @@ namespace SML_QLNPP.Controllers
             if (Session["user"] != null)
             {
                 Session.Remove("user");
-                return Redirect("/");
+                return RedirectToAction("Index", "Home");
             }
             else if (Session["admin"] != null)
             {
                 Session.Remove("admin");
-                return Redirect("/");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
-                return Redirect("/");
+                return RedirectToAction("Index", "Home");
             }
         }
     }

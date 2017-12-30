@@ -30,14 +30,14 @@ namespace DataModel
             this.Storages = new HashSet<Storage>();
         }
     
-        public override int idDistributor { get; set; }
-        public override string name { get; set; }
-        public override string address { get; set; }
-        public override string phone { get; set; }
-        public override string Email { get; set; }
-        public override Nullable<System.DateTime> createdDate { get; set; }
-        public override Nullable<System.DateTime> updatedDate { get; set; }
-        public override string note { get; set; }
+        public int idDistributor { get; set; }
+        public string name { get; set; }
+        public string address { get; set; }
+        public string phone { get; set; }
+        public string Email { get; set; }
+        public Nullable<System.DateTime> createdDate { get; set; }
+        public Nullable<System.DateTime> updatedDate { get; set; }
+        public string note { get; set; }
         public Nullable<bool> status { get; set; }
         public string UserName { get; set; }
         public Nullable<decimal> debt { get; set; }

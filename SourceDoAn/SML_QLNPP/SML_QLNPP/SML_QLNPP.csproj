@@ -19,10 +19,8 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -276,7 +274,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\CancelContractViewModel.cs" />
     <Compile Include="Models\ContractViewModel.cs" />
     <Compile Include="Models\CreateOrderViewModel.cs" />
     <Compile Include="Models\CreateProductViewModel.cs" />
@@ -632,9 +629,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>65422</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-
-          <IISUrl>http://tl.com</IISUrl>
-
+          <IISUrl>http://localhost/SML_QLNPP</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
