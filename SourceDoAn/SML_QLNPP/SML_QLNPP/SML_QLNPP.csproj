@@ -275,7 +275,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\CancelContractViewModel.cs" />
     <Compile Include="Models\ContractViewModel.cs" />
     <Compile Include="Models\CreateOrderViewModel.cs" />
     <Compile Include="Models\CreateProductViewModel.cs" />
@@ -547,6 +546,7 @@
     <Content Include="Views\DeliveryOrder\Edit.cshtml" />
     <Content Include="Views\Contract\Contract.cshtml" />
     <Content Include="Views\Contract\DetailedContract.cshtml" />
+    <Content Include="Views\Contract\CreateContract.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_AHeader.cshtml" />
     <Content Include="Views\Shared\_ANav.cshtml" />

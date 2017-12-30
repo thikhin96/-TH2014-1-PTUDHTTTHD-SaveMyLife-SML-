@@ -75,5 +75,12 @@ namespace SML_QLNPP.Controllers
             // aief v dc 
             return RedirectToAction("DetailedContract", new { id = con.idContract });
         }
+
+        [HttpPost]
+        public ActionResult CreateContract(Contract con)
+        {
+            
+            return View();
+        }
     }
 }

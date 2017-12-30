@@ -48,6 +48,7 @@ namespace DataService.Services
                 return true;
             return false;
         }
+
         public bool CheckEmail(string email)
         {
             throw new NotImplementedException();
@@ -132,7 +133,6 @@ namespace DataService.Services
         {
             throw new NotImplementedException();
         }
-
 
         public List<Distributor> SearchByName(string searchTerm)
         {
