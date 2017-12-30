@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+}
+
+@section css{
+    <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/datatables.min.css" rel="stylesheet" type="text/css" media="all" />
+}
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/PDistributor/pdistributor.js"></script>
+}
+
+
+<div class="box box-info">
+    <div class="box-header with-border">
+        <div class="col-md-2">
+            <label>Trạng thái</label>
+        </div>
+        <div class="col-md-3">
+            <select class="form-control" id="status">
+                <option value="0">Chưa xử lý</option>
+                <option value="1">Chưa hẹn gặp mặt</option>
+                <option value="2">Chưa trao đổi</option>
+                <option value="3">Đồng ý điều khoản hợp đồng</option>
+                <option value="4">Không đồng ý làm hợp đồng</option>
+            </select>
+        </div>
+        <div class="col-md-7">
+            <button class="btn btn-default" id="search"><span class="glyphicon glyphicon-search"></span></button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header">
+                <h3 class="box-title">Danh sách đối tác</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <div class="col-sm-12">
+                        <table id="pDistributor-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                            <thead>
+                                <tr>
+                                    <th>Mã đối tác</th>
+                                    <th>Tên công ty</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Email</th>
+                                    <th>Tình trạng</th>
+                                    @*<th>Người đại diện</th>
+                                        <th>Người thực hiện</th>*@
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+
+    </div>
+</div>
+

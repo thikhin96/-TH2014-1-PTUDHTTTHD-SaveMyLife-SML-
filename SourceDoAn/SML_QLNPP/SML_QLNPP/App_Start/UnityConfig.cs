@@ -57,6 +57,8 @@ namespace SML_QLNPP
             container.RegisterType<IProductTypeService, ProductTypeService>();
             container.RegisterType<IUnitService, UnitService>();
             container.RegisterType<ILogLoginService, LogLoginService>();
+            container.RegisterType<IPDistributorService, PDistributorService>();
+            container.RegisterType<IRepresentativeService, RepresentativeService>();
             ServiceModule.UnityRegister(container);
         }
     }

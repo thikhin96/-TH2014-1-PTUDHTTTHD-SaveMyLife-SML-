@@ -66,7 +66,7 @@ namespace DataService.Services
             throw new NotImplementedException();
         }
 
-        public bool Create(DistributorBase dis, Representative rep)
+        public bool Create(DistributorBase dis, RepresentativeService rep)
         {
             throw new NotImplementedException();
         }
@@ -139,6 +139,10 @@ namespace DataService.Services
             throw new NotImplementedException();
         }
 
+        public bool Create(DistributorBase dis, Representative rep)
+        {
+            throw new NotImplementedException();
+        }
 
         public List<Distributor> SearchByName(string searchTerm)
         {
