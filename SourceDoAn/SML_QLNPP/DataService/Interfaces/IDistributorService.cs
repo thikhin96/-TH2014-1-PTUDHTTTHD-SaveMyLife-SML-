@@ -8,9 +8,9 @@ using DataService.Dtos;
 
 namespace DataService.Interfaces
 {
-    public interface IDistributorService: IDistributorBaseService
+    public interface IDistributorService
     {
-        bool Create(PotentialDistributor pDis);
+        int Create(Distributor person);
         bool UpdateDebt(int id, long money);
         bool UpdateStatus(int id, bool status);
         Distributor SearchByID(int id);

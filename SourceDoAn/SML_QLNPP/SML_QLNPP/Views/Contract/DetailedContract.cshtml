@@ -3,11 +3,12 @@
 @{
     ViewBag.Title = "DetailedContract";
     Layout = "~/Views/Shared/_ALayout.cshtml";
+    var message = TempData["message"] as string;
 }
 
-@if (TempData["message"] != null)
+@if (!string.IsNullOrEmpty(message))
 {
-    <script>alert("@TempData["message"]");</script>
+    <script>alert(message);</script>
 }
 <center><h1 style="color:blue"><b>THÔNG TIN CHI TIẾT HỢP ĐỒNG</b></h1></center>
 

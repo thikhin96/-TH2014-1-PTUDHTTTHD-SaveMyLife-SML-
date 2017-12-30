@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using DataModel.Interfaces;
 using DataService.Interfaces;
 using DataModel;
@@ -12,14 +13,43 @@ namespace DataService.Services
 {
     public class RepresentativeService : IRepresentativeService
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IRepository<Representative> _representativeRepository;
         ILogger logger = LogManager.GetCurrentClassLogger();
+         private readonly IUnitOfWork _unitOfWork;
+
+        private readonly IRepository<Representative> _representativeRepository;
+        
         public RepresentativeService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _representativeRepository = unitOfWork.Repository<Representative>();
+            _representativeRepository = uow.Repository<Representative>();
         }
+
+        int GenerateRepresentativeId()
+        {
+            var latestRep = _representativeRepository.GetAll().OrderByDescending(x => x.idRepresentative).FirstOrDefault();
+            if (latestRep != null)
+                return latestRep.idRepresentative + 1;
+            else
+                return 1;
+        }
+
+        public int Create(Representative person)
+        {
+            logger.Info("Start to create a representative...");
+            person.idRepresentative = GenerateRepresentativeId();
+            try
+            {
+                _representativeRepository.Add(person);
+            }
+            catch(Exception ex)
+            {
+                logger.Info(ex.Message);
+                throw ex;
+            }
+            return person.idRepresentative;
+        }
+
+
         public bool CheckEmail(string email)
         {
             throw new NotImplementedException();
