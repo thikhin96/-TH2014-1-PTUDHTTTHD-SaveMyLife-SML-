@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Auditing a Corporate Business Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+    <title>@ViewBag.Title</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -19,25 +19,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--// Meta tag Keywords -->
     <!-- css files -->
     <!-- //for-mobile-apps -->
-    <link href="~/Content/Home/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="~/Content/Home/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="~/Content/AdminLTE/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Content/AdminLTE/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="~/Content/AdminLTE/ionicons.min.css">
+    <!-- jvectormap -->
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Content/AdminLTE/AdminLTE.min.css">
+    <link rel="stylesheet" href="~/Content/AdminLTE/skin-blue.min.css">
     <!-- ~/Scripts/Home -->
     <!-- //~/Scripts/Home -->
     <script type="text/javascript" src="~/Scripts/Home/jquery-2.1.4.min.js"></script>
+    <link href="~/Content/Home/style.css" rel="stylesheet" type="text/css" media="all" />
 
     <!-- font-awesome icons -->
-    <link href="~/Content/Home/font-awesome.css" rel="stylesheet">
     <!-- //font-awesome icons -->
     <link rel="stylesheet" href="~/Content/Home/flexslider.css" type="text/css" media="screen" property="" />
     <link href='//fonts.googleapis.com/~/Content/Home?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/~/Content/Home'>
     @RenderSection("css", required: false)
 </head>
 <body>
-    @Html.Partial("~/Views/Shared/_Header.cshtml");
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
 
     @RenderBody()
 
-    @Html.Partial("~/Views/Shared/_Footer.cshtml");
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
 
 
     <div id="loading">
@@ -47,7 +55,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
 
-    <script type="text/javascript" src="~/Scripts/Home/bootstrap.js"></script>
+    <!-- jQuery 3 -->
+    <script src="~/scripts/AdminLTE/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="~/scripts/AdminLTE/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/scripts/AdminLTE/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/scripts/AdminLTE/adminlte.min.js"></script>
+
     @RenderSection("scripts", required: false)
 
 

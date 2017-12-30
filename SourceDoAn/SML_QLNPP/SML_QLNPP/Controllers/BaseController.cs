@@ -11,9 +11,23 @@ namespace SML_QLNPP.Controllers
         // GET: Base
         protected void isLogin()
         {
-            if (Session["username"] != null)
+            if (Session["user"] != null)
             {
                 Response.Redirect("/");
+            }
+        }
+        protected void isAdminLogin()
+        {
+            if (Session["admin"] != null)
+            {
+                Response.Redirect("/Order/List");
+            }
+        }
+        protected void isAdminLogged()
+        {
+            if (Session["admin"] == null)
+            {
+                Response.Redirect("/Account/ALogin");
             }
         }
     }

@@ -1,13 +1,13 @@
 ﻿@model SML_QLNPP.Models.CreateOrderViewModel
 @using Newtonsoft.Json;
 @{
-    var success = ViewBag.success as string;
-    var fail = ViewBag.fail as string;
+    var success = TempData["success"] as string;
+    var fail = TempData["fail"] as string;
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<SelectListItem> listItems = new List<SelectListItem>();
     listItems.Add(new SelectListItem
     {
-        Text = "Tu tuc",
+        Text = "Tự túc",
         Value = "False"
     });
     listItems.Add(new SelectListItem
@@ -21,142 +21,216 @@
 @section css{
     <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" type="text/css" media="all" />
-
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/Order/detail.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/Order/datatables.min.css" rel="stylesheet" type="text/css" media="all" />
 }
 
 @section scripts{
+    <script type="text/javascript" src="~/Scripts/Order/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
     <script type="text/javascript" src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="~/Scripts/select2.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Order/createOrder.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/update-order.js"></script>
     <script>
         //var table = $('#order-list').DataTable();
-        $(function () { // will trigger when the document is ready
+        $(document).ready(function () { // will trigger when the document is ready
             $('.datepicker').datepicker(); //Initialise any date pickers
             $('.custom-table').DataTable();
         });
     </script>
 
 }
-
-<div class="container-fluid">
-    <div class="row">
-        @Html.Partial("~/Views/Shared/_SidebarAdmin.cshtml")
-        <div class="col-sm-10 col-md-10">
-            @if (success != null)
+<div class="container pad">
+    @if (Model.Action == "Update")
+    {
+        <h2>Cập nhật đơn đặt hàng số: @Model.idOrder</h2>
+    }
+    else
+    {
+        <h2>Tạo đơn đặt hàng</h2>
+    }
+    @if (success != null)
             {
-                <div class="alert alert-success alert-dismissable">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Thành công!</strong> Tạo đơn đặt hàng thành công!
-                </div>
-            }
-            else if (fail != null)
+        <div class="alert alert-success alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            @if (Model.Action == "Create")
             {
-                <div class="alert alert-danger alert-dismissable">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Thất bại!</strong> @fail
-                </div>
+                <p><strong>Thành công!</strong> Tạo đơn đặt hàng thành công!</p>
             }
-            <div class="well">
-                <h3>Thông tin đơn hàng số: @Model.idOrder</h3>
+            else
+            {
+                <p><strong>Thành công!</strong> Cập nhật đơn đặt hàng thành công!</p>
+            }
+        </div>
+    }
+    else if (fail != null)
+    {
+        <div class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Thất bại!</strong> @fail
+        </div>
+    }
 
+    @using (Html.BeginForm(Model.Action, "Order", FormMethod.Post))
+    {
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Thông tin nhà phân phối</h3>
+            </div>
+            <div class="box-body">
+                <div class="col-md-4">
+                    @if (Model.Action == "Update")
+                    {
+                        @Html.HiddenFor(m => m.idOrder)
+                    }
 
-                @using (Html.BeginForm("Create", "Order", FormMethod.Post))
+                    <label>Mã nhà phân phối: </label>
+                    <select name="idDistributor" id="idDistributor" class="form-control" data-url="@Url.Action("GetDistributors", "DataSource")">
+                        @if (Model.distributorName != null)
                 {
-                    <div class="panel-group">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">Thông tin nhà phân phối</div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-2 form-group">
-                                        <label>Mã nhà phân phối: </label>
-                                        @Html.TextBoxFor(i => i.idDistributor, new { @class = "form-control" })
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-info">
-                            <div class="panel-heading">Thông tin đơn hàng</div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-2 form-group">
-                                        <label>Tổng tiền: </label>
-                                        @Html.TextBoxFor(m => m.Total, new { @type = "number", @class = "form-control"})
-                                    </div>
-                                    <div class="col-md-2 form-group">
-                                        <label>Hình thức giao hàng: </label>
-                                        @Html.DropDownListFor(model => model.DeliveryType, listItems, new { @class = "form-control" })
+                            <option value="@Model.idDistributor" selected="selected">@Model.distributorName</option>
+                        }
+                    </select>
 
-                                    </div>
-                                    <div class="col-md-2 form-group">
-                                        <label>Hình thức thanh toán: </label>
-                                        @Html.DropDownListFor(model => model.PaymentType, new List<SelectListItem> { new SelectListItem { Text = "Tiền mặt", Value = "False" }, new SelectListItem { Text = "Qua thẻ", Value = "True", Selected = true } }, new { @class = "form-control" })
-                                    </div>
-                                    <div class="col-md-2 form-group">
-                                        <label>Ngày giao dự kiến: </label>
-                                        @Html.TextBoxFor(model => model.EstimateDateOfDelivery, new { @class = "form-control datepicker" })
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    @Html.Partial("_ConsigneeForm", Model.Consignee, new ViewDataDictionary { TemplateInfo = new TemplateInfo { HtmlFieldPrefix = "Consignee" } })
-                    
-                    <div class="row mgt">
-                        <div class="col-md-12">
-                            <h2>Danh sách sản phẩm đặt hàng</h2>
-                            <table id="order-detail" class="cell-border custom-table" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th>ID SP</th>
-                                        <th>Tên SP</th>
-                                        <th>Số lượng</th>
-                                        <th>Đơn giá</th>
-                                        <th>Thành tiền</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-
-                    <div class="row mgt">
-                        <div class="col-md-12">
-                            <h2>Danh sách sản phẩm</h2>
-                            <table id="product-list" class="cell-border custom-table" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th>ID SP</th>
-                                        <th>Tên SP</th>
-                                        <th>Đơn giá</th>
-                                        <th>Thao tác</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var product in Model.Products)
-                                    {
-                                        <tr>
-                                            <td>@product.IdProduct</td>
-                                            <td>@product.ProductName</td>
-                                            <td>@product.Price</td>
-                                            <td><button type="button" class="btn btn-success add-product" data-toggle="modal" data-target="#addProduct" data-orderid="@Model.idOrder" data-id="@product.IdProduct" data-name="@product.ProductName" data-price="@product.Price">Thêm</button></td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <input type="submit" class="btn btn-info" value="Create Order" />
-                }
+                </div>
             </div>
         </div>
-    </div>
+
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">Thông tin đơn hàng</h3>
+            </div>
+            <div class="box-body">
+                <div class="col-md-4">
+                    <label>Hình thức giao hàng: </label>
+                    @Html.DropDownListFor(model => model.DeliveryType, listItems, new { @class = "form-control" })
+
+                </div>
+                <div class="col-md-4">
+                    <label>Hình thức thanh toán: </label>
+                    @Html.DropDownListFor(model => model.PaymentType, new List<SelectListItem> { new SelectListItem { Text = "Tiền mặt", Value = "False" }, new SelectListItem { Text = "Qua thẻ", Value = "True", Selected = true } }, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    <label>Ngày giao dự kiến: </label>
+                    @Html.TextBoxFor(model => model.EstimateDateOfDelivery, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                </div>
+            </div>
+        </div>
+
+        @Html.Partial("_ConsigneeForm", Model.Consignee, new ViewDataDictionary { TemplateInfo = new TemplateInfo { HtmlFieldPrefix = "Consignee" } })
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header">
+                        <h3 class="box-title">Danh sách sản phẩm đặt</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                            <div class="col-sm-12">
+                                <table id="order-detail" class="custom-table table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                    <thead>
+                                        <tr>
+                                            <th>ID SP</th>
+                                            <th>Tên SP</th>
+                                            <th>Số lượng</th>
+                                            <th>Đơn giá</th>
+                                            <th>Thành tiền</th>
+                                            <th>Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.Action == "Update")
+                                        {
+                                            for (int i = 0; i < Model.OrderDetails.Count; i++)
+                                            {
+                                                <tr>
+
+
+                                                    <td>
+                                                        <input name="OrderDetails[@i].idProduct" value="@Model.OrderDetails[i].idProduct" type="number" readonly="readonly" class="table-input">
+                                                        <input name="OrderDetails[@i].idOrder" value="@Model.OrderDetails[i].idOrder" type="hidden" class="table-input">
+                                                    </td>
+                                                    <td>@Model.OrderDetails[i].Product.ProductName</td>
+                                                    <td><input name="OrderDetails[@i].quantity" value="@Model.OrderDetails[i].quantity" type="number" class="table-input product-quantity"></td>
+                                                    <td>@Model.OrderDetails[i].Product.Price</td>
+                                                    <td>
+                                                        @{
+                                                            var total = @Model.OrderDetails[i].Product.Price * @Model.OrderDetails[i].quantity;
+                                                        }
+                                                        @total
+                                                    </td>
+                                                    <td><button type="button" class="btn btn-danger delete-product">Xóa</button></td>
+                                                </tr>
+                                                                }
+                                                            }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header">
+                        <h3 class="box-title">Danh sách sản phẩm</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                            <div class="col-sm-12">
+                                <table id="product-list" class="custom-table table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                    <thead>
+                                        <tr>
+                                            <th>ID SP</th>
+                                            <th>Tên SP</th>
+                                            <th>Đơn giá</th>
+                                            <th>Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var product in Model.Products)
+                                        {
+                                            <tr>
+                                                <td>@product.IdProduct</td>
+                                                <td>@product.ProductName</td>
+                                                <td>@product.Price</td>
+                                                <td><button type="button" class="btn btn-success add-product" data-toggle="modal" data-target="#addProduct" data-orderid="@Model.idOrder" data-id="@product.IdProduct" data-name="@product.ProductName" data-price="@product.Price">Thêm</button></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+
+            </div>
+        </div>
+        if (Model.Action.Equals("Update"))
+        {
+            <input type="submit" class="btn btn-info" value="Cập nhật" />
+        }
+        else
+        {
+            <input type="submit" class="btn btn-info" value="Tạo đơn đặt hàng" />
+            }
+        }
+
 </div>
 @Html.Partial("_AddProduct")
-

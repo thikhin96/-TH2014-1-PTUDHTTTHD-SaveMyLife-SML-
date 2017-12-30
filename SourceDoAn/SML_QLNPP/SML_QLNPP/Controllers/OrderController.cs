@@ -10,7 +10,7 @@ using SML_QLNPP.Models;
 
 namespace SML_QLNPP.Controllers
 {
-    public class OrderController : Controller
+    public class OrderController : BaseController
     {
         private readonly IOrderService _orderService;
         private readonly IProductService _productService;
@@ -23,12 +23,14 @@ namespace SML_QLNPP.Controllers
         // GET: Order
         public ActionResult List()
         {
+            isAdminLogged();
             ViewBag.Parent = "Quản lý đặt hàng";
             ViewBag.Child = "Tìm kiếm đơn hàng";
             return View();
         }
         public ContentResult Search(string keyword, string created_date,int status)
         {
+            isAdminLogged();
             IList<Order> rs = new List<Order>();
             if (Request.IsAjaxRequest())
             {
@@ -41,6 +43,7 @@ namespace SML_QLNPP.Controllers
         }
         public ActionResult Detail(int id)
         {
+            isAdminLogged();
             ViewBag.Parent = "Quản lý đặt hàng";
             ViewBag.Child = "Chi tiết đơn đặt hàng";
             var model = _orderService.GetOrder(id);
@@ -54,19 +57,61 @@ namespace SML_QLNPP.Controllers
             }
         }
 
+        public ActionResult Update(int id)
+        {
+            ViewBag.Title = "Chỉnh sửa đơn đặt hàng | Nhà phân phối sữa Vitamilk | Nhà phân phối sữa hàng đầu Việt Nam";
+            var order = _orderService.GetOrder(id);
+            var model = new CreateOrderViewModel
+            {
+                idOrder = order.idOrder,
+                idDistributor = order.idDistributor,
+                distributorName = order.Distributor.name,
+                Total = order.Total,
+                PaymentType = order.PaymentType.ToString(),
+                DeliveryType = order.DeliveryType.ToString(),
+                EstimateDateOfDelivery = order.EstimateDateOfDelivery,
+                OrderDetails = order.OrderDetails.ToList(),
+                Consignee = order.Consignee,
+                Action = "Update",
+                Products = _productService.GetAllProducts()
+            };
+            return View("Create", model);
+        }
+
+        [HttpPost]
+        public ActionResult Update(CreateOrderViewModel model, [Bind(Prefix = "OrderDetails")]List<OrderDetail> OrderDetails)
+        { 
+            var order = new Order
+            {
+                idOrder = model.idOrder,
+                idDistributor = model.idDistributor,
+                Total = model.Total,
+                DeliveryType = Convert.ToBoolean(model.DeliveryType),
+                PaymentType = Convert.ToBoolean(model.PaymentType),
+                EstimateDateOfDelivery = model.EstimateDateOfDelivery,
+                Statuses = 0,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                Consignee = model.Consignee,
+                idConsignee = model.Consignee.idConsignee,
+                OrderDetails = model.OrderDetails
+            };
+            var result = _orderService.UpdateOrder(order);
+            if (result == "thanh cong")
+                TempData["success"] = "thanh cong";
+            else
+                TempData["fail"] = result;
+            return RedirectToAction("Update", new { id = model.idOrder } );
+        }
+
         public ActionResult Create()
         {
+            ViewBag.Title = "Thêm đơn đặt hàng | Nhà phân phối sữa Vitamilk | Nhà phân phối sữa hàng đầu Việt Nam";
             var model = new CreateOrderViewModel()
             {
                 idOrder = _orderService.GenerateOrderId(),
-                OrderDetails = new List<OrderDetail>()
-                {
-                    new OrderDetail()
-                    {
-                        idProduct = 1,
-                        quantity = 2
-                    }
-                }
+                OrderDetails = new List<OrderDetail>(),
+                Action = "Create"
             };
             model.Products = _productService.GetAllProducts();
             return View(model);
@@ -91,17 +136,21 @@ namespace SML_QLNPP.Controllers
                     Name = model.Consignee.Name,
                     PhoneNumber = model.Consignee.PhoneNumber,
                     idDistributor = model.idDistributor
-                }
+                },
+                OrderDetails = OrderDetails
             };
-            var orderDetails = model.OrderDetails;
-            var result = _orderService.CreateOrder(order, orderDetails);
+            var result = _orderService.CreateOrder(order);
             if (result == "thanh cong")
-                ViewBag.success = "thanh cong";
+            {
+                TempData["success"] = "thanh cong";
+                model = new CreateOrderViewModel();
+            }
             else
-                ViewBag.fail = result;
-
-            model.idOrder = _orderService.GenerateOrderId();
-            return View(model);
+                TempData["fail"] = result;
+            //model.Action = "Create";
+            //model.Products = _productService.GetAllProducts();
+            //model.idOrder = _orderService.GenerateOrderId();
+            return RedirectToAction("Create");
         }
     }
 }

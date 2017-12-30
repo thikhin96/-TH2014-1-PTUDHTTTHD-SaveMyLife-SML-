@@ -141,6 +141,7 @@
   <ItemGroup>
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Dtos\ContractList.cs" />
     <Compile Include="Dtos\DistributorList.cs" />
     <Compile Include="Dtos\ProductWithQuantity.cs" />
     <Compile Include="Interfaces\IAccountService.cs" />

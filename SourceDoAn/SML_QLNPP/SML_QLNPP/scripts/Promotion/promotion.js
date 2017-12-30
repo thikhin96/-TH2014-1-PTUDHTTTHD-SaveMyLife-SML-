@@ -38,7 +38,7 @@
                         rs.push(item.idPromotion);
                         rs.push(sdate.getHours() + ':' + sdate.getMinutes() + ' ' + +(sdate.getDate()) + '/' + (sdate.getMonth() + 1) + '/' + sdate.getFullYear());
                         rs.push(edate.getHours() + ':' + edate.getMinutes() + ' ' + +(edate.getDate()) + '/' + (edate.getMonth() +1) + '/' + edate.getFullYear());
-                        rs.push('<a class="btn btn-info btn-xs" href="/Promotion/Detail/' + item.idPromotion + '">Xem</a> | <a class="btn btn-danger btn-xs" href="/Promotion/Delete/' + item.idPromotion + '">Xoá</a>')
+                        rs.push('<a class="btn btn-info btn-xs" href="/Promotion/Detail/' + item.idPromotion + '">Xem chi tiết</a> ')
                         return rs;
                     });
 
