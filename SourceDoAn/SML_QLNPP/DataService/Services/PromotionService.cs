@@ -65,7 +65,7 @@ namespace DataService
                     logger.Info("Start search ALL promotion");
                     result = repository.GetAll().ToList();
                 }
-                if (idpro > 0) //nếu có ID thì lấy theo ID
+                else if (idpro > 0) //nếu có ID thì lấy theo ID
                 {
                     logger.Info("Start search BY ID promotion");
                     result = repository.GetAll(a => a.idPromotion == idpro).ToList();

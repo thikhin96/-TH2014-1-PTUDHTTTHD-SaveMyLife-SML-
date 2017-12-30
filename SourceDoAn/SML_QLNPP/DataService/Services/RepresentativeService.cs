@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using DataModel.Interfaces;
 using DataService.Interfaces;
 using DataModel;
-using DataModel.Interfaces;
 using NLog;
 
 namespace DataService.Services
@@ -13,18 +14,19 @@ namespace DataService.Services
     public class RepresentativeService : IRepresentativeService
     {
         ILogger logger = LogManager.GetCurrentClassLogger();
-        IUnitOfWork uow;
-        IRepository<Representative> repo_rep;
+         private readonly IUnitOfWork _unitOfWork;
 
-        public RepresentativeService(IUnitOfWork _unitOfWork)
+        private readonly IRepository<Representative> _representativeRepository;
+        
+        public RepresentativeService(IUnitOfWork unitOfWork)
         {
-            uow = _unitOfWork;
-            repo_rep = uow.Repository<Representative>();
+            _unitOfWork = unitOfWork;
+            _representativeRepository = uow.Repository<Representative>();
         }
 
         int GenerateRepresentativeId()
         {
-            var latestRep = repo_rep.GetAll().OrderByDescending(x => x.idRepresentative).FirstOrDefault();
+            var latestRep = _representativeRepository.GetAll().OrderByDescending(x => x.idRepresentative).FirstOrDefault();
             if (latestRep != null)
                 return latestRep.idRepresentative + 1;
             else
@@ -37,7 +39,7 @@ namespace DataService.Services
             person.idRepresentative = GenerateRepresentativeId();
             try
             {
-                repo_rep.Add(person);
+                _representativeRepository.Add(person);
             }
             catch(Exception ex)
             {
@@ -47,5 +49,46 @@ namespace DataService.Services
             return person.idRepresentative;
         }
 
+
+        public bool CheckEmail(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CheckPhone(string phone)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CreateRepresentative(Representative person)
+        {
+            logger.Info("Start add representative method");
+            try
+            {
+                _representativeRepository.Add(person);
+                _unitOfWork.SaveChange();
+                logger.Info("Status: Success");
+            }
+            catch
+            {
+                logger.Info("Status: Fail");
+                return false;
+            }
+            return true;
+        }
+
+        public bool UpdateRepresentative(int idDis)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GenerateOrderId()
+        {
+            var latestOrder = _representativeRepository.GetAll().OrderByDescending(x => x.idRepresentative).FirstOrDefault();
+            if (latestOrder != null)
+                return latestOrder.idRepresentative + 1;
+            else
+                return 0;
+        }
     }
 }

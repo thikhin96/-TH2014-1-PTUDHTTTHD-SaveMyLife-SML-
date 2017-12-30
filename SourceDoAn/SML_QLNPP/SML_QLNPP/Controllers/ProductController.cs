@@ -1,6 +1,7 @@
 ﻿using DataModel;
 using DataModel.Interfaces;
 using DataService.Interfaces;
+using DataService.Services;
 using Newtonsoft.Json;
 using SML_QLNPP.Models;
 using System;
@@ -11,26 +12,48 @@ using System.Web.Mvc;
 
 namespace SML_QLNPP.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         private readonly IProductService _productService;
         private readonly IProductTypeService _productTypeService;
         private readonly IUnitService _unitService;
+        private readonly IAccountService _accountService;
+        private readonly ILogProductService _logProductService;
 
-        public ProductController(IProductService productService, IProductTypeService productTypeService, IUnitService unitService)
+        /// <summary>
+        /// Hàm khởi tạo
+        /// </summary>
+        /// <param name="productService"></param>
+        /// <param name="productTypeService"></param>
+        /// <param name="unitService"></param>
+        /// <param name="accountService"></param>
+        /// <param name="logProductService"></param>
+        public ProductController(IProductService productService, IProductTypeService productTypeService, IUnitService unitService, IAccountService accountService,ILogProductService logProductService)
         {
             _productService = productService;
             _productTypeService = productTypeService;
             _unitService = unitService;
+            _accountService = accountService;
+            _logProductService = logProductService;
         }
-        // GET: Product
+
+        /// <summary>
+        /// Render giao diện xem danh sách sản phẩm
+        /// </summary>
+        /// <returns></returns>
         public ActionResult List()
         {
+            isAdminLogged();
             ViewBag.Parent = "Quản lý sản phẩm";
             ViewBag.Child = "Tìm kiếm sản phẩm";
             return View();
         }
 
+        /// <summary>
+        /// Tìm kiếm sản phẩm
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
         public ContentResult Search(string keyword)
         {
             IList<Product> rs = new List<Product>();
@@ -43,21 +66,14 @@ namespace SML_QLNPP.Controllers
             return null;
         }
 
-        //public ActionResult Detail(int id)
-        //{
-        //    var model = _productService.GetProduct(id);
-        //    if (model == null)
-        //    {
-        //        return Redirect("List");
-        //    }
-        //    else
-        //    {
-        //        return View(model);
-        //    }
-        //}
-
+        /// <summary>
+        /// Render giao diện xem chi tiết sản phẩm
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult Detail(int id)
         {
+            isAdminLogged();
             var pro = _productService.GetProduct(id);
             if (pro != null)
             {
@@ -69,7 +85,8 @@ namespace SML_QLNPP.Controllers
                     IsDisabled = pro.IsDisabled.GetValueOrDefault(),
                     ProductType = pro.ProductType.GetValueOrDefault(),
                     Unit = pro.Unit.GetValueOrDefault(),
-                    Quantity = pro.Quantity.GetValueOrDefault()
+                    Quantity = pro.Quantity.GetValueOrDefault(),
+                    description_log = null
                 };
                 model.ProductTypes = _productTypeService.GetAllProductType();
                 model.Units = _unitService.GetAllUnit();
@@ -84,8 +101,13 @@ namespace SML_QLNPP.Controllers
            
         }
 
+        /// <summary>
+        /// Render giao diện tạo sản phẩm mới
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Create()
         {
+            isAdminLogged();
             var model = new CreateProductViewModel()
             {
                 IdProduct = _productService.GenerateProductId()
@@ -97,6 +119,11 @@ namespace SML_QLNPP.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// POST: Tạo sản phẩm mới
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Create(CreateProductViewModel model)
         {
@@ -127,12 +154,21 @@ namespace SML_QLNPP.Controllers
                
         }
 
+        /// <summary>
+        /// Chỉnh sửa sản phẩm
+        /// Ghi log sản phẩm nếu sửa đơn giá
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Detail(ProductDetailViewModel model)
         {
-            
+            var user = Session["admin"] as Account;
+
             var product = _productService.GetProduct(model.IdProduct);
-            
+
+            var old_price = product.Price;
+
             product.ProductName = model.ProductName;
             product.Price = model.Price;
             product.IsDisabled = model.IsDisabled;
@@ -146,6 +182,17 @@ namespace SML_QLNPP.Controllers
             model.Units = _unitService.GetAllUnit();
             if (result == "ok")
             {
+                if (model.description_log != null)
+                {
+                    Log_Product logP = new Log_Product();
+                    logP.createdDate = DateTime.Now;
+                    logP.idStaff = user.idUser;
+                    logP.oldPrice = Decimal.ToInt32(old_price.GetValueOrDefault());
+                    logP.newPrice = Decimal.ToInt32(product.Price.GetValueOrDefault());
+                    logP.description = model.description_log;
+                    logP.idProduct = product.IdProduct;
+                    _logProductService.Add(logP);
+                }
                 TempData["msg"] = "Cập nhật sản phẩm thành công";
                 return RedirectToRoute("Default", new { controller = "Product", action = "Detail", id = model.IdProduct });
             }

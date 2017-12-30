@@ -14,11 +14,19 @@ namespace DataService.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<Unit> _unitRepository;
 
+        /// <summary>
+        /// Hàm khởi tạo
+        /// </summary>
+        /// <param name="unitOfWork"></param>
         public UnitService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _unitRepository = _unitOfWork.Repository<Unit>();
         }
+        /// <summary>
+        /// Hàm lấy tất cả các loại đơn vị tính
+        /// </summary>
+        /// <returns></returns>
         public List<Unit> GetAllUnit()
         {
             try
