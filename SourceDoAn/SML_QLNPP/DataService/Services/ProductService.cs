@@ -15,12 +15,20 @@ namespace DataService.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<Product> _productRepository;
 
+        /// <summary>
+        /// Hàm khởi tạo
+        /// </summary>
+        /// <param name="unitOfWork"></param>
         public ProductService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _productRepository = _unitOfWork.Repository<Product>();
         }
 
+        /// <summary>
+        /// Hàm lấy tất cả các sản phẩm 
+        /// </summary>
+        /// <returns></returns>
         public List<Product> GetAllProducts()
         {
             try
@@ -34,6 +42,11 @@ namespace DataService.Services
             }
         }
 
+        /// <summary>
+        /// Hàm lấy sản phẩm có mã là idp
+        /// </summary>
+        /// <param name="idp"></param>
+        /// <returns></returns>
         public Product GetProduct(int idp)
         {
             IRepository<Product> repository = _unitOfWork.Repository<Product>();
@@ -41,6 +54,11 @@ namespace DataService.Services
             return result != null ? result : null;
         }
 
+        /// <summary>
+        /// Hàm tìm kiếm sản phẩm theo keyWord
+        /// </summary>
+        /// <param name="keyWord"></param>
+        /// <returns></returns>
         public List<Product> Search(string keyWord)
         {
             try
@@ -62,6 +80,10 @@ namespace DataService.Services
             }
         }
 
+        /// <summary>
+        /// Hàm generate mã sản phẩm
+        /// </summary>
+        /// <returns></returns>
         public int GenerateProductId()
         {
             var latestProduct = _productRepository.GetAll().OrderByDescending(x => x.IdProduct).FirstOrDefault();
@@ -71,6 +93,11 @@ namespace DataService.Services
                 return 0;
         }
 
+        /// <summary>
+        /// Hàm thêm sản phẩm mới
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         public string CreateProduct(Product product)
         {
             try
@@ -86,6 +113,11 @@ namespace DataService.Services
             }
         }
 
+        /// <summary>
+        /// Hàm chỉnh sửa sản phẩm
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         public string UpdateProduct(Product product)
         {
             try

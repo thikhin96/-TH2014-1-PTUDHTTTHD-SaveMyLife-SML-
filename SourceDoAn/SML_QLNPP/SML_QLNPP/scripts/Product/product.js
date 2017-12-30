@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    var url = '/aj/Product/Search'
+    var url = '/Product/Search'
     var table = $('#product-list').DataTable();
     $.ajax({
         url: url,
