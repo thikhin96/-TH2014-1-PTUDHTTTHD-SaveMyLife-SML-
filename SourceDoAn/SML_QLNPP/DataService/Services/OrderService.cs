@@ -146,7 +146,7 @@ namespace DataService.Services
                     {
                         if (contract.maxDebt > distributor.debt.GetValueOrDefault())
                         {
-                            if (contract.minOrderTotalValue.GetValueOrDefault() <= order.Total)
+                            if (contract.minOrderTotalValue.GetValueOrDefault() <= order.Total.GetValueOrDefault())
                             {
                                 _orderRepository.Add(order);
                                 _unitOfWork.SaveChange();

@@ -174,8 +174,13 @@
                                 </table>
                             </div>
                         </div>
+                        <div style="text-align:center;" class="form-inline">
+                            <label>Tổng tiền: </label>
+                            @Html.TextBoxFor(m => m.Total, new { @type = "number", @class = "form-control", @readonly = "readonly" })
+                        </div>
                     </div>
                     <!-- /.box-body -->
+
                 </div>
                 <!-- /.box -->
 
