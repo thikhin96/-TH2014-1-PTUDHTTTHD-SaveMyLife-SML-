@@ -11,7 +11,7 @@ using SML_QLNPP.Models;
 
 namespace SML_QLNPP.Controllers
 {
-    public class DistributorController : Controller
+    public class DistributorController : BaseController
     {
         ILogger logger = LogManager.GetCurrentClassLogger();
         IDistributorService dis_Service;
@@ -27,6 +27,7 @@ namespace SML_QLNPP.Controllers
         
         public ActionResult Distributor()
         {
+            isAdminLogged();
             logger.Info("Start controller to load list of distributors....");
             DistributorViewModel model = new DistributorViewModel();
             model.listDis = dis_Service.GetList(null).ToList();

@@ -1,0 +1,152 @@
+﻿@model DataModel.Contract
+
+@{
+    ViewBag.Title = "CreateContract";
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+}
+
+<center><h1 style="color:blue"><b>TẠO HỢP ĐỒNG</b></h1></center>
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("CreateContract", "Contract", FormMethod.Post))
+        {
+            <div class="box box-info">
+                <div id="npp">
+                    <h4 style="color:mediumslateblue; margin-left: 2%"><b>Nhà phân phối</b></h4>
+                    <br />
+                    <div class="col-md-12">
+                        <dl class="dl-horizontal">
+                            <dt> @Html.Label("Mã nhà phân phối: ") </dt>
+                            <dd>@Html.TextBoxFor(model => model.distributor)</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-12">
+                        <dl class="dl-horizontal">
+                            <dt> @Html.Label("Tên công ty: ") </dt>
+                            <dd>@Html.TextBoxFor(model => model.Distributor1.name)</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-12">
+                        <dl class="dl-horizontal">
+                            <dt> @Html.Label("Địa chỉ công ty: ") </dt>
+                            <dd>@Html.TextBoxFor(model => model.Distributor1.address)</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt> @Html.Label("Số điện thoại: ") </dt>
+                            <dd>@Html.TextBoxFor(model => model.Distributor1.phone)</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt> @Html.Label("Email: ") </dt>
+                            <dd>@Html.TextBoxFor(model => model.Distributor1.Email)</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-12">
+                        <dl class="dl-horizontal">
+                            <dt> @Html.Label("Công nợ hiện tại: ") </dt>
+                            <dd>@Html.TextBoxFor(model => model.Distributor1.debt)</dd>
+                        </dl>
+                    </div>
+                    <br />
+                    <div id="ndd">
+                        <h4 style="color:mediumslateblue; margin-left: 2%"><b>Người đại diện</b></h4>
+                        <br />
+                        <div class="col-md-6">
+                            <dl class="dl-horizontal">
+                                <dt> @Html.Label("Họ tên: ") </dt>
+                                <dd>@Html.TextBoxFor(model => model.Representative1.name)</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <dl class="dl-horizontal">
+                                <dt> @Html.Label("Chức vụ: ") </dt>
+                                <dd>@Html.TextBoxFor(model => model.Representative1.title)</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <dl class="dl-horizontal">
+                                <dt> @Html.Label("Số điện thoại: ") </dt>
+                                <dd>@Html.TextBoxFor(model => model.Representative1.phone)</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <dl class="dl-horizontal">
+                                <dt> @Html.Label("Email: ") </dt>
+                                <dd>@Html.TextBoxFor(model => model.Representative1.email)</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <br />
+                    <div id="hd">
+                        <h4 style="color:mediumslateblue; margin-left: 2%"><b>Hợp đồng hiện tại</b></h4>
+                        <br />
+                        <div class="col-md-12">
+                            <dl class="dl-horizontal">
+                                <dt> @Html.Label("Mã hợp đồng: ") </dt>
+                                <dd>@Html.TextBoxFor(model => model.idContract)</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <dl class="dl-horizontal">
+                                <dt> @Html.Label("Thời gian bắt đầu: ") </dt>
+                                <dd>@Html.TextBoxFor(model => model.beginDate, "{0:dd/MM/yyyy}")</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <dl class="dl-horizontal">
+                                <dt> @Html.Label("Thời gian kết thúc: ") </dt>
+                                <dd>@Html.TextBoxFor(model => model.expiredDate, "{0:dd/MM/yyyy}")</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-12">
+                            <dl class="dl-horizontal">
+                                <dt> @Html.Label("Giá trị ĐH nhỏ nhất: ") </dt>
+                                <dd>@Html.TextBoxFor(model => model.minOrderTotalValue)</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <dl class="dl-horizontal">
+                                <dt> @Html.Label("Công nợ tối đa: ") </dt>
+                                <dd>@Html.TextBoxFor(model => model.maxDebt)</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <dl class="dl-horizontal">
+                                <dt> @Html.Label("Hoa hồng: ") </dt>
+                                <dd>@Html.TextBoxFor(model => model.commission)</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <dl class="dl-horizontal">
+                                <dt> @Html.Label("Khu vực: ") </dt>
+                                <dd>@Html.TextBoxFor(model => model.area)</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <dl class="dl-horizontal">
+                                <dt> @Html.Label("Loại phân phối: ") </dt>
+                                @if (Model.disType == true)
+                                {
+                                    <dd><input type="text" readonly="readonly" value="Độc quyền" /></dd>
+                                }
+                                else
+                                {
+                                    <dd><input type="text" readonly="readonly" value="Không độc quyền" /></dd>
+                                }
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-left: 70%">
+                    @Html.ActionLink("Thoát", "Distributor", "Distributor", new { @class = "btn btn-primary" })
+                </p>
+            </div>
+        }
+        
+    </div>
+
+</div>

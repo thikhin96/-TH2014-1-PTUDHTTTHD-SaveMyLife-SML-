@@ -10,7 +10,7 @@ using DataModel;
 
 namespace SML_QLNPP.Controllers
 {
-    public class ContractController : Controller
+    public class ContractController : BaseController
     {
         ILogger logger = LogManager.GetCurrentClassLogger();
         IContractService con_Service;
@@ -23,6 +23,7 @@ namespace SML_QLNPP.Controllers
         // GET: Contract
         public ActionResult Contract()
         {
+            isAdminLogged();
             logger.Info("Start controller to load list of contract....");
             ContractViewModel model = new ContractViewModel();
             model.listCon = con_Service.Search().ToList();
@@ -79,8 +80,9 @@ namespace SML_QLNPP.Controllers
         [HttpPost]
         public ActionResult CreateContract(Contract con)
         {
-            
-            return View();
+            isAdminLogged();
+
+            return View(con);
         }
     }
 }
