@@ -801,3 +801,395 @@
 2017-12-31 05:47:56.7417|INFO|DataService.Services.AccountService|Completed get login
 2017-12-31 05:47:56.7513|INFO|DataService.LogLoginService|Start audit login
 2017-12-31 05:47:56.7838|INFO|DataService.LogLoginService|End audit login
+2017-12-31 05:50:52.3443|INFO|DataService.Services.OrderService|Start get order
+2017-12-31 05:50:52.3443|INFO|DataService.Services.OrderService|Completed get order
+2017-12-31 23:02:58.5890|INFO|DataService.Services.AccountService|Start get login
+2017-12-31 23:02:59.0622|INFO|DataService.Services.AccountService|Completed get login
+2017-12-31 23:02:59.0622|INFO|DataService.LogLoginService|Start audit login
+2017-12-31 23:02:59.0948|INFO|DataService.LogLoginService|End audit login
+2017-12-31 23:03:44.4698|INFO|DataService.Services.AccountService|Start get login
+2017-12-31 23:03:44.4698|INFO|DataService.Services.AccountService|Completed get login
+2017-12-31 23:03:44.4848|INFO|DataService.LogLoginService|Start audit login
+2017-12-31 23:03:44.4848|INFO|DataService.LogLoginService|End audit login
+2017-12-31 23:17:09.9482|INFO|DataService.Services.OrderService|Start get order
+2017-12-31 23:17:09.9537|INFO|DataService.Services.OrderService|Completed get order
+2017-12-31 23:17:15.0079|INFO|DataService.Services.OrderService|Start get order
+2017-12-31 23:17:15.0164|INFO|DataService.Services.OrderService|Completed get order
+2017-12-31 23:18:05.8502|INFO|DataService.Services.AccountService|Start get login
+2017-12-31 23:18:05.9362|INFO|DataService.Services.AccountService|Completed get login
+2017-12-31 23:18:05.9442|INFO|DataService.LogLoginService|Start audit login
+2017-12-31 23:18:06.2966|INFO|DataService.LogLoginService|End audit login
+2017-12-31 23:18:11.5049|INFO|DataService.Services.OrderService|Start get order
+2017-12-31 23:18:11.5049|INFO|DataService.Services.OrderService|Completed get order
+2017-12-31 23:19:42.6180|INFO|DataService.Services.OrderService|Start get order
+2017-12-31 23:19:42.6250|INFO|DataService.Services.OrderService|Completed get order
+2017-12-31 23:19:49.1195|INFO|DataService.Services.OrderService|Start get order
+2017-12-31 23:19:49.1245|INFO|DataService.Services.OrderService|Completed get order
+2017-12-31 23:21:48.8560|INFO|DataService.Services.AccountService|Start get login
+2017-12-31 23:21:50.8462|INFO|DataService.Services.AccountService|Completed get login
+2017-12-31 23:21:50.8462|INFO|DataService.LogLoginService|Start audit login
+2017-12-31 23:21:51.1498|INFO|DataService.LogLoginService|End audit login
+2017-12-31 23:22:06.6870|INFO|DataService.Services.OrderService|Start get order
+2017-12-31 23:22:06.6870|INFO|DataService.Services.OrderService|Completed get order
+2017-12-31 23:22:14.3166|INFO|DataService.Services.OrderService|Start get order
+2017-12-31 23:22:14.3166|INFO|DataService.Services.OrderService|Completed get order
+2017-12-31 23:32:36.1592|INFO|DataService.Services.AccountService|Start get login
+2017-12-31 23:32:36.4353|INFO|DataService.Services.AccountService|Completed get login
+2017-12-31 23:32:36.4413|INFO|DataService.LogLoginService|Start audit login
+2017-12-31 23:32:36.4680|INFO|DataService.LogLoginService|End audit login
+2017-12-31 23:32:46.5907|INFO|DataService.Services.OrderService|Start get order
+2017-12-31 23:32:46.5967|INFO|DataService.Services.OrderService|Completed get order
+2017-12-31 23:35:10.2672|INFO|DataService.Services.AccountService|Start get login
+2017-12-31 23:35:12.2066|INFO|DataService.Services.AccountService|Completed get login
+2017-12-31 23:35:12.2066|INFO|DataService.LogLoginService|Start audit login
+2017-12-31 23:35:12.5196|INFO|DataService.LogLoginService|End audit login
+2017-12-31 23:35:22.5509|INFO|DataService.Services.OrderService|Start get order
+2017-12-31 23:35:22.5509|INFO|DataService.Services.OrderService|Completed get order
+2017-12-31 23:38:28.1066|INFO|DataService.Services.OrderService|Start get order
+2017-12-31 23:38:28.1136|INFO|DataService.Services.OrderService|Completed get order
+2017-12-31 23:42:23.6720|INFO|DataService.Services.AccountService|Start get login
+2017-12-31 23:42:23.9509|INFO|DataService.Services.AccountService|Completed get login
+2017-12-31 23:42:23.9579|INFO|DataService.LogLoginService|Start audit login
+2017-12-31 23:42:23.9839|INFO|DataService.LogLoginService|End audit login
+2017-12-31 23:42:29.9748|INFO|DataService.Services.OrderService|Start get order
+2017-12-31 23:42:29.9748|INFO|DataService.Services.OrderService|Completed get order
+2017-12-31 23:44:47.5509|INFO|DataService.Services.OrderService|Start get order
+2017-12-31 23:44:47.6155|INFO|DataService.Services.OrderService|Completed get order
+2017-12-31 23:45:41.2008|INFO|DataService.Services.AccountService|Start get login
+2017-12-31 23:45:41.2338|INFO|DataService.Services.AccountService|Completed get login
+2017-12-31 23:45:41.2338|INFO|DataService.LogLoginService|Start audit login
+2017-12-31 23:45:41.5301|INFO|DataService.LogLoginService|End audit login
+2017-12-31 23:45:46.1211|INFO|DataService.Services.OrderService|Start get order
+2017-12-31 23:45:46.1261|INFO|DataService.Services.OrderService|Completed get order
+2017-12-31 23:47:03.6220|INFO|DataService.Services.AccountService|Start get login
+2017-12-31 23:47:03.9695|INFO|DataService.Services.AccountService|Completed get login
+2017-12-31 23:47:03.9695|INFO|DataService.LogLoginService|Start audit login
+2017-12-31 23:47:04.0135|INFO|DataService.LogLoginService|End audit login
+2017-12-31 23:47:28.7224|INFO|DataService.Services.OrderService|Start get order
+2017-12-31 23:47:28.7369|INFO|DataService.Services.OrderService|Completed get order
+2017-12-31 23:50:40.8190|INFO|DataService.Services.AccountService|Start get login
+2017-12-31 23:50:43.0355|INFO|DataService.Services.AccountService|Completed get login
+2017-12-31 23:50:43.0355|INFO|DataService.LogLoginService|Start audit login
+2017-12-31 23:50:43.3465|INFO|DataService.LogLoginService|End audit login
+2017-12-31 23:50:55.8387|INFO|DataService.Services.OrderService|Start get order
+2017-12-31 23:50:55.8447|INFO|DataService.Services.OrderService|Completed get order
+2017-12-31 23:51:12.1533|INFO|DataService.Services.OrderService|Start get order
+2017-12-31 23:51:12.1593|INFO|DataService.Services.OrderService|Completed get order
+2017-12-31 23:52:42.4382|INFO|DataService.Services.AccountService|Start get login
+2017-12-31 23:52:42.4382|INFO|DataService.Services.AccountService|Completed get login
+2017-12-31 23:52:42.4522|INFO|DataService.LogLoginService|Start audit login
+2017-12-31 23:52:42.4522|INFO|DataService.LogLoginService|End audit login
+2017-12-31 23:52:48.8216|INFO|DataService.Services.OrderService|Start get order
+2017-12-31 23:52:48.8276|INFO|DataService.Services.OrderService|Completed get order
+2018-01-01 00:57:21.5321|INFO|DataService.Services.OrderService|Start get order
+2018-01-01 00:57:21.5871|INFO|DataService.Services.OrderService|Completed get order
+2018-01-01 01:05:22.0829|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 01:05:24.0924|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 01:05:24.1004|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 01:05:24.4153|INFO|DataService.LogLoginService|End audit login
+2018-01-01 01:43:27.5423|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 01:43:27.9121|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 01:43:27.9121|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 01:43:27.9561|INFO|DataService.LogLoginService|End audit login
+2018-01-01 01:44:45.1724|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 01:44:47.1851|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 01:44:47.1931|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 01:44:47.5190|INFO|DataService.LogLoginService|End audit login
+2018-01-01 01:49:55.4384|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 01:49:57.3350|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 01:49:57.3350|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 01:49:57.6641|INFO|DataService.LogLoginService|End audit login
+2018-01-01 02:00:47.0401|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 02:00:47.3922|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 02:00:47.3922|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 02:00:47.4352|INFO|DataService.LogLoginService|End audit login
+2018-01-01 02:39:23.5655|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 02:39:25.7960|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 02:39:25.7960|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 02:39:26.1550|INFO|DataService.LogLoginService|End audit login
+2018-01-01 02:41:40.8116|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 02:41:43.0052|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 02:41:43.0149|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 02:41:43.3473|INFO|DataService.LogLoginService|End audit login
+2018-01-01 02:45:38.8855|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 02:45:39.2187|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 02:45:39.2187|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 02:45:39.2673|INFO|DataService.LogLoginService|End audit login
+2018-01-01 02:51:20.1148|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 02:51:22.3097|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 02:51:22.3197|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 02:51:22.6924|INFO|DataService.LogLoginService|End audit login
+2018-01-01 02:55:04.7928|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 02:55:05.1616|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 02:55:05.1736|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 02:55:05.2096|INFO|DataService.LogLoginService|End audit login
+2018-01-01 02:59:46.0302|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 02:59:47.9907|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 02:59:47.9907|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 02:59:48.2958|INFO|DataService.LogLoginService|End audit login
+2018-01-01 03:16:44.4268|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 03:16:44.4993|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 03:16:44.4993|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 03:16:44.5328|INFO|DataService.LogLoginService|End audit login
+2018-01-01 16:51:13.3597|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 16:51:13.7733|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 16:51:13.7733|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 16:51:13.8083|INFO|DataService.LogLoginService|End audit login
+2018-01-01 18:23:24.1823|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 18:23:24.5401|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 18:23:24.5461|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 18:23:24.5976|INFO|DataService.LogLoginService|End audit login
+2018-01-01 18:23:35.2733|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-01 18:23:35.4444|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 18:23:37.3153|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 7
+2018-01-01 18:23:37.3153|INFO|DataService.Services.ReturnService|Success: Return Card number 7returned!
+2018-01-01 18:23:58.4409|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 7
+2018-01-01 18:23:58.4409|INFO|DataService.Services.ReturnService|Success: Return Card number 7returned!
+2018-01-01 18:24:06.0459|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 2
+2018-01-01 18:24:06.0459|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 18:24:08.0940|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 10
+2018-01-01 18:24:08.0940|INFO|DataService.Services.ReturnService|Success: Return Card number 10returned!
+2018-01-01 18:24:30.0563|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 18:24:32.0456|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 18:24:32.0546|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 18:24:32.3849|INFO|DataService.LogLoginService|End audit login
+2018-01-01 18:25:05.5128|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 2
+2018-01-01 18:25:06.1838|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 18:25:07.5707|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 10
+2018-01-01 18:25:07.5837|INFO|DataService.Services.ReturnService|Success: Return Card number 10returned!
+2018-01-01 18:26:30.0395|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 18:26:30.3186|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 18:26:30.3186|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 18:26:30.3520|INFO|DataService.LogLoginService|End audit login
+2018-01-01 18:26:37.1382|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 2
+2018-01-01 18:26:37.2347|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 18:26:38.5925|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 9
+2018-01-01 18:26:38.6035|INFO|DataService.Services.ReturnService|Success: Return Card number 9returned!
+2018-01-01 18:31:52.8709|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 9
+2018-01-01 18:31:52.8809|INFO|DataService.Services.ReturnService|Success: Return Card number 9returned!
+2018-01-01 18:32:53.4207|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 18:32:55.6579|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 18:32:55.6579|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 18:32:56.0060|INFO|DataService.LogLoginService|End audit login
+2018-01-01 18:33:00.0490|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-01 18:33:00.7311|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 18:33:06.2818|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 7
+2018-01-01 18:33:06.2818|INFO|DataService.Services.ReturnService|Success: Return Card number 7returned!
+2018-01-01 18:38:19.0470|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 18:38:19.3391|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 18:38:19.3451|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 18:38:19.3711|INFO|DataService.LogLoginService|End audit login
+2018-01-01 18:38:22.2027|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-01 18:38:22.3093|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 18:38:23.3579|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 7
+2018-01-01 18:38:23.3689|INFO|DataService.Services.ReturnService|Success: Return Card number 7returned!
+2018-01-01 18:40:23.8265|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 7
+2018-01-01 18:40:23.8375|INFO|DataService.Services.ReturnService|Success: Return Card number 7returned!
+2018-01-01 18:40:32.8926|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 7
+2018-01-01 18:40:32.8926|INFO|DataService.Services.ReturnService|Success: Return Card number 7returned!
+2018-01-01 18:40:39.2388|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 8
+2018-01-01 18:40:39.2388|INFO|DataService.Services.ReturnService|Success: Return Card number 8returned!
+2018-01-01 18:41:42.7161|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 18:41:44.7621|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 18:41:44.7692|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 18:41:45.0831|INFO|DataService.LogLoginService|End audit login
+2018-01-01 18:41:48.6498|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-01 18:41:49.2752|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 18:41:50.5081|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 8
+2018-01-01 18:41:50.5206|INFO|DataService.Services.ReturnService|Success: Return Card number 8returned!
+2018-01-01 18:44:39.2194|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 18:44:39.5566|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 18:44:39.5646|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 18:44:39.5895|INFO|DataService.LogLoginService|End audit login
+2018-01-01 18:44:43.0504|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-01 18:44:43.1490|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 18:44:47.0919|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 8
+2018-01-01 18:44:47.1038|INFO|DataService.Services.ReturnService|Success: Return Card number 8returned!
+2018-01-01 18:48:20.0649|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 8
+2018-01-01 18:48:20.0649|INFO|DataService.Services.ReturnService|Success: Return Card number 8returned!
+2018-01-01 18:52:02.3251|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 18:52:02.6830|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 18:52:02.6880|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 18:52:02.7211|INFO|DataService.LogLoginService|End audit login
+2018-01-01 18:52:12.1589|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-01 18:52:12.3130|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 18:52:13.2547|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 8
+2018-01-01 18:52:13.2697|INFO|DataService.Services.ReturnService|Success: Return Card number 8returned!
+2018-01-01 18:57:36.7758|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 18:57:37.1559|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 18:57:37.1559|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 18:57:37.1929|INFO|DataService.LogLoginService|End audit login
+2018-01-01 18:57:41.8051|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-01 18:57:41.9872|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 18:57:43.0355|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 7
+2018-01-01 18:57:43.0355|INFO|DataService.Services.ReturnService|Success: Return Card number 7returned!
+2018-01-01 19:00:32.8235|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 19:00:35.2329|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 19:00:35.2389|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 19:00:35.5511|INFO|DataService.LogLoginService|End audit login
+2018-01-01 19:00:39.7048|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-01 19:00:40.3848|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 19:00:41.5896|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 8
+2018-01-01 19:00:41.6016|INFO|DataService.Services.ReturnService|Success: Return Card number 8returned!
+2018-01-01 19:10:14.7158|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 19:10:14.9856|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 19:10:15.2230|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 19:10:15.2230|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 19:10:15.2230|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 19:10:15.2230|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 19:10:15.2690|INFO|DataService.LogLoginService|End audit login
+2018-01-01 19:10:15.2690|INFO|DataService.LogLoginService|End audit login
+2018-01-01 19:10:18.8522|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-01 19:10:19.0588|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 19:10:19.9438|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 8
+2018-01-01 19:10:19.9438|INFO|DataService.Services.ReturnService|Success: Return Card number 8returned!
+2018-01-01 19:11:06.0016|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 8
+2018-01-01 19:11:08.3064|INFO|DataService.Services.ReturnService|Success: Return Card number 8returned!
+2018-01-01 19:11:17.0676|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 19:11:17.1126|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 19:11:17.1126|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 19:11:17.4257|INFO|DataService.LogLoginService|End audit login
+2018-01-01 19:11:27.2766|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-01 19:11:27.7386|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 19:11:28.5366|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 8
+2018-01-01 19:11:28.5366|INFO|DataService.Services.ReturnService|Success: Return Card number 8returned!
+2018-01-01 19:11:30.5608|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 8
+2018-01-01 19:11:30.5687|INFO|DataService.Services.ReturnService|Success: Return Card number 8returned!
+2018-01-01 19:13:41.8737|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 19:13:42.1895|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 19:13:42.1895|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 19:13:42.2185|INFO|DataService.LogLoginService|End audit login
+2018-01-01 19:13:46.4435|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-01 19:13:46.5380|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 19:13:47.3547|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 8
+2018-01-01 19:13:47.3637|INFO|DataService.Services.ReturnService|Success: Return Card number 8returned!
+2018-01-01 19:22:02.3048|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 19:22:04.1825|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 19:22:04.1885|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 19:22:04.4726|INFO|DataService.LogLoginService|End audit login
+2018-01-01 19:22:10.7611|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-01 19:22:11.3433|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 19:22:12.3644|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 32
+2018-01-01 19:22:12.3644|INFO|DataService.Services.ReturnService|Success: Return Card number 32returned!
+2018-01-01 19:22:53.7194|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 32
+2018-01-01 19:22:53.7194|INFO|DataService.Services.ReturnService|Success: Return Card number 32returned!
+2018-01-01 19:26:04.0322|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 32
+2018-01-01 19:26:04.0322|INFO|DataService.Services.ReturnService|Success: Return Card number 32returned!
+2018-01-01 19:26:35.2347|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 2
+2018-01-01 19:26:35.2347|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 19:26:36.4151|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 35
+2018-01-01 19:26:36.4231|INFO|DataService.Services.ReturnService|Success: Return Card number 35returned!
+2018-01-01 19:26:40.7922|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 31
+2018-01-01 19:26:40.8007|INFO|DataService.Services.ReturnService|Success: Return Card number 31returned!
+2018-01-01 19:26:44.7011|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 33
+2018-01-01 19:26:44.7096|INFO|DataService.Services.ReturnService|Success: Return Card number 33returned!
+2018-01-01 19:36:43.5111|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 33
+2018-01-01 19:36:43.5231|INFO|DataService.Services.ReturnService|Success: Return Card number 33returned!
+2018-01-01 19:37:40.7456|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 2
+2018-01-01 19:37:40.7596|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 19:37:41.8664|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 31
+2018-01-01 19:37:41.8754|INFO|DataService.Services.ReturnService|Success: Return Card number 31returned!
+2018-01-01 19:37:47.2980|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 32
+2018-01-01 19:37:47.2980|INFO|DataService.Services.ReturnService|Success: Return Card number 32returned!
+2018-01-01 19:37:50.8720|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 33
+2018-01-01 19:37:50.8820|INFO|DataService.Services.ReturnService|Success: Return Card number 33returned!
+2018-01-01 19:38:11.6731|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 31
+2018-01-01 19:38:11.6731|INFO|DataService.Services.ReturnService|Success: Return Card number 31returned!
+2018-01-01 19:41:28.6011|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 31
+2018-01-01 19:41:28.6196|INFO|DataService.Services.ReturnService|Success: Return Card number 31returned!
+2018-01-01 22:08:09.0539|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 34
+2018-01-01 22:08:09.6294|INFO|DataService.Services.ReturnService|Success: Return Card number 34returned!
+2018-01-01 22:08:15.6429|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 22:08:15.6889|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 22:08:15.6889|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 22:08:15.7320|INFO|DataService.LogLoginService|End audit login
+2018-01-01 22:08:22.3391|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-01 22:08:22.4421|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 22:08:23.3466|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 32
+2018-01-01 22:08:23.3466|INFO|DataService.Services.ReturnService|Success: Return Card number 32returned!
+2018-01-01 22:26:55.3998|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 22:26:57.3480|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 22:26:57.3480|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 22:26:57.6549|INFO|DataService.LogLoginService|End audit login
+2018-01-01 22:27:07.1387|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-01 22:27:07.7185|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 22:27:08.7992|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 32
+2018-01-01 22:27:08.7992|INFO|DataService.Services.ReturnService|Success: Return Card number 32returned!
+2018-01-01 22:28:22.4448|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 32
+2018-01-01 22:28:22.4558|INFO|DataService.Services.ReturnService|Success: Return Card number 32returned!
+2018-01-01 22:30:00.3627|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 22:30:02.3002|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 22:30:02.3002|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 22:30:02.6073|INFO|DataService.LogLoginService|End audit login
+2018-01-01 22:30:09.6994|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 2
+2018-01-01 22:30:10.2715|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 22:30:16.5054|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: 2and trade form: 2
+2018-01-01 22:30:16.5224|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 22:30:18.4317|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 33
+2018-01-01 22:30:18.4418|INFO|DataService.Services.ReturnService|Success: Return Card number 33returned!
+2018-01-01 22:55:42.9536|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 22:55:43.3066|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 22:55:43.3126|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 22:55:43.3366|INFO|DataService.LogLoginService|End audit login
+2018-01-01 22:55:49.8603|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 2
+2018-01-01 22:55:50.0214|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 22:55:51.4203|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 32
+2018-01-01 22:55:51.4328|INFO|DataService.Services.ReturnService|Success: Return Card number 32returned!
+2018-01-01 22:59:23.1448|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 22:59:25.0655|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 22:59:25.0655|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 22:59:25.3743|INFO|DataService.LogLoginService|End audit login
+2018-01-01 23:03:54.5384|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 23:03:54.8144|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 23:03:54.8144|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 23:03:54.8471|INFO|DataService.LogLoginService|End audit login
+2018-01-01 23:04:00.5041|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-01 23:04:00.5997|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-01 23:28:23.6493|INFO|DataService.Services.AccountService|Start get login
+2018-01-01 23:28:25.5368|INFO|DataService.Services.AccountService|Completed get login
+2018-01-01 23:28:25.5368|INFO|DataService.LogLoginService|Start audit login
+2018-01-01 23:28:25.8619|INFO|DataService.LogLoginService|End audit login
+2018-01-02 00:12:43.6294|INFO|DataService.Services.AccountService|Start get login
+2018-01-02 00:12:43.9659|INFO|DataService.Services.AccountService|Completed get login
+2018-01-02 00:12:43.9814|INFO|DataService.LogLoginService|Start audit login
+2018-01-02 00:12:44.0079|INFO|DataService.LogLoginService|End audit login
+2018-01-02 00:26:30.9293|INFO|DataService.Services.AccountService|Start get login
+2018-01-02 00:26:31.2948|INFO|DataService.Services.AccountService|Completed get login
+2018-01-02 00:26:31.3013|INFO|DataService.LogLoginService|Start audit login
+2018-01-02 00:26:31.3308|INFO|DataService.LogLoginService|End audit login
+2018-01-02 00:27:19.1203|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-02 00:27:19.2753|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-02 00:27:22.7889|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 32
+2018-01-02 00:27:22.7969|INFO|DataService.Services.ReturnService|Success: Return Card number 32returned!
+2018-01-02 00:32:45.7268|INFO|DataService.Services.AccountService|Start get login
+2018-01-02 00:32:47.6713|INFO|DataService.Services.AccountService|Completed get login
+2018-01-02 00:32:47.6713|INFO|DataService.LogLoginService|Start audit login
+2018-01-02 00:32:47.9834|INFO|DataService.LogLoginService|End audit login
+2018-01-02 01:26:55.8513|INFO|DataService.Services.AccountService|Start get login
+2018-01-02 01:26:55.9223|INFO|DataService.Services.AccountService|Completed get login
+2018-01-02 01:26:55.9223|INFO|DataService.LogLoginService|Start audit login
+2018-01-02 01:26:55.9633|INFO|DataService.LogLoginService|End audit login
+2018-01-02 01:27:02.0712|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-02 01:27:02.1457|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-02 01:27:03.2302|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 32
+2018-01-02 01:27:03.2407|INFO|DataService.Services.ReturnService|Success: Return Card number 32returned!
+2018-01-02 01:36:21.9648|INFO|DataService.Services.AccountService|Start get login
+2018-01-02 01:36:23.8482|INFO|DataService.Services.AccountService|Completed get login
+2018-01-02 01:36:23.8482|INFO|DataService.LogLoginService|Start audit login
+2018-01-02 01:36:24.1508|INFO|DataService.LogLoginService|End audit login
+2018-01-02 03:00:54.4829|INFO|DataService.Services.AccountService|Start get login
+2018-01-02 03:00:54.8465|INFO|DataService.Services.AccountService|Completed get login
+2018-01-02 03:00:54.8465|INFO|DataService.LogLoginService|Start audit login
+2018-01-02 03:00:54.8830|INFO|DataService.LogLoginService|End audit login
+2018-01-02 03:01:00.6167|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 2
+2018-01-02 03:01:00.8267|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-02 03:01:13.7028|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-02 03:01:13.7028|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-02 03:01:15.7501|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 1
+2018-01-02 03:01:15.7501|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-02 03:01:46.8825|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 34
+2018-01-02 03:01:46.8955|INFO|DataService.Services.ReturnService|Success: Return Card number 34returned!
+2018-01-02 03:51:22.8729|INFO|DataService.Services.AccountService|Start get login
+2018-01-02 03:51:23.2990|INFO|DataService.Services.AccountService|Completed get login
+2018-01-02 03:51:23.2990|INFO|DataService.LogLoginService|Start audit login
+2018-01-02 03:51:23.3420|INFO|DataService.LogLoginService|End audit login

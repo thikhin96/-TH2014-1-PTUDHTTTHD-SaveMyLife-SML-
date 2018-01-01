@@ -74,7 +74,8 @@ namespace SML_QLNPP.Controllers
                 OrderDetails = order.OrderDetails.ToList(),
                 Consignee = order.Consignee,
                 Action = "Update",
-                Products = _productService.GetAllProducts()
+                Products = _productService.GetAllProducts(),
+                Statuses = order.Statuses
             };
             return View("Create", model);
 
@@ -93,7 +94,7 @@ namespace SML_QLNPP.Controllers
                     DeliveryType = Convert.ToBoolean(model.DeliveryType),
                     PaymentType = Convert.ToBoolean(model.PaymentType),
                     EstimateDateOfDelivery = model.EstimateDateOfDelivery,
-                    Statuses = 0,
+                    Statuses = model.Statuses,
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
                     Consignee = model.Consignee,

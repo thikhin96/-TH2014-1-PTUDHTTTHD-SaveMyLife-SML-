@@ -90,7 +90,7 @@
                     <label>Mã nhà phân phối: </label>
                     <select name="idDistributor" id="idDistributor" class="form-control" data-url="@Url.Action("GetDistributors", "DataSource")">
                         @if (Model.distributorName != null)
-                {
+                        {
                             <option value="@Model.idDistributor" selected="selected">@Model.distributorName</option>
                         }
                     </select>
@@ -113,10 +113,21 @@
                     <label>Hình thức thanh toán: </label>
                     @Html.DropDownListFor(model => model.PaymentType, new List<SelectListItem> { new SelectListItem { Text = "Tiền mặt", Value = "False" }, new SelectListItem { Text = "Qua thẻ", Value = "True", Selected = true } }, new { @class = "form-control" })
                 </div>
-                <div class="col-md-4">
-                    <label>Ngày giao dự kiến: </label>
-                    @Html.TextBoxFor(model => model.EstimateDateOfDelivery, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
-                </div>
+                @if (Session["admin"] != null)
+                {
+                    <div class="col-md-4">
+                        <label>Ngày giao dự kiến: </label>
+                        @Html.TextBoxFor(model => model.EstimateDateOfDelivery, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                    </div>
+                    if (Model.Action == "Update")
+                    {
+                        <div class="col-md-4">
+                            <label>Tình trạng: </label>
+                            @Html.DropDownListFor(model => model.Statuses, Model.StatusList, new { @class = "form-control" })
+                        </div>
+                    }
+                }
+
             </div>
         </div>
 
@@ -169,7 +180,7 @@
                                                     <td><button type="button" class="btn btn-danger delete-product">Xóa</button></td>
                                                 </tr>
                                                                 }
-                                                            }
+                                            }
                                     </tbody>
                                 </table>
                             </div>

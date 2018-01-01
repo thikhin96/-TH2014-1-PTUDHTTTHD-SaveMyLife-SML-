@@ -49,7 +49,6 @@ namespace DataModel
         public virtual DbSet<PromotionGift> PromotionGifts { get; set; }
         public virtual DbSet<PromotionProduct> PromotionProducts { get; set; }
         public virtual DbSet<Representative> Representatives { get; set; }
-        public virtual DbSet<ReturnBase> ReturnBases { get; set; }
         public virtual DbSet<ReturnDetail> ReturnDetails { get; set; }
         public virtual DbSet<ReturnRequest> ReturnRequests { get; set; }
         public virtual DbSet<ReturnRequestDetail> ReturnRequestDetails { get; set; }
@@ -59,5 +58,6 @@ namespace DataModel
         public virtual DbSet<Storage> Storages { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
         public virtual DbSet<Log_Product> Log_Product { get; set; }
+        public virtual DbSet<ReturnBase> ReturnBases { get; set; }
     }
 }

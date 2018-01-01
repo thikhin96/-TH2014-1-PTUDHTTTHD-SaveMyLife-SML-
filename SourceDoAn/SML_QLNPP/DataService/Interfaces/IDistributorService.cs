@@ -19,5 +19,6 @@ namespace DataService.Interfaces
         List<Distributor> SearchByName(string searchTerm);
         Contract GetCurrentContract(int distributorId);
         bool exceedingDebt(int distributorId);
+        List<Storage> GetStorages(string keyWord, int distributorId);
     }
 }

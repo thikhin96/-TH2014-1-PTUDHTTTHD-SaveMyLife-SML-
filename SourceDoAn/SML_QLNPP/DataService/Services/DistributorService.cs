@@ -5,12 +5,7 @@ using System;
 
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using DataModel;
-using DataService.Interfaces;
-using DataModel.Interfaces;
 using DataModel.Repositories;
 using DataService.Dtos;
 using NLog;
@@ -25,6 +20,7 @@ namespace DataService.Services
         private readonly IRepository<Distributor> _distributorRepository;
         private readonly IRepository<Contract> _contractRepository;
         private readonly IRepository<Debt> _debtRepository;
+        private readonly IRepository<Storage> _storageRepository;
 
         /// <summary>
         /// Hàm khởi tạo
@@ -37,6 +33,7 @@ namespace DataService.Services
             _distributorRepository = unitOfWork.Repository<Distributor>();
             _contractRepository = unitOfWork.Repository<Contract>();
             _debtRepository = unitOfWork.Repository<Debt>();
+            _storageRepository = unitOfWork.Repository<Storage>();
         }
 
         public bool hasContract(int distributorId)
@@ -134,6 +131,14 @@ namespace DataService.Services
                 logger.Info("End service...");
                 return false;
             }
+        }
+
+        public List<Storage> GetStorages(string keyWord, int distributorId)
+        {
+            var storages = _storageRepository.GetAll(x => x.Distributor == distributorId
+                                                 && (x.HouseNumber_Street.Contains(keyWord) || x.District.Contains(keyWord) || x.Ward_Commune.Contains(keyWord) || x.City.Contains(keyWord)))
+                                                 .ToList();
+            return storages;
         }
 
         public bool UpdateStatus(int id, bool status)

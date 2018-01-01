@@ -25,9 +25,9 @@ namespace DataModel
             this.Orders = new HashSet<Order>();
             this.PaySlips = new HashSet<PaySlip>();
             this.Representatives = new HashSet<Representative>();
-            this.ReturnBases = new HashSet<ReturnBase>();
             this.ReturnRequests = new HashSet<ReturnRequest>();
             this.Storages = new HashSet<Storage>();
+            this.ReturnBases = new HashSet<ReturnBase>();
         }
     
         public int idDistributor { get; set; }
@@ -59,10 +59,10 @@ namespace DataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Representative> Representatives { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReturnBase> ReturnBases { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReturnRequest> ReturnRequests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Storage> Storages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReturnBase> ReturnBases { get; set; }
     }
 }

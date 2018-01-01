@@ -1,0 +1,172 @@
+﻿@model SML_QLNPP.Models.CreateReturnViewModel
+@{
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+}
+
+@section css{
+    <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/detail.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/datatables.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" type="text/css" media="all" />
+}
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/Order/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/select2.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Return/create-return-card.js"></script>
+    <script>
+        var table = $('.custom-table').DataTable();
+    </script>
+
+}
+
+<h2></h2>
+@using (Html.BeginForm("Create", "Return", FormMethod.Post))
+{
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Thông tin nhà phân phối</h3>
+        </div>
+        <div class="box-body">
+            <div class="col-md-2">
+                <label>Nhà phân phối: </label>
+                <select name="DistributorId" id="DistributorId" class="form-control" data-url="@Url.Action("GetDistributors", "DataSource")">
+                    @if (Model.DistributorName != null)
+                    {
+                        <option value="@Model.DistributorId" selected="selected">@Model.DistributorName</option>
+                    }
+                </select>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title">Thông tin kho</h3>
+        </div>
+        <div class="box-body">
+            <div class="col-md-12">
+                <label>Kho đổi trả: </label>
+                <select name="idStorage" id="idStorage" class="form-control">
+                    @if (Model.Storage != null)
+                    {
+                        <option value="@Model.idStorage" selected="selected">@Model.Storage.HouseNumber_Street, Phường @Model.Storage.Ward_Commune, Quận @Model.Storage.District, Thành phố @Model.Storage.City</option>
+                    }
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Thông tin phiếu đổi trả</h3>
+        </div>
+        <div class="box-body">
+            <div class="col-md-2 ">
+                <label>Hình thức đổi trả: </label>
+                @Html.DropDownListFor(model => model.ReturnForm, Model.TradeFormList, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2 ">
+                <label>Mã đơn yêu cầu đổi trả: </label>
+                @Html.TextBoxFor(m => m.ReturnRequestId, new { @type = "number", @class = "form-control"})
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-success">
+                <div class="box-header">
+                    <h3 class="box-title">Danh sách sản phẩm</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                        <div class="col-sm-12">
+                            <table id="product-list" class="custom-table table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                <thead>
+                                    <tr>
+                                        <th>ID SP</th>
+                                        <th>Tên SP</th>
+                                        <th>Đơn giá</th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var product in Model.Products)
+                                    {
+                                        <tr>
+                                            <td>@product.IdProduct</td>
+                                            <td>@product.ProductName</td>
+                                            <td>@product.Price</td>
+                                            <td><button type="button" class="btn btn-success add-product" data-toggle="modal" data-target="#addProduct" data-id="@product.IdProduct" data-name="@product.ProductName" data-price="@product.Price">Thêm</button></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-success">
+                <div class="box-header">
+                    <h3 class="box-title">Danh sách sản phẩm đổi trả</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                        <div class="col-sm-12">
+                            <table id="return-product-list" class="table table-bordered table-striped dataTable custom-table" role="grid" aria-describedby="example1_info">
+                                <thead>
+                                    <tr>
+                                        <th>ID SP</th>
+                                        <th>Tên SP</th>
+                                        <th>Số lượng</th>
+                                        <th>Đơn giá</th>
+                                        <th>Thành tiền</th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int i = 0; i < Model.ReturnDetails.Count; i++)
+                                    {
+                                        <tr>
+                                            <td><input name="ReturnDetails[@i].idProduct" value="@Model.ReturnDetails[i].idProduct" type="number" readonly="readonly" class="table-input"></td>
+                                            <td>@Model.ReturnDetails[@i].Product.ProductName</td>
+                                            <td><input name="ReturnDetails[@i].Quantity" value="@Model.ReturnDetails[i].Quantity" type="number" class="table-input product-quantity"></td>
+                                            <td>@Model.ReturnDetails[@i].Product.Price</td>
+                                            <td>
+                                                @{ var total = @Model.ReturnDetails[@i].Product.Price * @Model.ReturnDetails[@i].Quantity; }
+                                                @total
+                                            </td>
+                                            <td><button type="button" class="btn btn-danger delete-product">Xóa</button></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="text-align:center;" class="form-inline">
+                        <label>Tổng tiền: </label>
+                        @Html.TextBoxFor(m => m.Total, new { @type = "number", @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+        </div>
+    </div>
+    <input type="submit" class="btn btn-info" value="Tạo phiếu đổi trả" />
+}
+@Html.Partial("~/Views/Order/_AddProduct.cshtml")
