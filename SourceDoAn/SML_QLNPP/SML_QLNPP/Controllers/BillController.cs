@@ -104,6 +104,5 @@ namespace SML_QLNPP.Controllers
             ViewBag.Child = "Lập hóa đơn";
             return View();
         }
-
     }
 }

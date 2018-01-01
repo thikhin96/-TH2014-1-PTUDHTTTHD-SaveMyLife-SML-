@@ -19,10 +19,8 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -277,6 +275,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ContractViewModel.cs" />
+    <Compile Include="Models\CreateDeliveryOrderViewModel.cs" />
     <Compile Include="Models\CreateOrderViewModel.cs" />
     <Compile Include="Models\CreateProductViewModel.cs" />
     <Compile Include="Models\DeliveryOrderViewModel.cs" />
@@ -356,6 +355,7 @@
     <Content Include="Scripts\Bill\jquery-ui.min.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
+    <Content Include="Scripts\DeliveryOrder\createdeliveryorder.js" />
     <Content Include="Scripts\DeliveryOrder\details.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
@@ -553,6 +553,7 @@
     <Content Include="Views\DeliveryOrder\Edit.cshtml" />
     <Content Include="Views\Contract\Contract.cshtml" />
     <Content Include="Views\Contract\Contract_List.cshtml" />
+    <Content Include="Views\DeliveryOrder\Create.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_AHeader.cshtml" />
     <Content Include="Views\Shared\_ANav.cshtml" />
@@ -627,16 +628,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>65422</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://tl.com</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
