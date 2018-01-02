@@ -62,6 +62,7 @@ go
 create table DeliveryOrder(
 	idDeliveryOrder int identity(1,1) primary key,
 	recipient nvarchar(50),
+	recipientPhone nvarchar(50),
 	deliveryAdd nvarchar(100),
 	totalPurchase money,
 	deliveryDate datetime,
@@ -106,8 +107,9 @@ ALTER TABLE SalesReportDetail ADD
 	CONSTRAINT FK_SalesReportDetail_ProductType FOREIGN KEY (idProductType) REFERENCES ProductType(idProductType)
 go
 
+-- cập nhật lại FK_DeliveryOrder_Order  do sai khóa
 ALTER TABLE DeliveryOrder ADD 
-	CONSTRAINT FK_DeliveryOrder_Oder FOREIGN KEY (idDeliveryOrder) REFERENCES "Order"(idOrder),
+	CONSTRAINT FK_DeliveryOrder_Order FOREIGN KEY (idOrder) REFERENCES "Order"(idOrder),
 	CONSTRAINT FK_DeliveryOrder_Staff FOREIGN KEY (idStaff) REFERENCES Staff(idStaff),
 	CONSTRAINT FK_DeliveryOrder_Distributor FOREIGN KEY (idDistributor) REFERENCES Distributor(idDistributor)
 go

@@ -14,9 +14,10 @@
         var quantity = row.cells[3].innerHTML;
        // var quantity = row.cells[3].children[0].value;
         var total = price * quantity;
-        row.cells[4].innerHTML = total.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        row.cells[5].innerHTML = total.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
         totalPurchase += total;
     }
+    totalPurchase -= $('#totalPromotion').val();
     $('#totalPurchase').text(totalPurchase.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
     //console.log(total);
     

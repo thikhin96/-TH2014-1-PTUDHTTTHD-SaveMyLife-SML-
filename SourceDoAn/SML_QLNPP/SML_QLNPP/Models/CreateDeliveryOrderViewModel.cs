@@ -12,8 +12,8 @@ namespace SML_QLNPP.Models
         public List<Staff> Staff { get; set; }
         public Nullable<int> idStaff { get; set; }
 
-        public Consignee Consignee { get; set; }
-        public List<OrderDetail> OrderDetails { get; set; }
+        //public Consignee Consignee { get; set; }
+        //public List<OrderDetail> OrderDetails { get; set; }
         public List<DetailedDeliveryOrder> DetailedDeliveryOrder { get; set; }
         public Nullable<int> idDistributor { get; set; }
         public string distributorName { get; set; }
@@ -28,8 +28,8 @@ namespace SML_QLNPP.Models
         public Nullable<DateTime> deliveryDate { get; set; }
         public string description { get; set; }
 
-        public Nullable<int> idConsignee { get; set; }
-        public List<Product> Products { get; set; }
-        public string Action { get; set; }
+        //public Nullable<int> idConsignee { get; set; }
+        //public List<Product> Products { get; set; }
+        //public string Action { get; set; }
     }
 }

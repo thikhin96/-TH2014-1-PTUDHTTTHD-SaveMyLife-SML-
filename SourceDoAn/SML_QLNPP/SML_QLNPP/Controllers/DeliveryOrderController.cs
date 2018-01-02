@@ -17,12 +17,14 @@ namespace SML_QLNPP.Controllers
         private readonly IOrderService _orderService;
         private readonly IStaffService _staffService;
         private readonly IPromotionService _promotionService;
-        public DeliveryOrderController(IPromotionService promotionService, IDeliveryOrderService deliveryOrderService, IOrderService orderService, IStaffService staffService)
+        private readonly IDetailedDeliveryOrderService _ddOrderService;
+        public DeliveryOrderController(IDetailedDeliveryOrderService ddOrderService, IPromotionService promotionService, IDeliveryOrderService deliveryOrderService, IOrderService orderService, IStaffService staffService)
         {
             this._deliveryOrderService = deliveryOrderService;
             this._orderService = orderService;
             this._staffService = staffService;
             this._promotionService = promotionService;
+            this._ddOrderService = ddOrderService;
         }
 
         //GET:
@@ -53,6 +55,10 @@ namespace SML_QLNPP.Controllers
                     totalPurchase = 0
                 };
 
+                // lấy km tốt nhất của order
+                int nPromotion = 0;
+                Promotion promotion = getPromotionOrder(order, out nPromotion);
+
                 List<DetailedDeliveryOrder> listddOrder = new List<DetailedDeliveryOrder>();
                 foreach (var item in order.OrderDetails)
                 {
@@ -61,28 +67,49 @@ namespace SML_QLNPP.Controllers
                         idProduct = item.idProduct,
                         quantity = item.quantity,
                         Product = item.Product,
+                        promoQuantity = 0,
                         //idDeliveryOrder =1
                     };
                     listddOrder.Add(ddOrder);
                     model.totalPurchase += ddOrder.quantity * ddOrder.Product.Price;
                 }
+                // đưa sp km vào listddOrder
+                foreach (var item in promotion.PromotionGifts)
+                {
+                    bool check = true;
+                    foreach( var item1 in listddOrder)
+                    {
+                        if(item.idProduct == item1.idProduct)
+                        {
+                            listddOrder.Remove(item1);
+                            item1.promoQuantity = item.quantity * nPromotion;
+                            item1.note = "SLKM " + item.quantity * nPromotion + " từ CTKM số " + item.idPromotion;
+                            listddOrder.Add(item1);
+                            check = false;
+                            break;
+                        } 
+                    }
+                    if(check)
+                    {
+                        var ddOrder = new DetailedDeliveryOrder
+                        {
+                            idProduct = item.idProduct,
+                            quantity = 0,
+                            promoQuantity = item.quantity * nPromotion,
+                            Product = item.Product,
+                            note = "SLKM " + item.quantity * nPromotion + " từ CTKM số " + item.idPromotion
+                            //idDeliveryOrder =1
+                        };
+                        listddOrder.Add(ddOrder);
+                    }
+                }
                 model.DetailedDeliveryOrder = listddOrder;
-                    
-                
-               // model.DetailedDeliveryOrder.
-               // model.OrderDetails = order.OrderDetails.ToList();
-                
-
                 // những thuộc tính cần chọn khi lập đơn giao hàng
                 model.Storage = order.Distributor.Storages.ToList();
                 model.Staff = _staffService.GetAll().ToList();
-                // lấy km tốt nhất của order
-                int nPromotion = 0;
-                Promotion promotion = getPromotionOrder(order, out nPromotion);
                 //
                 return View(model);
             }
-
         }
         // 
         public Promotion getPromotionOrder(Order order, out int nPromotion)
@@ -144,7 +171,30 @@ namespace SML_QLNPP.Controllers
         {
             ViewBag.Parent = "Quản lý giao hàng";
             ViewBag.Child = "Lập đơn giao hàng";
-            return View(model);
+            ViewBag.Status = "Lập thành công";
+            ViewBag.types = 2;
+            DeliveryOrder dOrder = new DeliveryOrder();
+            dOrder.deliveryAdd = model.deliveryAdd;
+            dOrder.description = model.description;
+            dOrder.deliveryDate = model.deliveryDate;
+            dOrder.idOrder = model.idOrder;
+            dOrder.idDistributor = model.idDistributor;
+            dOrder.idStaff = model.idStaff;
+            dOrder.recipient = model.recipient;
+            dOrder.status = 5;
+            dOrder.updateDate = DateTime.Now;
+            dOrder.deliveryDate = model.deliveryDate;
+            dOrder.DetailedDeliveryOrders = model.DetailedDeliveryOrder;
+
+            foreach(var item in dOrder.DetailedDeliveryOrders)
+            {
+                item.idDeliveryOrder = 1;
+                _ddOrderService.AddDetailedDeliveryOrder(item);
+            }
+            var rs = _deliveryOrderService.AddDeliveryOrder(dOrder);
+
+            return Redirect("/DeliveryOrder/List");
+            //return View(model);
         }
         //GET: DeliveryOrder
         public ActionResult List(DeliveryOrderViewModel model)

@@ -21,7 +21,22 @@ namespace DataService.Services
         }
         public bool AddDeliveryOrder(DeliveryOrder dOrder)
         {
-            throw new NotImplementedException();
+            try
+            {
+                logger.Info("Start Add DeliveryOrder....");
+                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
+                repository.Add(dOrder);
+                _unitOfWork.SaveChange();
+                logger.Info("End Add DeliveryOrder....");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //logger.Info(ex);
+                //logger.Info("End Add DeliveryOrder....");
+                throw;
+                //return false;
+            }
         }
         public bool UpdateDeliveryOrder(DeliveryOrder dOrder)
         {
@@ -148,6 +163,15 @@ namespace DataService.Services
                 logger.Info("End GetAll DeliveryOrder....");
                 return null;
             }
+        }
+        public int GenerateDOrderId()
+        {
+            IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
+            var latestdOrder = repository.GetAll().OrderByDescending(x => x.idDeliveryOrder).FirstOrDefault();
+            if (latestdOrder != null)
+                return latestdOrder.idDeliveryOrder + 1;
+            else
+                return 0;
         }
     }
 }
