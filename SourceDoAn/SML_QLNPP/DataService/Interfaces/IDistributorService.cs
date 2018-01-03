@@ -16,7 +16,9 @@ namespace DataService.Interfaces
         Distributor SearchByID(int id);
         IList<DistributorList> GetList(Nullable<int> id);
         bool hasContract(int distributorId);
-        bool priceOverDebt(int distributorId, decimal price);
         List<Distributor> SearchByName(string searchTerm);
+        Contract GetCurrentContract(int distributorId);
+        bool exceedingDebt(int distributorId);
+        List<Storage> GetStorages(string keyWord, int distributorId);
     }
 }

@@ -27,8 +27,10 @@ namespace DataModel
         public Nullable<int> idDistributor { get; set; }
         public Nullable<int> idStorage { get; set; }
         public Nullable<int> idStaff { get; set; }
+        public Nullable<int> idReturnRequest { get; set; }
     
         public virtual Distributor Distributor { get; set; }
+        public virtual ReturnRequest ReturnRequest { get; set; }
         public virtual Staff Staff { get; set; }
         public virtual Storage Storage { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
