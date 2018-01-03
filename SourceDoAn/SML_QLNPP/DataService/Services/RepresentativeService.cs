@@ -21,7 +21,7 @@ namespace DataService.Services
         public RepresentativeService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _representativeRepository = uow.Repository<Representative>();
+            _representativeRepository = _unitOfWork.Repository<Representative>();
         }
 
         int GenerateRepresentativeId()

@@ -6,6 +6,9 @@ using System.Linq;
 using DataModel.Repositories;
 using DataService.Dtos;
 using NLog;
+using DataService.Interfaces;
+using DataModel.Interfaces;
+using DataModel;
 
 namespace DataService.Services
 {
