@@ -7,6 +7,7 @@ using DataModel;
 using DataService.Interfaces;
 using Newtonsoft.Json;
 using SML_QLNPP.Models;
+using NLog;
 
 namespace SML_QLNPP.Controllers
 {
@@ -14,6 +15,7 @@ namespace SML_QLNPP.Controllers
     {
         private readonly IOrderService _orderService;
         private readonly IProductService _productService;
+        private readonly ILogger _logger = LogManager.GetCurrentClassLogger();
 
         public OrderController(IOrderService orderService, IProductService productService)
         {
@@ -59,24 +61,34 @@ namespace SML_QLNPP.Controllers
 
         public ActionResult Update(int id)
         {
+            _logger.Info("Start Update(GET) - OrderController");
             CheckForAuthorization();
             ViewBag.Title = "Chỉnh sửa đơn đặt hàng | Nhà phân phối sữa Vitamilk | Nhà phân phối sữa hàng đầu Việt Nam";
             var order = _orderService.GetOrder(id);
-            var model = new CreateOrderViewModel
+            var model = new CreateOrderViewModel();
+            if (order != null) 
             {
-                idOrder = order.idOrder,
-                idDistributor = order.idDistributor,
-                distributorName = order.Distributor.name,
-                Total = order.Total,
-                PaymentType = order.PaymentType.ToString(),
-                DeliveryType = order.DeliveryType.ToString(),
-                EstimateDateOfDelivery = order.EstimateDateOfDelivery,
-                OrderDetails = order.OrderDetails.ToList(),
-                Consignee = order.Consignee,
-                Action = "Update",
-                Products = _productService.GetAllProducts(),
-                Statuses = order.Statuses
-            };
+                model = new CreateOrderViewModel
+                {
+                    idOrder = order.idOrder,
+                    idDistributor = order.idDistributor,
+                    distributorName = order.Distributor.name,
+                    Total = order.Total,
+                    PaymentType = order.PaymentType.ToString(),
+                    DeliveryType = order.DeliveryType.ToString(),
+                    EstimateDateOfDelivery = order.EstimateDateOfDelivery,
+                    OrderDetails = order.OrderDetails.ToList(),
+                    Consignee = order.Consignee,
+                    Action = "Update",
+                    Products = _productService.GetAllProducts(),
+                    Statuses = order.Statuses
+                };
+                _logger.Info("Success: Complete Update(GET) - OrderController");
+            }
+            else
+            {
+                _logger.Info("Error: Update(GET) - OrderController | Can not find any order with given id!");
+            }
             return View("Create", model);
 
         }
@@ -84,6 +96,7 @@ namespace SML_QLNPP.Controllers
         [HttpPost]
         public ActionResult Update(CreateOrderViewModel model, [Bind(Prefix = "OrderDetails")]List<OrderDetail> OrderDetails)
         {
+            _logger.Info("Start Update(POST) - OrderController");
             if (GetCurrentUser() != null)
             {
                 var order = new Order
@@ -109,11 +122,13 @@ namespace SML_QLNPP.Controllers
                     TempData["fail"] = result;
                 return RedirectToAction("Update", new { id = model.idOrder });
             }
+            _logger.Info("Success: Complete Update(POST) - OrderController");
             return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Create()
         {
+            _logger.Info("Start Create(GET) - OrderController");
             CheckForAuthorization();
             ViewBag.Title = "Thêm đơn đặt hàng | Nhà phân phối sữa Vitamilk | Nhà phân phối sữa hàng đầu Việt Nam";
             var model = new CreateOrderViewModel()
@@ -123,12 +138,14 @@ namespace SML_QLNPP.Controllers
                 Action = "Create"
             };
             model.Products = _productService.GetAllProducts();
+            _logger.Info("Success: Complete Create(GET) - OrderController");
             return View(model);
         }
 
         [HttpPost]
         public ActionResult Create(CreateOrderViewModel model, [Bind(Prefix = "OrderDetails")]List<OrderDetail> OrderDetails)
         {
+            _logger.Info("Start Create(POST) - OrderController");
             var loggedUser = GetCurrentUser() as Account;
             if (loggedUser != null)
             {
@@ -162,6 +179,7 @@ namespace SML_QLNPP.Controllers
                     TempData["fail"] = result;
                 return RedirectToAction("Create");
             }
+            _logger.Info("Success: Complete Create(POST) - OrderController");
             return RedirectToAction("Index", "Home");
         }
     }

@@ -126,17 +126,20 @@ namespace DataService.Services
 
         public int GenerateOrderId()
         {
+            logger.Info("Start Generating order id");
             var latestOrder = _orderRepository.GetAll().OrderByDescending(x => x.idOrder).FirstOrDefault();
+            logger.Info("Success: Order id generated!");
             if (latestOrder != null)
                 return latestOrder.idOrder + 1;
             else
-                return 0;
+                return 1;
         }
 
         public string CreateOrder(Order order)
         {
             try
             {
+                logger.Info("Start creating new order");
                 var announcement = "thanh cong";
                 var distributor = _distributorRepository.Get(x => x.idDistributor == order.idDistributor);
                 if (distributor != null)
@@ -152,20 +155,36 @@ namespace DataService.Services
                                 _unitOfWork.SaveChange();
                             }
                             else
+                            {
                                 announcement = "Tổng tiền của đơn đặt hàng thấp hơn mức quy định";
+                                logger.Error("Error: Order Total is currently lower than acceptable amount");
+                            }
+                                
                         }
                         else
+                        {
                             announcement = "Nhà phân phối đã nợ quá số tiền cho phép";
+                            logger.Error("Error: The distributor has too high debt");
+                        }
                     }
                     else
+                    {
                         announcement = "Nhà phân phối hiện không có bất cứ hợp đồng nào";
+                        logger.Error("Error: The distributor doesn't have any contracts");
+                    }
+                        
                 }
                 else
-                   announcement = "Nhà phân phối không tồn tại";
+                {
+                    announcement = "Nhà phân phối không tồn tại";
+                    logger.Error("Error: The distributor doesn't exist");
+                }
+                logger.Info("Success: New order has been created successfully!");
                 return announcement;
             }
             catch (Exception ex)
             {
+                logger.Info("Error: Encounter this error while creating new order: {0}", ex.Message);
                 return "Không thể tạo đơn đặt hàng";
                 throw;
             }
@@ -177,6 +196,7 @@ namespace DataService.Services
         {
             try
             {
+                logger.Info("Start updating order number: {0}", order.idOrder);
                 _orderRepository.Update(order);
                 var consignee = order.Consignee;
                 _consigneeRepository.Update(consignee);
@@ -189,10 +209,12 @@ namespace DataService.Services
                     orderDetails.ForEach(x => _orderDetailRepository.Add(x));
                     _unitOfWork.SaveChange();
                 }
+                logger.Info("Success: order number: {0} updated!", order.idOrder);
                 return "thanh cong";
             }
             catch (Exception ex)
             {
+                logger.Info("Error: Encounter this error while update order number {0}: {1}", order.idOrder, ex.Message);
                 return "Không thể cập nhật đơn đặt hàng";
             }
         }

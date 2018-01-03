@@ -17,12 +17,12 @@ namespace SML_QLNPP.Models
                     new SelectListItem
                     {
                         Text = "Đổi",
-                        Value = "0"
+                        Value = "False"
                     },
                     new SelectListItem
                     {
                         Text = "Trả",
-                        Value = "1"
+                        Value = "True"
                     }
                 };
             }

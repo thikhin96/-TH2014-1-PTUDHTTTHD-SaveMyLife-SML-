@@ -1193,3 +1193,265 @@
 2018-01-02 03:51:23.2990|INFO|DataService.Services.AccountService|Completed get login
 2018-01-02 03:51:23.2990|INFO|DataService.LogLoginService|Start audit login
 2018-01-02 03:51:23.3420|INFO|DataService.LogLoginService|End audit login
+2018-01-02 04:05:27.7821|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: nhà phân ph?iand trade form: 1
+2018-01-02 04:05:27.8556|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-02 04:05:31.2034|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: 1and trade form: 1
+2018-01-02 04:05:31.2194|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-02 04:05:35.6599|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: nand trade form: 1
+2018-01-02 04:05:35.6819|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-02 04:05:38.4174|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: nand trade form: 0
+2018-01-02 04:05:38.4314|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-02 04:05:41.1109|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: nand trade form: 2
+2018-01-02 04:05:41.1109|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-02 04:05:44.8550|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 32
+2018-01-02 04:05:44.8680|INFO|DataService.Services.ReturnService|Success: Return Card number 32returned!
+2018-01-02 04:05:59.5554|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 31
+2018-01-02 04:05:59.5664|INFO|DataService.Services.ReturnService|Success: Return Card number 31returned!
+2018-01-02 04:06:03.7306|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 35
+2018-01-02 04:06:03.7401|INFO|DataService.Services.ReturnService|Success: Return Card number 35returned!
+2018-01-02 04:06:08.2831|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 36
+2018-01-02 04:06:08.2971|INFO|DataService.Services.ReturnService|Success: Return Card number 36returned!
+2018-01-02 22:50:38.3492|INFO|DataService.Services.AccountService|Start get login
+2018-01-02 22:50:38.7814|INFO|DataService.Services.AccountService|Completed get login
+2018-01-02 22:50:38.7814|INFO|DataService.LogLoginService|Start audit login
+2018-01-02 22:50:38.8144|INFO|DataService.LogLoginService|End audit login
+2018-01-02 23:54:45.7062|INFO|DataService.Services.AccountService|Start get login
+2018-01-02 23:54:45.7717|INFO|DataService.Services.AccountService|Completed get login
+2018-01-02 23:54:45.7717|INFO|DataService.LogLoginService|Start audit login
+2018-01-02 23:54:45.8043|INFO|DataService.LogLoginService|End audit login
+2018-01-02 23:57:15.5459|INFO|DataService.Services.AccountService|Start get login
+2018-01-02 23:57:17.5171|INFO|DataService.Services.AccountService|Completed get login
+2018-01-02 23:57:17.5171|INFO|DataService.LogLoginService|Start audit login
+2018-01-02 23:57:17.8412|INFO|DataService.LogLoginService|End audit login
+2018-01-02 23:57:27.6841|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-02 23:57:27.7941|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-02 23:57:28.3843|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-02 23:57:28.4633|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-02 23:58:20.6020|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-02 23:58:20.6110|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-02 23:58:20.6340|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-02 23:58:20.6421|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 00:01:51.0756|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-03 00:01:51.0866|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-03 00:01:51.0996|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 00:01:51.0996|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 00:07:27.5886|INFO|DataService.Services.AccountService|Start get login
+2018-01-03 00:07:27.9431|INFO|DataService.Services.AccountService|Completed get login
+2018-01-03 00:07:27.9431|INFO|DataService.LogLoginService|Start audit login
+2018-01-03 00:07:27.9787|INFO|DataService.LogLoginService|End audit login
+2018-01-03 00:07:48.3942|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-03 00:07:48.4732|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-03 00:07:48.7128|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 00:07:48.7608|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 00:15:36.6144|INFO|DataService.Services.AccountService|Start get login
+2018-01-03 00:15:38.7033|INFO|DataService.Services.AccountService|Completed get login
+2018-01-03 00:15:38.7033|INFO|DataService.LogLoginService|Start audit login
+2018-01-03 00:15:39.0454|INFO|DataService.LogLoginService|End audit login
+2018-01-03 00:15:48.9040|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-03 00:15:49.0520|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-03 00:15:49.7082|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 00:15:49.7992|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 00:16:15.9151|INFO|DataService.Services.ReturnService|Start creating new return card
+2018-01-03 00:16:16.0462|INFO|DataService.Services.ReturnService|Success: A new return card created!
+2018-01-03 00:24:26.2072|INFO|DataService.Services.AccountService|Start get login
+2018-01-03 00:24:26.5453|INFO|DataService.Services.AccountService|Completed get login
+2018-01-03 00:24:26.5513|INFO|DataService.LogLoginService|Start audit login
+2018-01-03 00:24:26.5817|INFO|DataService.LogLoginService|End audit login
+2018-01-03 00:24:36.9615|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-03 00:24:37.0320|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-03 00:24:37.2800|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 00:24:37.3450|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 00:24:54.4784|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 0
+2018-01-03 00:24:54.5034|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-03 00:24:59.8452|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 37
+2018-01-03 00:24:59.8452|INFO|DataService.Services.ReturnService|Success: Return Card number 37returned!
+2018-01-03 00:26:49.9997|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-03 00:26:50.0187|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-03 00:26:50.0683|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 00:26:50.0773|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 00:28:56.4676|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-03 00:28:56.4796|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-03 00:28:56.5076|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 00:28:56.5166|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 00:33:08.3589|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-03 00:33:08.3589|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-03 00:33:08.3969|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 00:33:08.3969|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 00:42:30.7423|INFO|DataService.Services.AccountService|Start get login
+2018-01-03 00:42:32.9205|INFO|DataService.Services.AccountService|Completed get login
+2018-01-03 00:42:32.9275|INFO|DataService.LogLoginService|Start audit login
+2018-01-03 00:42:33.2765|INFO|DataService.LogLoginService|End audit login
+2018-01-03 00:42:40.1958|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-03 00:42:40.3448|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-03 00:42:41.0069|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 00:42:41.1160|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 00:43:09.5349|INFO|DataService.Services.ReturnService|Start creating new return card
+2018-01-03 00:43:09.6489|INFO|DataService.Services.ReturnService|Success: A new return card created!
+2018-01-03 00:45:48.3831|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-03 00:45:48.3911|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-03 00:45:48.4126|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 00:45:48.4216|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 00:50:51.8877|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-03 00:50:51.8957|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-03 00:50:51.9117|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 00:50:51.9117|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 00:51:14.5131|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-03 00:51:14.5221|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-03 00:51:14.5401|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 00:51:14.5471|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 00:51:38.8644|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-03 00:51:38.8824|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-03 00:51:38.9044|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 00:51:38.9134|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 00:52:15.2385|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-03 00:52:15.2385|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-03 00:52:15.2655|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 00:52:15.2655|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 00:52:57.0544|INFO|DataService.Services.ReturnService|Start creating new return card
+2018-01-03 00:52:57.0964|INFO|DataService.Services.ReturnService|Error creating new return card: Conflicting changes detected. This may happen when trying to insert multiple entities with the same key.
+2018-01-03 00:55:57.2416|INFO|DataService.Services.AccountService|Start get login
+2018-01-03 00:55:57.3276|INFO|DataService.Services.AccountService|Completed get login
+2018-01-03 00:55:57.3276|INFO|DataService.LogLoginService|Start audit login
+2018-01-03 00:55:57.3721|INFO|DataService.LogLoginService|End audit login
+2018-01-03 00:56:16.4910|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-03 00:56:16.5605|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-03 00:56:16.7395|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 00:56:16.8000|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 00:59:41.2517|INFO|DataService.Services.ReturnService|Start creating new return card
+2018-01-03 00:59:41.3207|INFO|DataService.Services.ReturnService|Success: A new return card created!
+2018-01-03 01:27:19.9971|INFO|DataService.Services.AccountService|Start get login
+2018-01-03 01:27:20.3536|INFO|DataService.Services.AccountService|Completed get login
+2018-01-03 01:27:20.3596|INFO|DataService.LogLoginService|Start audit login
+2018-01-03 01:27:20.4008|INFO|DataService.LogLoginService|End audit login
+2018-01-03 01:27:34.5393|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-03 01:27:34.5973|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-03 01:27:34.8553|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:27:34.9043|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:27:56.6654|INFO|DataService.Services.ReturnService|Start creating new return card
+2018-01-03 01:27:56.7054|INFO|DataService.Services.ReturnService|Success: A new return card created!
+2018-01-03 01:27:56.7210|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-03 01:27:56.7210|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-03 01:27:56.7510|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:27:56.7510|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:28:06.2570|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 2
+2018-01-03 01:28:06.2820|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-03 01:28:09.5644|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 40
+2018-01-03 01:28:09.5784|INFO|DataService.Services.ReturnService|Success: Return Card number 40returned!
+2018-01-03 01:28:45.6273|INFO|DataService.Services.ReturnService|Start Getting return request number: 10
+2018-01-03 01:28:45.6273|INFO|DataService.Services.ReturnService|Success: Return Request number 10returned!
+2018-01-03 01:28:45.6573|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:28:45.6573|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:28:53.7293|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:28:53.7413|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:28:53.7653|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:28:53.7653|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:31:31.2346|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:31:31.2346|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:31:31.2741|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:31:31.2811|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:32:03.3096|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:32:03.3196|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:32:03.3356|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:32:03.3431|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:32:39.1759|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:32:39.1759|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:32:39.2079|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:32:39.2079|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:34:38.0952|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:34:38.0952|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:34:38.1342|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:34:38.1432|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:35:00.3063|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:35:00.3203|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:35:00.3374|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:35:00.3444|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:35:58.3334|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:35:58.3434|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:35:58.3649|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:35:58.3649|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:36:31.3067|INFO|DataService.Services.ReturnService|Start creating new return card
+2018-01-03 01:36:31.3387|INFO|DataService.Services.ReturnService|Success: A new return card created!
+2018-01-03 01:36:31.3563|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:36:31.3663|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:36:31.3873|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:36:31.3953|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:37:33.5606|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:37:33.5696|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:37:33.5936|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:37:33.5936|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:40:44.4715|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:40:44.4945|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:40:44.5200|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:40:44.5200|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:41:12.8303|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:41:12.8543|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:41:12.8849|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:41:12.9059|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:44:00.4668|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:44:00.4788|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:44:00.5068|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:44:00.5168|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:44:33.4546|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:44:33.4716|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:44:33.4946|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:44:33.5036|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:44:38.9858|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:44:39.0028|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:44:39.0278|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:44:39.0353|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:45:14.0064|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:45:14.0169|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:45:14.0369|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:45:14.0369|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:46:39.0653|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:46:39.0813|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:46:39.1043|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:46:39.1123|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:46:43.2622|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:46:43.2732|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:46:43.2917|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:46:43.3002|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:46:52.6120|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:46:52.6120|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:46:52.6360|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:46:52.6420|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:47:20.3366|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:47:20.3586|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:47:20.3786|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:47:20.3786|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:47:49.1787|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:47:49.1907|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:47:49.2187|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:47:49.2187|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:48:43.2873|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:48:43.2993|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:48:43.3233|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:48:43.3318|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:48:58.2605|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:48:58.2705|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:48:58.2895|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:48:58.2975|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 01:53:48.1912|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 01:53:48.2082|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 01:53:48.2332|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 01:53:48.2422|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 02:07:39.6146|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: and trade form: 2
+2018-01-03 02:07:39.6376|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-03 02:07:44.5047|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 32
+2018-01-03 02:07:44.5047|INFO|DataService.Services.ReturnService|Success: Return Card number 32returned!
+2018-01-03 02:07:49.9518|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 32
+2018-01-03 02:07:49.9618|INFO|DataService.Services.ReturnService|Success: Return Card number 32returned!
+2018-01-03 02:08:04.3225|INFO|DataService.Services.ReturnService|Start Getting return request number: 12
+2018-01-03 02:08:04.3345|INFO|DataService.Services.ReturnService|Success: Return Request number 12returned!
+2018-01-03 02:08:04.3535|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-03 02:08:04.3605|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-03 02:33:21.3144|INFO|DataService.Services.AccountService|Start get login
+2018-01-03 02:33:21.6649|INFO|DataService.Services.AccountService|Completed get login
+2018-01-03 02:33:21.6649|INFO|DataService.LogLoginService|Start audit login
+2018-01-03 02:33:21.7019|INFO|DataService.LogLoginService|End audit login
+2018-01-03 02:33:27.4058|INFO|DataService.Services.ReturnService|Start searching for return cards with key word:  and trade form: 0
+2018-01-03 02:33:27.5648|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-03 02:34:07.7114|INFO|DataService.Services.ReturnService|Start searching for return cards with key word:  and trade form: 1
+2018-01-03 02:34:07.7384|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-03 02:34:18.4557|INFO|DataService.Services.ReturnService|Start searching for return cards with key word: nhà and trade form: 1
+2018-01-03 02:34:18.4697|INFO|DataService.Services.ReturnService|Searched for return cards successfully

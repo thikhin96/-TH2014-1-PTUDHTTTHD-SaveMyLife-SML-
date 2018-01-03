@@ -1,6 +1,8 @@
 ﻿@model SML_QLNPP.Models.CreateReturnViewModel
 @{
     Layout = "~/Views/Shared/_ALayout.cshtml";
+    var success = TempData["success"] as string;
+    var fail = TempData["fail"] as string;
 }
 
 @section css{
@@ -21,7 +23,21 @@
 
 }
 
-<h2></h2>
+<h2>Phiếu đổi trả số @Model.ReturnId</h2>
+@if (success != null)
+{
+    <div class="alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <p><strong>Thành công!</strong> Tạo phiếu đổi trả thành công!</p>
+    </div>
+}
+else if (fail != null)
+{
+    <div class="alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Thất bại!</strong> @fail
+    </div>
+}
 @using (Html.BeginForm("Create", "Return", FormMethod.Post))
 {
     <div class="box box-info">
@@ -52,7 +68,7 @@
                 <select name="idStorage" id="idStorage" class="form-control">
                     @if (Model.Storage != null)
                     {
-                        <option value="@Model.idStorage" selected="selected">@Model.Storage.HouseNumber_Street, Phường @Model.Storage.Ward_Commune, Quận @Model.Storage.District, Thành phố @Model.Storage.City</option>
+                        <option value="@Model.Storage.IdStorage" selected="selected">@Model.Storage.HouseNumber_Street, Phường @Model.Storage.Ward_Commune, Quận @Model.Storage.District, Thành phố @Model.Storage.City</option>
                     }
                 </select>
             </div>
@@ -101,7 +117,7 @@
                                             <td>@product.IdProduct</td>
                                             <td>@product.ProductName</td>
                                             <td>@product.Price</td>
-                                            <td><button type="button" class="btn btn-success add-product" data-toggle="modal" data-target="#addProduct" data-id="@product.IdProduct" data-name="@product.ProductName" data-price="@product.Price">Thêm</button></td>
+                                            <td><button type="button" class="btn btn-success add-product" data-toggle="modal" data-target="#addProduct" data-id="@product.IdProduct" data-returnid="@Model.ReturnId" data-name="@product.ProductName" data-price="@product.Price">Thêm</button></td>
                                         </tr>
                                     }
                                 </tbody>
@@ -140,13 +156,15 @@
                                     @for (int i = 0; i < Model.ReturnDetails.Count; i++)
                                     {
                                         <tr>
-                                            <td><input name="ReturnDetails[@i].idProduct" value="@Model.ReturnDetails[i].idProduct" type="number" readonly="readonly" class="table-input"></td>
+                                            <td><input name="ReturnDetails[@i].idProduct" value="@Model.ReturnDetails[i].idProduct" type="number" readonly="readonly" class="table-input">
+                                                <input name="ReturnDetails[@i].idReturn" value="@Model.ReturnId" type="hidden" class="table-input">
+                                            </td>
                                             <td>@Model.ReturnDetails[@i].Product.ProductName</td>
                                             <td><input name="ReturnDetails[@i].Quantity" value="@Model.ReturnDetails[i].Quantity" type="number" class="table-input product-quantity"></td>
                                             <td>@Model.ReturnDetails[@i].Product.Price</td>
                                             <td>
                                                 @{ var total = @Model.ReturnDetails[@i].Product.Price * @Model.ReturnDetails[@i].Quantity; }
-                                                @total
+                                                <input name="ReturnDetails[@i].ProductMoneyRefunding" value="@total" type="number" class="table-input total-per-product" readonly="readonly">
                                             </td>
                                             <td><button type="button" class="btn btn-danger delete-product">Xóa</button></td>
                                         </tr>
