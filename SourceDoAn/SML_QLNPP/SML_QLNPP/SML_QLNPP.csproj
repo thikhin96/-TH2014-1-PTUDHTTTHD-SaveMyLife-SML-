@@ -252,6 +252,7 @@
     <Compile Include="Controllers\DistributorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\PDistributorController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PromotionController.cs" />
     <Compile Include="Controllers\ReturnController.cs" />
@@ -268,6 +269,8 @@
     <Compile Include="Models\DistributorViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\CreatePDistributorViewModel.cs" />
+    <Compile Include="Models\PDistributorViewModel.cs" />
     <Compile Include="Models\ProductDetailViewModel.cs" />
     <Compile Include="Models\ReturnDetailViewModel.cs" />
     <Compile Include="Models\ShowReturnCardsViewModel.cs" />
@@ -334,6 +337,7 @@
     <Content Include="Content\Order\datatables.min.css" />
     <Content Include="Content\Order\detail.css" />
     <Content Include="Content\Order\jquery-ui.min.css" />
+    <Content Include="Content\Product\detail.css" />
     <Content Include="Scripts\AdminLTE\adminlte.min.js" />
     <Content Include="Scripts\AdminLTE\bootstrap.min.js" />
     <Content Include="Scripts\AdminLTE\fastclick.js" />
@@ -520,6 +524,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Order\jquery-ui.min.js" />
+    <Content Include="Scripts\PDistributor\pdistributor.js" />
     <Content Include="Scripts\Order\update-order.js" />
     <Content Include="Scripts\Product\detail.js" />
     <Content Include="Scripts\Product\product.js" />
@@ -540,12 +545,16 @@
     <Content Include="Views\DeliveryOrder\Edit.cshtml" />
     <Content Include="Views\Contract\Contract.cshtml" />
     <Content Include="Views\Contract\DetailedContract.cshtml" />
+    <Content Include="Views\Contract\CreateContract.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_AHeader.cshtml" />
     <Content Include="Views\Shared\_ANav.cshtml" />
     <Content Include="Views\Return\List.cshtml" />
     <Content Include="Views\Return\Show.cshtml" />
     <Content Include="Views\Return\Create.cshtml" />
+    <Content Include="Views\PDistributor\Create.cshtml" />
+    <Content Include="Views\PDistributor\List.cshtml" />
+
     <None Include="Views\Shared\_ALayout.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
