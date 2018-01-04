@@ -26,7 +26,7 @@ namespace DataService.Interfaces
                 return true;
             } catch(Exception ex)
             {
-                logger.Info(ex.Message);
+                logger.Info(ex);
                 logger.Info("End Add Bill....");
                 return false;
             } 

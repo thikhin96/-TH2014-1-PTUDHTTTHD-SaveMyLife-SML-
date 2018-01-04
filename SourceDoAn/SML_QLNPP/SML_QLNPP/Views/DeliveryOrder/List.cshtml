@@ -19,6 +19,7 @@
 
 @section scripts{
     <script type="text/javascript" src="~/Scripts/DeliveryOrder/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/DeliveryOrder/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="~/Scripts/DeliveryOrder/datatables.min.js"></script>
     <script type="text/javascript" src="~/Scripts/DeliveryOrder/deliveryorder.js"></script>
 }
@@ -64,7 +65,7 @@
                                     <th>Mã giao hàng</th>
                                     <th>Mã đặt hàng</th>
                                     <th>Mã NPP</th>
-                                    <th>Tổng tiền</th>
+                                    <th>Tổng tiền (VNĐ)</th>
                                     <th>Tình trạng</th>
                                     <th>Ngày giao</th>
                                     <th>Thao tác</th>
@@ -97,7 +98,12 @@
                                                 </td>
                                                 <td>
                                                     @Html.ActionLink("Chi Tiết", "Details", new { id = item.idDeliveryOrder },new { @class = "btn btn-info"})
-                                                    @* |@Html.ActionLink("Lập hóa đơn", "Create", "Bill", new { @area = ""},new { @class = "btn btn-primary"})*@
+                                                    @{ if ( item.status == 2)
+                                                        {
+                                                            WriteLiteral(" | ");
+                                                            @Html.ActionLink("Lập hóa đơn", "Create", "Bill", new { @area = "" }, new { @class = "btn btn-primary" });
+                                                        }
+                                                    }
                                                 </td>
                                             </tr>
                                         }

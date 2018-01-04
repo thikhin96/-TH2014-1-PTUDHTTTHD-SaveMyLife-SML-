@@ -23,8 +23,8 @@ namespace DataModel
         public Nullable<int> idStaff { get; set; }
         public Nullable<int> idDistributor { get; set; }
     
-        public virtual DeliveryOrder DeliveryOrder { get; set; }
         public virtual Distributor Distributor { get; set; }
         public virtual Staff Staff { get; set; }
+        public virtual DeliveryOrder DeliveryOrder { get; set; }
     }
 }

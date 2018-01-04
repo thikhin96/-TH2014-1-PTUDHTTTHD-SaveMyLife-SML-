@@ -19,7 +19,22 @@ namespace DataService.Interfaces
         }
         public bool AddDetailedDeliveryOrder(DetailedDeliveryOrder ddOrder)
         {
-            throw new NotImplementedException();
+            try
+            {
+                logger.Info("Start Add DetailedDeliveryOrder....");
+                IRepository<DetailedDeliveryOrder> repository = _unitOfWork.Repository<DetailedDeliveryOrder>();
+                repository.Add(ddOrder);
+                _unitOfWork.SaveChange();
+                logger.Info("End Add DetailedDeliveryOrder....");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                logger.Info(ex);
+                logger.Info("End Add DetailedDeliveryOrder....");
+                return false;
+            }
+            //throw new NotImplementedException();
         }
 
         public IList<DetailedDeliveryOrder> SearchByIdDeliveryOrder(int idDeliveryOrder)

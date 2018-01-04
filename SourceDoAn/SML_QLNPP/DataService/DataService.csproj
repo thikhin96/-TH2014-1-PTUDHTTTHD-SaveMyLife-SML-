@@ -159,6 +159,7 @@
     <Compile Include="Interfaces\IProductTypeService.cs" />
     <Compile Include="Interfaces\ILogLoginService.cs" />
     <Compile Include="Interfaces\IPromotionService.cs" />
+    <Compile Include="Interfaces\IStaff.cs" />
     <Compile Include="Interfaces\IReturnService.cs" />
     <Compile Include="Interfaces\IRepresentativeService.cs" />
 
@@ -178,6 +179,7 @@
     <Compile Include="Services\LogLoginService.cs" />
     <Compile Include="Services\PromotionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Staff.cs" />
     <Compile Include="Services\ReturnService.cs" />
     <Compile Include="Services\RepresentativeService.cs" />
 

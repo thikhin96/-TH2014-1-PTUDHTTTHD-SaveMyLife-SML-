@@ -13,23 +13,40 @@ namespace DataService.Services
     public class DeliveryOrderService : IDeliveryOrderService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IRepository<DeliveryOrder> _repDeliveryOrder;
+        private readonly IRepository<DetailedDeliveryOrderService> _repDDeliveryOrder;
         ILogger logger = LogManager.GetCurrentClassLogger();
         public DeliveryOrderService(IUnitOfWork unitOfWork)
         {
             //_promotionRepository = unitOfWork.Repository<Promotion>();
             _unitOfWork = unitOfWork;
+            _repDeliveryOrder = _unitOfWork.Repository<DeliveryOrder>();
+            _repDDeliveryOrder = _unitOfWork.Repository<DetailedDeliveryOrderService>();
         }
         public bool AddDeliveryOrder(DeliveryOrder dOrder)
         {
-            throw new NotImplementedException();
+            try
+            {
+                logger.Info("Start Add DeliveryOrder....");
+                _repDeliveryOrder.Add(dOrder);
+                _unitOfWork.SaveChange();
+                logger.Info("End Add DeliveryOrder....");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //logger.Info(ex);
+                //logger.Info("End Add DeliveryOrder....");
+                throw;
+                //return false;
+            }
         }
         public bool UpdateDeliveryOrder(DeliveryOrder dOrder)
         {
             try
             {
                 logger.Info("Start Update DeliveryOrder....");
-                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
-                repository.Update(dOrder);
+                _repDeliveryOrder.Update(dOrder);
                 _unitOfWork.SaveChange();
                 logger.Info("End Update DeliveryOrder....");
                 return true;
@@ -148,6 +165,14 @@ namespace DataService.Services
                 logger.Info("End GetAll DeliveryOrder....");
                 return null;
             }
+        }
+        public int GenerateDOrderId()
+        {
+            var latestdOrder = _repDeliveryOrder.GetAll().OrderByDescending(x => x.idDeliveryOrder).FirstOrDefault();
+            if (latestdOrder != null)
+                return latestdOrder.idDeliveryOrder + 1;
+            else
+                return 1;
         }
     }
 }

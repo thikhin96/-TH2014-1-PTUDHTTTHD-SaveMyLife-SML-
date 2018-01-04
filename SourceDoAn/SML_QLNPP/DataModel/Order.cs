@@ -19,6 +19,7 @@ namespace DataModel
         {
             this.Log_OrderDetail = new HashSet<Log_OrderDetail>();
             this.OrderDetails = new HashSet<OrderDetail>();
+            this.DeliveryOrders = new HashSet<DeliveryOrder>();
         }
     
         public int idOrder { get; set; }
@@ -35,12 +36,13 @@ namespace DataModel
         public string Descriptions { get; set; }
     
         public virtual Consignee Consignee { get; set; }
-        public virtual DeliveryOrder DeliveryOrder { get; set; }
         public virtual Distributor Distributor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Log_OrderDetail> Log_OrderDetail { get; set; }
         public virtual Staff Staff { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DeliveryOrder> DeliveryOrders { get; set; }
     }
 }

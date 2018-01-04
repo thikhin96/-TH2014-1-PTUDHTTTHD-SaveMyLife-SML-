@@ -8,7 +8,22 @@
     //}
 
 
-    var table = $('#dorder-list').DataTable();
+    var table = $('#dorder-list').DataTable({
+        "oLanguage": {
+            "oPaginate": {
+                //"sPrevious": "<span class=\"fa fa-backward\"> Trước</span> ❮❮",
+                //"sNext": "Sau <span class=\"fa fa-forward\"></span>",
+                "sPrevious": "❮❮ Trước",
+                "sNext": "Sau ❯❯",
+            },
+            "sInfo": "Hiển thị _START_ đến _END_ trên _TOTAL_",
+            "sZeroRecords": "Không tìm thấy dữ liệu",
+            "sInfoEmpty": "Không tìm thấy dữ liệu",
+            "sLengthMenu": "Số dòng mỗi trang _MENU_"
+        },
+        "searching": true,
+        "bLengthChange": true,
+    });
     //$("#search").on('click', function () {
     //    console.log("Tìm kiếm đơn giao hàng bắt đầu");
     //    console.log(delivery_date);

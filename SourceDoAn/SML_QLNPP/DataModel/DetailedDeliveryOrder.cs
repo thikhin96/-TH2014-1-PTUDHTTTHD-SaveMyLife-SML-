@@ -17,6 +17,7 @@ namespace DataModel
         public int idDeliveryOrder { get; set; }
         public int idProduct { get; set; }
         public Nullable<int> quantity { get; set; }
+        public Nullable<int> promoQuantity { get; set; }
         public string note { get; set; }
     
         public virtual DeliveryOrder DeliveryOrder { get; set; }

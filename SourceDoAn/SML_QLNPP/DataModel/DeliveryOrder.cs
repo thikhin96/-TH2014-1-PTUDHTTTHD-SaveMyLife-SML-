@@ -23,22 +23,23 @@ namespace DataModel
     
         public int idDeliveryOrder { get; set; }
         public string recipient { get; set; }
+        public string recipientPhone { get; set; }
         public string deliveryAdd { get; set; }
         public Nullable<decimal> totalPurchase { get; set; }
         public Nullable<System.DateTime> deliveryDate { get; set; }
         public Nullable<byte> status { get; set; }
         public Nullable<System.DateTime> updateDate { get; set; }
         public string description { get; set; }
-        public Nullable<int> idOrder { get; set; }
+        public int idOrder { get; set; }
         public Nullable<int> idStaff { get; set; }
         public Nullable<int> idDistributor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bills { get; set; }
         public virtual Distributor Distributor { get; set; }
-        public virtual Order Order { get; set; }
         public virtual Staff Staff { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailedDeliveryOrder> DetailedDeliveryOrders { get; set; }
+        public virtual Order Order { get; set; }
     }
 }
