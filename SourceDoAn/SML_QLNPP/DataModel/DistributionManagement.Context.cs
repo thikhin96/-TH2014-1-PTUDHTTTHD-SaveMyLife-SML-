@@ -37,7 +37,6 @@ namespace DataModel
         public virtual DbSet<Log_Login> Log_Login { get; set; }
         public virtual DbSet<Log_Order> Log_Order { get; set; }
         public virtual DbSet<Log_OrderDetail> Log_OrderDetail { get; set; }
-        public virtual DbSet<Log_Product> Log_Product { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<PaySlip> PaySlips { get; set; }
@@ -48,7 +47,6 @@ namespace DataModel
         public virtual DbSet<PromotionGift> PromotionGifts { get; set; }
         public virtual DbSet<PromotionProduct> PromotionProducts { get; set; }
         public virtual DbSet<Representative> Representatives { get; set; }
-        public virtual DbSet<ReturnBase> ReturnBases { get; set; }
         public virtual DbSet<ReturnDetail> ReturnDetails { get; set; }
         public virtual DbSet<ReturnRequest> ReturnRequests { get; set; }
         public virtual DbSet<ReturnRequestDetail> ReturnRequestDetails { get; set; }
@@ -59,5 +57,7 @@ namespace DataModel
         public virtual DbSet<Unit> Units { get; set; }
         public virtual DbSet<DeliveryOrder> DeliveryOrders { get; set; }
         public virtual DbSet<DetailedDeliveryOrder> DetailedDeliveryOrders { get; set; }
+        public virtual DbSet<Log_Product> Log_Product { get; set; }
+        public virtual DbSet<ReturnBase> ReturnBases { get; set; }
     }
 }

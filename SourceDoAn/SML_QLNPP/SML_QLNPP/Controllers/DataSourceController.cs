@@ -11,6 +11,7 @@ namespace SML_QLNPP.Controllers
     {
         private readonly IDistributorService _distributorService;
 
+
         public DataSourceController(IDistributorService distributorService)
         {
             _distributorService = distributorService;
@@ -27,6 +28,20 @@ namespace SML_QLNPP.Controllers
                 text = x.name
             });
               
+            return Json(results, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetStorages(string search, int distributorId)
+        {
+            var storages = _distributorService.GetStorages(search, distributorId);
+            if (storages.Count == 0)
+                return Json(new { }, JsonRequestBehavior.AllowGet);
+            var results = storages.Select(x => new
+            {
+                id = x.IdStorage,
+                text = x.HouseNumber_Street + ", Phường " + x.Ward_Commune + ", Quận " + x.District + ", Thành phố " + x.City
+            });
+
             return Json(results, JsonRequestBehavior.AllowGet);
         }
     }

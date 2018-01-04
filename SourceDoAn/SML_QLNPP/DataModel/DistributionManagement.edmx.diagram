@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fb3647b5e6124f919244aa284b9ac162" Name="Diagram1" ZoomLevel="82">
+      <Diagram DiagramId="fb3647b5e6124f919244aa284b9ac162" Name="Diagram1" ZoomLevel="61">
         <EntityTypeShape EntityType="QL_NPPModel.Account" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="QL_NPPModel.Assignment" Width="1.5" PointX="8.25" PointY="31.25" />
         <EntityTypeShape EntityType="QL_NPPModel.Batch" Width="1.5" PointX="13.5" PointY="13.25" />
@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="QL_NPPModel.Log_Login" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="QL_NPPModel.Log_Order" Width="1.5" PointX="2.75" PointY="3.75" />
         <EntityTypeShape EntityType="QL_NPPModel.Log_OrderDetail" Width="1.5" PointX="10.5" PointY="27.5" />
-        <EntityTypeShape EntityType="QL_NPPModel.Log_Product" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="QL_NPPModel.Order" Width="1.5" PointX="5.25" PointY="26.875" />
         <EntityTypeShape EntityType="QL_NPPModel.OrderDetail" Width="1.5" PointX="7.5" PointY="28.125" />
         <EntityTypeShape EntityType="QL_NPPModel.PaySlip" Width="1.5" PointX="8" PointY="22.25" />
@@ -28,7 +27,6 @@
         <EntityTypeShape EntityType="QL_NPPModel.PromotionGift" Width="1.5" PointX="12.75" PointY="16.125" />
         <EntityTypeShape EntityType="QL_NPPModel.PromotionProduct" Width="1.5" PointX="15.75" PointY="18.125" />
         <EntityTypeShape EntityType="QL_NPPModel.Representative" Width="1.5" PointX="3" PointY="22" />
-        <EntityTypeShape EntityType="QL_NPPModel.ReturnBase" Width="1.5" PointX="8.25" PointY="35.5" />
         <EntityTypeShape EntityType="QL_NPPModel.ReturnDetail" Width="1.5" PointX="10.5" PointY="36" />
         <EntityTypeShape EntityType="QL_NPPModel.ReturnRequest" Width="1.5" PointX="5.25" PointY="35.375" />
         <EntityTypeShape EntityType="QL_NPPModel.ReturnRequestDetail" Width="1.5" PointX="10.5" PointY="33" />
@@ -53,7 +51,6 @@
         <AssociationConnector Association="QL_NPPModel.FK_Order_Distributor" />
         <AssociationConnector Association="QL_NPPModel.FK_PaySlip_Distributor" />
         <AssociationConnector Association="QL_NPPModel.FK_Representative_Distributor" />
-        <AssociationConnector Association="QL_NPPModel.FK_ReturnBase_Distributor" />
         <AssociationConnector Association="QL_NPPModel.FK_ReturnRequest_Distributor" />
         <AssociationConnector Association="QL_NPPModel.FK_Storage_Distributor" />
         <AssociationConnector Association="QL_NPPModel.FK_Log_OrderDetail_Order" />
@@ -73,9 +70,6 @@
         <AssociationConnector Association="QL_NPPModel.FK_SalesReportDetail_ProductType" />
         <AssociationConnector Association="QL_NPPModel.FK_PromotionGifts_Promotion" />
         <AssociationConnector Association="QL_NPPModel.FK_PromotionProduct_Promotion" />
-        <AssociationConnector Association="QL_NPPModel.FK_ReturnBase_Staff" />
-        <AssociationConnector Association="QL_NPPModel.FK_ReturnBase_Storage" />
-        <AssociationConnector Association="QL_NPPModel.FK_ReturnDetail_ReturnBase" />
         <AssociationConnector Association="QL_NPPModel.FK_ReturnRequest_Staff" />
         <AssociationConnector Association="QL_NPPModel.FK_ReturnRequest_Storage" />
         <AssociationConnector Association="QL_NPPModel.FK_ReturnRequestDetail_ReturnRequest" />
@@ -88,6 +82,13 @@
         <AssociationConnector Association="QL_NPPModel.FK_DetailedDeliveryOrder_DeliveryOrder" />
         <AssociationConnector Association="QL_NPPModel.FK_DetailedDeliveryOrder_Product" />
         <AssociationConnector Association="QL_NPPModel.FK_DeliveryOrder_Order" />
+        <EntityTypeShape EntityType="QL_NPPModel.Log_Product" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="QL_NPPModel.ReturnBase" Width="1.5" PointX="7.5" PointY="35.25" />
+        <AssociationConnector Association="QL_NPPModel.FK_ReturnBase_Distributor" />
+        <AssociationConnector Association="QL_NPPModel.FK_ReturnBase_ReturnRequest" />
+        <AssociationConnector Association="QL_NPPModel.FK_ReturnBase_Staff" />
+        <AssociationConnector Association="QL_NPPModel.FK_ReturnBase_Storage" />
+        <AssociationConnector Association="QL_NPPModel.FK_ReturnDetail_ReturnBase" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

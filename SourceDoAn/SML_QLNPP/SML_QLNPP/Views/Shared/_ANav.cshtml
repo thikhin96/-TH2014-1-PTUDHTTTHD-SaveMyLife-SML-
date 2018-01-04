@@ -33,6 +33,18 @@
             <li class="header">Menu chức năng</li>
             <li class="treeview">
                 <a href="#">
+                    <i class="fa fa-table"></i> <span>Quản lý đối tác</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/PDistributor/List"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm đối tác</a></li>
+                    <li><a href="/PDistributor/Create"><i class="fa fa-arrow-circle-o-right"></i> Thêm đối tác</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
                     <i class="fa fa-table"></i> <span>Quản lý đặt hàng</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
@@ -78,6 +90,19 @@
                     @*<li><a href="@Url.Action("Create", "DeliveryOrder")"><i class="fa fa-arrow-circle-o-right"></i> Lập đơn giao hàng</a></li>*@
                     <li><a href="@Url.Action("List", "Bill")"><i class="fa fa-arrow-circle-o-right"></i> Tìm hóa đơn</a></li>
                     <li><a href="@Url.Action("Create", "Bill")"><i class="fa fa-arrow-circle-o-right"></i> Lập hóa đơn</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-table"></i> <span>Quản lý đổi trả</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Index", "Return")"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm phiếu đổi trả</a></li>
+                    <li><a href="@Url.Action("Create", "Return")"><i class="fa fa-arrow-circle-o-right"></i> Lập phiếu đổi trả</a></li>
+                    
                 </ul>
             </li>
         </ul>

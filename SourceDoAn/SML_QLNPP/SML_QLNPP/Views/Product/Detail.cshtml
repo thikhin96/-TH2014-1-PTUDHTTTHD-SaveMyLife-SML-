@@ -54,12 +54,15 @@
 
 @section css{
     <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="~/Content/Order/detail.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Product/detail.css" rel="stylesheet" type="text/css" media="all" />
 }
 
 @section scripts{
     <script type="text/javascript" src="~/Scripts/Product/detail.js"></script>
 }
+<script>
+    var old_price = @Model.Price;
+</script>
 
         <div class="box box-info">
             <div class="box-header with-border">
@@ -101,8 +104,14 @@
                                 <div class="col-md-2 form-group">
                                     <label>Đơn giá (VNĐ)</label>
                                 </div>
-                                <div class="col-md-8 form-group">
-                                    @Html.TextBoxFor(pr => pr.Price, new { @class = "form-control", @type = "number", @min = "1", @required = "required" })
+                                <div class="col-md-8 form-group" id="price">
+                                    @Html.TextBoxFor(pr => pr.Price, new { @class = "form-control", @type = "number", @min = "1", @required = "required", @id = "new_price" })
+                                </div>
+                                <div class="col-md-2 form-group" style="display: none" id = "lblreason">
+                                    <label>Lý do sửa đơn giá</label>
+                                </div>
+                                <div class="col-md-8 form-group" style="display: none" id = "reason">
+                                    @Html.TextBoxFor(pr => pr.description_log, new { @class = "form-control", @style= "background-color: #ccffe6", @id="txbReason" })
                                 </div>
                                 <div class="col-md-2 form-group">
                                     <label>Loại sản phẩm </label>

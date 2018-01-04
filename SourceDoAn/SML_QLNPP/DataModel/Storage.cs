@@ -17,8 +17,8 @@ namespace DataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Storage()
         {
-            this.ReturnBases = new HashSet<ReturnBase>();
             this.ReturnRequests = new HashSet<ReturnRequest>();
+            this.ReturnBases = new HashSet<ReturnBase>();
         }
     
         public int IdStorage { get; set; }
@@ -31,8 +31,8 @@ namespace DataModel
     
         public virtual Distributor Distributor1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReturnBase> ReturnBases { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReturnRequest> ReturnRequests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReturnBase> ReturnBases { get; set; }
     }
 }
