@@ -4,9 +4,9 @@
     ViewBag.Title = "Create";
     var ListSataff = new List<DataModel.Staff>();
     var ListAdd = new List<SelectListItem>();
-    if(Model.Staff !=null)
+    if(ViewBag.Staff !=null)
     {
-        foreach (var item in Model.Staff)
+        foreach (var item in ViewBag.Staff)
         {
             if (item.staffName == null)
             {
@@ -17,9 +17,9 @@
         }
     }
 
-    if(Model.Storage !=null)
+    if(ViewBag.Storage !=null)
     {
-        foreach (var item in Model.Storage)
+        foreach (var item in ViewBag.Storage)
         {
             SelectListItem add = new SelectListItem();
             if (item.HouseNumber_Street != null)
@@ -48,12 +48,13 @@
     <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/DeliveryOrder/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/DeliveryOrder/datatables.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/DeliveryOrder/create.css" rel="stylesheet" type="text/css" media="all" />
 }
 
 @section scripts{
     <script type="text/javascript" src="~/Scripts/DeliveryOrder/jquery-ui.min.js"></script>
     <script type="text/javascript" src="~/Scripts/DeliveryOrder/datatables.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/DeliveryOrder/createdeliveryorder.js"></script>
+    <script type="text/javascript" src="~/Scripts/DeliveryOrder/create.js"></script>
 }
 
 @using (Html.BeginForm("Create", "DeliveryOrder", FormMethod.Post))
@@ -61,15 +62,15 @@
     <div class="box box-info">
         <div class="box-header with-border">
             @{
-                if (ViewBag.status != null)
+                if (ViewBag.msg != null)
                 {
                     if (ViewBag.types == 1)
                     {
-                        <div class="alert alter-warning"><strong>@ViewBag.status</strong></div>
+                        <div class="alert alter-warning"><strong>@ViewBag.msg</strong></div>
                     }
                     else if (ViewBag.types == 2)
                     {
-                        <div class="alert alter-success"><strong>@ViewBag.status</strong></div>
+                        <div class="alert alter-success"><strong>@ViewBag.msg</strong></div>
                     }
 
                 }
@@ -122,10 +123,12 @@
                 @Html.Label("Nơi giao:")
                 @Html.DropDownListFor(model => model.deliveryAdd, ListAdd, new { @class = "form-control" })
             </div>
-            @*<div class="col-md-3 form-group">
-                 @Html.Label("Ngày giao:")
-                 <input type="text" value="@Convert.ToDateTime(@Model.deliveryDate).ToString("dd/MM/yyyy")" class="form-control" readonly />
+@*
+            <div class="col-md-3 form-group">
+                @Html.Label("Ngày giao:")
+                @Html.TextBoxFor(model => model.deliveryDate, new {@type = "date", @class = "form-control", @value = DateTime.Now })
              </div>
+
          <div class="col-md-3">
              <label>Tình trạng: </label>
              @{
@@ -154,53 +157,37 @@
                             <table id="dorder-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                 <thead>
                                     <tr>
-                                        <th>ID SP(1)</th>
-                                        <th>Tên SP(2)</th>
-                                        <th>Đơn giá(3)</th>
-                                        <th>Số lượng(4)</th>
-                                        <th>Số lượng KM(5)</th>
-                                        <th>Thành Tiền(VNĐ)(6)=(3)x(4)</th>
+                                        <th>ID SP</th>
+                                        <th>Tên SP</th>
+                                        <th>Đơn giá</th>
+                                        <th>Số lượng</th>
+                                        <th>Số lượng KM</th>
+                                        <th>Thành Tiền(VNĐ)</th>
                                         <th>Ghi chú(7)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @{var dataID = 0;
-                                    }
-                                    @*@foreach (var item in Model.DetailedDeliveryOrder)
-                                    {
-                                        <tr row-id="@dataID">
-                                            <td style="display:none;"><input type="hidden" name="@("DetailedDeliveryOrder[" + dataID + "].idDeliveryOrder")" value="@item.idDeliveryOrder" /></td>
-                                            <td style="display:none;"><input type="hidden" name="@("DetailedDeliveryOrder[" + dataID + "].idProduct")" value ="@item.idProduct"/></td>
-                                            <td style="display:none;"><input type="hidden" name="@("DetailedDeliveryOrder[" + dataID + "].quantity")" value ="@item.quantity"/></td>
-                                            <td style="display:none;"><input type="hidden" name="@("DetailedDeliveryOrder[" + dataID + "].note")" value ="@item.note"/></td>
-
-                                            <td>@item.idProduct</td>
-                                            <td>@item.Product.ProductName</td>
-                                            <td>@string.Format("{0:0,0}", @item.Product.Price)</td>
-                                            <td>@item.quantity</td>
-                                            <td>@string.Format("{0:0,0}", @item.Product.Price * @item.quantity)</td>
-                                            <td>@Html.TextBox("Ghi chú", @item.note)</td>
-                                        </tr>
-                                        dataID += 1;
-                                    }*@
-                                    @foreach (var item in Model.DetailedDeliveryOrder)
-                                    {
-                                        <tr row-id="@dataID">
-                                            <td style="display:none;"><input type="hidden" name="@("DetailedDeliveryOrder[" + dataID + "].idDeliveryOrder")" value="@item.idDeliveryOrder" /></td>
-                                            <td style="display:none;"><input type="hidden" name="@("DetailedDeliveryOrder[" + dataID + "].idProduct")" value="@item.idProduct" /></td>
-                                            <td style="display:none;"><input type="hidden" name="@("DetailedDeliveryOrder[" + dataID + "].quantity")" value="@item.quantity" /></td>
-                                            <td style="display:none;"><input type="hidden" name="@("DetailedDeliveryOrder[" + dataID + "].promoQuantity")" value="@item.promoQuantity" /></td>
-                                           
-
-                                            <td name="idProduct">@item.idProduct</td>
-                                            <td name="ProductName">@item.Product.ProductName</td>
-                                            <td name="Price">@string.Format("{0:0,0}", @item.Product.Price)</td>
-                                            <td name="quantity">@item.quantity</td>
-                                            <td name="promoQuantity">@item.promoQuantity</td>
-                                            <td name="total">@string.Format("{0:0,0}", @item.Product.Price * @item.quantity)</td>
-                                            <td name="note"><input type="text" name="@("DetailedDeliveryOrder[" + dataID + "].note")" value="@item.note" /></td>
-                                        </tr>
-                                        dataID += 1;
+                                    @{ if (Model.DetailedDeliveryOrder !=null)
+                                        {
+                                            var dataID = 0;
+                                            foreach (var item in Model.DetailedDeliveryOrder)
+                                            {
+                                                    <tr row-id="@dataID">
+                                                        <td style="display:none;"><input type="hidden" name="@("DetailedDeliveryOrder[" + dataID + "].idDeliveryOrder")" value="@item.idDeliveryOrder" /></td>
+                                                        <td style="display:none;"><input type="hidden" name="@("DetailedDeliveryOrder[" + dataID + "].idProduct")" value="@item.idProduct" /></td>
+                                                        <td style="display:none;"><input type="hidden" name="@("DetailedDeliveryOrder[" + dataID + "].quantity")" value="@item.quantity" /></td>
+                                                        <td style="display:none;"><input type="hidden" name="@("DetailedDeliveryOrder[" + dataID + "].promoQuantity")" value="@item.promoQuantity" /></td>
+                                                        <td name="idProduct">@item.idProduct</td>
+                                                        <td name="@("DetailedDeliveryOrder[" + dataID + "].Product.ProductName")" value="@item.Product.ProductName">@item.Product.ProductName</td>
+                                                        <td name="Price">@string.Format("{0:0,0}", @item.Product.Price)</td>
+                                                        <td name="quantity">@item.quantity</td>
+                                                        <td name="promoQuantity">@item.promoQuantity</td>
+                                                        <td name="total">@string.Format("{0:0,0}", @item.Product.Price * @item.quantity)</td>
+                                                        <td name="note"><input type="text" name="@("DetailedDeliveryOrder[" + dataID + "].note")" value="@item.note" /></td>
+                                                    </tr>
+                                                dataID += 1;
+                                            }
+                                        }
                                     }
                                 </tbody>
                             </table>

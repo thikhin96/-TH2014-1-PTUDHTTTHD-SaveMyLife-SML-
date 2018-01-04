@@ -33,8 +33,6 @@ namespace DataModel
         public virtual DbSet<Consignee> Consignees { get; set; }
         public virtual DbSet<Contract> Contracts { get; set; }
         public virtual DbSet<Debt> Debts { get; set; }
-        public virtual DbSet<DeliveryOrder> DeliveryOrders { get; set; }
-        public virtual DbSet<DetailedDeliveryOrder> DetailedDeliveryOrders { get; set; }
         public virtual DbSet<Distributor> Distributors { get; set; }
         public virtual DbSet<Log_Login> Log_Login { get; set; }
         public virtual DbSet<Log_Order> Log_Order { get; set; }
@@ -59,5 +57,7 @@ namespace DataModel
         public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<Storage> Storages { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
+        public virtual DbSet<DeliveryOrder> DeliveryOrders { get; set; }
+        public virtual DbSet<DetailedDeliveryOrder> DetailedDeliveryOrders { get; set; }
     }
 }

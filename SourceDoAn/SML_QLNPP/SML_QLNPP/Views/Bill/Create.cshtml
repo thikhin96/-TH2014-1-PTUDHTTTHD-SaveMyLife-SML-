@@ -1,4 +1,4 @@
-﻿@model DataModel.Bill
+﻿@model SML_QLNPP.Models.CreateBillViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -37,21 +37,25 @@
     <div class="box-body">
         <div class="col-md-3 form-group">
             @Html.Label("Mã nhân viên:")
-            @Html.TextBoxFor(model => model.idStaff, "", new { @class = "form-control" , required = "required" })
+            @Html.TextBoxFor(model => model.idStaff, "", new { @class = "form-control", @readonly = "readonly" })
             @Html.ValidationMessageFor(model => model.idStaff, "", new { @class = "text-danger" })
         </div>
         <div class="col-md-3 form-group">
             @Html.Label("Mã giao hàng số:")
-            @Html.TextBoxFor(model => model.idDeliveryOrder, "", new { @class = "form-control", required = "required" })
+            @Html.TextBoxFor(model => model.idDeliveryOrder, "", new { @class = "form-control", @readonly = "readonly" })
             @Html.ValidationMessageFor(model => model.idDeliveryOrder, "", new { @class = "text-danger" })
         </div>
         <div class="col-md-3 form-group">
             @Html.Label("Mã nhà phân phối:")
-            @Html.TextBoxFor(model => model.idDistributor, "", new { @class = "form-control", required = "required" })
+            @Html.TextBoxFor(model => model.idDistributor, "", new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div class="col-md-3 form-group">
+            @Html.Label("Tên nhà phân phối:")
+            @Html.TextBoxFor(model => model.nameDistributor, "", new { @class = "form-control", @readonly = "readonly" })
         </div>
         <div class="col-md-3 form-group">
             @Html.Label("Ngày lập:")
-            @Html.TextBox("createdDate", "", new { @type = "date", @class = "form-control" , @readonly = "readonly"})
+            @Html.TextBoxFor(model => model.createdDate, "{0:dd/MM/yyyy}", new { @type = "date", @class = "form-control", @readonly = "readonly", @strDate = Model.createdDate.ToLocalTime() })
         </div>
         <div class="col-md-3 form-group">
             @Html.Label("Loại hóa đơn:")

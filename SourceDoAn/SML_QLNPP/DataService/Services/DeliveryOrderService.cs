@@ -13,19 +13,22 @@ namespace DataService.Services
     public class DeliveryOrderService : IDeliveryOrderService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IRepository<DeliveryOrder> _repDeliveryOrder;
+        private readonly IRepository<DetailedDeliveryOrderService> _repDDeliveryOrder;
         ILogger logger = LogManager.GetCurrentClassLogger();
         public DeliveryOrderService(IUnitOfWork unitOfWork)
         {
             //_promotionRepository = unitOfWork.Repository<Promotion>();
             _unitOfWork = unitOfWork;
+            _repDeliveryOrder = _unitOfWork.Repository<DeliveryOrder>();
+            _repDDeliveryOrder = _unitOfWork.Repository<DetailedDeliveryOrderService>();
         }
         public bool AddDeliveryOrder(DeliveryOrder dOrder)
         {
             try
             {
                 logger.Info("Start Add DeliveryOrder....");
-                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
-                repository.Add(dOrder);
+                _repDeliveryOrder.Add(dOrder);
                 _unitOfWork.SaveChange();
                 logger.Info("End Add DeliveryOrder....");
                 return true;
@@ -43,8 +46,7 @@ namespace DataService.Services
             try
             {
                 logger.Info("Start Update DeliveryOrder....");
-                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
-                repository.Update(dOrder);
+                _repDeliveryOrder.Update(dOrder);
                 _unitOfWork.SaveChange();
                 logger.Info("End Update DeliveryOrder....");
                 return true;
@@ -166,12 +168,11 @@ namespace DataService.Services
         }
         public int GenerateDOrderId()
         {
-            IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
-            var latestdOrder = repository.GetAll().OrderByDescending(x => x.idDeliveryOrder).FirstOrDefault();
+            var latestdOrder = _repDeliveryOrder.GetAll().OrderByDescending(x => x.idDeliveryOrder).FirstOrDefault();
             if (latestdOrder != null)
                 return latestdOrder.idDeliveryOrder + 1;
             else
-                return 0;
+                return 1;
         }
     }
 }

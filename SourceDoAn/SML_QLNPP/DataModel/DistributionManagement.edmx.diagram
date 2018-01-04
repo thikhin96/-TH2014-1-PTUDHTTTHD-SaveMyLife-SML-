@@ -13,8 +13,6 @@
         <EntityTypeShape EntityType="QL_NPPModel.Consignee" Width="1.5" PointX="3" PointY="29.125" />
         <EntityTypeShape EntityType="QL_NPPModel.Contract" Width="1.5" PointX="5.25" PointY="21.5" />
         <EntityTypeShape EntityType="QL_NPPModel.Debt" Width="1.5" PointX="6" PointY="18.25" />
-        <EntityTypeShape EntityType="QL_NPPModel.DeliveryOrder" Width="1.5" PointX="10.5" PointY="22" />
-        <EntityTypeShape EntityType="QL_NPPModel.DetailedDeliveryOrder" Width="1.5" PointX="12.75" PointY="23" />
         <EntityTypeShape EntityType="QL_NPPModel.Distributor" Width="1.5" PointX="0.75" PointY="20.875" />
         <EntityTypeShape EntityType="QL_NPPModel.Log_Login" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="QL_NPPModel.Log_Order" Width="1.5" PointX="2.75" PointY="3.75" />
@@ -43,7 +41,6 @@
         <AssociationConnector Association="QL_NPPModel.FK_Assignment_Staff" />
         <AssociationConnector Association="QL_NPPModel.FK_BatchDetail_Batch" />
         <AssociationConnector Association="QL_NPPModel.FK_BatchDetail_Product" />
-        <AssociationConnector Association="QL_NPPModel.FK_Bill_DeliveryOrder" />
         <AssociationConnector Association="QL_NPPModel.FK_Bill_Distributor" />
         <AssociationConnector Association="QL_NPPModel.FK_Bill_Staff" />
         <AssociationConnector Association="QL_NPPModel.FK_Consignee_Distributor" />
@@ -53,11 +50,6 @@
         <AssociationConnector Association="QL_NPPModel.FK_HopDong_NhaPhanPhoi" />
         <AssociationConnector Association="QL_NPPModel.FK_Debt_Distributor" />
         <AssociationConnector Association="QL_NPPModel.FK_Debt_Staff" />
-        <AssociationConnector Association="QL_NPPModel.FK_DeliveryOrder_Distributor" />
-        <AssociationConnector Association="QL_NPPModel.FK_DeliveryOrder_Oder" />
-        <AssociationConnector Association="QL_NPPModel.FK_DeliveryOrder_Staff" />
-        <AssociationConnector Association="QL_NPPModel.FK_DetailedDeliveryOrder_DeliveryOrder" />
-        <AssociationConnector Association="QL_NPPModel.FK_DetailedDeliveryOrder_Product" />
         <AssociationConnector Association="QL_NPPModel.FK_Order_Distributor" />
         <AssociationConnector Association="QL_NPPModel.FK_PaySlip_Distributor" />
         <AssociationConnector Association="QL_NPPModel.FK_Representative_Distributor" />
@@ -88,6 +80,14 @@
         <AssociationConnector Association="QL_NPPModel.FK_ReturnRequest_Storage" />
         <AssociationConnector Association="QL_NPPModel.FK_ReturnRequestDetail_ReturnRequest" />
         <AssociationConnector Association="QL_NPPModel.FK_SalesReportDetail_SalesReport" />
+        <EntityTypeShape EntityType="QL_NPPModel.DeliveryOrder" Width="1.5" PointX="10.5" PointY="22.375" />
+        <EntityTypeShape EntityType="QL_NPPModel.DetailedDeliveryOrder" Width="1.5" PointX="12.75" PointY="22.625" />
+        <AssociationConnector Association="QL_NPPModel.FK_Bill_DeliveryOrder" />
+        <AssociationConnector Association="QL_NPPModel.FK_DeliveryOrder_Distributor" />
+        <AssociationConnector Association="QL_NPPModel.FK_DeliveryOrder_Staff" />
+        <AssociationConnector Association="QL_NPPModel.FK_DetailedDeliveryOrder_DeliveryOrder" />
+        <AssociationConnector Association="QL_NPPModel.FK_DetailedDeliveryOrder_Product" />
+        <AssociationConnector Association="QL_NPPModel.FK_DeliveryOrder_Order" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -8,28 +8,38 @@ using System.Web;
 using System.Web.Mvc;
 using DataModel;
 using DataService.Interfaces;
-
+using SML_QLNPP.Models;
 namespace SML_QLNPP.Controllers
 {
-    public class BillController : Controller
+    public class BillController : BaseController
     {
         private readonly IBillService _billService;
         private readonly IDeliveryOrderService _dOrderService;
         private readonly IDistributorService _distributoriervice;
-        public BillController(IBillService billService, IDeliveryOrderService dOrderService, IDistributorService distributorBservice)
+        private readonly IOrderService _orderService;
+        private readonly IStaffService _staffService;
+        private readonly IAccountService _accountService;
+        public BillController(IAccountService accountService, IStaffService staffService,
+            IOrderService orderService,IBillService billService, IDeliveryOrderService dOrderService,
+            IDistributorService distributorBservice)
         {
             this._billService = billService;
             this._dOrderService = dOrderService;
             this._distributoriervice = distributorBservice;
+            this._orderService = orderService;
+            this._staffService = staffService;
+            this._accountService = accountService;
         }
         //POST: Bill/Create
         [HttpPost]
-        public ActionResult Create(Bill bill)
+        public ActionResult Create(CreateBillViewModel model)
         {
             ViewBag.Parent = "Quản lý giao hàng";
             ViewBag.Child = "Lập hóa đơn";
-
+            isAdminLogged();
+            var bill = new Bill();
             var delivery = _dOrderService.SearchById(Int32.Parse(bill.idDeliveryOrder.ToString()));
+            var order = _orderService.GetOrder(delivery.idOrder);
             // kiểm tra mã giao hàng có thuộc về npp hay không
             if (delivery.idDistributor != bill.idDistributor)
             {
@@ -40,8 +50,9 @@ namespace SML_QLNPP.Controllers
                 // TH thanh toán giao hàng
                 if (bill.types ==1)
                 {
+
                     // nếu hình thức thanh toán của đơn hàng là qua thẻ thì ko cần lập hóa đơn (paymenttype = true)
-                    if (delivery.Order.PaymentType == true)
+                    if (order.PaymentType == true)
                     {
                         ViewBag.types = 1;
                         ViewBag.msg = "Đã thanh toán qua thẻ, không cần lập hóa đơn thanh toán giao hàng";
@@ -98,11 +109,24 @@ namespace SML_QLNPP.Controllers
         }
 
         // GET: Bill/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
             ViewBag.Parent = "Quản lý giao hàng";
             ViewBag.Child = "Lập hóa đơn";
-            return View();
+            isAdminLogged();
+
+            var user = Session["admin"] as Account;
+
+            var dOrder = _dOrderService.SearchById(id);
+
+            CreateBillViewModel model = new CreateBillViewModel();
+            // model.idStaff = _staffService.
+            model.idDeliveryOrder = id;
+            model.createdDate = DateTime.Now;
+            model.idDistributor = dOrder.idDistributor;
+            model.nameDistributor = dOrder.Distributor.name;
+            model.idDeliveryOrder = dOrder.idDeliveryOrder;
+            return View(model);
         }
     }
 }

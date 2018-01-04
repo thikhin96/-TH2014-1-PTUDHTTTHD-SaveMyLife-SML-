@@ -18,13 +18,13 @@ namespace DataModel
         public Product()
         {
             this.BatchDetails = new HashSet<BatchDetail>();
-            this.DetailedDeliveryOrders = new HashSet<DetailedDeliveryOrder>();
             this.Log_OrderDetail = new HashSet<Log_OrderDetail>();
             this.OrderDetails = new HashSet<OrderDetail>();
             this.PromotionGifts = new HashSet<PromotionGift>();
             this.PromotionProducts = new HashSet<PromotionProduct>();
             this.ReturnDetails = new HashSet<ReturnDetail>();
             this.ReturnRequestDetails = new HashSet<ReturnRequestDetail>();
+            this.DetailedDeliveryOrders = new HashSet<DetailedDeliveryOrder>();
         }
     
         public int IdProduct { get; set; }
@@ -37,8 +37,6 @@ namespace DataModel
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BatchDetail> BatchDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetailedDeliveryOrder> DetailedDeliveryOrders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Log_OrderDetail> Log_OrderDetail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -53,5 +51,7 @@ namespace DataModel
         public virtual ICollection<ReturnDetail> ReturnDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReturnRequestDetail> ReturnRequestDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetailedDeliveryOrder> DetailedDeliveryOrders { get; set; }
     }
 }
