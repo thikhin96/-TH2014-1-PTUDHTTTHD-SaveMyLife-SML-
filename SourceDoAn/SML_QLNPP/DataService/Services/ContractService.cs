@@ -22,8 +22,9 @@ namespace DataService.Services
         IRepository<Representative> repo_rep;
         IRepresentativeService service_rep;
         IDistributorService service_dis;
+        IAccountService service_account;
 
-        public ContractService(IUnitOfWork _unitOfWork, IRepresentativeService _serviceRep, IDistributorService _serviceDis)
+        public ContractService(IUnitOfWork _unitOfWork, IRepresentativeService _serviceRep, IDistributorService _serviceDis, IAccountService _serviceAccount)
         {
             uow = _unitOfWork;
             repo_con = uow.Repository<Contract>();
@@ -32,6 +33,7 @@ namespace DataService.Services
             repo_rep = uow.Repository<Representative>();
             service_rep = _serviceRep;
             service_dis = _serviceDis;
+            service_account = _serviceAccount;
         }
 
         public bool CancelContract(int id, string reason)
@@ -47,12 +49,14 @@ namespace DataService.Services
             Distributor dis = con.Distributor1;
             dis.status = false;
             dis.debt = 0;
+            dis.note = "Chấm dứt hợp đồng";
             
             bool result = true;
             try
             {
                 repo_con.Update(con);
                 repo_dis.Update(dis);
+                service_account.UpdateStatus(dis.UserName, dis.note, false);
                 uow.SaveChange();
             }
             catch(Exception ex)
@@ -107,6 +111,7 @@ namespace DataService.Services
                 repo_con.Add(contract);
                 uow.SaveChange();
                 service_rep.UpdateTypeOfRepresentation((int)contract.representative, (int)contract.distributor);
+                service_account.CreateAccount(contract.Distributor1.name, 3);
             }
             catch (Exception ex)
             {
@@ -126,8 +131,9 @@ namespace DataService.Services
                 repo_con.Add(contract);
                 uow.SaveChange();
                 service_dis.UpdateStatus((int)contract.distributor, true, "Tạo hợp đồng mới: " + contract.idContract.ToString());
+                
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 logger.Info(ex.Message);
                 throw ex;

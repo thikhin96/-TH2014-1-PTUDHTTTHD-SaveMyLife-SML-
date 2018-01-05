@@ -12,37 +12,37 @@
     <div class="col-md-6">
         <dl class="dl-horizontal">
             <dt> @Html.Label("Thời gian bắt đầu: ") </dt>
-            <dd>@Html.TextBoxFor(model => model.beginDate, "{0:dd/MM/yyyy}", new { @class = "datepicker" })</dd>
+            <dd>@Html.TextBoxFor(model => model.beginDate, "{0:dd/MM/yyyy}", new { @class = "datepicker", @required = "required" })</dd>
         </dl>
     </div>
     <div class="col-md-6">
         <dl class="dl-horizontal">
             <dt> @Html.Label("Thời gian kết thúc: ") </dt>
-            <dd>@Html.TextBoxFor(model => model.expiredDate, "{0:dd/MM/yyyy}", new { @class = "datepicker" })</dd>
+            <dd>@Html.TextBoxFor(model => model.expiredDate, "{0:dd/MM/yyyy}", new { @class = "datepicker", @required = "required" })</dd>
         </dl>
     </div>
     <div class="col-md-12">
         <dl class="dl-horizontal">
             <dt> @Html.Label("Giá trị ĐH nhỏ nhất: ") </dt>
-            <dd>@Html.TextBoxFor(model => model.minOrderTotalValue)</dd>
+            <dd>@Html.TextBoxFor(model => model.minOrderTotalValue, new { @required = "required" })</dd>
         </dl>
     </div>
     <div class="col-md-6">
         <dl class="dl-horizontal">
             <dt> @Html.Label("Công nợ tối đa: ") </dt>
-            <dd>@Html.TextBoxFor(model => model.maxDebt)</dd>
+            <dd>@Html.TextBoxFor(model => model.maxDebt, new { @required = "required" })</dd>
         </dl>
     </div>
     <div class="col-md-6">
         <dl class="dl-horizontal">
             <dt> @Html.Label("Hoa hồng: ") </dt>
-            <dd>@Html.TextBoxFor(model => model.commission)</dd>
+            <dd>@Html.TextBoxFor(model => model.commission, new { @required = "required" })</dd>
         </dl>
     </div>
     <div class="col-md-6">
         <dl class="dl-horizontal">
             <dt> @Html.Label("Khu vực: ") </dt>
-            <dd>@Html.TextBoxFor(model => model.area)</dd>
+            <dd>@Html.TextBoxFor(model => model.area, new { @required = "required" })</dd>
         </dl>
     </div>
     <div class="col-md-6">

@@ -7,25 +7,25 @@
     <div class="col-md-6">
         <dl class="dl-horizontal">
             <dt> @Html.Label("Họ tên: ") </dt>
-            <dd>@Html.TextBoxFor(model => model.name)</dd>
+            <dd>@Html.TextBoxFor(model => model.name, new { @required = "required" })</dd>
         </dl>
     </div>
     <div class="col-md-6">
         <dl class="dl-horizontal">
             <dt> @Html.Label("Chức vụ: ") </dt>
-            <dd>@Html.TextBoxFor(model => model.title)</dd>
+            <dd>@Html.TextBoxFor(model => model.title,new { @required = "required" })</dd>
         </dl>
     </div>
     <div class="col-md-6">
         <dl class="dl-horizontal">
             <dt> @Html.Label("Số điện thoại: ") </dt>
-            <dd>@Html.TextBoxFor(model => model.phone)</dd>
+            <dd>@Html.TextBoxFor(model => model.phone, new { @required = "required" })</dd>
         </dl>
     </div>
     <div class="col-md-6">
         <dl class="dl-horizontal">
             <dt> @Html.Label("Email: ") </dt>
-            <dd>@Html.TextBoxFor(model => model.email)</dd>
+            <dd>@Html.TextBoxFor(model => model.email, new { @required = "required", type = "email" })</dd>
         </dl>
     </div>
 </div>

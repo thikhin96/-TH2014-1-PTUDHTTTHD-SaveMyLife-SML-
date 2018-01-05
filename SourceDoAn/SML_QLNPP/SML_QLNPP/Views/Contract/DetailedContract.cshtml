@@ -3,12 +3,23 @@
 @{
     ViewBag.Title = "DetailedContract";
     Layout = "~/Views/Shared/_ALayout.cshtml";
-    var message = TempData["message"] as string;
+    var success = TempData["success"] as string;
+    var fail = TempData["fail"] as string;
 }
 
-@if (!string.IsNullOrEmpty(message))
+@if (success != null)
+            {
+    <div class="alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Thành công!</strong>
+    </div>
+}
+else if (fail != null)
 {
-    <script>alert(message);</script>
+    <div class="alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Thất bại!</strong>
+    </div>
 }
 <center><h1 style="color:blue"><b>THÔNG TIN CHI TIẾT HỢP ĐỒNG</b></h1></center>
 
@@ -176,7 +187,7 @@
                             <div class="col-md-12">
                                 <p>Nhập lý do hủy hợp đồng<span> @Model.idContract</span></p>
                                 @Html.TextBoxFor(model => model.idContract, new { Type = "hidden" })
-                                @Html.TextBoxFor(model => model.note, new { style = "width : 100%" })
+                                @Html.TextBoxFor(model => model.note, new { style = "width : 100%", @required = "required"})
                             </div>
                             <div style="padding: 10px 0;" class="col-md-12">
                                 <button type="submit" class="btn btn-primary" style="margin-left: 60%" > OK</button>

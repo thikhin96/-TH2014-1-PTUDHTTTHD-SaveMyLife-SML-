@@ -21,17 +21,19 @@ namespace DataService.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<Distributor> _distributorRepository;
         private readonly IRepository<Contract> _contractRepository;
-
+        IAccountService _serviceAccount;
+    
         /// <summary>
         /// Hàm khởi tạo
         /// </summary>
         /// <param name="unitOfWork"></param>
         /// <returns></returns>
-        public DistributorService(IUnitOfWork unitOfWork)
+        public DistributorService(IUnitOfWork unitOfWork, IAccountService accountService)
         {
             _unitOfWork = unitOfWork;
             _distributorRepository = unitOfWork.Repository<Distributor>();
             _contractRepository = unitOfWork.Repository<Contract>();
+            _serviceAccount = accountService;
         }
 
         public bool hasContract(int distributorId)
@@ -65,7 +67,7 @@ namespace DataService.Services
             if (latestDis != null)
                 return latestDis.idDistributor + 1;
             else
-                return 1;
+                return 0;
         }
 
         public int Create(Distributor person)
@@ -79,6 +81,7 @@ namespace DataService.Services
             try
             {
                 _distributorRepository.Add(person);
+                
             }
             catch (Exception ex)
             {
@@ -159,6 +162,10 @@ namespace DataService.Services
 
                 _distributorRepository.Update(dis);
                 _unitOfWork.SaveChange();
+
+                // Update status of account's Distributor
+                _serviceAccount.UpdateStatus(dis.name, note, !status);
+                
                 logger.Info("End: Successful...");
                 return true;
             }

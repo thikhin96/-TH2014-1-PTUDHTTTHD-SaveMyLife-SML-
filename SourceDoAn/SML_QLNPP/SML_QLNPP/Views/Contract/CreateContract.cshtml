@@ -132,7 +132,7 @@ else if (fail != null)
                 <h4 class="modal-title">DANH SÁCH NHÀ PHÂN PHỐI CŨ</h4>
             </div>
             <div class="box-body">
-                @if (Model.oldDis.Count == 0)
+                @if ( Model.oldDis == null)
                 {
                     <strong> Tất cả nhà phân phối đều đang có hợp đồng</strong>
                 }

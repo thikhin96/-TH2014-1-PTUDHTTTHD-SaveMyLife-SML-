@@ -20,7 +20,8 @@ namespace SML_QLNPP.Controllers
         IPDistributorService pDis_Service;
         IRepresentativeService rep_Service;
 
-        public ContractController(IContractService _serviceContract, IDistributorService _serviceDistributor, IStaffService _serviceStaff, IPDistributorService _servicePDis, IRepresentativeService _serviceRep)
+        public ContractController(IContractService _serviceContract, IDistributorService _serviceDistributor, IStaffService _serviceStaff, 
+                                    IPDistributorService _servicePDis, IRepresentativeService _serviceRep)
         {
             this.con_Service = _serviceContract;
             this.dis_Service = _serviceDistributor;
@@ -76,20 +77,20 @@ namespace SML_QLNPP.Controllers
             logger.Info("Start controller to cancel a contract...");
             isAdminLogged();
             bool result = con_Service.CancelContract(con.idContract, con.note);
-            if (!result)
+            if (result == true)
             {
-                TempData["message"] = "Thất bại";
+                TempData["success"] = "Thành công";
+                logger.Info("End: Successful....");
             }
             else
             {
-                TempData["message"] = "Thành công";
+                TempData["fail"] = "Thất bại";
+                logger.Info("End: Unsuccessful....");
             }
-            //thang` detailcontract nay no yeu cau Model la Contract, ma minh truyen qua ID la int no bao loi la dung roi con gi
-            // aief v dc 
+           
             return RedirectToAction("DetailedContract", new { id = con.idContract });
         }
-
-        
+ 
         public ActionResult CreateContract()
         {
             isAdminLogged();
@@ -181,6 +182,7 @@ namespace SML_QLNPP.Controllers
                 _con.Representative1 = _rep;
                 _con.distributor = dis.idDistributor;
                 result = con_Service.CreateContract(_con, false);
+                
             }
             else        // Create contract for potential distributor
             {
@@ -199,6 +201,7 @@ namespace SML_QLNPP.Controllers
                 _con.Distributor1 = _dis; // _dis.idDistributor;
                 _con.representative = rep.idRepresentative;
                 result = con_Service.CreateContract(_con, true);
+                //pDis_Service.UpdateStatus(dis.idDistributor, 5, "Đã tạo hợp đồng");
             }
             if (result == true)
             {
