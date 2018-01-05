@@ -154,7 +154,7 @@
 
             </div>
             <p style="margin-left: 70%">
-                <input type="button" class="btn btn-primary" value="Hủy hợp đồng" data-toggle="modal" data-target="#div-Popup" onclick="Create_PopUp()" />
+                <input type="button" class="btn btn-primary" value="Hủy hợp đồng" @(Model.status == false ? "disabled = 'disabled'" : "" ) data-toggle="modal" data-target="#div-Popup" />
                 @Html.ActionLink("Thoát", "Contract", "Contract", new { @class = "btn btn-primary", style = "margin-left: 5%" })
             </p>
         </div>
@@ -179,7 +179,7 @@
                                 @Html.TextBoxFor(model => model.note, new { style = "width : 100%" })
                             </div>
                             <div style="padding: 10px 0;" class="col-md-12">
-                                <button type="submit" class="btn btn-primary" style="margin-left: 60%" @(Model.status == false ? "disabled = 'disabled'" : "" )> OK</button>
+                                <button type="submit" class="btn btn-primary" style="margin-left: 60%" > OK</button>
                                 <button type="button" class="btn btn-primary" data-dismiss="modal" style="margin-left: 5%">Thoát</button>
                             </div>
                         </div>

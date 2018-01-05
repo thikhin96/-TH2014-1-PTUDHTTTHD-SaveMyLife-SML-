@@ -137,7 +137,7 @@ namespace SML_QLNPP.Controllers
                     PhoneNumber = model.Consignee.PhoneNumber,
                     idDistributor = model.idDistributor
                 },
-                OrderDetails = OrderDetails
+                OrderDetails = OrderDetails 
             };
             var result = _orderService.CreateOrder(order);
             if (result == "thanh cong")

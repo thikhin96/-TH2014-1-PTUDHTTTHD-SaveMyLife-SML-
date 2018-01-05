@@ -11,10 +11,11 @@ namespace DataService.Interfaces
     public interface IDistributorService
     {
         int Create(Distributor person);
+        int GenerateDistributorId();
         bool UpdateDebt(int id, long money);
-        bool UpdateStatus(int id, bool status);
+        bool UpdateStatus(int id, bool status, string note);
         Distributor SearchByID(int id);
-        IList<DistributorList> GetList(Nullable<int> id);
+        IList<DistributorList> GetList(Nullable<int> id, bool? status);
         bool hasContract(int distributorId);
         bool priceOverDebt(int distributorId, decimal price);
         List<Distributor> SearchByName(string searchTerm);

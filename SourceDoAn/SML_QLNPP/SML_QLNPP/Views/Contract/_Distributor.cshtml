@@ -1,0 +1,55 @@
+﻿@model SML_QLNPP.Models.DistributorViewModel
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/select2.min.js"></script>
+    <script type="text/javascript" src="~/scripts/Contract/createContract.js"></script>
+}
+
+<div id="npp">
+    <h4 style="color:mediumslateblue; margin-left: 2%"><b>Nhà phân phối</b></h4>
+    <br />
+    <div class="col-md-12" style="display:none">
+        <dl class="dl-horizontal">
+            <dt> @Html.Label("Mã nhà phân phối: ") </dt>
+            <dd>
+                @*<select name="idDistributor" id="idDistributor" data-url="@Url.Action("GetOldDistributors", "DataSource")">
+        @if (Model.name != null)
+        {
+            <option value="@Model.idDistributor" selected="selected">@Model.name</option>
+        }
+    </select>*@
+            @Html.TextBoxFor(model => model.idDistributor )
+            </dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt> @Html.Label("Tên công ty: ") </dt>
+            <dd>@Html.TextBoxFor(model => model.name)</dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt> @Html.Label("Địa chỉ công ty: ") </dt>
+            <dd>@Html.TextBoxFor(model => model.address)</dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt> @Html.Label("Số điện thoại: ") </dt>
+            <dd>@Html.TextBoxFor(model => model.phone)</dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt> @Html.Label("Email: ") </dt>
+            <dd>@Html.TextBoxFor(model => model.Email)</dd>
+        </dl>
+    </div>
+    <div id ="debt_dis" class="col-md-12" style="display: none">
+        <dl class="dl-horizontal">
+            <dt> @Html.Label("Công nợ hiện tại: ") </dt>
+            <dd>@Html.TextBoxFor(model => model.debt)</dd>
+        </dl>
+    </div>
+</div>

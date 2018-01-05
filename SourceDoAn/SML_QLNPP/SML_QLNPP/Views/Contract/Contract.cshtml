@@ -1,4 +1,4 @@
-﻿@model SML_QLNPP.Models.ContractViewModel
+﻿@model SML_QLNPP.Models.ContractListViewModel
 @{
     ViewBag.Title = "Contract";
     Layout = "~/Views/Shared/_ALayout.cshtml";
@@ -20,6 +20,7 @@
     <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Order/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
+    <script type="text/javascript" src="~/scripts/Contract/createContract.js"></script>
     <script>
         $('#con-list').DataTable({
             "oLanguage": {
@@ -43,8 +44,7 @@
         <div class="col-md-12">
             <div class="col-md-2">
                 <div class="box-body">
-                    @Html.ActionLink("Tạo hợp đồng", "CreateContract", "Contract", new { @class = "btn btn-primary" })
-                    <a href="/Contract/CreateContract" title="Tạo hợp đồng"><i class="fa fa-plus-square fa-lg" aria-hidden="true"></i></a>
+                    @Html.ActionLink("Tạo hợp đồng", "CreateContract", "Contract", new { @class = "btn btn-primary", @id = "btn_createContract"})
                 </div>
             </div>
             <div class="col-md-10">

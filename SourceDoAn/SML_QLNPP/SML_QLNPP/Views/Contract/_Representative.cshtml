@@ -1,0 +1,31 @@
+﻿@model SML_QLNPP.Models.RepresentativeViewModel
+
+<div id="ndd">
+    <h4 style="color:mediumslateblue; margin-left: 2%"><b>Người đại diện</b></h4>
+    <br />
+    @Html.TextBoxFor(model => model.idRepresentative, new { Type = "hidden" })
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt> @Html.Label("Họ tên: ") </dt>
+            <dd>@Html.TextBoxFor(model => model.name)</dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt> @Html.Label("Chức vụ: ") </dt>
+            <dd>@Html.TextBoxFor(model => model.title)</dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt> @Html.Label("Số điện thoại: ") </dt>
+            <dd>@Html.TextBoxFor(model => model.phone)</dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt> @Html.Label("Email: ") </dt>
+            <dd>@Html.TextBoxFor(model => model.email)</dd>
+        </dl>
+    </div>
+</div>

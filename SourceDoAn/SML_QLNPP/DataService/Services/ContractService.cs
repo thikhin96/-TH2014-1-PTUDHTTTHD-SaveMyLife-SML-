@@ -46,6 +46,7 @@ namespace DataService.Services
             con.note = reason;
             Distributor dis = con.Distributor1;
             dis.status = false;
+            dis.debt = 0;
             
             bool result = true;
             try
@@ -100,24 +101,12 @@ namespace DataService.Services
 
         bool CreateContract_PDis(Contract contract)
         {
+            logger.Info("Start to create contract for potential distributor...");
             try
             {
-                Distributor dis = contract.Distributor1;
-                dis.createdDate = DateTime.Now;
-                dis.updatedDate = DateTime.Now;
-                dis.debt = 0;
-                dis.status = true; ;
-                contract.distributor = service_dis.Create(dis);
-
-                Representative rep = contract.Representative1;
-                rep.PDistributor = null;
-                rep.Distributor = contract.distributor;
-
-                contract.representative = contract.Representative1.idRepresentative;
-
-                repo_rep.Update(rep);
                 repo_con.Add(contract);
                 uow.SaveChange();
+                service_rep.UpdateTypeOfRepresentation((int)contract.representative, (int)contract.distributor);
             }
             catch (Exception ex)
             {
@@ -129,20 +118,14 @@ namespace DataService.Services
 
         bool CreateContract_Dis(Contract contract)
         {
+            logger.Info("Start to create contract for old distributor..");
             if (GetCurrentContractOfDistributor(contract.distributor) != 0)
                 return false;
             try 
             {
-                Distributor dis = contract.Distributor1;
-                dis.status = true;
-                dis.updatedDate = DateTime.Now;
-                dis.note = "Tạo hợp đồng mới: " + contract.idContract.ToString();
-                contract.Representative1.Distributor = contract.distributor;
-                contract.representative = service_rep.Create(contract.Representative1);
-
-                repo_dis.Update(dis);
                 repo_con.Add(contract);
                 uow.SaveChange();
+                service_dis.UpdateStatus((int)contract.distributor, true, "Tạo hợp đồng mới: " + contract.idContract.ToString());
             }
             catch(Exception ex)
             {

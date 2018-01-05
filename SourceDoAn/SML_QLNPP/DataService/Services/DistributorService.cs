@@ -59,7 +59,7 @@ namespace DataService.Services
             throw new NotImplementedException();
         }
 
-        int GenerateDistributorId()
+        public int GenerateDistributorId()
         {
             var latestDis = _distributorRepository.GetAll().OrderByDescending(x => x.idDistributor).FirstOrDefault();
             if (latestDis != null)
@@ -70,8 +70,12 @@ namespace DataService.Services
 
         public int Create(Distributor person)
         {
-            logger.Info("Start to create a representative...");
+            logger.Info("Start to create a distributor...");
             person.idDistributor = GenerateDistributorId();
+            person.createdDate = DateTime.Now;
+            person.updatedDate = DateTime.Now;
+            person.debt = 0;
+            person.status = true;
             try
             {
                 _distributorRepository.Add(person);
@@ -84,10 +88,15 @@ namespace DataService.Services
             return person.idDistributor;
         }
 
-        public IList<DistributorList> GetList(Nullable<int> id = null)
+        public IList<DistributorList> GetList(Nullable<int> id = null, bool? status = null)
         {
             logger.Info("Start service....");
             IList<Distributor> ds_Dis = new List<Distributor>();
+            if (status == false)
+            {
+                ds_Dis = _distributorRepository.GetAll(x => x.status == status).ToList();
+            }
+            else
             if (id == null)
                 ds_Dis = _distributorRepository.GetAll().ToList();
             else
@@ -138,9 +147,26 @@ namespace DataService.Services
             }
         }
 
-        public bool UpdateStatus(int id, bool status)
+        public bool UpdateStatus(int id, bool status, string note)
         {
-            throw new NotImplementedException();
+            logger.Info("Start to update status of the distributor...");
+            try
+            {
+                Distributor dis = SearchByID((int)id);
+                dis.status = status;
+                dis.updatedDate = DateTime.Now;
+                dis.note = note;
+
+                _distributorRepository.Update(dis);
+                _unitOfWork.SaveChange();
+                logger.Info("End: Successful...");
+                return true;
+            }
+            catch(Exception ex)
+            {
+                logger.Info(ex.Message);
+                return false;
+            }
         }
 
         public IList<DistributorList> GetAll()

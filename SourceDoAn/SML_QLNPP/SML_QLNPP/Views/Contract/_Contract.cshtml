@@ -1,0 +1,55 @@
+﻿@model SML_QLNPP.Models.ContractViewModel
+
+<div id="hd">
+    <h4 style="color:mediumslateblue; margin-left: 2%"><b>Hợp đồng</b></h4>
+    <br />
+    <div id ="idContract" class="col-md-12" style="display:none">
+        <dl class="dl-horizontal">
+            <dt> @Html.Label("Mã hợp đồng: ") </dt>
+            <dd>@Html.TextBoxFor(model => model.idContract)</dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt> @Html.Label("Thời gian bắt đầu: ") </dt>
+            <dd>@Html.TextBoxFor(model => model.beginDate, "{0:dd/MM/yyyy}", new { @class = "datepicker" })</dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt> @Html.Label("Thời gian kết thúc: ") </dt>
+            <dd>@Html.TextBoxFor(model => model.expiredDate, "{0:dd/MM/yyyy}", new { @class = "datepicker" })</dd>
+        </dl>
+    </div>
+    <div class="col-md-12">
+        <dl class="dl-horizontal">
+            <dt> @Html.Label("Giá trị ĐH nhỏ nhất: ") </dt>
+            <dd>@Html.TextBoxFor(model => model.minOrderTotalValue)</dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt> @Html.Label("Công nợ tối đa: ") </dt>
+            <dd>@Html.TextBoxFor(model => model.maxDebt)</dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt> @Html.Label("Hoa hồng: ") </dt>
+            <dd>@Html.TextBoxFor(model => model.commission)</dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt> @Html.Label("Khu vực: ") </dt>
+            <dd>@Html.TextBoxFor(model => model.area)</dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt> @Html.Label("Loại phân phối: ") </dt>
+            <dd>@Html.DropDownListFor(model => model.disType, new List<SelectListItem> { new SelectListItem { Text = "Độc quyền", Value = "False" }, new SelectListItem { Text = "Không độc quyền", Value = "True" } }) </dd>
+        </dl>
+    </div>
+</div>
+
