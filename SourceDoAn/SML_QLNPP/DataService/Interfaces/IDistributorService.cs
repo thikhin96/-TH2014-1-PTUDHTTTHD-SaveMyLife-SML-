@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,5 +19,7 @@ namespace DataService.Interfaces
         IList<DistributorList> GetAll();
         bool hasContract(int distributorId);
         bool priceOverDebt(int distributorId, decimal price);
+        Distributor GetDistributor(int idd);
+        IEnumerable GetList();
     }
 }

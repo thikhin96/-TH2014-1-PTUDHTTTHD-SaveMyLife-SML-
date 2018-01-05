@@ -14,6 +14,7 @@ using DataModel.Interfaces;
 using DataModel.Repositories;
 using DataService.Dtos;
 using NLog;
+using System.Collections;
 
 namespace DataService.Services
 {
@@ -121,6 +122,17 @@ namespace DataService.Services
         }
 
         public IList<DistributorList> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+        public Distributor GetDistributor(int idd)
+        {
+            IRepository<Distributor> repository = _unitOfWork.Repository<Distributor>();
+            var result = repository.Get(a => a.idDistributor == idd);
+            return result != null ? result : null;
+        }
+
+        public IEnumerable GetList()
         {
             throw new NotImplementedException();
         }

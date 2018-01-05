@@ -19,12 +19,12 @@ insert into Account values('taikhoan10','123456789',0,1,0,GetDate(),getdate(),nu
 
 --Distributor
 select * from Distributor
-delete from Distributor
-insert into Distributor values(N'Nhà phân phối 1',N'Quận Phú Nhuận, TPHCM','0987464556','emai34l@sample.com',getdate(),getdate(),null,1,'taikhoan6');
-insert into Distributor values(N'Nhà phân phối 2',N'Quận Phú Nhuận, TPHCM','0456045045','email1@sample.com',getdate(),getdate(),null,1,'taikhoan7');
-insert into Distributor values(N'Nhà phân phối 3',N'Quận Phú Nhuận, TPHCM','0456045606','email2@sample.com',getdate(),getdate(),null,1,'taikhoan8');
-insert into Distributor values(N'Nhà phân phối 4',N'Quận Phú Nhuận, TPHCM','0789760466','email3@sample.com',getdate(),getdate(),null,1,'taikhoan9');
-insert into Distributor values(N'Nhà phân phối 5',N'Quận Phú Nhuận, TPHCM','0456786078','email4@sample.com',getdate(),getdate(),null,1,'taikhoan10');
+--delete from Distributor
+insert into Distributor values(N'Nhà phân phối 1',N'Quận Phú Nhuận, TPHCM','0987464556','emai34l@sample.com',null,getdate(),getdate(),null,1,'taikhoan6');
+insert into Distributor values(N'Nhà phân phối 2',N'Quận Phú Nhuận, TPHCM','0456045045','email1@sample.com',null,getdate(),getdate(),null,1,'taikhoan7');
+insert into Distributor values(N'Nhà phân phối 3',N'Quận Phú Nhuận, TPHCM','0456045606','email2@sample.com',null,getdate(),getdate(),null,1,'taikhoan8');
+insert into Distributor values(N'Nhà phân phối 4',N'Quận Phú Nhuận, TPHCM','0789760466','email3@sample.com',null,getdate(),getdate(),null,1,'taikhoan9');
+insert into Distributor values(N'Nhà phân phối 5',N'Quận Phú Nhuận, TPHCM','0456786078','email4@sample.com',null,getdate(),getdate(),null,1,'taikhoan10');
 
 
 --[Contract]
@@ -78,21 +78,21 @@ insert into Product values(N'Sữa En súa 3',24000,0,1,1);
 --PaySlip
 
 --[Order]
-insert into [Order] values(10000000,1,1,GETDATE(),0,getdate(),getdate(),13,1,1,null);
-insert into [Order] values(35000000,0,0,GETDATE(),2,getdate(),getdate(),14,2,8,null);
-insert into [Order] values(350000000,0,1,GETDATE(),3,getdate(),getdate(),13,3,6,null);
-insert into [Order] values(98500000,0,0,GETDATE(),1,getdate(),getdate(),15,3,1,null);
-insert into [Order] values(135000000,1,1,GETDATE(),2,getdate(),getdate(),17,2,7,null);
-insert into [Order] values(546800000,0,1,GETDATE(),1,getdate(),getdate(),15,1,9,null);
-insert into [Order] values(1239800000,0,1,GETDATE(),0,getdate(),getdate(),16,2,6,null);
+insert into [Order] values(10000000,1,1,GETDATE(),0,getdate(),getdate(),1,1,1,null);
+insert into [Order] values(35000000,0,0,GETDATE(),2,getdate(),getdate(),1,2,2,null);
+insert into [Order] values(350000000,0,1,GETDATE(),3,getdate(),getdate(),3,3,4,null);
+insert into [Order] values(98500000,0,0,GETDATE(),1,getdate(),getdate(),5,3,1,null);
+insert into [Order] values(135000000,1,1,GETDATE(),2,getdate(),getdate(),2,2,3,null);
+insert into [Order] values(546800000,0,1,GETDATE(),1,getdate(),getdate(),4,1,5,null);
+insert into [Order] values(1239800000,0,1,GETDATE(),0,getdate(),getdate(),5,2,2,null);
 
 --Consignee
 select * from Consignee
-insert into Consignee values(N'Trang Sĩ Dũ','089789431',13,null);
-insert into Consignee values(N'Vũ Sĩ Giang','065495465',14,null);
-insert into Consignee values(N'Trang Bảo Đặng','498403126',15,null);
-insert into Consignee values(N'Trần Nhật Ahh','564654065',16,null);
-insert into Consignee values(N'Hozima Kamwa','049846054',17,null);
+insert into Consignee values(N'Trang Sĩ Dũ','089789431',3);
+insert into Consignee values(N'Vũ Sĩ Giang','065495465',4);
+insert into Consignee values(N'Trang Bảo Đặng','498403126',5);
+insert into Consignee values(N'Trần Nhật Ahh','564654065',1);
+insert into Consignee values(N'Hozima Kamwa','049846054',2);
 
 --Log_Order
 
@@ -100,40 +100,40 @@ insert into Consignee values(N'Hozima Kamwa','049846054',17,null);
 select * from [order]
 select * from product
 
-insert into OrderDetail values(1,1,10);
-insert into OrderDetail values(1,4,10);
-insert into OrderDetail values(1,5,10);
-insert into OrderDetail values(1,6,10);
+insert into OrderDetail values(15,1,10);
+insert into OrderDetail values(15,4,10);
+insert into OrderDetail values(15,5,10);
+insert into OrderDetail values(15,6,10);
 
-insert into OrderDetail values(2,1,30);
-insert into OrderDetail values(2,4,50);
-insert into OrderDetail values(2,5,10);
-insert into OrderDetail values(2,6,5);
+insert into OrderDetail values(18,1,30);
+insert into OrderDetail values(18,4,50);
+insert into OrderDetail values(18,5,10);
+insert into OrderDetail values(18,6,5);
 
-insert into OrderDetail values(3,1,10);
-insert into OrderDetail values(3,4,10);
-insert into OrderDetail values(3,5,10);
-insert into OrderDetail values(3,6,10);
+insert into OrderDetail values(22,1,10);
+insert into OrderDetail values(22,4,10);
+insert into OrderDetail values(22,5,10);
+insert into OrderDetail values(22,6,10);
 
-insert into OrderDetail values(4,1,30);
-insert into OrderDetail values(4,4,50);
-insert into OrderDetail values(4,5,10);
-insert into OrderDetail values(4,6,5);
+insert into OrderDetail values(23,1,30);
+insert into OrderDetail values(23,4,50);
+insert into OrderDetail values(23,5,10);
+insert into OrderDetail values(23,6,5);
 
-insert into OrderDetail values(5,1,10);
-insert into OrderDetail values(5,4,10);
-insert into OrderDetail values(5,5,10);
-insert into OrderDetail values(5,6,10);
+insert into OrderDetail values(25,1,10);
+insert into OrderDetail values(25,4,10);
+insert into OrderDetail values(25,5,10);
+insert into OrderDetail values(25,6,10);
 
-insert into OrderDetail values(6,1,30);
-insert into OrderDetail values(6,4,50);
-insert into OrderDetail values(6,5,10);
-insert into OrderDetail values(6,6,5);
+insert into OrderDetail values(26,1,30);
+insert into OrderDetail values(26,4,50);
+insert into OrderDetail values(26,5,10);
+insert into OrderDetail values(26,6,5);
 
-insert into OrderDetail values(7,1,10);
-insert into OrderDetail values(7,4,10);
-insert into OrderDetail values(7,5,10);
-insert into OrderDetail values(7,6,10);
+insert into OrderDetail values(27,1,10);
+insert into OrderDetail values(27,4,10);
+insert into OrderDetail values(27,5,10);
+insert into OrderDetail values(27,6,10);
 
 
 

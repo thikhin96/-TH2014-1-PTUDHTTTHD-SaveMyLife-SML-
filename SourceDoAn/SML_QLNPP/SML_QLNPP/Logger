@@ -160,3 +160,66 @@
 2017-12-11 01:32:16.7831|INFO|SML_QLNPP.Controllers.DistributorController|Start controller to display info of distributor....
 2017-12-11 01:32:16.8201|INFO|DataService.Services.DistributorService|Start service....
 2017-12-11 01:32:18.0905|INFO|DataService.Services.DistributorService|End service...
+2017-12-17 14:43:39.0485|INFO|SML_QLNPP.Controllers.DistributorController|Start controller to load list of distributors....
+2017-12-17 14:43:39.2787|INFO|DataService.Services.DistributorService|Start service....
+2017-12-19 01:51:37.1947|INFO|SML_QLNPP.Controllers.DistributorController|Start controller to load list of distributors....
+2017-12-19 01:51:37.5168|INFO|DataService.Services.DistributorService|Start service....
+2017-12-20 17:34:48.5251|INFO|SML_QLNPP.Controllers.DistributorController|Start controller to load list of distributors....
+2017-12-20 17:34:49.1543|INFO|DataService.Services.DistributorService|Start service....
+2017-12-20 18:02:55.5564|INFO|DataService.Services.OrderService|Start search order
+2017-12-20 18:02:55.6692|INFO|DataService.Services.OrderService|Completed search order
+2017-12-20 18:02:57.7193|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.
+2017-12-20 18:06:40.8805|INFO|DataService.Services.OrderService|Start search order
+2017-12-20 18:06:40.9769|INFO|DataService.Services.OrderService|Completed search order
+2017-12-20 18:06:43.7582|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.
+2017-12-20 18:07:23.3401|INFO|DataService.Services.OrderService|Start search order
+2017-12-20 18:07:23.3581|INFO|DataService.Services.OrderService|Completed search order
+2017-12-20 18:07:23.3911|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.
+2017-12-20 18:13:43.8746|INFO|DataService.Services.OrderService|Start search order
+2017-12-20 18:13:43.9631|INFO|DataService.Services.OrderService|Completed search order
+2017-12-20 18:13:46.5412|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.
+2017-12-20 18:16:25.8812|INFO|DataService.Services.OrderService|Start search order
+2017-12-20 18:16:25.9962|INFO|DataService.Services.OrderService|Completed search order
+2017-12-20 18:16:29.7897|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.
+2017-12-20 18:16:52.3190|INFO|DataService.Services.OrderService|Start search order
+2017-12-20 18:16:52.3410|INFO|DataService.Services.OrderService|Completed search order
+2017-12-20 18:16:52.3820|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.
+2017-12-20 18:19:26.6680|INFO|DataService.Services.OrderService|Start search order
+2017-12-20 18:19:26.6830|INFO|DataService.Services.OrderService|Completed search order
+2017-12-20 18:19:26.7250|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.
+2017-12-20 18:22:19.7649|INFO|DataService.Services.OrderService|Start search order
+2017-12-20 18:22:19.8520|INFO|DataService.Services.OrderService|Completed search order
+2017-12-20 18:22:21.8397|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.
+2017-12-20 18:23:43.5417|INFO|DataService.Services.OrderService|Start search order
+2017-12-20 18:23:43.5417|INFO|DataService.Services.OrderService|Completed search order
+2017-12-20 18:23:43.5857|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.
+2017-12-20 18:24:50.8118|INFO|DataService.Services.OrderService|Start search order
+2017-12-20 18:24:50.8278|INFO|DataService.Services.OrderService|Completed search order
+2017-12-20 18:24:50.8753|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.
+2017-12-20 18:25:26.2819|INFO|DataService.Services.OrderService|Start search order
+2017-12-20 18:25:26.2949|INFO|DataService.Services.OrderService|Completed search order
+2017-12-20 18:25:26.3255|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.
+2017-12-22 09:13:39.5618|INFO|DataService.Services.OrderService|Start search order
+2017-12-22 09:13:39.7450|INFO|DataService.Services.OrderService|Completed search order
+2017-12-22 09:13:47.8538|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.
+2017-12-22 09:22:14.3729|INFO|DataService.Services.OrderService|Start search order
+2017-12-22 09:22:14.3849|INFO|DataService.Services.OrderService|Completed search order
+2017-12-22 09:22:14.4155|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.
+2017-12-22 09:22:24.0986|INFO|DataService.Services.OrderService|Start search order
+2017-12-22 09:22:24.0986|INFO|DataService.Services.OrderService|Completed search order
+2017-12-22 09:22:24.1498|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.
+2017-12-22 09:23:41.5318|INFO|DataService.Services.OrderService|Start search order
+2017-12-22 09:23:41.5458|INFO|DataService.Services.OrderService|Completed search order
+2017-12-22 09:23:41.5779|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.
+2017-12-23 04:13:56.5830|INFO|DataService.Services.OrderService|Start search order
+2017-12-23 04:13:56.6650|INFO|DataService.Services.OrderService|Completed search order
+2017-12-23 04:14:02.4570|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.
+2017-12-23 04:18:08.0699|INFO|DataService.Services.OrderService|Start search order
+2017-12-23 04:18:08.0854|INFO|DataService.Services.OrderService|Completed search order
+2017-12-23 04:18:08.1224|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.
+2017-12-24 10:57:19.4590|INFO|DataService.Services.OrderService|Start search order
+2017-12-24 10:57:19.8762|INFO|DataService.Services.OrderService|Completed search order
+2017-12-24 10:57:24.4752|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.
+2017-12-24 11:06:12.8754|INFO|DataService.Services.OrderService|Start search order
+2017-12-24 11:06:12.8904|INFO|DataService.Services.OrderService|Completed search order
+2017-12-24 11:06:12.9250|INFO|DataService.Services.OrderService|Error Search Order: The underlying provider failed on Open.

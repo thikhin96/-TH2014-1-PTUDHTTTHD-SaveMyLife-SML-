@@ -1,5 +1,7 @@
-﻿create database QL_NPP
+﻿--drop database QL_NPP
+create database QL_NPP
 use QL_NPP
+
 
 CREATE TABLE Account
 (
@@ -17,10 +19,6 @@ go
 
 CREATE TABLE Log_Login
 (
-	ID_Log bigint identity primary key,
-	ID_Account int,
-	at_time datetime,
-	status bit,
 	idLog bigint identity primary key,
 	idAccount int,
 	at_time datetime,
