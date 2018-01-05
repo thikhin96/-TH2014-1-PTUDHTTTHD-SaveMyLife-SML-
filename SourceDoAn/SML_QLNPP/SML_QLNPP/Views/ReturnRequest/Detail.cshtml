@@ -1,0 +1,138 @@
+﻿@model SML_QLNPP.Models.ReturnRequestDetailViewModel
+
+@{
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+}
+
+@section css{
+    <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
+}
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/ReturnRequest/detail.js"></script>
+    <script>
+        var table = $('#returnRequest-list').DataTable();
+    </script>
+
+}
+
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">Thông tin nhà phân phối</h3>
+    </div>
+    <div class="box-body">
+        <div class="col-md-2">
+            <label>Mã nhà phân phối: </label>
+            <input class="form-control" type="text" value="@Model.idDistributor" disabled=disabled />
+        </div>
+        <div class="col-md-2">
+            <label>Tên nhà phân phối: </label>
+            <input class="form-control" type="text" value="@Model.dName" disabled=disabled />
+        </div>
+    </div>
+</div>
+
+<div class="box box-success">
+    <div class="box-header with-border">
+        <h3 class="box-title">Thông tin đơn yêu cầu đổi trả </h3>
+    </div>
+    <div class="box-body">
+        <div class="col-md-2">
+            <label>Mã đơn: </label>
+            <input id="idReturnRequest" class="form-control" type="text" value="@Model.idReturnRequest" disabled= disabled />
+        </div>   
+        <div class="col-md-2">
+            <label>Tình trạng: </label>
+            <input class="form-control" type="text" value="@Model.status" disabled=disabled />
+        </div>
+        <div class="col-md-2">
+            <label>Hình thức đổi trả: </label>
+            <input class="form-control" type="text" value="@Model.modeOfReturn" disabled=disabled />
+        </div>
+        <div class="col-md-2">
+            <label>Nhân viên xử lý: </label>
+            <input class="form-control" type="text" value="@Model.Staff" disabled=disabled />
+        </div>
+        <div class="col-md-4">
+            <label>Ghi chú: </label>
+            <input id="iNote" class="form-control" type="text" value="@Model.note" />
+        </div>
+    </div>
+</div>
+
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">Thông tin kho đổi trả</h3>
+    </div>
+    <div class="box-body">
+        <div class="col-md-2">
+            <label>Mã kho: </label>
+            <input class="form-control" type="text" value="@Model.Storage.IdStorage" disabled= disabled />
+        </div>
+        <div class="col-md-3">
+            <label>Số nhà, đường: </label>
+            <input class="form-control" type="text" value="@Model.Storage.HouseNumber_Street" disabled= disabled />
+        </div>
+        <div class="col-md-2">
+            <label>Phường/xã: </label>
+            <input class="form-control" type="text" value="@Model.Storage.Ward_Commune" disabled= disabled />
+        </div>
+        <div class="col-md-2">
+            <label>Quận/huyện: </label>
+            <input class="form-control" type="text" value="@Model.Storage.District" disabled= disabled />
+        </div>
+        <div class="col-md-3">
+            <label>Thành phố/tỉnh: </label>
+            <input class="form-control" type="text" value="@Model.Storage.City" disabled= disabled />
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-success">
+            <div class="box-header">
+                <h3 class="box-title">Danh sách sản phẩm đơn yêu cầu đổi trả</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="col-sm-12">
+                    <table id="returnRequest-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                        <thead>
+                            <tr>
+                                <th>ID SP</th>
+                                <th>Tên SP</th>
+                                <th>Số lượng</th>
+                                <th>Lý do đổi trả</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ReturnRequestDetails)
+                            {
+                                <tr>
+                                    <td>@item.IdProduct</td>
+                                    <td>@item.Product.ProductName</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@item.Reason</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.box-body -->
+        @if (Model.status == "Chưa xử lý")
+        {
+            <div class="col-md-2">
+                <button id="btnDuyet" class="btn btn-info">Lập phiếu đổi trả</button>
+            </div>
+            <div class="col-md-2">
+                <button id="btnTuChoi" class="btn btn-danger">Từ chối</button>
+            </div>
+                    }
+                </div>
+    <!-- /.box -->
+</div>

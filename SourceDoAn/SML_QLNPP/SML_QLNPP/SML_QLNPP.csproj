@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -248,6 +249,7 @@
     <Compile Include="Controllers\BillController.cs" />
     <Compile Include="Controllers\ContractController.cs" />
     <Compile Include="Controllers\DataSourceController.cs" />
+    <Compile Include="Controllers\DebtController.cs" />
     <Compile Include="Controllers\DeliveryOrderController.cs" />
     <Compile Include="Controllers\DistributorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -256,13 +258,17 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PromotionController.cs" />
     <Compile Include="Controllers\ReturnController.cs" />
+    <Compile Include="Controllers\ReturnRequestController.cs" />
+    <Compile Include="Controllers\StorageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ContractViewModel.cs" />
+    <Compile Include="Models\CreateDebtViewModel.cs" />
     <Compile Include="Models\CreateOrderViewModel.cs" />
     <Compile Include="Models\CreateProductViewModel.cs" />
+    <Compile Include="Models\CreateReturnRequestViewModel.cs" />
     <Compile Include="Models\CreateReturnViewModel.cs" />
     <Compile Include="Models\DeliveryOrderViewModel.cs" />
     <Compile Include="Models\DetailedDeliveryOrderViewModel.cs" />
@@ -273,6 +279,7 @@
     <Compile Include="Models\PDistributorViewModel.cs" />
     <Compile Include="Models\ProductDetailViewModel.cs" />
     <Compile Include="Models\ReturnDetailViewModel.cs" />
+    <Compile Include="Models\ReturnRequestDetailViewModel.cs" />
     <Compile Include="Models\ShowReturnCardsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -531,6 +538,9 @@
     <Content Include="Scripts\Promotion\promotion.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\ReturnRequest\create.js" />
+    <Content Include="Scripts\ReturnRequest\detail.js" />
+    <Content Include="Scripts\ReturnRequest\list.js" />
     <Content Include="Scripts\Return\create-return-card.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
@@ -546,6 +556,7 @@
     <Content Include="Views\Contract\Contract.cshtml" />
     <Content Include="Views\Contract\DetailedContract.cshtml" />
     <Content Include="Views\Contract\CreateContract.cshtml" />
+    <Content Include="Views\Debt\Create.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_AHeader.cshtml" />
     <Content Include="Views\Shared\_ANav.cshtml" />
@@ -554,7 +565,12 @@
     <Content Include="Views\Return\Create.cshtml" />
     <Content Include="Views\PDistributor\Create.cshtml" />
     <Content Include="Views\PDistributor\List.cshtml" />
-
+    <Content Include="Views\ReturnRequest\Create.cshtml" />
+    <Content Include="Views\ReturnRequest\AddProduct.cshtml" />
+    <Content Include="Views\ReturnRequest\ProductDetail.cshtml" />
+    <Content Include="Views\ReturnRequest\ProductDetailForm.cshtml" />
+    <Content Include="Views\ReturnRequest\List.cshtml" />
+    <Content Include="Views\ReturnRequest\Detail.cshtml" />
     <None Include="Views\Shared\_ALayout.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -616,6 +632,9 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Views\ReturnRequest\Detail.cshtml</ApplicationManifest>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -626,11 +645,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>65422</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/SML_QLNPP</IISUrl>
+          <IISUrl>tl.com</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

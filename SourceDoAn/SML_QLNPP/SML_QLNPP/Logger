@@ -1,0 +1,234 @@
+2018-01-04 19:25:23.6668|INFO|DataService.Services.AccountService|Start get login
+2018-01-04 19:25:23.9860|INFO|DataService.Services.AccountService|Completed get login
+2018-01-04 19:25:24.0500|INFO|DataService.LogLoginService|Start audit login
+2018-01-04 19:25:24.9368|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-04 19:39:46.9596|INFO|DataService.Services.AccountService|Start get login
+2018-01-04 19:39:46.9596|INFO|DataService.Services.AccountService|Start get login
+2018-01-04 19:39:47.0626|INFO|DataService.Services.AccountService|Completed get login
+2018-01-04 19:39:47.0626|INFO|DataService.Services.AccountService|Completed get login
+2018-01-04 19:39:47.0937|INFO|DataService.LogLoginService|Start audit login
+2018-01-04 19:39:47.0937|INFO|DataService.LogLoginService|Start audit login
+2018-01-04 19:39:47.2288|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-04 19:39:47.2288|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-04 21:00:43.8056|INFO|DataService.Services.AccountService|Start get login
+2018-01-04 21:00:44.0698|INFO|DataService.Services.AccountService|Completed get login
+2018-01-04 21:00:44.0698|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-04 21:00:44.0858|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-04 21:00:44.0858|INFO|DataService.LogLoginService|Start audit login
+2018-01-04 21:00:44.6874|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-04 21:00:48.8691|INFO|DataService.Services.AccountService|Start get login
+2018-01-04 21:00:48.8901|INFO|DataService.Services.AccountService|Completed get login
+2018-01-04 21:00:48.8901|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-04 21:00:48.9843|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-04 21:00:48.9843|INFO|DataService.LogLoginService|Start audit login
+2018-01-04 21:00:49.0473|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-04 21:01:02.6867|INFO|DataService.Services.AccountService|Start get login
+2018-01-04 21:01:02.7027|INFO|DataService.Services.AccountService|Completed get login
+2018-01-04 21:01:02.7217|INFO|DataService.LogLoginService|Start audit login
+2018-01-04 21:01:02.8969|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-04 21:12:20.4392|INFO|DataService.Services.AccountService|Start get login
+2018-01-04 21:12:20.5413|INFO|DataService.Services.AccountService|Completed get login
+2018-01-04 21:12:20.5413|INFO|DataService.LogLoginService|Start audit login
+2018-01-04 21:12:20.6714|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-04 21:29:24.2040|INFO|DataService.Services.AccountService|Start get login
+2018-01-04 21:29:24.2782|INFO|DataService.Services.AccountService|Completed get login
+2018-01-04 21:29:24.4903|INFO|DataService.LogLoginService|Start audit login
+2018-01-04 21:29:24.5553|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-04 23:31:27.3197|INFO|DataService.Services.AccountService|Start get login
+2018-01-04 23:31:51.3526|INFO|DataService.Services.AccountService|Completed get login
+2018-01-04 23:31:51.3526|INFO|DataService.LogLoginService|Start audit login
+2018-01-04 23:31:53.9725|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-04 23:38:47.4834|INFO|DataService.Services.AccountService|Start get login
+2018-01-04 23:38:48.1972|INFO|DataService.Services.AccountService|Completed get login
+2018-01-04 23:38:48.1972|INFO|DataService.LogLoginService|Start audit login
+2018-01-04 23:38:48.2772|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-04 23:45:45.3637|INFO|DataService.Services.DeliveryOrderService|Start GetAll DeliveryOrder....
+2018-01-04 23:45:45.3637|INFO|DataService.Services.DeliveryOrderService|Start GetAll DeliveryOrder....
+2018-01-04 23:45:57.7670|INFO|DataService.Services.OrderService|Start search order
+2018-01-04 23:45:57.7730|INFO|DataService.Services.OrderService|Completed search order
+2018-01-04 23:46:03.7902|INFO|DataService.Services.OrderService|Start get order
+2018-01-04 23:46:03.7902|INFO|DataService.Services.OrderService|Completed get order
+2018-01-05 00:05:31.0621|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 00:05:31.4840|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 00:05:31.4840|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 00:05:32.1118|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 00:05:37.1580|INFO|DataService.Services.OrderService|Start search order
+2018-01-05 00:05:37.1650|INFO|DataService.Services.OrderService|Completed search order
+2018-01-05 00:29:32.4234|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 00:29:33.7943|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 00:29:33.7943|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 00:29:33.9637|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 00:53:37.7577|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 00:53:37.9193|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 00:53:37.9453|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 00:53:38.0970|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 00:53:48.7185|INFO|DataService.Services.OrderService|Start search order
+2018-01-05 00:53:48.7275|INFO|DataService.Services.OrderService|Completed search order
+2018-01-05 00:57:17.5212|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-05 00:57:17.5247|INFO|DataService.Services.ReturnService|Start Getting return request number: 5
+2018-01-05 00:57:17.5947|INFO|DataService.Services.ReturnService|Success: Return Request number 5 returned!
+2018-01-05 00:57:17.8102|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-05 00:57:17.9544|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-05 00:57:18.1838|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-05 01:33:03.6474|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 01:33:06.1169|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 01:33:06.1169|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 01:33:06.3823|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 01:35:04.4591|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 01:35:05.1055|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 01:35:05.1055|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-05 01:35:05.1286|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-05 01:35:05.1341|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 01:35:05.2642|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 01:35:13.4474|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 01:35:13.5035|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 01:35:13.5035|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 01:35:13.6086|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 01:38:20.4417|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 01:38:20.4843|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 01:38:20.4943|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 01:38:20.6083|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 01:42:06.4387|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 01:42:07.0491|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 01:42:07.0491|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 01:42:07.1257|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 02:03:48.0324|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 02:03:50.4461|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 02:03:50.4461|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 02:03:51.1089|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 02:32:19.5561|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 02:32:20.5014|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 02:32:20.5014|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 02:32:20.6857|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 02:45:52.9620|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 02:45:53.4909|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 02:45:53.4944|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 02:45:53.5700|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 02:49:18.3235|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 02:49:18.8071|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 02:49:18.8071|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 02:49:18.8761|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 02:51:57.0400|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 02:51:57.5099|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 02:51:57.5099|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 02:51:57.5864|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 02:53:05.6649|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 02:53:05.7194|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 02:53:05.7269|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 02:53:05.8465|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 02:55:03.8596|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 02:55:03.8964|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 02:55:03.9029|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 02:55:03.9885|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 03:00:23.8686|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 03:00:23.9046|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 03:00:23.9196|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 03:00:23.9967|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 03:28:55.5555|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 03:28:57.7965|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 03:28:57.7965|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 03:28:57.9636|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 03:48:31.0151|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 03:48:31.6270|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 03:48:31.6270|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 03:48:32.1076|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 03:48:39.9141|INFO|SML_QLNPP.Controllers.OrderController|Start Create(GET) - OrderController
+2018-01-05 03:48:39.9141|INFO|DataService.Services.OrderService|Start Generating order id
+2018-01-05 03:48:40.3945|INFO|DataService.Services.OrderService|Success: Order id generated!
+2018-01-05 03:48:40.4765|INFO|SML_QLNPP.Controllers.OrderController|Success: Complete Create(GET) - OrderController
+2018-01-05 03:56:37.1554|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 03:56:37.5067|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 03:56:37.5097|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 03:56:37.5767|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 03:59:50.5156|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 03:59:51.0830|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 03:59:51.0830|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 03:59:51.1430|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 04:02:28.6192|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 04:02:29.4586|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 04:02:29.4618|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 04:02:29.6692|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 04:21:55.7264|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 04:21:56.7917|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 04:21:56.7917|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 04:21:57.0361|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 04:31:52.5394|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 04:31:52.9036|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 04:31:52.9036|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 04:31:52.9677|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 04:32:18.5996|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 04:32:18.6266|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 04:32:18.6999|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 04:32:18.9233|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 04:38:16.2436|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 04:38:16.2436|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 04:38:16.5109|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 04:38:16.6550|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 04:38:16.7010|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 04:38:16.8494|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 04:38:17.1218|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 04:38:17.1416|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 04:40:36.1560|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 04:40:36.2250|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 04:40:36.2460|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 04:40:36.3021|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 04:42:36.9358|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 04:42:37.0318|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 04:42:37.0318|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 04:42:37.1009|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 04:47:07.5498|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 04:47:07.6419|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 04:47:07.7520|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 04:47:07.8250|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 04:48:27.4852|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 04:48:27.5413|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 04:48:27.5413|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 04:48:27.6013|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 04:49:01.0006|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-05 04:49:01.0136|INFO|DataService.Services.ReturnService|Start Getting return request number: 6
+2018-01-05 04:49:01.0396|INFO|DataService.Services.ReturnService|Success: Return Request number 6 returned!
+2018-01-05 04:49:01.1337|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-05 04:49:01.1797|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-05 04:49:01.1797|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-05 04:50:20.4737|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 04:50:20.6252|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 04:50:20.6482|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 04:50:20.6887|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 04:51:57.7275|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-05 04:51:57.7275|INFO|DataService.Services.ReturnService|Start Getting return request number: 7
+2018-01-05 04:51:57.7456|INFO|DataService.Services.ReturnService|Success: Return Request number 7 returned!
+2018-01-05 04:51:57.8156|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-05 04:51:57.8286|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-05 04:51:57.8286|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-05 05:04:12.9404|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 05:04:13.6416|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 05:04:13.6416|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 05:04:13.7828|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 05:10:26.5300|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 05:10:27.9623|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 05:10:27.9623|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 05:10:28.1423|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 05:14:39.1435|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 05:14:39.5565|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 05:14:39.5565|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 05:14:39.7212|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 05:19:23.6134|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 05:19:24.3801|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 05:19:24.3824|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 05:19:24.4929|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 05:25:02.8904|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 05:25:03.2917|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 05:25:03.2917|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 05:25:03.3484|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 05:28:43.0686|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 05:28:43.4576|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 05:28:43.4606|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 05:28:43.6849|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 05:30:23.9484|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 05:30:24.3079|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 05:30:24.3079|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 05:30:24.3755|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 10:24:36.1587|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 10:24:38.9582|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 10:24:38.9642|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 10:24:39.4403|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.

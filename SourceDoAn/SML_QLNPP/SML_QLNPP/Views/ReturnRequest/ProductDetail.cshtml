@@ -1,0 +1,137 @@
+﻿<div class="panel-group">
+    <div class="panel panel-info">
+        <div class="panel-heading">Thông tin nhà phân phối</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-2 form-group">
+                    <label>Mã nhà phân phối: </label>
+                    <input type="text" value="@Model.idDistributor" disabled=disabled />
+                </div>
+                <div class="col-md-2 form-group">
+                    <label>Tên nhà phân phối: </label>
+                    <input type="text" value="@Model.Distributor.name" disabled=disabled />
+                </div>
+                <div class="col-md-2 form-group">
+                    <label>Số điện thoại: </label>
+                    <input type="text" value="@Model.Distributor.phone" disabled=disabled />
+                </div>
+                <div class="col-md-2 form-group">
+                    <label>Địa chỉ: </label>
+                    <input type="text" value="@Model.Distributor.address" disabled=disabled />
+                </div>
+                <div class="col-md-2 form-group">
+                    <label>Trạng thái: </label>
+                    <input type="text" value="@(Model.Distributor.status==false? "Chưa kích hoạt":"Kích hoạt")" disabled=disabled />
+                </div>
+                <div class="col-md-2 form-group">
+                    <label>Công nợ: </label>
+                    <input type="text" value="@Model.Distributor.phone" disabled=disabled />
+                </div>
+                <div class="col-md-2 form-group">
+                    <label>Username: </label>
+                    <input type="text" value="@Model.Distributor.UserName" disabled=disabled />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Thông tin đơn yêu cầu đổi trả</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <label>Mã đơn yêu cầu đổi trả: </label>
+                    <input type="text" value="@Model.IdReturnRequest" disabled=disabled />
+                </div>
+                <div class="col-md-2">
+                    <label>Mã nhà phân phối: </label>
+                    <input type="text" value="@Model.Distributor" disabled=disabled />
+                </div>
+                <div class="col-md-2">
+                    <label>Kho đổi trả: </label>
+                    <input type="text" value="@Model.Storage" disabled=disabled />
+                </div>
+                <div class="col-md-2">
+                    <label>Ghi chú: </label>
+                    <textarea disable=disable cols="100" rows="1">@Model.Note </textarea>
+                </div>
+                <div class="col-md-2">
+                    <label>Tình trạng đơn yêu cầu đổi trả: </label>
+                    <input type="text" value="@(Model.Status== 0 ? "Chưa xử lý" : Model.Statuses == 1 ? "Đã xử lý" : "Đã từ chối")" disabled=disabled />
+                </div>
+                <div class="col-md-2">
+                    <label>Hình thức đổi trả: </label>
+                    <input type="text" value="@(Model.ModeOfReturn== false ? "Đổi" : "Trả")" disabled=disabled />
+                </div>
+                <div class="col-md-2">
+                    <label>Nhân viên xử lý: </label>
+                    <input type="text" value="@Model.Staff" disabled=disabled />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Thông tin kho</div>
+        <div class="panel-body">
+            <div class="col-md-2 form-group">
+                <label>Mã kho: </label>
+                @foreach (var item in Model.ReturnRequestDetails)
+                {
+                    <input type="text" value="@item.Storage.IdStorage" disabled=disabled />
+                }
+            </div>
+            <div class="col-md-2 form-group">
+                <label>Số nhà, đường: </label>
+                <input type="text" value="@Model.Storage.HouseNumber_Street" disabled=disabled />
+            </div>
+            <div class="col-md-2 form-group">
+                <label>Phường/xã: </label>
+                <input type="text" value="@Model.Storage.Ward_Commune" disabled=disabled />
+            </div>
+            <div class="col-md-2 form-group">
+                <label>Quận/huyện: </label>
+                <input type="text" value="@Model.Storage.District" disabled=disabled />
+            </div>
+            <div class="col-md-2 form-group">
+                <label>Thành phố/tỉnh: </label>
+                <input type="text" value="@Model.Storage.City" disabled=disabled />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mgt">
+    <div class="col-md-12">
+        <h3>Danh sách sản phẩm yêu cầu đổi trả</h3>
+        <table id="returnRequest-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+            <thead>
+                <tr>
+                    <th>ID SP</th>
+                    <th>Tên SP</th>
+                    <th>Số lượng</th>
+                    <th>Lý do đổi trả</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>ID SP</th>
+                    <th>Tên SP</th>
+                    <th>Số lượng</th>
+                    <th>Lý do đổi trả</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                @foreach (var item in Model.ReturnRequestDetails)
+                {
+                    <tr>
+                        <td>@item.IdProduct</td>
+                        <td>@item.Product.ProductName</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Reason</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

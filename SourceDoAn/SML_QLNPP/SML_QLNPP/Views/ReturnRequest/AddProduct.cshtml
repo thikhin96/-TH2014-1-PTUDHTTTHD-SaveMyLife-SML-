@@ -1,0 +1,35 @@
+﻿<div id="addProduct" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Thêm sản phẩm</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Mã sản phẩm</label>
+                    <input type="text" class="form-control" id="product-id" disabled=disabled />
+                </div>
+                <div class="form-group">
+                    <label>Tên sản phẩm</label>
+                    <input type="text" class="form-control" id="product-name" disabled=disabled />
+                </div>
+                <div class="form-group">
+                    <label>Số lượng</label>
+                    <input type="number" class="form-control" id="product-quantity" />
+                </div>
+                <div class="form-group">
+                    <label>Lý do đổi trả</label>
+                    <input type="text" name="reason" class="form-control" id="returnRequest-reason" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" id="add-product-btn" data-returnRequestid="">Thêm</button>
+            </div>
+        </div>
+
+    </div>
+</div>
