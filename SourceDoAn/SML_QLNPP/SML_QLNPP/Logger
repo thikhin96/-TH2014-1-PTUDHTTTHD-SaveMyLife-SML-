@@ -1,0 +1,160 @@
+2018-01-05 11:41:31.1746|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 11:41:36.6150|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 11:41:36.6150|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 11:41:37.4181|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 11:42:37.5113|INFO|SML_QLNPP.Controllers.PDistributorController|Start controller....
+2018-01-05 11:42:39.2915|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-05 11:42:39.9256|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 12:08:25.9922|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 12:08:27.8581|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 12:08:27.8751|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 12:08:28.6518|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 12:11:31.0774|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 12:11:31.1264|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 12:12:40.4209|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 12:12:40.4504|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 12:16:10.5829|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 12:16:10.6089|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 12:16:19.6239|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 12:16:19.6450|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 12:16:42.8177|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 12:16:42.8377|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 12:17:30.6965|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 12:17:45.8050|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 12:17:45.8240|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 12:17:47.3454|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 12:18:12.2476|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 12:19:33.6852|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 12:28:42.7630|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 12:28:50.0563|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 12:28:50.0783|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 12:28:51.9344|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 12:30:28.4629|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 12:30:36.4945|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 12:42:48.2688|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 12:43:00.5097|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 12:43:02.4663|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 12:43:02.4953|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 12:43:02.6024|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 12:46:19.1384|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 12:46:25.5003|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 12:46:25.5332|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 12:46:27.5857|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 12:47:01.2381|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 12:47:01.3267|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 12:50:51.8718|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 12:50:58.9426|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 12:50:58.9906|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 12:51:01.0746|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 12:56:21.7640|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 12:56:27.6771|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 12:56:27.6961|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 12:56:29.4659|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 12:57:15.1613|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 12:57:15.2593|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 13:08:41.5312|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 13:08:42.8737|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 13:08:42.8897|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 13:08:43.2270|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 13:09:04.6156|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 13:09:04.6687|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 13:10:01.6817|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 13:10:01.7067|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 13:46:14.9621|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 13:46:16.6235|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 13:46:16.6502|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 13:46:17.0859|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 13:47:04.4001|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 13:47:04.4252|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 15:12:42.9505|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 15:12:43.6811|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 15:50:00.2432|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 15:50:01.8094|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 15:50:01.8404|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 15:50:02.2267|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 15:50:45.4178|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 15:50:45.4474|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 15:52:00.2688|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 15:52:07.1642|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 15:52:07.2058|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 15:52:08.6648|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 15:52:35.0464|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 15:52:35.1325|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 15:58:25.5225|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 15:58:25.5455|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 15:58:45.7557|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 15:58:45.7857|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 15:59:05.0900|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 15:59:05.1591|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:00:20.5419|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:00:20.5639|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:12:18.0284|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 16:12:19.4711|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 16:12:19.4976|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 16:12:20.0300|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 16:12:43.7818|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:12:43.8188|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:18:26.2612|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 16:18:31.9028|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 16:18:31.9118|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 16:18:32.5006|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 16:19:17.4813|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:19:17.5489|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:23:34.2124|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 16:23:40.9358|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 16:23:40.9563|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 16:23:42.8124|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 16:23:50.0183|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:23:50.1444|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:23:56.4310|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:23:56.4570|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:27:10.7589|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:27:10.7970|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:29:02.2527|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:29:02.2777|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:29:29.2375|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:29:29.2710|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:30:07.7226|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:30:07.7506|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:30:12.5881|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:30:12.6301|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:31:25.4168|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:31:25.4619|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:32:57.9992|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:32:58.0192|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:39:47.1786|INFO|DataService.Services.AccountService|Start get login
+2018-01-05 16:39:48.6457|INFO|DataService.Services.AccountService|Completed get login
+2018-01-05 16:39:48.6652|INFO|DataService.LogLoginService|Start audit login
+2018-01-05 16:39:48.9359|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-05 16:39:56.9926|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:39:57.0276|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:41:04.0131|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:41:04.0471|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:42:57.1873|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:42:57.2114|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:42:59.4005|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:42:59.4466|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:43:42.8856|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:43:42.9197|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:43:51.2399|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:43:51.2714|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:45:45.9067|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:45:45.9442|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:47:15.2139|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:47:15.2489|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:52:16.0582|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:52:16.0802|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:52:20.9924|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:52:20.9924|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:52:22.3896|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:52:22.4132|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:54:24.7496|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:54:24.7827|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:55:58.3493|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:55:58.3809|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:56:44.4304|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:56:44.4735|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:57:15.2409|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:57:15.2755|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-05 16:57:51.3206|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status method
+2018-01-05 16:57:51.3396|INFO|DataService.Services.PDistributorService|Status: Success

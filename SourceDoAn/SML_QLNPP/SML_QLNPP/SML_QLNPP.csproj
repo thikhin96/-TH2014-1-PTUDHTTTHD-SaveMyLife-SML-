@@ -270,6 +270,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\CreatePDistributorViewModel.cs" />
+    <Compile Include="Models\PDistributorDetailViewModel.cs" />
     <Compile Include="Models\PDistributorViewModel.cs" />
     <Compile Include="Models\ProductDetailViewModel.cs" />
     <Compile Include="Models\ReturnDetailViewModel.cs" />
@@ -554,7 +555,7 @@
     <Content Include="Views\Return\Create.cshtml" />
     <Content Include="Views\PDistributor\Create.cshtml" />
     <Content Include="Views\PDistributor\List.cshtml" />
-
+    <Content Include="Views\PDistributor\Detail.cshtml" />
     <None Include="Views\Shared\_ALayout.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

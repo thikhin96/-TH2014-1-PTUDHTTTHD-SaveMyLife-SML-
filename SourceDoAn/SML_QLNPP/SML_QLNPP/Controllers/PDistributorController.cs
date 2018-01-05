@@ -11,20 +11,23 @@ using NLog;
 
 namespace SML_QLNPP.Controllers
 {
-    public class PDistributorController : Controller
+    public class PDistributorController : BaseController
     {
         private readonly IPDistributorService _pdistributorService;
         private readonly IRepresentativeService _representativeService;
         ILogger logger = LogManager.GetCurrentClassLogger();
-        public PDistributorController(IPDistributorService pdisService, IRepresentativeService repService)
+        private readonly IAccountService _accountService;
+        public PDistributorController(IPDistributorService pdisService, IRepresentativeService repService, IAccountService accountService)
         {
             this._pdistributorService = pdisService;
             _representativeService = repService;
+            _accountService = accountService;
         }
 
         // GET: PDistributor
         public ActionResult List()
         {
+            isAdminLogged();
             ViewBag.Parent = "Quản lý đối tác";
             ViewBag.Child = "Tìm kiếm đối tác";
             return View();
@@ -37,36 +40,54 @@ namespace SML_QLNPP.Controllers
             if (Request.IsAjaxRequest())
             {
                 rs = _pdistributorService.SearchByStatus(status);
-                var list = JsonConvert.SerializeObject(rs.Select(x => new { x.idDistributor, x.name, x.address, x.phone, x.Email, x.status, x.Representatives, x.Assignments }));
+                var list = JsonConvert.SerializeObject( rs.Select(x => new { x.idDistributor, x.name, x.address, x.phone, x.Email, x.status, x.Representatives, x.Assignments }), Formatting.Indented,
+                                                                    new JsonSerializerSettings()
+                                                                    {
+                                                                        ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                                                                    }) ;
                 return Content(list, "application/json");
             }
-
             return null;
         }
 
-        public ActionResult SearchPDistributor(PDistributorViewModel model)
+        public ActionResult Detail(int id)
         {
-            try
+            isAdminLogged();
+            var pdis = _pdistributorService.GetPDistributor(id);
+            if (pdis != null)
             {
-                if (model.status != 5)
+                var model = new PDistributorDetailViewModel()
                 {
-                    model.listPDistributor = _pdistributorService.SearchByStatus(model.status);
-                    View(model);
-                }
-                else
-                {
+                    idDistributor = id,
+                    name = pdis.name,
+                    address = pdis.address,
+                    phone = pdis.phone,
+                    Email = pdis.Email,
+                    status = pdis.status,
+                    note = pdis.note,
+                    rep_name = pdis.Representatives.FirstOrDefault().name,
+                    rep_phone = pdis.Representatives.FirstOrDefault().phone,
+                    rep_email = pdis.Representatives.FirstOrDefault().email,
+                    title = pdis.Representatives.FirstOrDefault().title,
+                    place = pdis.Assignments.FirstOrDefault().place,
+                    date = pdis.Assignments.FirstOrDefault().date,
+                    result = pdis.Assignments.FirstOrDefault().result,
 
-                }
+                };
+                ViewBag.Parent = "Quản lý đối tác  >  Tìm kiếm đối tác";
+                ViewBag.Child = "Chi tiết đối tác";
+                return View(model);
             }
-            catch (FormatException e)
+            else
             {
-                Console.WriteLine(e.Message);
+                return Redirect("List");
             }
-            return View(model);
+
         }
 
         public ActionResult Create()
         {
+            isAdminLogged();
             ViewBag.Parent = "Quản lý đối tác";
             ViewBag.Child = "Thêm đối tác";
             CreatePDistributorViewModel model = new CreatePDistributorViewModel();
@@ -103,14 +124,25 @@ namespace SML_QLNPP.Controllers
             if (result == true)
             {
                 TempData["success"] = "Thành công";
-                model = new CreatePDistributorViewModel();
+                return RedirectToAction("Create");
             }
 
 
             else
-                TempData["fail"] = result;
-            return RedirectToAction("Create");
+            {
+                ViewBag.fail = result;
+                return View(model);
+            }
         }
-
+        public List<Staff> getStaffAssigment(int idPDis)
+        {
+            List<Assignment> temp = _pdistributorService.GetPDistributor(idPDis).Assignments.ToList();
+            List<Staff> st = new List<Staff>();
+            foreach (Assignment t in temp)
+            {
+                st.Add(t.Staff1);
+            }
+            return st;
+        }
     }
 }

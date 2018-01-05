@@ -1,7 +1,7 @@
 ﻿@model SML_QLNPP.Models.CreatePDistributorViewModel
 @using Newtonsoft.Json;
 @{
-    var success = ViewBag.success as string;
+    var success = TempData["success"] as string;
     var fail = ViewBag.fail as string;
     Layout = "~/Views/Shared/_ALayout.cshtml";
 }

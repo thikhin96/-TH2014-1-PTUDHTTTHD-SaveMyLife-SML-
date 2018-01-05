@@ -77,9 +77,21 @@ namespace DataService.Services
             return true;
         }
 
-        public bool UpdateRepresentative(int idDis)
+        public bool UpdateRepresentative(Representative person)
         {
-            throw new NotImplementedException();
+            logger.Info("Start to update a representative...");
+            try
+            {
+                _representativeRepository.Update(person);
+                _unitOfWork.SaveChange();
+                logger.Info("Status: Success");
+            }
+            catch
+            {
+                logger.Info("Status: Fail");
+                return false;
+            }
+            return true;
         }
 
         public int GenerateOrderId()

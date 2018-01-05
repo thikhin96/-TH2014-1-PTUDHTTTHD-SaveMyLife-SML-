@@ -29,8 +29,6 @@
                         rs.push(item.address);
                         rs.push(item.phone);
                         rs.push(item.Email);
-                        //rs.push(item.representative.name);
-                        // rs.push(item.staffName);
 
                         if (item.status == 0) {
                             rs.push('Chưa xử lý');
@@ -48,14 +46,19 @@
                         else {
                             rs.push('Không đồng ý làm hợp đồng');
                         }
+                        rs.push(item.Representatives[0].name);
+                        var check = item.Assignments[0]
+                        if (check) {
+                            rs.push(item.Assignments[0].staff);
+                        }
+                        else
+                            rs.push("Không có");
                         rs.push('<a class="btn btn-info btn-xs" href="/PDistributor/Detail/' + item.idDistributor + '">Xem chi tiết</a> | <a class="btn btn-warning btn-xs" href="/PDistributor/Update/' + item.idDistributor + '">Phân công</a>')
                         return rs;
                     });
 
                     table.rows.add(result);
                     table.draw();
-
-
 
                 }
                 else {

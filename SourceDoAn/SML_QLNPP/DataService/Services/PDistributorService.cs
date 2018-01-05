@@ -75,7 +75,7 @@ namespace DataService.Services
             throw new NotImplementedException();
         }
 
-        public PotentialDistributor SearchByID(int id)
+        public PotentialDistributor GetPDistributor(int id)
         {
             logger.Info("Start Search potential distributor by idDistributor method");
             try
