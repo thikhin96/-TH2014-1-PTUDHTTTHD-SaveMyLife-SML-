@@ -169,6 +169,24 @@ namespace DataService.Services
             var distributors = _distributorRepository.GetAll(x => x.name.Contains(searchTerm) && x.status == true).ToList();
             return distributors;
         }
-
+        public bool UpdateDebt(int id, decimal money)
+        {
+            //throw new NotImplementedException();
+            logger.Info("Start service....");
+            try
+            {
+                var distributor = this.SearchByID(id);
+                distributor.debt = distributor.debt + money;
+                _unitOfWork.SaveChange();
+                logger.Info("End service...");
+                return true;
+            }
+            catch (Exception e)
+            {
+                logger.Info(e.Message);
+                logger.Info("End service...");
+                return false;
+            }
+        }
     }
 }
