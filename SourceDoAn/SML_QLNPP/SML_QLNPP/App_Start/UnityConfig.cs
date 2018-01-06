@@ -61,6 +61,7 @@ namespace SML_QLNPP
             container.RegisterType<ILogProductService, LogProductService>();
             container.RegisterType<IPDistributorService, PDistributorService>();
             container.RegisterType<IRepresentativeService, RepresentativeService>();
+            container.RegisterType<IStaffService, StaffService>();
 
             ServiceModule.UnityRegister(container);
         }

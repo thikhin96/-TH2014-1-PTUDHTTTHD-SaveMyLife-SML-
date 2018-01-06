@@ -261,6 +261,8 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ContractViewModel.cs" />
+    <Compile Include="Models\CreateBillViewModel.cs" />
+    <Compile Include="Models\CreateDeliveryOrderViewModel.cs" />
     <Compile Include="Models\CreateOrderViewModel.cs" />
     <Compile Include="Models\CreateProductViewModel.cs" />
     <Compile Include="Models\CreateReturnViewModel.cs" />
@@ -346,7 +348,10 @@
     <Content Include="Scripts\Bill\jquery-ui.min.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
+    <Content Include="Scripts\DeliveryOrder\createdeliveryorder.js" />
+    <Content Include="Scripts\DeliveryOrder\deliveryorder.js" />
     <Content Include="Scripts\DeliveryOrder\details.js" />
+    <Content Include="Scripts\DeliveryOrder\jquery.dataTables.min.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
     <Content Include="Scripts\i18n\az.js" />
@@ -470,7 +475,6 @@
     <Content Include="Scripts\Order\createOrder.js" />
     <Content Include="Scripts\DeliveryOrder\datatables.min.js" />
     <Content Include="Scripts\DeliveryOrder\jquery-ui.min.js" />
-    <Content Include="Scripts\DeliveryOrder\deliveryorder.js" />
     <Content Include="Scripts\Order\datatables.min.js" />
     <Content Include="Scripts\Order\jquery.dataTables.min.js" />
     <Content Include="Scripts\Order\order.js" />
@@ -546,6 +550,7 @@
     <Content Include="Views\Contract\Contract.cshtml" />
     <Content Include="Views\Contract\DetailedContract.cshtml" />
     <Content Include="Views\Contract\CreateContract.cshtml" />
+    <Content Include="Views\DeliveryOrder\Create.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_AHeader.cshtml" />
     <Content Include="Views\Shared\_ANav.cshtml" />
@@ -554,7 +559,6 @@
     <Content Include="Views\Return\Create.cshtml" />
     <Content Include="Views\PDistributor\Create.cshtml" />
     <Content Include="Views\PDistributor\List.cshtml" />
-
     <None Include="Views\Shared\_ALayout.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
