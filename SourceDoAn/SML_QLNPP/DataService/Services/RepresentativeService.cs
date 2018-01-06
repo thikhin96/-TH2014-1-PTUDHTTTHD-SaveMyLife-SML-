@@ -24,6 +24,18 @@ namespace DataService.Services
             _representativeRepository = _unitOfWork.Repository<Representative>();
         }
 
+        public Representative getRepresentative(int id)
+        {
+            try
+            {
+                var res = _representativeRepository.Get(x => x.idRepresentative == id);
+                return res;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         int GenerateRepresentativeId()
         {
             var latestRep = _representativeRepository.GetAll().OrderByDescending(x => x.idRepresentative).FirstOrDefault();

@@ -9,6 +9,7 @@ namespace DataService.Interfaces
 {
     public interface IRepresentativeService
     {
+        Representative getRepresentative(int id);
         int Create(Representative person);
         bool CreateRepresentative(Representative person);
         bool UpdateRepresentative(Representative person);

@@ -15,13 +15,18 @@ namespace SML_QLNPP.Controllers
     {
         private readonly IPDistributorService _pdistributorService;
         private readonly IRepresentativeService _representativeService;
-        ILogger logger = LogManager.GetCurrentClassLogger();
         private readonly IAccountService _accountService;
-        public PDistributorController(IPDistributorService pdisService, IRepresentativeService repService, IAccountService accountService)
+        private readonly IStaffService _staffService;
+        private readonly IAssignmentService _assigmentService;
+        ILogger logger = LogManager.GetCurrentClassLogger();
+        public PDistributorController(IPDistributorService pdisService, IRepresentativeService repService, IAccountService accountService,
+            IStaffService staffService, IAssignmentService assigmentService)
         {
             this._pdistributorService = pdisService;
             _representativeService = repService;
             _accountService = accountService;
+            _staffService = staffService;
+            _assigmentService = assigmentService;
         }
 
         // GET: PDistributor
@@ -50,41 +55,6 @@ namespace SML_QLNPP.Controllers
             return null;
         }
 
-        public ActionResult Detail(int id)
-        {
-            isAdminLogged();
-            var pdis = _pdistributorService.GetPDistributor(id);
-            if (pdis != null)
-            {
-                var model = new PDistributorDetailViewModel()
-                {
-                    idDistributor = id,
-                    name = pdis.name,
-                    address = pdis.address,
-                    phone = pdis.phone,
-                    Email = pdis.Email,
-                    status = pdis.status,
-                    note = pdis.note,
-                    rep_name = pdis.Representatives.FirstOrDefault().name,
-                    rep_phone = pdis.Representatives.FirstOrDefault().phone,
-                    rep_email = pdis.Representatives.FirstOrDefault().email,
-                    title = pdis.Representatives.FirstOrDefault().title,
-                    place = pdis.Assignments.FirstOrDefault().place,
-                    date = pdis.Assignments.FirstOrDefault().date,
-                    result = pdis.Assignments.FirstOrDefault().result,
-
-                };
-                ViewBag.Parent = "Quản lý đối tác  >  Tìm kiếm đối tác";
-                ViewBag.Child = "Chi tiết đối tác";
-                return View(model);
-            }
-            else
-            {
-                return Redirect("List");
-            }
-
-        }
-
         public ActionResult Create()
         {
             isAdminLogged();
@@ -99,50 +69,157 @@ namespace SML_QLNPP.Controllers
         {
             ViewBag.Parent = "Quản lý đối tác";
             ViewBag.Child = "Thêm đối tác";
-            logger.Info("Start controller....");
-            var pDis = new PotentialDistributor
+            logger.Info("Start Create(POST) - PDistributorController");
+            var loggedUser = GetCurrentUser() as Account;
+            if (loggedUser != null)
             {
-                idDistributor = _pdistributorService.GenerateOrderId(),
-                name = model.name,
-                address = model.address,
-                Email = model.Email,
-                phone = model.phone,
-                createdDate = DateTime.Now,
-                status = 0,
+                var pDis = new PotentialDistributor
+                {
+                    idDistributor = _pdistributorService.GenerateOrderId(),
+                    name = model.name,
+                    address = model.address,
+                    Email = model.Email,
+                    phone = model.phone,
+                    createdDate = DateTime.Now,
+                    status = 0,
 
-            };
-            var rep = new Representative
+                };
+                var rep = new Representative
+                {
+                    idRepresentative = _representativeService.GenerateOrderId(),
+                    name = model.rep_name,
+                    email = model.rep_email,
+                    title = model.title,
+                    phone = model.rep_phone,
+                    PDistributor = pDis.idDistributor,
+                };
+                //var rs1 = _representativeService.CreateRepresentative(rep);
+                var result = _pdistributorService.Create(pDis, rep);
+                if (result == true)
+                {
+                    logger.Info("Success: Complete Create(POST) - PDistributorController");
+                    TempData["success"] = "Thành công";
+                    return RedirectToAction("Create");
+                }
+                else
+                {
+                    logger.Info("Fail: Create(POST) - PDistributorController");
+                    ViewBag.fail = result;
+                    return View(model);
+                }
+            }
+            return RedirectToAction("Index", "Home");
+        }
+        public ContentResult getStaffAssigment()
+        {
+            IList<Staff> rs = new List<Staff>();
+            if (Request.IsAjaxRequest())
             {
-                idRepresentative = _representativeService.GenerateOrderId(),
-                name = model.rep_name,
-                email = model.rep_email,
-                title = model.title,
-                phone = model.rep_phone,
-                PDistributor = pDis.idDistributor,
-            };
-            var result = _pdistributorService.Create(pDis, rep);
+                rs = _staffService.getAll();
+                var list = JsonConvert.SerializeObject(rs.Select(x => new { x.idStaff, x.staffName }));
+                return Content(list, "application/json");
+            }
+            return null;
+        }
+
+        public ContentResult getStaff(int id)
+        {
+           var rs = new Staff();
+            if (Request.IsAjaxRequest())
+            {
+                rs = _staffService.getStaff(id);
+                var r = JsonConvert.SerializeObject(new { rs.idStaff, rs.staffName });
+                return Content(r, "application/json");
+            }
+            return null;
+        }
+
+        public ActionResult Detail(int id)
+        {
+            isAdminLogged();
+            var pdis = _pdistributorService.GetPDistributor(id);
+            if (pdis != null)
+            {
+                var model = new PDistributorDetailViewModel();
+                model.idDistributor = pdis.idDistributor;
+                model.name = pdis.name;
+                model.Email = pdis.Email;
+                model.address = pdis.address;
+                model.phone = pdis.phone;
+                model.status = pdis.status;
+                model.note = pdis.note;
+                model.rep_name = pdis.Representatives.FirstOrDefault().name;
+                model.title = pdis.Representatives.FirstOrDefault().title;
+                model.rep_email = pdis.Representatives.FirstOrDefault().email;
+                model.rep_phone = pdis.Representatives.FirstOrDefault().phone;
+                model.place = pdis.Assignments.FirstOrDefault().place;
+                model.date = pdis.Assignments.FirstOrDefault().date;
+                model.result = pdis.Assignments.FirstOrDefault().result;
+                model.staffAssigment = pdis.Assignments.FirstOrDefault().Staff1.idStaff;
+                model.allStaff = _staffService.getAll();
+                ViewBag.Parent = "Quản lý đối tác  >  Tìm kiếm đối tác";
+                ViewBag.Child = "Chi tiết đối tác";
+                return View(model);
+            }
+            else
+            {
+                return Redirect("List");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Detail (PDistributorDetailViewModel model)
+        {
+            //var user = Session["admin"] as Account;
+            var pdis = _pdistributorService.GetPDistributor(model.idDistributor);
+            pdis.idDistributor = model.idDistributor;
+            pdis.name = model.name;
+            pdis.Email = model.Email;
+            pdis.address = model.address;
+            pdis.phone = model.phone;
+            pdis.status = model.status;
+            pdis.note = model.note;
+
+            // var assig = _assigmentService.CreateAssignment(pdis.Assignments.FirstOrDefault().staff, pdis.Assignments.FirstOrDefault().PDistributor);
+
+            var res = _representativeService.getRepresentative(pdis.Representatives.FirstOrDefault().idRepresentative);
+            res.name = model.rep_name;
+            res.title = model.title;
+            res.email = model.rep_email;
+            res.phone = model.rep_phone;
+
+
+            var assigTemp = _assigmentService.getAssigment(pdis.Assignments.FirstOrDefault().staff, pdis.Assignments.FirstOrDefault().PDistributor);
+            var assig = new Assignment();
+            assig.staff = model.staffAssigment;
+            assig.PDistributor = pdis.idDistributor;
+            assig.date = model.date;
+            assig.place = model.place;
+
+            if (pdis.status == 3 || pdis.status == 4)
+                assig.isComplete = true;
+            assig.isComplete = false;
+            assig.result = model.result;
+            assig.staff = model.staffAssigment;
+
+            var rs1= _representativeService.UpdateRepresentative(res);
+            var rs2 = _assigmentService.DeleteAssignment(assigTemp);
+            var rs3 = _assigmentService.CreateAssignment(assig);
+            pdis.updatedDate = DateTime.Now;
+            var result = _pdistributorService.UpdatePDistributor(pdis);
+
             if (result == true)
             {
                 TempData["success"] = "Thành công";
-                return RedirectToAction("Create");
+                return RedirectToRoute("Default", new { controller = "PDistributor", action = "Detail", id = model.idDistributor });
             }
-
-
             else
             {
+                model.idDistributor = model.idDistributor;
                 ViewBag.fail = result;
                 return View(model);
             }
         }
-        public List<Staff> getStaffAssigment(int idPDis)
-        {
-            List<Assignment> temp = _pdistributorService.GetPDistributor(idPDis).Assignments.ToList();
-            List<Staff> st = new List<Staff>();
-            foreach (Assignment t in temp)
-            {
-                st.Add(t.Staff1);
-            }
-            return st;
-        }
+
     }
 }
