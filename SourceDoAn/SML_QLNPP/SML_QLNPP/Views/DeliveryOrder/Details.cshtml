@@ -1,21 +1,20 @@
-﻿@model DataModel.DeliveryOrder
-
+﻿@model SML_QLNPP.Models.DetailedDeliveryOrderViewModel
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_ALayout.cshtml";
 }
 @section css{
     <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/DeliveryOrder/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/DeliveryOrder/datatables.min.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/DeliveryOrder/details.css" rel="stylesheet" type="text/css" media="all" />
 }
 
 @section scripts{
+    <script type="text/javascript" src="~/Scripts/DeliveryOrder/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/DeliveryOrder/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="~/Scripts/DeliveryOrder/datatables.min.js"></script>
-    <script>
-        var table = $('#dorder-list').DataTable();
-    </script>
-    <script type="text/javascript" src="~/Scripts/DeliveryOrder/details.js"></script>
+    <script type="text/javascript" src="~/scripts/DeliveryOrder/details.js"></script>
 }
 
 @using (Html.BeginForm("Details", "DeliveryOrder", FormMethod.Post))
@@ -23,20 +22,19 @@
     <div class="box box-info">
         <div class="box-header with-border">
             @{
-                if (ViewBag.status != null)
+                if (ViewBag.msg != null)
                 {
-                    if (ViewBag.types ==1)
+                    if (ViewBag.types == 1)
                     {
-                        <div class="alert alter-warning"><strong>@ViewBag.status</strong></div>
+                        <div class="alert alter-warning"><strong>@ViewBag.msg</strong></div>
                     }
-                    else if(ViewBag.types == 2)
+                    else if (ViewBag.types == 2)
                     {
-                        <div class="alert alter-success"><strong>@ViewBag.status</strong></div>
+                        <div class="alert alter-success"><strong>@ViewBag.msg</strong></div>
                     }
-
                 }
             }
-            <h3 class="box-title">Thông tin giao hàng</h3>
+            <h3 class="box-title" style="text-align:center; display:block; font-weight:bold">Thông tin giao hàng</h3>
         </div>
 
         <div class="box-body">
@@ -46,7 +44,7 @@
             </div>
             <div class="col-md-3 form-group">
                 @Html.Label("Mã đơn hàng:")
-                @Html.TextBoxFor(model => model.Order.idOrder, new { @class = "form-control", @readonly = "readony" })
+                @Html.TextBoxFor(model => model.idOrder, new { @class = "form-control", @readonly = "readony" })
             </div>
             <div class="col-md-3 form-group">
                 @Html.Label("Mã nhân viên giao:")
@@ -54,7 +52,7 @@
             </div>
             <div class="col-md-3 form-group">
                 @Html.Label("Tên NV giao:")
-                @Html.TextBoxFor(model => model.Staff.staffName, new { @class = "form-control", @readonly = "readony" })
+                @Html.TextBoxFor(model => model.nameStaff, new { @class = "form-control", @readonly = "readony" })
             </div>
             <div class="col-md-3 form-group">
                 @Html.Label("Mã nhà phân phối:")
@@ -62,27 +60,33 @@
             </div>
             <div class="col-md-3 form-group">
                 @Html.Label("Tên nhà phân phối:")
-                @Html.TextBoxFor(model => model.Distributor.name, new { @class = "form-control", @readonly = "readony" })
+                @Html.TextBoxFor(model => model.nameDistributor, new { @class = "form-control", @readonly = "readony" })
             </div>
             <div class="col-md-3 form-group">
-                @Html.Label("Hình thức giao:")
-                <input type="text" value="@(Model.Order.DeliveryType == false ? "Tự túc" : "Vitamilk giao")" class="form-control" readonly />
+                <label>Hình thức giao:</label>
+                @Html.TextBoxFor(model => model.deliveryType, new { @type = "hidden" })
+                <input type="text" value="@(Model.deliveryType == false ? "Tự túc" : "Vitamilk giao")" class="form-control" readonly />
             </div>
             <div class="col-md-3 form-group">
                 @Html.Label("Hình thức thanh toán:")
-                <input type="text" value="@(Model.Order.PaymentType == false ? "Tiền mặt" : "Thẻ")" class="form-control" readonly />
+                @Html.TextBoxFor(model => model.paymentType, new { @type = "hidden" })
+                <input type="text" value="@(Model.paymentType == false ? "Tiền mặt" : "Thẻ")" class="form-control" readonly />
             </div>
             <div class="col-md-3 form-group">
                 @Html.Label("Người liên hệ giao:")
-                @Html.TextBoxFor(model => model.Order.Consignee.Name, new { @class = "form-control", @readonly = "readony" })
+                @Html.TextBoxFor(model => model.recipient, new { @class = "form-control", @readonly = "readony" })
             </div>
             <div class="col-md-3 form-group">
                 @Html.Label("SĐT giao:")
-                @Html.TextBoxFor(model => model.Order.Consignee.PhoneNumber, new { @class = "form-control", @readonly = "readony" })
+                @Html.TextBoxFor(model => model.recipientPhone, new { @class = "form-control", @readonly = "readony" })
             </div>
             <div class="col-md-3 form-group">
                 @Html.Label("Ngày giao dự kiến:")
-                <input type="text" value="@Convert.ToDateTime(@Model.Order.EstimateDateOfDelivery).ToString("dd/MM/yyyy")" class="form-control" readonly />
+                @Html.TextBoxFor(model => model.estimateDateOfDelivery, "{0:dd/MM/yyyy}", new { @type = "date", @class = "form-control", @strDate = Model.estimateDateOfDelivery?.ToLocalTime(), @readonly = "readony" })
+            </div>
+            <div class="col-md-3 form-group">
+                @Html.Label("Cập nhật gần đây:")
+                @Html.TextBoxFor(model => model.updateDate, "{0:dd/MM/yyyy}", new { @type = "date", @class = "form-control", @readonly = "readonly", @strDate = Model.updateDate?.ToLocalTime() })
             </div>
             <div class="col-md-3 form-group">
                 @Html.Label("Nơi giao:")
@@ -90,44 +94,39 @@
             </div>
             <div class="col-md-3 form-group">
                 @Html.Label("Ngày giao:")
-                <input type="text" value="@Convert.ToDateTime(@Model.deliveryDate).ToString("dd/MM/yyyy")" class="form-control" readonly />
-            </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Cập nhật gần đây:")
-                <input type="text" value="@Convert.ToDateTime(@Model.updateDate).ToString("dd/MM/yyyy")" class="form-control" readonly />
+                @Html.TextBoxFor(model => model.deliveryDate, "{0:dd/MM/yyyy}", new { @type = "date", @class = "form-control", @strDate = Model.deliveryDate?.ToLocalTime() })
             </div>
             <div class="col-md-3">
-                <label>Tình trạng: </label>
-
-
+                @Html.Label("Tình trạng:")
                 @{
-                    if (Model.status == 5)
+                    if (Model.status == 2 || Model.status == 4)
+                    {
+                        @Html.DropDownListFor(model => model.status, new List<SelectListItem> {
+           new SelectListItem { Text = "Đã giao", Value = "2", Selected = Model.status == 2 ? true: false },
+           new SelectListItem { Text = "Bị từ chối giao", Value = "4",Selected = Model.status == 4 ? true: false }
+       }, new { @class = "form-control", @readonly = "readonly" })
+                    }
+                    else if (Model.status == 5 || Model.status == 3)
+                    {
+                        @Html.DropDownListFor(model => model.status, new List<SelectListItem> {
+           new SelectListItem { Text = "Đang giao", Value = "1", Selected = Model.status == 1 ? true: false },
+           new SelectListItem { Text = "Kiểm kê thiếu", Value = "3", Selected = Model.status == 3 ? true: false },
+       new SelectListItem { Text = "Chưa kiểm kê", Value = "5"}
+       }, new { @class = "form-control" })
+                    }
+                    else if (Model.status == 1)
                     {
                         @Html.DropDownListFor(model => model.status, new List<SelectListItem> {
            new SelectListItem { Text = "Đang giao", Value = "1", Selected = true },
-           new SelectListItem { Text = "Kiểm kê thiếu", Value = "3"},
-       new SelectListItem { Text = "Chưa kiểm kê", Value = "5"}
+           new SelectListItem { Text = "Đã giao", Value = "2"},
+           new SelectListItem { Text = "Bị từ chối giao", Value = "4"}
        }, new { @class = "form-control" })
-
-                    }
-                    else
-                    {
-                        @Html.DropDownListFor(model => model.status, new List<SelectListItem> {
-           new SelectListItem { Text = "Đang giao", Value = "1", Selected = Model.status ==1 ? true: false },
-           new SelectListItem { Text = "Đã giao", Value = "2",Selected = Model.status ==2 ? true: false },
-           new SelectListItem { Text = "Kiểm kê thiếu", Value = "3",Selected = Model.status ==3 ? true: false },
-       new SelectListItem { Text = "Bị từ chối giao", Value = "4",Selected = Model.status ==4 ? true: false }
-       }, new { @class = "form-control" })
-
                     }
                 }
-
-
             </div>
             <div class="col-md-3 form-group">
                 @Html.Label("Mô tả tình trạng")
                 @Html.TextBoxFor(model => model.description, new { @class = "form-control" })
-                @*<input type="text" value="@Model.description" style="min-width: 400px" id="description" />*@
             </div>
         </div>
 
@@ -136,7 +135,7 @@
         <div class="col-md-12">
             <div class="box box-success">
                 <div class="box-header">
-                    <h3 class="box-title">Danh sách sản phẩm giao</h3>
+                    <h3 class="box-title" style="text-align:center; display:block; font-weight:bold">Danh sách sản phẩm giao</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -149,40 +148,47 @@
                                         <th>Tên SP</th>
                                         <th>Đơn giá</th>
                                         <th>Số lượng</th>
+                                        <th>Số lượng KM</th>
                                         <th>Thành Tiền (VNĐ)</th>
                                         <th>Ghi chú</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model.DetailedDeliveryOrders)
-                                {
-                                <tr>
-                                    <td>@item.idProduct</td>
-                                    <td>@item.Product.ProductName</td>
-                                    <td>@string.Format("{0:0,0}", @item.Product.Price)</td>
-                                    <td>@item.quantity</td>
-                                    <td>@string.Format("{0:0,0}", @item.Product.Price * @item.quantity)</td>
-                                    <td>@item.note</td>
-                                </tr>
-                                }
+                                    {
+                                        <tr>
+                                            <td>@item.idProduct</td>
+                                            <td>@item.Product.ProductName</td>
+                                            <td>@string.Format("{0:0,0}", @item.Product.Price)</td>
+                                            <td>@item.quantity</td>
+                                            <td>@item.promoQuantity</td>
+                                            <td>@string.Format("{0:0,0}", @item.Product.Price * @item.quantity)</td>
+                                            <td>@item.note</td>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
+                            @Html.TextBoxFor(model => model.totalPurchase, new { @type = "hidden" })
                             <h2 style="text-align:center; font-weight: bold">Tổng tiền: @string.Format("{0:0,0}", Model.totalPurchase)</h2>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12" style="margin-top: 5px;margin-bottom: 5px; text-align: center;" id="btnControll">
-                            @{
-                            if (Model.status == 5)
-                            {
-                        <input type="button" value="Xác nhận" class="btn btn-default" style="display:block; margin: 0 auto;" id="btnComfirm" />
-                            }
-                            else
-                            {
-                        <input type="submit" value="Cập nhật" class="btn btn-default" style="margin-right: 5px;" id="btnUpdate" />
-                        @Html.ActionLink("Lập hóa đơn","Create","Bill","", new { @class = "btn btn-default", style = "margin-left: 5px;" })
-                        @*<input type="button" value="Lập hóa đơn" class="btn" style="margin-left: 5px;" id="btnCreateBill" />*@
-                            }
+                            @{ if (Model != null)
+                                {
+                                    if (Model.status == 5)
+                                    {
+                                        <input type="submit" value="Xác nhận" class="btn btn-default" style="display:block; margin: 0 auto;" id="btnComfirm" />
+                                    }
+                                    else
+                                    {
+                                        <input type="submit" value="Cập nhật" class="btn btn-default" style="margin-right: 5px;" id="btnUpdate" />
+                                    }
+                                    if (Model.status == 2)
+                                    {
+                                        @Html.ActionLink("Lập hóa đơn", "Create", "Bill", new { id = Model.idDeliveryOrder }, new { @class = "btn btn-default", style = "margin-left: 5px;" })
+                                    }
+                                }
                             }
                         </div>
                     </div>
@@ -196,5 +202,5 @@
     </div>
                                 }
 <strong>
-@Html.ActionLink("Quay về trang tìm  kiếm", "List")
+    @Html.ActionLink("Quay về trang tìm  kiếm", "List")
 </strong>

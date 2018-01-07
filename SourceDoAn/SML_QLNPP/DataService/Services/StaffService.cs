@@ -53,12 +53,41 @@ namespace DataService.Services
             }
         }
         
-        public Staff GetByAccount(string account)
+        public IList<Staff> GetAll()
         {
-            logger.Info("Start to get info of staff...");
-            Staff emp = repo_staff.Get(x => x.account == account);
-            logger.Info("End");
-            return emp;
+            try
+            {
+                logger.Info("Start GetAll Staff....");
+                IRepository<Staff> repository = _unitOfWork.Repository<Staff>();
+                var result = repository.GetAll();
+                if (result != null)
+                {
+                    logger.Info("Start GetAll Staff....");
+                    return result.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Info(ex);
+                logger.Info("End GetAll Staff....");
+            }
+            return null;
+        }
+        public Staff GetByAccount(string Account)
+        {
+            Staff staff = null;
+            logger.Info("Start Get Staff by username....");
+            try
+            {
+                IRepository<Staff> repository = _unitOfWork.Repository<Staff>();
+                staff = repository.Get(a =>a.account == Account);
+            }
+            catch (Exception ex)
+            {
+                logger.Info(ex.Message);
+            }
+            logger.Info("End Get Staff by username....");
+            return staff;
         }
     }
 }
