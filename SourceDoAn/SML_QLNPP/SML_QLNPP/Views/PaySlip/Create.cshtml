@@ -1,0 +1,86 @@
+﻿@model SML_QLNPP.Models.CreatePaySlipViewModel
+@using Newtonsoft.Json;
+@{
+    var success = TempData["success"] as string;
+    var fail = TempData["fail"] as string;
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+}
+
+@section css{
+    <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" type="text/css" media="all" />
+}
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="~/Scripts/PaySlip/create.js"></script>
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            @if (success != null)
+            {
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Thành công!</strong> Tạo phiếu chi thành công!
+                </div>
+            }
+            else if (fail != null)
+            {
+                <div class="alert alert-danger alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Thất bại!</strong> @fail
+                </div>
+            }
+            <div class="well">
+                <h2>Phiếu chi @Model.idPaySlip</h2>
+
+                @using (Html.BeginForm("Create", "Debt", FormMethod.Post))
+                {
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Thông tin nhà phân phối</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="col-md-2">
+                                <label>Mã nhà phân phối: </label>
+                                @Html.TextBoxFor(i => i.idDistributor, new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-2">
+                                <label>Tên nhà phân phối: </label>
+                                @Html.TextBoxFor(i => i.nameDistributor, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Thông tin trả công nợ</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="col-md-2">
+                                <label>Ngày chi: </label>
+                                @Html.TextBoxFor(model => model.date, new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-2">
+                                <label>Tiền chi: </label>
+                                @Html.TextBoxFor(model => model.moneyPay, new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-2">
+                                <label>Lý do chi: </label>
+                                @Html.TextBoxFor(model => model.reason, new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-3">
+                                <label>Nhân viên lập phiếu: </label>
+                                @Html.TextBoxFor(model => model.staffName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-info" value="Tạo phiếu chi" />
+                }
+            </div>
+        </div>
+    </div>
+</div>

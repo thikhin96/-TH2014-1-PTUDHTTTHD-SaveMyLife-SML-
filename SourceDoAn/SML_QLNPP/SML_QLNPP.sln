@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SML_QLNPP.Tests", "SML_QLNPP.Tests\SML_QLNPP.Tests.csproj", "{62ADA6FE-6ED7-4219-96F6-9A98FE502235}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4EF07E17-68E3-4DA8-88DA-67FDEAB9123D} = {4EF07E17-68E3-4DA8-88DA-67FDEAB9123D}
+		{5EF3945A-8458-40AF-A5FD-48FE8955E047} = {5EF3945A-8458-40AF-A5FD-48FE8955E047}
+		{96291DCA-3507-4A6E-9883-8C214E54A9C0} = {96291DCA-3507-4A6E-9883-8C214E54A9C0}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataService", "DataService\DataService.csproj", "{5EF3945A-8458-40AF-A5FD-48FE8955E047}"
 EndProject
@@ -36,5 +41,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3856EE32-3B3B-4D59-9643-A624453946E0}
 	EndGlobalSection
 EndGlobal

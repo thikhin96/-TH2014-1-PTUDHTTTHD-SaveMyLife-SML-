@@ -23,7 +23,7 @@
 
 }
 
-<h2>Phiếu đổi trả số @Model.ReturnId</h2>
+<h2 id="idReturn">Phiếu đổi trả số @Model.ReturnId</h2>
 @if (success != null)
 {
     <div class="alert alert-success alert-dismissable">
@@ -185,6 +185,6 @@ else if (fail != null)
 
         </div>
     </div>
-    <input type="submit" class="btn btn-info" value="Tạo phiếu đổi trả" />
-}
+    <button id="btnTao" class="btn btn-info">Tạo phiếu đổi trả</button>
+                                                    }
 @Html.Partial("~/Views/Order/_AddProduct.cshtml")

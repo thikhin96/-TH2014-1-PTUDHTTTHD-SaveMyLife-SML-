@@ -14,6 +14,7 @@ namespace SML_QLNPP.Controllers
     {
         private readonly IReturnService _returnService;
         private readonly IProductService _productService;
+        private readonly IDistributorService _distributorService;
         private readonly ILogger _logger = LogManager.GetCurrentClassLogger();
 
         public ReturnController(IReturnService returnService, IProductService productService)
@@ -124,12 +125,21 @@ namespace SML_QLNPP.Controllers
             };
             var result = _returnService.CreateReturnCard(returnCard);
             if (result == "thanh cong")
-                TempData["success"] = "thanh cong";
+            TempData["success"] = "thanh cong";   
             else
                 TempData["fail"] = result;
             model.Products = _productService.GetAllProducts();
             _logger.Info("Success: Complete Create(POST) - ReturnController");
             return RedirectToAction("Create", new { ReturnRequestId = model.ReturnRequestId });
+
+            //if (_distributorService.checkDebt(model.DistributorId) == true)
+            //{
+            //    return Redirect("/Debt/Create?ReturnId=" + model.ReturnId);
+            //}
+            //else
+            //{
+            //    return Redirect("/ReturnRequest/List");
+            //}
         }
     }
 }
