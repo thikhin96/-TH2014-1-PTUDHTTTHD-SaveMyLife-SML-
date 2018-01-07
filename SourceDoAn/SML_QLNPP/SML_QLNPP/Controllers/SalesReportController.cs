@@ -12,7 +12,7 @@ using System.Collections;
 
 namespace SML_QLNPP.Controllers
 {
-    public class SalesReportController : Controller
+    public class SalesReportController : BaseController
     {
         // GET: SalesReport
         private readonly ISalesReportService _orderService;
@@ -46,8 +46,8 @@ namespace SML_QLNPP.Controllers
         {
             ViewBag.Parent = "Báo Cáo Doanh Thu";
             ViewBag.Child = "Hóa Đơn";
-            //SalesReportViewModel model = new SalesReportViewModel();
-            //model.Bill = _billService.SearchListBill(0, 0, "");
+            SalesReportViewModel model = new SalesReportViewModel();
+            model.Bill = _billService.SearchListBill(0, 0, "");
             return View();
         }
         [HttpGet]

@@ -300,5 +300,10 @@ namespace DataService.Services
                 return "Không thể cập nhật đơn đặt hàng";
             }
         }
+
+        public string CreateOrder(Order order, List<OrderDetail> orderDetails)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

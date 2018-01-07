@@ -211,12 +211,6 @@ namespace DataService.Services
             throw new NotImplementedException();
         }
 
-        IList<DistributorList> IDistributorService.GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-
         public List<Distributor> SearchByName(string searchTerm)
         {
             var distributors = _distributorRepository.GetAll(x => x.name.Contains(searchTerm) && x.status == true).ToList();
@@ -241,6 +235,9 @@ namespace DataService.Services
                 return false;
             }
         }
-
+        public bool priceOverDebt(int distributorId, decimal price)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
