@@ -7,7 +7,7 @@
         var keyword = $("#keyword").val();
         var created_date = $("#created_date").val();
         var status = $('#status').find(":selected").val();
-        var url = '/Order/Search'
+        var url = 'Search';
         console.log(status);
         $.ajax({
             url: url,
@@ -50,7 +50,7 @@
                         else {
                             rs.push('Đã giao');
                         }
-                        rs.push('<a class="btn btn-info btn-xs" href="/Order/Detail/' + item.idOrder + '">Xem</a> | <a class="btn btn-danger btn-xs" href="/Order/Delete/' + item.idOrder + '">Xoá</a>')
+                        rs.push('<a class="btn btn-info btn-xs" href="Detail/' + item.idOrder + '">Xem chi tiết</a>')
                         return rs;
                     });
 

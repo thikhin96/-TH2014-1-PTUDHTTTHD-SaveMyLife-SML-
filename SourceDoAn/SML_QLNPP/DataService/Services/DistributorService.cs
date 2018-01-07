@@ -1,20 +1,15 @@
-﻿using DataModel;
-using DataModel.Interfaces;
-using DataService.Interfaces;
-using System;
+﻿using System;
 
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using DataModel;
-using DataService.Interfaces;
-using DataModel.Interfaces;
 using DataModel.Repositories;
 using DataService.Dtos;
 using NLog;
 using System.Collections;
+using DataService.Interfaces;
+using DataModel.Interfaces;
+using DataModel;
 
 namespace DataService.Services
 {
@@ -25,17 +20,24 @@ namespace DataService.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<Distributor> _distributorRepository;
         private readonly IRepository<Contract> _contractRepository;
-
+        IAccountService _serviceAccount;
+        private readonly IRepository<Debt> _debtRepository;
+        private readonly IRepository<Storage> _storageRepository;
+        
+        
         /// <summary>
         /// Hàm khởi tạo
         /// </summary>
         /// <param name="unitOfWork"></param>
         /// <returns></returns>
-        public DistributorService(IUnitOfWork unitOfWork)
+        public DistributorService(IUnitOfWork unitOfWork, IAccountService accountService)
         {
             _unitOfWork = unitOfWork;
             _distributorRepository = unitOfWork.Repository<Distributor>();
             _contractRepository = unitOfWork.Repository<Contract>();
+            _serviceAccount = accountService;
+            _debtRepository = unitOfWork.Repository<Debt>();
+            _storageRepository = unitOfWork.Repository<Storage>();
         }
 
         public bool hasContract(int distributorId)
@@ -46,12 +48,18 @@ namespace DataService.Services
             return true;
         }
 
-        public bool priceOverDebt(int distributorId, decimal price)
+        public Contract GetCurrentContract(int distributorId)
         {
-            if (_contractRepository.Get(x => x.distributor == distributorId && x.beginDate <= DateTime.Now && x.expiredDate > DateTime.Now).maxDebt < price)
-                return true;
-            return false;
+            var currentDate = DateTime.Now;
+            var contract = _contractRepository.Get(x => x.distributor == distributorId && x.beginDate <= currentDate && currentDate <= x.expiredDate);
+            return contract;
         }
+
+        public bool exceedingDebt(int distributorId)
+        {
+            return true;
+        }
+
         public bool CheckEmail(string email)
         {
             throw new NotImplementedException();
@@ -62,26 +70,49 @@ namespace DataService.Services
             throw new NotImplementedException();
         }
 
-        public bool Create(PotentialDistributor pDis)
+        public int GenerateDistributorId()
         {
-            throw new NotImplementedException();
+            var latestDis = _distributorRepository.GetAll().OrderByDescending(x => x.idDistributor).FirstOrDefault();
+            if (latestDis != null)
+                return latestDis.idDistributor + 1;
+            else
+                return 0;
         }
 
-        public bool Create(DistributorBase dis, Representative rep)
+        public int Create(Distributor person)
         {
-            throw new NotImplementedException();
+            logger.Info("Start to create a distributor...");
+            person.idDistributor = GenerateDistributorId();
+            person.createdDate = DateTime.Now;
+            person.updatedDate = DateTime.Now;
+            person.debt = 0;
+            person.status = true;
+            try
+            {
+                _distributorRepository.Add(person);
+                
+            }
+            catch (Exception ex)
+            {
+                logger.Info(ex.Message);
+                throw ex;
+            }
+            return person.idDistributor;
         }
 
-        public IList<DistributorList> GetList(Nullable<int> id = null)
+        public IList<DistributorList> GetList(Nullable<int> id = null, bool? status = null)
         {
             logger.Info("Start service....");
             IList<Distributor> ds_Dis = new List<Distributor>();
-            IUnitOfWork uow = new UnitOfWork();
-            IRepository<Distributor> repo = uow.Repository<Distributor>();
-            if (id == null)
-                ds_Dis = repo.GetAll().ToList();
+            if (status == false)
+            {
+                ds_Dis = _distributorRepository.GetAll(x => x.status == status).ToList();
+            }
             else
-                ds_Dis = repo.GetAll(x => x.idDistributor == id).ToList();
+            if (id == null)
+                ds_Dis = _distributorRepository.GetAll().ToList();
+            else
+                ds_Dis = _distributorRepository.GetAll(x => x.idDistributor == id).ToList();
             IList<DistributorList> listDis = new List<DistributorList>();
             DistributorList lDis;
             foreach (Distributor dis in ds_Dis)
@@ -104,21 +135,62 @@ namespace DataService.Services
         public Distributor SearchByID(int id )
         {
             logger.Info("Start service....");
-            IUnitOfWork uow = new UnitOfWork();
-            IRepository<Distributor> repo = uow.Repository<Distributor>();
-            Distributor dis = repo.Get(x => x.idDistributor == id);
+            Distributor dis = _distributorRepository.Get(x => x.idDistributor == id);
             logger.Info("End service...");
             return dis;
         }
 
         public bool UpdateDebt(int id, long money)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            logger.Info("Start service....");
+            try {
+                var distributor = this.SearchByID(id);
+                distributor.debt = distributor.debt + money;
+                _unitOfWork.SaveChange();
+                logger.Info("End service...");
+                return true;
+            }
+            catch (Exception e)
+            {
+                logger.Info(e.Message);
+                logger.Info("End service...");
+                return false;
+            }
         }
 
-        public bool UpdateStatus(int id, bool status)
+        public List<Storage> GetStorages(string keyWord, int distributorId)
         {
-            throw new NotImplementedException();
+            var storages = _storageRepository.GetAll(x => x.Distributor == distributorId
+                                                 && (x.HouseNumber_Street.Contains(keyWord) || x.District.Contains(keyWord) || x.Ward_Commune.Contains(keyWord) || x.City.Contains(keyWord)))
+                                                 .ToList();
+            return storages;
+        }
+
+        public bool UpdateStatus(int id, bool status,string note)
+        {
+            logger.Info("Start to update status of the distributor...");
+            try
+            {
+                Distributor dis = SearchByID((int)id);
+                dis.status = status;
+                dis.updatedDate = DateTime.Now;
+                dis.note = note;
+
+                _distributorRepository.Update(dis);
+                _unitOfWork.SaveChange();
+
+                // Update status of account's Distributor
+                _serviceAccount.UpdateStatus(dis.name, note, !status);
+                
+                logger.Info("End: Successful...");
+                return true;
+            }
+            catch(Exception ex)
+            {
+                logger.Info(ex.Message);
+                return false;
+            }
         }
 
         public IList<Distributor> GetAll()
@@ -143,5 +215,32 @@ namespace DataService.Services
         {
             throw new NotImplementedException();
         }
+
+
+        public List<Distributor> SearchByName(string searchTerm)
+        {
+            var distributors = _distributorRepository.GetAll(x => x.name.Contains(searchTerm) && x.status == true).ToList();
+            return distributors;
+        }
+        public bool UpdateDebt(int id, decimal money)
+        {
+            //throw new NotImplementedException();
+            logger.Info("Start service....");
+            try
+            {
+                var distributor = this.SearchByID(id);
+                distributor.debt = distributor.debt + money;
+                _unitOfWork.SaveChange();
+                logger.Info("End service...");
+                return true;
+            }
+            catch (Exception e)
+            {
+                logger.Info(e.Message);
+                logger.Info("End service...");
+                return false;
+            }
+        }
+
     }
 }

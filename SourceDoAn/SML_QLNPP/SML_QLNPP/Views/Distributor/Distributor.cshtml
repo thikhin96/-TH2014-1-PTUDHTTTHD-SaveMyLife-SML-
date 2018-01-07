@@ -1,11 +1,12 @@
-﻿@model SML_QLNPP.Models.DistributorViewModel
+﻿@using DataModel;
+@model SML_QLNPP.Models.DistributorListViewModel
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+    var staff = Session["admin"] as Account;
 }
 
 @{
     var check = ViewBag.checkID;
-    var isNull = ViewBag.ID_IsNull;
 }
 
 @section css{
@@ -16,7 +17,8 @@
 
 @section scripts{
     <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>    
     <script>
         $('#dis-list').DataTable({
             "oLanguage": {
@@ -35,34 +37,35 @@
     </script>
 }
 
-<div class="container-fluid">
-    <div class="row">
-        @Html.Partial("~/Views/Shared/_SidebarAdmin.cshtml")
-        <div class="col-sm-10 col-md-10">
-            <div class="well">
-                <div class="text-right">
-                    @using (Html.BeginForm("DistributorSeacrh", "Distributor", FormMethod.Post))
-                    {
-                        <label > Tìm kiếm </label >
-                        @Html.TextBoxFor(model => model.id)
-                        <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
-                    }
-                </div>
-                <div class="row mgt">
-                    <div class="col-md-12">
-                        <h2>Danh sách nhà phân phối</h2>
-                        <br />
+<div class="box box-info">
+    @using (Html.BeginForm("DistributorSearch", "Distributor", FormMethod.Get))
+    {
+        <div class="box-body" style="text-align: right">
+            <label> Tìm kiếm </label>
+            @Html.TextBoxFor(model => model.id)
+            <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
+        </div>
+    }
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header">
+                <h2 class="box-title">Danh sách nhà phân phối</h2>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <div class="col-sm-12">
                         @if (check == false)
                         {
                             <strong style="color:red"> Mã nhà phân phối không hợp lệ </strong>
                         }
-                        else if (isNull == true)
-                        {
-                            <strong style="color:blue"> Nhập mã nhà phân phối </strong>
-                        }
                         else
                         {
-                            <table id="dis-list" class="cell-border" cellspacing="0" width="100%">
+                            <table id="dis-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                 <thead>
                                     <tr>
                                         <th>Mã nhà phân phối</th>
@@ -74,10 +77,10 @@
                                         <th>Thao tác</th>
                                     </tr>
                                 </thead>
-                                <tbody id="result">
+                                <tbody>
                                     @foreach (var item in Model.listDis)
                                     {
-                                        <tr class="dis">
+                                        <tr>
                                             <td>@item.Dis.idDistributor</td>
                                             <td>@item.Dis.name</td>
                                             <td>@item.Dis.address</td>
@@ -92,18 +95,22 @@
                                             }
                                             <td>@item.Dis.phone</td>
                                             <td>
-                                                <a href="../Distributor/DetailedDistributor/@item.Dis.idDistributor">
-                                                    <input type="button" value="Chi tiết" />
-                                                </a>
+                                                @Html.ActionLink("Chi tiết", "DetailedDistributor", new { id = @item.Dis.idDistributor }, new { @class = "btn btn-primary" })
                                             </td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
                         }
-                </div>
+
+                    </div>
                 </div>
             </div>
+            <!-- /.box-body -->
         </div>
+        <!-- /.box -->
+
     </div>
 </div>
+
+

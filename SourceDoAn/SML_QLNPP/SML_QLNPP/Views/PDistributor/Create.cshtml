@@ -1,0 +1,97 @@
+﻿@model SML_QLNPP.Models.CreatePDistributorViewModel
+@using Newtonsoft.Json;
+@{
+    var success = TempData["success"] as string;
+    var fail = ViewBag.fail as string;
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+}
+
+@section css{
+    <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/PDitributor/detail.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/datatables.min.css" rel="stylesheet" type="text/css" media="all" />
+}
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/createOrder.js"></script>
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-10 col-md-10">
+            @if (success != null)
+            {
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Thành công! </strong>Thêm thành công!
+                </div>
+            }
+            else if (fail != null)
+            {
+                <div class="alert alert-danger alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Thất bại! </strong> @fail
+                </div>
+            }
+            <div class="well">
+                <h3>Thêm đối tác</h3>
+                @using (Html.BeginForm("Create", "PDistributor", FormMethod.Post))
+                {
+                    <div class="panel-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Công ty đối tác</div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-5 form-group">
+                                        <label>Tên công ty: </label>
+                                        @Html.TextBoxFor(m => m.name, new { @class = "form-control", @placeholder = "Nhập tên công ty", @required = "required", @type = "text" })
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <label>Email: </label>
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Nhập email", @required = "required", @type = "email" })
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <label>Địa chỉ công ty: </label>
+                                        @Html.TextBoxFor(m => m.address, new { @class = "form-control", @placeholder = "Nhập địa chỉ", @required = "required", @type = "text" })
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <label>Số điện thoại: </label>
+                                        @Html.TextBoxFor(m => m.phone, new { @class = "form-control", @placeholder = "Nhập số điện thoại", @required = "required", @type = "text" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Người đại diện</div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-5 form-group">
+                                        <label>Họ tên: </label>
+                                        @Html.TextBoxFor(m => m.rep_name, new { @class = "form-control", @placeholder = "Nhập họ tên", @required = "required", @type = "text" })
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <label>Chức vụ: </label>
+                                        @Html.TextBoxFor(m => m.title, new { @class = "form-control", @placeholder = "Nhập chức vụ", @required = "required", @type = "text" })
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <label>Email: </label>
+                                        @Html.TextBoxFor(m => m.rep_email, new { @class = "form-control", @placeholder = "Nhập email", @required = "required", @type = "email" })
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <label>Số điện thoại: </label>
+                                        @Html.TextBoxFor(m => m.rep_phone, new { @class = "form-control", @placeholder = "Nhập số điện thoại", @required = "required", @type = "text" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="submit" class="btn btn-primary" value="Thêm" />
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,8 +1,18 @@
-﻿.form-group{
-    margin: 10px 0px 10px 10px;
-}
-
+﻿
 .table-input{
     background: white;
     border:none;
+}
+
+.container.pad{
+    padding: 2% 0;
+}
+
+.container.pad>h2{
+    font-size: 2em;
+    font-weight: 600;
+    color: #000;
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
 }

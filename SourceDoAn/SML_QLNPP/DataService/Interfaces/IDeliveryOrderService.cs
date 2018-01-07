@@ -11,10 +11,11 @@ namespace DataService.Interfaces
         bool AddDeliveryOrder(DeliveryOrder dOrder);
         bool UpdateDeliveryOrder(DeliveryOrder dOrder);
         DeliveryOrder SearchById(int id);
-        IList<DeliveryOrder> SearchByStatus(int status);
+        IList<DeliveryOrder> SearchByStatus(byte status);
         IList<DeliveryOrder> SearchByDeliveryDate(DateTime datetime);
 
         // can them vao
         IList<DeliveryOrder> GetAll();
+        int GenerateDOrderId();
     }
 }

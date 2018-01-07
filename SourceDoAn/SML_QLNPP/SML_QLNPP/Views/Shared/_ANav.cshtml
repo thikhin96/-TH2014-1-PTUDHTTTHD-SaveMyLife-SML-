@@ -1,4 +1,9 @@
-﻿<aside class="main-sidebar">
+﻿@using DataModel;
+@{
+    var admin = Session["admin"] as Account;
+}
+
+<aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- Sidebar user panel -->
@@ -7,7 +12,7 @@
                 <img src="~/Content/AdminLTE/images/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p>@admin.UserName</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -28,13 +33,37 @@
             <li class="header">Menu chức năng</li>
             <li class="treeview">
                 <a href="#">
+                    <i class="fa fa-table"></i> <span>Quản lý nhà phân phối</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Distributor", "Distributor")"><i class="fa fa-arrow-circle-o-right"></i> Thông tin nhà phân phối</a></li>
+                    <li><a href="@Url.Action("Contract", "Contract")"><i class="fa fa-arrow-circle-o-right"></i> Thông tin hợp đồng</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-table"></i> <span>Quản lý đối tác</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("List", "PDistributor")"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm đối tác</a></li>
+                    <li><a href="@Url.Action("Create", "PDistributor")"><i class="fa fa-arrow-circle-o-right"></i> Thêm đối tác</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
                     <i class="fa fa-table"></i> <span>Quản lý đặt hàng</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/Order/List"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm đơn hàng</a></li>
+                    <li><a href="@Url.Action("List", "Order")"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm đơn hàng</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -45,7 +74,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/Promotion/List"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm khuyến mãi</a></li>
+                    <li><a href="@Url.Action("List", "Promotion")"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm khuyến mãi</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -56,8 +85,31 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/Product/List"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm sản phẩm</a></li>
-                    <li><a href="/Product/Create"><i class="fa fa-arrow-circle-o-right"></i> Tạo sản phẩm mới</a></li>
+                    <li><a href="@Url.Action("List", "Product")"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm sản phẩm</a></li>
+                    <li><a href="@Url.Action("Create", "Product")"><i class="fa fa-arrow-circle-o-right"></i> Tạo sản phẩm mới</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-table"></i> <span>Quản lý giao hàng</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("List", "DeliveryOrder")"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm đơn giao hàng</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-table"></i> <span>Quản lý đổi trả</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Index", "Return")"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm phiếu đổi trả</a></li>
+                    
                 </ul>
             </li>
             <li class="treeview">

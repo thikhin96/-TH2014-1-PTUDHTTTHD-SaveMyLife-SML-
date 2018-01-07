@@ -11,7 +11,7 @@ using SML_QLNPP.Models;
 
 namespace SML_QLNPP.Controllers
 {
-    public class DistributorController : Controller
+    public class DistributorController : BaseController
     {
         ILogger logger = LogManager.GetCurrentClassLogger();
         IDistributorService dis_Service;
@@ -27,14 +27,15 @@ namespace SML_QLNPP.Controllers
         
         public ActionResult Distributor()
         {
+            isAdminLogged();
             logger.Info("Start controller to load list of distributors....");
-            DistributorViewModel model = new DistributorViewModel();
-            model.listDis = dis_Service.GetList(null).ToList();
+            DistributorListViewModel model = new DistributorListViewModel();
+            model.listDis = dis_Service.GetList(null,null).ToList();
             return View(model);
         }
 
-        [HttpPost]
-        public ActionResult DistributorSeacrh(DistributorViewModel model)
+        [HttpGet]
+        public ActionResult DistributorSearch(DistributorListViewModel model)
         {
             logger.Info("Start controller to filter....");
             int id;
@@ -49,9 +50,9 @@ namespace SML_QLNPP.Controllers
             }
             else
             {
-                model.listDis = dis_Service.GetList(id).ToList();
-                model.id = null;
+                model.listDis = dis_Service.GetList(id, null).ToList();
             }
+            model.id = null;
             return View("Distributor",model);
         }
 

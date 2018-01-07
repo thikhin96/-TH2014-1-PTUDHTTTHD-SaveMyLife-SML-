@@ -42,9 +42,14 @@ namespace SML_QLNPP.Controllers
         {
             isLogin();
             var ret = _accountService.Login(Login.UserName, Login.Password);
-            if (ret!=null)
+            if (ret!=null && ret.decentralization == 3)
             {
-                Session["username"] = Login.UserName;
+                if(ret.locked == true)
+                {
+                    ModelState.AddModelError("", "Tài khoản của bạn đã bị khoá");
+                    return View();
+                }
+                Session["user"] = ret as Account;
                 Log_Login log = new Log_Login();
                 log.idAccount = ret.idUser;
                 log.status = true;
@@ -57,7 +62,8 @@ namespace SML_QLNPP.Controllers
                 {
 
                 }
-                return Redirect("/");
+                //Response.Redirect("cpanel.aspx", false); 
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -87,7 +93,7 @@ namespace SML_QLNPP.Controllers
         /// <returns></returns>
         public ActionResult ALogin()
         {
-            isLogin();
+            isAdminLogin();
             return View();
         }
         /// <summary>
@@ -98,13 +104,18 @@ namespace SML_QLNPP.Controllers
         [HttpPost]
         public ActionResult ALogin(Account Login)
         {
-            isLogin();
+            isAdminLogin();
             var ret = _accountService.Login(Login.UserName, Login.Password);
             if (ret != null)
             {
                 if (ret.decentralization == 3)
                 {
                     ModelState.AddModelError("", "Bạn không đủ quyền để đăng nhập vào hệ thống");
+                    return View();
+                }
+                else if (ret.locked == true)
+                {
+                    ModelState.AddModelError("", "Tài khoản của bạn đã bị khoá");
                     return View();
                 }
                 else
@@ -121,8 +132,8 @@ namespace SML_QLNPP.Controllers
                     {
 
                     }
-                    Session["a_username"] = Login.UserName;
-                    return Redirect("/");
+                    Session["admin"] = ret as Account;
+                    return RedirectToAction("Index", "Admin");
                 }
             }
             else
@@ -154,14 +165,19 @@ namespace SML_QLNPP.Controllers
         /// <returns></returns>
         public ActionResult Logout()
         {
-            if (Session["username"] != null)
+            if (Session["user"] != null)
             {
-                Session.Remove("username");
-                return Redirect("/");
+                Session.Remove("user");
+                return RedirectToAction("Index", "Home");
+            }
+            else if (Session["admin"] != null)
+            {
+                Session.Remove("admin");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
-                return Redirect("/");
+                return RedirectToAction("Index", "Home");
             }
         }
     }
