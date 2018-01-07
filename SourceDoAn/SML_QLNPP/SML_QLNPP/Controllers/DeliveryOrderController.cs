@@ -239,6 +239,8 @@ namespace SML_QLNPP.Controllers
                     // lập thành công chuyển qua trang chi tiết
                     return Redirect("/DeliveryOrder/Details/" + dOrder.idDeliveryOrder);
                 }
+                ViewBag.msg = "Lập thất bại";
+                ViewBag.types = 1;
             }
             // lập thất bại, chèn Product và chi tiết(ngoài view cần lấy name, price)
             model.DetailedDeliveryOrder.Clear();
@@ -318,15 +320,15 @@ namespace SML_QLNPP.Controllers
                 else
                 {
                     DetailedDeliveryOrderViewModel ddOrderVM = new DetailedDeliveryOrderViewModel();
-                    ddOrderVM.deliveryType = dOrder.Order1.DeliveryType;
-                    ddOrderVM.estimateDateOfDelivery = dOrder.Order1.EstimateDateOfDelivery;
+                    ddOrderVM.deliveryType = dOrder.Order.DeliveryType;
+                    ddOrderVM.estimateDateOfDelivery = dOrder.Order.EstimateDateOfDelivery;
                     ddOrderVM.idDeliveryOrder = dOrder.idDeliveryOrder;
                     ddOrderVM.idDistributor = dOrder.idDistributor;
                     ddOrderVM.idOrder = dOrder.idOrder.Value;
                     ddOrderVM.idStaff = dOrder.idStaff;
                     ddOrderVM.nameDistributor = dOrder.Distributor.name;
                     ddOrderVM.nameStaff = dOrder.Staff.staffName;
-                    ddOrderVM.paymentType = dOrder.Order1.PaymentType;
+                    ddOrderVM.paymentType = dOrder.Order.PaymentType;
                     ddOrderVM.recipient = dOrder.recipient;
                     ddOrderVM.recipientPhone = dOrder.recipientPhone;
                     ddOrderVM.DetailedDeliveryOrders = dOrder.DetailedDeliveryOrders.ToList();

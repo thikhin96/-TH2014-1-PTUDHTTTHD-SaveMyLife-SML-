@@ -1,18 +1,18 @@
 ﻿$(document).ready(function () {
-    var rowCount = $('#ddorder-list >tbody >tr').length;
-    for (var i = 0; i <= rowCount -1; i++)
-    {
-        var row = $("#ddorder-list >tbody >tr[row-id='" + i + "']");
-        var promoQuantity = row.find("td input:eq(3)").val() * 1;
-        if(promoQuantity >0)
-        {
-            row.find("td input:eq(2)").attr("readonly", "readonly");
-            row.find("td input:eq(3)").attr("readonly", "readonly");
-        }
-        if (promoQuantity == 0) {
-            row.find("td input:eq(3)").attr("readonly", "readonly");
-        }
-    }
+    //var rowCount = $('#ddorder-list >tbody >tr').length;
+    //for (var i = 0; i <= rowCount -1; i++)
+    //{
+    //    var row = $("#ddorder-list >tbody >tr[row-id='" + i + "']");
+    //    var promoQuantity = row.find("td input:eq(3)").val() * 1;
+    //    if(promoQuantity >0)
+    //    {
+    //        row.find("td input:eq(2)").attr("readonly", "readonly");
+    //        row.find("td input:eq(3)").attr("readonly", "readonly");
+    //    }
+    //    if (promoQuantity == 0) {
+    //        row.find("td input:eq(3)").attr("readonly", "readonly");
+    //    }
+    //}
 
     //cập nhật số lượng
     $('#ddorder-list >tbody >tr >td >input:first-child').change(function () {
