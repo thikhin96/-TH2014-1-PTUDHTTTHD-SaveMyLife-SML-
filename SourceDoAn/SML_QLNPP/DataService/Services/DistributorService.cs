@@ -132,7 +132,7 @@ namespace DataService.Services
             return listDis;
         }
 
-        public Distributor SearchByID(int id )
+        public Distributor SearchByID(int id)
         {
             logger.Info("Start service....");
             Distributor dis = _distributorRepository.Get(x => x.idDistributor == id);
@@ -144,7 +144,8 @@ namespace DataService.Services
         {
             //throw new NotImplementedException();
             logger.Info("Start service....");
-            try {
+            try
+            {
                 var distributor = this.SearchByID(id);
                 distributor.debt = distributor.debt + money;
                 _unitOfWork.SaveChange();
@@ -216,6 +217,19 @@ namespace DataService.Services
             var distributors = _distributorRepository.GetAll(x => x.name.Contains(searchTerm) && x.status == true).ToList();
             return distributors;
         }
+
+        public Distributor getDistributorByUser(string username)
+        {
+            var distributor = _distributorRepository.GetAll(x => x.UserName == username).FirstOrDefault();
+            return distributor;
+        }
+        public bool checkDebt(int id)
+        {
+            var distributor = this.SearchByID(id);
+            if (distributor.debt > 0)
+                return true;
+            else
+                return false;
         public bool UpdateDebt(int id, decimal money)
         {
             //throw new NotImplementedException();

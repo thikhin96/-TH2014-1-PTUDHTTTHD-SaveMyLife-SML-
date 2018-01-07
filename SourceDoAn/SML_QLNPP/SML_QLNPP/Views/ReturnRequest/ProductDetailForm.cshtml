@@ -1,0 +1,31 @@
+﻿@model List<DataModel.ReturnRequestDetail>
+<div class="row mgt">
+    <div class="col-md-12">
+        <h2>Danh sách sản phẩm yêu cầu đổi trả</h2>
+        <table id="returnRequest-detail" class="cell-border custom-table" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>ID SP</th>
+                    <th>Tên SP</th>
+                    <th>Số lượng</th>
+                    <th>Lý do đổi trả</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <input name="ReturnRequestDetails[@i].Quantity" value="@Model[i].Quantity" />
+                        </td>
+                        <td>
+                            <input name="ReturnRequestDetails[@i].Reason" value="@Model[i].Reason" />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

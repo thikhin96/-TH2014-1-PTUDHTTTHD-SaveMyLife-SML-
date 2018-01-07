@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+}
+
+@section css{
+    <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/datatables.min.css" rel="stylesheet" type="text/css" media="all" />
+}
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/ReturnRequest/list.js"></script>
+}
+
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">Thông tin tìm kiếm</h3>
+    </div>
+    <div class="box-body">
+        <div class="col-md-8">
+            <label>Nhập từ khoá</label>
+            <input type="text" class="form-control" placeholder="Nhập tên nhà phân phối" id="keyword" />
+        </div>
+        <div class="col-md-2">
+            <label>Trạng thái</label>
+            <select class="form-control" id="status">
+                <option value="0">Chưa xử lý</option>
+                <option value="1">Đã xử lý</option>
+                <option value="2">Đã từ chối</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label>Tìm kiếm kết quả</label>
+            <button type="submit" class="btn btn-primary" id="search">Tìm kiếm</button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header">
+                <h3 class="box-title">Danh sách đơn yêu cầu đổi trả</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <div class="col-sm-12">
+                        <table id="returnRequest-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                            <thead>
+                                <tr>
+                                    <th>Mã đơn yêu cầu đổi trả </th>
+                                    <th>Mã nhà phân phối</th>
+                                    <th>Tên nhà phân phối</th>
+                                    <th>Ngày tạo</th>
+                                    <th>Tình trạng</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
