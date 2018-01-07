@@ -2,11 +2,13 @@
 using DataModel.Interfaces;
 using DataService.Interfaces;
 using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NLog;
+
 
 namespace DataService.Services
 {
@@ -49,6 +51,14 @@ namespace DataService.Services
             {
                 throw;
             }
+        }
+        
+        public Staff GetByAccount(string account)
+        {
+            logger.Info("Start to get info of staff...");
+            Staff emp = repo_staff.Get(x => x.account == account);
+            logger.Info("End");
+            return emp;
         }
     }
 }

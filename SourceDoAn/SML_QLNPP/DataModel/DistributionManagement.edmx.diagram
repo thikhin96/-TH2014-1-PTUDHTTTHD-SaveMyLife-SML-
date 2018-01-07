@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fb3647b5e6124f919244aa284b9ac162" Name="Diagram1" ZoomLevel="61">
+      <Diagram DiagramId="fb3647b5e6124f919244aa284b9ac162" Name="Diagram1" ZoomLevel="80">
         <EntityTypeShape EntityType="QL_NPPModel.Account" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="QL_NPPModel.Assignment" Width="1.5" PointX="8.25" PointY="31.25" />
         <EntityTypeShape EntityType="QL_NPPModel.Batch" Width="1.5" PointX="13.5" PointY="13.25" />
@@ -89,6 +89,7 @@
         <AssociationConnector Association="QL_NPPModel.FK_ReturnBase_Staff" />
         <AssociationConnector Association="QL_NPPModel.FK_ReturnBase_Storage" />
         <AssociationConnector Association="QL_NPPModel.FK_ReturnDetail_ReturnBase" />
+        <AssociationConnector Association="QL_NPPModel.FK_DeliveryOrder_Order" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

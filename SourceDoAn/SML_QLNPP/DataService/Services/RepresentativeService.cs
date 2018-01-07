@@ -14,8 +14,7 @@ namespace DataService.Services
     public class RepresentativeService : IRepresentativeService
     {
         ILogger logger = LogManager.GetCurrentClassLogger();
-         private readonly IUnitOfWork _unitOfWork;
-
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<Representative> _representativeRepository;
         
         public RepresentativeService(IUnitOfWork unitOfWork)
@@ -89,6 +88,7 @@ namespace DataService.Services
             return true;
         }
 
+
         public bool UpdateRepresentative(Representative person)
         {
             logger.Info("Start to update a representative...");
@@ -105,14 +105,48 @@ namespace DataService.Services
             }
             return true;
         }
+        public bool UpdateTypeOfRepresentation(int idRep,int idDis)
+        {
+            logger.Info("Start to update...");
+            try
+            {
+                Representative rep = GetByID(idRep);
+                rep.PDistributor = null;
+                rep.Distributor = idDis;
 
-        public int GenerateOrderId()
+                _representativeRepository.Update(rep);
+                _unitOfWork.SaveChange();
+                logger.Info("End: Successfull...");
+                return true;
+            }
+            catch(Exception ex)
+            {
+                logger.Info(ex.Message);
+                return false;
+            }
+        }
+
+        public int GenerateRepresentativeId()
         {
             var latestOrder = _representativeRepository.GetAll().OrderByDescending(x => x.idRepresentative).FirstOrDefault();
             if (latestOrder != null)
                 return latestOrder.idRepresentative + 1;
             else
                 return 0;
+        }
+
+        public Representative GetByID(int id)
+        {
+            logger.Info("Start to get id of a representative...");
+            try
+            {
+                return _representativeRepository.Get(x => x.idRepresentative == id);
+            }
+            catch (Exception ex)
+            {
+                logger.Info(ex.Message);
+                throw ex;
+            }
         }
     }
 }

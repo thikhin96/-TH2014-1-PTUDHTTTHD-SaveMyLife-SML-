@@ -134,7 +134,7 @@ namespace SML_QLNPP.Controllers
             return null;
         }
 
-        public ActionResult Detail(int id)
+       public ActionResult Detail(int id)
         {
             isAdminLogged();
             var pdis = _pdistributorService.GetPDistributor(id);

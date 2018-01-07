@@ -1,0 +1,244 @@
+﻿@model SML_QLNPP.Models.ContractDistributorVM
+
+@{
+    ViewBag.Title = "CreateContract";
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+    var success = TempData["success"] as string;
+    var fail = TempData["fail"] as string;
+}
+
+@section css{
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
+}
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/Order/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap-datepicker.js"></script>
+    
+    <script>
+       
+
+        $(document).ready(function () {
+            $('.datepicker').datepicker().css('padding', '1px 0px'); //Initialise any date pickers
+
+            $('input[type="checkbox"]').on('change', function () {
+                $('input[type="checkbox"]').not(this).prop('checked', false);
+            });
+
+            $('#btn_selectDis').click(function () {
+                var index;
+                $('input[type="checkbox"]').each(function () {
+                    if ($(this).is(':checked')) {
+                        index = $(this).attr('id');
+                        return false;
+                    }
+                })
+
+                $('#oldDis-list tbody tr').each(function (d) {
+                    if ($.trim($(this).find('td').eq(1).text()) == index) {
+                        $('#DistributorViewModel_idDistributor').val($.trim($(this).find('td').eq(1).text()));
+                        $('#DistributorViewModel_name').prop('value', $.trim($(this).find('td').eq(2).text()));
+                        $('#DistributorViewModel_address').prop('value', $.trim($(this).find('td').eq(3).text()));
+                        $('#DistributorViewModel_phone').prop('value', $.trim($(this).find('td').eq(4).text()));
+                        $('#DistributorViewModel_Email').prop('value', $.trim($(this).find('td').eq(5).text()));
+                        return false;
+                    }
+                })
+            });
+
+            $('#btn_selectPDis').click(function () {
+                var index;
+                $('input[type="checkbox"]').each(function () {
+                    if ($(this).is(':checked')) {
+                        index = $(this).index();
+                        return false;
+                    }
+                });
+
+                var row = $('#pDis-list tbody tr').eq(index);
+                $('#DistributorViewModel_idDistributor').val($.trim(row.find('td').eq(1).text()));
+                $('#DistributorViewModel_name').prop('value', $.trim(row.find('td').eq(2).text()));
+                $('#DistributorViewModel_address').prop('value', $.trim(row.find('td').eq(3).text()));
+                $('#DistributorViewModel_phone').prop('value', $.trim(row.find('td').eq(4).text()));
+                $('#DistributorViewModel_Email').prop('value', $.trim(row.find('td').eq(5).text()));
+                $('#RepresentativeViewModel_idRepresentative').val($.trim(row.find('td').eq(6).text()));
+                $('#RepresentativeViewModel_name').prop('value', $.trim(row.find('td').eq(7).text()));
+                $('#RepresentativeViewModel_title').prop('value', $.trim(row.find('td').eq(8).text()));
+                $('#RepresentativeViewModel_phone').prop('value', $.trim(row.find('td').eq(9).text()));
+                $('#RepresentativeViewModel_email').prop('value', $.trim(row.find('td').eq(10).text()));
+            });
+        });
+    </script>
+}
+
+@if (success != null)
+            {
+    <div class="alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Thành công!</strong>
+    </div>
+}
+else if (fail != null)
+{
+    <div class="alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Thất bại!</strong>
+    </div>
+}
+
+<center><h1 style="color:blue"><b>TẠO HỢP ĐỒNG</b></h1></center>
+
+<div class="row" >
+    <div >
+        <span>
+            <a style="margin-left: 60%" data-toggle="modal" data-target="#search_dis" data-model="@Model.dis">
+                <strong>Tra cứu nhà phân phối</strong>
+            </a>
+            <a style="margin-left: 10%" data-toggle="modal" data-target="#search_pdis" data-model="@Model.pDis">
+                <strong>Tra cứu đối tác</strong>
+            </a>
+        </span>
+    </div>
+        <div class="col-md-12" >
+            <div class="box box-info" style="">
+                @using (Html.BeginForm("CreateContract", "Contract", FormMethod.Post))
+                {
+
+                    @Html.Partial("_Distributor", Model.dis, new ViewDataDictionary { TemplateInfo = new TemplateInfo { HtmlFieldPrefix = "DistributorViewModel" } })
+                    <br />
+                    @Html.Partial("_Representative", Model.rep, new ViewDataDictionary { TemplateInfo = new TemplateInfo { HtmlFieldPrefix = "RepresentativeViewModel" } })
+                    <br />
+                    @Html.Partial("_Contract", Model.con, new ViewDataDictionary { TemplateInfo = new TemplateInfo { HtmlFieldPrefix = "ContractViewModel" } })
+                    <p style="margin-left: 70%">
+                        <input type="submit" class="btn btn-primary" value="Lưu" />
+                        @Html.ActionLink("Thoát", "Contract", "Contract", new { @class = "btn btn-primary", @style = "margin-left: 10px" })
+                    </p>
+
+
+                }
+            </div>      
+        </div>
+</div>
+<!------------------------------------------------------------------------------------------>
+
+<div class="modal fade" id="search_dis" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="overflow: hidden;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">DANH SÁCH NHÀ PHÂN PHỐI CŨ</h4>
+            </div>
+            <div class="box-body">
+                @if ( Model.oldDis == null)
+                {
+                    <strong> Tất cả nhà phân phối đều đang có hợp đồng</strong>
+                }
+                else
+                {
+                    <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                        <div class="col-sm-12">
+                            <table id="oldDis-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Mã nhà phân phối</th>
+                                        <th>Nhà phân phối</th>
+                                        <th>Địa chỉ</th>
+                                        <th style="display:none">SDT</th>
+                                        <th style="display:none">Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.oldDis)
+                                    {
+                                        <tr>
+                                            <td><input type="checkbox" class="radio" id="@item.idDistributor"/></td>
+                                            <td>@item.idDistributor </td>
+                                            <td>@item.name</td>
+                                            <td>@item.address</td>
+                                            <td style="display:none">@item.phone</td>
+                                            <td style="display:none">@item.Email</td>
+                                        </tr>
+                                    }
+                                    <text> </text>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                }          
+            </div>
+            <div class="modal-footer">
+                <button id="btn_selectDis" type="button" class="btn btn-primary" data-dismiss="modal" style="margin-left: 60%"> OK</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" style="margin-left: 5%">Thoát</button>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<!------------------------------------------------------------------------------------------>
+
+<div class="modal fade" id="search_pdis" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="overflow: hidden;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">DANH SÁCH ĐỐI TÁC ĐÃ TRAO ĐỔI THÀNH CÔNG</h4>
+            </div>
+            <div class="box-body">
+                @if (Model.pDis.Count == 0)
+                {
+                    <strong> Không có đối tác nào đã trao đổi thành công</strong>
+                }
+                else
+                {
+                    <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                        <div class="col-sm-12">
+                            <table id="pDis-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Mã đối tác</th>
+                                        <th>Tên công ty</th>
+                                        <th>Địa chỉ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.pDis)
+                                    {
+                                        <tr>
+                                            <td><input type="checkbox" class="radio" id="@item.pDis.idDistributor" /></td>
+                                            <td>@item.pDis.idDistributor</td>
+                                            <td>@item.pDis.name</td>
+                                            <td>@item.pDis.address</td>
+                                            <td style="display:none">@item.pDis.phone</td>
+                                            <td style="display:none">@item.pDis.Email</td>
+                                            <td style="display:none">@item.rep.idRepresentative</td>
+                                            <td style="display:none">@item.rep.name</td>
+                                            <td style="display:none">@item.rep.title</td>
+                                            <td style="display:none">@item.rep.phone</td>
+                                            <td style="display:none">@item.rep.email</td>
+                                        </tr>
+                                    }
+                                    <text> </text>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button id="btn_selectPDis" type="button" class="btn btn-primary" data-dismiss="modal" style="margin-left: 60%"> OK</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" style="margin-left: 5%">Thoát</button>
+            </div>
+
+        </div>
+    </div>
+</div>

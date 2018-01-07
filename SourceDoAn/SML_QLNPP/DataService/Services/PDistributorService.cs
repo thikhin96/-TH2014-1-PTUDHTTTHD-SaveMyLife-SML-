@@ -104,7 +104,7 @@ namespace DataService.Services
 
         public IList<PotentialDistributor> SearchByStatus(byte status)
         {
-            logger.Info("Start Search potential distributor by status method");
+            logger.Info("Start Search potential distributor by status ...");
             try
             {
                 IRepository<PotentialDistributor> repository = _unitOfWork.Repository<PotentialDistributor>();
@@ -129,7 +129,23 @@ namespace DataService.Services
 
         public bool UpdateStatus(int id, byte status, string note)
         {
-            throw new NotImplementedException();
+            logger.Info("Start update status of potential distributor...");
+            try
+            {
+                PotentialDistributor pDis = SearchByID(id);
+                pDis.status = status;
+                pDis.note = note;
+                _pdistributorRepository.Update(pDis);
+                _unitOfWork.SaveChange();
+                logger.Info("Status: Success");
+                return true;
+             
+            }
+            catch (Exception ex)
+            {
+                logger.Info("Status: Fail + " + ex.Message);
+                return false;
+            }
         }
 
         public int GenerateOrderId()

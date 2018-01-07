@@ -1,4 +1,4 @@
-﻿@model SML_QLNPP.Models.ContractViewModel
+﻿@model SML_QLNPP.Models.ContractListViewModel
 @{
     ViewBag.Title = "Contract";
     Layout = "~/Views/Shared/_ALayout.cshtml";
@@ -20,6 +20,7 @@
     <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Order/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
+    <script type="text/javascript" src="~/scripts/Contract/createContract.js"></script>
     <script>
         $('#con-list').DataTable({
             "oLanguage": {
@@ -39,78 +40,89 @@
 }
 
 <div class="box box-info">
-    @using (Html.BeginForm("ContractSeacrh", "Contract", FormMethod.Get))
-    {
-        <div class="box-body" style="text-align: right">
-            <span>
-                <label> Tìm kiếm </label>
-                @Html.TextBoxFor(model => model.keyword)
-                <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
-                @Html.DropDownListFor(model => model.criterion, new SelectListItem[]{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-2">
+                <div class="box-body">
+                    @Html.ActionLink("Tạo hợp đồng", "CreateContract", "Contract", new { @class = "btn btn-primary", @id = "btn_createContract"})
+                </div>
+            </div>
+            <div class="col-md-10">
+                @using (Html.BeginForm("ContractSeacrh", "Contract", FormMethod.Get))
+            {
+                    <div class="box-body" style="text-align: right">
+                        <span>
+                            <label> Tìm kiếm </label>
+                            @Html.TextBoxFor(model => model.keyword)
+                            <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                            @Html.DropDownListFor(model => model.criterion, new SelectListItem[]{
                     new SelectListItem() {Text = "Mã nhà phân phối", Value="1"},
                     new SelectListItem() {Text = "Mã hợp đồng", Value="2"},
                     new SelectListItem() {Text = "Hợp đồng gần hết hạn", Value="3"}})
-            </span>
+                        </span>
+                    </div>
+                }
+            </div>
         </div>
-    }
+   </div>
 </div>
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="box box-info">
-            <div class="box-header">
-                <h2 class="box-title">Danh sách hợp đồng</h2>
-            </div>
-            <div class="box-body">
-                <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                    <div class="col-sm-12">
-                        @if (check == false)
-                        {
-                            <strong style="color:red"> Mã hợp đồng không hợp lệ </strong>
-                        }
-                        else
-                        {
-                            <table id="con-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
-                                <thead>
-                                    <tr>
-                                        <th>Mã hợp đồng</th>
-                                        <th>Nhà phân phối</th>
-                                        <th>Thời gian bắt đầu</th>
-                                        <th>Thời gian kết thúc</th>
-                                        <th>Tình trạng</th>
-                                        <th>Thao tác</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model.listCon)
-                                    {
-                                        <tr>
-                                            <td>@item.IdCon</td>
-                                            <td>@item.Dis_Name</td>
-                                            <td>@item.BeginDate.Value.ToString("dd/MM/yyyy")</td>
-                                            <td>@item.ExpriedDate.Value.ToString("dd/MM/yyyy")</td>
-                                            @if (item.Status == true)
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header">
+                        <h2 class="box-title">Danh sách hợp đồng</h2>
+                    </div>
+                    <div class="box-body">
+                        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                            <div class="col-sm-12">
+                                @if (check == false)
+                                {
+                                    <strong style="color:red"> Mã hợp đồng không hợp lệ </strong>
+                                }
+                                else
+                                {
+                                    <table id="con-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                        <thead>
+                                            <tr>
+                                                <th>Mã hợp đồng</th>
+                                                <th>Nhà phân phối</th>
+                                                <th>Thời gian bắt đầu</th>
+                                                <th>Thời gian kết thúc</th>
+                                                <th>Tình trạng</th>
+                                                <th>Thao tác</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.listCon)
                                             {
-                                                <td> <input type="checkbox" name="status" value=1 checked disabled></td>
+                                                <tr>
+                                                    <td>@item.IdCon</td>
+                                                    <td>@item.Dis_Name</td>
+                                                    <td>@item.BeginDate.Value.ToString("dd/MM/yyyy")</td>
+                                                    <td>@item.ExpriedDate.Value.ToString("dd/MM/yyyy")</td>
+                                                    @if (item.Status == true)
+                                                    {
+                                                        <td> <input type="checkbox" name="status" value=1 checked disabled></td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td></td>
+                                                    }
+                                                    <td>
+                                                        @Html.ActionLink("Chi tiết", "DetailedContract", new { id = @item.IdCon }, new { @class = "btn btn-primary" })
+                                                    </td>
+                                                </tr>
                                             }
-                                            else
-                                            {
-                                                <td></td>
-                                            }
-                                            <td>
-                                                @Html.ActionLink("Chi tiết", "DetailedContract", new { id = @item.IdCon }, new { @class = "btn btn-primary" })
-                                            </td>
-                                        </tr>
-                                    }
-                                </tbody>
+                                        </tbody>
 
-                            </table>
-                        }
+                                    </table>
+                                }
 
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
-
-    </div>
-</div>
