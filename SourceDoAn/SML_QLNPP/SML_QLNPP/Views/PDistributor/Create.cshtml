@@ -1,21 +1,21 @@
 ﻿@model SML_QLNPP.Models.CreatePDistributorViewModel
 @using Newtonsoft.Json;
 @{
-    var success = ViewBag.success as string;
+    var success = TempData["success"] as string;
     var fail = ViewBag.fail as string;
     Layout = "~/Views/Shared/_ALayout.cshtml";
 }
 
 @section css{
     <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="~/Content/Order/detail.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/PDitributor/detail.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/Order/datatables.min.css" rel="stylesheet" type="text/css" media="all" />
 }
 
 @section scripts{
-    @*<script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
-        <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
-        <script type="text/javascript" src="~/Scripts/Order/createOrder.js"></script>*@
+    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/createOrder.js"></script>
 }
 
 <div class="container-fluid">
@@ -69,7 +69,7 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-5 form-group">
-                                        <label>Họ tên </label>
+                                        <label>Họ tên: </label>
                                         @Html.TextBoxFor(m => m.rep_name, new { @class = "form-control", @placeholder = "Nhập họ tên", @required = "required", @type = "text" })
                                     </div>
                                     <div class="col-md-5 form-group">

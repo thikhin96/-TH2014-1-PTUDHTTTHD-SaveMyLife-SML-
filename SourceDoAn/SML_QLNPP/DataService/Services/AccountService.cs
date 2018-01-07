@@ -23,20 +23,69 @@ namespace DataService.Services
             //_promotionRepository = unitOfWork.Repository<Promotion>();
             _unitOfWork = unitOfWork;
         }
-        public bool CreateAccount(Account acc)
+
+        int GenerateUserId()
         {
-            throw new NotImplementedException();
+            IRepository<Account> repo_Account = _unitOfWork.Repository<Account>();
+            var latestAccount = repo_Account.GetAll().OrderByDescending(x => x.idUser).FirstOrDefault();
+            if (latestAccount != null)
+                return latestAccount.idUser + 1;
+            else
+                return 0;
         }
 
-        public bool IncurredAccount(string username, byte typeOfUser)
+        public bool CreateAccount(string username, byte typeOfUser)
         {
-            throw new NotImplementedException();
+            IRepository<Account> repo_Account = _unitOfWork.Repository<Account>();
+            logger.Info("Start to create account...");
+            try
+            {
+                Account _account = new Account();
+                _account.idUser = GenerateUserId();
+                _account.locked = false;
+                _account.note = "Tạo mới";
+                _account.dateCreate = DateTime.Now;
+                _account.dateUpdate = DateTime.Now;
+                _account.UserName = username;
+                _account.Password = "123456789";
+                _account.activated = true;
+                _account.decentralization = typeOfUser;
+                
+                repo_Account.Add(_account);
+                _unitOfWork.SaveChange();
+                logger.Info("End: Successful...");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                logger.Info(ex.Message);
+                return false;
+            }
         }
 
-        public bool LockAccount(int idAccount, string reason)
+        public bool UpdateStatus(string username, string reason, bool status)
         {
-            throw new NotImplementedException();
+            IRepository<Account> repo_Account = _unitOfWork.Repository<Account>();
+            logger.Info("Start to lock account...");
+            Account _account;
+            try
+            {
+                _account = Get(username);
+                _account.locked = status;
+                _account.note = reason;
+                _account.dateUpdate = DateTime.Now;
+                repo_Account.Update(_account);
+                _unitOfWork.SaveChange();
+                logger.Info("End: Successful...");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                logger.Info(ex.Message);
+                return false;
+            }
         }
+
         /// <summary>
         /// Hàm kiểm tra đăng nhập theo username và password
         /// </summary>

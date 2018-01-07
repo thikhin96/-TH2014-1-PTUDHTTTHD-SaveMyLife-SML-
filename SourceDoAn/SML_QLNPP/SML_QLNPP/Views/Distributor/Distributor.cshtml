@@ -1,6 +1,8 @@
-﻿@model SML_QLNPP.Models.DistributorViewModel
+﻿@using DataModel;
+@model SML_QLNPP.Models.DistributorListViewModel
 @{
     Layout = "~/Views/Shared/_ALayout.cshtml";
+    var staff = Session["admin"] as Account;
 }
 
 @{

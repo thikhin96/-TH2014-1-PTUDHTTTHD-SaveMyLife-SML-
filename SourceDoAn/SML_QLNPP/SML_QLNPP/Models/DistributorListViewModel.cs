@@ -7,7 +7,7 @@ using DataService.Dtos;
 
 namespace SML_QLNPP.Models
 {
-    public class DistributorViewModel
+    public class DistributorListViewModel
     {
         public string id { get; set; }
         public IList<DistributorList> listDis;
