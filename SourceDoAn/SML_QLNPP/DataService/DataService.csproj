@@ -162,13 +162,11 @@
     <Compile Include="Interfaces\IProductTypeService.cs" />
     <Compile Include="Interfaces\ILogLoginService.cs" />
     <Compile Include="Interfaces\IPromotionService.cs" />
+    <Compile Include="Interfaces\IRepresentativeService.cs" />
     <Compile Include="Interfaces\IReturnRequestService.cs" />
     <Compile Include="Interfaces\IReturnService.cs" />
-    <Compile Include="Interfaces\IRepresentativeService.cs" />
     <Compile Include="Interfaces\IStorageService.cs" />
     <Compile Include="Interfaces\ISalesReportService.cs" />
-    <Compile Include="Interfaces\IReturnService.cs" />
-    <Compile Include="Interfaces\IRepresentativeService.cs" />
     <Compile Include="Interfaces\IStaffService.cs" />
     <Compile Include="Interfaces\IUnitService.cs" />
     <Compile Include="ServiceModule.cs" />
@@ -194,8 +192,6 @@
     <Compile Include="Services\RepresentativeService.cs" />
     <Compile Include="Services\StorageService.cs" />
     <Compile Include="Services\SalesReportService.cs" />
-    <Compile Include="Services\ReturnService.cs" />
-    <Compile Include="Services\RepresentativeService.cs" />
     <Compile Include="Services\StaffService.cs" />
     <Compile Include="Services\UnitService.cs" />
   </ItemGroup>

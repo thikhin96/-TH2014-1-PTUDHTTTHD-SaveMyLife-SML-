@@ -17,6 +17,13 @@ namespace SML_QLNPP.Controllers
                 Response.Redirect(Url.Action("Index", "Home"));
             }
         }
+        protected void isLogged()
+        {
+            if (Session["user"] == null)
+            {
+                Response.Redirect(Url.Action("Login", "Account"));
+            }
+        }
         protected void isAdminLogin()
         {
             if (Session["admin"] != null)

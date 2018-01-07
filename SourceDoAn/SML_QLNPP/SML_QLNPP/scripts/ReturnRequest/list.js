@@ -3,7 +3,7 @@
     $("#search").on('click', function () {
         var keyword = $("#keyword").val();
         var status = $("#status").val();
-        var url = '/ReturnRequest/Search'
+        var url = 'Search'
         console.log(status);
         $.ajax({
             url: url,
@@ -35,7 +35,7 @@
                             rs.push("Đã xử lý")
                         else
                             rs.push("Đã từ chối")
-                        rs.push('<a class="btn btn-info btn-xs" href="/ReturnRequest/Detail/' + item.IdReturnRequest + '">Chi tiết</a>')
+                        rs.push('<a class="btn btn-info btn-xs" href="Detail/' + item.IdReturnRequest + '">Chi tiết</a>')
                         return rs;
                     });
 

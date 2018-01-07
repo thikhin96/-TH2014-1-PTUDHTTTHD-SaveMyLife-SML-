@@ -53,7 +53,7 @@ namespace SML_QLNPP.Controllers
             var rq = _returnRequestService.GetReturnRequest(id);
             if (rq == null)
             {
-                return Redirect("/ReturnRequest/List");
+                return RedirectToAction("List", "ReturnRequest");
             }
             else
             {
@@ -86,30 +86,25 @@ namespace SML_QLNPP.Controllers
         
         public ActionResult Create()
         {
+            isLogged();
             var user = Session["user"] as Account;
-            if (user != null)
+    
+            var dis = _distributorService.getDistributorByUser(user.UserName);
+            if (dis != null)
             {
-                var dis = _distributorService.getDistributorByUser(user.UserName);
-                if (dis != null)
+                var model = new CreateReturnRequestViewModel()
                 {
-                    var model = new CreateReturnRequestViewModel()
-                    {
-                        idReturnRequest = _returnRequestService.GenerateReturnRequestId(),
-                        idDistributor = dis.idDistributor,
-                        Storages = dis.Storages.ToList(),
-                        ReturnRequestDetails = new List<ReturnRequestDetail>()
-                    };
-                    model.Products = _productService.GetAllProducts();
-                    return View(model);
-                }
-                else
-                {
-                    return Redirect("/");
-                }
+                    idReturnRequest = _returnRequestService.GenerateReturnRequestId(),
+                    idDistributor = dis.idDistributor,
+                    Storages = dis.Storages.ToList(),
+                    ReturnRequestDetails = new List<ReturnRequestDetail>()
+                };
+                model.Products = _productService.GetAllProducts();
+                return View(model);
             }
             else
             {
-                return Redirect("/Account/Login");
+                return Redirect("/");
             }
 
         }

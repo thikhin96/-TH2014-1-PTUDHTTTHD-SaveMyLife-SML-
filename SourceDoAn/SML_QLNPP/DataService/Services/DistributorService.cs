@@ -230,6 +230,7 @@ namespace DataService.Services
                 return true;
             else
                 return false;
+        }
         public bool UpdateDebt(int id, decimal money)
         {
             //throw new NotImplementedException();

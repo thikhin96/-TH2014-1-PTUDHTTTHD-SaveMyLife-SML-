@@ -40,7 +40,7 @@ function deleterow(element) {
 }
 
 $("#searchStorage").change(function () {
-    var url = "/ReturnRequest/getStorageInfo"
+    var url = "getStorageInfo"
     var id = $("#searchStorage").val();
     
     $.ajax({

@@ -1081,3 +1081,51 @@
 2018-01-07 01:05:10.0138|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
 2018-01-07 01:06:37.5620|INFO|DataService.Services.DistributorService|Start service....
 2018-01-07 01:06:37.6106|INFO|DataService.Services.DistributorService|End service...
+2018-01-07 18:36:34.3136|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 18:36:50.6652|INFO|DataService.Services.AccountService|Error get login: The underlying provider failed on Open.
+2018-01-07 18:36:50.6652|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-07 18:36:50.6857|INFO|DataService.Services.AccountService|Error get account to write log: The underlying provider failed on Open.
+2018-01-07 18:36:53.3159|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 18:36:53.3259|INFO|DataService.Services.AccountService|Error get login: The underlying provider failed on Open.
+2018-01-07 18:36:53.3364|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-07 18:36:53.3364|INFO|DataService.Services.AccountService|Error get account to write log: The underlying provider failed on Open.
+2018-01-07 18:37:24.2605|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 18:37:27.9946|INFO|DataService.Services.AccountService|Completed get login
+2018-01-07 18:37:28.0081|INFO|DataService.LogLoginService|Start audit login
+2018-01-07 18:37:28.5897|INFO|DataService.LogLoginService|End audit login
+2018-01-07 18:38:56.1956|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 18:38:57.9568|INFO|DataService.Services.AccountService|Completed get login
+2018-01-07 18:38:57.9683|INFO|DataService.LogLoginService|Start audit login
+2018-01-07 18:38:58.2180|INFO|DataService.LogLoginService|End audit login
+2018-01-07 18:39:51.7205|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 18:39:51.7339|INFO|DataService.Services.AccountService|Completed get login
+2018-01-07 18:39:51.7425|INFO|DataService.LogLoginService|Start audit login
+2018-01-07 18:39:51.7600|INFO|DataService.LogLoginService|End audit login
+2018-01-07 18:52:14.5991|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 18:52:14.7788|INFO|DataService.Services.AccountService|Completed get login
+2018-01-07 18:52:14.7938|INFO|DataService.LogLoginService|Start audit login
+2018-01-07 18:52:15.3864|INFO|DataService.LogLoginService|End audit login
+2018-01-07 18:54:21.3756|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-07 18:54:21.3901|INFO|DataService.Services.ReturnService|Start Getting return request number: 7
+2018-01-07 18:54:21.4112|INFO|DataService.Services.ReturnService|Success: Return Request number 7 returned!
+2018-01-07 18:54:21.4697|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-07 18:54:21.5876|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-07 18:54:21.5876|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-07 18:54:45.6799|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(POST) - ReturnController
+2018-01-07 18:54:45.6799|INFO|DataService.Services.ReturnService|Start creating new return card
+2018-01-07 18:54:45.8205|INFO|DataService.Services.ReturnService|Success: A new return card created!
+2018-01-07 18:54:45.8205|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(POST) - ReturnController
+2018-01-07 18:54:45.8521|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-07 18:54:45.8521|INFO|DataService.Services.ReturnService|Start Getting return request number: 7
+2018-01-07 18:54:45.8711|INFO|DataService.Services.ReturnService|Success: Return Request number 7 returned!
+2018-01-07 18:54:45.8861|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-07 18:54:45.9006|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-07 18:54:45.9006|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-07 18:54:55.1943|INFO|SML_QLNPP.Controllers.ReturnController|Start Search(GET) - OrderController
+2018-01-07 18:54:55.2093|INFO|DataService.Services.ReturnService|Start searching for return cards with key word:  and trade form: 0
+2018-01-07 18:54:55.4645|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-07 18:54:55.4645|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Search(GET) - ReturnController
+2018-01-07 18:55:38.0864|INFO|SML_QLNPP.Controllers.ReturnController|Start Show(GET) - ReturnController
+2018-01-07 18:55:38.0864|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 5
+2018-01-07 18:55:38.1101|INFO|DataService.Services.ReturnService|Success: Return Card number 5 returned!
+2018-01-07 18:55:38.2036|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Show(GET) - ReturnController

@@ -2,7 +2,7 @@
     $("#btnDuyet").on('click', function () {
         var note = $("#iNote").val();
         var id = $("#idReturnRequest").val();
-        var url = "/ReturnRequest/approveReturnRequest"
+        var url = "approveReturnRequest"
         $.ajax({
             url: url,
             type: 'POST',
@@ -22,7 +22,7 @@
                     alert('Đã xảy ra lỗi!')
                 }
                 else {
-                    window.location.href = "/Return/Create?ReturnRequestId=" + id;
+                    window.location.href = "/SML_QLNPP/Return/Create?ReturnRequestId=" + id;
                 };
             }
         });
