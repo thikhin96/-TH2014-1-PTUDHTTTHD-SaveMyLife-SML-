@@ -124,7 +124,7 @@ namespace DataService.Services
             if (latestOrder != null)
                 return latestOrder.idRepresentative + 1;
             else
-                return 0;
+                return 1;
         }
 
         public Representative GetByID(int id)
@@ -147,7 +147,7 @@ namespace DataService.Services
             if (latestOrder != null)
                 return latestOrder.idRepresentative + 1;
             else
-                return 0;
+                return 1;
         }
     }
 }

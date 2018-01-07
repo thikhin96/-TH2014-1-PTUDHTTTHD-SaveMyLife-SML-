@@ -42,7 +42,6 @@ namespace DataService.Services
             try
             {
                 _pdistributorRepository.Add(pDis);
-                _unitOfWork.SaveChange();
                 _representativeRepository.Add(rep);
                 _unitOfWork.SaveChange();
             }
@@ -154,7 +153,7 @@ namespace DataService.Services
             if (latestOrder != null)
                 return latestOrder.idDistributor + 1;
             else
-                return 0;
+                return 1;
         }
 
         public bool UpdatePDistributor(PotentialDistributor pdis)

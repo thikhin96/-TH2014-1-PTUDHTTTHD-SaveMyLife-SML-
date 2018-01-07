@@ -1,0 +1,124 @@
+2018-01-07 17:37:46.8532|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 17:37:47.5563|INFO|DataService.Services.AccountService|Completed get login
+2018-01-07 17:37:47.5563|INFO|DataService.LogLoginService|Start audit login
+2018-01-07 17:37:47.6004|INFO|DataService.LogLoginService|End audit login
+2018-01-07 17:37:53.4886|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-07 17:37:53.4976|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-07 17:38:07.8174|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 17:38:07.9065|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 17:38:07.9851|INFO|DataService.Services.PDistributorService|Status: Fail + An error occurred while updating the entries. See the inner exception for details.
+2018-01-07 17:38:07.9926|INFO|SML_QLNPP.Controllers.PDistributorController|Fail: Create(POST) - PDistributorController
+2018-01-07 17:38:14.6515|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 17:38:14.6705|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 17:38:14.6850|INFO|DataService.Services.PDistributorService|Status: Fail + An error occurred while updating the entries. See the inner exception for details.
+2018-01-07 17:38:14.6930|INFO|SML_QLNPP.Controllers.PDistributorController|Fail: Create(POST) - PDistributorController
+2018-01-07 17:38:20.9539|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-07 17:38:20.9629|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-07 17:39:31.2624|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 17:39:34.7712|INFO|DataService.Services.AccountService|Completed get login
+2018-01-07 17:39:34.7712|INFO|DataService.LogLoginService|Start audit login
+2018-01-07 17:39:35.2651|INFO|DataService.LogLoginService|End audit login
+2018-01-07 17:39:51.9037|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 17:40:07.4443|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 17:40:08.3253|INFO|DataService.Services.PDistributorService|Status: Fail + An error occurred while updating the entries. See the inner exception for details.
+2018-01-07 17:40:17.8563|INFO|SML_QLNPP.Controllers.PDistributorController|Fail: Create(POST) - PDistributorController
+2018-01-07 17:41:26.3291|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 17:41:44.1017|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 17:41:51.2957|INFO|DataService.Services.PDistributorService|Status: Fail + An error occurred while updating the entries. See the inner exception for details.
+2018-01-07 17:43:15.8683|INFO|SML_QLNPP.Controllers.PDistributorController|Fail: Create(POST) - PDistributorController
+2018-01-07 17:43:26.5640|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 17:46:29.7328|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 17:46:32.1448|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 17:46:32.2899|INFO|DataService.Services.PDistributorService|Status: Fail + An error occurred while updating the entries. See the inner exception for details.
+2018-01-07 17:46:32.3199|INFO|SML_QLNPP.Controllers.PDistributorController|Fail: Create(POST) - PDistributorController
+2018-01-07 17:46:32.3199|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 17:46:33.2965|INFO|DataService.Services.PDistributorService|Status: Fail + An error occurred while updating the entries. See the inner exception for details.
+2018-01-07 17:46:33.3100|INFO|SML_QLNPP.Controllers.PDistributorController|Fail: Create(POST) - PDistributorController
+2018-01-07 17:47:42.1000|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 17:47:42.1160|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 17:47:42.1160|INFO|DataService.Services.PDistributorService|Status: Fail + An error occurred while updating the entries. See the inner exception for details.
+2018-01-07 17:47:42.1340|INFO|SML_QLNPP.Controllers.PDistributorController|Fail: Create(POST) - PDistributorController
+2018-01-07 17:48:24.2712|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 17:48:27.5000|INFO|DataService.Services.AccountService|Completed get login
+2018-01-07 17:48:27.5116|INFO|DataService.LogLoginService|Start audit login
+2018-01-07 17:48:28.0573|INFO|DataService.LogLoginService|End audit login
+2018-01-07 17:49:11.4273|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 17:50:41.8852|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 17:50:42.1645|INFO|DataService.Services.PDistributorService|Status: Fail + An error occurred while updating the entries. See the inner exception for details.
+2018-01-07 17:50:42.1645|INFO|SML_QLNPP.Controllers.PDistributorController|Fail: Create(POST) - PDistributorController
+2018-01-07 17:53:54.1750|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 17:54:17.1289|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 17:54:19.9396|INFO|DataService.Services.AccountService|Completed get login
+2018-01-07 17:54:19.9476|INFO|DataService.LogLoginService|Start audit login
+2018-01-07 17:54:20.3590|INFO|DataService.LogLoginService|End audit login
+2018-01-07 17:54:37.5623|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 17:54:38.0718|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 17:54:38.2840|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-07 17:54:38.2890|INFO|SML_QLNPP.Controllers.PDistributorController|Success: Complete Create(POST) - PDistributorController
+2018-01-07 17:54:43.3536|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-07 17:54:43.3536|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-07 17:58:11.0403|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-07 17:58:11.0403|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-07 17:58:23.1380|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-07 17:58:23.1380|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-07 17:59:36.8447|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-07 17:59:36.8523|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-07 18:01:28.2912|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 18:01:31.4237|INFO|DataService.Services.AccountService|Completed get login
+2018-01-07 18:01:31.4312|INFO|DataService.LogLoginService|Start audit login
+2018-01-07 18:01:31.8501|INFO|DataService.LogLoginService|End audit login
+2018-01-07 18:01:50.1415|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 18:01:50.7280|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 18:01:50.8066|INFO|DataService.Services.PDistributorService|Status: Fail + Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-01-07 18:01:50.8066|INFO|SML_QLNPP.Controllers.PDistributorController|Fail: Create(POST) - PDistributorController
+2018-01-07 18:01:56.4202|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 18:01:56.4407|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 18:01:56.4512|INFO|DataService.Services.PDistributorService|Status: Fail + Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-01-07 18:01:56.4512|INFO|SML_QLNPP.Controllers.PDistributorController|Fail: Create(POST) - PDistributorController
+2018-01-07 18:02:58.5488|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 18:03:03.0261|INFO|DataService.Services.AccountService|Completed get login
+2018-01-07 18:03:03.0361|INFO|DataService.LogLoginService|Start audit login
+2018-01-07 18:03:03.6387|INFO|DataService.LogLoginService|End audit login
+2018-01-07 18:03:11.0259|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 18:03:46.7624|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 18:04:44.0979|INFO|DataService.Services.PDistributorService|Status: Fail + Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-01-07 18:04:44.1094|INFO|SML_QLNPP.Controllers.PDistributorController|Fail: Create(POST) - PDistributorController
+2018-01-07 18:04:56.1297|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 18:05:10.5297|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 18:05:10.6198|INFO|DataService.Services.PDistributorService|Status: Fail + Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-01-07 18:05:17.8091|INFO|SML_QLNPP.Controllers.PDistributorController|Fail: Create(POST) - PDistributorController
+2018-01-07 18:07:04.6344|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 18:07:07.5855|INFO|DataService.Services.AccountService|Completed get login
+2018-01-07 18:07:07.6000|INFO|DataService.LogLoginService|Start audit login
+2018-01-07 18:07:08.0655|INFO|DataService.LogLoginService|End audit login
+2018-01-07 18:07:16.3106|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 18:07:33.8700|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 18:07:42.8551|INFO|DataService.Services.PDistributorService|Status: Fail + Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-01-07 18:08:10.7476|INFO|SML_QLNPP.Controllers.PDistributorController|Fail: Create(POST) - PDistributorController
+2018-01-07 18:08:32.5290|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 18:08:36.1244|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 18:08:36.2349|INFO|DataService.Services.PDistributorService|Status: Fail + Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-01-07 18:08:38.6417|INFO|SML_QLNPP.Controllers.PDistributorController|Fail: Create(POST) - PDistributorController
+2018-01-07 18:08:45.5579|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 18:08:52.2176|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 18:11:25.2793|INFO|DataService.Services.PDistributorService|Status: Fail + Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-01-07 18:11:25.2888|INFO|SML_QLNPP.Controllers.PDistributorController|Fail: Create(POST) - PDistributorController
+2018-01-07 18:11:43.1102|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 18:11:43.1257|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 18:11:43.2368|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-07 18:11:43.2433|INFO|SML_QLNPP.Controllers.PDistributorController|Success: Complete Create(POST) - PDistributorController
+2018-01-07 18:12:07.5468|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-07 18:12:07.5538|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-07 18:15:43.3420|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 18:15:43.3585|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 18:15:43.3725|INFO|DataService.Services.PDistributorService|Status: Fail + Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-01-07 18:15:43.3830|INFO|SML_QLNPP.Controllers.PDistributorController|Fail: Create(POST) - PDistributorController
+2018-01-07 18:15:52.4929|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 18:15:58.1857|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 18:15:58.5376|INFO|DataService.Services.AccountService|Completed get login
+2018-01-07 18:15:58.5376|INFO|DataService.LogLoginService|Start audit login
+2018-01-07 18:15:58.5968|INFO|DataService.LogLoginService|End audit login
+2018-01-07 18:16:16.9385|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-07 18:16:17.0961|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-07 18:16:17.1337|INFO|DataService.Services.PDistributorService|Status: Fail + Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2018-01-07 18:16:17.1337|INFO|SML_QLNPP.Controllers.PDistributorController|Fail: Create(POST) - PDistributorController

@@ -90,7 +90,7 @@ namespace DataService.Services
             if (latestProduct != null)
                 return latestProduct.IdProduct + 1;
             else
-                return 0;
+                return 1;
         }
 
         /// <summary>

@@ -2,7 +2,7 @@
 @using Newtonsoft.Json;
 @{
     var success = TempData["success"] as string;
-    var fail = ViewBag.fail as string;
+    var fail = TempData["fail"] as string;
     Layout = "~/Views/Shared/_ALayout.cshtml";
 }
 
@@ -37,6 +37,7 @@
             }
             <div class="well">
                 <h3>Thêm đối tác</h3>
+
                 @using (Html.BeginForm("Create", "PDistributor", FormMethod.Post))
                 {
                     <div class="panel-group">
@@ -47,18 +48,22 @@
                                     <div class="col-md-5 form-group">
                                         <label>Tên công ty: </label>
                                         @Html.TextBoxFor(m => m.name, new { @class = "form-control", @placeholder = "Nhập tên công ty", @required = "required", @type = "text" })
+                                        @Html.ValidationMessageFor(m => m.name)
                                     </div>
                                     <div class="col-md-5 form-group">
                                         <label>Email: </label>
                                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Nhập email", @required = "required", @type = "email" })
+                                        @Html.ValidationMessageFor(m => m.Email)
                                     </div>
                                     <div class="col-md-5 form-group">
                                         <label>Địa chỉ công ty: </label>
                                         @Html.TextBoxFor(m => m.address, new { @class = "form-control", @placeholder = "Nhập địa chỉ", @required = "required", @type = "text" })
+                                        @Html.ValidationMessageFor(m => m.address)
                                     </div>
                                     <div class="col-md-5 form-group">
                                         <label>Số điện thoại: </label>
                                         @Html.TextBoxFor(m => m.phone, new { @class = "form-control", @placeholder = "Nhập số điện thoại", @required = "required", @type = "text" })
+                                        @Html.ValidationMessageFor(m => m.phone)
                                     </div>
                                 </div>
                             </div>
@@ -71,18 +76,22 @@
                                     <div class="col-md-5 form-group">
                                         <label>Họ tên: </label>
                                         @Html.TextBoxFor(m => m.rep_name, new { @class = "form-control", @placeholder = "Nhập họ tên", @required = "required", @type = "text" })
+                                        @Html.ValidationMessageFor(m => m.rep_name)
                                     </div>
                                     <div class="col-md-5 form-group">
                                         <label>Chức vụ: </label>
                                         @Html.TextBoxFor(m => m.title, new { @class = "form-control", @placeholder = "Nhập chức vụ", @required = "required", @type = "text" })
+                                        @Html.ValidationMessageFor(m => m.title)
                                     </div>
                                     <div class="col-md-5 form-group">
                                         <label>Email: </label>
                                         @Html.TextBoxFor(m => m.rep_email, new { @class = "form-control", @placeholder = "Nhập email", @required = "required", @type = "email" })
+                                        @Html.ValidationMessageFor(m => m.rep_email)
                                     </div>
                                     <div class="col-md-5 form-group">
                                         <label>Số điện thoại: </label>
                                         @Html.TextBoxFor(m => m.rep_phone, new { @class = "form-control", @placeholder = "Nhập số điện thoại", @required = "required", @type = "text" })
+                                        @Html.ValidationMessageFor(m => m.rep_phone)
                                     </div>
                                 </div>
                             </div>

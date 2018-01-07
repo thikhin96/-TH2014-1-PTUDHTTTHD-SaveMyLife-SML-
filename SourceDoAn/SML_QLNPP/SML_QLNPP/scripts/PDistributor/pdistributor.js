@@ -23,7 +23,6 @@
                     table.clear();
                     var result = data.map(function (item) {
                         var rs = [];
-
                         rs.push(item.idDistributor);
                         rs.push(item.name);
                         rs.push(item.address);
@@ -46,6 +45,7 @@
                         else {
                             rs.push('Không đồng ý làm hợp đồng');
                         }
+                        debugger;
                         rs.push(item.Representatives[0].name);
                         var check = item.Assignments[0]
                         if (check) {

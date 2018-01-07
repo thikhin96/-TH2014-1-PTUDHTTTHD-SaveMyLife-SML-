@@ -104,7 +104,7 @@ namespace SML_QLNPP.Controllers
                 else
                 {
                     logger.Info("Fail: Create(POST) - PDistributorController");
-                    ViewBag.fail = result;
+                    TempData["fail"] = result;
                     return View(model);
                 }
             }
