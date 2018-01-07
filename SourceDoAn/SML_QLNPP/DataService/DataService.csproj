@@ -160,6 +160,7 @@
     <Compile Include="Interfaces\IProductTypeService.cs" />
     <Compile Include="Interfaces\ILogLoginService.cs" />
     <Compile Include="Interfaces\IPromotionService.cs" />
+    <Compile Include="Interfaces\ISalesReportService.cs" />
     <Compile Include="Interfaces\IReturnService.cs" />
     <Compile Include="Interfaces\IRepresentativeService.cs" />
     <Compile Include="Interfaces\IStaffService.cs" />
@@ -180,6 +181,7 @@
     <Compile Include="Services\LogLoginService.cs" />
     <Compile Include="Services\PromotionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\SalesReportService.cs" />
     <Compile Include="Services\ReturnService.cs" />
     <Compile Include="Services\RepresentativeService.cs" />
     <Compile Include="Services\StaffService.cs" />

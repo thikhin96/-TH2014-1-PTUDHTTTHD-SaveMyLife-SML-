@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,9 @@ namespace DataService.Interfaces
         Distributor SearchByID(int id);
         IList<DistributorList> GetList(Nullable<int> id, bool? status);
         bool hasContract(int distributorId);
+        bool priceOverDebt(int distributorId, decimal price);
+        Distributor GetDistributor(int idd);
+        IEnumerable GetList();
         List<Distributor> SearchByName(string searchTerm);
         Contract GetCurrentContract(int distributorId);
         bool exceedingDebt(int distributorId);

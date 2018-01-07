@@ -6,6 +6,7 @@ using System.Linq;
 using DataModel.Repositories;
 using DataService.Dtos;
 using NLog;
+using System.Collections;
 using DataService.Interfaces;
 using DataModel.Interfaces;
 using DataModel;
@@ -192,7 +193,25 @@ namespace DataService.Services
             }
         }
 
-        public IList<DistributorList> GetAll()
+        public IList<Distributor> GetAll()
+        {
+            IUnitOfWork uow = new UnitOfWork();
+            IRepository<Distributor> repo = uow.Repository<Distributor>();
+            return repo.GetAll().ToList();
+        }
+        public Distributor GetDistributor(int idd)
+        {
+            IRepository<Distributor> repository = _unitOfWork.Repository<Distributor>();
+            var result = repository.Get(a => a.idDistributor == idd);
+            return result != null ? result : null;
+        }
+
+        public IEnumerable GetList()
+        {
+            throw new NotImplementedException();
+        }
+
+        IList<DistributorList> IDistributorService.GetAll()
         {
             throw new NotImplementedException();
         }
