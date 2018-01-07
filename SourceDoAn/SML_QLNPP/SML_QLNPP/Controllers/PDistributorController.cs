@@ -92,7 +92,7 @@ namespace SML_QLNPP.Controllers
             };
             var rep = new Representative
             {
-                idRepresentative = _representativeService.GenerateOrderId(),
+                idRepresentative = _representativeService.GenerateRepresentativeId(),
                 name = model.rep_name,
                 email = model.rep_email,
                 title = model.title,
