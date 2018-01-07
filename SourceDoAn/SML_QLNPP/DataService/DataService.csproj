@@ -146,6 +146,7 @@
     <Compile Include="Dtos\ProductWithQuantity.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Interfaces\IAccountService.cs" />
+    <Compile Include="Interfaces\IAssignmentService.cs" />
     <Compile Include="Interfaces\IContractService.cs" />
     <Compile Include="Interfaces\IBillService.cs" />
     <Compile Include="Interfaces\IDeliveryOrderService.cs" />
@@ -162,10 +163,10 @@
     <Compile Include="Interfaces\IReturnService.cs" />
     <Compile Include="Interfaces\IRepresentativeService.cs" />
     <Compile Include="Interfaces\IStaffService.cs" />
-
     <Compile Include="Interfaces\IUnitService.cs" />
     <Compile Include="ServiceModule.cs" />
     <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\AssignmentService.cs" />
     <Compile Include="Services\ContractService.cs" />
     <Compile Include="Services\DeliveryOrderService.cs" />
     <Compile Include="Services\DetailedDeliveryOrderService.cs" />
@@ -182,7 +183,6 @@
     <Compile Include="Services\ReturnService.cs" />
     <Compile Include="Services\RepresentativeService.cs" />
     <Compile Include="Services\StaffService.cs" />
-
     <Compile Include="Services\UnitService.cs" />
   </ItemGroup>
   <ItemGroup>

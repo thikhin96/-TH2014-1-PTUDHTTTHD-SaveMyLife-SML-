@@ -17,7 +17,7 @@
                 status: parseInt(status)
             },
             success: function (data) {
-                //alert("goi ajax");
+               // alert("goi ajax");
                 if (data) {
                     $('#loading').hide();
                     table.clear();
@@ -29,8 +29,6 @@
                         rs.push(item.address);
                         rs.push(item.phone);
                         rs.push(item.Email);
-                        //rs.push(item.representative.name);
-                        // rs.push(item.staffName);
 
                         if (item.status == 0) {
                             rs.push('Chưa xử lý');
@@ -48,14 +46,19 @@
                         else {
                             rs.push('Không đồng ý làm hợp đồng');
                         }
-                        rs.push('<a class="btn btn-info btn-xs" href="/PDistributor/Detail/' + item.idDistributor + '">Xem chi tiết</a> | <a class="btn btn-warning btn-xs" href="/PDistributor/Update/' + item.idDistributor + '">Phân công</a>')
+                        rs.push(item.Representatives[0].name);
+                        var check = item.Assignments[0]
+                        if (check) {
+                            rs.push(check.Staff1.staffName);
+                        }
+                        else
+                            rs.push("Chưa phân công");
+                        rs.push('<a class="btn btn-info btn-xs" href="/SML_QLNPP/PDistributor/Detail/' + item.idDistributor + '">Xem chi tiết</a>')
                         return rs;
                     });
 
                     table.rows.add(result);
                     table.draw();
-
-
 
                 }
                 else {
@@ -66,3 +69,23 @@
         });
     })
 });
+
+
+//var rs1 = "";
+//$.ajax({
+//    url: "/PDistributor/getStaffAssigment",
+//    type: 'GET',
+//    data: {
+//    },
+//    success: function (data1) {
+//        if (data1) {
+//            var result1 = data1.map(function (item1) {
+//                rs1 = rs1 + "<option id='s_ " + item1.idStaff + " '>" + item1.staffName + "</option>"
+//            })
+//        }
+//        else {
+//            alert('Lỗi')
+//        }
+//    }
+//})
+//rs.push("<select id='iAssig'>" + rs1 + "</select>")

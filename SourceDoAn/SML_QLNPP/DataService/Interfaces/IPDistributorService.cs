@@ -12,9 +12,10 @@ namespace DataService.Interfaces
         bool Create(PotentialDistributor pDis);
         bool Create(PotentialDistributor pDis, Representative rep);
         bool UpdateStatus(int id, byte status, string note);
+        bool UpdatePDistributor(PotentialDistributor pdis);
         IList<PotentialDistributor> SearchByStatus(byte status);
         IList<PotentialDistributor> GetAll();
-        PotentialDistributor SearchByID(int id);
+        PotentialDistributor GetPDistributor(int id);
         int GenerateOrderId();
     }
 }
