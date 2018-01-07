@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace SML_QLNPP.Models
 {
@@ -22,5 +23,39 @@ namespace SML_QLNPP.Models
         public List<OrderDetail> OrderDetails { get; set; }
         public List<Product> Products { get; set; }
         public string Action { get; set; }
+        public List<SelectListItem> StatusList 
+        {
+            get
+            {
+                return new List<SelectListItem>
+                    {
+                         new SelectListItem
+                        {
+                            Text = "Chưa duyệt",
+                            Value = "0"
+                        },
+                        new SelectListItem
+                        {
+                            Text = "Đã duyệt",
+                            Value = "1"
+
+                        },
+                        new SelectListItem
+                        {
+                            Text = "Không duyệt",
+                            Value = "2"
+                        },
+                        new SelectListItem
+                        {
+                            Text = "Đã giao",
+                            Value = "3"
+                        }
+                    };
+            }
+            set
+                {
+
+                }
+        }
     }
 }

@@ -1,0 +1,96 @@
+﻿@model SML_QLNPP.Models.ShowReturnCardsViewModel
+
+@{
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+}
+
+@section css{
+    <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/datatables.min.css" rel="stylesheet" type="text/css" media="all" />
+}
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
+    <script>
+        $(function () {
+            $('#return-card-list').DataTable();
+        })
+    </script>
+}
+
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">Thông tin tìm kiếm</h3>
+    </div>
+    <div class="box-body">
+        @using (Html.BeginForm("Search", "Return", FormMethod.Get))
+        {
+            <div class="col-md-8">
+                <label>Nhập từ khoá</label>
+                @Html.TextBoxFor(m => m.KeyWord, new { @class = "form-control", @placeholder = "Nhập từ khoá" })
+            </div>
+            <div class="col-md-2">
+                <label>Hình thức</label>
+                @Html.DropDownListFor(model => model.TradeForm, Model.TradeFormList, new { @class = "form-control" })
+            </div>
+            <div class="col-md-1">
+                <label style="color: white">Tim kiem</label>
+                <button type="submit" class="btn btn-primary form-control" id=""><i class="fa fa-search" aria-hidden="true"></i></button>
+
+            </div>
+            <div class="col-md-1">
+            </div>
+        }
+        
+    </div>
+    <div class="box-footer">
+        
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header">
+                <h3 class="box-title">Danh sách đơn đặt hàng</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <div class="col-sm-12">
+                        <table id="return-card-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                            <thead>
+                                <tr>
+                                    <th>Mã phiếu đổi trả</th>
+                                    <th>Mã nhà phân phối</th>
+                                    <th>Nhà phân phối</th>
+                                    <th>Ngày tạo</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var card in Model.ReturnCards)
+                                {
+                                    <tr>
+                                        <td>@card.idReturn</td>
+                                        <td>@card.idDistributor</td>
+                                        <td>@card.Distributor.name</td>
+                                        <td>@card.DateCreate.GetValueOrDefault().Date.ToString("d")</td>
+                                        <td><a type="button" class="btn btn-info view-return-detail" href="@Url.Action("Show", "Return", new { returnId = card.idReturn})">Chi tiết</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+
+    </div>
+</div>

@@ -113,6 +113,7 @@
           <Property Name="idOrder" Type="int" />
           <Property Name="idStaff" Type="int" />
           <Property Name="idDistributor" Type="int" />
+          <Property Name="recipientPhone" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="DetailedDeliveryOrder">
           <Key>
@@ -123,6 +124,7 @@
           <Property Name="idProduct" Type="int" Nullable="false" />
           <Property Name="quantity" Type="int" />
           <Property Name="note" Type="nvarchar" MaxLength="200" />
+          <Property Name="promoQuantity" Type="int" />
         </EntityType>
         <EntityType Name="Distributor">
           <Key>
@@ -302,6 +304,7 @@
           <Property Name="idDistributor" Type="int" />
           <Property Name="idStorage" Type="int" />
           <Property Name="idStaff" Type="int" />
+          <Property Name="idReturnRequest" Type="int" />
         </EntityType>
         <EntityType Name="ReturnDetail">
           <Key>
@@ -517,15 +520,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DeliveryOrder_Oder">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="DeliveryOrder" Type="Self.DeliveryOrder" Multiplicity="0..1" />
+        <Association Name="FK_DeliveryOrder_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="DeliveryOrder" Type="Self.DeliveryOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
               <PropertyRef Name="idOrder" />
             </Principal>
             <Dependent Role="DeliveryOrder">
-              <PropertyRef Name="idDeliveryOrder" />
+              <PropertyRef Name="idOrder" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -661,18 +664,6 @@ warning 6035: The relationship 'FK_NPP_Account' has columns that are not part of
             </Principal>
             <Dependent Role="Order">
               <PropertyRef Name="idDistributor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_Staff">
-          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Staff">
-              <PropertyRef Name="idStaff" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="idStaff" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -829,6 +820,18 @@ warning 6035: The relationship 'FK_NPP_Account' has columns that are not part of
             </Principal>
             <Dependent Role="ReturnBase">
               <PropertyRef Name="idDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnBase_ReturnRequest">
+          <End Role="ReturnRequest" Type="Self.ReturnRequest" Multiplicity="0..1" />
+          <End Role="ReturnBase" Type="Self.ReturnBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReturnRequest">
+              <PropertyRef Name="IdReturnRequest" />
+            </Principal>
+            <Dependent Role="ReturnBase">
+              <PropertyRef Name="idReturnRequest" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1058,7 +1061,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             <End Role="Distributor" EntitySet="Distributor" />
             <End Role="DeliveryOrder" EntitySet="DeliveryOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK_DeliveryOrder_Oder" Association="Self.FK_DeliveryOrder_Oder">
+          <AssociationSet Name="FK_DeliveryOrder_Order" Association="Self.FK_DeliveryOrder_Order">
             <End Role="Order" EntitySet="Order" />
             <End Role="DeliveryOrder" EntitySet="DeliveryOrder" />
           </AssociationSet>
@@ -1104,10 +1107,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           </AssociationSet>
           <AssociationSet Name="FK_Order_Distributor" Association="Self.FK_Order_Distributor">
             <End Role="Distributor" EntitySet="Distributor" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Staff" Association="Self.FK_Order_Staff">
-            <End Role="Staff" EntitySet="Staff" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
@@ -1160,6 +1159,10 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           </AssociationSet>
           <AssociationSet Name="FK_ReturnBase_Distributor" Association="Self.FK_ReturnBase_Distributor">
             <End Role="Distributor" EntitySet="Distributor" />
+            <End Role="ReturnBase" EntitySet="ReturnBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnBase_ReturnRequest" Association="Self.FK_ReturnBase_ReturnRequest">
+            <End Role="ReturnRequest" EntitySet="ReturnRequest" />
             <End Role="ReturnBase" EntitySet="ReturnBase" />
           </AssociationSet>
           <AssociationSet Name="FK_ReturnBase_Staff" Association="Self.FK_ReturnBase_Staff">
@@ -1230,7 +1233,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <EntitySet Name="Log_Login" EntityType="QL_NPPModel.Log_Login" />
           <EntitySet Name="Log_Order" EntityType="QL_NPPModel.Log_Order" />
           <EntitySet Name="Log_OrderDetail" EntityType="QL_NPPModel.Log_OrderDetail" />
-          <EntitySet Name="Log_Product" EntityType="QL_NPPModel.Log_Product" />
           <EntitySet Name="Orders" EntityType="QL_NPPModel.Order" />
           <EntitySet Name="OrderDetails" EntityType="QL_NPPModel.OrderDetail" />
           <EntitySet Name="PaySlips" EntityType="QL_NPPModel.PaySlip" />
@@ -1241,7 +1243,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <EntitySet Name="PromotionGifts" EntityType="QL_NPPModel.PromotionGift" />
           <EntitySet Name="PromotionProducts" EntityType="QL_NPPModel.PromotionProduct" />
           <EntitySet Name="Representatives" EntityType="QL_NPPModel.Representative" />
-          <EntitySet Name="ReturnBases" EntityType="QL_NPPModel.ReturnBase" />
           <EntitySet Name="ReturnDetails" EntityType="QL_NPPModel.ReturnDetail" />
           <EntitySet Name="ReturnRequests" EntityType="QL_NPPModel.ReturnRequest" />
           <EntitySet Name="ReturnRequestDetails" EntityType="QL_NPPModel.ReturnRequestDetail" />
@@ -1338,10 +1339,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             <End Role="Distributor" EntitySet="Distributors" />
             <End Role="Representative" EntitySet="Representatives" />
           </AssociationSet>
-          <AssociationSet Name="FK_ReturnBase_Distributor" Association="QL_NPPModel.FK_ReturnBase_Distributor">
-            <End Role="Distributor" EntitySet="Distributors" />
-            <End Role="ReturnBase" EntitySet="ReturnBases" />
-          </AssociationSet>
           <AssociationSet Name="FK_ReturnRequest_Distributor" Association="QL_NPPModel.FK_ReturnRequest_Distributor">
             <End Role="Distributor" EntitySet="Distributors" />
             <End Role="ReturnRequest" EntitySet="ReturnRequests" />
@@ -1418,18 +1415,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             <End Role="Promotion" EntitySet="Promotions" />
             <End Role="PromotionProduct" EntitySet="PromotionProducts" />
           </AssociationSet>
-          <AssociationSet Name="FK_ReturnBase_Staff" Association="QL_NPPModel.FK_ReturnBase_Staff">
-            <End Role="Staff" EntitySet="Staffs" />
-            <End Role="ReturnBase" EntitySet="ReturnBases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ReturnBase_Storage" Association="QL_NPPModel.FK_ReturnBase_Storage">
-            <End Role="Storage" EntitySet="Storages" />
-            <End Role="ReturnBase" EntitySet="ReturnBases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ReturnDetail_ReturnBase" Association="QL_NPPModel.FK_ReturnDetail_ReturnBase">
-            <End Role="ReturnBase" EntitySet="ReturnBases" />
-            <End Role="ReturnDetail" EntitySet="ReturnDetails" />
-          </AssociationSet>
           <AssociationSet Name="FK_ReturnRequest_Staff" Association="QL_NPPModel.FK_ReturnRequest_Staff">
             <End Role="Staff" EntitySet="Staffs" />
             <End Role="ReturnRequest" EntitySet="ReturnRequests" />
@@ -1445,6 +1430,32 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <AssociationSet Name="FK_SalesReportDetail_SalesReport" Association="QL_NPPModel.FK_SalesReportDetail_SalesReport">
             <End Role="SalesReport" EntitySet="SalesReports" />
             <End Role="SalesReportDetail" EntitySet="SalesReportDetails" />
+          </AssociationSet>
+          <EntitySet Name="Log_Product" EntityType="QL_NPPModel.Log_Product" />
+          <EntitySet Name="ReturnBases" EntityType="QL_NPPModel.ReturnBase" />
+          <AssociationSet Name="FK_ReturnBase_Distributor" Association="QL_NPPModel.FK_ReturnBase_Distributor">
+            <End Role="Distributor" EntitySet="Distributors" />
+            <End Role="ReturnBase" EntitySet="ReturnBases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnBase_ReturnRequest" Association="QL_NPPModel.FK_ReturnBase_ReturnRequest">
+            <End Role="ReturnRequest" EntitySet="ReturnRequests" />
+            <End Role="ReturnBase" EntitySet="ReturnBases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnBase_Staff" Association="QL_NPPModel.FK_ReturnBase_Staff">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="ReturnBase" EntitySet="ReturnBases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnBase_Storage" Association="QL_NPPModel.FK_ReturnBase_Storage">
+            <End Role="Storage" EntitySet="Storages" />
+            <End Role="ReturnBase" EntitySet="ReturnBases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReturnDetail_ReturnBase" Association="QL_NPPModel.FK_ReturnDetail_ReturnBase">
+            <End Role="ReturnBase" EntitySet="ReturnBases" />
+            <End Role="ReturnDetail" EntitySet="ReturnDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryOrder_Order" Association="QL_NPPModel.FK_DeliveryOrder_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="DeliveryOrder" EntitySet="DeliveryOrders" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Account">
@@ -1575,6 +1586,8 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <NavigationProperty Name="Order" Relationship="QL_NPPModel.FK_DeliveryOrder_Oder" FromRole="DeliveryOrder" ToRole="Order" />
           <NavigationProperty Name="Staff" Relationship="QL_NPPModel.FK_DeliveryOrder_Staff" FromRole="DeliveryOrder" ToRole="Staff" />
           <NavigationProperty Name="DetailedDeliveryOrders" Relationship="QL_NPPModel.FK_DetailedDeliveryOrder_DeliveryOrder" FromRole="DeliveryOrder" ToRole="DetailedDeliveryOrder" />
+          <Property Name="recipientPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order1" Relationship="QL_NPPModel.FK_DeliveryOrder_Order" FromRole="DeliveryOrder" ToRole="Order" />
         </EntityType>
         <EntityType Name="DetailedDeliveryOrder">
           <Key>
@@ -1587,6 +1600,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DeliveryOrder" Relationship="QL_NPPModel.FK_DetailedDeliveryOrder_DeliveryOrder" FromRole="DetailedDeliveryOrder" ToRole="DeliveryOrder" />
           <NavigationProperty Name="Product" Relationship="QL_NPPModel.FK_DetailedDeliveryOrder_Product" FromRole="DetailedDeliveryOrder" ToRole="Product" />
+          <Property Name="promoQuantity" Type="Int32" />
         </EntityType>
         <EntityType Name="Distributor">
           <Key>
@@ -1611,9 +1625,9 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <NavigationProperty Name="Orders" Relationship="QL_NPPModel.FK_Order_Distributor" FromRole="Distributor" ToRole="Order" />
           <NavigationProperty Name="PaySlips" Relationship="QL_NPPModel.FK_PaySlip_Distributor" FromRole="Distributor" ToRole="PaySlip" />
           <NavigationProperty Name="Representatives" Relationship="QL_NPPModel.FK_Representative_Distributor" FromRole="Distributor" ToRole="Representative" />
-          <NavigationProperty Name="ReturnBases" Relationship="QL_NPPModel.FK_ReturnBase_Distributor" FromRole="Distributor" ToRole="ReturnBase" />
           <NavigationProperty Name="ReturnRequests" Relationship="QL_NPPModel.FK_ReturnRequest_Distributor" FromRole="Distributor" ToRole="ReturnRequest" />
           <NavigationProperty Name="Storages" Relationship="QL_NPPModel.FK_Storage_Distributor" FromRole="Distributor" ToRole="Storage" />
+          <NavigationProperty Name="ReturnBases" Relationship="QL_NPPModel.FK_ReturnBase_Distributor" FromRole="Distributor" ToRole="ReturnBase" />
         </EntityType>
         <EntityType Name="Log_Login">
           <Key>
@@ -1649,18 +1663,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <NavigationProperty Name="Product" Relationship="QL_NPPModel.FK_Log_OrderDetail_Product" FromRole="Log_OrderDetail" ToRole="Product" />
           <NavigationProperty Name="Staff" Relationship="QL_NPPModel.FK_Log_OrderDetail_Staff" FromRole="Log_OrderDetail" ToRole="Staff" />
         </EntityType>
-        <EntityType Name="Log_Product">
-          <Key>
-            <PropertyRef Name="idLog_Product" />
-          </Key>
-          <Property Name="idLog_Product" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="createdDate" Type="DateTime" Precision="3" />
-          <Property Name="idStaff" Type="Int32" />
-          <Property Name="oldPrice" Type="Int32" />
-          <Property Name="newPrice" Type="Int32" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="idProduct" Type="Int32" />
-        </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="idOrder" />
@@ -1683,6 +1685,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <NavigationProperty Name="Log_OrderDetail" Relationship="QL_NPPModel.FK_Log_OrderDetail_Order" FromRole="Order" ToRole="Log_OrderDetail" />
           <NavigationProperty Name="Staff" Relationship="QL_NPPModel.FK_Order_Staff" FromRole="Order" ToRole="Staff" />
           <NavigationProperty Name="OrderDetails" Relationship="QL_NPPModel.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
+          <NavigationProperty Name="DeliveryOrders" Relationship="QL_NPPModel.FK_DeliveryOrder_Order" FromRole="Order" ToRole="DeliveryOrder" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -1802,22 +1805,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <NavigationProperty Name="Distributor1" Relationship="QL_NPPModel.FK_Representative_Distributor" FromRole="Representative" ToRole="Distributor" />
           <NavigationProperty Name="PotentialDistributor" Relationship="QL_NPPModel.FK_Representative_PDistributor" FromRole="Representative" ToRole="PotentialDistributor" />
         </EntityType>
-        <EntityType Name="ReturnBase">
-          <Key>
-            <PropertyRef Name="idReturn" />
-          </Key>
-          <Property Name="idReturn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="DateCreate" Type="DateTime" Precision="3" />
-          <Property Name="ModeOfReturn" Type="Boolean" />
-          <Property Name="idDistributor" Type="Int32" />
-          <Property Name="idStorage" Type="Int32" />
-          <Property Name="idStaff" Type="Int32" />
-          <NavigationProperty Name="Distributor" Relationship="QL_NPPModel.FK_ReturnBase_Distributor" FromRole="ReturnBase" ToRole="Distributor" />
-          <NavigationProperty Name="Staff" Relationship="QL_NPPModel.FK_ReturnBase_Staff" FromRole="ReturnBase" ToRole="Staff" />
-          <NavigationProperty Name="Storage" Relationship="QL_NPPModel.FK_ReturnBase_Storage" FromRole="ReturnBase" ToRole="Storage" />
-          <NavigationProperty Name="ReturnDetails" Relationship="QL_NPPModel.FK_ReturnDetail_ReturnBase" FromRole="ReturnBase" ToRole="ReturnDetail" />
-        </EntityType>
         <EntityType Name="ReturnDetail">
           <Key>
             <PropertyRef Name="idReturn" />
@@ -1846,6 +1833,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <NavigationProperty Name="Staff1" Relationship="QL_NPPModel.FK_ReturnRequest_Staff" FromRole="ReturnRequest" ToRole="Staff" />
           <NavigationProperty Name="Storage1" Relationship="QL_NPPModel.FK_ReturnRequest_Storage" FromRole="ReturnRequest" ToRole="Storage" />
           <NavigationProperty Name="ReturnRequestDetails" Relationship="QL_NPPModel.FK_ReturnRequestDetail_ReturnRequest" FromRole="ReturnRequest" ToRole="ReturnRequestDetail" />
+          <NavigationProperty Name="ReturnBases" Relationship="QL_NPPModel.FK_ReturnBase_ReturnRequest" FromRole="ReturnRequest" ToRole="ReturnBase" />
         </EntityType>
         <EntityType Name="ReturnRequestDetail">
           <Key>
@@ -1898,8 +1886,8 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <NavigationProperty Name="Log_OrderDetail" Relationship="QL_NPPModel.FK_Log_OrderDetail_Staff" FromRole="Staff" ToRole="Log_OrderDetail" />
           <NavigationProperty Name="Orders" Relationship="QL_NPPModel.FK_Order_Staff" FromRole="Staff" ToRole="Order" />
           <NavigationProperty Name="PaySlips" Relationship="QL_NPPModel.FK_PaySlip_Staff" FromRole="Staff" ToRole="PaySlip" />
-          <NavigationProperty Name="ReturnBases" Relationship="QL_NPPModel.FK_ReturnBase_Staff" FromRole="Staff" ToRole="ReturnBase" />
           <NavigationProperty Name="ReturnRequests" Relationship="QL_NPPModel.FK_ReturnRequest_Staff" FromRole="Staff" ToRole="ReturnRequest" />
+          <NavigationProperty Name="ReturnBases" Relationship="QL_NPPModel.FK_ReturnBase_Staff" FromRole="Staff" ToRole="ReturnBase" />
         </EntityType>
         <EntityType Name="Storage">
           <Key>
@@ -1913,8 +1901,8 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Distributor" Type="Int32" />
           <NavigationProperty Name="Distributor1" Relationship="QL_NPPModel.FK_Storage_Distributor" FromRole="Storage" ToRole="Distributor" />
-          <NavigationProperty Name="ReturnBases" Relationship="QL_NPPModel.FK_ReturnBase_Storage" FromRole="Storage" ToRole="ReturnBase" />
           <NavigationProperty Name="ReturnRequests" Relationship="QL_NPPModel.FK_ReturnRequest_Storage" FromRole="Storage" ToRole="ReturnRequest" />
+          <NavigationProperty Name="ReturnBases" Relationship="QL_NPPModel.FK_ReturnBase_Storage" FromRole="Storage" ToRole="ReturnBase" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
@@ -2189,18 +2177,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ReturnBase_Distributor">
-          <End Type="QL_NPPModel.Distributor" Role="Distributor" Multiplicity="0..1" />
-          <End Type="QL_NPPModel.ReturnBase" Role="ReturnBase" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Distributor">
-              <PropertyRef Name="idDistributor" />
-            </Principal>
-            <Dependent Role="ReturnBase">
-              <PropertyRef Name="idDistributor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ReturnRequest_Distributor">
           <End Type="QL_NPPModel.Distributor" Role="Distributor" Multiplicity="0..1" />
           <End Type="QL_NPPModel.ReturnRequest" Role="ReturnRequest" Multiplicity="*" />
@@ -2429,42 +2405,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ReturnBase_Staff">
-          <End Type="QL_NPPModel.Staff" Role="Staff" Multiplicity="0..1" />
-          <End Type="QL_NPPModel.ReturnBase" Role="ReturnBase" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Staff">
-              <PropertyRef Name="idStaff" />
-            </Principal>
-            <Dependent Role="ReturnBase">
-              <PropertyRef Name="idStaff" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ReturnBase_Storage">
-          <End Type="QL_NPPModel.Storage" Role="Storage" Multiplicity="0..1" />
-          <End Type="QL_NPPModel.ReturnBase" Role="ReturnBase" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Storage">
-              <PropertyRef Name="IdStorage" />
-            </Principal>
-            <Dependent Role="ReturnBase">
-              <PropertyRef Name="idStorage" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ReturnDetail_ReturnBase">
-          <End Type="QL_NPPModel.ReturnBase" Role="ReturnBase" Multiplicity="1" />
-          <End Type="QL_NPPModel.ReturnDetail" Role="ReturnDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ReturnBase">
-              <PropertyRef Name="idReturn" />
-            </Principal>
-            <Dependent Role="ReturnDetail">
-              <PropertyRef Name="idReturn" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ReturnRequest_Staff">
           <End Type="QL_NPPModel.Staff" Role="Staff" Multiplicity="0..1" />
           <End Type="QL_NPPModel.ReturnRequest" Role="ReturnRequest" Multiplicity="*" />
@@ -2510,6 +2450,108 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             </Principal>
             <Dependent Role="SalesReportDetail">
               <PropertyRef Name="idSalesReport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Log_Product">
+          <Key>
+            <PropertyRef Name="idLog_Product" />
+          </Key>
+          <Property Name="idLog_Product" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="idStaff" Type="Int32" />
+          <Property Name="oldPrice" Type="Int32" />
+          <Property Name="newPrice" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idProduct" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ReturnBase">
+          <Key>
+            <PropertyRef Name="idReturn" />
+          </Key>
+          <Property Name="idReturn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DateCreate" Type="DateTime" Precision="3" />
+          <Property Name="ModeOfReturn" Type="Boolean" />
+          <Property Name="idDistributor" Type="Int32" />
+          <Property Name="idStorage" Type="Int32" />
+          <Property Name="idStaff" Type="Int32" />
+          <Property Name="idReturnRequest" Type="Int32" />
+          <NavigationProperty Name="Distributor" Relationship="QL_NPPModel.FK_ReturnBase_Distributor" FromRole="ReturnBase" ToRole="Distributor" />
+          <NavigationProperty Name="ReturnRequest" Relationship="QL_NPPModel.FK_ReturnBase_ReturnRequest" FromRole="ReturnBase" ToRole="ReturnRequest" />
+          <NavigationProperty Name="Staff" Relationship="QL_NPPModel.FK_ReturnBase_Staff" FromRole="ReturnBase" ToRole="Staff" />
+          <NavigationProperty Name="Storage" Relationship="QL_NPPModel.FK_ReturnBase_Storage" FromRole="ReturnBase" ToRole="Storage" />
+          <NavigationProperty Name="ReturnDetails" Relationship="QL_NPPModel.FK_ReturnDetail_ReturnBase" FromRole="ReturnBase" ToRole="ReturnDetail" />
+        </EntityType>
+        <Association Name="FK_ReturnBase_Distributor">
+          <End Type="QL_NPPModel.Distributor" Role="Distributor" Multiplicity="0..1" />
+          <End Type="QL_NPPModel.ReturnBase" Role="ReturnBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="idDistributor" />
+            </Principal>
+            <Dependent Role="ReturnBase">
+              <PropertyRef Name="idDistributor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnBase_ReturnRequest">
+          <End Type="QL_NPPModel.ReturnRequest" Role="ReturnRequest" Multiplicity="0..1" />
+          <End Type="QL_NPPModel.ReturnBase" Role="ReturnBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReturnRequest">
+              <PropertyRef Name="IdReturnRequest" />
+            </Principal>
+            <Dependent Role="ReturnBase">
+              <PropertyRef Name="idReturnRequest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnBase_Staff">
+          <End Type="QL_NPPModel.Staff" Role="Staff" Multiplicity="0..1" />
+          <End Type="QL_NPPModel.ReturnBase" Role="ReturnBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="ReturnBase">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnBase_Storage">
+          <End Type="QL_NPPModel.Storage" Role="Storage" Multiplicity="0..1" />
+          <End Type="QL_NPPModel.ReturnBase" Role="ReturnBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="IdStorage" />
+            </Principal>
+            <Dependent Role="ReturnBase">
+              <PropertyRef Name="idStorage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReturnDetail_ReturnBase">
+          <End Type="QL_NPPModel.ReturnBase" Role="ReturnBase" Multiplicity="1" />
+          <End Type="QL_NPPModel.ReturnDetail" Role="ReturnDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReturnBase">
+              <PropertyRef Name="idReturn" />
+            </Principal>
+            <Dependent Role="ReturnDetail">
+              <PropertyRef Name="idReturn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryOrder_Order">
+          <End Type="QL_NPPModel.Order" Role="Order" Multiplicity="0..1" />
+          <End Type="QL_NPPModel.DeliveryOrder" Role="DeliveryOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="idOrder" />
+            </Principal>
+            <Dependent Role="DeliveryOrder">
+              <PropertyRef Name="idOrder" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2621,6 +2663,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <EntitySetMapping Name="DeliveryOrders">
             <EntityTypeMapping TypeName="QL_NPPModel.DeliveryOrder">
               <MappingFragment StoreEntitySet="DeliveryOrder">
+                <ScalarProperty Name="recipientPhone" ColumnName="recipientPhone" />
                 <ScalarProperty Name="idDistributor" ColumnName="idDistributor" />
                 <ScalarProperty Name="idStaff" ColumnName="idStaff" />
                 <ScalarProperty Name="idOrder" ColumnName="idOrder" />
@@ -2638,6 +2681,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <EntitySetMapping Name="DetailedDeliveryOrders">
             <EntityTypeMapping TypeName="QL_NPPModel.DetailedDeliveryOrder">
               <MappingFragment StoreEntitySet="DetailedDeliveryOrder">
+                <ScalarProperty Name="promoQuantity" ColumnName="promoQuantity" />
                 <ScalarProperty Name="note" ColumnName="note" />
                 <ScalarProperty Name="quantity" ColumnName="quantity" />
                 <ScalarProperty Name="idProduct" ColumnName="idProduct" />
@@ -2693,19 +2737,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
                 <ScalarProperty Name="oldQuantity" ColumnName="oldQuantity" />
                 <ScalarProperty Name="createdDate" ColumnName="createdDate" />
                 <ScalarProperty Name="idLog" ColumnName="idLog" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Log_Product">
-            <EntityTypeMapping TypeName="QL_NPPModel.Log_Product">
-              <MappingFragment StoreEntitySet="Log_Product">
-                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="newPrice" ColumnName="newPrice" />
-                <ScalarProperty Name="oldPrice" ColumnName="oldPrice" />
-                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
-                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-                <ScalarProperty Name="idLog_Product" ColumnName="idLog_Product" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2824,19 +2855,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ReturnBases">
-            <EntityTypeMapping TypeName="QL_NPPModel.ReturnBase">
-              <MappingFragment StoreEntitySet="ReturnBase">
-                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
-                <ScalarProperty Name="idStorage" ColumnName="idStorage" />
-                <ScalarProperty Name="idDistributor" ColumnName="idDistributor" />
-                <ScalarProperty Name="ModeOfReturn" ColumnName="ModeOfReturn" />
-                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="idReturn" ColumnName="idReturn" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ReturnDetails">
             <EntityTypeMapping TypeName="QL_NPPModel.ReturnDetail">
               <MappingFragment StoreEntitySet="ReturnDetail">
@@ -2921,6 +2939,33 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
                 <ScalarProperty Name="quantity" ColumnName="quantity" />
                 <ScalarProperty Name="unitName" ColumnName="unitName" />
                 <ScalarProperty Name="idUnit" ColumnName="idUnit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log_Product">
+            <EntityTypeMapping TypeName="QL_NPPModel.Log_Product">
+              <MappingFragment StoreEntitySet="Log_Product">
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="newPrice" ColumnName="newPrice" />
+                <ScalarProperty Name="oldPrice" ColumnName="oldPrice" />
+                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="idLog_Product" ColumnName="idLog_Product" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReturnBases">
+            <EntityTypeMapping TypeName="QL_NPPModel.ReturnBase">
+              <MappingFragment StoreEntitySet="ReturnBase">
+                <ScalarProperty Name="idReturnRequest" ColumnName="idReturnRequest" />
+                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
+                <ScalarProperty Name="idStorage" ColumnName="idStorage" />
+                <ScalarProperty Name="idDistributor" ColumnName="idDistributor" />
+                <ScalarProperty Name="ModeOfReturn" ColumnName="ModeOfReturn" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="idReturn" ColumnName="idReturn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

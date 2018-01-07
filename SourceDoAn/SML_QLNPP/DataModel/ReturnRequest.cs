@@ -18,6 +18,7 @@ namespace DataModel
         public ReturnRequest()
         {
             this.ReturnRequestDetails = new HashSet<ReturnRequestDetail>();
+            this.ReturnBases = new HashSet<ReturnBase>();
         }
     
         public int IdReturnRequest { get; set; }
@@ -34,5 +35,7 @@ namespace DataModel
         public virtual Storage Storage1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReturnRequestDetail> ReturnRequestDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReturnBase> ReturnBases { get; set; }
     }
 }
