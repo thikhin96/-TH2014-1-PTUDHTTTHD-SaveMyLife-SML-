@@ -1,5 +1,5 @@
-﻿@*@model SML_QLNPP.Models.SalesReportViewModel
-@using Newtonsoft.Json;*@
+﻿@model SML_QLNPP.Models.SalesReportViewModel
+@using Newtonsoft.Json;
 @{
     ViewBag.Title = "ListOrder";
     Layout = "~/Views/Shared/_ALayout.cshtml";
@@ -8,15 +8,15 @@
     <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/Order/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/Order/datatables.min.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="~/Content/SalesReport/dataTables.jqueryui.css" rel="stylesheet" type="text/css" media="all" />
+    @*<link href="~/Content/SalesReport/dataTables.jqueryui.css" rel="stylesheet" type="text/css" media="all" />*@
 }
 
 @section scripts{
     <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Order/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
     <script type="text/javascript" src="~/Scripts/SalesReport/salesreport.js"></script>
-<script type="text/javascript" src="~/Scripts/SalesReport/dataTables.jqueryui.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
+@*<script type="text/javascript" src="~/Scripts/SalesReport/dataTables.jqueryui.js"></script>*@
     
     
 }
@@ -31,7 +31,7 @@
         <div class="col-md-2">
             <label>-----Tháng-----</label>
             <select id="month">
-                <option value="volvo">Chọn tháng...</option>
+                <option value="0">Chọn tháng...</option>
                 <option value="1">Tháng 1</option>
                 <option value="2">Tháng 2</option>
                 <option value="3">Tháng 3</option>
@@ -49,7 +49,7 @@
         <div class="col-md-2">
             <label>------Qúy-----</label>
             <select id="quy">
-                <option value="volvo">Chọn quý...</option>
+                <option value="0">Chọn quý...</option>
                 <option value="1">Quý 1</option>
                 <option value="2">Quý 2</option>
                 <option value="3">Quý 3</option>
@@ -59,7 +59,7 @@
         <div class="col-md-2">
             <label>------Năm------</label>
             <select id="year">
-                <option value="volvo">Chọn năm...</option>
+                <option value="0">Chọn năm...</option>
                 <option value="2017">2017</option>
                 <option value="2018">2018</option>
                 <option value="2019">2019</option>
@@ -76,18 +76,12 @@
         </div>
         <div class="col-md-2">
             <label>Nhà Phân Phối</label>
-            @*<select id="idDistributor">
-                <option value="volvo">Chọn nhà phân phối...</option>
-                <option value="saab">Nhà Phân Phối A</option>
-                <option value="opel">Nhà Phân Phối B</option>
-                <option value="audi">Nhà Phân Phối C</option>
-            </select>*@
-           
+                @*@Html.DropDownList("DistributorName", (IEnumerable<SelectListItem>)ViewBag.Orders as SelectList, "Chọn nhà phân phối..",new { @class = "form-control", @required = "required" })*@
 
         </div>
     </div>
     <div class="box-footer">
-        <button type="submit" class="btn btn-primary" id="SearchListOrder">Tìm kiếm kết quả</button>
+        <button type = "submit" class="btn btn-primary" id="SearchListOrder">Tìm kiếm kết quả</button>
     </div>
 </div>
 
@@ -101,9 +95,9 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div id = "example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                     <div class="col-sm-12">
-                        <table id="order-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                        <table id = "order-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                             <thead>
                                 <tr>
                                     <th>Mã Đơn Hàng</th>
@@ -112,7 +106,7 @@
                                     <th>Mã nhân viên</th>
                                     <th>Tổng Tiền</th>
                                 </tr>
-                                
+
                             </thead>
                             <tbody>
                                 @*@{ if (Model != null && Model.Order != null)

@@ -353,6 +353,7 @@
     <Content Include="Content\Order\datatables.min.css" />
     <Content Include="Content\Order\detail.css" />
     <Content Include="Content\Order\jquery-ui.min.css" />
+    <Content Include="Content\SalesReport\dataTables.jqueryui.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -487,6 +488,7 @@
     <Content Include="Scripts\Promotion\promotion.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\SalesReport\dataTables.jqueryui.js" />
     <Content Include="Scripts\SalesReport\jquery-3.2.1.min.js" />
     <Content Include="Scripts\SalesReport\salesreport.js" />
     <None Include="Scripts\_references.js" />

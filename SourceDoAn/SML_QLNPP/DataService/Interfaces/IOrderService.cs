@@ -16,5 +16,7 @@ namespace DataService.Interfaces
         int GenerateOrderId();
         string CreateOrder(Order order, List<OrderDetail> orderDetails);
         IList<Order> SearchListOrder(int? idDistributor, string CreateDate, int month, int quartar, int year);
+        IEnumerable<Order> GetOrderByDistributor(int? dtbtrId);
+        dynamic GetOrderByDistributor();
     }
 }

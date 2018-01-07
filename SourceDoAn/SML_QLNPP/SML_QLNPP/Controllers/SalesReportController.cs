@@ -16,13 +16,13 @@ namespace SML_QLNPP.Controllers
     {
         // GET: SalesReport
         private readonly ISalesReportService _orderService;
-        private readonly ISalesReportService _billService;
+        private readonly IBillService _billService;
         private readonly IDistributorService _distributorService;
         private readonly IOrderService _oService;
 
         public object DataRepository { get; private set; }
 
-        public SalesReportController(ISalesReportService orderService, IOrderService oService, ISalesReportService bService, IDistributorService distributorService)
+        public SalesReportController(ISalesReportService orderService, IOrderService oService, IBillService bService, IDistributorService distributorService)
         {
             this._orderService = orderService;
             this._oService = oService;
@@ -55,6 +55,8 @@ namespace SML_QLNPP.Controllers
         {
             ViewBag.Parent = "Báo Cáo Doanh Thu";
             ViewBag.Child = "Đơn Đặt Hàng";
+            SelectList list = new SelectList(_oService.GetOrderByDistributor(), "idDistributor", "name");
+            ViewBag.DistributorName = list;
             return View();
         }
         //[HttpPost]
@@ -77,39 +79,13 @@ namespace SML_QLNPP.Controllers
 
         //    return null;
         //}
-        public ActionResult LoadData()
-        {
-            var Items = GetItems(0, "", 0);
-            return Json(new { data = Items }, JsonRequestBehavior.AllowGet);
-        }
+        //public ActionResult LoadData()
+        //{
+        //    var Items = g(0, "", 0);
+        //    return Json(new { data = Items }, JsonRequestBehavior.AllowGet);
+        //}
 
-        private IList GetItems(int order, string createDate, int Distributors)
-        {
-            QL_NPPEntities entities = new QL_NPPEntities();
-            try
-            {
-                var sdate = Convert.ToDateTime(createDate);
-                var Items = (from a in entities.Orders
-                   .Where(x => order == x.idOrder && x.CreatedDate == sdate && x.idDistributor == Distributors)
-                             select new CreateOrderViewModel
-                             {
-                                 idOrder = a.idOrder,
-                                 EstimateDateOfDelivery = a.CreatedDate,
-                                 idDistributor = a.idDistributor,
-                                 idStaff = a.idStaff,
-                                 Total = a.Total
-
-                             }).OrderByDescending(x => x.EstimateDateOfDelivery).ToList();
-
-                ViewBag.Items = Items;
-                return Items;
-            }
-            catch (Exception ex)
-            {
-                string Msg = ex.Message;
-                return null;
-            }
-        }
+        
 
         public ActionResult ListDeliveryOrder()
         {

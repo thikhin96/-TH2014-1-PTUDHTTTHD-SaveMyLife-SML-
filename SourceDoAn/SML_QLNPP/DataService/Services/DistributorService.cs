@@ -121,9 +121,11 @@ namespace DataService.Services
             throw new NotImplementedException();
         }
 
-        public IList<DistributorList> GetAll()
+        public IList<Distributor> GetAll()
         {
-            throw new NotImplementedException();
+            IUnitOfWork uow = new UnitOfWork();
+            IRepository<Distributor> repo = uow.Repository<Distributor>();
+            return repo.GetAll().ToList();
         }
         public Distributor GetDistributor(int idd)
         {
@@ -133,6 +135,11 @@ namespace DataService.Services
         }
 
         public IEnumerable GetList()
+        {
+            throw new NotImplementedException();
+        }
+
+        IList<DistributorList> IDistributorService.GetAll()
         {
             throw new NotImplementedException();
         }

@@ -208,7 +208,7 @@ namespace DataService.Services
             }
             return repository.GetAll(dis => (dis.idDistributor ?? default(int)) == dtbtrId);
         }
-
+        
 
         /// <summary>
         /// Tìm kiếm đơn đặt hàng Tháng/ Quý/ Năm
@@ -235,6 +235,7 @@ namespace DataService.Services
                     {
                         return null;
                     }
+                    return null;
                 }
                 else
                 {
@@ -249,5 +250,9 @@ namespace DataService.Services
             }
         }
 
+        public dynamic GetOrderByDistributor()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
