@@ -176,6 +176,13 @@ namespace DataService.Services
             var distributor = _distributorRepository.GetAll(x => x.UserName == username).FirstOrDefault();
             return distributor;
         }
-
+        public bool checkDebt(int id)
+        {
+            var distributor = this.SearchByID(id);
+            if (distributor.debt > 0)
+                return true;
+            else
+                return false;
+        }
     }
 }

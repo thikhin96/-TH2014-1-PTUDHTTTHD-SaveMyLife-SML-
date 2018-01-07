@@ -18,6 +18,14 @@
     });
 }
 
+@{
+    List<SelectListItem> listStorage = new List<SelectListItem>();
+}
+
+@foreach (var storage in Model.Storages)
+{
+    listStorage.Add(new SelectListItem { Text = @storage.IdStorage.ToString(), Value = @storage.IdStorage.ToString() });
+}
 @section css{
     <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" type="text/css" media="all" />
@@ -32,7 +40,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-10 col-md-10">
+        <div class="col-sm-12 col-md-12">
             @if (success != null)
             {
                 <div class="alert alert-success alert-dismissable">
@@ -70,12 +78,7 @@
             <div class="box-body">
                 <div class="col-md-2">
                     <label>Mã kho: </label>
-                    <select class="dropdown-content" id="searchStorage">
-                        @foreach (var storage in Model.Storages)
-                        {
-                            <option value="@storage.IdStorage">@storage.IdStorage</option>
-                        }
-                    </select>
+                    @Html.DropDownListFor(model => model.idStorage, listStorage, new { @class = "form-control", @required = "required", @id= "searchStorage" })
                 </div>
                 <div class="col-md-2">
                     <label>Số nhà, đường: </label>

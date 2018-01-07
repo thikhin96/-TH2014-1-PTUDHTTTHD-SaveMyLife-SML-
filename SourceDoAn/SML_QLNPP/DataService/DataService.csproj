@@ -155,6 +155,7 @@
     <Compile Include="Interfaces\IDistributorService.cs" />
     <Compile Include="Interfaces\ILogProductService.cs" />
     <Compile Include="Interfaces\IOrderService.cs" />
+    <Compile Include="Interfaces\IPaySlipService.cs" />
     <Compile Include="Interfaces\IPDistributorService.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
     <Compile Include="Interfaces\IProductTypeService.cs" />
@@ -175,6 +176,7 @@
     <Compile Include="Services\DistributorService.cs" />
     <Compile Include="Services\LogProductService.cs" />
     <Compile Include="Services\OrderService.cs" />
+    <Compile Include="Services\PaySlipService.cs" />
     <Compile Include="Services\PDistributorService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\ProductTypeService.cs" />

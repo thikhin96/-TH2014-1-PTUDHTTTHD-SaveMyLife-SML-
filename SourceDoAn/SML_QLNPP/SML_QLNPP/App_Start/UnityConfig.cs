@@ -60,6 +60,8 @@ namespace SML_QLNPP
             container.RegisterType<IReturnService, ReturnService>();
             container.RegisterType<IReturnRequestService, ReturnRequestService>();
             container.RegisterType<IStorageService, StorageService>();
+            container.RegisterType<IDebtService, DebtService>();
+            container.RegisterType<IPaySlipService, PaySlipService>();
             container.RegisterType<ILogProductService, LogProductService>();
             container.RegisterType<IPDistributorService, PDistributorService>();
             container.RegisterType<IRepresentativeService, RepresentativeService>();

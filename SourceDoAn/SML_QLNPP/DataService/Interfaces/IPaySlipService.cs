@@ -7,10 +7,9 @@ using DataModel;
 
 namespace DataService.Interfaces
 {
-    public interface IDebtService
+    public interface IPaySlipService
     {
-        int GenerateDebtId();
-        string CreateDebt(Debt debt);
-        Debt GetDebt(int debtId);
+        int GeneratePaySlipId();
+        string CreatePaySlip(PaySlip paySlip);
     }
 }

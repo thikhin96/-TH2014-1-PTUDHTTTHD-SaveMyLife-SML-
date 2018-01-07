@@ -10,32 +10,32 @@ using NLog;
 
 namespace DataService.Services
 {
-    public class DebtService :IDebtService
+    public class PaySlipService : IPaySlipService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IRepository<Debt> _debtRepository;
+        private readonly IRepository<PaySlip> _paySlipRepository;
         private readonly ILogger _logger = LogManager.GetCurrentClassLogger();
-        public DebtService(IUnitOfWork unitOfWork)
+        public PaySlipService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _debtRepository = unitOfWork.Repository<Debt>();
+            _paySlipRepository = unitOfWork.Repository<PaySlip>();
         }
 
-        public int GenerateDebtId()
+        public int GeneratePaySlipId()
         {
-            var latestDebt = _debtRepository.GetAll().OrderByDescending(x => x.idDebt).FirstOrDefault();
+            var latestDebt = _paySlipRepository.GetAll().OrderByDescending(x => x.idPaySlip).FirstOrDefault();
             if (latestDebt != null)
-                return latestDebt.idDebt + 1;
+                return latestDebt.idPaySlip + 1;
             else
                 return 1;
         }
 
-        public string CreateDebt(Debt debt)
+        public string CreatePaySlip(PaySlip paySlip)
         {
             try
             {
                 var announcement = "thanh cong";
-                _debtRepository.Add(debt);
+                _paySlipRepository.Add(paySlip);
                 _unitOfWork.SaveChange();
                 return announcement;
             }
@@ -44,21 +44,5 @@ namespace DataService.Services
                 return "Không thể tạo phiếu công nợ!";
             }
         }
-
-        public Debt GetDebt(int debtId)
-        {
-            try
-            {
-                var request = _debtRepository.Get(x => x.idDebt == debtId);
-                return request;
-
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-
-        }
-
     }
 }

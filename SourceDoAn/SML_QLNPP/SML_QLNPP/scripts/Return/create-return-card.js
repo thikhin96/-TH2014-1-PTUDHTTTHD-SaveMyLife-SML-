@@ -35,7 +35,7 @@
         $currentRow.append('<td>' + '<button type="button" class="btn btn-danger delete-product">Xóa</button>' + '</td>');
 
         var totalValue = $('#Total').val();
-        if (totalValue == "")
+        if (totalValue === "")
             totalValue = '0';
         var Total = parseInt(totalValue) + parseInt(total);
         $('#Total').val(Total);
@@ -103,4 +103,29 @@
     });
     $('#Total').val(InitialTotal);
 
+    //$("#btnTao").on('click', function () {
+    //    var id = $("#idReturn").val();
+    //    var url = ""
+    //    $.ajax({
+    //        url: url,
+    //        type: 'POST',
+    //        cache: false,
+    //        beforeSend: function () {
+    //            loading = true;
+    //            $('#loading').show();
+    //        },
+    //        data: {
+    //            id: id
+    //        },
+    //        success: function (rs) {
+    //            if (rs === 0) {
+    //                $('#loading').hide();
+    //                alert('Đã xảy ra lỗi!')
+    //            }
+    //            else {
+    //                window.location.href = "/Debt/Create?ReturnId=" + id;
+    //            };
+    //        }
+    //    });
+    //})
 })

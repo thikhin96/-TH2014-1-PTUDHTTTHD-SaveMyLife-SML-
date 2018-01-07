@@ -21,5 +21,6 @@ namespace DataService.Interfaces
         bool exceedingDebt(int distributorId);
         List<Storage> GetStorages(string keyWord, int distributorId);
         Distributor getDistributorByUser(string username);
+        bool checkDebt(int id);
     }
 }

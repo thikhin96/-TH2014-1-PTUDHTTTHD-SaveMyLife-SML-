@@ -17,7 +17,7 @@
                 note: note
             },
             success: function (rs) {
-                if (rs == 0) {
+                if (rs === 0) {
                     $('#loading').hide();
                     alert('Đã xảy ra lỗi!')
                 }
@@ -29,7 +29,7 @@
     })
 
     $("#btnTuChoi").on('click', function () {
-        if ($("#iNote").val() == "") {
+        if ($("#iNote").val() === "") {
             alert("Vui lòng nhập lý do từ chối vào phần ghi chú");
         }
         else {
@@ -50,7 +50,7 @@
                     note: note
                 },
                 success: function (rs) {
-                    if (rs == 0) {
+                    if (rs === 0) {
                         $('#loading').hide();
                         alert('Đã xảy ra lỗi!')
                     }

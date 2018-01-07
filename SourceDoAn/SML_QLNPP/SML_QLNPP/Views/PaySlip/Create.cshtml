@@ -1,4 +1,4 @@
-﻿@model SML_QLNPP.Models.CreateDebtViewModel
+﻿@model SML_QLNPP.Models.CreatePaySlipViewModel
 @using Newtonsoft.Json;
 @{
     var success = TempData["success"] as string;
@@ -15,7 +15,7 @@
     <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
     <script type="text/javascript" src="~/Scripts/bootstrap-datepicker.js"></script>
-    <script type="text/javascript" src="~/Scripts/Debt/create.js"></script>
+    <script type="text/javascript" src="~/Scripts/PaySlip/create.js"></script>
 }
 
 <div class="container-fluid">
@@ -25,7 +25,7 @@
             {
                 <div class="alert alert-success alert-dismissable">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Thành công!</strong> Tạo phiếu công nợ thành công!
+                    <strong>Thành công!</strong> Tạo phiếu chi thành công!
                 </div>
             }
             else if (fail != null)
@@ -36,7 +36,7 @@
                 </div>
             }
             <div class="well">
-                <h2>Phiếu công nợ: @Model.idDebt</h2>
+                <h2>Phiếu chi @Model.idPaySlip</h2>
 
                 @using (Html.BeginForm("Create", "Debt", FormMethod.Post))
                 {
@@ -53,10 +53,6 @@
                                 <label>Tên nhà phân phối: </label>
                                 @Html.TextBoxFor(i => i.nameDistributor, new { @class = "form-control" })
                             </div>
-                            <div class="col-md-2">
-                                <label>Công nợ hiện tại: </label>
-                                @Html.TextBoxFor(i => i.debt, new { @class = "form-control" })
-                            </div>
                         </div>
                     </div>
                     <div class="box box-info">
@@ -65,16 +61,16 @@
                         </div>
                         <div class="box-body">
                             <div class="col-md-2">
-                                <label>Ngày trả: </label>
+                                <label>Ngày chi: </label>
                                 @Html.TextBoxFor(model => model.date, new { @class = "form-control" })
                             </div>
                             <div class="col-md-2">
-                                <label>Tiền trả công nợ: </label>
-                                @Html.TextBoxFor(model => model.moneyDebt, new { @class = "form-control" })
+                                <label>Tiền chi: </label>
+                                @Html.TextBoxFor(model => model.moneyPay, new { @class = "form-control" })
                             </div>
                             <div class="col-md-2">
-                                <label>Công nợ mới: </label>
-                                @Html.TextBoxFor(model => model.newDebt, new { @class = "form-control" })
+                                <label>Lý do chi: </label>
+                                @Html.TextBoxFor(model => model.reason, new { @class = "form-control" })
                             </div>
                             <div class="col-md-3">
                                 <label>Nhân viên lập phiếu: </label>
@@ -82,7 +78,7 @@
                             </div>
                         </div>
                     </div>
-                    <input id="btnTaoDebt" type="submit" class="btn btn-info" value="Tạo phiếu công nợ" />
+                    <input type="submit" class="btn btn-info" value="Tạo phiếu chi" />
                 }
             </div>
         </div>

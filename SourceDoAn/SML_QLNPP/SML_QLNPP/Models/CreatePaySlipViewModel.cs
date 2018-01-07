@@ -5,15 +5,14 @@ using System.Web;
 
 namespace SML_QLNPP.Models
 {
-    public class CreateDebtViewModel
+    public class CreatePaySlipViewModel
     {
-        public int idDebt { get; set; }
+        public int idPaySlip { get; set; }
         public int idDistributor { get; set; }
         public string nameDistributor { get; set; }
-        public decimal debt { get; set; }
         public DateTime date { get; set; }
-        public decimal moneyDebt { get; set; }
-        public decimal newDebt { get; set; }
+        public decimal moneyPay { get; set; }
+        public string reason { get; set; }
         public string staffName { get; set; }
     }
 }

@@ -254,12 +254,12 @@
     <Compile Include="Controllers\DistributorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\PaySlipController.cs" />
     <Compile Include="Controllers\PDistributorController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PromotionController.cs" />
     <Compile Include="Controllers\ReturnController.cs" />
     <Compile Include="Controllers\ReturnRequestController.cs" />
-    <Compile Include="Controllers\StorageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -267,6 +267,7 @@
     <Compile Include="Models\ContractViewModel.cs" />
     <Compile Include="Models\CreateDebtViewModel.cs" />
     <Compile Include="Models\CreateOrderViewModel.cs" />
+    <Compile Include="Models\CreatePaySlipViewModel.cs" />
     <Compile Include="Models\CreateProductViewModel.cs" />
     <Compile Include="Models\CreateReturnRequestViewModel.cs" />
     <Compile Include="Models\CreateReturnViewModel.cs" />
@@ -353,6 +354,7 @@
     <Content Include="Scripts\Bill\jquery-ui.min.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
+    <Content Include="Scripts\Debt\create.js" />
     <Content Include="Scripts\DeliveryOrder\details.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
@@ -567,10 +569,10 @@
     <Content Include="Views\PDistributor\List.cshtml" />
     <Content Include="Views\ReturnRequest\Create.cshtml" />
     <Content Include="Views\ReturnRequest\AddProduct.cshtml" />
-    <Content Include="Views\ReturnRequest\ProductDetail.cshtml" />
     <Content Include="Views\ReturnRequest\ProductDetailForm.cshtml" />
     <Content Include="Views\ReturnRequest\List.cshtml" />
     <Content Include="Views\ReturnRequest\Detail.cshtml" />
+    <Content Include="Views\PaySlip\Create.cshtml" />
     <None Include="Views\Shared\_ALayout.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

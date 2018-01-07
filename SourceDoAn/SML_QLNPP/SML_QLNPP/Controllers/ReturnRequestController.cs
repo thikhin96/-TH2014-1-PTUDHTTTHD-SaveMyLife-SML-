@@ -73,8 +73,12 @@ namespace SML_QLNPP.Controllers
                     dName = rq.Distributor1.name,
                     modeOfReturn = rq.ModeOfReturn == true ? "Trả" : "Đổi",
                     Storage = rq.Storage1,
-                    Staff = rq.Staff1.staffName
+                    
                 };
+                if (rq.Staff1 != null)
+                    model.Staff = rq.Staff1.staffName;
+                else
+                    model.Staff = null;
                 model.ReturnRequestDetails = rq.ReturnRequestDetails.ToList();
                 return View(model);
             }
@@ -82,8 +86,6 @@ namespace SML_QLNPP.Controllers
         
         public ActionResult Create()
         {
-            //CheckForAuthorization();
-            //var request = _returnRequestService.GetReturnRequest();
             var user = Session["user"] as Account;
             if (user != null)
             {
@@ -115,10 +117,6 @@ namespace SML_QLNPP.Controllers
         [HttpPost]
         public ActionResult Create(CreateReturnRequestViewModel model, [Bind(Prefix = "ReturnRequestDetails")]List<ReturnRequestDetail> ReturnRequestDetails, [Bind(Prefix = "Storages")]List<Storage> Storages)
         {
-            /*var user = Session["user"] as Account;
-            if (user != null)
-            {
-                var dis = _distributorService.getDistributorByUser(user.UserName);*/
                 model.Products = _productService.GetAllProducts();
                 var returnRequest = new ReturnRequest
                 {
@@ -127,9 +125,9 @@ namespace SML_QLNPP.Controllers
                     Status = 0,
                     Note = null,
                     ModeOfReturn = Convert.ToBoolean(model.modeOfReturn),
-                    Storage = model.Storage.IdStorage,
+                    Storage = model.idStorage,
                     Staff = null,
-                    ReturnRequestDetails = model.ReturnRequestDetails
+                    ReturnRequestDetails = ReturnRequestDetails
                 };
             //};
             var result = _returnRequestService.CreateReturnRequest(returnRequest);
@@ -146,9 +144,12 @@ namespace SML_QLNPP.Controllers
         [HttpPost]
         public int approveReturnRequest(int id, string note)
         {
+            isAdminLogged();
+            var currentUser = Session["admin"] as Account;
             var returnRequest = _returnRequestService.GetReturnRequest(id);
             returnRequest.Note = note;
             returnRequest.Status = 1;
+            returnRequest.Staff = currentUser.idUser;
             var result = _returnRequestService.UpdateReturnRequest(returnRequest);
             if (result == "ok")
             {
@@ -163,9 +164,12 @@ namespace SML_QLNPP.Controllers
         [HttpPost]
         public int denyReturnRequest(int id, string note)
         {
+            isAdminLogged();
+            var currentUser = Session["admin"] as Account;
             var returnRequest = _returnRequestService.GetReturnRequest(id);
             returnRequest.Note = note;
             returnRequest.Status = 2;
+            returnRequest.Staff = currentUser.idUser;
             var result = _returnRequestService.UpdateReturnRequest(returnRequest);
             if (result == "ok")
             {
