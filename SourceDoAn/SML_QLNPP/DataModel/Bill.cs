@@ -17,7 +17,6 @@ namespace DataModel
         public int idBill { get; set; }
         public Nullable<decimal> purchase { get; set; }
         public Nullable<System.DateTime> createdDate { get; set; }
-        public Nullable<byte> types { get; set; }
         public string description { get; set; }
         public Nullable<int> idDeliveryOrder { get; set; }
         public Nullable<int> idStaff { get; set; }
