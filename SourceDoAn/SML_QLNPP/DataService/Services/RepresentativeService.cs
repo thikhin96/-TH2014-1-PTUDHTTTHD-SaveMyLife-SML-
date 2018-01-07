@@ -35,14 +35,6 @@ namespace DataService.Services
                 throw;
             }
         }
-        int GenerateRepresentativeId()
-        {
-            var latestRep = _representativeRepository.GetAll().OrderByDescending(x => x.idRepresentative).FirstOrDefault();
-            if (latestRep != null)
-                return latestRep.idRepresentative + 1;
-            else
-                return 1;
-        }
 
         public int Create(Representative person)
         {
@@ -147,6 +139,15 @@ namespace DataService.Services
                 logger.Info(ex.Message);
                 throw ex;
             }
+        }
+
+        public int GenerateOrderId()
+        {
+            var latestOrder = _representativeRepository.GetAll().OrderByDescending(x => x.idRepresentative).FirstOrDefault();
+            if (latestOrder != null)
+                return latestOrder.idRepresentative + 1;
+            else
+                return 0;
         }
     }
 }

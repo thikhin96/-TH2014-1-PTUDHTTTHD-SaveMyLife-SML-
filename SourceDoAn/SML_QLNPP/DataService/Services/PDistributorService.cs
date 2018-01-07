@@ -132,7 +132,7 @@ namespace DataService.Services
             logger.Info("Start update status of potential distributor...");
             try
             {
-                PotentialDistributor pDis = SearchByID(id);
+                PotentialDistributor pDis = GetPDistributor(id);
                 pDis.status = status;
                 pDis.note = note;
                 _pdistributorRepository.Update(pDis);

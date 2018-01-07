@@ -166,7 +166,7 @@ namespace DataService.Services
             return storages;
         }
 
-        public bool UpdateStatus(int id, bool status)
+        public bool UpdateStatus(int id, bool status,string note)
         {
             logger.Info("Start to update status of the distributor...");
             try
@@ -222,5 +222,6 @@ namespace DataService.Services
                 return false;
             }
         }
+
     }
 }

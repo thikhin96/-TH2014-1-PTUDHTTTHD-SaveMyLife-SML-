@@ -43,7 +43,7 @@
             <input class="form-control" type="text" value="@Model.Distributor.address" disabled />
         </div>
         <div class="col-md-2">
-            <label>Trạng thái nhà phân phối: </label>
+            <label>Trạng thái NPP: </label>
             <input class="form-control" type="text" value="@(Model.Distributor.status==false? "Chưa kích hoạt":"Kích hoạt")" disabled />
         </div>
         <div class="col-md-2">
@@ -157,6 +157,13 @@
 
 <div class="row">
     <div class="col-md-3">
-        <a href="/Order/Update/@Model.idOrder" class="btn btn-block btn-info">Sửa đơn đặt hàng</a>
+        <a href="@Url.Action("Update", "Order", new { id=Model.idOrder })" class="btn btn-block btn-info">Sửa đơn đặt hàng</a>
     </div>
+    @if (Model.Statuses == 1)
+    {
+        <div class="col-md-3">
+            <a href="@Url.Action("Create", "DeliveryOrder", new { id=Model.idOrder })" class="btn btn-block btn-info"> Lập đơn giao hàng</a>
+        </div>
+    }
+    
 </div>

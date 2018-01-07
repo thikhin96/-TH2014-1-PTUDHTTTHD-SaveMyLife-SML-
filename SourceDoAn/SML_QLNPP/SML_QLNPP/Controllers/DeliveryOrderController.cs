@@ -43,7 +43,7 @@ namespace SML_QLNPP.Controllers
             var firdOrder = order.DeliveryOrders.FirstOrDefault();
             if (firdOrder != null)
             {
-                return Redirect("/DeliveryOrder/Details/" + firdOrder.idDeliveryOrder);
+                return RedirectToAction("Details", new { id = firdOrder.idDeliveryOrder });
             }
             else
             {
@@ -237,7 +237,7 @@ namespace SML_QLNPP.Controllers
                         _productService.UpdateProduct(item);
                     }
                     // lập thành công chuyển qua trang chi tiết
-                    return Redirect("/DeliveryOrder/Details/" + dOrder.idDeliveryOrder);
+                    return RedirectToAction("Details", new { id = dOrder.idDeliveryOrder });
                 }
                 ViewBag.msg = "Lập thất bại";
                 ViewBag.types = 1;

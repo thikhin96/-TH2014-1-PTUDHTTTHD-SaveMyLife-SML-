@@ -18,5 +18,6 @@ namespace DataService.Interfaces
         bool CheckEmail(string email);
         int GenerateRepresentativeId();
         Representative GetByID(int id);
+        int GenerateOrderId();
     }
 }

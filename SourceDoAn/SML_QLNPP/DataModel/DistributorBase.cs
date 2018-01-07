@@ -16,10 +16,5 @@ namespace DataModel
         public virtual Nullable<System.DateTime> createdDate { get; set; }
         public virtual Nullable<System.DateTime> updatedDate { get; set; }
         public virtual string note { get; set; }
-
-        public static implicit operator DistributorBase(Distributor v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

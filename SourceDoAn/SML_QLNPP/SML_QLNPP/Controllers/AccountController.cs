@@ -42,8 +42,13 @@ namespace SML_QLNPP.Controllers
         {
             isLogin();
             var ret = _accountService.Login(Login.UserName, Login.Password);
-            if (ret!=null)
+            if (ret!=null && ret.decentralization == 3)
             {
+                if(ret.locked == true)
+                {
+                    ModelState.AddModelError("", "Tài khoản của bạn đã bị khoá");
+                    return View();
+                }
                 Session["user"] = ret as Account;
                 Log_Login log = new Log_Login();
                 log.idAccount = ret.idUser;
@@ -108,6 +113,11 @@ namespace SML_QLNPP.Controllers
                     ModelState.AddModelError("", "Bạn không đủ quyền để đăng nhập vào hệ thống");
                     return View();
                 }
+                else if (ret.locked == true)
+                {
+                    ModelState.AddModelError("", "Tài khoản của bạn đã bị khoá");
+                    return View();
+                }
                 else
                 {
                     Log_Login log = new Log_Login();
@@ -123,7 +133,7 @@ namespace SML_QLNPP.Controllers
 
                     }
                     Session["admin"] = ret as Account;
-                    return RedirectToAction("List", "Order");
+                    return RedirectToAction("Index", "Admin");
                 }
             }
             else

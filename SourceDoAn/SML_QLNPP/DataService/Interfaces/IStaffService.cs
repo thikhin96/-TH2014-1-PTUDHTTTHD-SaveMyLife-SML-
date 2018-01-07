@@ -17,6 +17,5 @@ namespace DataService.Interfaces
         Staff GetByAccount(string Account);
         List<Staff> getAll();
         Staff getStaff(int id);
-        Staff GetByAccount(string account);
     }
 }

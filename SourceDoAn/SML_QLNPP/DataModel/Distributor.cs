@@ -12,7 +12,7 @@ namespace DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Distributor
+    public partial class Distributor : DistributorBase
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Distributor()
@@ -30,14 +30,14 @@ namespace DataModel
             this.ReturnBases = new HashSet<ReturnBase>();
         }
     
-        public int idDistributor { get; set; }
-        public string name { get; set; }
-        public string address { get; set; }
-        public string phone { get; set; }
-        public string Email { get; set; }
-        public Nullable<System.DateTime> createdDate { get; set; }
-        public Nullable<System.DateTime> updatedDate { get; set; }
-        public string note { get; set; }
+        public override int idDistributor { get; set; }
+        public override string name { get; set; }
+        public override string address { get; set; }
+        public override string phone { get; set; }
+        public override string Email { get; set; }
+        public override Nullable<System.DateTime> createdDate { get; set; }
+        public override Nullable<System.DateTime> updatedDate { get; set; }
+        public override string note { get; set; }
         public Nullable<bool> status { get; set; }
         public string UserName { get; set; }
         public Nullable<decimal> debt { get; set; }

@@ -21,7 +21,7 @@ namespace SML_QLNPP.Controllers
         {
             if (Session["admin"] != null)
             {
-                Response.Redirect(Url.Action("List", "Order"));
+                Response.Redirect(Url.Action("Index", "Admin"));
             }
         }
         protected void isAdminLogged()
