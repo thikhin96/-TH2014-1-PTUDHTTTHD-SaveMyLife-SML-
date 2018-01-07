@@ -25,8 +25,8 @@ namespace DataModel
             this.Log_OrderDetail = new HashSet<Log_OrderDetail>();
             this.Orders = new HashSet<Order>();
             this.PaySlips = new HashSet<PaySlip>();
-            this.ReturnBases = new HashSet<ReturnBase>();
             this.ReturnRequests = new HashSet<ReturnRequest>();
+            this.ReturnBases = new HashSet<ReturnBase>();
         }
     
         public int idStaff { get; set; }
@@ -53,8 +53,8 @@ namespace DataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PaySlip> PaySlips { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReturnBase> ReturnBases { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReturnRequest> ReturnRequests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReturnBase> ReturnBases { get; set; }
     }
 }

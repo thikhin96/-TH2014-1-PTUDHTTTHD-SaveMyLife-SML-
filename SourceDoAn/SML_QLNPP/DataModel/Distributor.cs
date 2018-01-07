@@ -25,19 +25,19 @@ namespace DataModel
             this.Orders = new HashSet<Order>();
             this.PaySlips = new HashSet<PaySlip>();
             this.Representatives = new HashSet<Representative>();
-            this.ReturnBases = new HashSet<ReturnBase>();
             this.ReturnRequests = new HashSet<ReturnRequest>();
             this.Storages = new HashSet<Storage>();
+            this.ReturnBases = new HashSet<ReturnBase>();
         }
     
-        public override int idDistributor { get; set; }
-        public override string name { get; set; }
-        public override string address { get; set; }
-        public override string phone { get; set; }
-        public override string Email { get; set; }
-        public override Nullable<System.DateTime> createdDate { get; set; }
-        public override Nullable<System.DateTime> updatedDate { get; set; }
-        public override string note { get; set; }
+        public int idDistributor { get; set; }
+        public string name { get; set; }
+        public string address { get; set; }
+        public string phone { get; set; }
+        public string Email { get; set; }
+        public Nullable<System.DateTime> createdDate { get; set; }
+        public Nullable<System.DateTime> updatedDate { get; set; }
+        public string note { get; set; }
         public Nullable<bool> status { get; set; }
         public string UserName { get; set; }
         public Nullable<decimal> debt { get; set; }
@@ -59,10 +59,10 @@ namespace DataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Representative> Representatives { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReturnBase> ReturnBases { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReturnRequest> ReturnRequests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Storage> Storages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReturnBase> ReturnBases { get; set; }
     }
 }

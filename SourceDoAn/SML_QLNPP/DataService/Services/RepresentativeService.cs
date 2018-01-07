@@ -23,6 +23,15 @@ namespace DataService.Services
             _representativeRepository = _unitOfWork.Repository<Representative>();
         }
 
+        int GenerateRepresentativeId()
+        {
+            var latestRep = _representativeRepository.GetAll().OrderByDescending(x => x.idRepresentative).FirstOrDefault();
+            if (latestRep != null)
+                return latestRep.idRepresentative + 1;
+            else
+                return 1;
+        }
+
         public int Create(Representative person)
         {
             logger.Info("Start to create a representative...");

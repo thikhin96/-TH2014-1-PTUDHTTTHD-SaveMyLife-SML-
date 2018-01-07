@@ -2,15 +2,13 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using DataModel;
-using DataService.Interfaces;
-using DataModel.Interfaces;
 using DataModel.Repositories;
 using DataService.Dtos;
 using NLog;
+using DataService.Interfaces;
+using DataModel.Interfaces;
+using DataModel;
 
 namespace DataService.Services
 {
@@ -22,7 +20,10 @@ namespace DataService.Services
         private readonly IRepository<Distributor> _distributorRepository;
         private readonly IRepository<Contract> _contractRepository;
         IAccountService _serviceAccount;
-    
+        private readonly IRepository<Debt> _debtRepository;
+        private readonly IRepository<Storage> _storageRepository;
+        
+        
         /// <summary>
         /// Hàm khởi tạo
         /// </summary>
@@ -34,6 +35,8 @@ namespace DataService.Services
             _distributorRepository = unitOfWork.Repository<Distributor>();
             _contractRepository = unitOfWork.Repository<Contract>();
             _serviceAccount = accountService;
+            _debtRepository = unitOfWork.Repository<Debt>();
+            _storageRepository = unitOfWork.Repository<Storage>();
         }
 
         public bool hasContract(int distributorId)
@@ -44,11 +47,16 @@ namespace DataService.Services
             return true;
         }
 
-        public bool priceOverDebt(int distributorId, decimal price)
+        public Contract GetCurrentContract(int distributorId)
         {
-            if (_contractRepository.Get(x => x.distributor == distributorId && x.beginDate <= DateTime.Now && x.expiredDate > DateTime.Now).maxDebt < price)
-                return true;
-            return false;
+            var currentDate = DateTime.Now;
+            var contract = _contractRepository.Get(x => x.distributor == distributorId && x.beginDate <= currentDate && currentDate <= x.expiredDate);
+            return contract;
+        }
+
+        public bool exceedingDebt(int distributorId)
+        {
+            return true;
         }
 
         public bool CheckEmail(string email)
@@ -150,7 +158,15 @@ namespace DataService.Services
             }
         }
 
-        public bool UpdateStatus(int id, bool status, string note)
+        public List<Storage> GetStorages(string keyWord, int distributorId)
+        {
+            var storages = _storageRepository.GetAll(x => x.Distributor == distributorId
+                                                 && (x.HouseNumber_Street.Contains(keyWord) || x.District.Contains(keyWord) || x.Ward_Commune.Contains(keyWord) || x.City.Contains(keyWord)))
+                                                 .ToList();
+            return storages;
+        }
+
+        public bool UpdateStatus(int id, bool status)
         {
             logger.Info("Start to update status of the distributor...");
             try
