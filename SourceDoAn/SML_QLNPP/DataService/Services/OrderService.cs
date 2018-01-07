@@ -191,6 +191,88 @@ namespace DataService.Services
 
 
         }
+        /// <summary>
+        /// Tìm kiếm đơn đặt hàng Tháng/ Quý/ Năm
+        /// </summary>
+        /// <param name="idOrder"></param>
+        /// <param name="idDistributor"></param>
+        /// <param name="createDate"></param>
+        /// <returns></returns>
+        public IEnumerable<Order> GetOrderInMonth(int month)
+        {
+            logger.Info("Start search order");
+            IRepository<Order> repository = _unitOfWork.Repository<Order>();
+            return repository.GetAll(m => m.CreatedDate.Value.Month == month);
+        }
+        public IEnumerable<Order> GetOrderInQuartar(int quartar)
+        {
+            logger.Info("Start search order");
+            IRepository<Order> repository = _unitOfWork.Repository<Order>();
+            return repository.GetAll(q => (q.CreatedDate.Value.Month >= (quartar - 1) * 3 + 1) && (q.CreatedDate.Value.Month <= quartar * 3));
+
+        }
+        public IEnumerable<Order> GetOrderInYear(int year)
+        {
+            logger.Info("Start search order");
+            IRepository<Order> repository = _unitOfWork.Repository<Order>();
+            return repository.GetAll(y => y.CreatedDate.Value.Year == year);
+        }
+        public IEnumerable<Order> GetOrderByDistributor(int? dtbtrId)
+        {
+            logger.Info("Start search order");
+            IRepository<Order> repository = _unitOfWork.Repository<Order>();
+            if(dtbtrId == null)
+            {
+                return repository.GetAll();
+            }
+            return repository.GetAll(dis => (dis.idDistributor ?? default(int)) == dtbtrId);
+        }
+        
+
+        /// <summary>
+        /// Tìm kiếm đơn đặt hàng Tháng/ Quý/ Năm
+        /// </summary>
+        /// <param name="idDistributor"></param>
+        /// <param name="createDate"></param>
+        /// <param name="month"></param>
+        /// <param name="quartar"></param>
+        /// <param name="year"></param>
+        /// <returns></returns>
+        public IList<Order> SearchListOrder(int? idDistributor, string createDate, int month, int quartar, int year)
+        {
+            try
+            {
+                logger.Info("Start search order");
+                IRepository<Order> repository = _unitOfWork.Repository<Order>();
+                if(createDate == "" || createDate == null)
+                {
+                    if (idDistributor==0)
+                    {
+                        return null;
+                    }
+                    if( DateTime.Parse(createDate).Month != 0)
+                    {
+                        return null;
+                    }
+                    return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                logger.Info("Error Search Order: " + ex.Message);
+                return null;
+            }
+        }
+
+        public dynamic GetOrderByDistributor()
+        {
+            throw new NotImplementedException();
+        }
 
         public string UpdateOrder(Order order)
         {
@@ -217,6 +299,11 @@ namespace DataService.Services
                 logger.Info("Error: Encounter this error while update order number {0}: {1}", order.idOrder, ex.Message);
                 return "Không thể cập nhật đơn đặt hàng";
             }
+        }
+
+        public string CreateOrder(Order order, List<OrderDetail> orderDetails)
+        {
+            throw new NotImplementedException();
         }
     }
 }

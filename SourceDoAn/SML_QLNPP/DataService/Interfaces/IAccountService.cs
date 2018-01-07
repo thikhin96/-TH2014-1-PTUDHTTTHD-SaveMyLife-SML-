@@ -12,9 +12,8 @@ namespace DataService.Interfaces
         Account Get(string username);
         void Logout();
         IList<Account> SearchAccount(int idAccount);
-        bool LockAccount(int idAccount,string reason);
-        bool CreateAccount(Account acc);
-        bool IncurredAccount(string username, byte typeOfUser);
+        bool UpdateStatus(string username, string reason, bool status);
+        bool CreateAccount(string username, byte typeOfUser);
         void writeLogUser(int idUser, bool status);
     }
 }

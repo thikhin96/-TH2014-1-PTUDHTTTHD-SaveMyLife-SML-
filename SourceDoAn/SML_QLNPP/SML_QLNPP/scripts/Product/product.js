@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    var url = '/Product/Search'
+    var url = 'Search'
     var table = $('#product-list').DataTable();
     $.ajax({
         url: url,
@@ -80,7 +80,7 @@
                             rs.push('Còn bán');
                         }
                         
-                        rs.push('<a href="/Product/Detail/' + item.IdProduct + '">Xem</a>')
+                        rs.push('<a href="Detail/' + item.IdProduct + '">Xem</a>')
                         return rs;
                     });
 

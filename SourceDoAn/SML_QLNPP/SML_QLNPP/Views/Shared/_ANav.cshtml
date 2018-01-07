@@ -33,14 +33,26 @@
             <li class="header">Menu chức năng</li>
             <li class="treeview">
                 <a href="#">
+                    <i class="fa fa-table"></i> <span>Quản lý nhà phân phối</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Distributor", "Distributor")"><i class="fa fa-arrow-circle-o-right"></i> Thông tin nhà phân phối</a></li>
+                    <li><a href="@Url.Action("Contract", "Contract")"><i class="fa fa-arrow-circle-o-right"></i> Thông tin hợp đồng</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
                     <i class="fa fa-table"></i> <span>Quản lý đối tác</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/PDistributor/List"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm đối tác</a></li>
-                    <li><a href="/PDistributor/Create"><i class="fa fa-arrow-circle-o-right"></i> Thêm đối tác</a></li>
+                    <li><a href="@Url.Action("List", "PDistributor")"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm đối tác</a></li>
+                    <li><a href="@Url.Action("Create", "PDistributor")"><i class="fa fa-arrow-circle-o-right"></i> Thêm đối tác</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -51,7 +63,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/Order/List"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm đơn hàng</a></li>
+                    <li><a href="@Url.Action("List", "Order")"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm đơn hàng</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -62,7 +74,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/Promotion/List"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm khuyến mãi</a></li>
+                    <li><a href="@Url.Action("List", "Promotion")"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm khuyến mãi</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -73,8 +85,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/Product/List"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm sản phẩm</a></li>
-                    <li><a href="/Product/Create"><i class="fa fa-arrow-circle-o-right"></i> Tạo sản phẩm mới</a></li>
+                    <li><a href="@Url.Action("List", "Product")"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm sản phẩm</a></li>
+                    <li><a href="@Url.Action("Create", "Product")"><i class="fa fa-arrow-circle-o-right"></i> Tạo sản phẩm mới</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -86,9 +98,6 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="@Url.Action("List", "DeliveryOrder")"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm đơn giao hàng</a></li>
-                    <li><a href="@Url.Action("Create", "DeliveryOrder")"><i class="fa fa-arrow-circle-o-right"></i> Lập đơn giao hàng</a></li>
-                    <li><a href="@Url.Action("List", "Bill")"><i class="fa fa-arrow-circle-o-right"></i> Tìm hóa đơn</a></li>
-                    <li><a href="@Url.Action("Create", "Bill")"><i class="fa fa-arrow-circle-o-right"></i> Lập hóa đơn</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -103,6 +112,41 @@
                     <li><a href="@Url.Action("Create", "ReturnRequest")"><i class="fa fa-arrow-circle-o-right"></i> Lập đơn đổi trả</a></li>
                     <li><a href="@Url.Action("Index", "Return")"><i class="fa fa-arrow-circle-o-right"></i> Tìm kiếm phiếu đổi trả</a></li>
                     <li><a href="@Url.Action("Create", "Return")"><i class="fa fa-arrow-circle-o-right"></i> Lập phiếu đổi trả</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-table"></i> <span>Báo Cáo Doanh Thu</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/SML_QLNPP/SalesReport/ListBill"><i class="fa fa-arrow-circle-o-right"></i> Hóa Đơn</a></li>
+                    <li><a href="/SML_QLNPP/SalesReport/ListOrder"><i class="fa fa-arrow-circle-o-right"></i> Đơn Đặt Hàng</a></li>
+                    <li><a href="/SML_QLNPP/SalesReport/ListDeliveryOrder"><i class="fa fa-arrow-circle-o-right"></i> Đơn Giao Hàng</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="/SML_QLNPP/SalesReport/BusinessReport">
+                    <i class="fa fa-table"></i> <span>Báo Cáo Kinh Doanh</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="/SML_QLNPP/SalesReport/CommodityAllocationReport">
+                    <i class="fa fa-table"></i> <span>Báo Cáo Phân Bổ Hàng Hóa</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-table"></i> <span>Thống Kê</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/SML_QLNPP/SalesReport/Statistic"><i class="fa fa-arrow-circle-o-right"></i> Tổng Quan</a></li>
+                    <li><a href="/SML_QLNPP/SalesReport/StatisticCompare"><i class="fa fa-arrow-circle-o-right"></i> So Sánh</a></li>
                 </ul>
             </li>
         </ul>

@@ -15,6 +15,7 @@ namespace DataService.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<PotentialDistributor> _pdistributorRepository;
         private readonly IRepository<Representative> _representativeRepository;
+        private readonly IRepository<Assignment> _assignmentRepository;
         ILogger logger = LogManager.GetCurrentClassLogger();
 
         public PDistributorService(IUnitOfWork unitOfWork)
@@ -22,6 +23,7 @@ namespace DataService.Services
             _unitOfWork = unitOfWork;
             _pdistributorRepository = unitOfWork.Repository<PotentialDistributor>();
             _representativeRepository = unitOfWork.Repository<Representative>();
+            _assignmentRepository = unitOfWork.Repository<Assignment>();
         }
 
         public bool CheckEmail(string email)
@@ -75,7 +77,7 @@ namespace DataService.Services
             throw new NotImplementedException();
         }
 
-        public PotentialDistributor SearchByID(int id)
+        public PotentialDistributor GetPDistributor(int id)
         {
             logger.Info("Start Search potential distributor by idDistributor method");
             try
@@ -102,7 +104,7 @@ namespace DataService.Services
 
         public IList<PotentialDistributor> SearchByStatus(byte status)
         {
-            logger.Info("Start Search potential distributor by status method");
+            logger.Info("Start Search potential distributor by status ...");
             try
             {
                 IRepository<PotentialDistributor> repository = _unitOfWork.Repository<PotentialDistributor>();
@@ -127,7 +129,23 @@ namespace DataService.Services
 
         public bool UpdateStatus(int id, byte status, string note)
         {
-            throw new NotImplementedException();
+            logger.Info("Start update status of potential distributor...");
+            try
+            {
+                PotentialDistributor pDis = GetPDistributor(id);
+                pDis.status = status;
+                pDis.note = note;
+                _pdistributorRepository.Update(pDis);
+                _unitOfWork.SaveChange();
+                logger.Info("Status: Success");
+                return true;
+             
+            }
+            catch (Exception ex)
+            {
+                logger.Info("Status: Fail + " + ex.Message);
+                return false;
+            }
         }
 
         public int GenerateOrderId()
@@ -137,6 +155,23 @@ namespace DataService.Services
                 return latestOrder.idDistributor + 1;
             else
                 return 0;
+        }
+
+        public bool UpdatePDistributor(PotentialDistributor pdis)
+        {
+            logger.Info("Start Update potential distributor method");
+            try
+            {
+                logger.Info("Status: Success");
+                _pdistributorRepository.Update(pdis);
+                _unitOfWork.SaveChange();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                logger.Info("Status: Fail + " + ex.Message);
+                return false;
+            }
         }
     }
 }

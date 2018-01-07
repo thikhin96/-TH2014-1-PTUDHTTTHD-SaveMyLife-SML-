@@ -104,7 +104,8 @@
           </Key>
           <Property Name="idDeliveryOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="recipient" Type="nvarchar" MaxLength="50" />
-          <Property Name="deliveryAdd" Type="nvarchar" MaxLength="100" />
+          <Property Name="recipientPhone" Type="nvarchar" MaxLength="20" />
+          <Property Name="deliveryAdd" Type="nvarchar" MaxLength="250" />
           <Property Name="totalPurchase" Type="money" />
           <Property Name="deliveryDate" Type="datetime" />
           <Property Name="status" Type="tinyint" />
@@ -122,6 +123,7 @@
           <Property Name="idDeliveryOrder" Type="int" Nullable="false" />
           <Property Name="idProduct" Type="int" Nullable="false" />
           <Property Name="quantity" Type="int" />
+          <Property Name="promoQuantity" Type="int" />
           <Property Name="note" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Distributor">
@@ -133,12 +135,12 @@
           <Property Name="address" Type="nvarchar" MaxLength="100" />
           <Property Name="phone" Type="varchar" MaxLength="11" />
           <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="debt" Type="money" />
           <Property Name="createdDate" Type="datetime" />
           <Property Name="updatedDate" Type="datetime" />
           <Property Name="note" Type="nvarchar(max)" />
           <Property Name="status" Type="bit" />
           <Property Name="UserName" Type="varchar" MaxLength="30" />
-          <Property Name="debt" Type="money" />
         </EntityType>
         <EntityType Name="Log_Login">
           <Key>
@@ -242,9 +244,9 @@
           <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
           <Property Name="Price" Type="money" />
           <Property Name="IsDisabled" Type="bit" />
+          <Property Name="Quantity" Type="int" />
           <Property Name="ProductType" Type="int" />
           <Property Name="Unit" Type="int" />
-          <Property Name="Quantity" Type="int" />
         </EntityType>
         <EntityType Name="ProductType">
           <Key>
@@ -518,15 +520,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DeliveryOrder_Oder">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="DeliveryOrder" Type="Self.DeliveryOrder" Multiplicity="0..1" />
+        <Association Name="FK_DeliveryOrder_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="DeliveryOrder" Type="Self.DeliveryOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
               <PropertyRef Name="idOrder" />
             </Principal>
             <Dependent Role="DeliveryOrder">
-              <PropertyRef Name="idDeliveryOrder" />
+              <PropertyRef Name="idOrder" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1059,7 +1061,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             <End Role="Distributor" EntitySet="Distributor" />
             <End Role="DeliveryOrder" EntitySet="DeliveryOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK_DeliveryOrder_Oder" Association="Self.FK_DeliveryOrder_Oder">
+          <AssociationSet Name="FK_DeliveryOrder_Order" Association="Self.FK_DeliveryOrder_Order">
             <End Role="Order" EntitySet="Order" />
             <End Role="DeliveryOrder" EntitySet="DeliveryOrder" />
           </AssociationSet>
@@ -1309,10 +1311,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             <End Role="Distributor" EntitySet="Distributors" />
             <End Role="DeliveryOrder" EntitySet="DeliveryOrders" />
           </AssociationSet>
-          <AssociationSet Name="FK_DeliveryOrder_Oder" Association="QL_NPPModel.FK_DeliveryOrder_Oder">
-            <End Role="Order" EntitySet="Orders" />
-            <End Role="DeliveryOrder" EntitySet="DeliveryOrders" />
-          </AssociationSet>
           <AssociationSet Name="FK_DeliveryOrder_Staff" Association="QL_NPPModel.FK_DeliveryOrder_Staff">
             <End Role="Staff" EntitySet="Staffs" />
             <End Role="DeliveryOrder" EntitySet="DeliveryOrders" />
@@ -1451,6 +1449,10 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             <End Role="ReturnBase" EntitySet="ReturnBases" />
             <End Role="ReturnDetail" EntitySet="ReturnDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_DeliveryOrder_Order" Association="QL_NPPModel.FK_DeliveryOrder_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="DeliveryOrder" EntitySet="DeliveryOrders" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Account">
           <Key>
@@ -1566,7 +1568,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           </Key>
           <Property Name="idDeliveryOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="recipient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="deliveryAdd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="deliveryAdd" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="totalPurchase" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="deliveryDate" Type="DateTime" Precision="3" />
           <Property Name="status" Type="Byte" />
@@ -1577,9 +1579,10 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <Property Name="idDistributor" Type="Int32" />
           <NavigationProperty Name="Bills" Relationship="QL_NPPModel.FK_Bill_DeliveryOrder" FromRole="DeliveryOrder" ToRole="Bill" />
           <NavigationProperty Name="Distributor" Relationship="QL_NPPModel.FK_DeliveryOrder_Distributor" FromRole="DeliveryOrder" ToRole="Distributor" />
-          <NavigationProperty Name="Order" Relationship="QL_NPPModel.FK_DeliveryOrder_Oder" FromRole="DeliveryOrder" ToRole="Order" />
           <NavigationProperty Name="Staff" Relationship="QL_NPPModel.FK_DeliveryOrder_Staff" FromRole="DeliveryOrder" ToRole="Staff" />
           <NavigationProperty Name="DetailedDeliveryOrders" Relationship="QL_NPPModel.FK_DetailedDeliveryOrder_DeliveryOrder" FromRole="DeliveryOrder" ToRole="DetailedDeliveryOrder" />
+          <Property Name="recipientPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="QL_NPPModel.FK_DeliveryOrder_Order" FromRole="DeliveryOrder" ToRole="Order" />
         </EntityType>
         <EntityType Name="DetailedDeliveryOrder">
           <Key>
@@ -1592,6 +1595,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DeliveryOrder" Relationship="QL_NPPModel.FK_DetailedDeliveryOrder_DeliveryOrder" FromRole="DetailedDeliveryOrder" ToRole="DeliveryOrder" />
           <NavigationProperty Name="Product" Relationship="QL_NPPModel.FK_DetailedDeliveryOrder_Product" FromRole="DetailedDeliveryOrder" ToRole="Product" />
+          <Property Name="promoQuantity" Type="Int32" />
         </EntityType>
         <EntityType Name="Distributor">
           <Key>
@@ -1671,11 +1675,11 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <Property Name="idStaff" Type="Int32" />
           <Property Name="Descriptions" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Consignee" Relationship="QL_NPPModel.FK_Order_Consignee" FromRole="Order" ToRole="Consignee" />
-          <NavigationProperty Name="DeliveryOrder" Relationship="QL_NPPModel.FK_DeliveryOrder_Oder" FromRole="Order" ToRole="DeliveryOrder" />
           <NavigationProperty Name="Distributor" Relationship="QL_NPPModel.FK_Order_Distributor" FromRole="Order" ToRole="Distributor" />
           <NavigationProperty Name="Log_OrderDetail" Relationship="QL_NPPModel.FK_Log_OrderDetail_Order" FromRole="Order" ToRole="Log_OrderDetail" />
           <NavigationProperty Name="Staff" Relationship="QL_NPPModel.FK_Order_Staff" FromRole="Order" ToRole="Staff" />
           <NavigationProperty Name="OrderDetails" Relationship="QL_NPPModel.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
+          <NavigationProperty Name="DeliveryOrders" Relationship="QL_NPPModel.FK_DeliveryOrder_Order" FromRole="Order" ToRole="DeliveryOrder" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -2080,18 +2084,6 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             </Principal>
             <Dependent Role="DeliveryOrder">
               <PropertyRef Name="idDistributor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DeliveryOrder_Oder">
-          <End Type="QL_NPPModel.Order" Role="Order" Multiplicity="1" />
-          <End Type="QL_NPPModel.DeliveryOrder" Role="DeliveryOrder" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="idOrder" />
-            </Principal>
-            <Dependent Role="DeliveryOrder">
-              <PropertyRef Name="idDeliveryOrder" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2533,6 +2525,18 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_DeliveryOrder_Order">
+          <End Type="QL_NPPModel.Order" Role="Order" Multiplicity="0..1" />
+          <End Type="QL_NPPModel.DeliveryOrder" Role="DeliveryOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="idOrder" />
+            </Principal>
+            <Dependent Role="DeliveryOrder">
+              <PropertyRef Name="idOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2641,6 +2645,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <EntitySetMapping Name="DeliveryOrders">
             <EntityTypeMapping TypeName="QL_NPPModel.DeliveryOrder">
               <MappingFragment StoreEntitySet="DeliveryOrder">
+                <ScalarProperty Name="recipientPhone" ColumnName="recipientPhone" />
                 <ScalarProperty Name="idDistributor" ColumnName="idDistributor" />
                 <ScalarProperty Name="idStaff" ColumnName="idStaff" />
                 <ScalarProperty Name="idOrder" ColumnName="idOrder" />
@@ -2658,6 +2663,7 @@ warning 6035: The relationship 'FK_Staff_Account' has columns that are not part 
           <EntitySetMapping Name="DetailedDeliveryOrders">
             <EntityTypeMapping TypeName="QL_NPPModel.DetailedDeliveryOrder">
               <MappingFragment StoreEntitySet="DetailedDeliveryOrder">
+                <ScalarProperty Name="promoQuantity" ColumnName="promoQuantity" />
                 <ScalarProperty Name="note" ColumnName="note" />
                 <ScalarProperty Name="quantity" ColumnName="quantity" />
                 <ScalarProperty Name="idProduct" ColumnName="idProduct" />
