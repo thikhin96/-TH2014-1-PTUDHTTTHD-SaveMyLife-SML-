@@ -21,5 +21,6 @@ namespace DataService.Interfaces
         Contract GetCurrentContract(int distributorId);
         bool exceedingDebt(int distributorId);
         List<Storage> GetStorages(string keyWord, int distributorId);
+        bool UpdateDebt(int id, decimal money);
     }
 }

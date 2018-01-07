@@ -1,0 +1,170 @@
+﻿@model SML_QLNPP.Models.PDistributorDetailViewModel
+@using Newtonsoft.Json;
+@{
+    var success = TempData["success"] as string;
+    var fail = ViewBag.fail as string;
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+}
+@{ 
+    List<SelectListItem> allStaff = new List<SelectListItem>();
+}
+
+@foreach (var staff in Model.allStaff)
+{
+    if (Model.staffAssigment == staff.idStaff)
+    {
+        allStaff.Add(new SelectListItem { Text = staff.staffName, Value = staff.idStaff.ToString(), Selected = true });
+    }
+    else
+    {
+        allStaff.Add(new SelectListItem { Text = staff.staffName, Value = staff.idStaff.ToString() });
+    }
+
+}
+
+
+@section css{
+    <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/PDitributor/detail.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/Order/datatables.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" type="text/css" media="all" />
+}
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/PDistributor/pdistributor.js"></script>
+    <script type="text/javascript" src="~/Scripts/PDistributor/detail.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="~/Scripts/select2.min.js"></script>
+    <script>
+            $(document).ready(function () { // will trigger when the document is ready
+                $('.datepicker').datepicker(); //Initialise any date pickers
+                $('.custom-table').DataTable();
+            });
+    </script>
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-10 col-md-10">
+            @if (success != null)
+            {
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Thành công! </strong>Cập nhật thành công!
+                </div>
+            }
+            else if (fail != null)
+            {
+                <div class="alert alert-danger alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Thất bại! </strong> @fail
+                </div>
+            }
+            <div class="well">
+                <h3>Thông tin chi tiết đối tác</h3>
+                @using (Html.BeginForm("Detail", "PDistributor", FormMethod.Post))
+                {
+                    <div class="panel-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Công ty đối tác</div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-5 form-group">
+                                        <label>Mã đối tác: </label>
+                                        @Html.TextBoxFor(m => m.idDistributor, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <label>Tên công ty: </label>
+                                        @Html.TextBoxFor(m => m.name, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <label>Email: </label>
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <label>Địa chỉ công ty: </label>
+                                        @Html.TextBoxFor(m => m.address, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <label>Số điện thoại: </label>
+                                        @Html.TextBoxFor(m => m.phone, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <label>Tình trạng: </label>
+                                        @Html.DropDownListFor(model => model.status, new List<SelectListItem> {
+                                           new SelectListItem { Text = "Chưa xử lý", Value = "0", Selected = Model.status == 0 ? true: false },
+                                           new SelectListItem { Text = "Chưa hẹn gặp mặt", Value = "1",Selected = Model.status == 1 ? true: false },
+                                           new SelectListItem { Text = "Chưa trao đổi", Value = "2",Selected = Model.status == 2 ? true: false },
+                                           new SelectListItem { Text = "Đồng ý điều khoản hợp đồng", Value = "3",Selected = Model.status == 3 ? true: false },
+                                           new SelectListItem { Text = "Không đồng ý làm hợp đồng", Value = "4",Selected = Model.status == 4 ? true: false }
+                                        }, new { @class = "form-control", @id = "status" })
+                                    </div>
+                                    <div class="col-md-5 form-group" style = "display: block" id = "reason">
+                                        <label>Ghi chú: </label>
+                                        @Html.TextBoxFor(m => m.note, new { @class = "form-control", @type = "text", @id = "txbReason" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Người đại diện</div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-5 form-group">
+                                        <label>Họ tên: </label>
+                                        @Html.TextBoxFor(m => m.rep_name, new { @class = "form-control", @required = "required", @type = "text" })
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <label>Chức vụ: </label>
+                                        @Html.TextBoxFor(m => m.title, new { @class = "form-control", @required = "required", @type = "text" })
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <label>Email: </label>
+                                        @Html.TextBoxFor(m => m.rep_email, new { @class = "form-control", @required = "required", @type = "email" })
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <label>Số điện thoại: </label>
+                                        @Html.TextBoxFor(m => m.rep_phone, new { @class = "form-control", @required = "required", @type = "text" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Thông tin trao đổi</div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-5 form-group">
+                                        <label>Địa điểm: </label>
+                                        @Html.TextBoxFor(m => m.place, new { @class = "form-control", @type = "text" })
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <label>Thời gian: </label>
+                                        @Html.TextBoxFor(m => m.date, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <label>Nhân viên: </label>
+                                        @Html.DropDownListFor(m => m.staffAssigment, allStaff, new { @class = "form-control", @type = "text" })
+                                    </div>
+                                    <div class="col-md-5 form-group">
+                                        <label>Kết quả: </label>
+                                        @Html.TextBoxFor(m => m.result, new { @class = "form-control", @type = "text" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <center>
+                        <input id="btn_submit" type="submit" style="font-weight: bold; display: block; margin: 0 auto;" class="btn btn-info" value="Lưu thay đổi" disabled />
+                    </center>
+                    
+                }
+            </div>
+        </div>
+    </div>
+</div>

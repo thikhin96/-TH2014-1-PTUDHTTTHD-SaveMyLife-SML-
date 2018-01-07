@@ -23,6 +23,18 @@ namespace DataService.Services
             _representativeRepository = _unitOfWork.Repository<Representative>();
         }
 
+        public Representative getRepresentative(int id)
+        {
+            try
+            {
+                var res = _representativeRepository.Get(x => x.idRepresentative == id);
+                return res;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         int GenerateRepresentativeId()
         {
             var latestRep = _representativeRepository.GetAll().OrderByDescending(x => x.idRepresentative).FirstOrDefault();
@@ -76,6 +88,23 @@ namespace DataService.Services
             return true;
         }
 
+
+        public bool UpdateRepresentative(Representative person)
+        {
+            logger.Info("Start to update a representative...");
+            try
+            {
+                _representativeRepository.Update(person);
+                _unitOfWork.SaveChange();
+                logger.Info("Status: Success");
+            }
+            catch
+            {
+                logger.Info("Status: Fail");
+                return false;
+            }
+            return true;
+        }
         public bool UpdateTypeOfRepresentation(int idRep,int idDis)
         {
             logger.Info("Start to update...");
@@ -95,7 +124,6 @@ namespace DataService.Services
                 logger.Info(ex.Message);
                 return false;
             }
-
         }
 
         public int GenerateRepresentativeId()

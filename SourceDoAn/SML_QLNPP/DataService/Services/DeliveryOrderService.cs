@@ -7,6 +7,9 @@ using DataModel;
 using NLog;
 using DataService.Interfaces;
 using DataModel.Interfaces;
+using System.Data.Entity.Validation;
+using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
 
 namespace DataService.Services
 {
@@ -21,7 +24,42 @@ namespace DataService.Services
         }
         public bool AddDeliveryOrder(DeliveryOrder dOrder)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            try
+            {
+                logger.Info("Start Add DeliveryOrder....");
+                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
+                repository.Add(dOrder);
+                _unitOfWork.SaveChange();
+                logger.Info("End Add DeliveryOrder....");
+                return true;
+            }
+            //catch (DbEntityValidationException e)
+            //{
+            //    foreach (var eve in e.EntityValidationErrors)
+            //    {
+            //        Debug.WriteLine(@"Entity of type ""{0}"" in state ""{1}"" 
+            //       has the following validation errors:",
+            //            eve.Entry.Entity.GetType().Name,
+            //            eve.Entry.State);
+            //        foreach (var ve in eve.ValidationErrors)
+            //        {
+            //            Debug.WriteLine(@"- Property: ""{0}"", Error: ""{1}""",
+            //                ve.PropertyName, ve.ErrorMessage);
+            //        }
+            //    }
+            //    throw;
+            //}
+            //catch (DbUpdateException e)
+            //{
+            //    throw;
+            //}
+            catch (Exception ex)
+            {
+                logger.Info(ex);
+                logger.Info("End Add DeliveryOrder....");
+            }
+            return false;
         }
         public bool UpdateDeliveryOrder(DeliveryOrder dOrder)
         {
@@ -148,6 +186,15 @@ namespace DataService.Services
                 logger.Info("End GetAll DeliveryOrder....");
                 return null;
             }
+        }
+        public int GenerateDOrderId()
+        {
+            IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
+            var latestdOrder = repository.GetAll().OrderByDescending(x => x.idDeliveryOrder).FirstOrDefault();
+            if (latestdOrder != null)
+                return latestdOrder.idDeliveryOrder + 1;
+            else
+                return 1;
         }
     }
 }

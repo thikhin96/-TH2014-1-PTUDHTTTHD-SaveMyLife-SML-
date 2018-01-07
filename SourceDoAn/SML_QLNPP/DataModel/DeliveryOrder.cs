@@ -37,10 +37,9 @@ namespace DataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bills { get; set; }
         public virtual Distributor Distributor { get; set; }
-        public virtual Order Order { get; set; }
         public virtual Staff Staff { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailedDeliveryOrder> DetailedDeliveryOrders { get; set; }
-        public virtual Order Order1 { get; set; }
+        public virtual Order Order { get; set; }
     }
 }
