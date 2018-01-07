@@ -17,8 +17,8 @@ namespace DataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DeliveryOrder()
         {
-            this.Bills = new HashSet<Bill>();
             this.DetailedDeliveryOrders = new HashSet<DetailedDeliveryOrder>();
+            this.Bills = new HashSet<Bill>();
         }
     
         public int idDeliveryOrder { get; set; }
@@ -34,12 +34,12 @@ namespace DataModel
         public Nullable<int> idDistributor { get; set; }
         public string recipientPhone { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bill> Bills { get; set; }
         public virtual Distributor Distributor { get; set; }
         public virtual Staff Staff { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailedDeliveryOrder> DetailedDeliveryOrders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bill> Bills { get; set; }
         public virtual Order Order { get; set; }
     }
 }

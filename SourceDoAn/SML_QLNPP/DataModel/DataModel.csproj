@@ -105,12 +105,6 @@
     <Compile Include="Log_Login.cs">
       <DependentUpon>DistributionManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="Log_Order.cs">
-      <DependentUpon>DistributionManagement.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Log_OrderDetail.cs">
-      <DependentUpon>DistributionManagement.tt</DependentUpon>
-    </Compile>
     <Compile Include="Log_Product.cs">
       <DependentUpon>DistributionManagement.tt</DependentUpon>
     </Compile>

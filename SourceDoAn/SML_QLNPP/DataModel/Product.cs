@@ -19,7 +19,6 @@ namespace DataModel
         {
             this.BatchDetails = new HashSet<BatchDetail>();
             this.DetailedDeliveryOrders = new HashSet<DetailedDeliveryOrder>();
-            this.Log_OrderDetail = new HashSet<Log_OrderDetail>();
             this.OrderDetails = new HashSet<OrderDetail>();
             this.PromotionGifts = new HashSet<PromotionGift>();
             this.PromotionProducts = new HashSet<PromotionProduct>();
@@ -39,8 +38,6 @@ namespace DataModel
         public virtual ICollection<BatchDetail> BatchDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailedDeliveryOrder> DetailedDeliveryOrders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Log_OrderDetail> Log_OrderDetail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual ProductType ProductType1 { get; set; }

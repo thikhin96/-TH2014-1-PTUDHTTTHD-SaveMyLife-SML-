@@ -29,7 +29,6 @@ namespace DataModel
         public virtual DbSet<Assignment> Assignments { get; set; }
         public virtual DbSet<Batch> Batches { get; set; }
         public virtual DbSet<BatchDetail> BatchDetails { get; set; }
-        public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<Consignee> Consignees { get; set; }
         public virtual DbSet<Contract> Contracts { get; set; }
         public virtual DbSet<Debt> Debts { get; set; }
@@ -37,9 +36,6 @@ namespace DataModel
         public virtual DbSet<DetailedDeliveryOrder> DetailedDeliveryOrders { get; set; }
         public virtual DbSet<Distributor> Distributors { get; set; }
         public virtual DbSet<Log_Login> Log_Login { get; set; }
-        public virtual DbSet<Log_Order> Log_Order { get; set; }
-        public virtual DbSet<Log_OrderDetail> Log_OrderDetail { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<PaySlip> PaySlips { get; set; }
         public virtual DbSet<PotentialDistributor> PotentialDistributors { get; set; }
@@ -59,5 +55,7 @@ namespace DataModel
         public virtual DbSet<Unit> Units { get; set; }
         public virtual DbSet<Log_Product> Log_Product { get; set; }
         public virtual DbSet<ReturnBase> ReturnBases { get; set; }
+        public virtual DbSet<Bill> Bills { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
     }
 }
