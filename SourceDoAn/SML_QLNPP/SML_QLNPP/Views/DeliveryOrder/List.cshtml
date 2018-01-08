@@ -21,7 +21,7 @@
     <script type="text/javascript" src="~/Scripts/DeliveryOrder/jquery-ui.min.js"></script>
     <script type="text/javascript" src="~/Scripts/DeliveryOrder/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="~/Scripts/DeliveryOrder/datatables.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/DeliveryOrder/deliveryorder.js"></script>
+    <script type="text/javascript" src="~/Scripts/DeliveryOrder/delivery.js"></script>
 }
 <div class="box box-info">
     <div class="box-header with-border">
@@ -101,7 +101,7 @@
                                                     @{ if (item.status == 2)
                                                         {
                                                             WriteLiteral(" | ");
-                                                            @Html.ActionLink("Lập hóa đơn", "Create", "Bill", new { id = item.idDeliveryOrder }, new { @class = "btn btn-primary" });
+                                                            @Html.ActionLink("Lập hóa đơn", "Create", "Bill", new { idDelivery = item.idDeliveryOrder }, new { @class = "btn btn-primary" });
                                                         }
                                                     }
                                                 </td>

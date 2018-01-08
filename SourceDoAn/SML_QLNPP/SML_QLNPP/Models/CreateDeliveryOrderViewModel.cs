@@ -23,5 +23,6 @@ namespace SML_QLNPP.Models
         public Nullable<DateTime> estimateDateOfDelivery { get; set; }
         public Nullable<DateTime> deliveryDate { get; set; }
         public string description { get; set; }
+        public int commission { get; set; }
     }
 }

@@ -140,26 +140,6 @@ namespace DataService.Services
             return dis;
         }
 
-        public bool UpdateDebt(int id, long money)
-        {
-            //throw new NotImplementedException();
-            logger.Info("Start service....");
-            try
-            {
-                var distributor = this.SearchByID(id);
-                distributor.debt = distributor.debt + money;
-                _unitOfWork.SaveChange();
-                logger.Info("End service...");
-                return true;
-            }
-            catch (Exception e)
-            {
-                logger.Info(e.Message);
-                logger.Info("End service...");
-                return false;
-            }
-        }
-
         public List<Storage> GetStorages(string keyWord, int distributorId)
         {
             var storages = _storageRepository.GetAll(x => x.Distributor == distributorId
@@ -238,7 +218,8 @@ namespace DataService.Services
             try
             {
                 var distributor = this.SearchByID(id);
-                distributor.debt = distributor.debt + money;
+                distributor.debt = money;
+                _distributorRepository.Update(distributor);
                 _unitOfWork.SaveChange();
                 logger.Info("End service...");
                 return true;

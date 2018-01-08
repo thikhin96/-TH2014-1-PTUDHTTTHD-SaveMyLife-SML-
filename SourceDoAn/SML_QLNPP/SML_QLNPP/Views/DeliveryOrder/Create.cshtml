@@ -55,7 +55,7 @@
 <script type="text/javascript" src="~/Scripts/DeliveryOrder/jquery-ui.min.js"></script>
 <script type="text/javascript" src="~/Scripts/DeliveryOrder/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="~/Scripts/DeliveryOrder/datatables.min.js"></script>
-<script type="text/javascript" src="~/Scripts/DeliveryOrder/createdeliveryorder.js"></script>
+<script type="text/javascript" src="~/Scripts/DeliveryOrder/create.js"></script>
 }
 
 @using (Html.BeginForm("Create", "DeliveryOrder", FormMethod.Post))
@@ -101,6 +101,10 @@
                 @Html.TextBoxFor(model => model.distributorName, new { @class = "form-control", @readonly = "readony" })
             </div>
             <div class="col-md-3 form-group">
+                @Html.Label("Chiết khấu (%):")
+                @Html.TextBoxFor(model => model.commission, new { @class = "form-control", @readonly = "readony" })
+            </div>
+            <div class="col-md-3 form-group">
                 @Html.Label("Hình thức giao:")
                 <input type="text" value="@(Model.DeliveryType == false ? "Tự túc" : "Vitamilk giao")" class="form-control" readonly />
             </div>
@@ -124,20 +128,6 @@
                 @Html.Label("Nơi giao:")
                 @Html.DropDownListFor(model => model.deliveryAdd, ListAdd, new { @class = "form-control" })
             </div>
-            @*
-                        <div class="col-md-3 form-group">
-                            @Html.Label("Ngày giao:")
-                            @Html.TextBoxFor(model => model.deliveryDate, new {@type = "date", @class = "form-control", @value = DateTime.Now })
-                         </div>
-
-                     <div class="col-md-3">
-                         <label>Tình trạng: </label>
-                         @{
-                             @Html.DropDownList("Trạng thái", new List<SelectListItem> {
-                                new SelectListItem { Text = "Chưa kiểm kê", Value = "5"}
-                }, new { @class = "form-control", @readonly = "readony" })
-                         }
-                     </div>*@
             <div class="col-md-3 form-group">
                 @Html.Label("Mô tả")
                 @Html.TextBoxFor(model => model.description, new { @class = "form-control" })
@@ -179,7 +169,7 @@
                                                     <td name="idProduct">@item.idProduct</td>
                                                     <td name="@("DetailedDeliveryOrder[" + dataID + "].Product.ProductName")" value="@item.Product.ProductName">@item.Product.ProductName</td>
                                                     <td name="Price">@string.Format("{0:0,0}", @item.Product.Price)</td>
-                                                    <td><input max="@item.quantity" min="0" id-quantity="@dataID" type="number" name="@("DetailedDeliveryOrder[" + dataID + "].quantity")" value="@item.quantity" class="form-control"/></td>
+                                                    <td><input max="@item.quantity" min="1" id-quantity="@dataID" type="number" name="@("DetailedDeliveryOrder[" + dataID + "].quantity")" value="@item.quantity" class="form-control"/></td>
                                                     <td><input max="@item.promoQuantity" min="0" type="number" name="@("DetailedDeliveryOrder[" + dataID + "].promoQuantity")" value="@item.promoQuantity" class="form-control"/></td>
                                                     <td>@string.Format("{0:0,0}", @item.Product.Price * @item.quantity)</td>
                                                     <td><input type="text" name="@("DetailedDeliveryOrder[" + dataID + "].note")" value="@item.note" /></td>
