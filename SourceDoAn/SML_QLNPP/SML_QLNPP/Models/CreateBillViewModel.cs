@@ -12,7 +12,6 @@ namespace SML_QLNPP.Models
         public Nullable<int> idDistributor { get; set; }
         public string nameDistributor { get; set; }
         public decimal purchase { get; set; }
-        public byte types { get; set; }
         public DateTime createdDate { get; set; }
         public string description { get; set; }
     }

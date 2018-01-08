@@ -13,7 +13,6 @@ namespace DataService.Interfaces
     {
         int Create(Distributor person);
         int GenerateDistributorId();
-        bool UpdateDebt(int id, long money);
         bool UpdateStatus(int id, bool status, string note);
         Distributor SearchByID(int id);
         IList<DistributorList> GetList(Nullable<int> id, bool? status);

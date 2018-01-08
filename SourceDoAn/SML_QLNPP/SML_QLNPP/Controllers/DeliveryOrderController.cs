@@ -47,6 +47,13 @@ namespace SML_QLNPP.Controllers
             }
             else
             {
+                var contractList = order.Distributor.Contracts.ToList();
+                var nowContract = contractList.OrderByDescending(i => i.expiredDate).FirstOrDefault();
+                var commission = 0;
+                if (nowContract.status == true)
+                {
+                    commission = nowContract.commission.Value;
+                }
                 var model = new CreateDeliveryOrderViewModel
                 {
                     idOrder = order.idOrder,
@@ -60,6 +67,7 @@ namespace SML_QLNPP.Controllers
                     recipientPhone = order.Consignee.PhoneNumber,
                     totalPurchase = 0,
                     deliveryDate = DateTime.Now,
+                    commission = commission
                 };
 
                 // lấy km tốt nhất của order
@@ -115,7 +123,8 @@ namespace SML_QLNPP.Controllers
                 // những thuộc tính cần chọn khi lập đơn giao hàng
                 ViewBag.Storage = order.Distributor.Storages.ToList();
                 ViewBag.Staff = _staffService.GetAll().ToList();
-                //
+                //  tính chiết khấu
+                model.totalPurchase = model.totalPurchase * (1 - model.commission / 100);
                 return View(model);
             }
         }
@@ -367,6 +376,9 @@ namespace SML_QLNPP.Controllers
                 delivery.description = model.description;
                 delivery.updateDate = DateTime.Now;
                 delivery.deliveryDate = model.deliveryDate;
+                delivery.deliveryAdd = model.deliveryAdd;
+                delivery.recipient = model.recipient;
+                delivery.recipientPhone = model.recipientPhone;
                 //delivery.deliveryDate = DateTime.ParseExact(Request["deliveryDate"].ToString(), "dd/MM/yyyy", null);
                 // lưu cập nhật xuốn db
                 bool result = _deliveryOrderService.UpdateDeliveryOrder(delivery);

@@ -57,13 +57,6 @@
                 @Html.TextBoxFor(model => model.createdDate, "{0:dd/MM/yyyy}", new { @type = "date", @class = "form-control", @readonly = "readonly", @strDate = Model.createdDate.ToLocalTime() })
             </div>
             <div class="col-md-3 form-group">
-                @Html.Label("Loại hóa đơn:")
-                @Html.DropDownListFor(model => model.types, new List<SelectListItem> {
-           new SelectListItem { Text = "Thanh toán giao hàng", Value = "1", Selected = true },
-       new SelectListItem { Text = "Thanh toán công nợ", Value = "2"}
-       }, new { @class = "form-control" })
-            </div>
-            <div class="col-md-3 form-group">
                 @Html.Label("Tiền thu:")
                 @Html.TextBoxFor(model => model.purchase, "", new { @type = "number", @class = "form-control", @min = 0, required = "required" })
             </div>
@@ -72,7 +65,8 @@
                 @Html.TextBoxFor(model => model.description, "", new { @class = "form-control"})
             </div>
             <div class="col-md-12 form-group" style="text-align: center;">
-                <input type="submit" value="Lập hóa đơn" class="btn btn-primary" style="margin-right: 5px;" id="btnCreate" />
+                <input type="submit" value="Lập hóa đơn" class="btn btn-default" style="margin-right: 5px;" id="btnCreate" />
+                @Html.ActionLink("Lập phiếu công nợ", "Create", "Debt", new { idDistributor = Model.idDistributor }, new { @class = "btn btn-default", style = "margin-left: 5px;" })
             </div>
         </div>
     }

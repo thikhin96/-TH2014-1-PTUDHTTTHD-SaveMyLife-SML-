@@ -16,24 +16,37 @@
     <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
     <script type="text/javascript" src="~/Scripts/bootstrap-datepicker.js"></script>
     <script type="text/javascript" src="~/Scripts/Debt/create.js"></script>
+<script>
+    var createdDate = document.getElementById('createdDate');
+    createdDate.valueAsDate = new Date($('#createdDate').attr("strDate"));
+    console.log(createdDate);
+</script>
 }
+
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 col-md-12">
-            @if (success != null)
-            {
-                <div class="alert alert-success alert-dismissable">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Thành công!</strong> Tạo phiếu công nợ thành công!
-                </div>
-            }
-            else if (fail != null)
-            {
-                <div class="alert alert-danger alert-dismissable">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Thất bại!</strong> @fail
-                </div>
+            @{
+                if (ViewBag.msg != null)
+                {
+                    if (ViewBag.types == 1)
+                    {
+                        <div class="alert alert-danger alert-dismissable">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>@ViewBag.msg</strong>
+                        </div>
+                        <div class="alert alter-warning"><strong></strong></div>
+
+                    }
+                    else if (ViewBag.types == 2)
+                    {
+                        <div class="alert alert-success alert-dismissable">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>@ViewBag.msg</strong>
+                        </div>
+                    }
+                }
             }
             <div class="well">
                 <h2>Phiếu công nợ: @Model.idDebt</h2>
@@ -45,17 +58,21 @@
                             <h3 class="box-title">Thông tin nhà phân phối</h3>
                         </div>
                         <div class="box-body">
+                            <div class="col-md-3">
+                            </div>
                             <div class="col-md-2">
                                 <label>Mã nhà phân phối: </label>
-                                @Html.TextBoxFor(i => i.idDistributor, new { @class = "form-control" })
+                                @Html.TextBoxFor(i => i.idDistributor, new { @class = "form-control", @readonly = "readonly" })
                             </div>
                             <div class="col-md-2">
                                 <label>Tên nhà phân phối: </label>
-                                @Html.TextBoxFor(i => i.nameDistributor, new { @class = "form-control" })
+                                @Html.TextBoxFor(i => i.nameDistributor, new { @class = "form-control", @readonly = "readonly" })
                             </div>
                             <div class="col-md-2">
                                 <label>Công nợ hiện tại: </label>
-                                @Html.TextBoxFor(i => i.debt, new { @class = "form-control" })
+                                @Html.TextBoxFor(i => i.debt, "{0:0,0}",new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+                            <div class="col-md-3">
                             </div>
                         </div>
                     </div>
@@ -65,24 +82,29 @@
                         </div>
                         <div class="box-body">
                             <div class="col-md-2">
+                            </div>
+                            <div class="col-md-2">
+                                <label>Mã nhân viên lập phiếu: </label>
+                                @Html.TextBoxFor(model => model.idStaff, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+                            <div class="col-md-2">
+                                <label>Tên nhân viên lập phiếu: </label>
+                                @Html.TextBoxFor(model => model.staffName, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+                            <div class="col-md-2">
                                 <label>Ngày trả: </label>
-                                @Html.TextBoxFor(model => model.date, new { @class = "form-control" })
+                                @Html.TextBoxFor(model => model.createdDate, "{0:dd/MM/yyyy}", new { @type = "date", @class = "form-control", @readonly = "readonly", @strDate = Model.createdDate.ToLocalTime() })
                             </div>
                             <div class="col-md-2">
                                 <label>Tiền trả công nợ: </label>
-                                @Html.TextBoxFor(model => model.moneyDebt, new { @class = "form-control" })
+                                @Html.TextBoxFor(model => model.moneyDebt, new { @class = "form-control", @type= "number", @max=Model.debt, @min=0})
                             </div>
+
                             <div class="col-md-2">
-                                <label>Công nợ mới: </label>
-                                @Html.TextBoxFor(model => model.newDebt, new { @class = "form-control" })
-                            </div>
-                            <div class="col-md-3">
-                                <label>Nhân viên lập phiếu: </label>
-                                @Html.TextBoxFor(model => model.staffName, new { @class = "form-control" })
                             </div>
                         </div>
                     </div>
-                    <input id="btnTaoDebt" type="submit" class="btn btn-info" value="Tạo phiếu công nợ" />
+                    <input id="btnTaoDebt" type="submit" class="btn btn-info" value="Lập phiếu công nợ" />
                 }
             </div>
         </div>

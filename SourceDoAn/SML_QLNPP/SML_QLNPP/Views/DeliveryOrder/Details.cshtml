@@ -74,11 +74,11 @@
             </div>
             <div class="col-md-3 form-group">
                 @Html.Label("Người liên hệ giao:")
-                @Html.TextBoxFor(model => model.recipient, new { @class = "form-control", @readonly = "readony" })
+                @Html.TextBoxFor(model => model.recipient, new { @class = "form-control"})
             </div>
             <div class="col-md-3 form-group">
                 @Html.Label("SĐT giao:")
-                @Html.TextBoxFor(model => model.recipientPhone, new { @class = "form-control", @readonly = "readony" })
+                @Html.TextBoxFor(model => model.recipientPhone, new { @class = "form-control"})
             </div>
             <div class="col-md-3 form-group">
                 @Html.Label("Ngày giao dự kiến:")
@@ -90,7 +90,7 @@
             </div>
             <div class="col-md-3 form-group">
                 @Html.Label("Nơi giao:")
-                @Html.TextBoxFor(model => model.deliveryAdd, new { @class = "form-control", @readonly = "readony" })
+                @Html.TextBoxFor(model => model.deliveryAdd, new { @class = "form-control"})
             </div>
             <div class="col-md-3 form-group">
                 @Html.Label("Ngày giao:")
@@ -169,7 +169,7 @@
                                 </tbody>
                             </table>
                             @Html.TextBoxFor(model => model.totalPurchase, new { @type = "hidden" })
-                            <h2 style="text-align:center; font-weight: bold">Tổng tiền: @string.Format("{0:0,0}", Model.totalPurchase)</h2>
+                            <h2 style="text-align:center; font-weight: bold">Tổng tiền(Sau chiết khấu): @string.Format("{0:0,0}", Model.totalPurchase) VNĐ</h2>
                         </div>
                     </div>
                     <div class="form-group">
@@ -186,7 +186,8 @@
                                     }
                                     if (Model.status == 2)
                                     {
-                                        @Html.ActionLink("Lập hóa đơn", "Create", "Bill", new { id = Model.idDeliveryOrder }, new { @class = "btn btn-default", style = "margin-left: 5px;" })
+                                        @Html.ActionLink("Lập hóa đơn", "Create", "Bill", new { idDelivery = Model.idDeliveryOrder }, new { @class = "btn btn-default", style = "margin-left: 5px;" })
+                                        @Html.ActionLink("Lập phiếu công nợ", "Create", "Debt", new { idDistributor = Model.idDistributor }, new { @class = "btn btn-default", style = "margin-left: 5px;" })
                                     }
                                 }
                             }
