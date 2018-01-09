@@ -8,14 +8,11 @@
 
 @section css{
     <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" type="text/css" media="all" />
 }
 
 @section scripts{
     <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/bootstrap-datepicker.js"></script>
-    <script type="text/javascript" src="~/Scripts/Debt/create.js"></script>
 <script>
     var createdDate = document.getElementById('createdDate');
     createdDate.valueAsDate = new Date($('#createdDate').attr("strDate"));
@@ -36,8 +33,6 @@
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                             <strong>@ViewBag.msg</strong>
                         </div>
-                        <div class="alert alter-warning"><strong></strong></div>
-
                     }
                     else if (ViewBag.types == 2)
                     {
@@ -50,61 +45,63 @@
             }
             <div class="well">
                 <h2>Phiếu công nợ: @Model.idDebt</h2>
-
-                @using (Html.BeginForm("Create", "Debt", FormMethod.Post))
+                @using (Html.BeginForm("Create", "Debt", FormMethod.Post, new { @class = "form-horizontal" }))
                 {
-                    <div class="box box-info">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Thông tin nhà phân phối</h3>
-                        </div>
-                        <div class="box-body">
-                            <div class="col-md-3">
-                            </div>
-                            <div class="col-md-2">
-                                <label>Mã nhà phân phối: </label>
-                                @Html.TextBoxFor(i => i.idDistributor, new { @class = "form-control", @readonly = "readonly" })
-                            </div>
-                            <div class="col-md-2">
-                                <label>Tên nhà phân phối: </label>
-                                @Html.TextBoxFor(i => i.nameDistributor, new { @class = "form-control", @readonly = "readonly" })
-                            </div>
-                            <div class="col-md-2">
-                                <label>Công nợ hiện tại: </label>
-                                @Html.TextBoxFor(i => i.debt, "{0:0,0}",new { @class = "form-control", @readonly = "readonly" })
-                            </div>
-                            <div class="col-md-3">
-                            </div>
-                        </div>
-                    </div>
                     <div class="box box-info">
                         <div class="box-header with-border">
                             <h3 class="box-title">Thông tin trả công nợ</h3>
                         </div>
                         <div class="box-body">
-                            <div class="col-md-2">
+                            <div class="col-md-6 col-lg-6 form-group">
+                                <label class="control-label col-sm-4">Mã nhân viên: </label>
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(model => model.idStaff, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
                             </div>
-                            <div class="col-md-2">
-                                <label>Mã nhân viên lập phiếu: </label>
-                                @Html.TextBoxFor(model => model.idStaff, new { @class = "form-control", @readonly = "readonly" })
+                            <div class="col-md-6 col-lg-6 form-group">
+                                <label class="control-label col-sm-4">Tên nhân viên: </label>
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(model => model.staffName, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
                             </div>
-                            <div class="col-md-2">
-                                <label>Tên nhân viên lập phiếu: </label>
-                                @Html.TextBoxFor(model => model.staffName, new { @class = "form-control", @readonly = "readonly" })
+                            <div class="col-md-6 col-lg-6 form-group">
+                                <label class="control-label col-sm-4">Mã nhà phân phối: </label>
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(i => i.idDistributor, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
                             </div>
-                            <div class="col-md-2">
-                                <label>Ngày trả: </label>
-                                @Html.TextBoxFor(model => model.createdDate, "{0:dd/MM/yyyy}", new { @type = "date", @class = "form-control", @readonly = "readonly", @strDate = Model.createdDate.ToLocalTime() })
+                            <div class="col-md-6 col-lg-6 form-group">
+                                <label class="control-label col-sm-4">Tên nhà phân phối: </label>
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(i => i.nameDistributor, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
                             </div>
-                            <div class="col-md-2">
-                                <label>Tiền trả công nợ: </label>
-                                @Html.TextBoxFor(model => model.moneyDebt, new { @class = "form-control", @type= "number", @max=Model.debt, @min=0})
+                            <div class="col-md-6 col-lg-6 form-group">
+                                <label class="control-label col-sm-4">Công nợ hiện tại: </label>
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(i => i.debt, "{0:0,0}", new { @class = "form-control", @readonly = "readonly" })
+                                </div>
                             </div>
-
-                            <div class="col-md-2">
+                            <div class="col-md-6 col-lg-6 form-group">
+                                <label class="control-label col-sm-4">Ngày trả: </label>
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(model => model.createdDate, "{0:dd/MM/yyyy}", new { @type = "date", @class = "form-control", @readonly = "readonly", @strDate = Model.createdDate.ToLocalTime() })
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 form-group">
+                                <label class="control-label col-sm-4">Tiền trả công nợ: </label>
+                                <div class="col-sm-8">
+                                    @Html.TextBoxFor(model => model.moneyDebt, new { @class = "form-control", @type = "number", @max = Model.debt, @min = 100000 })
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12 form-group">
+                                <div class="col-md-12" style="margin-top: 5px;margin-bottom: 5px; text-align: center;" id="btnControll">
+                                    <input id="btnTaoDebt" type="submit" style="margin: auto, 0" class="btn btn-default" value="Lập phiếu công nợ" />
+                                    @Html.ActionLink("Hủy", "List", "DeliveryOrder", null, new { @class = "btn btn-default", style = "margin-left: 5px;" })
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <input id="btnTaoDebt" type="submit" class="btn btn-info" value="Lập phiếu công nợ" />
                 }
             </div>
         </div>

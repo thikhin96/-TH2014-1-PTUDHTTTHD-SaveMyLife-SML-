@@ -17,44 +17,20 @@ namespace DataService.Interfaces
         }
         public bool AddBill(Bill bill)
         {
+            logger.Info("Start Add Bill....");
+            bool rs = false;
             try {
-                logger.Info("Start Add Bill....");
-                IRepository<Bill> repository = _unitOfWork.Repository<Bill>();
-                repository.Add(bill);
+
+                IRepository<Bill> repo = _unitOfWork.Repository<Bill>();
+                repo.Add(bill);
                 _unitOfWork.SaveChange();
-                logger.Info("End Add Bill....");
-                return true;
+                rs = true;
             } catch(Exception ex)
             {
-                logger.Info(ex.Message);
-                logger.Info("End Add Bill....");
-                return false;
-            } 
-        }
-        public IList<Bill> SearchById(int id)
-        { 
-            try
-            {
-                logger.Info("Start Search Bill by idBill....");
-                IRepository<Bill> repository = _unitOfWork.Repository<Bill>();
-                var result = repository.GetAll(a => a.idBill == id);
-                if (result != null)
-                {
-                    logger.Info("End Search Bill by idBill....");
-                    return result.ToList();
-                }
-                else
-                {
-                    logger.Info("End Search Bill by idBill....");
-                    return null;
-                }
+                logger.Info(ex);
             }
-            catch(Exception ex)
-            {
-                logger.Info(ex.Message);
-                logger.Info("End Search Bill by idBill....");
-                return null;
-            }  
+            logger.Info("End Add Bill....");
+            return rs;
         }
     }
 }

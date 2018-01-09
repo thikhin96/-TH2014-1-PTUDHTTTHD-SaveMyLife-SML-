@@ -636,7 +636,6 @@
     <Content Include="Views\Account\ALogin.cshtml" />
     <Content Include="Views\Bill\Create.cshtml" />
     <Content Include="Views\DeliveryOrder\Details.cshtml" />
-    <Content Include="Views\DeliveryOrder\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Views\Home\Index.cshtml" />

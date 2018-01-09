@@ -15,14 +15,12 @@ namespace SML_QLNPP.Controllers
     {
         private readonly IDebtService _debtService;
         private readonly IDistributorService _distributorService;
-        private readonly IReturnService _returnService;
         private readonly IStaffService _staffService;
         private readonly ILogger _logger = LogManager.GetCurrentClassLogger();
-        public DebtController(IStaffService staffService, IDebtService debtService, IDistributorService distributorService, IReturnService returnService)
+        public DebtController(IStaffService staffService, IDebtService debtService, IDistributorService distributorService)
         {
             this._debtService = debtService;
             _distributorService = distributorService;
-            _returnService = returnService;
             _staffService = staffService;
         }
         [HttpGet]

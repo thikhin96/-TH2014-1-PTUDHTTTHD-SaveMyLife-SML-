@@ -15,7 +15,7 @@ namespace SML_QLNPP.Models
         public string nameStaff { get; set; }
         public Nullable<int> idDistributor { get; set; }
         public string nameDistributor { get; set; }
-        public string debtDistributor { get; set; }
+        public decimal debtDistributor { get; set; }
         public string recipient { get; set; }
         public string recipientPhone { get; set; }
         public Nullable<DateTime> estimateDateOfDelivery { get; set; }
