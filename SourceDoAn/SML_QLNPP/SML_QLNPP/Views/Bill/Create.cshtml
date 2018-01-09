@@ -21,11 +21,17 @@
             {
                 if (ViewBag.types == 1)
                 {
-                    <div class="alert alter-warning"><strong>@ViewBag.msg</strong></div>
+                    <div class="alert alert-danger alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>@ViewBag.msg</strong>
+                    </div>
                 }
                 else if (ViewBag.types == 2)
                 {
-                    <div class="alert alter-success"><strong>@ViewBag.msg</strong></div>
+                    <div class="alert alert-success alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>@ViewBag.msg</strong>
+                    </div>
                 }
             }
         }
@@ -34,39 +40,52 @@
     @using (Html.BeginForm("Create", "Bill", FormMethod.Post))
     {
         <div class="box-body">
-            <div class="col-md-3 form-group">
-                @Html.Label("Mã nhân viên:")
-                @Html.TextBoxFor(model => model.idStaff, "", new { @class = "form-control", @readonly = "readonly" })
-                @Html.ValidationMessageFor(model => model.idStaff, "", new { @class = "text-danger" })
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Mã nhân viên:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.idStaff, "", new { @class = "form-control", @readonly = "readonly" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Mã giao hàng số:")
-                @Html.TextBoxFor(model => model.idDeliveryOrder, "", new { @class = "form-control", @readonly = "readonly" })
-                @Html.ValidationMessageFor(model => model.idDeliveryOrder, "", new { @class = "text-danger" })
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Mã giao hàng số:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.idDeliveryOrder, "", new { @class = "form-control", @readonly = "readonly" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Mã nhà phân phối:")
-                @Html.TextBoxFor(model => model.idDistributor, "", new { @class = "form-control", @readonly = "readonly" })
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Mã nhà phân phối:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.idDistributor, "", new { @class = "form-control", @readonly = "readonly" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Tên nhà phân phối:")
-                @Html.TextBoxFor(model => model.nameDistributor, "", new { @class = "form-control", @readonly = "readonly" })
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Tên nhà phân phối:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.nameDistributor, "", new { @class = "form-control", @readonly = "readonly" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Ngày lập:")
-                @Html.TextBoxFor(model => model.createdDate, "{0:dd/MM/yyyy}", new { @type = "date", @class = "form-control", @readonly = "readonly", @strDate = Model.createdDate.ToLocalTime() })
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Ngày lập:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.createdDate, "{0:dd/MM/yyyy}", new { @type = "date", @class = "form-control", @readonly = "readonly", @strDate = Model.createdDate.ToLocalTime() })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Tiền thu:")
-                @Html.TextBoxFor(model => model.purchase, "", new { @type = "number", @class = "form-control", @min = 0, required = "required" })
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Tiền thu:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.purchase, "", new { @type = "number", @class = "form-control", @min = 0, required = "required" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Mô tả:")
-                @Html.TextBoxFor(model => model.description, "", new { @class = "form-control"})
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Nội dung:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.description, "", new { @class = "form-control" })
+                </div>
             </div>
             <div class="col-md-12 form-group" style="text-align: center;">
                 <input type="submit" value="Lập hóa đơn" class="btn btn-default" style="margin-right: 5px;" id="btnCreate" />
-                @Html.ActionLink("Lập phiếu công nợ", "Create", "Debt", new { idDistributor = Model.idDistributor }, new { @class = "btn btn-default", style = "margin-left: 5px;" })
+                @Html.ActionLink("Thanh toán công nợ", "Create", "Debt", new { idDistributor = Model.idDistributor }, new { @class = "btn btn-default", style = "margin-left: 5px;" })
+                @Html.ActionLink("Hủy", "List", "DeliveryOrder", null, new { @class = "btn btn-default", style = "margin-left: 5px;" })
             </div>
         </div>
     }

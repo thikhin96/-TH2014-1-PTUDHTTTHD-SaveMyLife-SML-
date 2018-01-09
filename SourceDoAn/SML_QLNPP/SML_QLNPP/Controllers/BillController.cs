@@ -67,36 +67,24 @@ namespace SML_QLNPP.Controllers
                 {
                     // TH đơn chưa có hóa đơn
                     decimal tienthieu = delivery.totalPurchase.Value - bill.purchase.Value;
-                    // TH thu tiền ít hơn tổng tiền đơn hàng, thì tăng thêm công nợ
-                    if (tienthieu != 0)
+                    if(tienthieu < 0)
                     {
-                        var dis = order.Distributor;
-                        dis.debt += tienthieu;
-                        _distributoriervice.UpdateDebt(bill.idDistributor.Value, dis.debt.Value);
+                        ViewBag.types = 1;
+                        ViewBag.msg = "Lập thất bại, tiền đơn hàng chỉ có " + string.Format("{0:0,0}", delivery.totalPurchase.Value) + " VNĐ.";
                     }
-                    ViewBag.types = 2;
-                    ViewBag.msg = "Lập hóa đơn thành công";
-                    _billService.AddBill(bill);
+                    else
+                    {
+                        // TH thu tiền ít hơn tổng tiền đơn hàng, thì tăng thêm công nợ
+                        if (tienthieu > 0)
+                        {
+                            var dis = order.Distributor;
+                            dis.debt += tienthieu;
+                            _distributoriervice.UpdateDebt(bill.idDistributor.Value, dis.debt.Value);
+                        }
+                        _billService.AddBill(bill);
+                    }
                 }
             }
-            // TH2 lập hóa đơn thanh toán công nợ
-            //if (bill.types == 2)
-            //{
-            //    var congnohientai = delivery.Distributor.debt;
-            //    if (bill.purchase > congnohientai)
-            //    {
-            //        ViewBag.types = 1;
-            //        ViewBag.msg = "Tiền thu nhiều hơn tiền công nợ hiện tại";
-            //    }
-            //    else
-            //    {
-            //        bill.idDeliveryOrder = null;
-            //        _billService.AddBill(bill);
-            //        _distributoriervice.UpdateDebt(bill.idDistributor.Value, -bill.purchase.Value);
-            //        ViewBag.types = 2;
-            //        ViewBag.msg = "Lập hóa đơn thành công";
-            //    }
-            //}
             return View(model);
         }
 

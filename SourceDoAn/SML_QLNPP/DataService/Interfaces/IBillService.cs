@@ -9,6 +9,5 @@ namespace DataService.Interfaces
     public interface IBillService
     {
         bool AddBill(Bill bill);
-        IList<Bill> SearchById(int id);
     }
 }

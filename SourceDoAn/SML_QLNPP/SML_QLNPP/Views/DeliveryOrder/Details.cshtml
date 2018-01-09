@@ -17,7 +17,7 @@
     <script type="text/javascript" src="~/scripts/DeliveryOrder/details.js"></script>
 }
 
-@using (Html.BeginForm("Details", "DeliveryOrder", FormMethod.Post))
+@using (Html.BeginForm("Details", "DeliveryOrder", FormMethod.Post, new { @class = "form-horizontal" }))
 {
     <div class="box box-info">
         <div class="box-header with-border">
@@ -26,11 +26,17 @@
                 {
                     if (ViewBag.types == 1)
                     {
-                        <div class="alert alter-warning"><strong>@ViewBag.msg</strong></div>
+                        <div class="alert alert-danger alert-dismissable">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>@ViewBag.msg</strong>
+                        </div>
                     }
                     else if (ViewBag.types == 2)
                     {
-                        <div class="alert alter-success"><strong>@ViewBag.msg</strong></div>
+                        <div class="alert alert-success alert-dismissable">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>@ViewBag.msg</strong>
+                        </div>
                     }
                 }
             }
@@ -38,95 +44,127 @@
         </div>
 
         <div class="box-body">
-            <div class="col-md-3 form-group">
-                @Html.Label("Mã giao hàng:")
-                @Html.TextBoxFor(model => model.idDeliveryOrder, new { @class = "form-control", @readonly = "readony" })
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Mã giao hàng:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.idDeliveryOrder, new { @class = "form-control", @readonly = "readony" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Mã đơn hàng:")
-                @Html.TextBoxFor(model => model.idOrder, new { @class = "form-control", @readonly = "readony" })
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Mã đơn hàng:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.idOrder, new { @class = "form-control", @readonly = "readony" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Mã nhân viên giao:")
-                @Html.TextBoxFor(model => model.idStaff, new { @class = "form-control", @readonly = "readony" })
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Mã NV giao:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.idStaff, new { @class = "form-control", @readonly = "readony" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Tên NV giao:")
-                @Html.TextBoxFor(model => model.nameStaff, new { @class = "form-control", @readonly = "readony" })
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Tên NV giao:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.nameStaff, new { @class = "form-control", @readonly = "readony" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Mã nhà phân phối:")
-                @Html.TextBoxFor(model => model.idDistributor, new { @class = "form-control", @readonly = "readony" })
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Mã nhà phân phối:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.idDistributor, new { @class = "form-control", @readonly = "readony" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Tên nhà phân phối:")
-                @Html.TextBoxFor(model => model.nameDistributor, new { @class = "form-control", @readonly = "readony" })
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Tên nhà phân phối:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.nameDistributor, new { @class = "form-control", @readonly = "readony" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                <label>Hình thức giao:</label>
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Hình thức giao", new { @class = "control-label col-sm-4" })
                 @Html.TextBoxFor(model => model.deliveryType, new { @type = "hidden" })
-                <input type="text" value="@(Model.deliveryType == false ? "Tự túc" : "Vitamilk giao")" class="form-control" readonly />
+                <div class="col-sm-8">
+                    <input type="text" value="@(Model.deliveryType == false ? "Tự túc" : "Vitamilk giao")" class="form-control" readonly />
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Hình thức thanh toán:")
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Hình thức thanh toán:", new { @class = "control-label col-sm-4" })
                 @Html.TextBoxFor(model => model.paymentType, new { @type = "hidden" })
-                <input type="text" value="@(Model.paymentType == false ? "Tiền mặt" : "Thẻ")" class="form-control" readonly />
+                <div class="col-sm-8">
+                    <input type="text" value="@(Model.paymentType == false ? "Tiền mặt" : "Thẻ")" class="form-control" readonly />
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Người liên hệ giao:")
-                @Html.TextBoxFor(model => model.recipient, new { @class = "form-control"})
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Ngày giao dự kiến:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.estimateDateOfDelivery, "{0:dd/MM/yyyy}", new { @type = "date", @class = "form-control", @strDate = Model.estimateDateOfDelivery?.ToLocalTime(), @readonly = "readony" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("SĐT giao:")
-                @Html.TextBoxFor(model => model.recipientPhone, new { @class = "form-control"})
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Cập nhật gần đây:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.updateDate, "{0:dd/MM/yyyy}", new { @type = "date", @class = "form-control", @readonly = "readonly", @strDate = Model.updateDate?.ToLocalTime() })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Ngày giao dự kiến:")
-                @Html.TextBoxFor(model => model.estimateDateOfDelivery, "{0:dd/MM/yyyy}", new { @type = "date", @class = "form-control", @strDate = Model.estimateDateOfDelivery?.ToLocalTime(), @readonly = "readony" })
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Người liên hệ giao:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.recipient, new { @class = "form-control" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Cập nhật gần đây:")
-                @Html.TextBoxFor(model => model.updateDate, "{0:dd/MM/yyyy}", new { @type = "date", @class = "form-control", @readonly = "readonly", @strDate = Model.updateDate?.ToLocalTime() })
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("SĐT giao:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.recipientPhone, new { @class = "form-control" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Nơi giao:")
-                @Html.TextBoxFor(model => model.deliveryAdd, new { @class = "form-control"})
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Nơi giao:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.deliveryAdd, new { @class = "form-control" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Ngày giao:")
-                @Html.TextBoxFor(model => model.deliveryDate, "{0:dd/MM/yyyy}", new { @type = "date", @class = "form-control", @strDate = Model.deliveryDate?.ToLocalTime() })
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Ngày giao:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.deliveryDate, "{0:dd/MM/yyyy}", new { @type = "date", @class = "form-control", @strDate = Model.deliveryDate?.ToLocalTime() })
+                </div>
             </div>
-            <div class="col-md-3">
-                @Html.Label("Tình trạng:")
-                @{
-                    if (Model.status == 2 || Model.status == 4)
-                    {
-                        @Html.DropDownListFor(model => model.status, new List<SelectListItem> {
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Tình trạng:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @{
+                        if (Model.status == 2 || Model.status == 4)
+                        {
+                            @Html.DropDownListFor(model => model.status, new List<SelectListItem> {
            new SelectListItem { Text = "Đã giao", Value = "2", Selected = Model.status == 2 ? true: false },
            new SelectListItem { Text = "Bị từ chối giao", Value = "4",Selected = Model.status == 4 ? true: false }
        }, new { @class = "form-control", @readonly = "readonly" })
-                    }
-                    else if (Model.status == 5 || Model.status == 3)
-                    {
-                        @Html.DropDownListFor(model => model.status, new List<SelectListItem> {
+                        }
+                        else if (Model.status == 5 || Model.status == 3)
+                        {
+                            @Html.DropDownListFor(model => model.status, new List<SelectListItem> {
            new SelectListItem { Text = "Đang giao", Value = "1", Selected = Model.status == 1 ? true: false },
            new SelectListItem { Text = "Kiểm kê thiếu", Value = "3", Selected = Model.status == 3 ? true: false },
        new SelectListItem { Text = "Chưa kiểm kê", Value = "5"}
        }, new { @class = "form-control" })
-                    }
-                    else if (Model.status == 1)
-                    {
-                        @Html.DropDownListFor(model => model.status, new List<SelectListItem> {
+                        }
+                        else if (Model.status == 1)
+                        {
+                            @Html.DropDownListFor(model => model.status, new List<SelectListItem> {
            new SelectListItem { Text = "Đang giao", Value = "1", Selected = true },
            new SelectListItem { Text = "Đã giao", Value = "2"},
            new SelectListItem { Text = "Bị từ chối giao", Value = "4"}
        }, new { @class = "form-control" })
+                        }
                     }
-                }
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Mô tả tình trạng")
-                @Html.TextBoxFor(model => model.description, new { @class = "form-control" })
+            <div class="col-md-6 col-lg-6 form-group">
+                @Html.Label("Mô tả tình trạng", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.description, new { @class = "form-control" })
+                </div>
             </div>
         </div>
 
@@ -178,16 +216,16 @@
                                 {
                                     if (Model.status == 5)
                                     {
-                                        <input type="submit" value="Xác nhận" class="btn btn-default" style="display:block; margin: 0 auto;" id="btnComfirm" />
+                                        <input type="submit" value="Xác nhận" class="btn btn-default" style="margin-right: 5px; margin-left:5px;" id="btnComfirm" />
                                     }
                                     else
                                     {
-                                        <input type="submit" value="Cập nhật" class="btn btn-default" style="margin-right: 5px;" id="btnUpdate" />
+                                        <input type="submit" value="Cập nhật" class="btn btn-default" style="margin-right: 5px; margin-left:5px;" id="btnUpdate" />
                                     }
                                     if (Model.status == 2)
                                     {
-                                        @Html.ActionLink("Lập hóa đơn", "Create", "Bill", new { idDelivery = Model.idDeliveryOrder }, new { @class = "btn btn-default", style = "margin-left: 5px;" })
-                                        @Html.ActionLink("Lập phiếu công nợ", "Create", "Debt", new { idDistributor = Model.idDistributor }, new { @class = "btn btn-default", style = "margin-left: 5px;" })
+                                        @Html.ActionLink("Lập hóa đơn", "Create", "Bill", new { idDelivery = Model.idDeliveryOrder }, new { @class = "btn btn-default", style = "margin-right: 5px; margin-left:5px;" })
+                                        @Html.ActionLink("Thanh Toán công nợ", "Create", "Debt", new { idDistributor = Model.idDistributor }, new { @class = "btn btn-default", style = "margin-right: 5px; margin-left:5px;" })
                                     }
                                 }
                             }

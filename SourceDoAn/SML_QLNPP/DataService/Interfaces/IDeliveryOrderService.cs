@@ -16,6 +16,5 @@ namespace DataService.Interfaces
 
         // can them vao
         IList<DeliveryOrder> GetAll();
-        int GenerateDOrderId();
     }
 }
