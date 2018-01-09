@@ -23,7 +23,7 @@
 
         $tableBody.append('<tr></tr>');
         var $currentRow = $('#returnRequest-detail tbody tr').eq(lastIndex);
-        $currentRow.append('<td>' + $('#product-id').val() + '</td>');
+        //$currentRow.append('<td>' + $('#product-id').val() + '</td>');
         $currentRow.append('<td><input type="hidden" id="ReturnRequestDetails[' + lastIndex.toString() + '].IdReturnRequest" name="ReturnRequestDetails[' + lastIndex.toString() + '].IdReturnRequest" value="' + $(this).data('returnRequestid') + '" class="table-input"/><input type="number" id="ReturnRequestDetails[' + lastIndex.toString() + '].IdProduct" name="ReturnRequestDetails[' + lastIndex.toString() + '].IdProduct" value="' + $('#product-id').val() + '" class="table-input"/></td>');
         $currentRow.append('<td>' + $('#product-name').val() + '</td>');
         $currentRow.append('<td><input type="number" id="ReturnRequestDetails[' + lastIndex.toString() + '].Quantity" name="ReturnRequestDetails[' + lastIndex.toString() + '].Quantity" value="' + $('#product-quantity').val() + '" class="table-input" /></td>');

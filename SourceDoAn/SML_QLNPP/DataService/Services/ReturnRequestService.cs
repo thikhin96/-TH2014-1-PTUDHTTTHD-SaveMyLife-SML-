@@ -92,7 +92,7 @@ namespace DataService.Services
             if (latestReturnRequest != null)
                 return latestReturnRequest.IdReturnRequest + 1;
             else
-                return 0;
+                return 1;
         }
         public string CreateReturnRequest(ReturnRequest returnRequest)
         {

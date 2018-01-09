@@ -1737,3 +1737,385 @@
 2018-01-09 03:20:07.3678|INFO|DataService.Services.StaffService|End Get Staff by username....
 2018-01-09 03:21:07.1522|INFO|DataService.Services.StaffService|Start Get Staff by username....
 2018-01-09 03:21:07.1722|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-09 18:26:12.6726|INFO|DataService.Services.AccountService|Start get login
+2018-01-09 18:26:17.9855|INFO|DataService.Services.AccountService|Completed get login
+2018-01-09 18:26:18.0014|INFO|DataService.LogLoginService|Start audit login
+2018-01-09 18:26:18.8924|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-09 18:26:28.3573|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-09 18:26:28.5802|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-09 18:34:35.0933|INFO|DataService.Services.AccountService|Start get login
+2018-01-09 18:34:38.2084|INFO|DataService.Services.AccountService|Completed get login
+2018-01-09 18:34:38.2315|INFO|DataService.LogLoginService|Start audit login
+2018-01-09 18:34:38.7298|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-09 18:35:56.4094|INFO|DataService.Services.DeliveryOrderService|Start Search DeliveryOrder by Status....
+2018-01-09 18:35:56.4094|INFO|DataService.Services.DeliveryOrderService|Start GetAll DeliveryOrder....
+2018-01-09 18:35:56.6763|INFO|DataService.Services.DeliveryOrderService|System.Data.Entity.Core.EntityCommandExecutionException: An error occurred while executing the command definition. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Invalid column name 'recipientPhone'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at DataService.Services.DeliveryOrderService.GetAll() in C:\Users\trucv\Desktop\TH2014-1-PTUDHTTTHD-SaveMyLife-SML\SourceDoAn\SML_QLNPP\DataService\Services\DeliveryOrderService.cs:line 144
+2018-01-09 18:35:56.7369|INFO|DataService.Services.DeliveryOrderService|End GetAll DeliveryOrder....
+2018-01-09 18:36:09.5056|INFO|DataService.Services.OrderService|Start search order
+2018-01-09 18:36:09.5076|INFO|DataService.Services.OrderService|Completed search order
+2018-01-09 18:36:31.6172|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-09 18:36:31.8332|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-09 18:37:11.9061|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-09 18:37:11.9271|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-09 18:37:12.6496|INFO|DataService.Services.DistributorService|Start service....
+2018-01-09 18:37:12.6882|INFO|DataService.Services.DistributorService|Start service....
+2018-01-09 18:37:12.7376|INFO|DataService.Services.DistributorService|End service...
+2018-01-09 18:37:13.1662|INFO|DataService.Services.DistributorService|End service...
+2018-01-09 18:37:13.2323|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-09 18:37:13.2593|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-09 18:38:00.0929|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-09 18:38:00.1340|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-09 18:38:00.1995|INFO|DataService.Services.DistributorService|Start service....
+2018-01-09 18:38:00.2125|INFO|DataService.Services.DistributorService|Start service....
+2018-01-09 18:38:00.2385|INFO|DataService.Services.DistributorService|End service...
+2018-01-09 18:38:00.2646|INFO|DataService.Services.DistributorService|End service...
+2018-01-09 18:38:00.3016|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-09 18:38:00.3266|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-09 18:44:08.6181|INFO|DataService.Services.AccountService|Start get login
+2018-01-09 18:44:10.9206|INFO|DataService.Services.AccountService|Completed get login
+2018-01-09 18:44:10.9469|INFO|DataService.LogLoginService|Start audit login
+2018-01-09 18:44:11.4079|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-09 18:47:04.8011|INFO|DataService.Services.AccountService|Start get login
+2018-01-09 18:47:07.1074|INFO|DataService.Services.AccountService|Completed get login
+2018-01-09 18:47:07.1195|INFO|DataService.LogLoginService|Start audit login
+2018-01-09 18:47:07.5375|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-09 23:58:19.7176|INFO|DataService.Services.AccountService|Start get login
+2018-01-09 23:58:39.8309|INFO|DataService.Services.AccountService|Completed get login
+2018-01-09 23:58:39.8359|INFO|DataService.LogLoginService|Start audit login
+2018-01-09 23:58:46.0644|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 00:00:11.0489|INFO|SML_QLNPP.Controllers.ReturnController|Start Search(GET) - OrderController
+2018-01-10 00:00:11.0856|INFO|DataService.Services.ReturnService|Start searching for return cards with key word:  and trade form: 0
+2018-01-10 00:00:11.7264|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-10 00:00:11.7264|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Search(GET) - ReturnController
+2018-01-10 00:00:19.0454|INFO|SML_QLNPP.Controllers.ReturnController|Start Search(GET) - OrderController
+2018-01-10 00:00:19.0454|INFO|DataService.Services.ReturnService|Start searching for return cards with key word:  and trade form: 1
+2018-01-10 00:00:19.1035|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-10 00:00:19.1175|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Search(GET) - ReturnController
+2018-01-10 00:00:24.2868|INFO|SML_QLNPP.Controllers.ReturnController|Start Search(GET) - OrderController
+2018-01-10 00:00:24.2888|INFO|DataService.Services.ReturnService|Start searching for return cards with key word:  and trade form: 0
+2018-01-10 00:00:24.3349|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-10 00:00:24.3349|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Search(GET) - ReturnController
+2018-01-10 00:00:29.4463|INFO|SML_QLNPP.Controllers.ReturnController|Start Show(GET) - ReturnController
+2018-01-10 00:00:29.4463|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 20
+2018-01-10 00:00:29.5764|INFO|DataService.Services.ReturnService|Success: Return Card number 20 returned!
+2018-01-10 00:00:29.8684|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Show(GET) - ReturnController
+2018-01-10 00:00:49.7962|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-10 00:00:49.8253|INFO|DataService.Services.ReturnService|Start Getting return request number: 42
+2018-01-10 00:00:49.8633|INFO|DataService.Services.ReturnService|Success: Return Request number 42 returned!
+2018-01-10 00:00:50.0254|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-10 00:00:50.1590|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-10 00:00:50.1690|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-10 00:01:38.5637|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 00:01:38.7346|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 00:10:37.2349|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 00:10:43.2494|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 00:10:43.2494|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 00:10:43.5656|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 00:10:54.6543|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-10 00:10:54.6543|INFO|DataService.Services.ReturnService|Start Getting return request number: 43
+2018-01-10 00:10:54.8272|INFO|DataService.Services.ReturnService|Success: Return Request number 43 returned!
+2018-01-10 00:10:54.9563|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-10 00:10:55.0864|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-10 00:10:55.0864|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-10 00:10:59.0301|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 00:10:59.1591|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 00:12:39.3965|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-10 00:12:39.3975|INFO|DataService.Services.ReturnService|Start Getting return request number: 44
+2018-01-10 00:12:39.6021|INFO|DataService.Services.ReturnService|Success: Return Request number 44 returned!
+2018-01-10 00:12:39.7102|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-10 00:12:39.7442|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-10 00:12:39.7672|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-10 00:12:49.6515|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 00:12:49.6755|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 00:13:03.6463|INFO|SML_QLNPP.Controllers.ReturnController|Start Search(GET) - OrderController
+2018-01-10 00:13:03.6543|INFO|DataService.Services.ReturnService|Start searching for return cards with key word:  and trade form: 2
+2018-01-10 00:13:03.8645|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-10 00:13:03.9824|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Search(GET) - ReturnController
+2018-01-10 00:13:16.5484|INFO|SML_QLNPP.Controllers.ReturnController|Start Show(GET) - ReturnController
+2018-01-10 00:13:16.5585|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 37
+2018-01-10 00:13:16.6075|INFO|DataService.Services.ReturnService|Success: Return Card number 37 returned!
+2018-01-10 00:13:16.7526|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Show(GET) - ReturnController
+2018-01-10 00:17:44.1407|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 00:17:46.8383|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 00:17:46.9205|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-10 00:17:46.9706|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-10 00:17:46.9836|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 00:17:47.3380|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 00:17:55.1415|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 00:17:55.1725|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 00:17:55.2861|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-10 00:17:55.3111|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-10 00:17:55.3231|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 00:17:55.3762|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 00:17:59.0247|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 00:17:59.0468|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 00:17:59.0598|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-10 00:17:59.0888|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-10 00:17:59.1008|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 00:17:59.2309|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 00:18:04.1911|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 00:18:04.2261|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 00:18:04.2261|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-10 00:18:04.2721|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-10 00:18:04.2871|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 00:18:04.3502|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 00:18:15.1318|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 00:18:15.1568|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 00:18:15.1768|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 00:18:15.2479|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 00:24:43.4259|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 00:24:45.6379|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 00:24:45.6623|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 00:24:46.1106|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 00:57:34.2988|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 00:57:41.5499|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 00:57:41.5499|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 00:57:42.0175|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 01:08:18.9468|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 01:08:21.9795|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 01:08:21.9945|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 01:08:22.4476|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 01:10:05.8915|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 01:10:08.8303|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 01:10:09.2552|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 01:10:09.5811|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 01:17:30.8243|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 01:17:33.3133|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 01:17:33.5042|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 01:17:33.9962|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 01:23:11.7660|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 01:23:14.0998|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 01:23:14.2196|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 01:23:14.5754|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 01:26:22.6123|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 01:26:24.7914|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 01:26:24.8351|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 01:26:25.1329|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 01:30:40.3385|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 01:30:42.9517|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 01:30:42.9837|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 01:30:43.3260|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 01:37:47.3346|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 01:37:49.3340|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 01:37:49.3460|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 01:37:49.7624|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 01:42:46.5172|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 01:42:49.0407|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 01:42:49.0407|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 01:42:49.4733|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 01:43:41.0296|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 01:43:41.0576|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 01:43:41.0707|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 01:43:41.1387|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 01:44:05.9904|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-10 01:44:05.9974|INFO|DataService.Services.ReturnService|Start Getting return request number: 46
+2018-01-10 01:44:06.0325|INFO|DataService.Services.ReturnService|Success: Return Request number 46 returned!
+2018-01-10 01:44:06.1656|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-10 01:44:06.2186|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-10 01:44:06.2286|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-10 01:44:23.2950|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 01:44:23.3520|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 01:46:19.3183|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 01:46:19.3393|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 01:46:25.1583|INFO|SML_QLNPP.Controllers.ReturnController|Start Search(GET) - OrderController
+2018-01-10 01:46:25.1673|INFO|DataService.Services.ReturnService|Start searching for return cards with key word:  and trade form: 0
+2018-01-10 01:46:25.3529|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-10 01:46:25.3529|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Search(GET) - ReturnController
+2018-01-10 02:01:25.6496|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 02:01:28.1761|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 02:01:28.2783|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 02:01:28.7285|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 02:01:44.6722|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-10 02:01:44.6722|INFO|DataService.Services.ReturnService|Start Getting return request number: 47
+2018-01-10 02:01:44.9191|INFO|DataService.Services.ReturnService|Success: Return Request number 47 returned!
+2018-01-10 02:01:45.1889|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-10 02:01:45.3039|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-10 02:01:45.3039|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-10 02:01:57.3755|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 02:01:57.4355|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 02:02:49.1719|INFO|SML_QLNPP.Controllers.ReturnController|Start Search(GET) - OrderController
+2018-01-10 02:02:49.2054|INFO|DataService.Services.ReturnService|Start searching for return cards with key word:  and trade form: 2
+2018-01-10 02:02:49.6757|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-10 02:02:49.7042|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Search(GET) - ReturnController
+2018-01-10 02:02:58.5479|INFO|SML_QLNPP.Controllers.ReturnController|Start Show(GET) - ReturnController
+2018-01-10 02:02:58.5479|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 37
+2018-01-10 02:02:58.6860|INFO|DataService.Services.ReturnService|Success: Return Card number 37 returned!
+2018-01-10 02:02:58.8882|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Show(GET) - ReturnController
+2018-01-10 02:04:46.5200|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 02:04:48.6521|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 02:04:48.6969|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 02:04:48.9551|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 02:05:04.8388|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-10 02:05:04.8388|INFO|DataService.Services.ReturnService|Start Getting return request number: 49
+2018-01-10 02:05:04.8608|INFO|DataService.Services.ReturnService|Success: Return Request number 49 returned!
+2018-01-10 02:05:04.9269|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-10 02:05:05.0285|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-10 02:05:05.0420|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-10 02:05:21.9363|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 02:05:22.0094|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 02:19:53.9282|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 02:20:00.7963|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 02:20:00.8073|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 02:20:01.6862|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 02:20:57.2859|INFO|SML_QLNPP.Controllers.ReturnController|Start Search(GET) - OrderController
+2018-01-10 02:20:57.4064|INFO|DataService.Services.ReturnService|Start searching for return cards with key word:  and trade form: 2
+2018-01-10 02:20:57.9813|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-10 02:20:58.0228|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Search(GET) - ReturnController
+2018-01-10 02:21:12.7771|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-10 02:21:12.9199|INFO|DataService.Services.ReturnService|Start Getting return request number: 48
+2018-01-10 02:21:12.9818|INFO|DataService.Services.ReturnService|Success: Return Request number 48 returned!
+2018-01-10 02:21:13.0228|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-10 02:21:13.1304|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-10 02:21:13.1787|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-10 02:21:17.8948|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 02:21:18.1780|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 02:22:27.8375|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 02:22:31.6245|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 02:22:31.6385|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 02:22:32.6525|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 02:22:49.5928|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-10 02:22:49.5928|INFO|DataService.Services.ReturnService|Start Getting return request number: 50
+2018-01-10 02:22:49.7947|INFO|DataService.Services.ReturnService|Success: Return Request number 50 returned!
+2018-01-10 02:22:50.0834|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-10 02:22:50.3904|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-10 02:22:50.4578|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-10 02:22:53.7841|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 02:22:53.9752|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 02:24:36.9518|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-10 02:24:36.9518|INFO|DataService.Services.ReturnService|Start Getting return request number: 50
+2018-01-10 02:24:37.1302|INFO|DataService.Services.ReturnService|Success: Return Request number 50 returned!
+2018-01-10 02:24:37.1682|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-10 02:24:37.2007|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-10 02:24:37.2243|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-10 02:24:52.7189|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(POST) - ReturnController
+2018-01-10 02:24:52.7189|INFO|DataService.Services.ReturnService|Start creating new return card
+2018-01-10 02:24:53.0609|INFO|DataService.Services.ReturnService|Success: A new return card created!
+2018-01-10 02:24:53.1013|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(POST) - ReturnController
+2018-01-10 02:24:53.1198|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-10 02:24:53.1333|INFO|DataService.Services.ReturnService|Start Getting return request number: 50
+2018-01-10 02:24:53.1333|INFO|DataService.Services.ReturnService|Success: Return Request number 50 returned!
+2018-01-10 02:24:53.1766|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-10 02:24:53.2144|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-10 02:24:53.2598|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-10 02:29:30.3699|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 02:29:33.3435|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 02:29:33.3769|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 02:29:33.7905|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 02:29:56.6924|INFO|SML_QLNPP.Controllers.ReturnController|Start Search(GET) - OrderController
+2018-01-10 02:29:56.7029|INFO|DataService.Services.ReturnService|Start searching for return cards with key word:  and trade form: 2
+2018-01-10 02:29:57.3445|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-10 02:29:57.3700|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Search(GET) - ReturnController
+2018-01-10 02:30:47.6733|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-10 02:30:47.7792|INFO|DataService.Services.ReturnService|Start Getting return request number: 48
+2018-01-10 02:30:47.7907|INFO|DataService.Services.ReturnService|Success: Return Request number 48 returned!
+2018-01-10 02:30:47.8242|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-10 02:30:47.9999|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-10 02:30:48.0115|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-10 02:31:15.0751|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(POST) - ReturnController
+2018-01-10 02:31:15.0751|INFO|DataService.Services.ReturnService|Start creating new return card
+2018-01-10 02:31:15.5264|INFO|DataService.Services.ReturnService|Success: A new return card created!
+2018-01-10 02:31:15.5849|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(POST) - ReturnController
+2018-01-10 02:31:15.6190|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 02:31:15.7217|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 02:33:13.1987|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 02:33:13.1987|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 02:34:43.0247|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 02:34:43.0247|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 02:46:30.4915|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 02:46:33.3380|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 02:46:33.3380|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 02:46:33.8178|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 02:47:03.4793|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-10 02:47:03.4793|INFO|DataService.Services.ReturnService|Start Getting return request number: 48
+2018-01-10 02:47:03.5409|INFO|DataService.Services.ReturnService|Success: Return Request number 48 returned!
+2018-01-10 02:47:03.8226|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-10 02:47:03.9869|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-10 02:47:03.9964|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-10 02:47:10.1172|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(POST) - ReturnController
+2018-01-10 02:47:10.1172|INFO|DataService.Services.ReturnService|Start creating new return card
+2018-01-10 02:47:10.3949|INFO|DataService.Services.ReturnService|Success: A new return card created!
+2018-01-10 02:47:10.4389|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(POST) - ReturnController
+2018-01-10 02:47:10.4794|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-10 02:47:10.6563|INFO|DataService.Services.ReturnService|Start Getting return request number: 48
+2018-01-10 02:47:10.7990|INFO|DataService.Services.ReturnService|Success: Return Request number 48 returned!
+2018-01-10 02:47:10.9838|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-10 02:47:11.0248|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-10 02:47:11.0248|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-10 02:47:18.3094|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(POST) - ReturnController
+2018-01-10 02:47:18.3094|INFO|DataService.Services.ReturnService|Start creating new return card
+2018-01-10 02:47:18.4115|INFO|DataService.Services.ReturnService|Success: A new return card created!
+2018-01-10 02:47:18.4646|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(POST) - ReturnController
+2018-01-10 02:47:18.5131|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-10 02:47:18.5131|INFO|DataService.Services.ReturnService|Start Getting return request number: 48
+2018-01-10 02:47:18.5726|INFO|DataService.Services.ReturnService|Success: Return Request number 48 returned!
+2018-01-10 02:47:18.7621|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-10 02:47:18.8019|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-10 02:47:18.8099|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-10 02:47:45.4739|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 02:47:45.5619|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 02:48:09.7638|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 02:48:09.8138|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 02:48:09.9850|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 02:48:10.0283|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 02:48:17.3974|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 02:48:17.4444|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 02:48:17.5395|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 02:48:17.5815|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 02:48:42.3559|INFO|SML_QLNPP.Controllers.ReturnController|Start Search(GET) - OrderController
+2018-01-10 02:48:42.3559|INFO|DataService.Services.ReturnService|Start searching for return cards with key word:  and trade form: 0
+2018-01-10 02:48:42.6697|INFO|DataService.Services.ReturnService|Searched for return cards successfully
+2018-01-10 02:48:42.6697|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Search(GET) - ReturnController
+2018-01-10 02:50:57.7353|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(GET) - ReturnController
+2018-01-10 02:50:57.7353|INFO|DataService.Services.ReturnService|Start Getting return request number: 50
+2018-01-10 02:50:57.7934|INFO|DataService.Services.ReturnService|Success: Return Request number 50 returned!
+2018-01-10 02:50:58.0044|INFO|DataService.Services.ReturnService|Start Generating Return Card id
+2018-01-10 02:50:58.0530|INFO|DataService.Services.ReturnService|Success: Return Card id generated!
+2018-01-10 02:50:58.0620|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(GET) - ReturnController
+2018-01-10 02:51:03.5390|INFO|SML_QLNPP.Controllers.ReturnController|Start Create(POST) - ReturnController
+2018-01-10 02:51:03.5390|INFO|DataService.Services.ReturnService|Start creating new return card
+2018-01-10 02:51:03.6746|INFO|DataService.Services.ReturnService|Success: A new return card created!
+2018-01-10 02:51:03.7421|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Create(POST) - ReturnController
+2018-01-10 02:51:03.8317|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 02:51:03.8857|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 02:58:55.9575|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 02:58:57.9858|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 02:58:58.0068|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 02:58:58.4162|INFO|DataService.LogLoginService|Error audit login: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 02:59:02.8992|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 02:59:03.0233|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 02:59:20.4708|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 02:59:20.4959|INFO|DataService.Services.StaffService|End Get Staff by username....
+2018-01-10 02:59:20.6910|INFO|DataService.Services.StaffService|Start Get Staff by username....
+2018-01-10 02:59:20.7130|INFO|DataService.Services.StaffService|End Get Staff by username....
