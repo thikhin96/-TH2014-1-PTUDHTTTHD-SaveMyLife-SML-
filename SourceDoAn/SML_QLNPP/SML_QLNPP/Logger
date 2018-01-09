@@ -1,0 +1,191 @@
+2018-01-07 18:12:55.1943|INFO|DataService.Services.OrderService|Start search order
+2018-01-07 18:16:21.9788|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 18:16:27.6973|INFO|DataService.Services.AccountService|Completed get login
+2018-01-07 18:16:27.7083|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-07 18:16:27.7422|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-07 18:16:27.7652|INFO|DataService.LogLoginService|Start audit login
+2018-01-07 18:16:28.9651|INFO|DataService.LogLoginService|End audit login
+2018-01-07 18:16:40.6370|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 18:16:40.6570|INFO|DataService.Services.AccountService|Completed get login
+2018-01-07 18:16:40.6770|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-07 18:16:40.6920|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-07 18:16:40.7015|INFO|DataService.LogLoginService|Start audit login
+2018-01-07 18:16:40.7226|INFO|DataService.LogLoginService|End audit login
+2018-01-07 18:22:24.8557|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 18:22:24.9152|INFO|DataService.Services.AccountService|Completed get login
+2018-01-07 18:22:24.9307|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-07 18:22:24.9492|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-07 18:22:24.9492|INFO|DataService.LogLoginService|Start audit login
+2018-01-07 18:22:25.1308|INFO|DataService.LogLoginService|End audit login
+2018-01-07 18:22:48.7929|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 18:22:48.8135|INFO|DataService.Services.AccountService|Completed get login
+2018-01-07 18:22:48.8280|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-07 18:22:48.8450|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-07 18:22:48.8575|INFO|DataService.LogLoginService|Start audit login
+2018-01-07 18:22:48.8990|INFO|DataService.LogLoginService|End audit login
+2018-01-07 18:24:22.2566|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 18:24:22.2776|INFO|DataService.Services.AccountService|Completed get login
+2018-01-07 18:24:22.4449|INFO|DataService.LogLoginService|Start audit login
+2018-01-07 18:24:22.4664|INFO|DataService.LogLoginService|End audit login
+2018-01-07 18:24:57.3459|INFO|DataService.Services.OrderService|Start search order
+2018-01-07 18:27:49.6738|INFO|DataService.Services.OrderService|Start search order
+2018-01-07 18:28:49.5468|INFO|DataService.Services.OrderService|Start search order
+2018-01-07 18:31:18.4916|INFO|DataService.Services.OrderService|Start search order
+2018-01-07 18:32:00.9075|INFO|DataService.Services.OrderService|Start search order
+2018-01-07 18:32:52.0078|INFO|DataService.Services.OrderService|Start search order
+2018-01-07 18:34:17.3978|INFO|DataService.Services.OrderService|Start search order
+2018-01-07 18:34:45.3702|INFO|DataService.Services.OrderService|Start search order
+2018-01-07 18:35:21.7925|INFO|DataService.Services.OrderService|Start search order
+2018-01-07 18:35:57.7710|INFO|DataService.Services.OrderService|Start search order
+2018-01-07 18:36:21.7142|INFO|DataService.Services.OrderService|Start search order
+2018-01-07 18:41:36.3801|INFO|DataService.Services.OrderService|Start search order
+2018-01-07 18:46:36.1412|INFO|DataService.Services.OrderService|Start search order
+2018-01-07 19:11:13.4683|INFO|DataService.Services.AccountService|Start get login
+2018-01-07 19:11:15.9930|INFO|DataService.Services.AccountService|Completed get login
+2018-01-07 19:11:15.9930|INFO|DataService.LogLoginService|Start audit login
+2018-01-07 19:11:16.2142|INFO|DataService.LogLoginService|End audit login
+2018-01-07 19:13:12.8845|INFO|DataService.Services.OrderService|Start search order
+2018-01-07 19:15:14.9966|INFO|SML_QLNPP.Controllers.DistributorController|Start controller to load list of distributors....
+2018-01-07 19:15:15.0166|INFO|DataService.Services.DistributorService|Start service....
+2018-01-07 19:15:15.8128|INFO|DataService.Services.DistributorService|End service...
+2018-01-07 21:45:20.7478|INFO|DataService.Services.OrderService|Start search order
+2018-01-07 21:46:36.0318|INFO|DataService.Services.OrderService|Start search order
+2018-01-07 21:51:55.8110|INFO|DataService.Services.OrderService|Start search order
+2018-01-08 19:31:53.6460|INFO|DataService.Services.AccountService|Start get login
+2018-01-08 19:31:55.1282|INFO|DataService.Services.AccountService|Completed get login
+2018-01-08 19:31:55.2900|INFO|DataService.LogLoginService|Start audit login
+2018-01-08 19:31:58.7752|INFO|DataService.LogLoginService|End audit login
+2018-01-08 19:39:36.3121|INFO|DataService.Services.LogProductService|Start audit update product's price
+2018-01-08 19:39:36.8003|INFO|DataService.Services.LogProductService|Error audit update product's price: An error occurred while updating the entries. See the inner exception for details.
+2018-01-10 00:26:55.0721|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 00:28:51.9795|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 00:28:58.6406|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 00:28:58.6692|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 00:28:59.0728|INFO|DataService.LogLoginService|End audit login
+2018-01-10 00:29:59.6125|INFO|SML_QLNPP.Controllers.ContractController|Start controller to load list of contract....
+2018-01-10 00:29:59.6375|INFO|DataService.Services.ContractService|Start Service to search info of the distributor...
+2018-01-10 00:29:59.8417|INFO|DataService.Services.ContractService|End service...
+2018-01-10 00:30:26.5995|INFO|SML_QLNPP.Controllers.ContractController|Start controller to filter....
+2018-01-10 00:30:26.6305|INFO|SML_QLNPP.Controllers.ContractController|Start controller to load list of contract....
+2018-01-10 00:30:26.6450|INFO|DataService.Services.ContractService|Start Service to search info of the distributor...
+2018-01-10 00:30:26.6620|INFO|DataService.Services.ContractService|End service...
+2018-01-10 00:35:05.3407|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 00:35:05.5354|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 00:35:05.5574|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 00:35:06.8115|INFO|DataService.LogLoginService|End audit login
+2018-01-10 00:58:10.1558|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 00:58:10.3124|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 00:58:10.3274|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 00:58:10.3870|INFO|DataService.LogLoginService|End audit login
+2018-01-10 01:09:38.1156|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 01:09:43.7631|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 01:09:43.7862|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-10 01:09:43.8072|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-10 01:09:43.8222|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 01:09:44.8137|INFO|DataService.LogLoginService|End audit login
+2018-01-10 01:09:57.4831|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 01:09:57.5706|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 01:09:57.5876|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-10 01:09:57.6091|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-10 01:09:57.6242|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 01:09:57.6467|INFO|DataService.LogLoginService|End audit login
+2018-01-10 01:10:05.6199|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 01:10:05.6634|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 01:10:05.6809|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 01:10:05.7204|INFO|DataService.LogLoginService|End audit login
+2018-01-10 01:29:48.4469|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 01:29:48.6290|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 01:29:48.6450|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 01:29:49.4255|INFO|DataService.LogLoginService|End audit login
+2018-01-10 01:42:51.4765|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 01:42:51.6416|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 01:42:51.6541|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 01:42:52.4206|INFO|DataService.LogLoginService|End audit login
+2018-01-10 01:56:29.9122|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 01:57:13.1200|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 01:59:13.5194|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 02:06:33.4074|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 02:06:33.5695|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 02:06:33.5695|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 02:06:34.3269|INFO|DataService.LogLoginService|End audit login
+2018-01-10 02:06:42.5522|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 02:13:43.9492|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 02:22:14.4477|INFO|DataService.PromotionService|Start search promotion
+2018-01-10 02:22:14.4622|INFO|DataService.PromotionService|Start search ALL promotion
+2018-01-10 02:22:14.5683|INFO|DataService.PromotionService|Completed search promotion
+2018-01-10 03:09:51.5337|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 03:09:51.7144|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 03:09:51.7299|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-10 03:09:51.7444|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-10 03:09:51.7600|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 03:09:51.8245|INFO|DataService.LogLoginService|End audit login
+2018-01-10 03:10:00.7821|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 03:10:00.8146|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 03:10:00.8331|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 03:10:00.8787|INFO|DataService.LogLoginService|End audit login
+2018-01-10 03:15:50.4696|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 03:15:50.6777|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 03:15:50.6912|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-10 03:15:50.7098|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-10 03:15:50.7263|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 03:15:51.5638|INFO|DataService.LogLoginService|End audit login
+2018-01-10 03:16:03.7258|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 03:16:03.7603|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 03:16:03.7824|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 03:16:03.8404|INFO|DataService.LogLoginService|End audit login
+2018-01-10 03:16:25.0613|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 03:16:25.0778|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-10 03:16:38.4223|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 03:16:38.4533|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-10 03:19:03.0476|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 03:19:03.0681|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-10 03:28:03.6998|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 03:28:03.7313|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-10 03:28:13.5757|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 03:28:13.5982|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-10 03:33:46.0144|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 03:33:46.0360|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-10 03:38:46.4717|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 03:38:46.4877|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-10 03:39:02.2218|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 03:39:02.2373|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-10 03:39:03.4578|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 03:39:03.4753|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-10 03:39:13.9416|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 03:39:13.9582|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-10 04:03:37.7047|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 04:03:38.6386|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 04:03:38.6531|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 04:03:38.7091|INFO|DataService.LogLoginService|End audit login
+2018-01-10 04:07:58.1781|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 04:07:58.3442|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 04:07:58.3648|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 04:07:59.1423|INFO|DataService.LogLoginService|End audit login
+2018-01-10 04:11:52.0258|INFO|DataService.Services.DeliveryOrderService|Start GetAll DeliveryOrder....
+2018-01-10 04:11:52.0408|INFO|DataService.Services.DeliveryOrderService|Start GetAll DeliveryOrder....
+2018-01-10 04:11:52.2780|INFO|DataService.Services.DeliveryOrderService|An error occurred while executing the command definition. See the inner exception for details.
+2018-01-10 04:11:52.2925|INFO|DataService.Services.DeliveryOrderService|End GetAll DeliveryOrder....
+2018-01-10 04:11:54.6150|INFO|DataService.Services.DeliveryOrderService|Start GetAll DeliveryOrder....
+2018-01-10 04:11:54.6290|INFO|DataService.Services.DeliveryOrderService|Start GetAll DeliveryOrder....
+2018-01-10 04:11:54.6470|INFO|DataService.Services.DeliveryOrderService|An error occurred while executing the command definition. See the inner exception for details.
+2018-01-10 04:11:54.6470|INFO|DataService.Services.DeliveryOrderService|End GetAll DeliveryOrder....
+2018-01-10 04:12:58.6073|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 04:12:58.6313|INFO|DataService.Services.OrderService|Completed search order
+2018-01-10 04:13:59.2298|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 04:13:59.2523|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-10 04:20:17.7414|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 04:20:22.6341|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 04:20:22.6541|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-10 04:20:22.6832|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-10 04:20:22.7037|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 04:20:23.4492|INFO|DataService.LogLoginService|End audit login
+2018-01-10 04:20:29.7551|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 04:20:29.7866|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 04:20:29.8136|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-10 04:20:29.8321|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-10 04:20:29.8477|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 04:20:29.8717|INFO|DataService.LogLoginService|End audit login
+2018-01-10 04:20:37.9115|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 04:20:37.9405|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 04:20:37.9700|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 04:20:37.9976|INFO|DataService.LogLoginService|End audit login

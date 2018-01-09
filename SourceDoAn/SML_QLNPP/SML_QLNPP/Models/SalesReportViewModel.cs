@@ -19,8 +19,8 @@ namespace SML_QLNPP.Models
         public IList<Bill> Bill { get; set; }
         public int idDistributor { get; set; }
         //public string NameDistributor { get; set; }
-        //public int Distributor { get; set; }
-        public IList<Distributor> Distributor { get; set; }
+        public int Distributor { get; set; }
+        public List<Distributor> Distributors { get; set; }
 
     }
 }

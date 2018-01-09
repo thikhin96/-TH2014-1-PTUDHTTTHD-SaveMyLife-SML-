@@ -56,5 +56,29 @@ namespace DataService.Interfaces
                 return null;
             }  
         }
+
+        public IList<Bill> SearchListBill(int month, int quartar, int year, int idDistributor)
+        {
+            try
+            {
+                logger.Info("Start search order");
+                IRepository<Bill> repository = _unitOfWork.Repository<Bill>();
+                if (month == 0 && quartar == 0 && year == 0 && idDistributor == 0)
+                {
+                    logger.Info("Start search ALL order");
+                    return repository.GetAll().ToList();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                logger.Info("Error Search Order: " + ex.Message);
+                return null;
+            }
+        }
     }
 }

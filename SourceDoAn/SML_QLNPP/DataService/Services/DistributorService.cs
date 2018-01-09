@@ -205,16 +205,19 @@ namespace DataService.Services
             var result = repository.Get(a => a.idDistributor == idd);
             return result != null ? result : null;
         }
-
-        public IEnumerable GetList()
+        public List<Distributor> GetAllDistributor()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var dis = _distributorRepository.GetAll().ToList();
+                return dis;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        IList<DistributorList> IDistributorService.GetAll()
-        {
-            throw new NotImplementedException();
-        }
 
 
         public List<Distributor> SearchByName(string searchTerm)
@@ -241,6 +244,14 @@ namespace DataService.Services
                 return false;
             }
         }
+        public bool priceOverDebt(int distributorId, decimal price)
+        {
+            throw new NotImplementedException();
+        }
 
+        public IEnumerable GetList()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

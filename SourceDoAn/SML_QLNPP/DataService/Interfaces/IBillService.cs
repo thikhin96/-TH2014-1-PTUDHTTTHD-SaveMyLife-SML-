@@ -10,5 +10,6 @@ namespace DataService.Interfaces
     {
         bool AddBill(Bill bill);
         IList<Bill> SearchById(int id);
+        IList<Bill> SearchListBill(int month, int quartar, int year, int idDistributor);
     }
 }

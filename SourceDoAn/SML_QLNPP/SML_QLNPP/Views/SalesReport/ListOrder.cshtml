@@ -4,6 +4,21 @@
     ViewBag.Title = "ListOrder";
     Layout = "~/Views/Shared/_ALayout.cshtml";
 }
+@{
+    //var success = ViewBag.success as string;
+    var fail = ViewBag.fail as string;
+
+    List<SelectListItem> listDis = new List<SelectListItem>();
+    listDis.Add(new SelectListItem { Text = "", Value = "", Selected = true });
+
+
+}
+
+@foreach (var type in Model.Distributors)
+{
+    listDis.Add(new SelectListItem { Text = @type.name, Value = @type.idDistributor.ToString() });
+}
+
 @section css{
     <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/Order/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
@@ -27,61 +42,68 @@
     <div class="box-header with-border">
         <h3 class="box-title">Thông tin tìm kiếm</h3>
     </div>
+@using (Html.BeginForm("ListOrder", "SalesReport", FormMethod.Post))
+{
     <div class="box-body">
         <div class="col-md-2">
             <label>-----Tháng-----</label>
-            <select id="month">
-                <option value="0">Chọn tháng...</option>
-                <option value="1">Tháng 1</option>
-                <option value="2">Tháng 2</option>
-                <option value="3">Tháng 3</option>
-                <option value="4">Tháng 4</option>
-                <option value="5">Tháng 5</option>
-                <option value="6">Tháng 6</option>
-                <option value="7">Tháng 7</option>
-                <option value="8">Tháng 8</option>
-                <option value="9">Tháng 9</option>
-                <option value="10">Tháng 10</option>
-                <option value="11">Tháng 11</option>
-                <option value="12">Tháng 12</option>
-            </select>
+            <div id="month">
+                @Html.DropDownList("ListMonth", new List<SelectListItem>() { new SelectListItem {Text="Chọn tháng...",Value="0",Selected=true },
+              new SelectListItem {Text="Tháng 1",Value="1" },
+              new SelectListItem {Text="Tháng 2",Value="2"},
+              new SelectListItem {Text="Tháng 3",Value="3"},
+              new SelectListItem {Text="Tháng 4",Value="4" },
+              new SelectListItem {Text="Tháng 5",Value="5" },
+              new SelectListItem {Text="Tháng 6",Value="6" },
+              new SelectListItem {Text="Tháng 7",Value="7"},
+              new SelectListItem {Text="Tháng 8",Value="8"},
+              new SelectListItem {Text="Tháng 9",Value="9" },
+              new SelectListItem {Text="Tháng 10",Value="10"},
+              new SelectListItem {Text="Tháng 11",Value="11" },
+              new SelectListItem {Text="Tháng 12",Value="12" }, }, new { @class = "form-control", @required = "required" })
+            </div>
         </div>
+
         <div class="col-md-2">
             <label>------Qúy-----</label>
-            <select id="quy">
-                <option value="0">Chọn quý...</option>
-                <option value="1">Quý 1</option>
-                <option value="2">Quý 2</option>
-                <option value="3">Quý 3</option>
-                <option value="4">Quý 4</option>
-            </select>
+            <div id="quartar">
+                @Html.DropDownList("ListQuartar", new List<SelectListItem>() { new SelectListItem {Text="Chọn quý...",Value="0",Selected=true },
+              new SelectListItem {Text="Quý 1",Value="1" },
+              new SelectListItem {Text="Quý 2",Value="2"},
+              new SelectListItem {Text="Quý 3",Value="3"},
+              new SelectListItem {Text="Quý 4",Value="4" }, }, new { @class = "form-control", @required = "required" })
+            </div>
+
         </div>
         <div class="col-md-2">
             <label>------Năm------</label>
-            <select id="year">
-                <option value="0">Chọn năm...</option>
-                <option value="2017">2017</option>
-                <option value="2018">2018</option>
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
-                <option value="2024">2024</option>
-                <option value="2025">2025</option>
-                <option value="2026">2026</option>
-                <option value="2027">2027</option>
-                <option value="2028">2028</option>
-            </select>
+            <div id="year">
+                @Html.DropDownList("ListYear", new List<SelectListItem>() { new SelectListItem {Text="Chọn năm...",Value="0",Selected=true },
+              new SelectListItem {Text="2017",Value="2017" },
+              new SelectListItem {Text="2018",Value="2018"},
+              new SelectListItem {Text="2019",Value="2019"},
+              new SelectListItem {Text="2020",Value="2020" },
+              new SelectListItem {Text="2021",Value="2021" },
+              new SelectListItem {Text="2022",Value="2022" },
+              new SelectListItem {Text="2023",Value="2023"},
+              new SelectListItem {Text="2024",Value="2024"},
+              new SelectListItem {Text="2025",Value="2025" },
+              new SelectListItem {Text="2026",Value="2026"},
+              new SelectListItem {Text="2027",Value="2027" },
+              new SelectListItem {Text="2028",Value="2028" }, }, new { @class = "form-control", @required = "required" })
+            </div>
         </div>
         <div class="col-md-2">
             <label>Nhà Phân Phối</label>
-                @*@Html.DropDownList("DistributorName", (IEnumerable<SelectListItem>)ViewBag.Orders as SelectList, "Chọn nhà phân phối..",new { @class = "form-control", @required = "required" })*@
+            <div id="idDistributor">
+                @Html.DropDownListFor(model => model.Distributor, listDis, "Chọn nhà phân phối..", new { @class = "form-control", @required = "required" })
+            </div>
 
         </div>
     </div>
+}
     <div class="box-footer">
-        <button type = "submit" class="btn btn-primary" id="SearchListOrder">Tìm kiếm kết quả</button>
+        <button type = "submit" class="btn btn-primary" id="searchListOrder">Tìm kiếm kết quả</button>
     </div>
 </div>
 
@@ -109,24 +131,9 @@
 
                             </thead>
                             <tbody>
-                                @*@{ if (Model != null && Model.Order != null)
-                                    {
-                                        foreach (var item in Model.Order)
-                                        {
-                                            <tr>
-
-                                                <td>@item.idOrder</td>
-                                                <td>@item.CreatedDate</td>
-                                                <td>@item.idDistributor</td>
-                                                <td>@item.Distributor.name</td>
-                                                <td>@item.idStaff</td>
-                                                <td>@item.Total</td>
-                                            </tr>
-                                        }
-                                    }
-                                }*@
+                                
                             </tbody>
-                            <tfoot>
+                            @*<tfoot>
                                 <tr>
                                     <th>Mã Đơn Hàng</th>
                                     <th>Ngày Lập</th>
@@ -135,7 +142,7 @@
                                     <th>Tổng Tiền</th>
                                 </tr>
 
-                            </tfoot>
+                            </tfoot>*@
                         </table>
                     </div>
                 </div>

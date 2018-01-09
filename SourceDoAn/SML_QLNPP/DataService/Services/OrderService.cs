@@ -238,25 +238,18 @@ namespace DataService.Services
         /// <param name="quartar"></param>
         /// <param name="year"></param>
         /// <returns></returns>
-        public IList<Order> SearchListOrder(int? idDistributor, string createDate, int month, int quartar, int year)
+        public IList<Order> SearchListOrder(int month, int quartar, int year, int idDistributor)
         {
             try
             {
                 logger.Info("Start search order");
                 IRepository<Order> repository = _unitOfWork.Repository<Order>();
-                if(createDate == "" || createDate == null)
+                if (month == 0 && quartar == 0 && year == 0 && idDistributor == 0)
                 {
-                    if (idDistributor==0)
-                    {
-                        return null;
-                    }
-                    if( DateTime.Parse(createDate).Month != 0)
-                    {
-                        return null;
-                    }
-                    return null;
+                    logger.Info("Start search ALL order");
+                    return repository.GetAll().ToList();
                 }
-                else
+                else 
                 {
                     return null;
                 }
@@ -300,5 +293,11 @@ namespace DataService.Services
                 return "Không thể cập nhật đơn đặt hàng";
             }
         }
+
+        public string CreateOrder(Order order, List<OrderDetail> orderDetails)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

@@ -15,7 +15,7 @@
     <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Order/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/Promotion/promotion.js"></script>
+    @*<script type="text/javascript" src="~/Scripts/Promotion/promotion.js"></script>*@
 }
 
 <div class="box box-info">
@@ -71,17 +71,14 @@
 
         <div class="col-md-2">
             <label>Nhà Phân Phối</label>
-            @*<select id="idDistributor">
-                <option value="volvo">Chọn nhà phân phối...</option>
-                <option value="1">Nhà Phân Phối A</option>
-                <option value="2">Nhà Phân Phối B</option>
-                <option value="3">Nhà Phân Phối C</option>
-            </select>*@
-            @*@Html.DropDownListFor(model => model.Orders, ViewBag.idDistributor as SelectList, "--Chọn nhà phân phối--", new { @class = "form-control", @required = "required" })*@
-
+            
         </div>
     </div>
     }
+    <div class="text-center">
+        <h4 style="text-align:center; font-weight: bold">Tổng Tiền: </h4>
+        <h4 style="text-align:center; font-weight: bold">Số Lượng Hàng Hóa: </h4>
+    </div>
     <div class="box-footer">
         <button type="submit" class="btn btn-primary" id="search">Tìm kiếm kết quả</button>
     </div>
@@ -116,8 +113,7 @@
                             <tbody>
                             </tbody>
                         </table>
-                        <h2 style="text-align:center; font-weight: bold">Tổng Tiền: </h2>
-                        <h2 style="text-align:center; font-weight: bold">Số Lượng Hàng Hóa: </h2>
+                        
                     </div>
                 </div>
             </div>
