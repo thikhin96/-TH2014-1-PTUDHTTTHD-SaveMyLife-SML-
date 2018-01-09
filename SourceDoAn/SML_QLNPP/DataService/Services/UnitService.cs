@@ -1,6 +1,7 @@
 ﻿using DataModel;
 using DataModel.Interfaces;
 using DataService.Interfaces;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace DataService.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<Unit> _unitRepository;
+        ILogger logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// Hàm khởi tạo
@@ -31,11 +33,14 @@ namespace DataService.Services
         {
             try
             {
+                logger.Info("Start audit get all units!");
                 var units = _unitRepository.GetAll().ToList();
+                logger.Info("End audit get all units!");
                 return units;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Info("Error audit get all units: " + ex.Message);
                 throw;
             }
         }
