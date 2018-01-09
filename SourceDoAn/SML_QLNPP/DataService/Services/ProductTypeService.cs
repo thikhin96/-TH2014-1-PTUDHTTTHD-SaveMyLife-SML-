@@ -1,6 +1,7 @@
 ﻿using DataModel;
 using DataModel.Interfaces;
 using DataService.Interfaces;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace DataService.Services
         {
             private readonly IUnitOfWork _unitOfWork;
             private readonly IRepository<ProductType> _productTypeRepository;
-
+            ILogger logger = LogManager.GetCurrentClassLogger();
             /// <summary>
             /// Hàm khởi tạo
             /// </summary>
@@ -31,11 +32,14 @@ namespace DataService.Services
             {
                 try
                 {
+                    logger.Info("Start audit get all product types!");
                     var types = _productTypeRepository.GetAll().ToList();
+                    logger.Info("End audit get all product types!");
                     return types;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    logger.Info("Error audit get all product types: " + ex.Message);
                     throw;
                 }
             }
