@@ -9,11 +9,11 @@ namespace SML_QLNPP.Models
     {
         public int idDebt { get; set; }
         public int idDistributor { get; set; }
+        public int idStaff { get; set; }
         public string nameDistributor { get; set; }
         public decimal debt { get; set; }
-        public DateTime date { get; set; }
+        public DateTime createdDate { get; set; }
         public decimal moneyDebt { get; set; }
-        public decimal newDebt { get; set; }
         public string staffName { get; set; }
     }
 }

@@ -18,7 +18,7 @@
     <AssemblyName>SML_QLNPP</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
@@ -275,6 +275,7 @@
     <Compile Include="Controllers\SalesReportController.cs" />
     <Compile Include="Controllers\ReturnController.cs" />
     <Compile Include="Controllers\ReturnRequestController.cs" />
+    <Compile Include="Controllers\StorageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -409,8 +410,7 @@
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\DeliveryOrder\datatables.min.js" />
-    <Content Include="Scripts\DeliveryOrder\deliveryorder.js" />
+    <Content Include="Scripts\DeliveryOrder\delivery.js" />
     <Content Include="Scripts\DeliveryOrder\details.js" />
     <Content Include="Scripts\DeliveryOrder\jquery-ui.min.js" />
     <Content Include="Scripts\Home\bootstrap.js" />
@@ -430,10 +430,8 @@
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\Debt\create.js" />
-    <Content Include="Scripts\DeliveryOrder\createdeliveryorder.js" />
-    <Content Include="Scripts\DeliveryOrder\deliveryorder.js" />
+    <Content Include="Scripts\DeliveryOrder\create.js" />
     <Content Include="Scripts\Contract\createContract.js" />
-    <Content Include="Scripts\DeliveryOrder\details.js" />
     <Content Include="Scripts\DeliveryOrder\jquery.dataTables.min.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
@@ -558,7 +556,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Order\createOrder.js" />
     <Content Include="Scripts\DeliveryOrder\datatables.min.js" />
-    <Content Include="Scripts\DeliveryOrder\jquery-ui.min.js" />
     <Content Include="Scripts\Order\datatables.min.js" />
     <Content Include="Scripts\Order\jquery-ui.min.js" />
     <Content Include="Scripts\Order\jquery.dataTables.min.js" />
@@ -639,7 +636,6 @@
     <Content Include="Views\Account\ALogin.cshtml" />
     <Content Include="Views\Bill\Create.cshtml" />
     <Content Include="Views\DeliveryOrder\Details.cshtml" />
-    <Content Include="Views\DeliveryOrder\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Views\Home\Index.cshtml" />
@@ -755,9 +751,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>65422</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>tl.com</IISUrl>
+          <IISUrl>http://localhost:65422/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
+          <UseCustomServer>True</UseCustomServer>
           <CustomServerUrl>http://www.kuga.com</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>

@@ -47,6 +47,13 @@ namespace SML_QLNPP.Controllers
             }
             else
             {
+                var contractList = order.Distributor.Contracts.ToList();
+                var nowContract = contractList.OrderByDescending(i => i.expiredDate).FirstOrDefault();
+                var commission = 0;
+                if (nowContract.status == true)
+                {
+                    commission = nowContract.commission.Value;
+                }
                 var model = new CreateDeliveryOrderViewModel
                 {
                     idOrder = order.idOrder,
@@ -60,6 +67,7 @@ namespace SML_QLNPP.Controllers
                     recipientPhone = order.Consignee.PhoneNumber,
                     totalPurchase = 0,
                     deliveryDate = DateTime.Now,
+                    commission = commission
                 };
 
                 // lấy km tốt nhất của order
@@ -82,40 +90,44 @@ namespace SML_QLNPP.Controllers
                     model.totalPurchase += ddOrder.quantity * ddOrder.Product.Price;
                 }
                 // đưa sp km vào listddOrder
-                foreach (var item in promotion.PromotionGifts)
+                if(promotion != null)
                 {
-                    bool check = true;
-                    foreach (var item1 in listddOrder)
+                    foreach (var item in promotion.PromotionGifts)
                     {
-                        if (item.idProduct == item1.idProduct)
+                        bool check = true;
+                        foreach (var item1 in listddOrder)
                         {
-                            listddOrder.Remove(item1);
-                            item1.promoQuantity = item.quantity * nPromotion;
-                            item1.note = "SLKM " + item.quantity * nPromotion + " từ CTKM số " + item.idPromotion;
-                            listddOrder.Add(item1);
-                            check = false;
-                            break;
+                            if (item.idProduct == item1.idProduct)
+                            {
+                                listddOrder.Remove(item1);
+                                item1.promoQuantity = item.quantity * nPromotion;
+                                item1.note = "SLKM " + item.quantity * nPromotion + " từ CTKM số " + item.idPromotion;
+                                listddOrder.Add(item1);
+                                check = false;
+                                break;
+                            }
                         }
-                    }
-                    if (check)
-                    {
-                        var ddOrder = new DetailedDeliveryOrder
+                        if (check)
                         {
-                            idProduct = item.idProduct,
-                            quantity = 0,
-                            promoQuantity = item.quantity * nPromotion,
-                            Product = item.Product,
-                            note = "SLKM " + item.quantity * nPromotion + " từ CTKM số " + item.idPromotion
-                            //idDeliveryOrder =1
-                        };
-                        listddOrder.Add(ddOrder);
+                            var ddOrder = new DetailedDeliveryOrder
+                            {
+                                idProduct = item.idProduct,
+                                quantity = 0,
+                                promoQuantity = item.quantity * nPromotion,
+                                Product = item.Product,
+                                note = "SLKM " + item.quantity * nPromotion + " từ CTKM số " + item.idPromotion
+                                //idDeliveryOrder =1
+                            };
+                            listddOrder.Add(ddOrder);
+                        }
                     }
                 }
                 model.DetailedDeliveryOrder = listddOrder;
                 // những thuộc tính cần chọn khi lập đơn giao hàng
                 ViewBag.Storage = order.Distributor.Storages.ToList();
                 ViewBag.Staff = _staffService.GetAll().ToList();
-                //
+                //  tính chiết khấu
+                model.totalPurchase = model.totalPurchase * (1 - model.commission / 100);
                 return View(model);
             }
         }
@@ -367,6 +379,9 @@ namespace SML_QLNPP.Controllers
                 delivery.description = model.description;
                 delivery.updateDate = DateTime.Now;
                 delivery.deliveryDate = model.deliveryDate;
+                delivery.deliveryAdd = model.deliveryAdd;
+                delivery.recipient = model.recipient;
+                delivery.recipientPhone = model.recipientPhone;
                 //delivery.deliveryDate = DateTime.ParseExact(Request["deliveryDate"].ToString(), "dd/MM/yyyy", null);
                 // lưu cập nhật xuốn db
                 bool result = _deliveryOrderService.UpdateDeliveryOrder(delivery);

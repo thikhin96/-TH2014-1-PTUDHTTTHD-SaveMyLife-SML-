@@ -25,14 +25,14 @@ namespace DataService.Services
         public bool AddDeliveryOrder(DeliveryOrder dOrder)
         {
             //throw new NotImplementedException();
+            logger.Info("Start Add DeliveryOrder....");
+            bool rs = false;
             try
             {
-                logger.Info("Start Add DeliveryOrder....");
-                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
-                repository.Add(dOrder);
+                IRepository<DeliveryOrder> repo = _unitOfWork.Repository<DeliveryOrder>();
+                repo.Add(dOrder);
                 _unitOfWork.SaveChange();
-                logger.Info("End Add DeliveryOrder....");
-                return true;
+                rs = true;
             }
             //catch (DbEntityValidationException e)
             //{
@@ -57,144 +57,98 @@ namespace DataService.Services
             catch (Exception ex)
             {
                 logger.Info(ex);
-                logger.Info("End Add DeliveryOrder....");
             }
-            return false;
+            logger.Info("End Add DeliveryOrder....");
+            return rs;
         }
         public bool UpdateDeliveryOrder(DeliveryOrder dOrder)
         {
+            logger.Info("Start Update DeliveryOrder....");
+            bool rs = false;
             try
             {
-                logger.Info("Start Update DeliveryOrder....");
-                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
-                repository.Update(dOrder);
+                IRepository<DeliveryOrder> repo = _unitOfWork.Repository<DeliveryOrder>();
+                repo.Update(dOrder);
                 _unitOfWork.SaveChange();
-                logger.Info("End Update DeliveryOrder....");
-                return true;
+                rs = true;
             }
             catch (Exception ex)
             {
                 logger.Info(ex.Message);
-                logger.Info("End Update DeliveryOrder....");
-                return false;
             }
+            logger.Info("End Update DeliveryOrder....");
+            return rs;
         }
 
         public DeliveryOrder SearchById(int id)
         {
+            logger.Info("Start Search DeliveryOrder by id DeliveryOrder....");
+            DeliveryOrder dOrder = null;
             try
             {
-                logger.Info("Start Search DeliveryOrder by id DeliveryOrder....");
-                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
-                var result = repository.Get(a => a.idDeliveryOrder == id);
-                if (result!= null)
-                {
-                    logger.Info("End Search DeliveryOrder by id DeliveryOrder....");
-                    return result;
-
-                }
-                else
-                {
-                    logger.Info("End Search DeliveryOrder by id DeliveryOrder....");
-                    return null;
-                }
+                IRepository<DeliveryOrder> repo = _unitOfWork.Repository<DeliveryOrder>();
+                dOrder = repo.Get(a => a.idDeliveryOrder == id);
             }
             catch(Exception ex)
             {
-                logger.Info(ex.Message);
-                logger.Info("End Search DeliveryOrder by id DeliveryOrder....");
-                return null;
+                logger.Info(ex);
             }
+            logger.Info("End Search DeliveryOrder by id DeliveryOrder....");
+            return dOrder;
         }
 
 
         public IList<DeliveryOrder> SearchByStatus(byte status)
         {
+            logger.Info("Start Search DeliveryOrder by Status....");
+            IList<DeliveryOrder> rs = null;
             try
             {
-                logger.Info("Start Search DeliveryOrder by Status....");
-                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
-                var result = repository.GetAll(a => a.status == status);
-                if (result != null)
-                {
-                    logger.Info("End Search DeliveryOrder by Status....");
-                    return result.ToList();
-                }
-                else
-                {
-                    logger.Info("End Search DeliveryOrder by Status....");
-                    return null;
-                }
+                IRepository<DeliveryOrder> repo = _unitOfWork.Repository<DeliveryOrder>();
+                rs= repo.GetAll(a => a.status == status).ToList();
             }
             catch (Exception ex)
             {
-                logger.Info(ex.Message);
-                logger.Info("End Search DeliveryOrder by Status....");
-                return null;
+                logger.Info(ex);
             }
+            logger.Info("End Search DeliveryOrder by Status....");
+            return rs;
         }
         public IList<DeliveryOrder> SearchByDeliveryDate(DateTime datetime)
         {
+            logger.Info("Start Search DeliveryOrder by Status....");
+            IList<DeliveryOrder> rs = null;
             try
             {
-                logger.Info("Start Search DeliveryOrder by DeliveryDate....");
-                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
-                var dtime = Convert.ToDateTime(datetime);
-                var result = repository.GetAll(a => (a.deliveryDate.Value.Year == dtime.Year
-                    && a.deliveryDate.Value.Month == dtime.Month
-                    && a.deliveryDate.Value.Day == dtime.Day));
-                if (result != null)
-                {
-                    logger.Info("End Search DeliveryOrder by DeliveryDate....");
-                    return result.ToList();
-                }
-                else
-                {
-                    logger.Info("End Search DeliveryOrder by DeliveryDate....");
-                    return null;
-                }
+                IRepository<DeliveryOrder> repo = _unitOfWork.Repository<DeliveryOrder>();
+                rs = repo.GetAll(a => (a.deliveryDate.Value.Year == datetime.Year
+                    && a.deliveryDate.Value.Month == datetime.Month
+                    && a.deliveryDate.Value.Day == datetime.Day)).ToList();
             }
             catch(Exception ex)
             {
-                logger.Info(ex.Message);
-                logger.Info("End Search DeliveryOrder by DeliveryDate....");
-                return null;
+                logger.Info(ex);
             }
+            logger.Info("End Search DeliveryOrder by DeliveryDate....");
+            return rs;
         }
         // can them vao
         public IList<DeliveryOrder> GetAll()
         {
+            logger.Info("Start Search DeliveryOrder by Status....");
+            IList<DeliveryOrder> rs = null;
             try
             {
                 logger.Info("Start GetAll DeliveryOrder....");
-                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
-                var result = repository.GetAll();
-                if (result != null)
-                {
-                    logger.Info("Start GetAll DeliveryOrder....");
-                    return result.ToList();
-                }
-                else
-                {
-                    logger.Info("Start GetAll DeliveryOrder....");
-                    return null;
-                }
+                IRepository<DeliveryOrder> repo = _unitOfWork.Repository<DeliveryOrder>();
+                rs = repo.GetAll().ToList();
             }
             catch(Exception ex)
             {
-                logger.Info(ex.Message);
-                logger.Info("End GetAll DeliveryOrder....");
-                return null;
+                logger.Info(ex);
             }
-        }
-        public int GenerateDOrderId()
-        {
-            IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
-            var latestdOrder = repository.GetAll().OrderByDescending(x => x.idDeliveryOrder).FirstOrDefault();
-            if (latestdOrder != null)
-                return latestdOrder.idDeliveryOrder + 1;
-            else
-                return 1;
+            logger.Info("End GetAll DeliveryOrder....");
+            return rs;
         }
     }
 }

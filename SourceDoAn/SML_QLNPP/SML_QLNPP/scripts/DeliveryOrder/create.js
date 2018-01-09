@@ -24,6 +24,7 @@
         var total = row.find("td:eq(7)").text().replace(/,/g, '') * 1;
         totalPurchase -= total;
         total = price * $(this).val();
+        total = total * (1 - $("#commission").val() / 100);
         totalPurchase += total;
         row.find("td:eq(7)").text(total.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
         $('#totalPurchase').val(totalPurchase);

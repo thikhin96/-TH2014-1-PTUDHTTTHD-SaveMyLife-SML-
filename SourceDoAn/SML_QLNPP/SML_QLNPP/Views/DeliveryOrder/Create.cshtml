@@ -48,14 +48,13 @@
     <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/DeliveryOrder/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/DeliveryOrder/datatables.min.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="~/Content/DeliveryOrder/create.css" rel="stylesheet" type="text/css" media="all" />
 }
 
 @section scripts{
-<script type="text/javascript" src="~/Scripts/DeliveryOrder/jquery-ui.min.js"></script>
-<script type="text/javascript" src="~/Scripts/DeliveryOrder/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="~/Scripts/DeliveryOrder/datatables.min.js"></script>
-<script type="text/javascript" src="~/Scripts/DeliveryOrder/createdeliveryorder.js"></script>
+    <script type="text/javascript" src="~/Scripts/DeliveryOrder/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/DeliveryOrder/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/DeliveryOrder/datatables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/DeliveryOrder/create.js"></script>
 }
 
 @using (Html.BeginForm("Create", "DeliveryOrder", FormMethod.Post))
@@ -67,146 +66,154 @@
                 {
                     if (ViewBag.types == 1)
                     {
-                        <div class="alert alter-warning"><strong>@ViewBag.msg</strong></div>
+                        <div class="alert alert-danger alert-dismissable">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>@ViewBag.msg</strong>
+                        </div>
                     }
                     else if (ViewBag.types == 2)
                     {
-                        <div class="alert alter-success"><strong>@ViewBag.msg</strong></div>
+                        <div class="alert alert-success alert-dismissable">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>@ViewBag.msg</strong>
+                        </div>
                     }
-
                 }
             }
             <h3 class="box-title" style="text-align:center; display:block; font-weight:bold">Lập đơn giao hàng</h3>
         </div>
 
-        <div class="box-body">
-            @*<div class="col-md-3 form-group">
-                    @Html.Label("Mã giao hàng:")
-                    @Html.TextBoxFor(model => model.idDeliveryOrder, new { @class = "form-control", @readonly = "readony" })
-                </div>*@
-            <div class="col-md-3 form-group">
-                @Html.Label("Mã đơn hàng:")
-                @Html.TextBoxFor(model => model.idOrder, new { @class = "form-control", @readonly = "readony" })
+        <div class="box-body" style="max-width:1200px; margin:auto">
+            <div class="col-md-6 form-group">
+                @Html.Label("Mã đơn hàng:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.idOrder, new { @class = "form-control", @readonly = "readony" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Mã/Tên nhân viên giao:")
-                @Html.DropDownListFor(model => model.idStaff, new SelectList(ListSataff, "idStaff", "staffName"), new { @class = "form-control" })
+            <div class="col-md-6 form-group">
+                @Html.Label("Mã/Tên nhân viên giao:", new { @class = "control-label col-sm-4" }) <div class="col-sm-8">
+                    @Html.DropDownListFor(model => model.idStaff, new SelectList(ListSataff, "idStaff", "staffName"), new { @class = "form-control" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Mã nhà phân phối:")
-                @Html.TextBoxFor(model => model.idDistributor, new { @class = "form-control", @readonly = "readony" })
+            <div class="col-md-6 form-group">
+                @Html.Label("Mã nhà phân phối:", new { @class = "control-label col-sm-4" }) <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.idDistributor, new { @class = "form-control", @readonly = "readony" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Tên nhà phân phối:")
-                @Html.TextBoxFor(model => model.distributorName, new { @class = "form-control", @readonly = "readony" })
+            <div class="col-md-6 form-group">
+                @Html.Label("Tên nhà phân phối:", new { @class = "control-label col-sm-4" }) <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.distributorName, new { @class = "form-control", @readonly = "readony" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Hình thức giao:")
-                <input type="text" value="@(Model.DeliveryType == false ? "Tự túc" : "Vitamilk giao")" class="form-control" readonly />
+            <div class="col-md-6 form-group">
+                @Html.Label("Chiết khấu (%):", new { @class = "control-label col-sm-4" }) <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.commission, new { @class = "form-control", @readonly = "readony" })
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Hình thức thanh toán:")
-                <input type="text" value="@(Model.PaymentType == false ? "Tiền mặt" : "Thẻ")" class="form-control" readonly />
+            <div class="col-md-6 form-group">
+                @Html.Label("Hình thức giao:", new { @class = "control-label col-sm-4" }) <div class="col-sm-8">
+                    <input type="text" value="@(Model.DeliveryType == false ? "Tự túc" : "Vitamilk giao")" class="form-control" readonly />
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Người liên hệ giao:")
-                @Html.TextBoxFor(model => model.recipient, new { @class = "form-control", @readonly = "readony" })
+            <div class="col-md-6 form-group">
+                @Html.Label("Hình thức thanh toán:", new { @class = "control-label col-sm-4" }) <div class="col-sm-8">
+                    <input type="text" value="@(Model.PaymentType == false ? "Tiền mặt" : "Thẻ")" class="form-control" readonly />
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("SĐT giao:")
-                @Html.TextBoxFor(model => model.recipientPhone, new { @class = "form-control", @readonly = "readony" })
+            <div class="col-md-6 form-group">
+                @Html.Label("Ngày giao dự kiến:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    <input type="text" value="@Convert.ToDateTime(@Model.estimateDateOfDelivery).ToString("dd/MM/yyyy")" class="form-control" readonly />
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Ngày giao dự kiến:")
-                <input type="text" value="@Convert.ToDateTime(@Model.estimateDateOfDelivery).ToString("dd/MM/yyyy")" class="form-control" readonly />
+            <div class="col-md-6 form-group">
+                @Html.Label("Người liên hệ giao:", new { @class = "control-label col-sm-4" })
+                 <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.recipient, new { @class = "form-control"})
+                </div>
             </div>
-            <div class="col-md-3 form-group">
-                @Html.Label("Nơi giao:")
-                @Html.DropDownListFor(model => model.deliveryAdd, ListAdd, new { @class = "form-control" })
+            <div class="col-md-6 form-group">
+                @Html.Label("SĐT giao:", new { @class = "control-label col-sm-4" }) 
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.recipientPhone, new { @class = "form-control"})
+                </div>
             </div>
-            @*
-                        <div class="col-md-3 form-group">
-                            @Html.Label("Ngày giao:")
-                            @Html.TextBoxFor(model => model.deliveryDate, new {@type = "date", @class = "form-control", @value = DateTime.Now })
-                         </div>
-
-                     <div class="col-md-3">
-                         <label>Tình trạng: </label>
-                         @{
-                             @Html.DropDownList("Trạng thái", new List<SelectListItem> {
-                                new SelectListItem { Text = "Chưa kiểm kê", Value = "5"}
-                }, new { @class = "form-control", @readonly = "readony" })
-                         }
-                     </div>*@
-            <div class="col-md-3 form-group">
-                @Html.Label("Mô tả")
-                @Html.TextBoxFor(model => model.description, new { @class = "form-control" })
+            <div class="col-md-6 form-group">
+                @Html.Label("Nơi giao:", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(model => model.deliveryAdd, ListAdd, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-6 form-group">
+                @Html.Label("Mô tả", new { @class = "control-label col-sm-4" }) 
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.description, new { @class = "form-control" })
+                </div>
             </div>
         </div>
-
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box box-success">
-                <div class="box-header">
-                    <h3 class="box-title" style="text-align:center; display:block; font-weight:bold">Danh sách sản phẩm giao</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                        <div class="col-sm-12">
-                            <table id="ddorder-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
-                                <thead>
-                                    <tr>
-                                        <th>ID SP</th>
-                                        <th>Tên SP</th>
-                                        <th>Đơn giá</th>
-                                        <th>Số lượng</th>
-                                        <th>Số lượng KM</th>
-                                        <th>Thành Tiền(VNĐ)</th>
-                                        <th>Ghi chú(7)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @{ if (Model.DetailedDeliveryOrder != null)
-                                        {
-                                            var dataID = 0;
-                                            foreach (var item in Model.DetailedDeliveryOrder)
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header">
+                        <h3 class="box-title" style="text-align:center; display:block; font-weight:bold">Danh sách sản phẩm giao</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                            <div class="col-sm-12">
+                                <table id="ddorder-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                    <thead>
+                                        <tr>
+                                            <th>ID SP</th>
+                                            <th>Tên SP</th>
+                                            <th>Đơn giá</th>
+                                            <th>Số lượng</th>
+                                            <th>Số lượng KM</th>
+                                            <th>Thành Tiền(VNĐ)</th>
+                                            <th>Ghi chú(7)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{ if (Model.DetailedDeliveryOrder != null)
                                             {
-                                                <tr row-id="@dataID">
-                                                    <td style="display:none;"><input type="hidden" name="@("DetailedDeliveryOrder[" + dataID + "].idDeliveryOrder")" value="@item.idDeliveryOrder" /></td>
-                                                    <td style="display:none;"><input type="hidden" name="@("DetailedDeliveryOrder[" + dataID + "].idProduct")" value="@item.idProduct" /></td>
-                                                    <td name="idProduct">@item.idProduct</td>
-                                                    <td name="@("DetailedDeliveryOrder[" + dataID + "].Product.ProductName")" value="@item.Product.ProductName">@item.Product.ProductName</td>
-                                                    <td name="Price">@string.Format("{0:0,0}", @item.Product.Price)</td>
-                                                    <td><input max="@item.quantity" min="0" id-quantity="@dataID" type="number" name="@("DetailedDeliveryOrder[" + dataID + "].quantity")" value="@item.quantity" class="form-control"/></td>
-                                                    <td><input max="@item.promoQuantity" min="0" type="number" name="@("DetailedDeliveryOrder[" + dataID + "].promoQuantity")" value="@item.promoQuantity" class="form-control"/></td>
-                                                    <td>@string.Format("{0:0,0}", @item.Product.Price * @item.quantity)</td>
-                                                    <td><input type="text" name="@("DetailedDeliveryOrder[" + dataID + "].note")" value="@item.note" /></td>
-                                                </tr>
-                                                dataID += 1;
+                                                var dataID = 0;
+                                                foreach (var item in Model.DetailedDeliveryOrder)
+                                                {
+                                                    <tr row-id="@dataID">
+                                                        <td style="display:none;"><input type="hidden" name="@("DetailedDeliveryOrder[" + dataID + "].idDeliveryOrder")" value="@item.idDeliveryOrder" /></td>
+                                                        <td style="display:none;"><input type="hidden" name="@("DetailedDeliveryOrder[" + dataID + "].idProduct")" value="@item.idProduct" /></td>
+                                                        <td name="idProduct">@item.idProduct</td>
+                                                        <td name="@("DetailedDeliveryOrder[" + dataID + "].Product.ProductName")" value="@item.Product.ProductName">@item.Product.ProductName</td>
+                                                        <td name="Price">@string.Format("{0:0,0}", @item.Product.Price)</td>
+                                                        <td><input max="@item.quantity" min="1" id-quantity="@dataID" type="number" name="@("DetailedDeliveryOrder[" + dataID + "].quantity")" value="@item.quantity" class="form-control" /></td>
+                                                        <td><input max="@item.promoQuantity" min="0" type="number" name="@("DetailedDeliveryOrder[" + dataID + "].promoQuantity")" value="@item.promoQuantity" class="form-control" /></td>
+                                                        <td>@string.Format("{0:0,0}", @item.Product.Price * @item.quantity)</td>
+                                                        <td><input type="text" name="@("DetailedDeliveryOrder[" + dataID + "].note")" value="@item.note" /></td>
+                                                    </tr>
+                                                    dataID += 1;
+                                                }
                                             }
                                         }
-                                    }
-                                </tbody>
-                            </table>
-                            @Html.TextBoxFor(model => model.totalPurchase,"{0:0}" ,new { @type = "hidden", @readonly = "readonly" })
-                            <h3 style="text-align:center; font-weight: bold">Tổng tiền: <label id="nowtotalPurchase">@string.Format("{0:0,0}", Model.totalPurchase)</label> (VNĐ)</h3>
+                                    </tbody>
+                                </table>
+                                @Html.TextBoxFor(model => model.totalPurchase, "{0:0}", new { @type = "hidden", @readonly = "readonly" })
+                                <h3 style="text-align:center; font-weight: bold">Tổng tiền: <label id="nowtotalPurchase">@string.Format("{0:0,0}", Model.totalPurchase)</label> (VNĐ)</h3>
 
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12" style="margin-top: 5px;margin-bottom: 5px; text-align: center;" id="btnControll">
+                                <input type="submit" value="Lưu" class="btn btn-default" style="margin-right: 5px; margin-left:5px;" id="btnCreate" />
+                                @Html.ActionLink("Hủy", "List", "DeliveryOrder", null, new { @class = "btn btn-default", style = "margin-right: 5px; margin-left:5px;" })
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-12" style="margin-top: 5px;margin-bottom: 5px; text-align: center;" id="btnControll">
-                            <input type="submit" value="Lưu" class="btn btn-default" style="margin-right: 5px;" id="btnCreate" />
-                            <input type="button" value="Hủy" class="btn btn-default" style="margin-right: 5px;" id="btnCancell" />
-                        </div>
-                    </div>
+                    <!-- /.box-body -->
+
                 </div>
-                <!-- /.box-body -->
+                <!-- /.box -->
 
             </div>
-            <!-- /.box -->
-
         </div>
     </div>
-                                        }
+                                            }
