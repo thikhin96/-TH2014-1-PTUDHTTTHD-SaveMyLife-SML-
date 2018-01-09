@@ -14,7 +14,7 @@ namespace DataService.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<Product> _productRepository;
-
+        ILogger logger = LogManager.GetCurrentClassLogger();
         /// <summary>
         /// Hàm khởi tạo
         /// </summary>
@@ -33,11 +33,14 @@ namespace DataService.Services
         {
             try
             {
+                logger.Info("Start audit get all products not disabled");
                 var products = _productRepository.GetAll(p => p.IsDisabled == false).ToList();
+                logger.Info("End audit get all products not disabled");
                 return products;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Info("Error audit get all products not disabled: " + ex.Message);
                 throw;
             }
         }
@@ -63,19 +66,23 @@ namespace DataService.Services
         {
             try
             {
+                logger.Info("Start audit search product by keyword");
                 IRepository<Product> repository = _unitOfWork.Repository<Product>();
                 if (keyWord=="")
                 {
+                    logger.Info("End audit search product by keyword");
                     return repository.GetAll().ToList();
                 }
                 else
                 {
+                    logger.Info("End audit search product by keyword");
                     return repository.GetAll( a => (a.ProductName.Contains(keyWord) 
                                                    || a.IdProduct.ToString().CompareTo(keyWord)==0)).ToList();
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                logger.Info("Error audit search product by keyword: " + ex.Message);
                 return null;
             }
         }
@@ -86,11 +93,20 @@ namespace DataService.Services
         /// <returns></returns>
         public int GenerateProductId()
         {
+            logger.Info("Start audit generate product's id");
             var latestProduct = _productRepository.GetAll().OrderByDescending(x => x.IdProduct).FirstOrDefault();
             if (latestProduct != null)
+            {
+                logger.Info("End audit generate product's id");
                 return latestProduct.IdProduct + 1;
+            }
+
             else
+            {
+                logger.Info("End audit generate product's id");
                 return 1;
+            }
+               
         }
 
         /// <summary>
@@ -102,14 +118,16 @@ namespace DataService.Services
         {
             try
             {
+                logger.Info("Start audit create product");
                 _productRepository.Add(product);
                 _unitOfWork.SaveChange();
+                logger.Info("End audit create product");
                 return "ok";
             }
              catch
             {
+                logger.Info("Error audit create product");
                 return "Tạo sản phẩm thất bại";
-                throw;
             }
         }
 
@@ -122,14 +140,16 @@ namespace DataService.Services
         {
             try
             {
+                logger.Info("Start audit update product");
                 _productRepository.Update(product);
                 _unitOfWork.SaveChange();
+                logger.Info("End audit create product");
                 return "ok";
             }
             catch
             {
+                logger.Info("Error audit create product");
                 return "Cập nhật sản phẩm thất bại";
-                throw;
             }
         }
 
