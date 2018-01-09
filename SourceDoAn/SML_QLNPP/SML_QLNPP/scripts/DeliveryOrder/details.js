@@ -29,10 +29,11 @@ $(function () {
             "sInfo": "Hiển thị _START_ đến _END_ trên _TOTAL_",
             "sZeroRecords": "Không tìm thấy dữ liệu",
             "sInfoEmpty": "Không tìm thấy dữ liệu",
-            "sLengthMenu": "Số dòng mỗi trang _MENU_"
+            //"sLengthMenu": "Số dòng mỗi trang _MENU_",
+            //"sSearch": "Tìm kiếm:"
         },
-        "searching": true,
-        "bLengthChange": true,
+        "searching": false,
+        "bLengthChange": false,
     });
     var updateDate = document.getElementById('updateDate');
     updateDate.valueAsDate = new Date($('#updateDate').attr("strDate"))

@@ -19,10 +19,11 @@
             "sInfo": "Hiển thị _START_ đến _END_ trên _TOTAL_",
             "sZeroRecords": "Không tìm thấy dữ liệu",
             "sInfoEmpty": "Không tìm thấy dữ liệu",
-            "sLengthMenu": "Số dòng mỗi trang _MENU_"
+            //"sLengthMenu": "Số dòng mỗi trang _MENU_",
+            //"sSearch": "Tìm kiếm:"
         },
-        "searching": true,
-        "bLengthChange": true,
+        "searching": false,
+        "bLengthChange": false,
     });
     //$("#search").on('click', function () {
     //    console.log("Tìm kiếm đơn giao hàng bắt đầu");

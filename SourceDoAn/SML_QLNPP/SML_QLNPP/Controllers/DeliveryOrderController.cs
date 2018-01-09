@@ -90,33 +90,36 @@ namespace SML_QLNPP.Controllers
                     model.totalPurchase += ddOrder.quantity * ddOrder.Product.Price;
                 }
                 // đưa sp km vào listddOrder
-                foreach (var item in promotion.PromotionGifts)
+                if(promotion != null)
                 {
-                    bool check = true;
-                    foreach (var item1 in listddOrder)
+                    foreach (var item in promotion.PromotionGifts)
                     {
-                        if (item.idProduct == item1.idProduct)
+                        bool check = true;
+                        foreach (var item1 in listddOrder)
                         {
-                            listddOrder.Remove(item1);
-                            item1.promoQuantity = item.quantity * nPromotion;
-                            item1.note = "SLKM " + item.quantity * nPromotion + " từ CTKM số " + item.idPromotion;
-                            listddOrder.Add(item1);
-                            check = false;
-                            break;
+                            if (item.idProduct == item1.idProduct)
+                            {
+                                listddOrder.Remove(item1);
+                                item1.promoQuantity = item.quantity * nPromotion;
+                                item1.note = "SLKM " + item.quantity * nPromotion + " từ CTKM số " + item.idPromotion;
+                                listddOrder.Add(item1);
+                                check = false;
+                                break;
+                            }
                         }
-                    }
-                    if (check)
-                    {
-                        var ddOrder = new DetailedDeliveryOrder
+                        if (check)
                         {
-                            idProduct = item.idProduct,
-                            quantity = 0,
-                            promoQuantity = item.quantity * nPromotion,
-                            Product = item.Product,
-                            note = "SLKM " + item.quantity * nPromotion + " từ CTKM số " + item.idPromotion
-                            //idDeliveryOrder =1
-                        };
-                        listddOrder.Add(ddOrder);
+                            var ddOrder = new DetailedDeliveryOrder
+                            {
+                                idProduct = item.idProduct,
+                                quantity = 0,
+                                promoQuantity = item.quantity * nPromotion,
+                                Product = item.Product,
+                                note = "SLKM " + item.quantity * nPromotion + " từ CTKM số " + item.idPromotion
+                                //idDeliveryOrder =1
+                            };
+                            listddOrder.Add(ddOrder);
+                        }
                     }
                 }
                 model.DetailedDeliveryOrder = listddOrder;
