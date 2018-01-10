@@ -23,17 +23,19 @@ namespace DataService.Services
             _assignmentRepository = unitOfWork.Repository<Assignment>();
         }
 
-        public Assignment getAssigment(int idStaff, int idDis)
+        public Assignment GetAssignment(int idStaff, int idDis)
         {
-            IRepository<Assignment> repository = _unitOfWork.Repository<Assignment>();
+            logger.Info("Start to get an assignment");
             try
             {
-                var assig = repository.GetAll(x => (x.staff == idStaff && x.PDistributor == idDis)).ToList().FirstOrDefault();
+                var assig = _assignmentRepository.GetAll(x => (x.staff == idStaff && x.PDistributor == idDis)).ToList().FirstOrDefault();
+                logger.Info("Status: Success");
                 return assig;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                logger.Info("Status: Fail + " + ex.Message);
+                return null;
             }
         }
 
@@ -42,16 +44,16 @@ namespace DataService.Services
             logger.Info("Start Create assigment method");
             try
             {
-                logger.Info("Status: Success");
                 _assignmentRepository.Add(assig);
                 _unitOfWork.SaveChange();
-                return true;
             }
             catch (Exception ex)
             {
                 logger.Info("Status: Fail + " + ex.Message);
                 return false;
             }
+            logger.Info("Status: Success");
+            return true;
         }
 
         public bool DeleteAssignment(Assignment assig)
@@ -59,16 +61,16 @@ namespace DataService.Services
             logger.Info("Start Delete assigment method");
             try
             {
-                logger.Info("Status: Success");
                 _assignmentRepository.Delete(assig);
                 _unitOfWork.SaveChange();
-                return true;
             }
             catch (Exception ex)
             {
                 logger.Info("Status: Fail + " + ex.Message);
                 return false;
             }
+            logger.Info("Status: Success");
+            return true;
         }
     }
 }

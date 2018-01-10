@@ -3,7 +3,7 @@
 @{
     var success = TempData["success"] as string;
     var fail = TempData["fail"] as string;
-    Layout = "~/Views/Shared/_ALayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @section css{
@@ -20,12 +20,12 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-10 col-md-10">
+        <div class="col-md-offset-2 col-md-8">
             @if (success != null)
             {
                 <div class="alert alert-success alert-dismissable">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Thành công! </strong>Thêm thành công!
+                    <strong>Thành công! </strong>Đối tác đã được tạo!
                 </div>
             }
             else if (fail != null)
@@ -36,7 +36,7 @@
                 </div>
             }
             <div class="well">
-                <h3>Thêm đối tác</h3>
+                <h3>Đăng ký làm đối tác</h3>
 
                 @using (Html.BeginForm("Create", "PDistributor", FormMethod.Post))
                 {
@@ -98,7 +98,9 @@
                         </div>
                     </div>
 
-                    <input type="submit" class="btn btn-primary" value="Thêm" />
+                    <center>
+                        <input id="btn_submit" type="submit" style="font-weight: bold; display: block; margin: 0 auto; font-size: 16px; padding: 6px 24px;" class="btn btn-primary" value="Gửi" />
+                    </center>
                 }
             </div>
         </div>

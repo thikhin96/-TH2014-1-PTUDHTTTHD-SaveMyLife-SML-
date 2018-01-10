@@ -17,7 +17,7 @@
     <script type="text/javascript" src="~/Scripts/bootstrap-datepicker.js"></script>
     
     <script>
-       
+        var index;
 
         $(document).ready(function () {
             $('.datepicker').datepicker().css('padding', '1px 0px'); //Initialise any date pickers
@@ -27,7 +27,6 @@
             });
 
             $('#btn_selectDis').click(function () {
-                var index;
                 $('input[type="checkbox"]').each(function () {
                     if ($(this).is(':checked')) {
                         index = $(this).attr('id');
@@ -48,10 +47,10 @@
             });
 
             $('#btn_selectPDis').click(function () {
-                var index;
                 $('input[type="checkbox"]').each(function () {
                     if ($(this).is(':checked')) {
-                        index = $(this).index();
+                        debugger;
+                        index = $(this).attr("data-stt");
                         return false;
                     }
                 });
@@ -138,6 +137,7 @@ else if (fail != null)
                 }
                 else
                 {
+                    var i = 0;
                     <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                         <div class="col-sm-12">
                             <table id="oldDis-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
@@ -155,13 +155,14 @@ else if (fail != null)
                                     @foreach (var item in Model.oldDis)
                                     {
                                         <tr>
-                                            <td><input type="checkbox" class="radio" id="@item.idDistributor"/></td>
+                                            <td><input type="checkbox" class="radio" data-stt="@i" id="@item.idDistributor"/></td>
                                             <td>@item.idDistributor </td>
                                             <td>@item.name</td>
                                             <td>@item.address</td>
                                             <td style="display:none">@item.phone</td>
                                             <td style="display:none">@item.Email</td>
                                         </tr>
+                                        i++;
                                     }
                                     <text> </text>
                                 </tbody>
@@ -198,6 +199,7 @@ else if (fail != null)
                 }
                 else
                 {
+                    var i = 0;
                     <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                         <div class="col-sm-12">
                             <table id="pDis-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
@@ -213,7 +215,7 @@ else if (fail != null)
                                     @foreach (var item in Model.pDis)
                                     {
                                         <tr>
-                                            <td><input type="checkbox" class="radio" id="@item.pDis.idDistributor" /></td>
+                                            <td><input type="checkbox" class="radio" data-stt="@i" id="@item.pDis.idDistributor" /></td>
                                             <td>@item.pDis.idDistributor</td>
                                             <td>@item.pDis.name</td>
                                             <td>@item.pDis.address</td>
@@ -225,6 +227,7 @@ else if (fail != null)
                                             <td style="display:none">@item.rep.phone</td>
                                             <td style="display:none">@item.rep.email</td>
                                         </tr>
+                                        i++;
                                     }
                                     <text> </text>
                                 </tbody>

@@ -37,6 +37,10 @@ namespace SML_QLNPP.Controllers
             if (Request.IsAjaxRequest())
             {
                 rs = _orderService.SearchOrder(keyword, created_date, status);
+                if(rs == null && rs.Count < 1)
+                {
+                    return null;
+                }
                 var list = JsonConvert.SerializeObject(rs.Select(x => new { x.idOrder, x.Distributor.name, x.Total, x.CreatedDate, x.Staff.staffName, x.Statuses }));
                 return Content(list, "application/json");
             }

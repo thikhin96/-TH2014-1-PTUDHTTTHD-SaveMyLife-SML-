@@ -35,7 +35,7 @@
         else {
             var note = $("#iNote").val();
             var id = $("#idReturnRequest").val();
-            var url = "/ReturnRequest/denyReturnRequest"
+            var url = "denyReturnRequest"
             $.ajax({
                 url: url,
                 type: 'POST',

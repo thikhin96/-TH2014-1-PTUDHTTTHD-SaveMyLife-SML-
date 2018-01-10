@@ -26,15 +26,6 @@ namespace DataService.Services
             _assignmentRepository = unitOfWork.Repository<Assignment>();
         }
 
-        public bool CheckEmail(string email)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CheckPhone(string phone)
-        {
-            throw new NotImplementedException();
-        }
 
         public bool Create(PotentialDistributor pDis, Representative rep)
         {
@@ -61,20 +52,16 @@ namespace DataService.Services
             {
                 _pdistributorRepository.Add(pDis);
                 _unitOfWork.SaveChange();
-                logger.Info("Status: Success");
             }
             catch (Exception ex)
             {
                 logger.Info("Status: Fail + " + ex.Message);
                 return false;
             }
+            logger.Info("Status: Success");
             return true;
         }
 
-        public IList<PotentialDistributor> GetAll()
-        {
-            throw new NotImplementedException();
-        }
 
         public PotentialDistributor GetPDistributor(int id)
         {
@@ -147,7 +134,7 @@ namespace DataService.Services
             }
         }
 
-        public int GenerateOrderId()
+        public int GeneratePDistributorId()
         {
             var latestOrder = _pdistributorRepository.GetAll().OrderByDescending(x => x.idDistributor).FirstOrDefault();
             if (latestOrder != null)
@@ -161,16 +148,16 @@ namespace DataService.Services
             logger.Info("Start Update potential distributor method");
             try
             {
-                logger.Info("Status: Success");
                 _pdistributorRepository.Update(pdis);
                 _unitOfWork.SaveChange();
-                return true;
             }
             catch (Exception ex)
             {
                 logger.Info("Status: Fail + " + ex.Message);
                 return false;
             }
+            logger.Info("Status: Success");
+            return true;
         }
     }
 }

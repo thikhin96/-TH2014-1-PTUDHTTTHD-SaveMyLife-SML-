@@ -11,6 +11,6 @@ namespace DataService.Interfaces
     {
         bool CreateAssignment(Assignment assig);
         bool DeleteAssignment(Assignment assig);
-        Assignment getAssigment(int idStaff, int idDis);
+        Assignment GetAssignment(int idStaff, int idDis);
     }
 }

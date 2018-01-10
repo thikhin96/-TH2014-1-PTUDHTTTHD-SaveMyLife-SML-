@@ -2,7 +2,7 @@
 @using Newtonsoft.Json;
 @{
     var success = TempData["success"] as string;
-    var fail = ViewBag.fail as string;
+    var fail = TempData["fail"] as string;
     Layout = "~/Views/Shared/_ALayout.cshtml";
 }
 @{ 
@@ -160,9 +160,9 @@
                         </div>
                     </div>
                     <center>
-                        <input id="btn_submit" type="submit" style="font-weight: bold; display: block; margin: 0 auto;" class="btn btn-info" value="Lưu thay đổi" disabled />
+                        <input id="btn_submit" type="submit" style="font-weight: bold; display: block; margin: 0 auto; font-size: 16px; padding: 6px 24px;" class="btn btn-primary" value="Lưu thay đổi" disabled />
                     </center>
-                    
+
                 }
             </div>
         </div>
