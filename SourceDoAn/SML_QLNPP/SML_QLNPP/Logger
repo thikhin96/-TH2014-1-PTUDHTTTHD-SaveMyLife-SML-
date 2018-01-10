@@ -1,0 +1,149 @@
+2018-01-10 18:39:37.9575|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-10 18:41:28.0049|INFO|SML_QLNPP.Controllers.PDistributorController|Start Create(POST) - PDistributorController
+2018-01-10 18:41:31.8294|INFO|DataService.Services.PDistributorService|Start Create potential distributor method
+2018-01-10 18:41:32.4310|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:41:32.4310|INFO|SML_QLNPP.Controllers.PDistributorController|Success: Complete Create(POST) - PDistributorController
+2018-01-10 18:42:37.5268|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 18:42:37.5718|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 18:42:37.8680|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 18:42:37.8856|INFO|DataService.LogLoginService|End audit login
+2018-01-10 18:42:54.1260|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 18:42:54.1330|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:42:59.5208|INFO|DataService.Services.PDistributorService|Start Search potential distributor by idDistributor method
+2018-01-10 18:42:59.5310|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:44:10.8580|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 18:44:10.8580|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:44:12.4073|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 18:44:12.4154|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:49:22.4335|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 18:49:24.8461|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 18:49:24.8547|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-10 18:49:24.8547|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-10 18:49:24.8777|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 18:49:25.2981|INFO|DataService.LogLoginService|End audit login
+2018-01-10 18:49:27.8400|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 18:49:27.8400|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 18:49:27.8555|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 18:49:27.8555|INFO|DataService.LogLoginService|End audit login
+2018-01-10 18:49:41.7048|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 18:49:41.7279|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:49:43.7685|INFO|DataService.Services.PDistributorService|Start Search potential distributor by idDistributor method
+2018-01-10 18:49:43.7778|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:49:43.7778|INFO|DataService.Services.StaffService|Start to get all staff
+2018-01-10 18:49:43.8374|INFO|DataService.Services.StaffService|Status: Success
+2018-01-10 18:50:13.3081|INFO|DataService.Services.PDistributorService|Start Search potential distributor by idDistributor method
+2018-01-10 18:50:13.3081|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:50:13.3276|INFO|DataService.Services.StaffService|Start to get all staff
+2018-01-10 18:50:13.3366|INFO|DataService.Services.StaffService|Status: Success
+2018-01-10 18:51:08.9236|INFO|DataService.Services.PDistributorService|Start Search potential distributor by idDistributor method
+2018-01-10 18:51:08.9311|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:51:08.9311|INFO|DataService.Services.RepresentativeService|Start to get a representative
+2018-01-10 18:51:08.9546|INFO|DataService.Services.RepresentativeService|Status: Success
+2018-01-10 18:53:32.4051|INFO|DataService.Services.PDistributorService|Start Search potential distributor by idDistributor method
+2018-01-10 18:53:32.8395|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:53:32.8890|INFO|DataService.Services.RepresentativeService|Start to get a representative
+2018-01-10 18:53:32.8890|INFO|DataService.Services.RepresentativeService|Status: Success
+2018-01-10 18:53:32.9035|INFO|DataService.Services.RepresentativeService|Start to update a representative...
+2018-01-10 18:53:32.9315|INFO|DataService.Services.RepresentativeService|Status: Success
+2018-01-10 18:53:32.9315|INFO|DataService.Services.AssignmentService|Start Create assigment method
+2018-01-10 18:53:32.9579|INFO|DataService.Services.AssignmentService|Status: Success
+2018-01-10 18:53:32.9639|INFO|DataService.Services.PDistributorService|Start Update potential distributor method
+2018-01-10 18:53:32.9814|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:53:33.0517|INFO|DataService.Services.PDistributorService|Start Search potential distributor by idDistributor method
+2018-01-10 18:53:33.0598|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:53:33.1393|INFO|DataService.Services.StaffService|Start to get all staff
+2018-01-10 18:53:33.1393|INFO|DataService.Services.StaffService|Status: Success
+2018-01-10 18:53:44.6097|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 18:53:44.6463|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 18:53:44.6543|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 18:53:44.6693|INFO|DataService.LogLoginService|End audit login
+2018-01-10 18:53:52.8805|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 18:53:52.8880|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:54:49.4503|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 18:54:49.7279|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:55:06.4383|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 18:55:06.4908|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 18:55:06.4999|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-10 18:55:06.4999|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-10 18:55:06.5184|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 18:55:06.5534|INFO|DataService.LogLoginService|End audit login
+2018-01-10 18:55:09.0756|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 18:55:09.0756|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 18:55:09.0936|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 18:55:09.1111|INFO|DataService.LogLoginService|End audit login
+2018-01-10 18:55:12.4538|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 18:55:12.4638|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:55:25.8045|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 18:55:25.8205|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 18:55:25.8205|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 18:55:25.9166|INFO|DataService.LogLoginService|End audit login
+2018-01-10 18:55:30.2748|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 18:55:30.2898|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:56:10.0467|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 18:56:10.4341|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:56:29.2736|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 18:56:32.3155|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 18:56:32.3235|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 18:56:32.7474|INFO|DataService.LogLoginService|End audit login
+2018-01-10 18:56:36.7103|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 18:56:36.7363|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:57:14.9781|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 18:57:15.2443|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:57:18.8041|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 18:57:18.8421|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 18:57:18.8421|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 18:57:18.8816|INFO|DataService.LogLoginService|End audit login
+2018-01-10 18:57:23.3289|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 18:57:23.3394|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:58:06.4007|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 18:58:14.6401|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 18:58:14.6532|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 18:58:15.8173|INFO|DataService.LogLoginService|End audit login
+2018-01-10 18:58:56.7007|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 18:58:57.1347|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 18:58:57.1347|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 18:58:57.1716|INFO|DataService.LogLoginService|End audit login
+2018-01-10 18:59:00.9443|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 18:59:00.9523|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:59:53.5881|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 18:59:53.7833|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 19:03:20.0051|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 19:03:20.7808|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 19:03:20.7908|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 19:03:20.8374|INFO|DataService.LogLoginService|End audit login
+2018-01-10 19:03:26.4230|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 19:03:26.4460|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 19:04:37.3568|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 19:04:37.3944|INFO|DataService.Services.PDistributorService|Start Search potential distributor by idDistributor method
+2018-01-10 19:04:37.6826|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 19:04:38.1231|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 19:04:41.6150|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 19:04:41.6715|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 19:04:41.6785|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 19:04:41.7166|INFO|DataService.LogLoginService|End audit login
+2018-01-10 19:04:50.2287|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 19:04:50.2417|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 19:04:50.2417|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 19:04:50.2667|INFO|DataService.LogLoginService|End audit login
+2018-01-10 19:04:54.4292|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 19:04:54.4292|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 19:05:56.3594|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 19:05:56.7148|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 19:07:00.9371|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 19:07:05.3698|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 19:07:05.3878|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 19:07:06.1261|INFO|DataService.LogLoginService|End audit login
+2018-01-10 19:07:23.2742|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 19:07:23.7447|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 19:07:23.7447|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 19:07:23.7812|INFO|DataService.LogLoginService|End audit login
+2018-01-10 19:07:40.7433|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 19:07:40.7433|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 19:08:31.9350|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 19:08:32.1737|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 19:09:35.1346|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 19:09:35.5266|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 19:09:35.5266|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 19:09:35.5620|INFO|DataService.LogLoginService|End audit login
+2018-01-10 19:09:40.0605|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 19:09:40.0605|INFO|DataService.Services.PDistributorService|Status: Success

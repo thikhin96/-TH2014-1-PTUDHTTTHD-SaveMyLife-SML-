@@ -17,7 +17,8 @@
                 status: parseInt(status)
             },
             success: function (data) {
-               // alert("goi ajax");
+                // alert("goi ajax");
+                debugger;
                 if (data) {
                     $('#loading').hide();
                     table.clear();
