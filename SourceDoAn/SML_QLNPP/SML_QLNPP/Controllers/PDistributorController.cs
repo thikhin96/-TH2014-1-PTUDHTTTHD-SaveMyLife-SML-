@@ -75,7 +75,7 @@ namespace SML_QLNPP.Controllers
             {
                 var pDis = new PotentialDistributor
                 {
-                    idDistributor = _pdistributorService.GenerateOrderId(),
+                    idDistributor = _pdistributorService.GeneratePDistributorId(),
                     name = model.name,
                     address = model.address,
                     Email = model.Email,
@@ -86,7 +86,7 @@ namespace SML_QLNPP.Controllers
                 };
                 var rep = new Representative
                 {
-                    idRepresentative = _representativeService.GenerateOrderId(),
+                    idRepresentative = _representativeService.GenerateRepresentativeId(),
                     name = model.rep_name,
                     email = model.rep_email,
                     title = model.title,
@@ -127,7 +127,7 @@ namespace SML_QLNPP.Controllers
            var rs = new Staff();
             if (Request.IsAjaxRequest())
             {
-                rs = _staffService.getStaff(id);
+                rs = _staffService.GetStaff(id);
                 var r = JsonConvert.SerializeObject(new { rs.idStaff, rs.staffName });
                 return Content(r, "application/json");
             }
@@ -182,14 +182,14 @@ namespace SML_QLNPP.Controllers
 
             // var assig = _assigmentService.CreateAssignment(pdis.Assignments.FirstOrDefault().staff, pdis.Assignments.FirstOrDefault().PDistributor);
 
-            var res = _representativeService.getRepresentative(pdis.Representatives.FirstOrDefault().idRepresentative);
+            var res = _representativeService.GetRepresentative(pdis.Representatives.FirstOrDefault().idRepresentative);
             res.name = model.rep_name;
             res.title = model.title;
             res.email = model.rep_email;
             res.phone = model.rep_phone;
 
 
-            var assigTemp = _assigmentService.getAssigment(pdis.Assignments.FirstOrDefault().staff, pdis.Assignments.FirstOrDefault().PDistributor);
+            var assigTemp = _assigmentService.GetAssignment(pdis.Assignments.FirstOrDefault().staff, pdis.Assignments.FirstOrDefault().PDistributor);
             var assig = new Assignment();
             assig.staff = model.staffAssigment;
             assig.PDistributor = pdis.idDistributor;
@@ -216,7 +216,7 @@ namespace SML_QLNPP.Controllers
             else
             {
                 model.idDistributor = model.idDistributor;
-                ViewBag.fail = result;
+                TempData["fail"] = result;
                 return View(model);
             }
         }

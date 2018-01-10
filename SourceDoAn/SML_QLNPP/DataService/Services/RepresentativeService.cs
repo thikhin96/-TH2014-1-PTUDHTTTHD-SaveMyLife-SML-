@@ -23,16 +23,19 @@ namespace DataService.Services
             _representativeRepository = _unitOfWork.Repository<Representative>();
         }
 
-        public Representative getRepresentative(int id)
+        public Representative GetRepresentative(int id)
         {
+            logger.Info("Start to get a representative");
             try
             {
                 var res = _representativeRepository.Get(x => x.idRepresentative == id);
+                logger.Info("Status: Success");
                 return res;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                logger.Info("Status: Success + " + ex.Message);
+                return null;
             }
         }
 
@@ -52,17 +55,6 @@ namespace DataService.Services
             return person.idRepresentative;
         }
 
-
-        public bool CheckEmail(string email)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CheckPhone(string phone)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool CreateRepresentative(Representative person)
         {
             logger.Info("Start add representative method");
@@ -70,13 +62,13 @@ namespace DataService.Services
             {
                 _representativeRepository.Add(person);
                 _unitOfWork.SaveChange();
-                logger.Info("Status: Success");
             }
-            catch
+            catch (Exception ex)
             {
-                logger.Info("Status: Fail");
+                logger.Info("Status: Fail + " + ex.Message);
                 return false;
             }
+            logger.Info("Status: Success");
             return true;
         }
 
@@ -88,13 +80,13 @@ namespace DataService.Services
             {
                 _representativeRepository.Update(person);
                 _unitOfWork.SaveChange();
-                logger.Info("Status: Success");
             }
-            catch
+            catch (Exception ex)
             {
-                logger.Info("Status: Fail");
+                logger.Info("Status: Fail + " + ex.Message);
                 return false;
             }
+            logger.Info("Status: Success");
             return true;
         }
         public bool UpdateTypeOfRepresentation(int idRep,int idDis)
@@ -139,15 +131,6 @@ namespace DataService.Services
                 logger.Info(ex.Message);
                 throw ex;
             }
-        }
-
-        public int GenerateOrderId()
-        {
-            var latestOrder = _representativeRepository.GetAll().OrderByDescending(x => x.idRepresentative).FirstOrDefault();
-            if (latestOrder != null)
-                return latestOrder.idRepresentative + 1;
-            else
-                return 1;
         }
     }
 }

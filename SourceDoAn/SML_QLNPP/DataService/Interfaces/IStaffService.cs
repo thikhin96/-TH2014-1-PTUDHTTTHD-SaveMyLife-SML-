@@ -11,11 +11,9 @@ namespace DataService.Interfaces
 {
     public interface IStaffService
     {
-       // IList<Staff> SearchByTypes(byte type);
-
         IList<Staff> GetAll();
         Staff GetByAccount(string Account);
         List<Staff> getAll();
-        Staff getStaff(int id);
+        Staff GetStaff(int id);
     }
 }
