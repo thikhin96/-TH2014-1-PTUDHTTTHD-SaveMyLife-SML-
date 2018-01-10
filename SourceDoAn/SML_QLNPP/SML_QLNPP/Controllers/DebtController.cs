@@ -75,7 +75,7 @@ namespace SML_QLNPP.Controllers
                 ViewBag.types = 1;
                 ViewBag.msg = "Lập phiếu công nợ thất bại";
                 return View(model);
-            }   
+            }
         }
         //// GET: Debt
         //public ActionResult Create(int ReturnId)

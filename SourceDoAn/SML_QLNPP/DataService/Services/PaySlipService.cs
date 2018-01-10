@@ -23,9 +23,9 @@ namespace DataService.Services
 
         public int GeneratePaySlipId()
         {
-            var latestDebt = _paySlipRepository.GetAll().OrderByDescending(x => x.idPaySlip).FirstOrDefault();
-            if (latestDebt != null)
-                return latestDebt.idPaySlip + 1;
+            var latestPaySlip = _paySlipRepository.GetAll().OrderByDescending(x => x.idPaySlip).FirstOrDefault();
+            if (latestPaySlip != null)
+                return latestPaySlip.idPaySlip + 1;
             else
                 return 1;
         }

@@ -15,41 +15,31 @@ namespace SML_QLNPP.Controllers
     {
         private readonly IPaySlipService _paySlipService;
         private readonly IDistributorService _distributorService;
-        private readonly IDebtService _debtService;
-        private readonly IReturnService _returnService;
+        private readonly IStaffService _staffService;
         private readonly ILogger _logger = LogManager.GetCurrentClassLogger();
-        public PaySlipController(IPaySlipService paySlipService, IDistributorService distributorService, IDebtService debtService)
+        public PaySlipController(IPaySlipService paySlipService, IDistributorService distributorService, IStaffService staffService)
         {
             this._paySlipService = paySlipService;
             _distributorService = distributorService;
-            _debtService = debtService;
+            _staffService = staffService;
         }
         // GET: PaySlip
-        public ActionResult Create(int DebtId)
+        public ActionResult Create()
         {
             isAdminLogged();
             var currentUser = Session["admin"] as Account;
-            var request = _debtService.GetDebt(DebtId);
-            //var rq = _returnService.GetReturnCardDetail(ReturnId);
-            //var dis = _distributorService.SearchByID(request.Distributor.idDistributor);
-            var model = new CreatePaySlipViewModel();
-            if (request != null)
+            Staff staff = _staffService.GetByAccount(currentUser.UserName);
+            var model = new CreatePaySlipViewModel()
             {
-
-                model = new CreatePaySlipViewModel()
-                {
-                    idPaySlip = _paySlipService.GeneratePaySlipId(),
-                    idDistributor = request.Distributor.idDistributor,
-                    nameDistributor = request.Distributor.name,
-                    //moneyPay = rq.Total.GetValueOrDefault() - dis.debt.GetValueOrDefault(),
-                    staffName = request.Staff.staffName
-                };
-                return View(model);
-            }
-            else
-            {
-                return Redirect("/Account/ALogin");
-            }
+                date = DateTime.Now,
+                idDistributor = null,
+                nameDistributor = null,
+                moneyPay = null,
+                reason =null,
+                idPaySlip = _paySlipService.GeneratePaySlipId(),
+                staffName = staff.staffName
+            };
+            return View(model);
         }
         [HttpPost]
         public ActionResult Create(CreatePaySlipViewModel model)
@@ -60,7 +50,7 @@ namespace SML_QLNPP.Controllers
             {
                 CreatedDate = DateTime.Now,
                 idDistributor = model.idDistributor,
-                idStaff = currentUser.idUser,
+                idStaff = _staffService.GetByAccount(currentUser.UserName).idStaff,
                 AmountSpent = model.moneyPay,
                 SpendingReasons = model.reason
             };
@@ -69,7 +59,7 @@ namespace SML_QLNPP.Controllers
                 TempData["success"] = "thanh cong";
             else
                 TempData["fail"] = result;
-            return RedirectToAction("ReturnRequest/List");
+            return RedirectToAction("Create", new { PaySlipId = model.idPaySlip});
         }
     }
 }

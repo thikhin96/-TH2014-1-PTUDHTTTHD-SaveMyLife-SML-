@@ -89,7 +89,7 @@ namespace SML_QLNPP.Controllers
             isLogged();
             var user = Session["user"] as Account;
     
-            var dis = _distributorService.getDistributorByUser(user.UserName);
+            Distributor dis = _distributorService.getDistributorByUser(user.UserName);
             if (dis != null)
             {
                 var model = new CreateReturnRequestViewModel()
