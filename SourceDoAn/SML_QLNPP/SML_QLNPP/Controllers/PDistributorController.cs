@@ -143,10 +143,14 @@ namespace SML_QLNPP.Controllers
                 model.title = pdis.Representatives.FirstOrDefault().title;
                 model.rep_email = pdis.Representatives.FirstOrDefault().email;
                 model.rep_phone = pdis.Representatives.FirstOrDefault().phone;
-                model.place = pdis.Assignments.FirstOrDefault().place;
-                model.date = pdis.Assignments.FirstOrDefault().date;
-                model.result = pdis.Assignments.FirstOrDefault().result;
-                model.staffAssigment = pdis.Assignments.FirstOrDefault().Staff1.idStaff;
+                if(pdis.Assignments.FirstOrDefault() != null)
+                {
+                    model.place = pdis.Assignments.FirstOrDefault().place;
+                    model.date = pdis.Assignments.FirstOrDefault().date;
+                    model.result = pdis.Assignments.FirstOrDefault().result;
+                    model.staffAssigment = pdis.Assignments.FirstOrDefault().Staff1.idStaff;
+                }
+               
                 model.allStaff = _staffService.getAll();
                 ViewBag.Parent = "Quản lý đối tác  >  Tìm kiếm đối tác";
                 ViewBag.Child = "Chi tiết đối tác";
@@ -180,7 +184,7 @@ namespace SML_QLNPP.Controllers
             res.phone = model.rep_phone;
 
 
-            var assigTemp = _assigmentService.GetAssignment(pdis.Assignments.FirstOrDefault().staff, pdis.Assignments.FirstOrDefault().PDistributor);
+            //var assigTemp = _assigmentService.GetAssignment(pdis.Assignments.FirstOrDefault().staff, pdis.Assignments.FirstOrDefault().PDistributor);
             var assig = new Assignment();
             assig.staff = model.staffAssigment;
             assig.PDistributor = pdis.idDistributor;
@@ -194,7 +198,7 @@ namespace SML_QLNPP.Controllers
             assig.staff = model.staffAssigment;
 
             var rs1= _representativeService.UpdateRepresentative(res);
-            var rs2 = _assigmentService.DeleteAssignment(assigTemp);
+            //var rs2 = _assigmentService.DeleteAssignment(assigTemp);
             var rs3 = _assigmentService.CreateAssignment(assig);
             pdis.updatedDate = DateTime.Now;
             var result = _pdistributorService.UpdatePDistributor(pdis);

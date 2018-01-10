@@ -85,6 +85,8 @@ namespace SML_QLNPP.Controllers
                     }
                 }
             }
+            ViewBag.types = 2;
+            ViewBag.msg = "Lập hoá đơn thành công, bạn đã thanh toán " + string.Format("{0:0,0}", delivery.totalPurchase.Value) + " VNĐ.";
             return View(model);
         }
 
