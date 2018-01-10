@@ -7,7 +7,7 @@
         var keyword = $("#keyword").val();
         var created_date = $("#created_date").val();
         var status = $('#status').find(":selected").val();
-        var url = 'Search';
+        var url = '/SML_QLNPP/Order/Search';
         console.log(status);
         $.ajax({
             url: url,

@@ -150,6 +150,7 @@ namespace SML_QLNPP.Controllers
                     model.result = pdis.Assignments.FirstOrDefault().result;
                     model.staffAssigment = pdis.Assignments.FirstOrDefault().Staff1.idStaff;
                 }
+               
                 model.allStaff = _staffService.getAll();
                 ViewBag.Parent = "Quản lý đối tác  >  Tìm kiếm đối tác";
                 ViewBag.Child = "Chi tiết đối tác";
