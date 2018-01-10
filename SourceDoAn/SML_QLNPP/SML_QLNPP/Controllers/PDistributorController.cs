@@ -57,7 +57,6 @@ namespace SML_QLNPP.Controllers
 
         public ActionResult Create()
         {
-            isAdminLogged();
             ViewBag.Parent = "Quản lý đối tác";
             ViewBag.Child = "Thêm đối tác";
             CreatePDistributorViewModel model = new CreatePDistributorViewModel();
@@ -67,48 +66,40 @@ namespace SML_QLNPP.Controllers
         [HttpPost]
         public ActionResult Create(CreatePDistributorViewModel model)
         {
-            ViewBag.Parent = "Quản lý đối tác";
-            ViewBag.Child = "Thêm đối tác";
             logger.Info("Start Create(POST) - PDistributorController");
-            var loggedUser = GetCurrentUser() as Account;
-            if (loggedUser != null)
+            var pDis = new PotentialDistributor
             {
-                var pDis = new PotentialDistributor
-                {
-                    idDistributor = _pdistributorService.GeneratePDistributorId(),
-                    name = model.name,
-                    address = model.address,
-                    Email = model.Email,
-                    phone = model.phone,
-                    createdDate = DateTime.Now,
-                    status = 0,
+                idDistributor = _pdistributorService.GeneratePDistributorId(),
+                name = model.name,
+                address = model.address,
+                Email = model.Email,
+                phone = model.phone,
+                createdDate = DateTime.Now,
+                status = 0,
 
-                };
-                var rep = new Representative
-                {
-                    idRepresentative = _representativeService.GenerateRepresentativeId(),
-                    name = model.rep_name,
-                    email = model.rep_email,
-                    title = model.title,
-                    phone = model.rep_phone,
-                    PDistributor = pDis.idDistributor,
-                };
-                //var rs1 = _representativeService.CreateRepresentative(rep);
-                var result = _pdistributorService.Create(pDis, rep);
-                if (result == true)
-                {
-                    logger.Info("Success: Complete Create(POST) - PDistributorController");
-                    TempData["success"] = "Thành công";
-                    return RedirectToAction("Create");
-                }
-                else
-                {
-                    logger.Info("Fail: Create(POST) - PDistributorController");
-                    TempData["fail"] = result;
-                    return View(model);
-                }
+            };
+            var rep = new Representative
+            {
+                idRepresentative = _representativeService.GenerateRepresentativeId(),
+                name = model.rep_name,
+                email = model.rep_email,
+                title = model.title,
+                phone = model.rep_phone,
+                PDistributor = pDis.idDistributor,
+            };
+            var result = _pdistributorService.Create(pDis, rep);
+            if (result == true)
+            {
+                logger.Info("Success: Complete Create(POST) - PDistributorController");
+                TempData["success"] = "Thành công";
+                return RedirectToAction("Create");
             }
-            return RedirectToAction("Index", "Home");
+            else
+            {
+                logger.Info("Fail: Create(POST) - PDistributorController");
+                TempData["fail"] = result;
+                return View(model);
+            }
         }
         public ContentResult getStaffAssigment()
         {
