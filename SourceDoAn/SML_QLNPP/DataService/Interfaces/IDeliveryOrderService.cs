@@ -17,5 +17,6 @@ namespace DataService.Interfaces
         // can them vao
         IList<DeliveryOrder> GetAll();
         int GenerateDOrderId();
+        IList<DeliveryOrder> SearchListDeliveryOrder(int month, int quartar, int year, int idDistributor);
     }
 }

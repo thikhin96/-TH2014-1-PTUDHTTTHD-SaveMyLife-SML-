@@ -196,5 +196,28 @@ namespace DataService.Services
             else
                 return 1;
         }
+        public IList<DeliveryOrder> SearchListDeliveryOrder(int month, int quartar, int year, int idDistributor)
+        {
+            try
+            {
+                logger.Info("Start search order");
+                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
+                if (month == 0 && quartar == 0 && year == 0 && idDistributor == 0)
+                {
+                    logger.Info("Start search ALL order");
+                    return repository.GetAll().ToList();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                logger.Info("Error Search Order: " + ex.Message);
+                return null;
+            }
+        }
     }
 }

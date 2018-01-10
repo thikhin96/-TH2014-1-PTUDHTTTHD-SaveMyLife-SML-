@@ -189,3 +189,87 @@
 2018-01-10 04:20:37.9405|INFO|DataService.Services.AccountService|Completed get login
 2018-01-10 04:20:37.9700|INFO|DataService.LogLoginService|Start audit login
 2018-01-10 04:20:37.9976|INFO|DataService.LogLoginService|End audit login
+2018-01-10 04:51:48.8868|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 04:51:50.0355|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 04:51:50.0491|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-10 04:51:50.0651|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-10 04:51:50.0816|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 04:51:50.1756|INFO|DataService.LogLoginService|End audit login
+2018-01-10 04:51:56.7978|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 04:51:56.8850|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 04:51:56.8970|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-10 04:51:56.9185|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-10 04:51:56.9335|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 04:51:56.9715|INFO|DataService.LogLoginService|End audit login
+2018-01-10 04:52:23.6127|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 04:52:23.6382|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 04:52:23.6592|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 04:52:23.6797|INFO|DataService.LogLoginService|End audit login
+2018-01-10 04:52:42.5879|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 04:52:42.6044|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-10 16:24:17.8075|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 16:24:19.5920|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 16:24:19.6345|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 16:24:19.9493|INFO|DataService.LogLoginService|End audit login
+2018-01-10 16:34:41.7363|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 16:34:41.9610|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 16:34:41.9840|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-10 16:34:42.0085|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-10 16:34:42.0415|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 16:34:43.5115|INFO|DataService.LogLoginService|End audit login
+2018-01-10 16:44:57.6428|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 16:44:57.6773|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 16:44:57.6948|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-10 16:44:57.7118|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-10 16:44:57.7278|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 16:44:57.7554|INFO|DataService.LogLoginService|End audit login
+2018-01-10 16:45:03.0821|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 16:45:03.1177|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 16:45:03.1407|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 16:45:03.1672|INFO|DataService.LogLoginService|End audit login
+2018-01-10 16:45:19.5209|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 16:45:19.5364|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-10 16:52:45.8729|INFO|SML_QLNPP.Controllers.ContractController|Start controller to load list of contract....
+2018-01-10 16:52:45.9059|INFO|DataService.Services.ContractService|Start Service to search info of the distributor...
+2018-01-10 16:52:46.0581|INFO|DataService.Services.ContractService|End service...
+2018-01-10 17:38:27.0045|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 17:38:27.9586|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 17:38:27.9721|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 17:38:28.0326|INFO|DataService.LogLoginService|End audit login
+2018-01-10 18:06:24.5859|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 18:06:24.7495|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 18:06:24.7705|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 18:06:24.8345|INFO|DataService.LogLoginService|End audit login
+2018-01-10 18:07:19.8698|INFO|DataService.Interfaces.BillService|Start search order
+2018-01-10 18:07:19.8958|INFO|DataService.Interfaces.BillService|Start search ALL order
+2018-01-10 18:15:41.6265|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 18:15:41.7876|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 18:15:41.8081|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 18:15:42.6974|INFO|DataService.LogLoginService|End audit login
+2018-01-10 18:16:42.8743|INFO|DataService.Services.DeliveryOrderService|Start search order
+2018-01-10 18:16:42.9218|INFO|DataService.Services.DeliveryOrderService|Start search ALL order
+2018-01-10 18:16:43.2770|INFO|DataService.Services.DeliveryOrderService|Error Search Order: An error occurred while executing the command definition. See the inner exception for details.
+2018-01-10 18:19:49.2787|INFO|DataService.Services.DeliveryOrderService|Start search order
+2018-01-10 18:19:49.2982|INFO|DataService.Services.DeliveryOrderService|Start search ALL order
+2018-01-10 18:19:49.3383|INFO|DataService.Services.DeliveryOrderService|Error Search Order: An error occurred while executing the command definition. See the inner exception for details.
+2018-01-10 18:23:33.9603|INFO|DataService.Services.DeliveryOrderService|Start search order
+2018-01-10 18:23:33.9758|INFO|DataService.Services.DeliveryOrderService|Start search ALL order
+2018-01-10 18:23:34.0193|INFO|DataService.Services.DeliveryOrderService|Error Search Order: An error occurred while executing the command definition. See the inner exception for details.
+2018-01-10 18:25:54.3525|INFO|DataService.Services.DeliveryOrderService|Start search order
+2018-01-10 18:25:54.3875|INFO|DataService.Services.DeliveryOrderService|Start search ALL order
+2018-01-10 18:25:54.4180|INFO|DataService.Services.DeliveryOrderService|Error Search Order: An error occurred while executing the command definition. See the inner exception for details.
+2018-01-10 18:29:47.2226|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 18:29:47.3918|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 18:29:47.4183|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 18:29:48.1225|INFO|DataService.LogLoginService|End audit login
+2018-01-10 18:33:44.5362|INFO|DataService.Services.DeliveryOrderService|Start search order
+2018-01-10 18:33:44.5707|INFO|DataService.Services.DeliveryOrderService|Start search ALL order
+2018-01-10 18:33:44.8243|INFO|DataService.Services.DeliveryOrderService|Error Search Order: An error occurred while executing the command definition. See the inner exception for details.
+2018-01-10 18:38:04.2012|INFO|DataService.Interfaces.BillService|Start search order
+2018-01-10 18:38:04.2223|INFO|DataService.Interfaces.BillService|Start search ALL order
+2018-01-10 18:38:28.4278|INFO|DataService.Services.DeliveryOrderService|Start search order
+2018-01-10 18:38:28.4493|INFO|DataService.Services.DeliveryOrderService|Start search ALL order
+2018-01-10 18:38:28.4798|INFO|DataService.Services.DeliveryOrderService|Error Search Order: An error occurred while executing the command definition. See the inner exception for details.
+2018-01-10 18:40:48.9146|INFO|DataService.Services.DeliveryOrderService|Start search order
+2018-01-10 18:40:48.9381|INFO|DataService.Services.DeliveryOrderService|Start search ALL order
+2018-01-10 18:40:48.9952|INFO|DataService.Services.DeliveryOrderService|Error Search Order: An error occurred while executing the command definition. See the inner exception for details.

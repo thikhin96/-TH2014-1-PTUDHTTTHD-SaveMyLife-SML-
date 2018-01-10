@@ -104,13 +104,19 @@ $(document).ready(function () {
 
     $("#searchListBill").on('click', function () {
         var idDistributor = $("#idDistributor").val();
-        var month = $("#month").val();
-        var quartar = $("#quartar").val();
-        var year = $("#year").val();
-        if (!idDistributor && !year && !month && !quartar) {
-            year = "0";
+        if (!idDistributor) {
             idDistributor = "0";
+        }
+        var month = $("#month").val();
+        if (!month) {
             month = "0";
+        }
+        var quartar = $("#quartar").val();
+        if (!quartar) {
+            quartar = "0";
+        }
+        var year = $("#year").val();
+        if (!year) {
             year = "0";
         }
         debugger;
@@ -139,7 +145,7 @@ $(document).ready(function () {
                     table.clear();
                     var result = data.map(function (item) {
                         var rs = [];
-                        var date = new Date(item.CreatedDate);
+                        var date = new Date(item.createdDate);
 
                         rs.push(item.idBill);
                         //rs.push(item.CreateDate);
@@ -167,4 +173,78 @@ $(document).ready(function () {
         });
     })
     
+});
+
+
+$(document).ready(function () {
+
+    var table = $('#delivery-order-list').DataTable();
+
+    $("#searchListDeliveryOrder").on('click', function () {
+        var idDistributor = $("#idDistributor").val();
+        if (!idDistributor) {
+            idDistributor = "0";
+        }
+        var month = $("#month").val();
+        if (!month) {
+            month = "0";
+        }
+        var quartar = $("#quartar").val();
+        if (!quartar) {
+            quartar = "0";
+        }
+        var year = $("#year").val();
+        if (!year) {
+            year = "0";
+        }
+        debugger;
+        var url = 'SearchListDeliveryOrder';
+        console.log(status);
+        $.ajax({
+            url: url,
+            type: 'GET',
+            cache: false,
+            beforeSend: function () {
+                loading = true;
+                $('#loading').show();
+
+            },
+            data: {
+                month: parseInt(month),
+                quartar: parseInt(quartar),
+                year: parseInt(year),
+                idDistributor: parseInt(idDistributor),
+            },
+            success: function (data) {
+                if (data) {
+                    debugger;
+                    $('#loading').hide();
+                    table.clear();
+                    var result = data.map(function (item) {
+                        var rs = [];
+                        var date = new Date(item.deliveryDate);
+
+                        rs.push(item.idDeliveryOrder);
+                        rs.push(date.getHours() + ':' + date.getMinutes() + ' ' + +(date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear());
+                        rs.push(item.idDistributor);
+                        rs.push(item.idStaff);
+                        rs.push(item.totalPurchase);
+                        return rs;
+                        //x.idOrder, x.deliveryDate, x.idDistributor, x.idStaff, x.totalPurchase
+                    });
+
+                    table.rows.add(result);
+                    table.draw();
+
+
+
+                }
+                else {
+                    $('#loading').hide();
+                    alert('Tìm kiếm không thành công!')
+                };
+            }
+        });
+    })
+
 });

@@ -23,12 +23,13 @@ namespace SML_QLNPP.Controllers
 
         public object DataRepository { get; private set; }
 
-        public SalesReportController(ISalesReportService orderService, IOrderService oService, IBillService bService, IDistributorService distributorService)
+        public SalesReportController(ISalesReportService orderService, IOrderService oService, IBillService bService, IDistributorService distributorService, IDeliveryOrderService DeOrService)
         {
             this._orderService = orderService;
             this._oService = oService;
             this._billService = bService;
             this._distributorService = distributorService;
+            this._DeOrService = DeOrService;
 
         }
         //private void GetYears()
@@ -93,57 +94,49 @@ namespace SML_QLNPP.Controllers
             }
             return null;
         }
-        //[HttpPost]
-        //public ContentResult GetAllOrder()
-        //{
-        //    IList<Order> rs = new List<Order>();
-        //    if (Request.IsAjaxRequest())
-        //    {
-        //        var OrderList = rs.Select(x => new
-        //        {
-        //            idOrder = x.idOrder,
-        //            CreatedDate =x.CreatedDate,
-        //            idDistributor = x.idDistributor,
-        //            NameDistributor = x.Distributor.name,
-        //            idStaff = x.idStaff,
-        //            Total = x.Total
-        //        }).ToList();
-        //        return Content(OrderList, "application/json");
-        //    }
 
-        //    return null;
-        //}
-        //public ActionResult LoadData()
-        //{
-        //    var Items = g(0, "", 0);
-        //    return Json(new { data = Items }, JsonRequestBehavior.AllowGet);
-        //}
-
-
-
+        [HttpGet]
         public ActionResult ListDeliveryOrder()
         {
             isAdminLogged();
+            SalesReportViewModel model = new SalesReportViewModel();
+            model.Distributors = _distributorService.GetAllDistributor();
             ViewBag.Parent = "Báo Cáo Doanh Thu";
             ViewBag.Child = "Đơn Giao Hàng";
-            return View();
+            return View(model);
         }
+        public ContentResult SearchListDeliveryOrder(int month, int quartar, int year, int idDistributor)
+        {
+            IList<DeliveryOrder> rs = new List<DeliveryOrder>();
+            if (Request.IsAjaxRequest())
+            {
+                rs = _DeOrService.SearchListDeliveryOrder(month, quartar, year, idDistributor);
+                var list = JsonConvert.SerializeObject(rs.Select(x => new { x.idDeliveryOrder, x.deliveryDate, x.idDistributor, x.idStaff, x.totalPurchase }));
+                return Content(list, "application/json");
+            }
+            return null;
+        }
+
+        [HttpGet]
         public ActionResult BusinessReport()
         {
             isAdminLogged();
+            SalesReportViewModel model = new SalesReportViewModel();
+            model.Distributors = _distributorService.GetAllDistributor();
             ViewBag.Parent = "Báo Cáo Doanh Thu";
             ViewBag.Child = "Báo Cáo Kinh Doanh";
-            //ViewBag.Distributor = new SelectList(_distributorService.GetList(), "idDistributor", "name");
-            return View();
+            return View(model);
         }
-        
 
+        [HttpGet]
         public ActionResult CommodityAllocationReport()
         {
             isAdminLogged();
+            SalesReportViewModel model = new SalesReportViewModel();
+            model.Distributors = _distributorService.GetAllDistributor();
             ViewBag.Parent = "Báo Cáo Doanh Thu";
             ViewBag.Child = "Báo Cáo Phân Bổ Hàng Hóa";
-            return View();
+            return View(model);
         }
         public ActionResult Statistic()
         {
@@ -160,31 +153,7 @@ namespace SML_QLNPP.Controllers
             return View();
         }
         
-        /*public ActionResult Detail(int id)
-        {
-            ViewBag.Parent = "Báo Cáo Kinh Doanh";
-            ViewBag.Child = "Chi tiết khuyến mãi";
-            var model = _orderService.GetSalesReport(id);
-            if (model == null)
-            {
-                return Redirect("/Order/List");
-            }
-            else
-            {
-                return View(model);
-            }
-        }*/
         
-        //public ContentResult SearchListBill(int idBill, int idDistributor, string CreateDate)
-        //{
-        //    IList<Bill> rs = new List<Bill>();
-        //    if (Request.IsAjaxRequest())
-        //    {
-        //        rs = _orderService.SearchListOrder(idBill, idDistributor, CreateDate);
-        //        var list = JsonConvert.SerializeObject(rs.Select(x => new { x.idSalesReport, x.beginDate, x.endDate }));
-        //        return Content(list, "application/json");
-        //    }
-        //    return null;
-        //}
+        
     }
 }
