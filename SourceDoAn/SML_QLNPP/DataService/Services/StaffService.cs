@@ -29,27 +29,33 @@ namespace DataService.Services
         }
         public List<Staff> getAll()
         {
+            logger.Info("Start to get all staff");
             try
             {
                 var staff = _staffRepository.GetAll().ToList();
+                logger.Info("Status: Success");
                 return staff;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                logger.Info("Status: Fail + " + ex.Message);
+                return null;
             }
         }
 
-        public Staff getStaff(int id)
+        public Staff GetStaff(int id)
         {
+            logger.Info("Start to get a staff");
             try
             {
                 var staff = _staffRepository.Get(x=> x.idStaff == id);
+                logger.Info("Status: Success");
                 return staff;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                logger.Info("Status: Fail + " + ex.Message);
+                return null;
             }
         }
         

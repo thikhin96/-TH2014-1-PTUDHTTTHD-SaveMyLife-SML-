@@ -11,9 +11,6 @@ namespace DataService.Interfaces
     public interface IContractService
     {
         bool CreateContract(Contract con, bool type);
-        bool CheckLifeOfContract(short period);
-        bool CheckDebtExcess(long money);
-        bool CheckOrderTotalValue(long money);
         bool CancelContract(int id, string reason);
         IList<ContractList> Search(int? keyword = null, int? criterion = null);
         Contract Get(int id);

@@ -14,8 +14,7 @@ namespace DataService.Interfaces
         bool UpdateStatus(int id, byte status, string note);
         bool UpdatePDistributor(PotentialDistributor pdis);
         IList<PotentialDistributor> SearchByStatus(byte status);
-        IList<PotentialDistributor> GetAll();
         PotentialDistributor GetPDistributor(int id);
-        int GenerateOrderId();
+        int GeneratePDistributorId();
     }
 }

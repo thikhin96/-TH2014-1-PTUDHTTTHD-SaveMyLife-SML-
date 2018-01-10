@@ -57,7 +57,6 @@ namespace SML_QLNPP.Controllers
 
         public ActionResult Create()
         {
-            isAdminLogged();
             ViewBag.Parent = "Quản lý đối tác";
             ViewBag.Child = "Thêm đối tác";
             CreatePDistributorViewModel model = new CreatePDistributorViewModel();
@@ -67,48 +66,40 @@ namespace SML_QLNPP.Controllers
         [HttpPost]
         public ActionResult Create(CreatePDistributorViewModel model)
         {
-            ViewBag.Parent = "Quản lý đối tác";
-            ViewBag.Child = "Thêm đối tác";
             logger.Info("Start Create(POST) - PDistributorController");
-            var loggedUser = GetCurrentUser() as Account;
-            if (loggedUser != null)
+            var pDis = new PotentialDistributor
             {
-                var pDis = new PotentialDistributor
-                {
-                    idDistributor = _pdistributorService.GenerateOrderId(),
-                    name = model.name,
-                    address = model.address,
-                    Email = model.Email,
-                    phone = model.phone,
-                    createdDate = DateTime.Now,
-                    status = 0,
+                idDistributor = _pdistributorService.GeneratePDistributorId(),
+                name = model.name,
+                address = model.address,
+                Email = model.Email,
+                phone = model.phone,
+                createdDate = DateTime.Now,
+                status = 0,
 
-                };
-                var rep = new Representative
-                {
-                    idRepresentative = _representativeService.GenerateOrderId(),
-                    name = model.rep_name,
-                    email = model.rep_email,
-                    title = model.title,
-                    phone = model.rep_phone,
-                    PDistributor = pDis.idDistributor,
-                };
-                //var rs1 = _representativeService.CreateRepresentative(rep);
-                var result = _pdistributorService.Create(pDis, rep);
-                if (result == true)
-                {
-                    logger.Info("Success: Complete Create(POST) - PDistributorController");
-                    TempData["success"] = "Thành công";
-                    return RedirectToAction("Create");
-                }
-                else
-                {
-                    logger.Info("Fail: Create(POST) - PDistributorController");
-                    TempData["fail"] = result;
-                    return View(model);
-                }
+            };
+            var rep = new Representative
+            {
+                idRepresentative = _representativeService.GenerateRepresentativeId(),
+                name = model.rep_name,
+                email = model.rep_email,
+                title = model.title,
+                phone = model.rep_phone,
+                PDistributor = pDis.idDistributor,
+            };
+            var result = _pdistributorService.Create(pDis, rep);
+            if (result == true)
+            {
+                logger.Info("Success: Complete Create(POST) - PDistributorController");
+                TempData["success"] = "Thành công";
+                return RedirectToAction("Create");
             }
-            return RedirectToAction("Index", "Home");
+            else
+            {
+                logger.Info("Fail: Create(POST) - PDistributorController");
+                TempData["fail"] = result;
+                return View(model);
+            }
         }
         public ContentResult getStaffAssigment()
         {
@@ -127,7 +118,7 @@ namespace SML_QLNPP.Controllers
            var rs = new Staff();
             if (Request.IsAjaxRequest())
             {
-                rs = _staffService.getStaff(id);
+                rs = _staffService.GetStaff(id);
                 var r = JsonConvert.SerializeObject(new { rs.idStaff, rs.staffName });
                 return Content(r, "application/json");
             }
@@ -182,14 +173,14 @@ namespace SML_QLNPP.Controllers
 
             // var assig = _assigmentService.CreateAssignment(pdis.Assignments.FirstOrDefault().staff, pdis.Assignments.FirstOrDefault().PDistributor);
 
-            var res = _representativeService.getRepresentative(pdis.Representatives.FirstOrDefault().idRepresentative);
+            var res = _representativeService.GetRepresentative(pdis.Representatives.FirstOrDefault().idRepresentative);
             res.name = model.rep_name;
             res.title = model.title;
             res.email = model.rep_email;
             res.phone = model.rep_phone;
 
 
-            var assigTemp = _assigmentService.getAssigment(pdis.Assignments.FirstOrDefault().staff, pdis.Assignments.FirstOrDefault().PDistributor);
+            var assigTemp = _assigmentService.GetAssignment(pdis.Assignments.FirstOrDefault().staff, pdis.Assignments.FirstOrDefault().PDistributor);
             var assig = new Assignment();
             assig.staff = model.staffAssigment;
             assig.PDistributor = pdis.idDistributor;
@@ -216,7 +207,7 @@ namespace SML_QLNPP.Controllers
             else
             {
                 model.idDistributor = model.idDistributor;
-                ViewBag.fail = result;
+                TempData["fail"] = result;
                 return View(model);
             }
         }

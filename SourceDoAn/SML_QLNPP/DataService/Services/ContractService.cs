@@ -67,21 +67,6 @@ namespace DataService.Services
             return result;
         }
 
-        public bool CheckDebtExcess(long money)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CheckLifeOfContract(short period)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CheckOrderTotalValue(long money)
-        {
-            throw new NotImplementedException();
-        }
-
         int GenerateContractId()
         {
             var latestContract = repo_con.GetAll().OrderByDescending(x => x.idContract).FirstOrDefault();
