@@ -17,7 +17,7 @@ namespace SML_QLNPP.Controllers
         private readonly IProductService _productService;
         private readonly IProductTypeService _productTypeService;
         private readonly IUnitService _unitService;
-        private readonly IAccountService _accountService;
+        private readonly IStaffService _staffService;
         private readonly ILogProductService _logProductService;
 
         /// <summary>
@@ -26,14 +26,14 @@ namespace SML_QLNPP.Controllers
         /// <param name="productService"></param>
         /// <param name="productTypeService"></param>
         /// <param name="unitService"></param>
-        /// <param name="accountService"></param>
+        /// <param name="staffService"></param>
         /// <param name="logProductService"></param>
-        public ProductController(IProductService productService, IProductTypeService productTypeService, IUnitService unitService, IAccountService accountService,ILogProductService logProductService)
+        public ProductController(IProductService productService, IProductTypeService productTypeService, IUnitService unitService, IStaffService staffService,ILogProductService logProductService)
         {
             _productService = productService;
             _productTypeService = productTypeService;
             _unitService = unitService;
-            _accountService = accountService;
+            _staffService = staffService;
             _logProductService = logProductService;
         }
 
@@ -186,7 +186,7 @@ namespace SML_QLNPP.Controllers
                 {
                     Log_Product logP = new Log_Product();
                     logP.createdDate = DateTime.Now;
-                    logP.idStaff = user.idUser;
+                    logP.idStaff = _staffService.GetByAccount(user.UserName).idStaff;
                     logP.oldPrice = Decimal.ToInt32(old_price.GetValueOrDefault());
                     logP.newPrice = Decimal.ToInt32(product.Price.GetValueOrDefault());
                     logP.description = model.description_log;
