@@ -58,7 +58,7 @@ namespace DataService.Services
             }
             catch (Exception ex)
             {
-                logger.Info(ex.Message);
+                logger.Error(ex.Message);
                 return false;
             }
         }
@@ -81,7 +81,7 @@ namespace DataService.Services
             }
             catch (Exception ex)
             {
-                logger.Info(ex.Message);
+                logger.Error(ex.Message);
                 return false;
             }
         }
@@ -105,7 +105,7 @@ namespace DataService.Services
             }
             catch (Exception ex)
             {
-                logger.Info("Error get login: " + ex.Message);
+                logger.Error("Error get login: " + ex.Message);
                 result = null;
             }
             return result;
@@ -144,7 +144,7 @@ namespace DataService.Services
             }
             catch (Exception ex)
             {
-                logger.Info("Error get account to write log: " + ex.Message);
+                logger.Error("Error get account to write log: " + ex.Message);
                 result = null;
             }
             return result;

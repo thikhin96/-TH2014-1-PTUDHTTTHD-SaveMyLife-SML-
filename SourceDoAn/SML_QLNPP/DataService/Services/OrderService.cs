@@ -93,7 +93,7 @@ namespace DataService.Services
             catch(Exception ex)
             {
 
-                logger.Info("Error Search Order: " + ex.Message);
+                logger.Error("Error Search Order: " + ex.Message);
                 return null;
             }
         }
@@ -118,7 +118,7 @@ namespace DataService.Services
             }
             catch(Exception ex)
             {
-                logger.Info("Error get order: " + ex.Message);
+                logger.Error("Error get order: " + ex.Message);
                 result = null;
             }
             return result;

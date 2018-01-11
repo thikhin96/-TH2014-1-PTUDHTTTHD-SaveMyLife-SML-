@@ -490,3 +490,11 @@
 2018-01-10 20:51:58.7783|INFO|DataService.Services.ReturnService|Start Getting return card detail number: 20
 2018-01-10 20:51:58.7933|INFO|DataService.Services.ReturnService|Success: Return Card number 20 returned!
 2018-01-10 20:51:58.8739|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Show(GET) - ReturnController
+2018-01-10 22:56:20.8248|INFO|DataService.Services.AccountService|Start get login
+2018-01-10 22:56:21.4884|INFO|DataService.Services.AccountService|Completed get login
+2018-01-10 22:56:21.4999|INFO|DataService.LogLoginService|Start audit login
+2018-01-10 22:56:21.5475|INFO|DataService.LogLoginService|End audit login
+2018-01-10 22:56:51.4527|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 22:56:51.4612|INFO|DataService.Services.OrderService|Completed search order
+2018-01-10 22:56:52.9989|INFO|DataService.Services.OrderService|Start get order
+2018-01-10 22:56:52.9989|INFO|DataService.Services.OrderService|Completed get order

@@ -42,7 +42,7 @@ namespace DataService
             }
             catch (Exception ex)
             {
-                logger.Info("Error get promotion: " + ex.Message);
+                logger.Error("Error get promotion: " + ex.Message);
                 result = null;
             }
             return result;
@@ -110,7 +110,7 @@ namespace DataService
             }
             catch(Exception ex)
             {
-                logger.Info("Error search promotion: " + ex.Message);
+                logger.Error("Error search promotion: " + ex.Message);
                 return null;
             }
         }
