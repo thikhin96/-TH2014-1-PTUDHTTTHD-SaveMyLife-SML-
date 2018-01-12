@@ -249,10 +249,17 @@ namespace DataService.Services
                     logger.Info("Start search ALL order");
                     return repository.GetAll().ToList();
                 }
-                else 
+                else
                 {
-                    return null;
+                    var date = Convert.ToDateTime(month);
+                    if (month !=0)
+                    {
+                        logger.Info("Start search ALL order by month in year of distributor");
+                        return repository.GetAll(x => x.CreatedDate.Value.Month == date.Month).ToList();
+                    }
+                    
                 }
+                return null;
             }
             catch (Exception ex)
             {
@@ -261,7 +268,37 @@ namespace DataService.Services
                 return null;
             }
         }
+        //SearchListOrderDetail
+        public IList<OrderDetail> SearchListOrderDetail(int month, int quartar, int year, int idDistributor)
+        {
+            try
+            {
+                logger.Info("Start search order");
+                IRepository<OrderDetail> repository = _unitOfWork.Repository<OrderDetail>();
+                if (month == 0 && quartar == 0 && year == 0 && idDistributor == 0)
+                {
+                    logger.Info("Start search ALL order");
+                    return repository.GetAll().ToList();
+                }
+                else
+                {
+                    var date = Convert.ToDateTime(month);
+                    if (month != 0)
+                    {
+                        logger.Info("Start search ALL order by month in year of distributor");
+                        return repository.GetAll(x => x.Order.CreatedDate.Value.Month == date.Month).ToList();
+                    }
 
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+
+                logger.Info("Error Search Order: " + ex.Message);
+                return null;
+            }
+        }
         public dynamic GetOrderByDistributor()
         {
             throw new NotImplementedException();

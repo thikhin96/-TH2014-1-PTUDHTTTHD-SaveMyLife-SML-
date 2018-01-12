@@ -28,7 +28,7 @@
     <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Order/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/Promotion/promotion.js"></script>
+    <script type="text/javascript" src="~/Scripts/SalesReport/salesreport.js"></script>
 }
 
 <div class="box box-info">
@@ -95,13 +95,12 @@
             </div>
         </div>
     }
-    <div class="text-center">
-        <h4 style="text-align:center; font-weight: bold">Tổng Tiền: </h4>
-        <h4 style="text-align:center; font-weight: bold">Số Lượng Thực Tế: </h4>
-        <h4 style="text-align:center; font-weight: bold">Số Lượng Đề Nghị: </h4>
+
+    <div class="box-footer">
+        <button type="submit" class="btn btn-primary" id="searchcommodityAllocationReport1">Tìm kiếm đơn đặt hàng</button>
     </div>
     <div class="box-footer">
-        <button type="submit" class="btn btn-primary" id="search">Tìm kiếm kết quả</button>
+        <button type="submit" class="btn btn-primary" id="searchcommodityAllocationReport2">Tìm kiếm đơn giao hàng</button>
     </div>
 </div>
 
@@ -117,21 +116,27 @@
             <div class="box-body">
                 <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                     <div class="col-sm-12">
-                        <table id="order-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                        <table id="commodityAllocationReport1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                             <thead>
                                 <tr>
                                     <th>Mã Đơn Hàng</th>
                                     <th>Ngày Lập</th>
-                                    <th>Mã Nhà Phân Phối</th>
                                     <th>Tên Nhà Phân Phối</th>
-                                    <th>Tên Sản Phẩm</th>
-                                    <th>Đơn Giá</th>
-                                    <th>Số Lượng</th>
+                                    <th>Số Lượng Đề Nghị</th>
                                     <th>Tổng Tiền</th>
                                 </tr>
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Mã Đơn Hàng</th>
+                                    <th>Ngày Lập</th>
+                                    <th>Tên Nhà Phân Phối</th>
+                                    <th>Số Lượng Đề Nghị</th>
+                                    <th>Tổng Tiền</th>
+                                </tr>
+                            </tfoot>
                         </table>
                         
                     </div>
@@ -143,5 +148,48 @@
 
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header">
+                <h3 class="box-title">Danh sách đơn giao hàng</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <div class="col-sm-12">
+                        <table id="commodityAllocationReport2" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                            <thead>
+                                <tr>
+                                    <th>Mã Giao Hàng</th>
+                                    <th>Ngày Lập</th>
+                                    <th>Tên Nhà Phân Phối</th>
+                                    <th>Số Lượng Thực Tế</th>
+                                    <th>Tổng Tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Mã Giao Hàng</th>
+                                    <th>Ngày Lập</th>
+                                    <th>Tên Nhà Phân Phối</th>
+                                    <th>Số Lượng Thực Tế</th>
+                                    <th>Tổng Tiền</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+
+    </div>
+</div>
+
 
 

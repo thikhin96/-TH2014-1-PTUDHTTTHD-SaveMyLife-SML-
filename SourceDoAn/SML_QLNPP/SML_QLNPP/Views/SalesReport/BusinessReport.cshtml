@@ -4,7 +4,20 @@
     ViewBag.Title = "BusinessReport";
     Layout = "~/Views/Shared/_ALayout.cshtml";
 }
+@{
+    //var success = ViewBag.success as string;
+    var fail = ViewBag.fail as string;
 
+    List<SelectListItem> listDis = new List<SelectListItem>();
+    listDis.Add(new SelectListItem { Text = "", Value = "", Selected = true });
+
+
+}
+
+@foreach (var type in Model.Distributors)
+{
+    listDis.Add(new SelectListItem { Text = @type.name, Value = @type.idDistributor.ToString() });
+}
 @section css{
     <link href="~/Content/admin.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/Order/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all" />
@@ -15,7 +28,7 @@
     <script type="text/javascript" src="~/Scripts/Order/jquery-ui.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Order/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Order/datatables.min.js"></script>
-    @*<script type="text/javascript" src="~/Scripts/Promotion/promotion.js"></script>*@
+    <script type="text/javascript" src="~/Scripts/SalesReport/salesreport.js"></script>
 }
 
 <div class="box box-info">
@@ -71,16 +84,15 @@
 
         <div class="col-md-2">
             <label>Nhà Phân Phối</label>
-            
+            <div id="idDistributor">
+                @Html.DropDownListFor(model => model.Distributor, listDis, "Chọn nhà phân phối..", new { @class = "form-control", @required = "required" })
+            </div>
         </div>
     </div>
     }
-    <div class="text-center">
-        <h4 style="text-align:center; font-weight: bold">Tổng Tiền: </h4>
-        <h4 style="text-align:center; font-weight: bold">Số Lượng Hàng Hóa: </h4>
-    </div>
+    
     <div class="box-footer">
-        <button type="submit" class="btn btn-primary" id="search">Tìm kiếm kết quả</button>
+        <button type="submit" class="btn btn-primary" id="searchListOrderDetail">Tìm kiếm kết quả</button>
     </div>
 </div>
 
@@ -96,22 +108,27 @@
             <div class="box-body">
                 <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                     <div class="col-sm-12">
-                        <table id="order-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                        <table id="business-list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                             <thead>
                                 <tr>
-                                    <th>STT</th>
                                     <th>Mã Đơn Hàng</th>
                                     <th>Ngày Lập</th>
-                                    <th>Mã Nhà Phân Phối</th>
                                     <th>Tên Nhà Phân Phối</th>
-                                    <th>Tên Sản Phẩm</th>
-                                    <th>Đơn Giá</th>
-                                    <th>Số Lượng</th>
+                                    <th>Số Lượng SP</th>
                                     <th>Tổng Tiền</th>
                                 </tr>
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Mã Đơn Hàng</th>
+                                    <th>Ngày Lập</th>
+                                    <th>Tên Nhà Phân Phối</th>
+                                    <th>Số Lượng SP:</th>
+                                    <th>Tổng Tiền:</th>
+                                </tr>
+                            </tfoot>
                         </table>
                         
                     </div>

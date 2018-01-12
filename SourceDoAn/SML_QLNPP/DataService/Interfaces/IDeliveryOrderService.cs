@@ -18,5 +18,6 @@ namespace DataService.Interfaces
         IList<DeliveryOrder> GetAll();
         int GenerateDOrderId();
         IList<DeliveryOrder> SearchListDeliveryOrder(int month, int quartar, int year, int idDistributor);
+        IList<DetailedDeliveryOrder> SearchListDetailDeliveryOrder(int month, int quartar, int year, int idDistributor);
     }
 }

@@ -273,3 +273,499 @@
 2018-01-10 18:40:48.9146|INFO|DataService.Services.DeliveryOrderService|Start search order
 2018-01-10 18:40:48.9381|INFO|DataService.Services.DeliveryOrderService|Start search ALL order
 2018-01-10 18:40:48.9952|INFO|DataService.Services.DeliveryOrderService|Error Search Order: An error occurred while executing the command definition. See the inner exception for details.
+2018-01-10 18:48:15.9321|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 18:48:15.9481|INFO|DataService.Services.OrderService|Completed search order
+2018-01-10 18:48:26.8280|INFO|DataService.Services.DeliveryOrderService|Start GetAll DeliveryOrder....
+2018-01-10 18:48:26.8440|INFO|DataService.Services.DeliveryOrderService|Start GetAll DeliveryOrder....
+2018-01-10 18:48:26.8670|INFO|DataService.Services.DeliveryOrderService|An error occurred while executing the command definition. See the inner exception for details.
+2018-01-10 18:48:26.8670|INFO|DataService.Services.DeliveryOrderService|End GetAll DeliveryOrder....
+2018-01-10 18:48:50.4552|INFO|SML_QLNPP.Controllers.ReturnController|Start Search(GET) - OrderController
+2018-01-10 18:48:50.4817|INFO|DataService.Services.ReturnService|Start searching for return cards with key word:  and trade form: 0
+2018-01-10 18:48:51.0206|ERROR|DataService.Services.ReturnService|Searching for return cards encountered error: An error occurred while executing the command definition. See the inner exception for details.
+2018-01-10 18:48:51.0341|INFO|SML_QLNPP.Controllers.ReturnController|Success: Complete Search(GET) - ReturnController
+2018-01-10 18:48:57.4527|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 18:48:57.4677|INFO|DataService.Services.OrderService|Completed search order
+2018-01-10 18:48:59.5479|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 18:48:59.5669|INFO|DataService.Services.OrderService|Completed search order
+2018-01-10 18:49:00.3021|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 18:49:00.3217|INFO|DataService.Services.OrderService|Completed search order
+2018-01-10 18:49:00.8254|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 18:49:00.8449|INFO|DataService.Services.OrderService|Completed search order
+2018-01-10 18:49:01.4712|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 18:49:01.4922|INFO|DataService.Services.OrderService|Completed search order
+2018-01-10 18:49:21.4237|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 18:49:21.4452|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:49:24.6724|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 18:49:24.6919|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:49:33.8907|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 18:49:33.9097|INFO|DataService.Services.OrderService|Completed search order
+2018-01-10 18:49:43.1596|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 18:49:43.1841|INFO|DataService.Services.OrderService|Completed search order
+2018-01-10 18:49:46.7458|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 18:49:46.7668|INFO|DataService.Services.OrderService|Completed search order
+2018-01-10 18:49:51.4718|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 18:49:51.4888|INFO|DataService.Services.OrderService|Completed search order
+2018-01-10 18:49:54.6569|INFO|DataService.Services.OrderService|Start search order
+2018-01-10 18:49:54.6759|INFO|DataService.Services.OrderService|Completed search order
+2018-01-10 18:49:58.1378|INFO|SML_QLNPP.Controllers.ContractController|Start controller to load list of contract....
+2018-01-10 18:49:58.1628|INFO|DataService.Services.ContractService|Start Service to search info of the distributor...
+2018-01-10 18:49:58.2874|INFO|DataService.Services.ContractService|End service...
+2018-01-10 18:50:15.6141|INFO|DataService.Services.DistributorService|Start service....
+2018-01-10 18:50:15.7187|INFO|DataService.Services.DistributorService|End service...
+2018-01-10 18:50:15.7357|INFO|DataService.Services.PDistributorService|Start Search potential distributor by status ...
+2018-01-10 18:50:15.7557|INFO|DataService.Services.PDistributorService|Status: Success
+2018-01-10 18:50:35.2700|INFO|DataService.PromotionService|Start search promotion
+2018-01-10 18:50:35.2855|INFO|DataService.PromotionService|Start search ALL promotion
+2018-01-10 18:50:35.4375|INFO|DataService.PromotionService|Completed search promotion
+2018-01-10 18:50:37.5565|INFO|DataService.PromotionService|Start get promotion
+2018-01-10 18:50:37.5710|INFO|DataService.PromotionService|Completed get promotion
+2018-01-10 18:51:53.9739|INFO|DataService.PromotionService|Start search promotion
+2018-01-10 18:51:53.9969|INFO|DataService.PromotionService|Start search ALL promotion
+2018-01-10 18:51:54.0219|INFO|DataService.PromotionService|Completed search promotion
+2018-01-10 18:51:57.0369|INFO|DataService.PromotionService|Start get promotion
+2018-01-10 18:51:57.0564|INFO|DataService.PromotionService|Completed get promotion
+2018-01-10 18:52:15.8570|INFO|DataService.PromotionService|Start search promotion
+2018-01-10 18:52:15.8755|INFO|DataService.PromotionService|Start search ALL promotion
+2018-01-10 18:52:15.9106|INFO|DataService.PromotionService|Completed search promotion
+2018-01-10 18:52:17.5369|INFO|DataService.PromotionService|Start get promotion
+2018-01-10 18:52:17.5594|INFO|DataService.PromotionService|Completed get promotion
+2018-01-10 18:52:26.0777|INFO|DataService.PromotionService|Start search promotion
+2018-01-10 18:52:26.1097|INFO|DataService.PromotionService|Start search ALL promotion
+2018-01-10 18:52:26.1377|INFO|DataService.PromotionService|Completed search promotion
+2018-01-10 18:52:27.3059|INFO|DataService.PromotionService|Start get promotion
+2018-01-10 18:52:27.3435|INFO|DataService.PromotionService|Completed get promotion
+2018-01-12 02:39:15.7600|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 02:39:23.3924|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 02:39:23.4369|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 02:39:23.9277|INFO|DataService.LogLoginService|End audit login
+2018-01-12 02:40:04.0781|INFO|DataService.Interfaces.BillService|Start search order
+2018-01-12 02:40:04.0936|INFO|DataService.Interfaces.BillService|Start search ALL order
+2018-01-12 02:40:10.5608|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 02:40:10.5908|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 02:40:16.5700|INFO|DataService.Services.DeliveryOrderService|Start search order
+2018-01-12 02:40:16.6050|INFO|DataService.Services.DeliveryOrderService|Start search ALL order
+2018-01-12 02:40:17.8752|INFO|DataService.Services.DeliveryOrderService|Error Search Order: An error occurred while executing the command definition. See the inner exception for details.
+2018-01-12 03:34:56.3581|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 03:34:56.5452|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 03:34:56.5623|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-12 03:34:56.5813|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-12 03:34:56.5978|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 03:34:56.6869|INFO|DataService.LogLoginService|End audit login
+2018-01-12 03:35:02.4380|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 03:35:02.4610|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 03:35:02.4845|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-12 03:35:02.5015|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-12 03:35:02.5175|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 03:35:02.5546|INFO|DataService.LogLoginService|End audit login
+2018-01-12 03:35:08.9404|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 03:35:08.9645|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 03:35:08.9930|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 03:35:09.0530|INFO|DataService.LogLoginService|End audit login
+2018-01-12 03:35:17.2688|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 03:35:17.3028|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 03:36:02.3893|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 03:36:02.4093|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 03:36:05.3704|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 03:36:05.3874|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 03:36:44.5760|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 03:36:44.6000|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 03:38:56.9419|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 03:38:56.9614|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 03:39:02.4807|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 03:39:02.5013|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 03:39:12.2096|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 03:39:12.2316|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 03:39:36.1001|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 03:39:36.1361|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 03:39:48.5888|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 03:39:48.6043|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 03:40:00.5320|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 03:40:00.6036|INFO|DataService.Services.OrderService|Error Search Order: String was not recognized as a valid DateTime.
+2018-01-12 03:40:44.7407|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 03:40:44.7602|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 03:48:06.9065|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 03:48:06.9245|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 03:48:11.3604|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 03:48:11.3809|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 07:56:25.4392|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 07:56:25.9854|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 07:56:26.0004|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-12 07:56:26.0184|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-12 07:56:26.0680|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 07:56:27.5880|INFO|DataService.LogLoginService|End audit login
+2018-01-12 07:56:35.8179|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 07:56:35.8384|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 07:56:35.8545|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-12 07:56:35.8700|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-12 07:56:35.8840|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 07:56:35.9100|INFO|DataService.LogLoginService|End audit login
+2018-01-12 07:56:43.5293|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 07:56:43.5593|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 07:56:43.5773|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-12 07:56:43.6019|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-12 07:56:43.6239|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 07:56:43.6549|INFO|DataService.LogLoginService|End audit login
+2018-01-12 07:56:56.5121|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 07:56:56.5466|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 07:56:56.5641|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 07:56:56.5906|INFO|DataService.LogLoginService|End audit login
+2018-01-12 07:57:04.7284|INFO|DataService.Interfaces.BillService|Start search order
+2018-01-12 07:57:04.7469|INFO|DataService.Interfaces.BillService|Start search ALL order
+2018-01-12 08:00:13.4479|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 08:00:13.5955|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 08:00:13.6166|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-12 08:00:13.6401|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-12 08:00:13.6601|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 08:00:14.4783|INFO|DataService.LogLoginService|End audit login
+2018-01-12 08:00:19.3804|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 08:00:19.4040|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 08:00:19.4200|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-12 08:00:19.4400|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-12 08:00:19.4540|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 08:00:19.5095|INFO|DataService.LogLoginService|End audit login
+2018-01-12 08:00:28.0864|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 08:00:28.1109|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 08:00:28.1379|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 08:00:28.1769|INFO|DataService.LogLoginService|End audit login
+2018-01-12 08:00:44.9228|INFO|DataService.Interfaces.BillService|Start search order
+2018-01-12 08:00:44.9458|INFO|DataService.Interfaces.BillService|Start search ALL order
+2018-01-12 08:00:59.4377|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 08:00:59.4582|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 08:02:39.7461|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 08:02:39.7597|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 08:04:05.3031|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 08:04:05.3237|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 10:26:25.3778|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 10:26:25.5844|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 10:26:25.6034|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 10:26:25.6895|INFO|DataService.LogLoginService|End audit login
+2018-01-12 10:26:39.7590|INFO|DataService.Interfaces.BillService|Start search order
+2018-01-12 10:26:39.7740|INFO|DataService.Interfaces.BillService|Start search ALL order
+2018-01-12 10:32:56.3085|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 10:32:56.3451|INFO|DataService.Services.OrderService|Error Search Order: String was not recognized as a valid DateTime.
+2018-01-12 10:33:13.8227|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 10:33:13.8482|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 10:33:28.8700|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 10:33:28.8920|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 10:33:32.2566|INFO|DataService.Services.OrderService|Start get order
+2018-01-12 10:33:32.2766|INFO|DataService.Services.OrderService|Completed get order
+2018-01-12 10:34:21.8356|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 10:34:21.8662|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 10:34:27.9371|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 10:34:27.9686|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 10:37:52.6933|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 10:37:52.7128|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 10:39:39.9179|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 10:39:39.9384|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 10:39:52.7840|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 10:39:52.8170|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 10:39:55.3525|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 10:39:55.3790|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 10:42:02.0308|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 10:42:02.0713|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 10:42:07.2400|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 10:42:07.2690|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 19:30:40.9606|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 19:30:41.3208|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 19:30:41.3903|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 19:30:41.7465|INFO|DataService.LogLoginService|End audit login
+2018-01-12 19:30:49.6482|INFO|DataService.Interfaces.BillService|Start search order
+2018-01-12 19:30:49.6692|INFO|DataService.Interfaces.BillService|Start search ALL order
+2018-01-12 19:31:14.2105|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 19:31:14.2420|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 19:35:48.1867|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 19:35:48.2088|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 19:37:47.3604|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 19:37:47.3779|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 19:41:01.0942|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 19:41:01.1132|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 19:41:03.2395|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 19:41:03.2615|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 19:41:14.3909|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 19:41:14.4080|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 19:41:15.8004|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 19:41:15.8179|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 19:41:20.1182|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 19:41:20.1367|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 19:42:06.5101|INFO|DataService.Interfaces.BillService|Start search order
+2018-01-12 19:42:06.5266|INFO|DataService.Interfaces.BillService|Start search ALL order
+2018-01-12 20:04:03.5220|INFO|DataService.Interfaces.BillService|Start search order
+2018-01-12 20:04:03.5380|INFO|DataService.Interfaces.BillService|Start search ALL order
+2018-01-12 20:15:36.3218|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 20:15:36.5549|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 20:15:36.5794|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-12 20:15:36.6055|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-12 20:15:36.6280|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 20:15:37.7812|INFO|DataService.LogLoginService|End audit login
+2018-01-12 20:15:44.7261|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 20:15:44.7571|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 20:15:44.7771|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 20:15:44.8076|INFO|DataService.LogLoginService|End audit login
+2018-01-12 20:18:39.8311|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 20:18:39.8522|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 20:24:58.7892|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 20:24:59.0994|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 20:24:59.1484|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 20:25:00.3422|INFO|DataService.LogLoginService|End audit login
+2018-01-12 20:25:11.3701|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 20:25:11.4416|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 20:25:11.4727|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 20:25:11.5077|INFO|DataService.LogLoginService|End audit login
+2018-01-12 20:30:19.9463|INFO|DataService.Interfaces.BillService|Start search order
+2018-01-12 20:30:19.9879|INFO|DataService.Interfaces.BillService|Start search ALL order
+2018-01-12 20:33:27.3870|INFO|DataService.Interfaces.BillService|Start search order
+2018-01-12 20:33:27.4075|INFO|DataService.Interfaces.BillService|Start search ALL order
+2018-01-12 20:38:44.3516|INFO|DataService.Services.DeliveryOrderService|Start search Deliveryorder
+2018-01-12 20:38:44.3721|INFO|DataService.Services.DeliveryOrderService|Start search ALL Deliveryorder
+2018-01-12 20:38:44.7936|INFO|DataService.Services.DeliveryOrderService|Error Search DeliveryOrder: An error occurred while executing the command definition. See the inner exception for details.
+2018-01-12 20:42:08.5116|INFO|DataService.Interfaces.BillService|Start search order
+2018-01-12 20:42:08.5336|INFO|DataService.Interfaces.BillService|Start search ALL order
+2018-01-12 20:42:37.7902|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 20:42:37.8107|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:09:37.6026|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:09:37.6796|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:10:06.8448|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 21:10:06.9319|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 21:10:06.9519|INFO|DataService.Services.AccountService|Start get account to write log
+2018-01-12 21:10:06.9795|INFO|DataService.Services.AccountService|Completed get account to write log
+2018-01-12 21:10:06.9990|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 21:10:07.0715|INFO|DataService.LogLoginService|End audit login
+2018-01-12 21:10:14.8544|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 21:10:14.8889|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 21:10:14.9044|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 21:10:14.9314|INFO|DataService.LogLoginService|End audit login
+2018-01-12 21:10:20.7526|INFO|DataService.Interfaces.BillService|Start search order
+2018-01-12 21:10:20.7812|INFO|DataService.Interfaces.BillService|Start search ALL order
+2018-01-12 21:11:24.5408|INFO|DataService.Interfaces.BillService|Start search order
+2018-01-12 21:11:24.5599|INFO|DataService.Interfaces.BillService|Start search ALL order
+2018-01-12 21:13:50.7586|INFO|DataService.Interfaces.BillService|Start search order
+2018-01-12 21:13:50.7781|INFO|DataService.Interfaces.BillService|Start search ALL order
+2018-01-12 21:15:04.9763|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 21:15:05.1308|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 21:15:05.1483|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 21:15:05.8063|INFO|DataService.LogLoginService|End audit login
+2018-01-12 21:15:11.8329|INFO|DataService.Interfaces.BillService|Start search order
+2018-01-12 21:15:11.8774|INFO|DataService.Interfaces.BillService|Start search ALL order
+2018-01-12 21:15:18.9409|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:15:18.9594|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:15:24.7399|INFO|DataService.Services.DeliveryOrderService|Start search Deliveryorder
+2018-01-12 21:15:24.7589|INFO|DataService.Services.DeliveryOrderService|Start search ALL Deliveryorder
+2018-01-12 21:15:24.9590|INFO|DataService.Services.DeliveryOrderService|Error Search DeliveryOrder: An error occurred while executing the command definition. See the inner exception for details.
+2018-01-12 21:19:31.1509|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 21:19:31.3140|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 21:19:31.3485|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 21:19:32.0912|INFO|DataService.LogLoginService|End audit login
+2018-01-12 21:20:05.4764|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 21:20:05.7211|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 21:20:05.7456|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 21:20:06.8738|INFO|DataService.LogLoginService|End audit login
+2018-01-12 21:20:28.3210|INFO|DataService.Services.DeliveryOrderService|Start search Deliveryorder
+2018-01-12 21:20:28.3395|INFO|DataService.Services.DeliveryOrderService|Start search ALL Deliveryorder
+2018-01-12 21:20:28.4936|INFO|DataService.Services.DeliveryOrderService|Error Search DeliveryOrder: An error occurred while executing the command definition. See the inner exception for details.
+2018-01-12 21:26:10.3494|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:26:10.3649|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:26:19.9933|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:26:20.0123|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:26:20.8777|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:26:20.8942|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:26:21.4022|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:26:21.4252|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:26:21.8109|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:26:21.8364|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:27:05.7868|INFO|DataService.Interfaces.BillService|Start search order
+2018-01-12 21:27:05.8053|INFO|DataService.Interfaces.BillService|Start search ALL order
+2018-01-12 21:28:42.9266|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:28:42.9476|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 21:28:51.5452|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:28:51.5712|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 21:28:53.0951|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:28:53.1132|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 21:28:56.4972|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:28:56.5177|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 21:28:58.6971|INFO|DataService.Services.OrderService|Start get order
+2018-01-12 21:28:58.7191|INFO|DataService.Services.OrderService|Completed get order
+2018-01-12 21:29:33.1548|INFO|SML_QLNPP.Controllers.OrderController|Start Update(GET) - OrderController
+2018-01-12 21:29:33.1828|INFO|DataService.Services.OrderService|Start get order
+2018-01-12 21:29:33.1984|INFO|DataService.Services.OrderService|Completed get order
+2018-01-12 21:29:33.6930|INFO|SML_QLNPP.Controllers.OrderController|Success: Complete Update(GET) - OrderController
+2018-01-12 21:29:56.1233|INFO|SML_QLNPP.Controllers.OrderController|Start Update(POST) - OrderController
+2018-01-12 21:29:56.1694|INFO|DataService.Services.OrderService|Start updating order number: 15
+2018-01-12 21:29:56.3990|INFO|DataService.Services.OrderService|Error: Encounter this error while update order number 15: Attaching an entity of type 'DataModel.OrderDetail' failed because another entity of the same type already has the same primary key value. This can happen when using the 'Attach' method or setting the state of an entity to 'Unchanged' or 'Modified' if any entities in the graph have conflicting key values. This may be because some entities are new and have not yet received database-generated key values. In this case use the 'Add' method or the 'Added' entity state to track the graph and then set the state of non-new entities to 'Unchanged' or 'Modified' as appropriate.
+2018-01-12 21:29:56.4346|INFO|SML_QLNPP.Controllers.OrderController|Start Update(GET) - OrderController
+2018-01-12 21:29:56.4531|INFO|DataService.Services.OrderService|Start get order
+2018-01-12 21:29:56.4731|INFO|DataService.Services.OrderService|Completed get order
+2018-01-12 21:29:56.5251|INFO|SML_QLNPP.Controllers.OrderController|Success: Complete Update(GET) - OrderController
+2018-01-12 21:30:06.7565|INFO|SML_QLNPP.Controllers.OrderController|Start Update(POST) - OrderController
+2018-01-12 21:30:06.7830|INFO|DataService.Services.OrderService|Start updating order number: 15
+2018-01-12 21:30:07.6822|INFO|DataService.Services.OrderService|Success: order number: 15 updated!
+2018-01-12 21:30:07.7102|INFO|SML_QLNPP.Controllers.OrderController|Start Update(GET) - OrderController
+2018-01-12 21:30:07.7232|INFO|DataService.Services.OrderService|Start get order
+2018-01-12 21:30:07.7402|INFO|DataService.Services.OrderService|Completed get order
+2018-01-12 21:30:07.8038|INFO|SML_QLNPP.Controllers.OrderController|Success: Complete Update(GET) - OrderController
+2018-01-12 21:31:08.4893|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:31:08.5059|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 21:31:18.7110|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:31:18.7370|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:41:12.1914|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:41:12.2149|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:44:23.1327|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:44:23.1662|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:44:24.2460|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:44:24.2705|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:44:24.8551|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:44:24.8811|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:44:25.3571|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:44:25.3831|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:45:28.4385|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:45:28.4605|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:45:29.2254|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:45:29.2439|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:45:29.8303|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:45:29.8553|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:46:29.7431|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 21:46:29.9057|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 21:46:29.9217|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 21:46:29.9778|INFO|DataService.LogLoginService|End audit login
+2018-01-12 21:46:37.5191|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:46:37.5371|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:46:38.6677|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:46:38.6868|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:46:39.2875|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:46:39.3045|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:46:39.8735|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:46:39.8905|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:46:40.4706|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:46:40.4911|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:46:41.0466|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:46:41.0666|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:47:20.0522|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:47:20.0873|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:52:46.9047|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:52:46.9252|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:52:47.9039|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:52:47.9214|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:52:48.5874|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:52:48.6029|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:52:49.1134|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:52:49.1309|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:52:50.1431|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:52:50.1611|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:54:46.3601|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 21:54:46.5127|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 21:54:46.5322|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 21:54:47.2835|INFO|DataService.LogLoginService|End audit login
+2018-01-12 21:54:53.6254|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:54:53.6394|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:54:56.7411|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:54:56.7567|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:54:57.6258|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:54:57.6433|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:54:58.2372|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:54:58.2502|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:54:58.7477|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:54:58.7673|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:56:08.5335|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 21:56:08.7031|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 21:56:08.7226|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 21:56:09.4795|INFO|DataService.LogLoginService|End audit login
+2018-01-12 21:56:15.4840|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:56:15.5046|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:57:46.3913|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:57:46.4253|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:58:14.0213|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:58:14.0523|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:59:10.9898|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 21:59:11.1596|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 21:59:11.1861|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 21:59:12.0325|INFO|DataService.LogLoginService|End audit login
+2018-01-12 21:59:17.9459|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:59:17.9789|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 21:59:50.8095|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 21:59:50.8300|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 21:59:59.7242|INFO|DataService.Services.OrderService|Start get order
+2018-01-12 21:59:59.7387|INFO|DataService.Services.OrderService|Completed get order
+2018-01-12 22:00:03.4736|INFO|SML_QLNPP.Controllers.OrderController|Start Update(GET) - OrderController
+2018-01-12 22:00:03.4977|INFO|DataService.Services.OrderService|Start get order
+2018-01-12 22:00:03.4977|INFO|DataService.Services.OrderService|Completed get order
+2018-01-12 22:00:03.7203|INFO|SML_QLNPP.Controllers.OrderController|Success: Complete Update(GET) - OrderController
+2018-01-12 22:00:25.5584|INFO|SML_QLNPP.Controllers.OrderController|Start Update(POST) - OrderController
+2018-01-12 22:00:25.5965|INFO|DataService.Services.OrderService|Start updating order number: 22
+2018-01-12 22:00:26.0828|INFO|DataService.Services.OrderService|Success: order number: 22 updated!
+2018-01-12 22:00:26.1334|INFO|SML_QLNPP.Controllers.OrderController|Start Update(GET) - OrderController
+2018-01-12 22:00:26.1624|INFO|DataService.Services.OrderService|Start get order
+2018-01-12 22:00:26.1819|INFO|DataService.Services.OrderService|Completed get order
+2018-01-12 22:00:26.2179|INFO|SML_QLNPP.Controllers.OrderController|Success: Complete Update(GET) - OrderController
+2018-01-12 22:00:33.7091|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 22:00:33.7321|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 22:00:51.2521|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 22:00:51.2676|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 22:00:59.4017|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 22:00:59.4167|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 22:01:04.6747|INFO|DataService.Services.OrderService|Start get order
+2018-01-12 22:01:04.6962|INFO|DataService.Services.OrderService|Completed get order
+2018-01-12 22:01:10.8079|INFO|DataService.Services.OrderService|Start get order
+2018-01-12 22:01:10.8219|INFO|DataService.Services.OrderService|Completed get order
+2018-01-12 22:01:16.0587|INFO|SML_QLNPP.Controllers.OrderController|Start Update(GET) - OrderController
+2018-01-12 22:01:16.0827|INFO|DataService.Services.OrderService|Start get order
+2018-01-12 22:01:16.0977|INFO|DataService.Services.OrderService|Completed get order
+2018-01-12 22:01:16.1297|INFO|SML_QLNPP.Controllers.OrderController|Success: Complete Update(GET) - OrderController
+2018-01-12 22:01:27.7778|INFO|SML_QLNPP.Controllers.OrderController|Start Update(POST) - OrderController
+2018-01-12 22:01:27.8078|INFO|DataService.Services.OrderService|Start updating order number: 18
+2018-01-12 22:01:27.8799|INFO|DataService.Services.OrderService|Success: order number: 18 updated!
+2018-01-12 22:01:27.9214|INFO|SML_QLNPP.Controllers.OrderController|Start Update(GET) - OrderController
+2018-01-12 22:01:27.9424|INFO|DataService.Services.OrderService|Start get order
+2018-01-12 22:01:27.9614|INFO|DataService.Services.OrderService|Completed get order
+2018-01-12 22:01:27.9889|INFO|SML_QLNPP.Controllers.OrderController|Success: Complete Update(GET) - OrderController
+2018-01-12 22:01:37.8079|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 22:01:37.8349|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 22:14:18.4828|INFO|DataService.Services.DeliveryOrderService|Start GetAll DeliveryOrder....
+2018-01-12 22:14:18.4828|INFO|DataService.Services.DeliveryOrderService|Start GetAll DeliveryOrder....
+2018-01-12 22:14:18.5254|INFO|DataService.Services.DeliveryOrderService|An error occurred while executing the command definition. See the inner exception for details.
+2018-01-12 22:14:18.5389|INFO|DataService.Services.DeliveryOrderService|End GetAll DeliveryOrder....
+2018-01-12 22:14:24.1673|INFO|DataService.Services.DeliveryOrderService|Start search Deliveryorder
+2018-01-12 22:14:24.2144|INFO|DataService.Services.DeliveryOrderService|Start search ALL Deliveryorder
+2018-01-12 22:14:24.2419|INFO|DataService.Services.DeliveryOrderService|Error Search DeliveryOrder: An error occurred while executing the command definition. See the inner exception for details.
+2018-01-12 22:14:54.5683|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 22:14:54.5863|INFO|DataService.Services.OrderService|Completed search order
+2018-01-12 22:14:56.0108|INFO|DataService.Services.OrderService|Start get order
+2018-01-12 22:14:56.0368|INFO|DataService.Services.OrderService|Completed get order
+2018-01-12 22:14:59.3792|INFO|DataService.Services.OrderService|Start get order
+2018-01-12 22:14:59.3997|INFO|DataService.Services.OrderService|Completed get order
+2018-01-12 23:09:29.2212|INFO|DataService.Services.AccountService|Start get login
+2018-01-12 23:09:29.4503|INFO|DataService.Services.AccountService|Completed get login
+2018-01-12 23:09:29.4713|INFO|DataService.LogLoginService|Start audit login
+2018-01-12 23:09:29.5559|INFO|DataService.LogLoginService|End audit login
+2018-01-12 23:09:46.5746|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 23:09:46.6056|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 23:21:14.1933|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 23:21:14.2098|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 23:22:09.3570|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 23:22:09.3816|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 23:22:36.0235|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 23:22:36.0505|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 23:23:31.2269|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 23:23:31.2614|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 23:24:22.6677|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 23:24:22.6847|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 23:25:55.2810|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 23:25:55.3050|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-12 23:28:13.2201|INFO|DataService.Services.OrderService|Start search order
+2018-01-12 23:28:13.2556|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-13 00:31:59.9379|INFO|DataService.Services.AccountService|Start get login
+2018-01-13 00:32:00.1306|INFO|DataService.Services.AccountService|Completed get login
+2018-01-13 00:32:00.1496|INFO|DataService.LogLoginService|Start audit login
+2018-01-13 00:32:00.3057|INFO|DataService.LogLoginService|End audit login
+2018-01-13 00:50:09.4082|INFO|DataService.Services.DeliveryOrderService|Start search order
+2018-01-13 00:50:09.4252|INFO|DataService.Services.DeliveryOrderService|Start search ALL order
+2018-01-13 00:50:09.5608|INFO|DataService.Services.DeliveryOrderService|Error Search Order: An error occurred while executing the command definition. See the inner exception for details.
+2018-01-13 00:50:33.2734|INFO|DataService.Services.OrderService|Start search order
+2018-01-13 00:50:33.3150|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-13 00:59:22.2325|INFO|DataService.Services.AccountService|Start get login
+2018-01-13 00:59:22.4006|INFO|DataService.Services.AccountService|Completed get login
+2018-01-13 00:59:22.4257|INFO|DataService.LogLoginService|Start audit login
+2018-01-13 00:59:23.1346|INFO|DataService.LogLoginService|End audit login
+2018-01-13 01:06:01.8669|INFO|DataService.Services.OrderService|Start search order
+2018-01-13 01:06:01.8880|INFO|DataService.Services.OrderService|Start search ALL order
+2018-01-13 01:06:04.9815|INFO|DataService.Services.DeliveryOrderService|Start search Deliveryorder
+2018-01-13 01:06:05.0045|INFO|DataService.Services.DeliveryOrderService|Start search ALL Deliveryorder
+2018-01-13 01:06:05.1146|INFO|DataService.Services.DeliveryOrderService|Error Search DeliveryOrder: An error occurred while executing the command definition. See the inner exception for details.

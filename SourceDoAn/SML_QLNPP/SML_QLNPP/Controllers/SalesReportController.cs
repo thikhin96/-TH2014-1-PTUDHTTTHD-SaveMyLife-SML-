@@ -15,7 +15,6 @@ namespace SML_QLNPP.Controllers
     public class SalesReportController : BaseController
     {
         // GET: SalesReport
-        private readonly ISalesReportService _orderService;
         private readonly IBillService _billService;
         private readonly IDistributorService _distributorService;
         private readonly IOrderService _oService;
@@ -23,9 +22,8 @@ namespace SML_QLNPP.Controllers
 
         public object DataRepository { get; private set; }
 
-        public SalesReportController(ISalesReportService orderService, IOrderService oService, IBillService bService, IDistributorService distributorService, IDeliveryOrderService DeOrService)
+        public SalesReportController(IOrderService oService, IBillService bService, IDistributorService distributorService, IDeliveryOrderService DeOrService)
         {
-            this._orderService = orderService;
             this._oService = oService;
             this._billService = bService;
             this._distributorService = distributorService;
@@ -54,26 +52,19 @@ namespace SML_QLNPP.Controllers
             
             return View(model);
         }
-        //<th>Mã Hóa Đơn</th>
-        //                            <th>Mã Nhân Viên</th>
-        //                            <th>Mã Nhà Phân Phối</th>
-        //                            <th>Ngày Lập</th>
-        //                            <th>Tổng Tiền</th>
-        //                            <th>Loại Hóa Đơn</th>
-        //                            <th>Mô Tả</th>
         public ContentResult SearchListBill(int month, int quartar, int year, int idDistributor)
         {
             IList<Bill> rs = new List<Bill>();
             if (Request.IsAjaxRequest())
             {
                 rs = _billService.SearchListBill(month, quartar, year, idDistributor);
-                var list = JsonConvert.SerializeObject(rs.Select(x => new { x.idBill, x.idStaff, x.idDistributor, x.createdDate, x.purchase, x.types, x.description }));
+                var list = JsonConvert.SerializeObject(rs.Select(x => new { x.idBill, x.Staff.staffName, x.Distributor.name, x.createdDate, x.purchase, x.types, x.description }));
                 return Content(list, "application/json");
             }
             return null;
         }
 
-        [HttpGet]
+
         public ActionResult ListOrder()
         {
             isAdminLogged();
@@ -89,7 +80,7 @@ namespace SML_QLNPP.Controllers
             if (Request.IsAjaxRequest())
             {
                 rs = _oService.SearchListOrder(month, quartar, year, idDistributor);
-                var list = JsonConvert.SerializeObject(rs.Select(x => new { x.idOrder, x.CreatedDate, x.idDistributor, x.idStaff, x.Total }));
+                var list = JsonConvert.SerializeObject(rs.Select(x => new { x.idOrder, x.CreatedDate, x.Distributor.name, x.Staff.staffName, x.Total }));
                 return Content(list, "application/json");
             }
             return null;
@@ -111,7 +102,7 @@ namespace SML_QLNPP.Controllers
             if (Request.IsAjaxRequest())
             {
                 rs = _DeOrService.SearchListDeliveryOrder(month, quartar, year, idDistributor);
-                var list = JsonConvert.SerializeObject(rs.Select(x => new { x.idDeliveryOrder, x.deliveryDate, x.idDistributor, x.idStaff, x.totalPurchase }));
+                var list = JsonConvert.SerializeObject(rs.Select(x => new { x.idDeliveryOrder, x.deliveryDate, x.Distributor.name, x.Staff.staffName, x.totalPurchase }));
                 return Content(list, "application/json");
             }
             return null;
@@ -127,6 +118,18 @@ namespace SML_QLNPP.Controllers
             ViewBag.Child = "Báo Cáo Kinh Doanh";
             return View(model);
         }
+        public ContentResult SearchListOrderDetail(int month, int quartar, int year, int idDistributor)
+        {
+            IList<Order> rs = new List<Order>();
+            IList<OrderDetail> rs1 = new List<OrderDetail>();
+            if (Request.IsAjaxRequest())
+            {
+                rs1 = _oService.SearchListOrderDetail(month, quartar, year, idDistributor);
+                var list = JsonConvert.SerializeObject(rs1.Select(x => new { x.idOrder, x.Order.CreatedDate, x.Order.Distributor.name, x.quantity, x.Order.Total }));
+                return Content(list, "application/json");
+            }
+            return null;
+        }
 
         [HttpGet]
         public ActionResult CommodityAllocationReport()
@@ -138,19 +141,35 @@ namespace SML_QLNPP.Controllers
             ViewBag.Child = "Báo Cáo Phân Bổ Hàng Hóa";
             return View(model);
         }
+        public ContentResult SearchListDetailDeliveryOrder(int month, int quartar, int year, int idDistributor)
+        {
+            IList<DeliveryOrder> rs1 = new List<DeliveryOrder>();
+            IList<DetailedDeliveryOrder> rs = new List<DetailedDeliveryOrder>();
+            if (Request.IsAjaxRequest())
+            {
+                rs = _DeOrService.SearchListDetailDeliveryOrder(month, quartar, year, idDistributor);
+                var list = JsonConvert.SerializeObject(rs.Select(x => new { x.idDeliveryOrder, x.DeliveryOrder.deliveryDate, x.DeliveryOrder.Distributor.name, x.DeliveryOrder.Staff.staffName, x.quantity, x.DeliveryOrder.totalPurchase }));
+                return Content(list, "application/json");
+            }
+            return null;
+        }
         public ActionResult Statistic()
         {
             isAdminLogged();
+            SalesReportViewModel model = new SalesReportViewModel();
+            model.Distributors = _distributorService.GetAllDistributor();
             ViewBag.Parent = "Thống Kê";
             ViewBag.Child = "Tổng Quan";
-            return View();
+            return View(model);
         }
         public ActionResult StatisticCompare()
         {
             isAdminLogged();
+            SalesReportViewModel model = new SalesReportViewModel();
+            model.Distributors = _distributorService.GetAllDistributor();
             ViewBag.Parent = "Thống Kê";
             ViewBag.Child = "So Sánh";
-            return View();
+            return View(model);
         }
         
         

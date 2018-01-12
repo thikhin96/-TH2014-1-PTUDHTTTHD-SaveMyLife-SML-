@@ -16,11 +16,13 @@ namespace DataService.Services
     public class DeliveryOrderService : IDeliveryOrderService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IRepository<DetailedDeliveryOrder> _orderDetailRepository;
         ILogger logger = LogManager.GetCurrentClassLogger();
         public DeliveryOrderService(IUnitOfWork unitOfWork)
         {
             //_promotionRepository = unitOfWork.Repository<Promotion>();
             _unitOfWork = unitOfWork;
+            _orderDetailRepository = unitOfWork.Repository<DetailedDeliveryOrder>();
         }
         public bool AddDeliveryOrder(DeliveryOrder dOrder)
         {
@@ -162,12 +164,12 @@ namespace DataService.Services
             }
         }
         // can them vao
-        public IList<DeliveryOrder> GetAll()
+        public IList<DetailedDeliveryOrder> GetAll()
         {
             try
             {
                 logger.Info("Start GetAll DeliveryOrder....");
-                IRepository<DeliveryOrder> repository = _unitOfWork.Repository<DeliveryOrder>();
+                IRepository<DetailedDeliveryOrder> repository = _unitOfWork.Repository<DetailedDeliveryOrder>();
                 var result = repository.GetAll();
                 if (result != null)
                 {
@@ -218,6 +220,34 @@ namespace DataService.Services
                 logger.Info("Error Search Order: " + ex.Message);
                 return null;
             }
+        }
+        public IList<DetailedDeliveryOrder> SearchListDetailDeliveryOrder(int month, int quartar, int year, int idDistributor)
+        {
+            try
+            {
+                logger.Info("Start search Deliveryorder");
+                IRepository<DetailedDeliveryOrder> repository = _unitOfWork.Repository<DetailedDeliveryOrder>();
+                if (month == 0 && quartar == 0 && year == 0 && idDistributor == 0)
+                {
+                    logger.Info("Start search ALL Deliveryorder");
+                    return repository.GetAll().ToList();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                logger.Info("Error Search DeliveryOrder: " + ex.Message);
+                return null;
+            }
+        }
+
+        IList<DeliveryOrder> IDeliveryOrderService.GetAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }
